@@ -164,3 +164,9 @@ html {
   border-radius: 4px;
   font-size: 0.7rem;
 }
+
+@media (max-width: 768px) {
+  a.navbar-brand {
+    font-size: 15px !important;
+  }
+}
