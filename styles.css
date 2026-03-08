@@ -1,0 +1,166 @@
+:root {
+  --cisco-green: #66bf53;
+  --dark-bg: #121212;
+  --card-bg: #1e1e1e;
+  --text-main: #ffffff;
+  --text-muted: #b0b0b0;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-main);
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+}
+
+.cisco-title {
+  color: var(--cisco-green);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-left: 5px solid var(--cisco-green);
+  padding-left: 15px;
+  margin-bottom: 30px;
+}
+
+.content-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid #333;
+  transition: transform 0.3s ease;
+}
+
+.content-card:hover {
+  border-color: var(--cisco-green);
+}
+
+.icon-box {
+  color: var(--cisco-green);
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+.topic-table {
+  background-color: #252525;
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.topic-table th {
+  background-color: var(--cisco-green);
+  color: #000;
+}
+
+/* Estilo Base (Desktop/Geral) */
+.badge-cisco {
+  background-color: rgba(102, 191, 83, 0.1);
+  color: var(--cisco-green);
+  border: 1px solid var(--cisco-green);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  white-space: nowrap; /* Evita que o texto quebre dentro do badge */
+}
+
+/* Media Query para Mobile (Telas até 768px) */
+@media (max-width: 768px) {
+  .badge-cisco {
+    width: 100%; /* Badge ocupa a largura total disponível no grid/flex */
+    min-width: 140px; /* Garante um tamanho mínimo robusto */
+    padding: 10px; /* Aumenta a área de toque (UX) */
+    font-size: 0.9rem; /* Melhora a leitura no celular */
+  }
+
+  /* Ajuste no container para empilhar corretamente */
+  .gap-2 {
+    gap: 0.75rem !important;
+  }
+}
+
+/* Anima JS Target */
+.reveal {
+  opacity: 0;
+}
+.nav-link {
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: var(--cisco-green) !important;
+  transform: translateY(-2px);
+}
+
+/* Estilo suave para o scroll da página */
+html {
+  scroll-behavior: smooth;
+}
+.m-0.ps-1 {
+  color: var(--text-muted) !important;
+}
+.mb-0,
+.mb-4 {
+  color: var(--text-muted) !important;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 991px) {
+  .navbar-nav .dropdown-menu {
+    background-color: rgba(30, 30, 30, 0.95) !important;
+    border: none !important;
+    padding-left: 1rem;
+    max-height: 300px !important;
+  }
+
+  .dropdown-item {
+    white-space: normal !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  .progress {
+    top: 60px !important;
+  }
+}
+
+/* Hover effects */
+.dropdown-item {
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 255, 0, 0.1) !important;
+  border-left-color: var(--cisco-green);
+  transform: translateX(5px);
+}
+
+/* Scrollbar personalizada para dropdown */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: #333;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--cisco-green);
+  border-radius: 3px;
+}
+
+/* Badge no dropdown */
+.badge-cisco {
+  background: rgba(0, 255, 0, 0.1);
+  color: var(--cisco-green);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
