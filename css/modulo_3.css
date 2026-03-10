@@ -1,0 +1,187 @@
+ /* Variáveis CSS - Identidade Visual */
+      :root {
+        --cisco-green: #00ff00;
+        --cisco-green-dim: #00cc00;
+        --bg-primary: #0a0a0a;
+        --bg-secondary: #1a1a1a;
+        --bg-card: #252525;
+        --bg-card-hover: #2d2d2d;
+        --text-primary: #ffffff;
+        --text-secondary: #e0e0e0;
+        --text-muted: #a0a0a0;
+        --border-primary: #333333;
+        --terminal-bg: #0d0d0d;
+        --danger: #ff4444;
+        --info: #3399ff;
+      }
+
+      /* Estilos Globais */
+      body {
+        background-color: var(--bg-primary);
+        font-family: 'Inter', sans-serif;
+        color: var(--text-primary);
+        padding-top: 0;
+      }
+
+      /* Scroll Suave */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Títulos de Seção */
+      .cisco-title {
+        font-weight: 800;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid var(--border-primary);
+        color: white;
+        letter-spacing: -0.02em;
+        position: relative;
+      }
+
+      .cisco-title::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100px;
+        height: 2px;
+        background: var(--cisco-green);
+      }
+
+      /* Content Card */
+      .content-card {
+        background: var(--bg-card);
+        border-radius: 12px;
+        padding: 1.5rem;
+        border: 1px solid var(--border-primary);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .content-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(0, 255, 0, 0.1);
+        border-color: var(--cisco-green);
+      }
+
+      /* Terminal Card */
+      .terminal-card {
+        background: var(--terminal-bg);
+        border-left: 4px solid var(--cisco-green);
+        padding: 1rem;
+        border-radius: 0 8px 8px 0;
+        font-family: 'Courier New', monospace;
+      }
+
+      /* Badge Cisco */
+      .badge-cisco {
+        background: rgba(0, 255, 0, 0.1);
+        color: var(--cisco-green);
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        border: 1px solid rgba(0, 255, 0, 0.2);
+        display: inline-block;
+      }
+
+      /* Tabela Cisco */
+      .table-cisco {
+        width: 100%;
+        background: var(--bg-card);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-primary);
+      }
+
+      .table-cisco thead {
+        background: var(--bg-secondary);
+        border-bottom: 2px solid var(--cisco-green);
+      }
+
+      .table-cisco th {
+        padding: 1rem;
+        font-weight: 600;
+        color: var(--cisco-green);
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+      }
+
+      .table-cisco td {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border-primary);
+        color: var(--text-secondary);
+      }
+
+      /* Accordion */
+      .accordion-button {
+        background-color: var(--bg-secondary) !important;
+        color: var(--cisco-green) !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .accordion-button:not(.collapsed) {
+        background-color: var(--bg-secondary) !important;
+        color: var(--cisco-green) !important;
+      }
+
+      .accordion-button::after {
+        filter: invert(0.8) sepia(1) hue-rotate(60deg);
+      }
+
+      .accordion-body {
+        background-color: var(--bg-primary);
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border-primary);
+      }
+
+      .accordion-item {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-primary);
+        margin-bottom: 8px;
+      }
+
+      /* Dropdown */
+      .dropdown-item {
+        transition: all 0.2s;
+        border-left: 3px solid transparent;
+        color: var(--text-secondary);
+      }
+
+      .dropdown-item:hover {
+        background-color: rgba(0, 255, 0, 0.1) !important;
+        border-left-color: var(--cisco-green);
+        transform: translateX(5px);
+        color: white;
+      }
+
+      .dropdown-header {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Scrollbar customizada */
+      .dropdown-menu::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .dropdown-menu::-webkit-scrollbar-track {
+        background: #333;
+      }
+
+      .dropdown-menu::-webkit-scrollbar-thumb {
+        background: var(--cisco-green);
+        border-radius: 3px;
+      }
+
+      /* Alert Cisco */
+      .alert-cisco {
+        background: rgba(0, 255, 0, 0.05);
+        border-left: 4px solid var(--cisco-green);
+        padding: 1rem;
+      }

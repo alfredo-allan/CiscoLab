@@ -1,0 +1,621 @@
+📋 BRIEFING TÉCNICO DO PROJETO: Documentação CyberSec
+1. 🎯 VISÃO GERAL DO PROJETO
+markdown
+PROJETO: Documentação Interativa de Cibersegurança
+BASE DE CONHECIMENTO: Currículo CCNAv7 - Introduction to Networks (SENAI)
+PÚBLICO-ALVO: Estudantes de redes e cibersegurança
+TOM VISUAL: Cyberpunk/Tech com identidade Cisco Academy
+PROPOSTA: Documentação moderna, responsiva e interativa com seções modulares
+2. 🎨 IDENTIDADE VISUAL COMPLETA
+2.1 Cores Oficiais (Variáveis CSS)
+css
+:root {
+  /* Cores Principais */
+  --cisco-green: #00ff00;        /* Verde neon - elementos de destaque */
+  --cisco-green-dim: #00cc00;     /* Hover e variações */
+  --bg-primary: #0a0a0a;          /* Fundo principal quase preto */
+  --bg-secondary: #1a1a1a;        /* Fundo secundário */
+  --bg-card: #252525;              /* Fundo dos cards */
+  --bg-card-hover: #2d2d2d;        /* Hover dos cards */
+
+  /* Cores de Texto */
+  --text-primary: #ffffff;         /* Texto principal */
+  --text-secondary: #e0e0e0;       /* Texto secundário */
+  --text-muted: #a0a0a0;           /* Texto suave */
+  --text-disabled: #666666;         /* Texto desabilitado */
+
+  /* Cores de Bordas e Divisores */
+  --border-primary: #333333;        /* Bordas principais */
+  --border-light: #404040;          /* Bordas mais claras */
+  --border-focus: var(--cisco-green); /* Borda de foco */
+
+  /* Cores de Feedback */
+  --success: #00ff00;               /* Sucesso */
+  --warning: #ffaa00;               /* Alerta */
+  --danger: #ff4444;                 /* Erro/perigo */
+  --info: #3399ff;                   /* Informação */
+
+  /* Cores Especiais */
+  --terminal-bg: #0d0d0d;           /* Fundo estilo terminal */
+  --terminal-text: #00ff00;          /* Texto estilo terminal */
+  --terminal-prompt: #00ff00;        /* Prompt do terminal */
+
+  /* Efeitos */
+  --glow-effect: 0 0 10px rgba(0, 255, 0, 0.3);  /* Efeito de brilho */
+  --glow-effect-strong: 0 0 20px rgba(0, 255, 0, 0.5);
+}
+2.2 Tipografia
+css
+/* Fonte Principal */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+/* Fallback: JetBrains Mono para código */
+
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-code: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-terminal: 'Courier New', monospace;
+}
+
+/* Escala Tipográfica */
+--text-xs: 0.75rem;    /* 12px */
+--text-sm: 0.875rem;   /* 14px */
+--text-base: 1rem;     /* 16px */
+--text-lg: 1.125rem;   /* 18px */
+--text-xl: 1.25rem;    /* 20px */
+--text-2xl: 1.5rem;    /* 24px */
+--text-3xl: 1.875rem;  /* 30px */
+--text-4xl: 2.25rem;   /* 36px */
+
+/* Pesos */
+--font-light: 300;
+--font-regular: 400;
+--font-semibold: 600;
+--font-bold: 700;
+--font-extrabold: 800;
+2.3 Ícones e CDNs
+html
+<!-- CDNs OBRIGATÓRIAS (manter esta ordem) -->
+<!-- 1. FONTES -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<!-- 2. FONT AWESOME (Ícones) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- 3. BOOTSTRAP CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- 4. CSS PERSONALIZADO (sempre depois do Bootstrap) -->
+<link rel="stylesheet" href="/styles.css">
+
+<!-- SCRIPTS (final do body) -->
+<!-- 1. BOOTSTRAP JS (obrigatório para navbar funcionar) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 2. ANIME.JS (animações) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<!-- 3. JQUERY (opcional, só se precisar) -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
+<!-- 4. JS PERSONALIZADO -->
+<script src="/main.js"></script>
+3. 🧱 ESTRUTURA DE COMPONENTES
+3.1 Navbar Completo
+html
+<nav class="navbar navbar-expand-lg sticky-top" style="background-color: rgba(10, 10, 10, 0.98); border-bottom: 2px solid var(--cisco-green); backdrop-filter: blur(10px); padding: 0.8rem 0; z-index: 1030;">
+  <div class="container">
+    <!-- Logo/Brand -->
+    <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px;">
+      <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green);"></i>
+      NET<span style="color: white;">SEC</span>
+      <small style="font-size: 0.7rem; color: var(--text-muted); display: block; line-height: 1;">estudos CCNA</small>
+    </a>
+
+    <!-- Toggler Mobile -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" style="box-shadow: none;">
+      <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+    </button>
+
+    <!-- Menu Principal -->
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <!-- Dropdown Módulo 1 -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown" style="font-weight: 500;">
+            <i class="fas fa-cube me-1" style="color: var(--cisco-green);"></i> Módulo 1
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); max-height: 400px; overflow-y: auto;">
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🔰 INTRODUÇÃO</h6></li>
+            <li><a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>1.0.1 Introdução</a></li>
+            <li><a class="dropdown-item" href="#modulo-aprendizado"><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem;"></i>1.0.2 O que aprender</a></li>
+            <li><hr class="dropdown-divider" style="border-color: var(--border-primary);"></li>
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🎯 AMEAÇAS</h6></li>
+            <li><a class="dropdown-item" href="#dominios-ameaca">Domínios de Ameaça</a></li>
+            <li><a class="dropdown-item" href="#tipos-ameacas">Tipos de Ameaças</a></li>
+            <li><a class="dropdown-item" href="#origem-ameacas">Origem das Ameaças</a></li>
+          </ul>
+        </li>
+
+        <!-- Links Diretos -->
+        <li class="nav-item">
+          <a class="nav-link text-white px-3" href="#laboratorios">
+            <i class="fas fa-flask me-1" style="color: var(--cisco-green);"></i> Labs
+          </a>
+        </li>
+
+        <!-- Dropdown Índice Rápido -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green);">
+            <i class="fas fa-list-ul me-1"></i> Índice
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); min-width: 280px;">
+            <li>
+              <div class="px-3 py-2">
+                <input type="text" id="navSearch" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="🔍 Buscar seção...">
+              </div>
+            </li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <div id="sectionList">
+              <li><a class="dropdown-item" href="#modulo-intro"><span class="badge-cisco me-2">1.0.1</span>Introdução</a></li>
+              <li><a class="dropdown-item" href="#modulo-aprendizado"><span class="badge-cisco me-2">1.0.2</span>Aprender</a></li>
+              <li><a class="dropdown-item" href="#dominios-ameaca"><span class="badge-cisco me-2">1.1.1</span>Domínios</a></li>
+            </div>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Barra de Progresso -->
+<div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0;">
+  <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green);"></div>
+</div>
+3.2 Cards e Containers
+css
+/* Card Padrão */
+.content-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 255, 0, 0.1);
+  border-color: var(--cisco-green);
+}
+
+/* Card com borda inferior verde */
+.content-card-accent {
+  border-bottom: 3px solid var(--cisco-green);
+}
+
+/* Card de Terminal */
+.terminal-card {
+  background: var(--terminal-bg);
+  border-radius: 8px;
+  padding: 1rem;
+  font-family: var(--font-terminal);
+  color: var(--terminal-text);
+  border: 1px solid var(--cisco-green);
+}
+
+/* Badge/Tag */
+.badge-cisco {
+  background: rgba(0, 255, 0, 0.1);
+  color: var(--cisco-green);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  display: inline-block;
+}
+
+/* Título de Seção */
+.cisco-title {
+  font-weight: 800;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--border-primary);
+  color: white;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.cisco-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background: var(--cisco-green);
+}
+3.3 Tabelas
+css
+/* Tabela Estilo Cisco */
+.table-cisco {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+}
+
+.table-cisco thead {
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--cisco-green);
+}
+
+.table-cisco th {
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--cisco-green);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table-cisco td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+}
+
+.table-cisco tr:hover td {
+  background: rgba(0, 255, 0, 0.05);
+}
+3.4 Footer
+html
+<footer class="footer" style="background: var(--bg-secondary); border-top: 2px solid var(--cisco-green); padding: 3rem 0 2rem; margin-top: 4rem;">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Coluna 1: Sobre -->
+      <div class="col-md-4">
+        <h5 style="color: white; font-weight: 700; margin-bottom: 1.5rem;">
+          <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green);"></i>
+          NET<span style="color: var(--cisco-green);">SEC</span>
+        </h5>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+          Documentação interativa para estudos de redes e cibersegurança baseada no currículo CCNAv7.
+        </p>
+        <div class="social-links mt-3">
+          <a href="#" class="me-3" style="color: var(--text-muted);"><i class="fab fa-github"></i></a>
+          <a href="#" class="me-3" style="color: var(--text-muted);"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="me-3" style="color: var(--text-muted);"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+
+      <!-- Coluna 2: Links Rápidos -->
+      <div class="col-md-2">
+        <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem;">Módulos</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">Introdução</a></li>
+          <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">Ameaças</a></li>
+          <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">Vulnerabilidades</a></li>
+          <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">Laboratórios</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Recursos -->
+      <div class="col-md-3">
+        <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem;">Recursos</h6>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">Packet Tracer</a></li>
+          <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">Comandos Cisco</a></li>
+          <li class="mb-2"><a href="#" style="color: var(--text-muted); text-decoration: none;">Glossário</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 4: Créditos -->
+      <div class="col-md-3">
+        <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem;">Créditos</h6>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">
+          🧙 Alfredo Allan
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.8rem;">
+          Conteúdo baseado no currículo<br>Cisco Networking Academy
+        </p>
+        <p style="color: var(--text-muted); font-size: 0.75rem; margin-top: 1rem;">
+          <i class="fas fa-code"></i> com assistência de Gemini e DeepSeek
+        </p>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="row mt-4">
+      <div class="col-12 text-center">
+        <hr style="border-color: var(--border-primary);">
+        <p style="color: var(--text-muted); font-size: 0.8rem;">
+          © 2026 NETSEC Labs. Projeto independente sem vínculo oficial com a Cisco Systems.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+4. 📱 RESPONSIVIDADE (Breakpoints)
+css
+/* Mobile First - Base */
+:root {
+  --container-padding: 1rem;
+  --section-spacing: 2rem;
+  --title-size: 1.8rem;
+}
+
+/* Tablet (768px - 992px) */
+@media (min-width: 768px) {
+  :root {
+    --container-padding: 2rem;
+    --section-spacing: 3rem;
+    --title-size: 2.2rem;
+  }
+
+  .content-card {
+    padding: 2rem;
+  }
+}
+
+/* Desktop (> 992px) */
+@media (min-width: 992px) {
+  :root {
+    --container-padding: 3rem;
+    --section-spacing: 4rem;
+    --title-size: 2.5rem;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .navbar-brand small {
+    font-size: 0.6rem !important;
+  }
+
+  .cisco-title {
+    font-size: 1.5rem;
+  }
+
+  .content-card {
+    padding: 1.2rem;
+  }
+
+  .table-responsive {
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+}
+5. ⚡ ANIMAÇÕES PADRÃO (main.js)
+javascript
+// main.js - Animações e Interatividade
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  // 1. REVEAL SECTIONS AO SCROLL
+  function initRevealAnimations() {
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if (revealElements.length) {
+      revealElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      revealElements.forEach(el => observer.observe(el));
+    }
+  }
+
+  // 2. BARRA DE PROGRESSO
+  function initProgressBar() {
+    window.addEventListener('scroll', function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+
+      const progressBar = document.getElementById('readingProgress');
+      if (progressBar) progressBar.style.width = scrolled + '%';
+    });
+  }
+
+  // 3. BUSCA NO DROPDOWN
+  function initNavSearch() {
+    const searchInput = document.getElementById('navSearch');
+    if (searchInput) {
+      searchInput.addEventListener('keyup', function() {
+        const filter = this.value.toLowerCase();
+        const items = document.querySelectorAll('#sectionList .dropdown-item');
+
+        items.forEach(item => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(filter) ? 'block' : 'none';
+        });
+      });
+    }
+  }
+
+  // 4. HOVER ANIMATION NOS CARDS (com Anime.js)
+  function initCardHover() {
+    if (typeof anime !== 'undefined') {
+      document.querySelectorAll('.content-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          anime({
+            targets: card,
+            scale: 1.02,
+            duration: 200,
+            easing: 'easeOutQuad'
+          });
+        });
+
+        card.addEventListener('mouseleave', () => {
+          anime({
+            targets: card,
+            scale: 1,
+            duration: 200,
+            easing: 'easeOutQuad'
+          });
+        });
+      });
+    }
+  }
+
+  // 5. SCROLL SUAVE
+  function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offset = 100;
+          const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+          window.scrollTo({
+            top: position,
+            behavior: 'smooth'
+          });
+
+          // Fecha menu mobile se aberto
+          const navbar = document.getElementById('navbarMain');
+          if (navbar && navbar.classList.contains('show')) {
+            navbar.classList.remove('show');
+          }
+        }
+      });
+    });
+  }
+
+  // Inicializa todas as funções
+  initRevealAnimations();
+  initProgressBar();
+  initNavSearch();
+  initCardHover();
+  initSmoothScroll();
+
+});
+6. 🏗️ TEMPLATE DE NOVA SEÇÃO
+html
+<!-- COMO CRIAR UMA NOVA SEÇÃO -->
+<!-- 1. Copie este bloco -->
+<!-- 2. Mude o ID (único) -->
+<!-- 3. Mude o título e ícone -->
+<!-- 4. Adicione conteúdo dentro do content-card -->
+
+<section id="novo-id-aqui" class="mb-5 reveal" style="scroll-margin-top: 100px;">
+  <h2 class="cisco-title">
+    <i class="fas [ESCOLHA-UM-ICONE] me-2" style="color: var(--cisco-green);"></i>
+    [NUMERAÇÃO] Título da Seção
+  </h2>
+
+  <div class="content-card">
+    <!-- CONTEÚDO AQUI -->
+    <!-- Pode ser: texto, listas, tabelas, cards internos, etc -->
+
+    <!-- Exemplo de texto -->
+    <p class="mb-4" style="color: var(--text-secondary);">
+      Texto de explicação aqui...
+    </p>
+
+    <!-- Exemplo de lista com ícones -->
+    <ul class="list-unstyled">
+      <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Item 1</li>
+      <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Item 2</li>
+    </ul>
+
+    <!-- Exemplo de badge -->
+    <div class="d-flex gap-2">
+      <span class="badge-cisco">Tag 1</span>
+      <span class="badge-cisco">Tag 2</span>
+    </div>
+  </div>
+</section>
+
+<!-- Para tabelas: use a classe table-cisco -->
+<div class="table-responsive">
+  <table class="table table-cisco">
+    <thead>
+      <tr>
+        <th>Título 1</th>
+        <th>Título 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dado 1</td>
+        <td>Dado 2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+7. 📦 CHECKLIST DE CONTINUIDADE
+markdown
+## ANTES DE INICIAR NOVO CHAT:
+
+✅ **Estrutura Base pronta:**
+- [x] HTML com todas as seções existentes
+- [x] CSS com variáveis e estilos
+- [x] JS com animações
+
+✅ **CDNs confirmadas:**
+- [x] Google Fonts (Inter)
+- [x] Font Awesome 6.4.0
+- [x] Bootstrap 5.3.0 (CSS + JS)
+- [x] Anime.js
+- [x] main.js personalizado
+
+✅ **Componentes testados:**
+- [x] Navbar funcional (hamburger abre/fecha)
+- [x] Dropdowns funcionam
+- [x] Scroll suave com offset
+- [x] Barra de progresso
+- [x] Cards com hover
+- [x] Responsividade mobile
+
+## PRÓXIMAS SEÇÕES A CRIAR:
+
+☐ 1.2.3 Malware e Antivírus
+☐ 1.3.1 Firewall e IDS/IPS
+☐ 1.3.2 Criptografia Básica
+☐ 2.1.1 Modelo OSI (camadas)
+☐ 2.1.2 TCP/IP vs OSI
+☐ Laboratório: Configuração inicial de switch
+8. 🔧 COMANDOS ÚTEIS (manter no novo chat)
+markdown
+## PARA O PRÓXIMO CHAT:
+
+"Continuando o projeto de documentação CyberSec com as seguintes características:
+- Bootstrap 5.3.0
+- Cores: bg #1a1a1a, verde cisco #00ff00
+- Fonte Inter
+- Navbar com dropdowns e barra de progresso
+- Cards com classe .content-card
+- Títulos com classe .cisco-title
+- Badges com classe .badge-cisco
+
+Preciso criar uma nova seção sobre [TÓPICO]. Me forneça o HTML seguindo os padrões existentes."
+📌 RESUMO PARA O PRÓXIMO CHAT
+markdown
+PROJETO: Documentação CyberSec (estilo Cisco Academy)
+TECHS: Bootstrap 5.3, Font Awesome 6, Anime.js
+CORES: --cisco-green: #00ff00, --bg-primary: #0a0a0a, --bg-card: #252525
+FONTE: 'Inter', sans-serif
+COMPONENTES: .content-card, .cisco-title, .badge-cisco, .table-cisco
+NAVBAR: Fixo com dropdowns e barra de progresso
+FOOTER: Com créditos (🧙 Alfredo Allan, Cisco, Gemini, DeepSeek)

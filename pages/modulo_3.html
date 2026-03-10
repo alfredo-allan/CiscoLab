@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>&#9760; CyberSec | Estudos Cisco</title>
+
+    <!-- FONTES -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+    <!-- ÍCONES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/modulo_3.css">
+  </head>
+
+  <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
+
+    <!-- ============================================ -->
+    <!-- NAVBAR ATUALIZADO COM MÓDULO 3 -->
+    <!-- ============================================ -->
+    <nav class="navbar navbar-expand-lg sticky-top" style="background-color: rgba(30, 30, 30, 0.98); border-bottom: 2px solid var(--cisco-green); backdrop-filter: blur(10px); padding: 0.8rem 0; z-index: 1030;">
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="box-shadow: none">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- Módulo 1 - Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 1
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1a1a1a; border: 1px solid #333; max-height: 400px; overflow-y: auto;">
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">🔰 FUNDAMENTOS</h6></li>
+                <li><a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem"></i>1.0.1 Introdução</a></li>
+                <li><a class="dropdown-item" href="#modulo-aprendizado"><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem"></i>1.0.2 O que aprender</a></li>
+                <li><hr class="dropdown-divider" style="border-color: #333" /></li>
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">🎯 AMEAÇAS</h6></li>
+                <li><a class="dropdown-item" href="#dominios-ameaca"><i class="fas fa-shield-halved me-2"></i>Domínios de Ameaça</a></li>
+                <li><a class="dropdown-item" href="#tipos-ameacas"><i class="fas fa-bug me-2"></i>Tipos de Ameaças</a></li>
+                <li><a class="dropdown-item" href="#origem-ameacas"><i class="fas fa-user-secret me-2"></i>Origem das Ameaças</a></li>
+                <li><a class="dropdown-item" href="#vulnerabilidades-usuario"><i class="fas fa-users me-2"></i>Fator Humano</a></li>
+                <li><a class="dropdown-item" href="#ameacas-dispositivos"><i class="fas fa-laptop me-2"></i>Ameaças a Dispositivos</a></li>
+                <li><hr class="dropdown-divider" style="border-color: #333" /></li>
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">⚡ AVANÇADO</h6></li>
+                <li><a class="dropdown-item" href="#termos-avancados"><i class="fas fa-skull me-2"></i>Glossário Técnico</a></li>
+              </ul>
+            </li>
+
+            <!-- Módulo 3 - Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fas fa-shield-halved me-1" style="color: var(--cisco-green)"></i>
+                Módulo 3
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1a1a1a; border: 1px solid #333; max-height: 400px; overflow-y: auto;">
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">🎯 ATACANDO A FUNDAÇÃO</h6></li>
+                <li><a class="dropdown-item" href="#modulo3-intro"><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem"></i>3.0.1 Introdução</a></li>
+                <li><a class="dropdown-item" href="#modulo3-aprendizado"><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem"></i>3.0.2 O que aprender</a></li>
+                <li><hr class="dropdown-divider" style="border-color: #333" /></li>
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">📦 CABEÇALHO IP</h6></li>
+                <li><a class="dropdown-item" href="#ipv4-ipv6"><i class="fas fa-globe me-2"></i>3.1.1 IPv4 e IPv6</a></li>
+                <li><a class="dropdown-item" href="#cabecalho-ipv4"><i class="fas fa-code me-2"></i>3.1.2 Cabeçalho IPv4</a></li>
+                <li><a class="dropdown-item" href="#cabecalho-ipv6"><i class="fas fa-code me-2"></i>3.1.4 Cabeçalho IPv6</a></li>
+              </ul>
+            </li>
+
+            <!-- Links Diretos -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#top-servicos">
+                <i class="fas fa-terminal me-1" style="color: var(--cisco-green)"></i>
+                Lab Status
+              </a>
+            </li>
+
+            <!-- Índice Rápido -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice Rápido
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="background-color: #1a1a1a; border: 1px solid #333; min-width: 320px; max-height: 450px; overflow-y: auto;">
+                <li>
+                  <div class="px-3 py-2">
+                    <input type="text" id="navSearch" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="🔍 Buscar seção..." style="font-size: 0.85rem" />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" style="border-color: #333" /></li>
+                <div id="sectionList">
+                  <!-- Módulo 1 -->
+                  <li><h6 class="dropdown-header" style="color: var(--cisco-green);">📘 MÓDULO 1</h6></li>
+                  <li><a class="dropdown-item" href="#modulo-intro"><span class="badge-cisco me-2">1.0.1</span>Introdução</a></li>
+                  <li><a class="dropdown-item" href="#modulo-aprendizado"><span class="badge-cisco me-2">1.0.2</span>O que aprender</a></li>
+                  <li><a class="dropdown-item" href="#dominios-ameaca"><span class="badge-cisco me-2">1.1.1</span>Domínios de Ameaça</a></li>
+                  <li><a class="dropdown-item" href="#tipos-ameacas"><span class="badge-cisco me-2">1.1.2</span>Tipos de Ameaças</a></li>
+                  <li><a class="dropdown-item" href="#origem-ameacas"><span class="badge-cisco me-2">1.1.5</span>Origem das Ameaças</a></li>
+                  <li><a class="dropdown-item" href="#vulnerabilidades-usuario"><span class="badge-cisco me-2">1.1.8</span>Vulnerabilidades</a></li>
+                  <li><a class="dropdown-item" href="#ameacas-dispositivos"><span class="badge-cisco me-2">1.1.9</span>Ameaças a Dispositivos</a></li>
+                  <li><a class="dropdown-item" href="#termos-avancados"><span class="badge-cisco me-2">1.2.1</span>Glossário Técnico</a></li>
+
+                  <li><hr class="dropdown-divider" style="border-color: #333;"></li>
+
+                  <!-- Módulo 3 -->
+                  <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🛡️ MÓDULO 3</h6></li>
+                  <li><a class="dropdown-item" href="#modulo3-intro"><span class="badge-cisco me-2">3.0.1</span>Introdução</a></li>
+                  <li><a class="dropdown-item" href="#modulo3-aprendizado"><span class="badge-cisco me-2">3.0.2</span>O que aprender</a></li>
+                  <li><a class="dropdown-item" href="#ipv4-ipv6"><span class="badge-cisco me-2">3.1.1</span>IPv4 e IPv6</a></li>
+                  <li><a class="dropdown-item" href="#cabecalho-ipv4"><span class="badge-cisco me-2">3.1.2</span>Cabeçalho IPv4</a></li>
+                  <li><a class="dropdown-item" href="#cabecalho-ipv6"><span class="badge-cisco me-2">3.1.4</span>Cabeçalho IPv6</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ============================================ -->
+    <!-- CONTEÚDO PRINCIPAL - TODAS AS SEÇÕES -->
+    <!-- ============================================ -->
+    <div class="container py-5">
+
+      <!-- ========== SEÇÕES DO MÓDULO 3 ========== -->
+
+      <!-- 3.0.1 Por que devo fazer este módulo? -->
+      <section id="modulo3-intro" class="mb-5 reveal" style="scroll-margin-top: 100px;">
+        <h2 class="cisco-title">
+          <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green);"></i>
+          3.0.1 Por que devo fazer este módulo?
+        </h2>
+
+        <div class="content-card">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <p class="mb-3" style="color: var(--text-secondary); font-size: 1.1rem;">
+                <i class="fas fa-quote-left me-2" style="color: var(--cisco-green); opacity: 0.5;"></i>
+                Protocolos são a base das comunicações de dados. Por esta razão, eles têm sido alvo de agentes ameaçadores há muito tempo.
+              </p>
+
+              <p style="color: var(--text-secondary);">
+                Os analistas de segurança cibernética devem entender como os atores de ameaças usam recursos de protocolos comuns em ataques cibernéticos.
+              </p>
+
+              <div class="terminal-card mt-4">
+                <span style="color: var(--cisco-green);">$></span> <span style="color: white;">Este módulo fornece uma visão geral dos campos de pacotes IP da Camada 3 e dos campos de segmento TCP e UDP da Camada 4, discutindo as vulnerabilidades de cada um.</span>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="text-center p-4" style="background: rgba(0, 255, 0, 0.05); border-radius: 12px; border: 1px dashed var(--cisco-green);">
+                <i class="fas fa-network-wired" style="font-size: 3rem; color: var(--cisco-green); opacity: 0.5;"></i>
+                <h6 class="mt-3" style="color: white;">Camada 3 <span style="color: var(--cisco-green);">|</span> Camada 4</h6>
+                <span class="badge-cisco">IP</span>
+                <span class="badge-cisco ms-2">TCP</span>
+                <span class="badge-cisco ms-2">UDP</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.0.2 O que vou aprender neste módulo? -->
+      <section id="modulo3-aprendizado" class="mb-5 reveal" style="scroll-margin-top: 100px;">
+        <h2 class="cisco-title">
+          <i class="fas fa-graduation-cap me-2" style="color: var(--cisco-green);"></i>
+          3.0.2 O que vou aprender neste módulo?
+        </h2>
+
+        <div class="content-card">
+          <!-- Estatísticas do módulo -->
+          <div class="row mb-4">
+            <div class="col-md-4">
+              <div class="d-flex align-items-center p-3" style="background: var(--bg-secondary); border-radius: 8px;">
+                <i class="fas fa-video fa-2x me-3" style="color: var(--cisco-green);"></i>
+                <div>
+                  <h4 class="mb-0" style="color: white;">3</h4>
+                  <small style="color: var(--text-muted);">Vídeos</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="d-flex align-items-center p-3" style="background: var(--bg-secondary); border-radius: 8px;">
+                <i class="fas fa-check-circle fa-2x me-3" style="color: var(--cisco-green);"></i>
+                <div>
+                  <h4 class="mb-0" style="color: white;">2</h4>
+                  <small style="color: var(--text-muted);">Atividades</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="d-flex align-items-center p-3" style="background: var(--bg-secondary); border-radius: 8px;">
+                <i class="fas fa-question-circle fa-2x me-3" style="color: var(--cisco-green);"></i>
+                <div>
+                  <h4 class="mb-0" style="color: white;">1</h4>
+                  <small style="color: var(--text-muted);">Questionário</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Objetivo e tópicos -->
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-bullseye me-2" style="color: var(--cisco-green);"></i>
+            <strong style="color: white;">Objetivo do Módulo:</strong>
+            <span style="color: var(--text-secondary);">Explicar como as vulnerabilidades do TCP/IP permitem ataques à rede.</span>
+          </div>
+
+          <!-- Tabela de tópicos -->
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th style="width: 30%;">Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-cisco">3.1</span> Detalhes de PDU IP</td>
+                  <td>Explicar a estrutura de cabeçalho IPv4 e IPv6.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-cisco">3.2</span> Vulnerabilidades de IP</td>
+                  <td>Explicar como as vulnerabilidades de IP possibilitam ataques de rede.</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-cisco">3.3</span> Vulnerabilidades TCP e UDP</td>
+                  <td>Explicar como as vulnerabilidades de TCP e UDP possibilitam ataques de rede.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.1.1 IPv4 e IPv6 -->
+      <section id="ipv4-ipv6" class="mb-5 reveal" style="scroll-margin-top: 100px;">
+        <h2 class="cisco-title">
+          <i class="fas fa-globe me-2" style="color: var(--cisco-green);"></i>
+          3.1.1 IPv4 e IPv6
+        </h2>
+
+        <div class="content-card">
+          <p style="color: var(--text-secondary);">
+            <strong>O IP foi projetado como um protocolo sem conexão de Camada 3.</strong> Ele fornece as funções necessárias para entregar um pacote de um host de origem a um host de destino por meio de um sistema interconectado de redes. O protocolo não foi projetado para rastrear e gerenciar o fluxo de pacotes. Essas funções, se necessárias, são executadas principalmente pelo TCP na camada 4.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="p-3" style="background: var(--bg-secondary); border-radius: 8px; border-left: 4px solid var(--danger);">
+                <h6 style="color: var(--danger);"><i class="fas fa-exclamation-triangle me-2"></i>Vulnerabilidade Crítica:</h6>
+                <p class="mb-0" style="color: var(--text-muted);">
+                  O IP não faz nenhum esforço para validar se o endereço IP de origem contido em um pacote realmente veio dessa origem.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="p-3" style="background: var(--bg-secondary); border-radius: 8px;">
+                <h6 style="color: var(--cisco-green);"><i class="fas fa-skull me-2"></i>Impacto:</h6>
+                <p class="mb-0" style="color: var(--text-muted);">
+                  Agentes de ameaças podem enviar pacotes usando endereço IP de origem falsificado (spoofing) e adulterar outros campos do cabeçalho IP para realizar seus ataques.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chamada para analistas -->
+          <div class="terminal-card mt-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-user-secret me-2" style="color: var(--cisco-green);"></i>
+              <span style="color: var(--cisco-green); font-weight: 600;">PARA ANALISTAS DE SEGURANÇA:</span>
+            </div>
+            <p class="mb-0" style="color: var(--text-secondary);">
+              É importante que os analistas de segurança entendam os diferentes campos dos cabeçalhos IPv4 e IPv6 para identificar ataques como spoofing, fragmentação maliciosa e exfiltração de dados.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.1.2 O cabeçalho do pacote IPv4 -->
+      <section id="cabecalho-ipv4" class="mb-5 reveal" style="scroll-margin-top: 100px;">
+        <h2 class="cisco-title">
+          <i class="fas fa-code me-2" style="color: var(--cisco-green);"></i>
+          3.1.2 O cabeçalho do pacote IPv4
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary);">
+            Os campos no cabeçalho do pacote IPv4 são mostrados na figura abaixo. O cabeçalho IPv4 tem tamanho mínimo de 20 bytes e máximo de 60 bytes com opções.
+          </p>
+
+          <!-- Visual do cabeçalho IPv4 - Estilo Cisco fiel -->
+          <div class="table-responsive mb-4">
+            <table style="width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace; font-size: 0.8rem; background: var(--bg-secondary);">
+              <!-- Linha 1: Bytes 1-4 -->
+              <tr>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a; width: 25%;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Versão</div>
+                  <small style="color: #aaa;">(4 bits)</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a; width: 25%;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Tamanho do<br>cabeçalho IHL</div>
+                  <small style="color: #aaa;">(4 bits)</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a; width: 25%;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Serviços diferenciados (DS)</div>
+                  <small style="color: #aaa;">DSCP | ECN (8 bits)</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a; width: 25%;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Tamanho total</div>
+                  <small style="color: #aaa;">(16 bits)</small>
+                </td>
+              </tr>
+
+              <!-- Linha 2: Identification, Flags, Fragment Offset -->
+              <tr>
+                <td colspan="2" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Identificação</div>
+                  <small style="color: #aaa;">(16 bits)</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Flag</div>
+                  <small style="color: #aaa;">(3 bits)</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Deslocamento do<br>fragmento</div>
+                  <small style="color: #aaa;">(13 bits)</small>
+                </td>
+              </tr>
+
+              <!-- Linha 3: TTL, Protocol, Header Checksum -->
+              <tr>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Vida útil (TTL)</div>
+                  <small style="color: #aaa;">(8 bits)</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Protocolo</div>
+                  <small style="color: #aaa;">(8 bits)</small>
+                </td>
+                <td colspan="2" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Soma de verificação<br>do cabeçalho</div>
+                  <small style="color: #aaa;">(16 bits)</small>
+                </td>
+              </tr>
+
+              <!-- Linha 4: Source Address -->
+              <tr>
+                <td colspan="4" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Endereço IP de origem</div>
+                  <small style="color: #aaa;">(32 bits)</small>
+                </td>
+              </tr>
+
+              <!-- Linha 5: Destination Address -->
+              <tr>
+                <td colspan="4" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700; font-size: 0.9rem;">Endereço IP de destino</div>
+                  <small style="color: #aaa;">(32 bits)</small>
+                </td>
+              </tr>
+
+              <!-- Linha 6: Opções (opcional) -->
+              <tr>
+                <td colspan="4" style="border: 1px dashed var(--cisco-green); padding: 12px 8px; text-align: center; background: #1a1a1a;">
+                  <span style="color: #888;">Opções + Preenchimento (0-40 bytes - opcional)</span>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Accordion com detalhes dos campos -->
+          <div class="accordion" id="accordionIPv4">
+            <!-- Versão -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVersao">
+                  <i class="fas fa-tag me-2"></i> Versão
+                </button>
+              </h2>
+              <div id="collapseVersao" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Contém um valor binário de 4 bits definido como <strong>0100</strong> que identifica isso como um pacote IPv4.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Atacantes podem enviar pacotes com versão inválida (ex: 0111) para causar erros de processamento em firewalls e sistemas de detecção mal configurados, fazendo com que o pacote seja ignorado ou processado incorretamente.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Comprimento do cabeçalho (IHL) -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIHL">
+                  <i class="fas fa-ruler me-2"></i> Comprimento do cabeçalho (IHL)
+                </button>
+              </h2>
+              <div id="collapseIHL" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Um campo de 4 bits contendo o comprimento do cabeçalho IP. O comprimento mínimo de um cabeçalho IP é de <strong>20 bytes</strong>.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Ataque "Ping of Death" explorava valores inconsistentes entre IHL e tamanho total, causando buffer overflow em sistemas antigos ao forçar a alocação de memória incorreta.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Serviços diferenciados (DS) -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDS">
+                  <i class="fas fa-chart-line me-2"></i> Serviços diferenciados (DS)
+                </button>
+              </h2>
+              <div id="collapseDS" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Anteriormente chamado de campo Tipo de serviço (ToS), o campo DS é um campo de 8 bits usado para determinar a prioridade de cada pacote.</p>
+                  <p>Os <strong>seis bits mais significativos</strong> do campo DiffServ são o Ponto de código de serviços diferenciados (DSCP).</p>
+                  <p>Os <strong>dois últimos bits</strong> são os bits de notificação de congestionamento explícito (ECN).</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Ataques de QoS podem manipular campos DSCP para priorizar tráfego malicioso ou causar negação de serviço em redes que confiam nesses valores para alocação de banda.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Comprimento total -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTotalLength">
+                  <i class="fas fa-arrows-alt-h me-2"></i> Comprimento total
+                </button>
+              </h2>
+              <div id="collapseTotalLength" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Especifica o comprimento do pacote IP, incluindo o cabeçalho IP e os dados do usuário.</p>
+                  <p>O campo de comprimento total é de <strong>2 bytes</strong>, portanto, o tamanho máximo de um pacote IP é de <strong>65.535 bytes</strong>, no entanto, os pacotes são muito menores na prática.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Ataques de amplificação (como Smurf) usam pacotes com comprimento total manipulado para causar sobrecarga na rede da vítima.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Deslocamento de identificação, bandeira e fragmento -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFragment">
+                  <i class="fas fa-puzzle-piece me-2"></i> Identificação, bandeira (flag) e deslocamento do fragmento
+                </button>
+              </h2>
+              <div id="collapseFragment" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>À medida que um pacote IP se move pela Internet, talvez seja necessário cruzar uma rota que não possa lidar com o tamanho do pacote. O pacote será dividido, ou fragmentado, em pacotes menores e remontado posteriormente.</p>
+                  <p>Esses campos são usados para fragmentar e remontar pacotes.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>💣 Caso de Uso Real: Ataque Teardrop (1997)</strong> - Explorava fragmentação maliciosa com offsets sobrepostos. Atacantes enviavam pacotes fragmentados onde o segundo fragmento tinha offset menor que o tamanho do primeiro, causando crash no sistema ao tentar remontar. Sistemas Windows 95 e NT 4.0 eram vulneráveis.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tempo de Vida (TTL) -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTTL">
+                  <i class="fas fa-hourglass-half me-2"></i> Tempo de Vida (TTL)
+                </button>
+              </h2>
+              <div id="collapseTTL" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Contém um valor binário de 8 bits que é usado para limitar a vida útil de um pacote. O remetente do pacote define o valor inicial do TTL e este é subtraído de um toda vez que o pacote é processado por um roteador.</p>
+                  <p>Se o campo TTL for decrementado até zero, o roteador descartará o pacote e enviará uma mensagem ICMP de tempo excedido para o endereço IP de origem.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🕵️ Caso de Uso:</strong> Traceroute usa TTL para mapear rota - envia pacotes com TTL=1,2,3... e coleta mensagens ICMP de tempo excedido. Ataques de "traceroute" podem ser usados para mapeamento de rede.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Protocolo -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProtocol">
+                  <i class="fas fa-cube me-2"></i> Protocolo
+                </button>
+              </h2>
+              <div id="collapseProtocol" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>O campo é usado para identificar o protocolo de próximo nível. O valor binário de 8 bits indica o tipo de carga de dados que o pacote está carregando, o que permite que a camada de rede transfira os dados para o protocolo apropriado das camadas superiores.</p>
+                  <p><strong>Valores comuns incluem:</strong> ICMP (1), TCP (6) e UDP (17).</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Ataques de protocolo anomalia - enviar pacotes TCP na porta 80 com protocolo ICMP (1) pode confundir firewalls que esperam TCP (6) para tráfego web.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cabeçalho checksum -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseChecksum">
+                  <i class="fas fa-check-double me-2"></i> Cabeçalho checksum
+                </button>
+              </h2>
+              <div id="collapseChecksum" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Um valor calculado com base no conteúdo do cabeçalho IP. Usado para determinar se algum erro foi introduzido durante a transmissão.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Ataques de corrupção de checksum podem ser usados para esconder alterações maliciosas no cabeçalho, fazendo com que o pacote seja descartado por roteadores legítimos mas processado por sistemas de inspeção.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Endereço IPv4 Origem -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSource">
+                  <i class="fas fa-arrow-right me-2"></i> Endereço IPv4 Origem
+                </button>
+              </h2>
+              <div id="collapseSource" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Contém um valor binário de 32 bits que representa o endereço IPv4 de origem do pacote. O endereço de origem IPv4 é sempre um endereço unicast.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>⚠️ Principal vulnerabilidade:</strong> IP Spoofing - falsificação do endereço de origem. Usado em ataques DDoS de amplificação (DNS Amplification, NTP Amplification) onde o atacante envia pequenas requisições com IP da vítima como origem, e servidores respondem com grandes volumes de dados para a vítima.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Endereço IPv4 Destino -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDest">
+                  <i class="fas fa-arrow-left me-2"></i> Endereço IPv4 Destino
+                </button>
+              </h2>
+              <div id="collapseDest" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Contém um valor binário de 32 bits que representa o endereço IPv4 de destino do pacote.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Ataques de broadcast - enviar pacotes para endereços de broadcast (ex: 192.168.1.255) pode causar tempestades de resposta na rede local.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Opções e Preenchimento -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOptions">
+                  <i class="fas fa-ellipsis-h me-2"></i> Opções e Preenchimento
+                </button>
+              </h2>
+              <div id="collapseOptions" class="accordion-collapse collapse" data-bs-parent="#accordionIPv4">
+                <div class="accordion-body">
+                  <p>Este é um campo que varia em comprimento de 0 a um múltiplo de 32 bits. Se os valores de opção não forem um múltiplo de 32 bits, 0s serão adicionados ou preenchidos para garantir que este campo contenha um múltiplo de 32 bits.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>💣 Caso de Uso: Ataque de Opções IP (1990s)</strong> - Roteadores antigos processavam opções IP em software (não em hardware), causando sobrecarga de CPU. Atacantes enviavam pacotes com múltiplas opções para degradar performance do roteador.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3.1.4 O cabeçalho do pacote IPv6 -->
+      <section id="cabecalho-ipv6" class="mb-5 reveal" style="scroll-margin-top: 100px;">
+        <h2 class="cisco-title">
+          <i class="fas fa-code me-2" style="color: var(--cisco-green);"></i>
+          3.1.4 O cabeçalho do pacote IPv6
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary);">
+            Há oito campos no cabeçalho do pacote IPv6, como mostrado na figura. O cabeçalho IPv6 tem tamanho fixo de 40 bytes.
+          </p>
+
+          <!-- Visual do cabeçalho IPv6 - Estilo Cisco fiel -->
+          <div class="table-responsive mb-4">
+            <table style="width: 100%; border-collapse: collapse; font-family: 'Courier New', monospace; font-size: 0.8rem; background: var(--bg-secondary);">
+              <!-- Linha 1: Versão, Traffic Class, Flow Label -->
+              <tr>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a; width: 20%;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Versão</div>
+                  <small style="color: #aaa;">4 bits</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a; width: 30%;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Classe de tráfego</div>
+                  <small style="color: #aaa;">8 bits</small>
+                </td>
+                <td colspan="2" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a; width: 50%;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Rótulo de fluxo</div>
+                  <small style="color: #aaa;">20 bits</small>
+                </td>
+              </tr>
+
+              <!-- Linha 2: Payload Length, Next Header, Hop Limit -->
+              <tr>
+                <td colspan="2" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Tamanho da carga</div>
+                  <small style="color: #aaa;">16 bits</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Próximo cabeçalho</div>
+                  <small style="color: #aaa;">8 bits</small>
+                </td>
+                <td style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Limite de saltos</div>
+                  <small style="color: #aaa;">8 bits</small>
+                </td>
+              </tr>
+
+              <!-- Linha 3: Source Address (128 bits) -->
+              <tr>
+                <td colspan="4" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Endereço IP de origem</div>
+                  <small style="color: #aaa;">128 bits (16 bytes)</small>
+                </td>
+              </tr>
+
+              <!-- Linha 4: Destination Address (128 bits) -->
+              <tr>
+                <td colspan="4" style="border: 1px solid var(--cisco-green); padding: 12px 8px; text-align: center; background: #2a2a2a;">
+                  <div style="color: var(--cisco-green); font-weight: 700;">Endereço IP de destino</div>
+                  <small style="color: #aaa;">128 bits (16 bytes)</small>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Nota sobre cabeçalhos de extensão -->
+          <div class="terminal-card mb-4" style="background: var(--bg-secondary); border-left-color: var(--info);">
+            <p class="mb-0" style="color: var(--text-secondary);">
+              <i class="fas fa-info-circle me-2" style="color: var(--info);"></i>
+              <strong>Um pacote IPv6 também pode conter cabeçalhos de extensão (EH)</strong> que fornecem informações opcionais da camada de rede. Opcionais, os cabeçalhos de extensão ficam posicionados entre o cabeçalho IPv6 e a carga. EHs são usados para fragmentação, segurança, suporte à mobilidade e muito mais.
+            </p>
+            <p class="mb-0 mt-2" style="color: var(--cisco-green);">
+              <i class="fas fa-info-circle me-2" style="color: var(--cisco-green);"></i>
+              Ao contrário de IPv4, os roteadores não fragmentam os pacotes IPv6 roteados.
+            </p>
+          </div>
+
+          <!-- Accordion IPv6 -->
+          <div class="accordion" id="accordionIPv6">
+            <!-- Versão IPv6 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVersao6">
+                  <i class="fas fa-tag me-2"></i> Versão
+                </button>
+              </h2>
+              <div id="collapseVersao6" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo contém um valor binário de 4 bits definido como <strong>0110</strong> que o identifica como um pacote IPv6.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Classe de tráfego -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTrafficClass">
+                  <i class="fas fa-chart-line me-2"></i> Classe de tráfego
+                </button>
+              </h2>
+              <div id="collapseTrafficClass" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo de 8 bits é equivalente ao campo IPv4 Differentiated Services (DS).</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rótulo de fluxo -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFlowLabel">
+                  <i class="fas fa-water me-2"></i> Rótulo de fluxo
+                </button>
+              </h2>
+              <div id="collapseFlowLabel" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo de 20 bits sugere que todos os pacotes com o mesmo rótulo de fluxo recebem o mesmo tipo de tratamento pelos roteadores.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>🔍 Caso de Uso:</strong> Ataques podem manipular rótulos de fluxo para tentar bypassar políticas de QoS ou para fingerprinting de implementações IPv6.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tamanho da carga -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePayload">
+                  <i class="fas fa-weight-hanging me-2"></i> Tamanho da carga
+                </button>
+              </h2>
+              <div id="collapsePayload" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo de 16 bits indica o comprimento da porção de dados ou carga útil do pacote IPv6.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Próximo cabeçalho -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNextHeader">
+                  <i class="fas fa-arrow-right me-2"></i> Próximo cabeçalho
+                </button>
+              </h2>
+              <div id="collapseNextHeader" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo de 8 bits é equivalente ao campo do protocolo IPv4. Ele exibe o tipo de carga de dados que o pacote está carregando, permitindo que a camada de rede transfira os dados para o protocolo apropriado das camadas superiores.</p>
+                  <p>Valores comuns: TCP (6), UDP (17), ICMPv6 (58).</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Limite de saltos -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHopLimit">
+                  <i class="fas fa-shoe-prints me-2"></i> Limite de saltos
+                </button>
+              </h2>
+              <div id="collapseHopLimit" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo de 8 bits substitui o campo TTL IPv4. Esse valor é subtraído de um por cada roteador que encaminha o pacote.</p>
+                  <p>Quando o contador chega a 0, o pacote é descartado e uma mensagem ICMPv6 de Tempo Excedido é encaminhada ao host emissor, indicando que o pacote não atingiu seu destino por causa do limite de saltos.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Endereço IPv6 Origem -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSource6">
+                  <i class="fas fa-arrow-right me-2"></i> Endereço IPv6 Origem
+                </button>
+              </h2>
+              <div id="collapseSource6" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo de 128 bits identifica o endereço IPv6 do host de envio.</p>
+                  <div class="terminal-card mt-2">
+                    <small><strong>⚠️ Vulnerabilidade:</strong> Apesar de mais seguro, IPv6 também é vulnerável a spoofing. Ataques de amplificação usando IPv6 são possíveis, embora mais complexos devido ao espaço de endereçamento maior.</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Endereço IPv6 Destino -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDest6">
+                  <i class="fas fa-arrow-left me-2"></i> Endereço IPv6 Destino
+                </button>
+              </h2>
+              <div id="collapseDest6" class="accordion-collapse collapse" data-bs-parent="#accordionIPv6">
+                <div class="accordion-body">
+                  <p>Este campo de 128 bits identifica o endereço IPv6 do host receptor.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div> <!-- Fim container -->
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================ -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <!-- Script de busca no dropdown -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('navSearch');
+        if (searchInput) {
+          searchInput.addEventListener('keyup', function() {
+            const filter = this.value.toLowerCase();
+            const items = document.querySelectorAll('#sectionList .dropdown-item');
+
+            items.forEach(item => {
+              const text = item.textContent.toLowerCase();
+              item.style.display = text.includes(filter) ? 'block' : 'none';
+            });
+
+            const headers = document.querySelectorAll('#sectionList .dropdown-header');
+            headers.forEach(header => {
+              let next = header.nextElementSibling;
+              let hasVisible = false;
+              while (next && !next.classList.contains('dropdown-header')) {
+                if (next.style.display !== 'none') {
+                  hasVisible = true;
+                  break;
+                }
+                next = next.nextElementSibling;
+              }
+              header.style.display = hasVisible ? 'block' : 'none';
+            });
+          });
+        }
+
+        // Smooth scroll para os links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+              target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

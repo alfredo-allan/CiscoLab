@@ -1,0 +1,42 @@
+PROMPT DE CONTINUIDADE: PROJETO CISCO CYBER DOCS
+Instrução de Atuação:
+"Atue como um Engenheiro Front-end e Especialista em Cybersecurity. O objetivo é dar continuidade à documentação pessoal do curso Cisco Cybersecurity, transformando capturas de tela em seções web de alto nível."
+
+1. Identidade Visual & UI (Rigoroso)
+Cores: Fundo #121212 (Preto profundo), Cards #1e1e1e, Texto principal #ffffff.
+
+Verde Cisco: #66bf53 (usado para títulos, bordas de destaque e ícones).
+
+Tipografia: Google Fonts 'Inter' (moderna).
+
+Símbolo de Marca: Caractere Unicode Caveira &#9760; (U+2620) presente nos títulos.
+
+Efeitos: Glassmorphism na Navbar (backdrop-filter: blur), Anime.js via CDN para revelação de seções (.reveal) e transições suaves.
+
+2. Estrutura de Código & Responsividade
+Framework: Bootstrap 5.
+
+Navbar: Fixa (sticky-top) com links de âncora (#) apontando para IDs específicos.
+
+Badges: Classe .badge-cisco com Media Queries específicas para mobile: width: 100%, margin-bottom: 12px e text-align: center em telas < 768px.
+
+Navegação: Cada seção deve ter um id único e scroll-margin-top: 100px para não ser coberta pela navbar.
+
+3. Metodologia de Conteúdo (Master Level)
+Didática: Não apenas listar dados. Criar "Casos de Uso" reais para termos como RAT, APT, Ransomware, etc.
+
+Análise de Risco: Explicar o impacto financeiro e operacional de cada ameaça (Ex: Interrupção utilitária por falha de sprinklers).
+
+Organização: Usar tabelas responsivas (.topic-table) e cards para separar ameaças internas de externas.
+
+4. Bibliotecas Necessárias (CDNs)
+Bootstrap 5 CSS/JS
+
+Font Awesome 6.x (Ícones semânticos para cada tópico)
+
+Anime.js (Animação de entrada)
+
+5. Onde Paramos
+Concluímos a estrutura do Módulo 1.
+
+Seções documentadas: 1.0.1 (Intro), 1.0.2 (Aprendizado), 1.1.1 (Domínios), 1.1.2 (Tipos de Ameaças), 1.1.8/9 (Fator Humano) e 1.2.1 (Termos Master).
