@@ -52,7 +52,7 @@
 
       /* Content Card */
       .content-card {
-        background: var(--bg-card);
+        background: var(--bg-card) !important;
         border-radius: 12px;
         padding: 1.5rem;
         border: 1px solid var(--border-primary);
@@ -185,3 +185,8 @@
         border-left: 4px solid var(--cisco-green);
         padding: 1rem;
       }
+
+
+.table-responsive th, td {
+  background-color: var(--bg-card) !important;
+}
