@@ -1,0 +1,2290 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NETSEC · Módulo 2: Protegendo Redes</title>
+
+    <!-- CDNs OBRIGATÓRIAS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/modulo_2.css" />
+  </head>
+  <body>
+    <!-- ===== NAVBAR (copiado do briefing) ===== -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(10, 10, 10, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+        z-index: 1030;
+      "
+    >
+      <div class="container">
+        <a
+          class="navbar-brand"
+          href="#"
+          style="
+            color: var(--cisco-green);
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+          "
+        >
+          <i
+            class="fas fa-shield-halved me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          NET<span style="color: white">SEC</span>
+          <small
+            style="
+              font-size: 0.7rem;
+              color: var(--text-muted);
+              display: block;
+              line-height: 1;
+            "
+            >estudos CCNA</small
+          >
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMain"
+          style="box-shadow: none"
+        >
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- Dropdown Módulo 2 (ativo) -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="font-weight: 500"
+              >
+                <i
+                  class="fas fa-cube me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Módulo 2
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                style="
+                  background-color: var(--bg-secondary);
+                  border: 1px solid var(--border-primary);
+                "
+              >
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    🔰 PROTEÇÃO DE REDES
+                  </h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#modulo-intro"
+                    ><i
+                      class="fas fa-chevron-right me-2"
+                      style="font-size: 0.7rem"
+                    ></i
+                    >2.0.1 Por que fazer?</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#modulo-aprendizado"
+                    ><i
+                      class="fas fa-chevron-right me-2"
+                      style="font-size: 0.7rem"
+                    ></i
+                    >2.0.2 O que vou aprender</a
+                  >
+                </li>
+                <li>
+                  <hr
+                    class="dropdown-divider"
+                    style="border-color: var(--border-primary)"
+                  />
+                </li>
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    🎯 FUNDAMENTOS
+                  </h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#redes-alvo"
+                    >2.1.2 Redes são alvos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#quem-ataca"
+                    >2.2 Quem está atacando?</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#termos-seguranca"
+                    >Termos de Segurança</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i
+                  class="fas fa-flask me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Labs
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="color: var(--cisco-green)"
+              >
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                style="
+                  background-color: var(--bg-secondary);
+                  border: 1px solid var(--border-primary);
+                  min-width: 280px;
+                "
+              >
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li>
+                    <a class="dropdown-item" href="#modulo-intro"
+                      ><span class="badge-cisco me-2">2.0.1</span>Por que
+                      fazer?</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#modulo-aprendizado"
+                      ><span class="badge-cisco me-2">2.0.2</span>O que vou
+                      aprender</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#redes-alvo"
+                      ><span class="badge-cisco me-2">2.1.2</span>Redes são
+                      alvos</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#quem-ataca"
+                      ><span class="badge-cisco me-2">2.2</span>Quem ataca?</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#termos-seguranca"
+                      ><span class="badge-cisco me-2">Termos</span>Glossário</a
+                    >
+                  </li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div
+      class="progress"
+      style="
+        height: 3px;
+        position: sticky;
+        top: 76px;
+        z-index: 1020;
+        border-radius: 0;
+      "
+    >
+      <div
+        id="readingProgress"
+        class="progress-bar"
+        style="width: 0%; background-color: var(--cisco-green)"
+      ></div>
+    </div>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="container my-5">
+      <!-- SEÇÃO 2.0.1 - Por que fazer este módulo? -->
+      <section
+        id="modulo-intro"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-question-circle me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.0.1 Por que devo fazer este Módulo?
+        </h2>
+
+        <div class="content-card">
+          <div class="d-flex align-items-start gap-3">
+            <div
+              class="display-4"
+              style="color: var(--cisco-green); opacity: 0.3"
+            >
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div>
+              <p
+                class="mb-0"
+                style="
+                  color: var(--text-secondary);
+                  font-size: 1.1rem;
+                  line-height: 1.6;
+                "
+              >
+                <span class="badge-cisco me-2">⚠️ ALERTA</span>
+                As redes estão sob ataque! Neste módulo, você aprenderá sobre o
+                estado atual do cenário de segurança de rede e também aprenderá
+                sobre os diferentes tipos de redes que exigem proteção.
+              </p>
+            </div>
+          </div>
+
+          <!-- Estatística rápida -->
+          <div class="row mt-4 g-3">
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-virus fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <div class="stat-value">30.000+</div>
+                <small style="color: var(--text-muted)"
+                  >sites infectados/dia</small
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-bug fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <div class="stat-value">560.000+</div>
+                <small style="color: var(--text-muted)"
+                  >novos malwares/dia</small
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-globe fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <div class="stat-value">80%</div>
+                <small style="color: var(--text-muted)"
+                  >das empresas já atacadas</small
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.0.2 - O que vou aprender -->
+      <section
+        id="modulo-aprendizado"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-graduation-cap me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.0.2 O que vou aprender neste módulo?
+        </h2>
+
+        <div class="content-card">
+          <!-- Badges de recursos -->
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="badge-cisco"
+              ><i class="fas fa-video me-1"></i> 2 vídeos</span
+            >
+            <span class="badge-cisco"
+              ><i class="fas fa-network-wired me-1"></i> 1 Packet Tracer</span
+            >
+            <span class="badge-cisco"
+              ><i class="fas fa-check-circle me-1"></i> 1 Verificação</span
+            >
+            <span class="badge-cisco"
+              ><i class="fas fa-question-circle me-1"></i> 1 Questionário</span
+            >
+          </div>
+
+          <p class="mb-3" style="color: var(--text-secondary)">
+            <strong>Título do módulo:</strong> Protegendo redes<br />
+            <strong>Objetivo do módulo:</strong> Explicar os princípios
+            segurança de redes.
+          </p>
+
+          <!-- Tabela de tópicos -->
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge-cisco me-2">2.1</span>Situação Atual
+                  </td>
+                  <td>
+                    Explicar as ameaças, as vulnerabilidades e os ataques que
+                    ocorrem nos vários domínios.
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge-cisco me-2">2.2</span>Quem está atacando
+                    nossa rede?
+                  </td>
+                  <td>Explicar como as ameaças à rede evoluíram.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.1.2 - Redes são alvos (com mapa) -->
+      <section
+        id="redes-alvo"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i class="fas fa-bullseye me-2" style="color: var(--cisco-green)"></i>
+          2.1.2 As redes são alvos
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            As redes estão sob ataque rotineiramente. É comum ler as notícias
+            sobre outra rede que foi comprometida. Uma rápida pesquisa na
+            Internet para ataques de rede retornará muitos artigos sobre ataques
+            de rede, incluindo notícias sobre organizações que foram
+            comprometidas, as mais recentes ameaças à segurança de rede,
+            ferramentas para mitigar ataques e muito mais.
+          </p>
+
+          <!-- Simulação do mapa Kaspersky (baseado na captura) -->
+          <div class="threat-map-placeholder mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h5 class="mb-0" style="color: var(--cisco-green)">
+                <i class="fas fa-map me-2"></i>CYBERTHREAT REAL-TIME MAP
+              </h5>
+              <div class="d-flex gap-3">
+                <span class="badge-cisco">STATISTICS</span>
+                <span class="badge-cisco">DATA SOURCES</span>
+                <span class="badge-cisco">BUZZ</span>
+                <span class="badge-cisco">WIDGET</span>
+              </div>
+            </div>
+
+            <!-- Grid de países (dados da captura) -->
+            <div class="threat-map-grid">
+              <div class="country-stats">
+                <div class="d-flex justify-content-between">
+                  <span>🇪🇸 SPAIN</span>
+                  <span class="stat-value">#1</span>
+                </div>
+                <div class="mt-2">
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">GAS</span>
+                    <span class="stat-value">100.4K</span>
+                  </div>
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">NAV</span>
+                    <span class="stat-value">177.2K</span>
+                  </div>
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">VOL</span>
+                    <span class="stat-value">4.6K</span>
+                  </div>
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">KAS</span>
+                    <span class="stat-value">247.7K</span>
+                  </div>
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">BAD</span>
+                    <span class="stat-value">0</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="country-stats">
+                <div class="d-flex justify-content-between">
+                  <span>🇺🇸 USA</span>
+                  <span class="stat-value">#2</span>
+                </div>
+                <div class="mt-2">
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">GAS</span>
+                    <span class="stat-value">89.2K</span>
+                  </div>
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">NAV</span>
+                    <span class="stat-value">145.6K</span>
+                  </div>
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">VOL</span>
+                    <span class="stat-value">3.8K</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="country-stats">
+                <div class="d-flex justify-content-between">
+                  <span>🇧🇷 BRAZIL</span>
+                  <span class="stat-value">#3</span>
+                </div>
+                <div class="mt-2">
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">GAS</span>
+                    <span class="stat-value">67.1K</span>
+                  </div>
+                  <div class="d-flex justify-content-between small">
+                    <span style="color: var(--text-muted)">NAV</span>
+                    <span class="stat-value">98.4K</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+              <small style="color: var(--text-muted)">
+                <i class="fas fa-info-circle me-1"></i>
+                Dados simulados baseados no Mapa em Tempo Real de Ameaças
+                Cibernéticas
+              </small>
+              <div>
+                <span class="badge-cisco me-2">Are details</span>
+                <span class="badge-cisco">Share data</span>
+              </div>
+            </div>
+          </div>
+
+          <p class="mb-0" style="color: var(--text-secondary)">
+            Para ajudá-lo a compreender a gravidade da situação, Kaspersky
+            mantém a exibição interativa do Mapa em Tempo Real de Ameaças
+            Cibernéticas. Os dados de ataque são enviados a partir de produtos
+            de segurança de rede Kaspersky implantados em todo o mundo. Muitas
+            ferramentas semelhantes estão disponíveis na internet e podem ser
+            encontradas pesquisando mapas de ameaças cibernéticas.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.2 - Quem está atacando nossa rede? -->
+      <section
+        id="quem-ataca"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-user-secret me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.2 Quem está atacando nossa rede?
+        </h2>
+
+        <div class="content-card mb-4">
+          <div class="text-center mb-4">
+            <span class="badge-cisco" style="font-size: 1rem"
+              >Role para começar</span
+            >
+          </div>
+
+          <h4 class="mb-3" style="color: var(--cisco-green)">
+            2.2.1 Ameaça, Vulnerabilidade e Risco
+          </h4>
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Estamos sob ataque e os atacantes querem acesso aos nossos bens. Os
+            ativos são tudo de valor para uma organização, como dados e outras
+            propriedades intelectuais, servidores, computadores, smartphones,
+            tablets e muito mais.
+          </p>
+
+          <!-- Diagrama conceitual TVR (Ameaça, Vulnerabilidade, Risco) -->
+          <div class="row g-4 mb-4">
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-skull fa-3x mb-3"
+                  style="color: var(--danger)"
+                ></i>
+                <h5 style="color: var(--cisco-green)">Ameaça</h5>
+                <p class="small mb-0">
+                  Qualquer coisa que possa explorar uma vulnerabilidade
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-shield-halved fa-3x mb-3"
+                  style="color: var(--warning)"
+                ></i>
+                <h5 style="color: var(--cisco-green)">Vulnerabilidade</h5>
+                <p class="small mb-0">Ponto fraco que pode ser explorado</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-chart-line fa-3x mb-3"
+                  style="color: var(--info)"
+                ></i>
+                <h5 style="color: var(--cisco-green)">Risco</h5>
+                <p class="small mb-0">
+                  Probabilidade de uma ameaça explorar uma vulnerabilidade
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diagrama inter-relacional -->
+          <div
+            class="d-flex justify-content-center align-items-center gap-2 p-4"
+            style="background: var(--bg-secondary); border-radius: 8px"
+          >
+            <span class="badge-cisco" style="font-size: 1rem">Ameaça</span>
+            <i class="fas fa-arrow-right" style="color: var(--cisco-green)"></i>
+            <span class="badge-cisco" style="font-size: 1rem">Risco</span>
+            <i class="fas fa-arrow-left" style="color: var(--cisco-green)"></i>
+            <span class="badge-cisco" style="font-size: 1rem"
+              >Vulnerabilidade</span
+            >
+            <i class="fas fa-arrow-down" style="color: var(--cisco-green)"></i>
+            <span class="badge-cisco" style="font-size: 1rem">Ativo</span>
+          </div>
+        </div>
+
+        <!-- SEÇÃO DE TERMOS (ACCORDION) -->
+        <div id="termos-seguranca" class="content-card">
+          <h4 class="mb-4" style="color: var(--cisco-green)">
+            <i class="fas fa-book me-2"></i>
+            Glossário de Segurança
+          </h4>
+
+          <div class="accordion accordion-cisco" id="securityGlossary">
+            <!-- Ameaça -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo1"
+                >
+                  <i class="fas fa-skull me-3" style="color: var(--danger)"></i>
+                  Ameaça
+                </button>
+              </h2>
+              <div
+                id="termo1"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  Um perigo potencial para um ativo, como dados ou a própria
+                  rede.
+                </div>
+              </div>
+            </div>
+
+            <!-- Vulnerabilidade -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo2"
+                >
+                  <i
+                    class="fas fa-shield-halved me-3"
+                    style="color: var(--warning)"
+                  ></i>
+                  Vulnerabilidade
+                </button>
+              </h2>
+              <div
+                id="termo2"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  Uma fraqueza em um sistema ou em seu design que pode ser
+                  explorada por uma ameaça.
+                </div>
+              </div>
+            </div>
+
+            <!-- Superfície de ataque -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo3"
+                >
+                  <i
+                    class="fas fa-bullseye me-3"
+                    style="color: var(--info)"
+                  ></i>
+                  Superfície de ataque
+                </button>
+              </h2>
+              <div
+                id="termo3"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  <p>
+                    A superfície de ataque é a soma total das vulnerabilidades
+                    em um determinado sistema que são acessíveis a um invasor. A
+                    superfície de ataque descreve diferentes pontos em que um
+                    invasor pode entrar em um sistema e onde ele pode obter
+                    dados do sistema.
+                  </p>
+                  <p class="mb-0 mt-2">
+                    <small class="text-muted"
+                      >Exemplo: O sistema operacional e o navegador da Web podem
+                      precisar de patches de segurança. Cada um deles é
+                      vulnerável a ataques e está exposto na rede ou na
+                      internet. Juntos, eles criam uma superfície de ataque que
+                      o ator ameaça pode explorar.</small
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exploit -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo4"
+                >
+                  <i class="fas fa-bug me-3" style="color: var(--success)"></i>
+                  Exploit
+                </button>
+              </h2>
+              <div
+                id="termo4"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  <p>Mecanismo utilizado para explorar uma vulnerabilidade.</p>
+                  <p class="mb-0">
+                    <small class="text-muted"
+                      >🔹 Exploit local: requer acesso interno à rede, como um
+                      usuário com uma conta na rede.<br />
+                      🔹 Exploit remoto: não requer uma conta na rede para
+                      explorar a vulnerabilidade.</small
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Risco -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo5"
+                >
+                  <i
+                    class="fas fa-chart-line me-3"
+                    style="color: var(--warning)"
+                  ></i>
+                  Risco
+                </button>
+              </h2>
+              <div
+                id="termo5"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  A probabilidade de uma determinada ameaça explorar uma
+                  vulnerabilidade específica de um ativo e resultar em uma
+                  consequência indesejável.
+                </div>
+              </div>
+            </div>
+
+            <!-- Aceitação de riscos -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo6"
+                >
+                  <i
+                    class="fas fa-check-circle me-3"
+                    style="color: var(--success)"
+                  ></i>
+                  Aceitação de riscos
+                </button>
+              </h2>
+              <div
+                id="termo6"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  Isso ocorre quando o custo das opções de gerenciamento de
+                  risco supera o custo do próprio risco. O risco é aceito, e
+                  nenhuma ação é tomada.
+                </div>
+              </div>
+            </div>
+
+            <!-- Prevenção de riscos -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo7"
+                >
+                  <i class="fas fa-ban me-3" style="color: var(--danger)"></i>
+                  Prevenção de riscos
+                </button>
+              </h2>
+              <div
+                id="termo7"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  Isto significa evitar qualquer exposição ao risco eliminando a
+                  atividade ou dispositivo que apresenta o risco. Ao eliminar
+                  uma atividade para evitar riscos, todos os benefícios
+                  possíveis da atividade também são perdidos.
+                </div>
+              </div>
+            </div>
+
+            <!-- Redução de riscos -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo8"
+                >
+                  <i
+                    class="fas fa-arrow-down me-3"
+                    style="color: var(--info)"
+                  ></i>
+                  Redução de riscos
+                </button>
+              </h2>
+              <div
+                id="termo8"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  Isto reduz a exposição ao risco ou reduz o impacto do risco,
+                  tomando medidas para diminuir o risco. É a estratégia de
+                  mitigação de riscos mais utilizada. Essa estratégia requer uma
+                  avaliação cuidadosa dos custos de perda, da estratégia de
+                  mitigação e dos benefícios obtidos com a operação ou atividade
+                  que está em risco.
+                </div>
+              </div>
+            </div>
+
+            <!-- Transferência de risco -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo9"
+                >
+                  <i
+                    class="fas fa-exchange-alt me-3"
+                    style="color: var(--info)"
+                  ></i>
+                  Transferência de risco
+                </button>
+              </h2>
+              <div
+                id="termo9"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  Parte ou todo o risco é transferido para um terceiro disposto,
+                  como uma companhia de seguros.
+                </div>
+              </div>
+            </div>
+
+            <!-- Contramedida -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo10"
+                >
+                  <i
+                    class="fas fa-shield me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Contramedida
+                </button>
+              </h2>
+              <div
+                id="termo10"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  As ações que são tomadas para proteger ativos, atenuando uma
+                  ameaça ou reduzindo o risco.
+                </div>
+              </div>
+            </div>
+
+            <!-- Impacto -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#termo11"
+                >
+                  <i class="fas fa-bomb me-3" style="color: var(--danger)"></i>
+                  Impacto
+                </button>
+              </h2>
+              <div
+                id="termo11"
+                class="accordion-collapse collapse"
+                data-bs-parent="#securityGlossary"
+              >
+                <div class="accordion-body">
+                  O dano potencial à organização causado pela ameaça.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nota adicional -->
+          <div class="terminal-card mt-4">
+            <p class="mb-0 small">
+              <i
+                class="fas fa-info-circle me-2"
+                style="color: var(--cisco-green)"
+              ></i>
+              <strong>Observação:</strong> Uma exploração local requer acesso
+              interno à rede, como um usuário com uma conta na rede. Uma
+              exploração remota não requer uma conta na rede para explorar a
+              vulnerabilidade dessa rede.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 2.2.2 - Hacker vs Ator de Ameaças -->
+      <section
+        id="hacker-vs-ator"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-user-secret me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.2.2 Hacker vs Ator de Ameaças
+        </h2>
+
+        <div class="content-card mb-4">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Como sabemos, "hacker" é um termo comum usado para descrever um ator
+            de ameaça. No entanto, o termo "hacker" tem uma variedade de
+            significados:
+          </p>
+
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <i
+                  class="fas fa-code me-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Programador inteligente capaz de desenvolver novos programas e
+                codificar alterações em programas existentes para torná-los mais
+                eficientes.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <i
+                  class="fas fa-shield-halved me-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Profissional de rede que usa habilidades sofisticadas de
+                programação para garantir que as redes não sejam vulneráveis a
+                ataques.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <i class="fas fa-lock me-2" style="color: var(--warning)"></i>
+                Pessoa que tenta obter acesso não autorizado a dispositivos na
+                internet.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <i class="fas fa-bomb me-2" style="color: var(--danger)"></i>
+                Indivíduo que executa programas para impedir ou retardar o
+                acesso à rede ou corromper dados em servidores.
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <h5 style="color: var(--cisco-green)">Vetor de Ataque</h5>
+              <p style="color: var(--text-secondary)">
+                Um vetor de ataque é um caminho pelo qual um atacante pode obter
+                acesso a um servidor, equipamento ou rede. Os vetores de ataque
+                são originários de dentro ou de fora da rede corporativa.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex gap-3">
+                <span class="badge-cisco" style="font-size: 1rem"
+                  >🔴 Ameaças Externas</span
+                >
+                <span class="badge-cisco" style="font-size: 1rem"
+                  >🟡 Ameaças Internas</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tipos de Hackers (White, Gray, Black Hat) -->
+        <div id="tipos-hackers" class="row g-4 mt-2">
+          <div class="col-md-4">
+            <div class="hacker-card white-hat">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="fas fa-user-shield fa-2x me-3"
+                  style="color: #ffffff"
+                ></i>
+                <h4 class="mb-0" style="color: white">White Hat</h4>
+              </div>
+              <p style="color: var(--text-secondary)">
+                Hackers éticos que usam suas habilidades para propósitos bons,
+                éticos e legais. Realizam testes de penetração e relatam
+                vulnerabilidades para que sejam corrigidas.
+              </p>
+              <span class="badge-cisco"
+                >Ético · Legal · Testes de penetração</span
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="hacker-card gray-hat">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="fas fa-user-ninja fa-2x me-3"
+                  style="color: #808080"
+                ></i>
+                <h4 class="mb-0" style="color: #e0e0e0">Gray Hat</h4>
+              </div>
+              <p style="color: var(--text-secondary)">
+                Indivíduos que cometem crimes e fazem coisas possivelmente
+                antiéticas, mas não para ganho pessoal. Podem divulgar
+                vulnerabilidades publicamente.
+              </p>
+              <span class="badge-cisco">Antiético · Sem ganho pessoal</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="hacker-card black-hat">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="fas fa-user-skull fa-2x me-3"
+                  style="color: #000000"
+                ></i>
+                <h4 class="mb-0" style="color: #a0a0a0">Black Hat</h4>
+              </div>
+              <p style="color: var(--text-secondary)">
+                Criminosos antiéticos que violam a segurança para ganho pessoal
+                ou motivos maliciosos, explorando vulnerabilidades para
+                comprometer sistemas.
+              </p>
+              <span class="badge-cisco">Criminoso · Ganho pessoal</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.2.3 - Evolução dos Atores de Ameaças -->
+      <section
+        id="evolucao-atores"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-chart-line me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.2.3 Evolução dos Atores de Ameaças
+        </h2>
+
+        <div class="content-card">
+          <div class="timeline-item">
+            <div class="timeline-year">1960s · Phreaking</div>
+            <p style="color: var(--text-secondary)">
+              Uso de frequências de áudio para manipular sistemas telefônicos.
+              Atores de ameaça imitavam tons usando apitos para explorar
+              comutadores telefônicos e fazer chamadas gratuitas.
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">1980s · War Dialing</div>
+            <p style="color: var(--text-secondary)">
+              Conexões discadas e modems. Programas de "discagem de guerra"
+              discavam números em busca de computadores, e programas de quebra
+              de senha eram usados para obter acesso.
+            </p>
+          </div>
+
+          <div class="row g-4 mt-3">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5 style="color: var(--cisco-green)">Script Kiddies</h5>
+                <p class="small mb-0">
+                  Surgiram na década de 1990. Adolescentes ou atores
+                  inexperientes executando scripts e exploits existentes para
+                  causar danos, normalmente sem fins lucrativos.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5 style="color: var(--cisco-green)">
+                  Corretores de Vulnerabilidades
+                </h5>
+                <p class="small mb-0">
+                  Hackers Gray Hat que descobrem exploits e relatam aos
+                  fornecedores, às vezes por prêmios ou recompensas.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5 style="color: var(--cisco-green)">Hacktivistas</h5>
+                <p class="small mb-0">
+                  Hackers Gray Hat que protestam contra ideias políticas e
+                  sociais, publicando artigos, vazando informações e realizando
+                  ataques DDoS.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5 style="color: var(--cisco-green)">
+                  Patrocinados pelo Estado
+                </h5>
+                <p class="small mb-0">
+                  Atores que roubam segredos do governo, coletam informações e
+                  sabotam redes de governos estrangeiros e corporações.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.2.4 - Cibercriminosos -->
+      <section
+        id="cibercriminosos"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-dollar-sign me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.2.4 Cibercriminosos
+        </h2>
+
+        <div class="content-card">
+          <div class="row">
+            <div class="col-md-8">
+              <p style="color: var(--text-secondary)">
+                Os cibercriminosos são atores de ameaça motivados a ganhar
+                dinheiro usando todos os meios necessários. Embora às vezes
+                trabalhem de forma independente, são mais frequentemente
+                financiados e patrocinados por organizações criminosas.
+              </p>
+              <p
+                class="mb-4"
+                style="
+                  color: var(--cisco-green);
+                  font-size: 1.5rem;
+                  font-weight: 700;
+                "
+              >
+                💰 Bilhões de dólares roubados anualmente
+              </p>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center">
+                <i
+                  class="fas fa-chart-pie fa-3x mb-3"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <div>Consumidores</div>
+                <div>Empresas</div>
+                <div>Governos</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-3">
+              <span class="badge-cisco"
+                ><i class="fas fa-id-card"></i> Identity Theft</span
+              >
+            </div>
+            <div class="col-md-3">
+              <span class="badge-cisco"
+                ><i class="fas fa-lock"></i> Cracker</span
+              >
+            </div>
+            <div class="col-md-3">
+              <span class="badge-cisco"
+                ><i class="fas fa-eye"></i> Spyware</span
+              >
+            </div>
+            <div class="col-md-3">
+              <span class="badge-cisco"
+                ><i class="fas fa-user-secret"></i> Intruder</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.2.5 - Faleiras de Segurança Cibernética -->
+      <section
+        id="faleiras"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-clipboard-check me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.2.5 Faleiras de Segurança Cibernética
+        </h2>
+
+        <div class="content-card">
+          <p style="color: var(--text-secondary)">
+            Atores de ameaça não discriminam. Eles têm como alvo dispositivos
+            finais vulneráveis de usuários domésticos, empresas de pequeno a
+            médio porte e grandes organizações.
+          </p>
+
+          <h5 class="mt-4 mb-3" style="color: var(--cisco-green)">
+            📋 Lista de verificação de cibersegurança
+          </h5>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Fornecedor de TI confiável</span>
+              </div>
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Software de segurança atualizado</span>
+              </div>
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Testes de penetração regulares</span>
+              </div>
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Backup para nuvem e disco rígido</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Alterar periodicamente a senha WiFi</span>
+              </div>
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Política de segurança atualizada</span>
+              </div>
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Aplicar senhas fortes</span>
+              </div>
+              <div class="checklist-item">
+                <div class="checklist-icon"><i class="fas fa-check"></i></div>
+                <span>Autenticação de dois fatores</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.2.6 - Indicadores de Ameaças Cibernéticas -->
+      <section
+        id="indicadores"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-chart-bar me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.2.6 Indicadores de Ameaças Cibernéticas
+        </h2>
+
+        <div class="content-card">
+          <div class="row mb-4">
+            <div class="col-md-6">
+              <h5 style="color: var(--cisco-green)">
+                Indicadores de Compromisso (IOC)
+              </h5>
+              <p style="color: var(--text-secondary)">
+                Evidência de que um ataque ocorreu. Recursos que identificam
+                arquivos de malware, endereços IP de servidores usados em
+                ataques, nomes de arquivos e alterações no sistema.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <h5 style="color: var(--cisco-green)">
+                Indicadores de Ataque (IOA)
+              </h5>
+              <p style="color: var(--text-secondary)">
+                Focam na motivação por trás de um ataque e nos meios potenciais
+                que atores da ameaça usam para comprometer vulnerabilidades.
+              </p>
+            </div>
+          </div>
+
+          <div class="ioc-grid mb-4">
+            <div class="ioc-section">
+              <small style="color: var(--text-muted)">Malware File</small>
+              <div class="ioc-hash mt-2">
+                studiox-link-standalone-v20.03.8-stable.exe
+              </div>
+              <div class="ioc-hash small">
+                sha256
+                6a6c28f5666b12beecd56a3d1d517e409b5d6866c03f9be44ddd9efffa90f1e0
+              </div>
+              <div class="ioc-hash small">
+                sha1 eb019ad1c73ee69195c3fc84ebf44e95c147bef8
+              </div>
+              <div class="ioc-hash small">
+                md5 3a104b73bb96dfed288097e9dc01a18
+              </div>
+            </div>
+            <div class="ioc-section">
+              <small style="color: var(--text-muted)">DNS requests</small>
+              <div class="mt-2">log.studiox.link</div>
+              <div>my.studiox.link</div>
+              <div>_sips_.tcp.studiox.link</div>
+              <div>sip.studiox.link</div>
+            </div>
+            <div>
+              <small style="color: var(--text-muted)">Connections</small>
+              <div class="mt-2">198.51.100.248</div>
+              <div>203.0.113.82</div>
+            </div>
+          </div>
+
+          <div class="terminal-card">
+            <i class="fas fa-envelope me-2"></i>
+            Exemplo: Usuário recebe e-mail falso sobre prêmio. IOC pode incluir:
+            endereço IP do remetente, linha de assunto, URL malicioso, anexo
+            suspeito.
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2.2.7 - Compartilhamento de ameaças e conscientização -->
+      <section
+        id="compartilhamento"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-share-alt me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.2.7 Compartilhamento de ameaças e conscientização sobre segurança
+          cibernética
+        </h2>
+
+        <div class="content-card">
+          <div class="row">
+            <div class="col-md-8">
+              <h5 style="color: var(--cisco-green)">
+                CISA · AIS (Automated Indicator Sharing)
+              </h5>
+              <p style="color: var(--text-secondary)">
+                A Agência de Infraestrutura e Segurança Cibernética dos EUA
+                (CISA) está liderando esforços para automatizar o
+                compartilhamento de informações de segurança cibernética com
+                organizações públicas e privadas sem nenhum custo. O AIS permite
+                o compartilhamento de indicadores de ataque entre o governo dos
+                EUA e o setor privado assim que as ameaças são verificadas.
+              </p>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center">
+                <i class="fas fa-flag-usa fa-3x mb-2"></i>
+                <div>CISA</div>
+                <small>Cybersecurity & Infrastructure Security Agency</small>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-4 p-3"
+            style="background: var(--bg-secondary); border-radius: 8px"
+          >
+            <h5 style="color: var(--cisco-green)">
+              📅 National Cybersecurity Awareness Month (NCSAM)
+            </h5>
+            <p class="mb-2">
+              Campanha anual em outubro:
+              <strong>"TI Própria. TI Segura. Proteja a TI."</strong> (2019)
+              incentivando cidadãos a serem mais seguros online.
+            </p>
+
+            <div class="d-flex flex-wrap gap-2 mt-3">
+              <span class="badge-cisco">#BeCyberSmart</span>
+              <span class="badge-cisco">Segurança redes sociais</span>
+              <span class="badge-cisco">Configurações de privacidade</span>
+              <span class="badge-cisco">Segurança de apps</span>
+              <span class="badge-cisco">Software atualizado</span>
+              <span class="badge-cisco">Compras online seguras</span>
+              <span class="badge-cisco">Wi-Fi seguro</span>
+              <span class="badge-cisco">Proteger dados do cliente</span>
+            </div>
+
+            <div class="mt-3 text-center">
+              <span class="badge-cisco" style="font-size: 1.2rem"
+                >🇺🇸 OCTOBER 2019 · National Cybersecurity Awareness Month</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Placeholder para Laboratórios (futuro) -->
+      <!-- SEÇÃO 2.3 - RESUMO DO MÓDULO: O que aprendi e Casos de Uso -->
+      <section
+        id="resumo-modulo"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-graduation-cap me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          2.3 Resumo: Protegendo Redes
+        </h2>
+
+        <!-- Card de Resumo Interativo (baseado na captura 16-53-54) -->
+        <div class="content-card mb-4">
+          <div class="d-flex align-items-center mb-4">
+            <span class="badge-cisco me-3" style="font-size: 1rem"
+              >📚 RECAP</span
+            >
+            <h4 class="mb-0" style="color: var(--cisco-green)">
+              2.3.1 O que aprendi neste módulo?
+            </h4>
+          </div>
+
+          <p class="mb-4" style="color: var(--text-secondary)">
+            <i
+              class="fas fa-hand-pointer me-2"
+              style="color: var(--cisco-green)"
+            ></i>
+            <strong
+              >Clique nos títulos para ver um resumo dos tópicos abordados neste
+              módulo:</strong
+            >
+          </p>
+
+          <!-- Accordion de Resumo -->
+          <div class="accordion accordion-cisco mb-4" id="resumoAccordion">
+            <!-- Situação Atual -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoSituacao"
+                >
+                  <i
+                    class="fas fa-chart-line me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Situação Atual
+                </button>
+              </h2>
+              <div
+                id="resumoSituacao"
+                class="accordion-collapse collapse"
+                data-bs-parent="#resumoAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    As redes estão sob ataque constante. Compreender a segurança
+                    da rede requer que você entenda os seguintes termos
+                    fundamentais:
+                  </p>
+                  <div class="row g-2 mt-2">
+                    <div class="col-md-4">
+                      <span class="badge-cisco">🔹 Ameaça</span> - Perigo
+                      potencial
+                    </div>
+                    <div class="col-md-4">
+                      <span class="badge-cisco">🔹 Vulnerabilidade</span> -
+                      Ponto fraco
+                    </div>
+                    <div class="col-md-4">
+                      <span class="badge-cisco">🔹 Superfície de ataque</span> -
+                      Total de vulnerabilidades
+                    </div>
+                    <div class="col-md-4">
+                      <span class="badge-cisco">🔹 Exploit</span> - Mecanismo de
+                      ataque
+                    </div>
+                    <div class="col-md-4">
+                      <span class="badge-cisco">🔹 Risco</span> - Probabilidade
+                      de dano
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quem está atacando nossa rede? -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoAtores"
+                >
+                  <i
+                    class="fas fa-user-secret me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Quem está atacando nossa rede?
+                </button>
+              </h2>
+              <div
+                id="resumoAtores"
+                class="accordion-collapse collapse"
+                data-bs-parent="#resumoAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Os atores de ameaça evoluíram desde os anos 1960 e incluem
+                    diversos perfis:
+                  </p>
+                  <ul style="color: var(--text-secondary)">
+                    <li>
+                      <strong style="color: white">White Hat:</strong> Hackers
+                      éticos que trabalham para proteger sistemas
+                    </li>
+                    <li>
+                      <strong style="color: white">Gray Hat:</strong> Indivíduos
+                      que comprometem sistemas sem permissão, mas sem intenção
+                      maliciosa
+                    </li>
+                    <li>
+                      <strong style="color: white">Black Hat:</strong>
+                      Criminosos que violam sistemas para ganho pessoal
+                    </li>
+                    <li>
+                      <strong style="color: white">Script Kiddies:</strong>
+                      Inexperientes que usam ferramentas prontas
+                    </li>
+                    <li>
+                      <strong style="color: white">Hacktivistas:</strong>
+                      Ativistas políticos/sociais
+                    </li>
+                    <li>
+                      <strong style="color: white">Cibercriminosos:</strong>
+                      Motivados por dinheiro
+                    </li>
+                    <li>
+                      <strong style="color: white"
+                        >Patrocinados pelo Estado:</strong
+                      >
+                      Espionagem e sabotagem
+                    </li>
+                  </ul>
+                  <p class="mt-2">
+                    Muitos ataques podem ser evitados compartilhando
+                    <strong style="color: var(--cisco-green)"
+                      >Indicadores de Compromisso (IOC)</strong
+                    >
+                    e governos como a
+                    <strong style="color: var(--cisco-green)">CISA</strong>
+                    promovem ativamente a segurança cibernética.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gestão de Riscos -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoRiscos"
+                >
+                  <i
+                    class="fas fa-balance-scale me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Gestão de Riscos
+                </button>
+              </h2>
+              <div
+                id="resumoRiscos"
+                class="accordion-collapse collapse"
+                data-bs-parent="#resumoAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    A gestão de riscos equilibra custos operacionais com
+                    proteção de ativos. Quatro formas comuns:
+                  </p>
+                  <div class="row g-2">
+                    <div class="col-md-6">
+                      <span class="badge-cisco">✅ Aceitação</span> - Custo da
+                      mitigação > custo do risco
+                    </div>
+                    <div class="col-md-6">
+                      <span class="badge-cisco">🚫 Prevenção</span> - Eliminar
+                      atividade com risco
+                    </div>
+                    <div class="col-md-6">
+                      <span class="badge-cisco">⬇️ Redução</span> - Mitigar
+                      impacto (mais comum)
+                    </div>
+                    <div class="col-md-6">
+                      <span class="badge-cisco">🔄 Transferência</span> -
+                      Seguros, terceiros
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASOS DE USO: "Que Cor é Meu Chapéu?" - Baseado na captura 16-48-20 -->
+        <div class="content-card">
+          <h4 class="mb-4" style="color: var(--cisco-green)">
+            <i class="fas fa-hat-cowboy me-2"></i>
+            2.2.8 Casos de Uso: "Que Cor é Meu Chapéu?"
+          </h4>
+
+          <p class="mb-4" style="color: var(--text-secondary)">
+            <i
+              class="fas fa-mouse-pointer me-2"
+              style="color: var(--cisco-green)"
+            ></i>
+            Clique na resposta apropriada para cada característica e veja
+            exemplos reais:
+          </p>
+
+          <!-- Grid de Casos Interativos -->
+          <div class="row g-4">
+            <!-- Caso 1: Gray Hat (ATM) -->
+            <div class="col-md-6">
+              <div
+                class="terminal-card h-100"
+                style="border-left: 4px solid #808080"
+              >
+                <div
+                  class="d-flex justify-content-between align-items-start mb-3"
+                >
+                  <span
+                    class="badge-cisco"
+                    style="background: rgba(128, 128, 128, 0.2)"
+                    >🔍 GRAY HAT</span
+                  >
+                  <i
+                    class="fas fa-hat-cowboy-side"
+                    style="color: #808080; font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="mb-3" style="color: var(--text-secondary)">
+                  "Eu hackeei máquinas ATM sem autorização do fabricante e
+                  descobri várias vulnerabilidades. Em seguida, entrei em
+                  contato com o fabricante para compartilhar minhas
+                  descobertas."
+                </p>
+                <div class="mt-auto">
+                  <span class="badge-cisco">⚠️ Sem autorização</span>
+                  <span class="badge-cisco">✅ Reportou falhas</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 2: Black Hat (Skimmer) -->
+            <div class="col-md-6">
+              <div
+                class="terminal-card h-100"
+                style="border-left: 4px solid #000000"
+              >
+                <div
+                  class="d-flex justify-content-between align-items-start mb-3"
+                >
+                  <span
+                    class="badge-cisco"
+                    style="background: rgba(255, 0, 0, 0.2); color: #ff6666"
+                    >💀 BLACK HAT</span
+                  >
+                  <i
+                    class="fas fa-skull"
+                    style="color: #000000; font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="mb-3" style="color: var(--text-secondary)">
+                  "Instalei secretamente um dispositivo skimmer em um ATM.
+                  Capturei números de conta e PINs de mais de 1000 pessoas e
+                  transferi dinheiro para contas offshore."
+                </p>
+                <div class="mt-auto">
+                  <span class="badge-cisco" style="border-color: #ff4444"
+                    >🚨 Crime</span
+                  >
+                  <span class="badge-cisco" style="border-color: #ff4444"
+                    >💰 Roubo</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 3: White Hat (Funcionário) -->
+            <div class="col-md-6">
+              <div
+                class="terminal-card h-100"
+                style="border-left: 4px solid #ffffff"
+              >
+                <div
+                  class="d-flex justify-content-between align-items-start mb-3"
+                >
+                  <span
+                    class="badge-cisco"
+                    style="background: rgba(255, 255, 255, 0.1); color: white"
+                    >⚪ WHITE HAT</span
+                  >
+                  <i
+                    class="fas fa-user-shield"
+                    style="color: white; font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="mb-3" style="color: var(--text-secondary)">
+                  "Meu trabalho é identificar deficiências no sistema de
+                  computador em minha empresa. Durante minha pesquisa, encontrei
+                  vulnerabilidades que estava autorizado a acessar."
+                </p>
+                <div class="mt-auto">
+                  <span class="badge-cisco">✅ Autorizado</span>
+                  <span class="badge-cisco">🏢 Profissional</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 4: Black Hat (Malware) -->
+            <div class="col-md-6">
+              <div
+                class="terminal-card h-100"
+                style="border-left: 4px solid #000000"
+              >
+                <div
+                  class="d-flex justify-content-between align-items-start mb-3"
+                >
+                  <span
+                    class="badge-cisco"
+                    style="background: rgba(255, 0, 0, 0.2); color: #ff6666"
+                    >💀 BLACK HAT</span
+                  >
+                  <i
+                    class="fas fa-virus"
+                    style="color: #000000; font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="mb-3" style="color: var(--text-secondary)">
+                  "Usei malware para comprometer vários sistemas corporativos,
+                  roubei informações de cartão de crédito e vendi para o maior
+                  lance."
+                </p>
+                <div class="mt-auto">
+                  <span class="badge-cisco" style="border-color: #ff4444"
+                    >💳 Fraude</span
+                  >
+                  <span class="badge-cisco" style="border-color: #ff4444"
+                    >📊 Dados</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 5: White Hat (Pesquisa) -->
+            <div class="col-md-6">
+              <div
+                class="terminal-card h-100"
+                style="border-left: 4px solid #ffffff"
+              >
+                <div
+                  class="d-flex justify-content-between align-items-start mb-3"
+                >
+                  <span
+                    class="badge-cisco"
+                    style="background: rgba(255, 255, 255, 0.1); color: white"
+                    >⚪ WHITE HAT</span
+                  >
+                  <i
+                    class="fas fa-flask"
+                    style="color: white; font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="mb-3" style="color: var(--text-secondary)">
+                  "Estou trabalhando com empresas de tecnologia para corrigir
+                  uma falha no DNS."
+                </p>
+                <div class="mt-auto">
+                  <span class="badge-cisco">🤝 Colaboração</span>
+                  <span class="badge-cisco">🔧 Correção</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 6: Gray Hat (Mensagem) -->
+            <div class="col-md-6">
+              <div
+                class="terminal-card h-100"
+                style="border-left: 4px solid #808080"
+              >
+                <div
+                  class="d-flex justify-content-between align-items-start mb-3"
+                >
+                  <span
+                    class="badge-cisco"
+                    style="background: rgba(128, 128, 128, 0.2)"
+                    >🔍 GRAY HAT</span
+                  >
+                  <i
+                    class="fas fa-envelope"
+                    style="color: #808080; font-size: 1.5rem"
+                  ></i>
+                </div>
+                <p class="mb-3" style="color: var(--text-secondary)">
+                  "Enquanto procurava vulnerabilidades, obtive acesso não
+                  autorizado à rede de uma empresa e deixei a mensagem: 'Sua
+                  segurança é falha'."
+                </p>
+                <div class="mt-auto">
+                  <span class="badge-cisco">⚠️ Não autorizado</span>
+                  <span class="badge-cisco">📢 Aviso</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feedback interativo (simulado) -->
+          <div
+            class="d-flex justify-content-between align-items-center mt-4 p-3"
+            style="background: var(--bg-secondary); border-radius: 8px"
+          >
+            <div>
+              <span class="badge-cisco me-2"
+                ><i class="fas-regular fa-comment"></i> Feedback</span
+              >
+              <span style="color: var(--text-muted)"
+                >Conseguiu identificar todos os chapéus?</span
+              >
+            </div>
+            <button
+              class="btn btn-sm"
+              style="
+                background: var(--cisco-green);
+                color: black;
+                font-weight: 600;
+              "
+              onclick="
+                alert(
+                  'Respostas: 1.Gray, 2.Black, 3.White, 4.Black, 5.White, 6.Gray',
+                )
+              "
+            >
+              Mostrar feedback <i class="fas fa-arrow-right ms-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Explicação Didática Simplificada - Tudo o que aprendemos -->
+        <div class="content-card mt-4">
+          <h4 class="mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-lightbulb me-2"></i>
+            Resumo Simplificado: Segurança de Redes em 5 Minutos
+          </h4>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-4">
+                <h5 style="color: white">1. Os Vilões (Atores de Ameaça)</h5>
+                <ul style="color: var(--text-secondary)">
+                  <li>
+                    <span style="color: white">Black Hat:</span> Criminosos que
+                    querem dinheiro/dados
+                  </li>
+                  <li>
+                    <span style="color: white">Gray Hat:</span> Invadem sem
+                    permissão mas avisam
+                  </li>
+                  <li>
+                    <span style="color: white">White Hat:</span> Profissionais
+                    de segurança (os mocinhos)
+                  </li>
+                  <li>
+                    <span style="color: white">Estado:</span> Espionagem entre
+                    países
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 style="color: white">2. Como eles atacam?</h5>
+                <ul style="color: var(--text-secondary)">
+                  <li>
+                    <span style="color: var(--cisco-green)">Vetores:</span>
+                    E-mails, sites falsos, WiFi público
+                  </li>
+                  <li>
+                    <span style="color: var(--cisco-green)">Exploits:</span>
+                    Ferramentas que exploram falhas
+                  </li>
+                  <li>
+                    <span style="color: var(--cisco-green)">Malware:</span>
+                    Programas maliciosos
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="mb-4">
+                <h5 style="color: white">3. Nossas Defesas</h5>
+                <ul style="color: var(--text-secondary)">
+                  <li>
+                    <span style="color: var(--cisco-green)">Checklist:</span>
+                    Senhas fortes, 2FA, backups
+                  </li>
+                  <li>
+                    <span style="color: var(--cisco-green)"
+                      >Compartilhamento:</span
+                    >
+                    CISA e IOCs
+                  </li>
+                  <li>
+                    <span style="color: var(--cisco-green)"
+                      >Conscientização:</span
+                    >
+                    #BeCyberSmart
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <h5 style="color: white">4. Glossário Rápido</h5>
+                <div class="d-flex flex-wrap gap-2">
+                  <span class="badge-cisco">Ameaça</span>
+                  <span class="badge-cisco">Vulnerabilidade</span>
+                  <span class="badge-cisco">Risco</span>
+                  <span class="badge-cisco">IOC</span>
+                  <span class="badge-cisco">IOA</span>
+                  <span class="badge-cisco">Superfície</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Citação final -->
+          <div class="terminal-card mt-4 text-center">
+            <i
+              class="fas fa-quote-left me-2"
+              style="color: var(--cisco-green)"
+            ></i>
+            A segurança cibernética é uma responsabilidade compartilhada. Todos
+            nós precisamos desenvolver uma boa consciência de segurança - desde
+            o usuário doméstico até grandes corporações.
+            <i
+              class="fas fa-quote-right ms-2"
+              style="color: var(--cisco-green)"
+            ></i>
+          </div>
+
+          <!-- Badge de conclusão -->
+          <div class="text-center mt-4">
+            <span
+              class="badge-cisco"
+              style="font-size: 1.2rem; padding: 0.8rem 2rem"
+            >
+              <i class="fas fa-check-circle me-2"></i>
+              MÓDULO 2 CONCLUÍDO · Pronto para o laboratório prático
+            </span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER (copiado do briefing) ===== -->
+    <footer
+      class="footer"
+      style="
+        background: var(--bg-secondary);
+        border-top: 2px solid var(--cisco-green);
+        padding: 3rem 0 2rem;
+        margin-top: 4rem;
+      "
+    >
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h5 style="color: white; font-weight: 700; margin-bottom: 1.5rem">
+              <i
+                class="fas fa-shield-halved me-2"
+                style="color: var(--cisco-green)"
+              ></i>
+              NET<span style="color: var(--cisco-green)">SEC</span>
+            </h5>
+            <p style="color: var(--text-muted); font-size: 0.9rem">
+              Documentação interativa para estudos de redes e cibersegurança
+              baseada no currículo CCNAv7.
+            </p>
+            <div class="social-links mt-3">
+              <a href="#" class="me-3" style="color: var(--text-muted)"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="#" class="me-3" style="color: var(--text-muted)"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="#" class="me-3" style="color: var(--text-muted)"
+                ><i class="fab fa-discord"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-md-2">
+            <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem">
+              Módulos
+            </h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Introdução</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Ameaças</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Vulnerabilidades</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Laboratórios</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem">
+              Recursos
+            </h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Packet Tracer</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Comandos Cisco</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Glossário</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem">
+              Créditos
+            </h6>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+              "
+            >
+              🧙 Alfredo Allan
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.8rem">
+              Conteúdo baseado no currículo<br />Cisco Networking Academy
+            </p>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 0.75rem;
+                margin-top: 1rem;
+              "
+            >
+              <i class="fas fa-code"></i> com assistência de Gemini e DeepSeek
+            </p>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <hr style="border-color: var(--border-primary)" />
+            <p style="color: var(--text-muted); font-size: 0.8rem">
+              © 2026 NETSEC Labs. Projeto independente sem vínculo oficial com a
+              Cisco Systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 1. REVEAL SECTIONS AO SCROLL
+        const revealElements = document.querySelectorAll(".reveal");
+        if (revealElements.length) {
+          revealElements.forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+          });
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.style.opacity = "1";
+                  entry.target.style.transform = "translateY(0)";
+                }
+              });
+            },
+            { threshold: 0.1 },
+          );
+
+          revealElements.forEach((el) => observer.observe(el));
+        }
+
+        // 2. BARRA DE PROGRESSO
+        window.addEventListener("scroll", function () {
+          const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+          const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          const progressBar = document.getElementById("readingProgress");
+          if (progressBar) progressBar.style.width = scrolled + "%";
+        });
+
+        // 3. BUSCA NO DROPDOWN
+        const searchInput = document.getElementById("navSearch");
+        if (searchInput) {
+          searchInput.addEventListener("keyup", function () {
+            const filter = this.value.toLowerCase();
+            const items = document.querySelectorAll(
+              "#sectionList .dropdown-item",
+            );
+            items.forEach((item) => {
+              const text = item.textContent.toLowerCase();
+              item.style.display = text.includes(filter) ? "block" : "none";
+            });
+          });
+        }
+
+        // 4. HOVER ANIMATION NOS CARDS (com Anime.js)
+        if (typeof anime !== "undefined") {
+          document.querySelectorAll(".content-card").forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+              anime({
+                targets: card,
+                scale: 1.02,
+                duration: 200,
+                easing: "easeOutQuad",
+              });
+            });
+
+            card.addEventListener("mouseleave", () => {
+              anime({
+                targets: card,
+                scale: 1,
+                duration: 200,
+                easing: "easeOutQuad",
+              });
+            });
+          });
+        }
+
+        // 5. SCROLL SUAVE
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (href === "#") return;
+
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const offset = 100;
+              const position =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                offset;
+
+              window.scrollTo({
+                top: position,
+                behavior: "smooth",
+              });
+
+              const navbar = document.getElementById("navbarMain");
+              if (navbar && navbar.classList.contains("show")) {
+                navbar.classList.remove("show");
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
