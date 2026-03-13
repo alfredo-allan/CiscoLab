@@ -1,0 +1,2567 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NETSEC · Módulo 4: Atacando o que Fazemos</title>
+
+    <!-- CDNs OBRIGATÓRIAS -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/css/modulo_4.css" />
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(10, 10, 10, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+        z-index: 1030;
+      "
+    >
+      <div class="container">
+        <a
+          class="navbar-brand"
+          href="/index.html"
+          style="
+            color: var(--cisco-green);
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+          "
+        >
+          <i
+            class="fas fa-shield-halved me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          NET<span style="color: white">SEC</span>
+          <small
+            style="
+              font-size: 0.7rem;
+              color: var(--text-muted);
+              display: block;
+              line-height: 1;
+            "
+            >estudos CCNA</small
+          >
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMain"
+        >
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- Módulo 1 -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="font-weight: 500"
+              >
+                <i
+                  class="fas fa-cube me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Módulo 1
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                style="background-color: #1a1a1a; border: 1px solid #333"
+              >
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    🔰 INTRODUÇÃO
+                  </h6>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/modulo1.html#modulo-intro"
+                    style="color: #e0e0e0"
+                    >1.0.1 Introdução</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/modulo1.html#modulo-aprendizado"
+                    style="color: #e0e0e0"
+                    >1.0.2 O que aprender</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Módulo 2 -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="font-weight: 500"
+              >
+                <i
+                  class="fas fa-cube me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Módulo 2
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                style="
+                  background-color: #1a1a1a;
+                  border: 1px solid #333;
+                  max-height: 400px;
+                  overflow-y: auto;
+                "
+              >
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    🔰 INTRODUÇÃO
+                  </h6>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/modulo2.html#modulo-intro"
+                    style="color: #e0e0e0"
+                    >2.0.1 Por que fazer?</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/modulo2.html#modulo-aprendizado"
+                    style="color: #e0e0e0"
+                    >2.0.2 O que aprender</a
+                  >
+                </li>
+                <li>
+                  <hr class="dropdown-divider" style="border-color: #333" />
+                </li>
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    🌐 SITUAÇÃO ATUAL
+                  </h6>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/modulo2.html#redes-alvo"
+                    style="color: #e0e0e0"
+                    >2.1.2 Redes são alvos</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Módulo 3 -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                <i
+                  class="fas fa-shield-halved me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Módulo 3
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                style="
+                  background-color: #1a1a1a;
+                  border: 1px solid #333;
+                  max-height: 400px;
+                  overflow-y: auto;
+                "
+              >
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    📦 CABEÇALHO IP
+                  </h6>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="/modulo3.html"
+                    style="color: #e0e0e0"
+                    >3.1.1 IPv4 e IPv6</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- Módulo 4 (ATIVO) -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="
+                  font-weight: 500;
+                  border-bottom: 2px solid var(--cisco-green);
+                "
+              >
+                <i
+                  class="fas fa-cube me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Módulo 4
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                style="
+                  background-color: #1a1a1a;
+                  border: 1px solid #333;
+                  max-height: 400px;
+                  overflow-y: auto;
+                "
+              >
+                <!-- INTRODUÇÃO -->
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    🔰 INTRODUÇÃO
+                  </h6>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#modulo4-intro"
+                    style="color: #e0e0e0"
+                    ><i
+                      class="fas fa-chevron-right me-2"
+                      style="font-size: 0.7rem; color: var(--cisco-green)"
+                    ></i
+                    >4.0.1 Por que fazer?</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#modulo4-aprendizado"
+                    style="color: #e0e0e0"
+                    ><i
+                      class="fas fa-chevron-right me-2"
+                      style="font-size: 0.7rem; color: var(--cisco-green)"
+                    ></i
+                    >4.0.2 O que aprender</a
+                  >
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider" style="border-color: #333" />
+                </li>
+
+                <!-- SERVIÇOS IP -->
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    🌐 SERVIÇOS IP
+                  </h6>
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#vulnerabilidades-arp"
+                    style="color: #e0e0e0"
+                    ><i
+                      class="fas fa-chevron-right me-2"
+                      style="font-size: 0.7rem; color: var(--cisco-green)"
+                    ></i
+                    >4.1.1 Vulnerabilidades ARP</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="#arp-poisoning"
+                    style="color: #e0e0e0"
+                    ><i
+                      class="fas fa-chevron-right me-2"
+                      style="font-size: 0.7rem; color: var(--cisco-green)"
+                    ></i
+                    >4.1.2 Envenenamento ARP</a
+                  >
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider" style="border-color: #333" />
+                </li>
+
+                <!-- EM BREVE -->
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
+                    ⏳ EM BREVE
+                  </h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" style="color: #666"
+                    ><i class="fas fa-clock me-2"></i>4.2 Serviços
+                    Corporativos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" style="color: #666"
+                    ><i class="fas fa-clock me-2"></i>4.3 Mitigação de
+                    Ataques</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i
+                  class="fas fa-flask me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Labs
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div
+      class="progress"
+      style="
+        height: 3px;
+        position: sticky;
+        top: 76px;
+        z-index: 1020;
+        border-radius: 0;
+      "
+    >
+      <div
+        id="readingProgress"
+        class="progress-bar"
+        style="width: 0%; background-color: var(--cisco-green)"
+      ></div>
+    </div>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main class="container my-5">
+      <!-- SEÇÃO 4.0.1 - Por que devo fazer este módulo? -->
+      <section
+        id="modulo4-intro"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-question-circle me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.0.1 Por que devo fazer este módulo?
+        </h2>
+
+        <div class="content-card">
+          <div class="d-flex align-items-start gap-3">
+            <div
+              class="display-4"
+              style="color: var(--cisco-green); opacity: 0.3"
+            >
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <div>
+              <p
+                class="mb-3"
+                style="color: var(--text-secondary); font-size: 1.1rem"
+              >
+                <span class="badge-cisco me-2">⚠️ ATENÇÃO</span>
+                As bases da rede devem ser protegidas, mas isso não é suficiente
+                para proteger completamente a sua rede.
+              </p>
+              <p style="color: var(--text-secondary)">
+                Os protocolos que são usados para conduzir os negócios do
+                dia-a-dia da organização também devem ser protegidos. Além
+                disso, protocolos e software que fornecem serviços através da
+                rede também podem ser alvo de agentes de ameaças. Um analista de
+                segurança cibernética deve estar familiarizado com as
+                vulnerabilidades e ameaças aos fundamentos da comunicação em
+                rede.
+              </p>
+              <div class="terminal-card mt-3">
+                <i
+                  class="fas fa-graduation-cap me-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Neste módulo, você aprenderá como os protocolos comuns usados na
+                empresa funcionam e como eles são vulneráveis a ataques e
+                exploração.
+              </div>
+            </div>
+          </div>
+
+          <!-- Estatísticas rápidas -->
+          <div class="row mt-4 g-3">
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-network-wired fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <div class="stat-value">ARP</div>
+                <small style="color: var(--text-muted)"
+                  >Envenenamento de cache</small
+                >
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-dns fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <div class="stat-value">DNS</div>
+                <small style="color: var(--text-muted)">Spoofing</small>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center p-3">
+                <i
+                  class="fas fa-server fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <div class="stat-value">DHCP</div>
+                <small style="color: var(--text-muted)"
+                  >Ataques starvation</small
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.0.2 - O que vou aprender neste módulo? -->
+      <section
+        id="modulo4-aprendizado"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-graduation-cap me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.0.2 O que irei aprender neste módulo?
+        </h2>
+
+        <div class="content-card">
+          <!-- Badges de recursos -->
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <span class="badge-cisco"
+              ><i class="fas fa-video me-1"></i> 1 vídeo</span
+            >
+            <span class="badge-cisco"
+              ><i class="fas fa-flask me-1"></i> 5 laboratórios</span
+            >
+            <span class="badge-cisco"
+              ><i class="fas fa-check-circle me-1"></i> 1 Verificação</span
+            >
+            <span class="badge-cisco"
+              ><i class="fas fa-question-circle me-1"></i> 1 Questionário</span
+            >
+          </div>
+
+          <p class="mb-3" style="color: var(--text-secondary)">
+            <strong>Título do módulo:</strong> Atacando o que Fazemos<br />
+            <strong>Objetivo do módulo:</strong> Recomendar medidas para mitigar
+            as ameaças.
+          </p>
+
+          <!-- Tabela de tópicos -->
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="badge-cisco me-2">4.1</span>Serviços IP</td>
+                  <td>Explicar vulnerabilidades de serviço IP</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge-cisco me-2">4.2</span>Serviços
+                    Corporativos
+                  </td>
+                  <td>
+                    Explique como as vulnerabilidades de aplicativos de rede
+                    permitem ataques de rede
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge-cisco me-2">4.3</span>Mitigando ataques
+                    de rede comuns
+                  </td>
+                  <td>Recomendar medidas básicas de mitigação de ameaças.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Preview dos tópicos -->
+          <div class="row mt-4 g-3">
+            <div class="col-md-4">
+              <div
+                class="hacker-card"
+                style="border-left-color: var(--cisco-green)"
+              >
+                <h5 style="color: var(--cisco-green)">4.1 Serviços IP</h5>
+                <ul
+                  class="list-unstyled small"
+                  style="color: var(--text-muted)"
+                >
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--cisco-green)"
+                    ></i
+                    >ARP
+                  </li>
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--cisco-green)"
+                    ></i
+                    >DNS
+                  </li>
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--cisco-green)"
+                    ></i
+                    >DHCP
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div
+                class="hacker-card"
+                style="border-left-color: var(--warning)"
+              >
+                <h5 style="color: var(--warning)">4.2 Serviços Corporativos</h5>
+                <ul
+                  class="list-unstyled small"
+                  style="color: var(--text-muted)"
+                >
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--warning)"
+                    ></i
+                    >HTTP/HTTPS
+                  </li>
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--warning)"
+                    ></i
+                    >Email
+                  </li>
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--warning)"
+                    ></i
+                    >FTP
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="hacker-card" style="border-left-color: var(--info)">
+                <h5 style="color: var(--info)">4.3 Mitigação</h5>
+                <ul
+                  class="list-unstyled small"
+                  style="color: var(--text-muted)"
+                >
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--info)"
+                    ></i
+                    >Filtragem
+                  </li>
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--info)"
+                    ></i
+                    >Inspeção
+                  </li>
+                  <li>
+                    <i
+                      class="fas fa-chevron-right me-2"
+                      style="color: var(--info)"
+                    ></i
+                    >Segmentação
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.1 - Vulnerabilidades ARP -->
+      <section
+        id="vulnerabilidades-arp"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-project-diagram me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.1 Vulnerabilidades ARP
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Os hosts transmitem uma solicitação ARP para outros hosts no
+            segmento de rede para determinar o endereço MAC de um host com um
+            endereço IP específico. Todos os hosts na sub-rede recebem e
+            processam a solicitação ARP. O host com o endereço IP correspondente
+            na solicitação ARP envia uma resposta ARP.
+          </p>
+
+          <!-- Simulação da rede -->
+          <div class="terminal-card mb-4">
+            <div class="text-center mb-3">
+              <span class="badge-cisco" style="font-size: 1rem"
+                >🔍 PROCESSO ARP</span
+              >
+            </div>
+
+            <!-- Topologia da rede -->
+            <div class="row text-center g-3 mb-4">
+              <div class="col-md-3">
+                <div
+                  class="p-2"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <div class="d-flex justify-content-center mb-2">
+                    <span class="badge-cisco">PC-A</span>
+                  </div>
+                  <i class="fas fa-laptop fa-2x mb-2"></i>
+                  <div><small>192.168.1.5</small></div>
+                  <div>
+                    <small style="color: var(--text-muted)"
+                      >MAC: AA:AA:AA:AA:AA:AA</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div
+                  class="p-2"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <div class="d-flex justify-content-center mb-2">
+                    <span class="badge-cisco">H2</span>
+                  </div>
+                  <i class="fas fa-desktop fa-2x mb-2"></i>
+                  <div><small>192.168.1.6</small></div>
+                  <div>
+                    <small style="color: var(--text-muted)"
+                      >MAC: A1:A1:A1:A1:A1:A1</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div
+                  class="p-2"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <div class="d-flex justify-content-center mb-2">
+                    <span class="badge-cisco">H3</span>
+                  </div>
+                  <i class="fas fa-desktop fa-2x mb-2"></i>
+                  <div><small>192.168.1.8</small></div>
+                  <div>
+                    <small style="color: var(--text-muted)"
+                      >MAC: BB:BB:BB:BB:BB:BB</small
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div
+                  class="p-2"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <div class="d-flex justify-content-center mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background: rgba(255, 0, 0, 0.2); color: #ff6666"
+                      >ATACANTE</span
+                    >
+                  </div>
+                  <i
+                    class="fas fa-user-secret fa-2x mb-2"
+                    style="color: #ff6666"
+                  ></i>
+                  <div><small>192.168.1.7</small></div>
+                  <div>
+                    <small style="color: var(--text-muted)"
+                      >MAC: EE:EE:EE:EE:EE:EE</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabela ARP -->
+            <div class="table-responsive mb-3">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Dispositivo</th>
+                    <th>Endereço IP</th>
+                    <th>Endereço MAC</th>
+                    <th>Cache ARP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>PC-A</td>
+                    <td>192.168.1.5</td>
+                    <td>AA:AA:AA:AA:AA:AA</td>
+                    <td>???</td>
+                  </tr>
+                  <tr>
+                    <td>Gateway (R1)</td>
+                    <td>192.168.1.254</td>
+                    <td>??:??:??:??:??:??</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3">
+              <span class="badge-cisco"
+                ><i class="fas fa-arrow-right"></i> Solicitação ARP: MAC of
+                192.168.1.254</span
+              >
+            </div>
+          </div>
+
+          <!-- Explicação ARP Gratuito e Ataque -->
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5 style="color: var(--cisco-green)">ARP Gratuito</h5>
+                <p class="small mb-0">
+                  Qualquer cliente pode enviar uma resposta ARP não solicitada
+                  denominada "ARP gratuito". Isso geralmente é feito quando um
+                  dispositivo é inicializado para informar todos os outros
+                  dispositivos na rede local o endereço MAC do novo dispositivo.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card" style="border-color: var(--danger)">
+                <h5 style="color: var(--danger)">⚠️ Vulnerabilidade</h5>
+                <p class="small mb-0">
+                  Qualquer host pode reivindicar ser o proprietário de qualquer
+                  IP/MAC que escolher. Um ator de ameaça pode envenenar o cache
+                  ARP de dispositivos na rede local, criando um ataque MITM para
+                  redirecionar o tráfego.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.2 - Envenenamento de cache ARP -->
+      <section
+        id="arp-poisoning"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-skull-crossbones me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.2 Envenenamento de cache ARP
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            O envenenamento do cache ARP pode ser usado para iniciar vários
+            ataques do tipo man-in-the-middle (MITM).
+          </p>
+
+          <!-- Accordion com os 3 tipos de ataque -->
+          <div class="accordion accordion-cisco mb-4" id="arpAttackAccordion">
+            <!-- Requisição ARP -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#arpRequest"
+                >
+                  <i
+                    class="fas fa-search me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Requisição ARP
+                </button>
+              </h2>
+              <div
+                id="arpRequest"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#arpAttackAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    PC-A requer o endereço MAC do seu gateway padrão (R1);
+                    então, ele envia uma solicitação ARP para o endereço MAC
+                    192.168.10.1.
+                  </p>
+                  <div class="text-center mt-3">
+                    <span class="badge-cisco"
+                      >Solicitação ARP: Qual o MAC de 192.168.10.1?</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resposta ARP -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#arpResponse"
+                >
+                  <i
+                    class="fas fa-reply me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Resposta ARP
+                </button>
+              </h2>
+              <div
+                id="arpResponse"
+                class="accordion-collapse collapse"
+                data-bs-parent="#arpAttackAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    O gateway responde com seu MAC legítimo. Mas um atacante
+                    pode responder também...
+                  </p>
+                  <div class="terminal-card mt-2">
+                    <span style="color: var(--danger)">R1 responde: </span
+                    >192.168.10.1 está em EE:EE:EE:EE:EE:EE<br />
+                    <span style="color: var(--warning)"
+                      >Atacante responde: </span
+                    >192.168.10.1 está em AA:AA:AA:AA:AA:AA
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Respostas falsas gratuitas de ARP -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#arpGratuitous"
+                >
+                  <i
+                    class="fas fa-gift me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Respostas falsas gratuitas de ARP
+                </button>
+              </h2>
+              <div
+                id="arpGratuitous"
+                class="accordion-collapse collapse"
+                data-bs-parent="#arpAttackAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    O atacante envia ARPs gratuitos falsos dizendo "Sou o
+                    gateway" sem ninguém perguntar.
+                  </p>
+                  <div class="terminal-card mt-2">
+                    <i class="fas fa-broadcast-tower"></i> Broadcast:
+                    "192.168.10.1 está em AA:AA:AA:AA:AA:AA"<br />
+                    <small
+                      >Todos os hosts atualizam suas tabelas ARP com a
+                      informação falsa.</small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ferramentas de ataque -->
+          <div class="terminal-card">
+            <h5 style="color: var(--cisco-green)">
+              🛠️ Ferramentas para ataques ARP MITM
+            </h5>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+              <span class="badge-cisco">dsniff</span>
+              <span class="badge-cisco">Cain & Abel</span>
+              <span class="badge-cisco">ettercap</span>
+              <span class="badge-cisco">Yersinia</span>
+            </div>
+            <p class="small mt-2 mb-0" style="color: var(--text-muted)">
+              <i class="fas fa-info-circle"></i> Existem muitas ferramentas
+              disponíveis na Internet para criar ataques ARP MITM.
+            </p>
+          </div>
+
+          <!-- Diagrama MITM -->
+          <div class="row mt-4 g-3">
+            <div class="col-12">
+              <div
+                class="text-center p-3"
+                style="background: var(--bg-secondary); border-radius: 8px"
+              >
+                <h5 style="color: var(--cisco-green)">🎯 Objetivo do Ataque</h5>
+                <p>
+                  Associar o endereço MAC do ator de ameaça ao endereço IP do
+                  gateway padrão nos caches ARP dos hosts no segmento LAN. Isso
+                  posiciona o agente de ameaça entre a vítima e todos os outros
+                  sistemas fora da sub-rede local.
+                </p>
+                <div
+                  class="d-flex justify-content-center align-items-center gap-4 mt-3"
+                >
+                  <div><i class="fas fa-laptop"></i> Vítima</div>
+                  <i class="fas fa-arrow-right"></i>
+                  <div style="color: var(--danger)">
+                    <i class="fas fa-user-secret"></i> ATACANTE (MITM)
+                  </div>
+                  <i class="fas fa-arrow-right"></i>
+                  <div><i class="fas fa-globe"></i> Gateway/Internet</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Laboratórios placeholder -->
+      <section
+        id="laboratorios"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i class="fas fa-flask me-2" style="color: var(--cisco-green)"></i>
+          Laboratórios do Módulo 4
+        </h2>
+        <div class="content-card text-center p-5">
+          <i
+            class="fas fa-network-wired fa-4x mb-4"
+            style="color: var(--cisco-green); opacity: 0.5"
+          ></i>
+          <h4 style="color: var(--text-secondary)">5 Laboratórios Práticos</h4>
+          <p class="mb-4" style="color: var(--text-muted)">
+            Em breve: Laboratórios de ARP spoofing, DNS poisoning e mitigação de
+            ataques.
+          </p>
+          <div class="d-flex justify-content-center gap-3">
+            <span class="badge-cisco" style="font-size: 1rem"
+              >⏱️ 4.1 ARP Cache Poisoning</span
+            >
+            <span class="badge-cisco" style="font-size: 1rem"
+              >⏱️ 4.2 DNS Spoofing</span
+            >
+            <span class="badge-cisco" style="font-size: 1rem"
+              >⏱️ 4.3 DHCP Starvation</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 4.1.3 - Ataques DNS -->
+      <section
+        id="ataques-dns"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i class="fas fa-dns me-2" style="color: var(--cisco-green)"></i>
+          4.1.3 Ataques DNS
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            O protocolo DNS (Domain Name Service) define um serviço automatizado
+            que corresponde a nomes de recursos, como www.cisco.com, com o
+            endereço de rede numérico necessário (IPv4 ou IPv6). Ele inclui o
+            formato para consultas, respostas e dados, e usa os registros de
+            recursos (RR) para identificar o tipo de resposta DNS.
+          </p>
+
+          <div class="terminal-card mb-4">
+            <i
+              class="fas fa-exclamation-triangle me-2"
+              style="color: var(--warning)"
+            ></i>
+            <strong>A proteção do DNS geralmente é ignorada.</strong> No
+            entanto, é crucial para a operação de uma rede e deve ser protegido
+            adequadamente.
+          </div>
+
+          <h5 class="mb-3" style="color: var(--cisco-green)">
+            Principais tipos de ataques DNS:
+          </h5>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="hacker-card" style="border-left-color: var(--danger)">
+                <h5 style="color: var(--danger)">
+                  🔓 Ataques de resolver aberto de DNS
+                </h5>
+                <p class="small" style="color: var(--text-secondary)">
+                  Muitas organizações usam serviços de servidores DNS abertos ao
+                  público, como o GoogleDNS (8.8.8.8). Esse tipo de servidor DNS
+                  responde a consultas de clientes fora de seu domínio
+                  administrativo e é vulnerável a diversas atividades
+                  maliciosas.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="hacker-card"
+                style="border-left-color: var(--warning)"
+              >
+                <h5 style="color: var(--warning)">
+                  👤 Ataques furtivos de DNS
+                </h5>
+                <p class="small" style="color: var(--text-secondary)">
+                  Para ocultar sua identidade, os agentes de ameaças usam
+                  técnicas furtivas como Fast Flux, Double IP Flux e algoritmos
+                  de geração de domínio (DGA).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card" style="border-left-color: var(--info)">
+                <h5 style="color: var(--info)">
+                  🌑 Ataques de sombreamento de domínio DNS
+                </h5>
+                <p class="small" style="color: var(--text-secondary)">
+                  O agente de ameaças coleta credenciais de conta de domínio
+                  para criar silenciosamente vários subdomínios usados durante
+                  ataques, sem alertar o proprietário real do domínio pai.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="hacker-card"
+                style="border-left-color: var(--cisco-green)"
+              >
+                <h5 style="color: var(--cisco-green)">
+                  🕳️ Ataques de tunelamento de DNS
+                </h5>
+                <p class="small" style="color: var(--text-secondary)">
+                  Encapsulamento de tráfego não-DNS (como SSH ou HTTP) dentro de
+                  consultas e respostas DNS para bypass de firewalls e
+                  exfiltração de dados.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.4 - Ataques de Resolver Aberto de DNS -->
+      <section
+        id="ataques-resolver-aberto"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-door-open me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.4 Ataques de resolver aberto de DNS
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Um resolver aberto de DNS responde a consultas de clientes fora de
+            seu domínio administrativo. Estes são vulneráveis a várias
+            atividades maliciosas:
+          </p>
+
+          <div
+            class="accordion accordion-cisco mb-4"
+            id="dnsOpenResolverAccordion"
+          >
+            <!-- Envenenamento de cache DNS -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dnsCachePoisoning"
+                >
+                  <i
+                    class="fas fa-skull-crossbones me-3"
+                    style="color: var(--danger)"
+                  ></i>
+                  Ataques de envenenamento de cache DNS
+                </button>
+              </h2>
+              <div
+                id="dnsCachePoisoning"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#dnsOpenResolverAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Os agentes de ameaças enviam informações de recurso de
+                    registro falsificado (RR) a um resolvedor de DNS para
+                    redirecionar usuários de sites legítimos para sites
+                    maliciosos.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-exchange-alt"></i>
+                    <strong>Como funciona:</strong> O atacante injeta um
+                    registro falso no cache do resolvedor, fazendo com que
+                    www.banco.com aponte para o IP do atacante.
+                  </div>
+                  <div class="text-center mt-3">
+                    <span class="badge-cisco"
+                      >Legítimo: www.banco.com → 192.168.1.100</span
+                    ><br />
+                    <span
+                      class="badge-cisco"
+                      style="background: rgba(255, 0, 0, 0.2)"
+                      >Falsificado: www.banco.com → 192.168.1.200
+                      (Atacante)</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Amplificação e reflexão -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dnsAmplification"
+                >
+                  <i
+                    class="fas fa-broadcast-tower me-3"
+                    style="color: var(--warning)"
+                  ></i>
+                  Ataques de amplificação e reflexão de DNS
+                </button>
+              </h2>
+              <div
+                id="dnsAmplification"
+                class="accordion-collapse collapse"
+                data-bs-parent="#dnsOpenResolverAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Os agentes de ameaças usam ataques DoS ou DDoS em
+                    resolvedores abertos do DNS para aumentar o volume de
+                    ataques e ocultar a verdadeira fonte de um ataque.
+                  </p>
+                  <div class="row mt-3">
+                    <div class="col-md-8">
+                      <p><strong>Processo:</strong></p>
+                      <ol style="color: var(--text-secondary)">
+                        <li>Atacante forja o IP da vítima em consultas DNS</li>
+                        <li>Envia consultas para resolvedores abertos</li>
+                        <li>
+                          Resolvedores respondem para a vítima com respostas
+                          grandes (amplificação)
+                        </li>
+                      </ol>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="terminal-card text-center">
+                        <span style="font-size: 2rem">📈</span>
+                        <div>Fator de amplificação</div>
+                        <div class="stat-value">~50x</div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="mt-2 small" style="color: var(--text-muted)">
+                    Exemplo: Consulta de 60 bytes pode gerar resposta de 3000+
+                    bytes
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Utilização de recursos -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dnsResource"
+                >
+                  <i
+                    class="fas fa-microchip me-3"
+                    style="color: var(--info)"
+                  ></i>
+                  Ataques de utilização de recursos DNS
+                </button>
+              </h2>
+              <div
+                id="dnsResource"
+                class="accordion-collapse collapse"
+                data-bs-parent="#dnsOpenResolverAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Um ataque de DoS que consome todos os recursos disponíveis
+                    para afetar negativamente as operações do resolvedor aberto
+                    do DNS.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <p class="mb-0">
+                      <i class="fas fa-battery-empty"></i>
+                      <strong>Impacto:</strong> O resolvedor fica
+                      sobrecarregado, exigindo reinicialização ou interrupção
+                      dos serviços.
+                    </p>
+                  </div>
+                  <div class="progress mt-3" style="height: 25px">
+                    <div class="progress-bar bg-danger" style="width: 100%">
+                      Recursos 100% consumidos
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.5 - Ataques furtivos de DNS -->
+      <section
+        id="ataques-furtivos-dns"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-user-ninja me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.5 Ataques furtivos de DNS
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Para ocultar sua identidade, os agentes de ameaças usam técnicas
+            furtivas de DNS para realizar seus ataques.
+          </p>
+
+          <div class="row g-4">
+            <!-- Fast Flux -->
+            <div class="col-md-4">
+              <div class="terminal-card h-100">
+                <h5 style="color: var(--cisco-green)">
+                  ⚡ Fluxo Rápido (Fast Flux)
+                </h5>
+                <p class="small">
+                  Técnica onde o atacante altera rapidamente os registros DNS,
+                  alternando entre centenas ou milhares de IPs comprometidos
+                  para esconder o servidor real.
+                </p>
+                <div class="text-center mt-2">
+                  <span class="badge-cisco">domínio.com → IP1</span><br />
+                  <span class="badge-cisco">domínio.com → IP2</span><br />
+                  <span class="badge-cisco">domínio.com → IP3</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Double IP Flux -->
+            <div class="col-md-4">
+              <div class="terminal-card h-100">
+                <h5 style="color: var(--cisco-green)">
+                  🔄 Fluxo de IP duplo (Double IP Flux)
+                </h5>
+                <p class="small">
+                  Variação do Fast Flux que também altera os servidores DNS
+                  autoritativos, criando uma rede mais resiliente e difícil de
+                  rastrear.
+                </p>
+                <div class="text-center mt-2">
+                  <span class="badge-cisco">NS1 → IP_A</span>
+                  <span class="badge-cisco">NS2 → IP_B</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Algoritmos de geração de domínio -->
+            <div class="col-md-4">
+              <div class="terminal-card h-100">
+                <h5 style="color: var(--cisco-green)">
+                  🔢 Algoritmos de geração de domínio (DGA)
+                </h5>
+                <p class="small">
+                  Malwares geram dinamicamente centenas de domínios aleatórios
+                  diariamente para comunicação com C&C, dificultando bloqueios.
+                </p>
+                <div class="text-center mt-2">
+                  <span class="badge-cisco">a1b2c3.ru</span>
+                  <span class="badge-cisco">x9y8z7.net</span>
+                  <span class="badge-cisco">m4n5o6.org</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <i class="fas fa-lightbulb"></i>
+            <strong>Algoritmos de Geração de Domínio (DGA):</strong> Usados por
+            botnets para esconder servidores de comando e controle. O malware e
+            o operador usam o mesmo seed para gerar os mesmos domínios.
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.6 - Sombreamento de domínio DNS -->
+      <section
+        id="sombreamento-dominio"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-cloud-upload-alt me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.6 Ataques de sombreamento de domínio DNS
+        </h2>
+
+        <div class="content-card">
+          <div class="row">
+            <div class="col-md-8">
+              <p style="color: var(--text-secondary)">
+                O <strong>sombreamento de domínio</strong> envolve o agente de
+                ameaças coletando credenciais de conta de domínio para criar
+                silenciosamente vários subdomínios a serem usados durante os
+                ataques.
+              </p>
+              <div class="terminal-card mt-3">
+                <i class="fas fa-key"></i> Atacante obtém credenciais de conta
+                de domínio (phishing, vazamento, etc.)
+              </div>
+              <div class="terminal-card mt-2">
+                <i class="fas fa-plus-circle"></i> Cria subdomínios como
+                "malicioso.dominio.com"
+              </div>
+              <div class="terminal-card mt-2">
+                <i class="fas fa-skull"></i> Subdomínios apontam para servidores
+                maliciosos
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div
+                class="text-center p-3"
+                style="background: var(--bg-secondary); border-radius: 8px"
+              >
+                <i
+                  class="fas fa-cloud fa-4x"
+                  style="color: var(--text-muted)"
+                ></i>
+                <div style="font-size: 1.2rem">dominio.com</div>
+                <div class="text-danger">↓</div>
+                <div style="font-size: 1rem; color: var(--danger)">
+                  mal.sub.dominio.com
+                </div>
+                <div class="text-danger">↓</div>
+                <div style="color: var(--danger)">Servidor do Atacante</div>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-3 mb-0" style="color: var(--text-secondary)">
+            <i class="fas fa-info-circle" style="color: var(--cisco-green)"></i>
+            Esses subdomínios normalmente apontam para servidores
+            mal-intencionados sem alertar o proprietário real do domínio pai.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.7 - Ataques de tunelamento DNS -->
+      <section
+        id="tunelamento-dns"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-exchange-alt me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.7 Ataques de tunelamento de DNS
+        </h2>
+
+        <div class="content-card">
+          <p style="color: var(--text-secondary)">
+            O tunelamento DNS encapsula tráfego não-DNS (como SSH, HTTP ou
+            comando & controle) dentro de consultas e respostas DNS, permitindo
+            que atacantes burlem firewalls e exfiltrem dados.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5 style="color: var(--cisco-green)">
+                  📤 Exfiltração de dados
+                </h5>
+                <p class="small">
+                  Dados sensíveis são codificados em consultas DNS:
+                </p>
+                <code style="color: var(--text-secondary)"
+                  >dado1234.evil.com</code
+                >
+                <p class="small mt-2">
+                  O servidor DNS do atacante decodifica e coleta os dados.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5 style="color: var(--cisco-green)">
+                  🎮 Comando e Controle (C2)
+                </h5>
+                <p class="small">Botnets usam DNS para receber comandos:</p>
+                <code style="color: var(--text-secondary)"
+                  >comando.update.evil.com</code
+                >
+                <p class="small mt-2">
+                  Difícil de bloquear pois DNS é geralmente permitido.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <span class="badge-cisco" style="font-size: 1rem"
+              >🔒 Firewall permite DNS → Atacante explora</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.8 - Comparativo de Ataques DNS -->
+      <section
+        id="comparativo-dns"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i class="fas fa-table me-2" style="color: var(--cisco-green)"></i>
+          4.1.8 Tabela comparativa de ataques DNS
+        </h2>
+
+        <div class="content-card">
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Tipo de Ataque</th>
+                  <th>Descrição</th>
+                  <th>Impacto</th>
+                  <th>Mitigação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="badge-cisco">Envenenamento de Cache</span>
+                  </td>
+                  <td>Injeção de registros falsos no cache DNS</td>
+                  <td>Redirecionamento para sites maliciosos</td>
+                  <td>DNSSEC, cache limitado</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge-cisco">Amplificação/Reflexão</span>
+                  </td>
+                  <td>Uso de resolvedores abertos para DDoS</td>
+                  <td>Ataques volumétricos, negação de serviço</td>
+                  <td>Rate limiting, fechar resolvedores abertos</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="badge-cisco">Utilização de Recursos</span>
+                  </td>
+                  <td>Consumo excessivo de recursos do resolvedor</td>
+                  <td>DoS no servidor DNS</td>
+                  <td>Monitoramento, rate limiting</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-cisco">Fast Flux</span></td>
+                  <td>Rápidas alterações de IP para esconder C2</td>
+                  <td>Dificulta rastreamento de botnets</td>
+                  <td>Análise comportamental</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-cisco">Sombreamento</span></td>
+                  <td>Criação de subdomínios maliciosos</td>
+                  <td>Hospedagem de malware/phishing</td>
+                  <td>Monitorar contas de domínio</td>
+                </tr>
+                <tr>
+                  <td><span class="badge-cisco">Tunelamento</span></td>
+                  <td>Encapsulamento de dados em consultas DNS</td>
+                  <td>Exfiltração de dados, C2 oculto</td>
+                  <td>Inspeção profunda de DNS</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <i class="fas fa-shield-halved me-2"></i>
+            <strong>Melhor defesa:</strong> DNSSEC, monitoramento de tráfego DNS
+            anômalo, rate limiting e fechar resolvedores abertos desnecessários.
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 4.1.5 - Ataques furtivos de DNS (Detalhado) -->
+      <section
+        id="ataques-furtivos-dns"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-user-ninja me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.5 Ataques furtivos de DNS
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Para ocultar sua identidade, os agentes de ameaças usam técnicas
+            furtivas de DNS para realizar seus ataques.
+            <strong>Clique em cada cabeçalho para ver as definições:</strong>
+          </p>
+
+          <div class="accordion accordion-cisco mb-4" id="dnsStealthAccordion">
+            <!-- Fluxo Rápido -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#fastFlux"
+                >
+                  <i class="fas fa-bolt me-3" style="color: var(--warning)"></i>
+                  Fluxo Rápido (Fast Flux)
+                </button>
+              </h2>
+              <div
+                id="fastFlux"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#dnsStealthAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Os atores de ameaças usam essa técnica para ocultar seus
+                    sites de entrega de phishing e malware atrás de uma rede que
+                    muda rapidamente de hosts DNS comprometidos.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-sync-alt fa-spin"></i>
+                    <strong>Característica:</strong> Os endereços IP do DNS são
+                    alterados continuamente em minutos.
+                  </div>
+                  <p class="mt-2">
+                    As redes de bots geralmente empregam técnicas do Fast Flux
+                    para impedir a detecção eficaz de servidores
+                    mal-intencionados.
+                  </p>
+                  <div class="text-center mt-3">
+                    <span class="badge-cisco">domínio.com → IP1 (minuto 1)</span
+                    ><br />
+                    <span class="badge-cisco">domínio.com → IP2 (minuto 2)</span
+                    ><br />
+                    <span class="badge-cisco"
+                      >domínio.com → IP3 (minuto 3)</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Fluxo de IP duplo -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#doubleFlux"
+                >
+                  <i
+                    class="fas fa-code-branch me-3"
+                    style="color: var(--info)"
+                  ></i>
+                  Fluxo de IP duplo (Double IP Flux)
+                </button>
+              </h2>
+              <div
+                id="doubleFlux"
+                class="accordion-collapse collapse"
+                data-bs-parent="#dnsStealthAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Os atores de ameaças usam essa técnica para alterar
+                    rapidamente o nome do host para os mapeamentos de endereço
+                    IP e também para alterar o servidor de nomes autoritativo.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-random"></i>
+                    <strong>Dupla camada:</strong> Altera tanto os endereços IP
+                    quanto os servidores DNS autoritativos.
+                  </div>
+                  <p class="mt-2">
+                    Isso aumenta a dificuldade de identificar a fonte do ataque,
+                    criando uma rede mais resiliente e difícil de rastrear.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Algoritmos de geração de domínio -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dga"
+                >
+                  <i
+                    class="fas fa-microchip me-3"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  Algoritmos de geração de domínio (DGA)
+                </button>
+              </h2>
+              <div
+                id="dga"
+                class="accordion-collapse collapse"
+                data-bs-parent="#dnsStealthAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Os atores de ameaças usam essa técnica em malware para gerar
+                    aleatoriamente nomes de domínio que podem ser usados como
+                    pontos de encontro para seus servidores de comando e
+                    controle (C&C).
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <p class="mb-0">
+                      <strong>Exemplo de geração diária:</strong>
+                    </p>
+                    <code style="color: var(--cisco-green)">a1b2c3.ru</code
+                    ><br />
+                    <code style="color: var(--cisco-green)">x9y8z7.net</code
+                    ><br />
+                    <code style="color: var(--cisco-green)">m4n5o6.org</code>
+                  </div>
+                  <p class="mt-2">
+                    O malware e o operador usam o mesmo seed para gerar os
+                    mesmos domínios, dificultando bloqueios estáticos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sombreamento de domínio (separado mas relacionado) -->
+          <div class="terminal-card mt-4" style="border-color: var(--warning)">
+            <h5 style="color: var(--warning)">
+              <i class="fas fa-cloud-upload-alt me-2"></i>Sombreamento de
+              domínio DNS
+            </h5>
+            <p class="mb-0">
+              O sombreamento de domínio envolve o agente de ameaças coletando
+              credenciais de conta de domínio para criar silenciosamente vários
+              subdomínios a serem usados durante os ataques. Esses subdomínios
+              normalmente apontam para servidores mal-intencionados sem alertar
+              o proprietário real do domínio pai.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.6 - Tunelamento DNS -->
+      <section
+        id="tunelamento-dns"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-exchange-alt me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.6 Tunelamento DNS
+        </h2>
+
+        <div class="content-card">
+          <div class="row mb-4">
+            <div class="col-md-8">
+              <p style="color: var(--text-secondary)">
+                Botnets se tornaram um método de ataque popular de atores
+                ameaçadores. Na maioria das vezes, os botnets são usados para
+                espalhar malware ou iniciar ataques de DDoS e phishing.
+              </p>
+              <div class="terminal-card mt-3">
+                <i
+                  class="fas fa-exclamation-triangle"
+                  style="color: var(--warning)"
+                ></i>
+                <strong>Atenção:</strong> O DNS na empresa às vezes é
+                negligenciado como um protocolo que pode ser usado por botnets.
+                Quando o tráfego DNS é determinado como parte de um incidente, o
+                ataque geralmente já acabou.
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div
+                class="text-center p-3"
+                style="background: var(--bg-secondary); border-radius: 8px"
+              >
+                <i class="fas fa-robot fa-3x"></i>
+                <div><strong>Bot</strong></div>
+                <i class="fas fa-arrow-right"></i>
+                <i class="fas fa-server fa-2x" style="color: var(--danger)"></i>
+                <div><strong style="color: var(--danger)">C&C</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <h5 class="mb-3" style="color: var(--cisco-green)">
+            🔍 Como funciona o tunelamento DNS:
+          </h5>
+
+          <div class="row g-4 mb-4">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h6 style="color: var(--cisco-green)">
+                  Registros DNS explorados:
+                </h6>
+                <div class="d-flex flex-wrap gap-2">
+                  <span class="badge-cisco">TXT</span>
+                  <span class="badge-cisco">MX</span>
+                  <span class="badge-cisco">SRV</span>
+                  <span class="badge-cisco">NULL</span>
+                  <span class="badge-cisco">A</span>
+                  <span class="badge-cisco">CNAME</span>
+                </div>
+                <p class="small mt-2">
+                  Por exemplo, um registro TXT pode armazenar comandos enviados
+                  para hosts infectados como respostas DNS.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h6 style="color: var(--cisco-green)">
+                  Processo passo a passo:
+                </h6>
+                <ol class="small" style="color: var(--text-secondary)">
+                  <li>Dados divididos em blocos codificados</li>
+                  <li>Cada bloco colocado em um rótulo de nome de domínio</li>
+                  <li>Consulta enviada aos servidores DNS recursivos</li>
+                  <li>Encaminhada ao servidor autoritativo do invasor</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diagrama de fluxo do tunelamento -->
+          <div
+            class="p-4"
+            style="background: var(--bg-secondary); border-radius: 12px"
+          >
+            <h6 class="text-center mb-3" style="color: var(--cisco-green)">
+              📡 Fluxo do Tunelamento DNS com registro TXT
+            </h6>
+            <div class="row text-center g-2">
+              <div class="col-md-3">
+                <div class="p-2"><span class="badge-cisco">1. Bot</span></div>
+                <i class="fas fa-robot fa-2x"></i>
+                <div class="small">"dado1234.evil.com"</div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-2">
+                  <span class="badge-cisco">2. Recursor</span>
+                </div>
+                <i class="fas fa-server fa-2x"></i>
+              </div>
+              <div class="col-md-3">
+                <div class="p-2">
+                  <span class="badge-cisco">3. ISP DNS</span>
+                </div>
+                <i class="fas fa-network-wired fa-2x"></i>
+              </div>
+              <div class="col-md-3">
+                <div class="p-2">
+                  <span class="badge-cisco" style="color: var(--danger)"
+                    >4. C&C</span
+                  >
+                </div>
+                <i class="fas fa-skull fa-2x" style="color: var(--danger)"></i>
+              </div>
+            </div>
+            <div class="text-center mt-3">
+              <span class="badge-cisco"
+                >Resposta TXT com comandos codificados</span
+              >
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <h6 style="color: var(--cisco-green)">✅ Como detectar:</h6>
+              <ul style="color: var(--text-secondary)">
+                <li>Consultas DNS mais longas que a média</li>
+                <li>Nomes de domínio suspeitos ou aleatórios</li>
+                <li>Domínios associados a serviços DNS dinâmicos</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 style="color: var(--cisco-green)">🛡️ Como prevenir:</h6>
+              <ul style="color: var(--text-secondary)">
+                <li>Soluções de segurança DNS (Cisco Umbrella/OpenDNS)</li>
+                <li>Filtros que inspecionam tráfego DNS</li>
+                <li>Bloquear comunicações de saída de hosts infectados</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.7 - DHCP: Operação Normal -->
+      <section
+        id="dhcp-normal"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i class="fas fa-server me-2" style="color: var(--cisco-green)"></i>
+          4.1.7 DHCP: Operação Normal
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Os servidores DHCP fornecem dinamicamente informações de
+            configuração de IP aos clientes. A figura mostra a sequência típica
+            de uma troca de mensagens DHCP entre cliente e servidor.
+          </p>
+
+          <!-- Diagrama DORA -->
+          <div class="terminal-card mb-4">
+            <h5 class="text-center mb-3" style="color: var(--cisco-green)">
+              Processo DORA (Discover, Offer, Request, Acknowledge)
+            </h5>
+
+            <div class="row text-center g-3">
+              <div class="col-md-6">
+                <div
+                  class="p-3"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <span class="badge-cisco mb-2">Cliente DHCP</span>
+                  <div class="mb-2"><i class="fas fa-laptop fa-2x"></i></div>
+                  <div class="small">"Gostaria de solicitar um endereço."</div>
+                  <div class="text-warning">DHCPDISCOVER (Broadcast)</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="p-3"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <span class="badge-cisco mb-2">Servidor DHCP</span>
+                  <div class="mb-2"><i class="fas fa-server fa-2x"></i></div>
+                  <div class="small">
+                    "Sou DHCPsvr1. Este é um endereço que posso oferecer".
+                  </div>
+                  <div class="text-success">DHCPOFFER (Unicast)</div>
+                  <div class="small mt-2">
+                    IP: 192.168.10.15<br />
+                    Mask: 255.255.255.0<br />
+                    Gateway: 192.168.10.1<br />
+                    Lease: 3 days
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="p-3"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <span class="badge-cisco mb-2">Cliente DHCP</span>
+                  <div class="mb-2"><i class="fas fa-laptop fa-2x"></i></div>
+                  <div class="small">"Aceito a oferta do endereço IP".</div>
+                  <div class="text-warning">DHCPREQUEST (Broadcast)</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="p-3"
+                  style="background: var(--bg-card); border-radius: 8px"
+                >
+                  <span class="badge-cisco mb-2">Servidor DHCP</span>
+                  <div class="mb-2"><i class="fas fa-server fa-2x"></i></div>
+                  <div class="small">"Sua aceitação é reconhecida".</div>
+                  <div class="text-success">DHCPACK (Unicast)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p style="color: var(--text-secondary)">
+            Na figura, um cliente transmite uma mensagem de descoberta DHCP
+            (broadcast). O servidor DHCP responde com uma oferta direta
+            (unicast) que inclui informações de endereçamento. O cliente
+            transmite em difusão (broadcast) uma solicitação DHCP para informar
+            ao servidor que aceita a oferta. O servidor responde com uma
+            confirmação direta (unicast) aceitando a solicitação.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.8 - Ataques DHCP (Spoofing) -->
+      <section
+        id="ataques-dhcp"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i
+            class="fas fa-skull-crossbones me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          4.1.8 Ataques DHCP (Spoofing)
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Um ataque de spoofing de DHCP ocorre quando um servidor DHCP invasor
+            está conectado à rede e fornece falsos parâmetros de configuração IP
+            aos clientes legítimos.
+          </p>
+
+          <div class="terminal-card mb-4" style="border-color: var(--danger)">
+            <h5 style="color: var(--danger)">
+              ⚠️ Informações enganosas fornecidas:
+            </h5>
+            <ul class="mb-0" style="color: var(--text-secondary)">
+              <li>
+                <strong>Gateway padrão errado</strong> - Atacante fornece
+                gateway inválido ou seu próprio IP para ataque MITM
+              </li>
+              <li>
+                <strong>Servidor DNS errado</strong> - Aponta usuário para sites
+                maliciosos
+              </li>
+              <li>
+                <strong>Endereço IP errado</strong> - Cria ataque de negação de
+                serviço (DoS)
+              </li>
+            </ul>
+          </div>
+
+          <h5 class="mb-3" style="color: var(--cisco-green)">
+            📋 Etapas do ataque de falsificação DHCP:
+          </h5>
+
+          <div class="accordion accordion-cisco mb-4" id="dhcpAttackAccordion">
+            <!-- Etapa 1 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dhcpStep1"
+                >
+                  <span class="badge-cisco me-3">1</span>
+                  Cliente transmite mensagens de descoberta DHCP
+                </button>
+              </h2>
+              <div
+                id="dhcpStep1"
+                class="accordion-collapse collapse show"
+                data-bs-parent="#dhcpAttackAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Um cliente legítimo se conecta à rede e requer parâmetros de
+                    configuração de IP. O cliente transmite uma solicitação de
+                    descoberta de DHCP procurando uma resposta de um servidor
+                    DHCP. Ambos os servidores (legítimo e atacante) recebem a
+                    mensagem.
+                  </p>
+                  <div class="text-center mt-3">
+                    <i
+                      class="fas fa-broadcast-tower fa-2x"
+                      style="color: var(--warning)"
+                    ></i>
+                    <div>
+                      <span class="badge-cisco">DHCP Discover (Broadcast)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Etapa 2 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dhcpStep2"
+                >
+                  <span class="badge-cisco me-3">2</span>
+                  Servidores DHCP respondem com ofertas
+                </button>
+              </h2>
+              <div
+                id="dhcpStep2"
+                class="accordion-collapse collapse"
+                data-bs-parent="#dhcpAttackAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Os servidores DHCP legítimos e o não autorizado respondem
+                    com parâmetros de configuração de IP válidos. O cliente
+                    responde à primeira oferta recebida.
+                  </p>
+                  <div class="row text-center mt-3">
+                    <div class="col-md-6">
+                      <span class="badge-cisco">Servidor Legítimo</span>
+                      <div>DHCP Offer</div>
+                    </div>
+                    <div class="col-md-6">
+                      <span class="badge-cisco" style="color: var(--danger)"
+                        >Servidor Não Autorizado</span
+                      >
+                      <div style="color: var(--danger)">DHCP Offer</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Etapa 3 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dhcpStep3"
+                >
+                  <span class="badge-cisco me-3">3</span>
+                  Cliente aceita solicitação DHCP não autorizada
+                </button>
+              </h2>
+              <div
+                id="dhcpStep3"
+                class="accordion-collapse collapse"
+                data-bs-parent="#dhcpAttackAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Nesse cenário, o cliente recebeu a oferta não autorizada
+                    primeiro. Ele transmite uma solicitação DHCP, aceitando os
+                    parâmetros do servidor não autorizado. Cada servidor
+                    (legítimo e não autorizado) recebe a solicitação.
+                  </p>
+                  <div class="text-center mt-3">
+                    <span class="badge-cisco">DHCP Request (Broadcast)</span>
+                    <div class="text-danger">
+                      Cliente aceita oferta do atacante
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Etapa 4 -->
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dhcpStep4"
+                >
+                  <span class="badge-cisco me-3">4</span>
+                  DHCP não autorizado confirma a solicitação
+                </button>
+              </h2>
+              <div
+                id="dhcpStep4"
+                class="accordion-collapse collapse"
+                data-bs-parent="#dhcpAttackAccordion"
+              >
+                <div class="accordion-body">
+                  <p>
+                    Apenas o servidor não autorizado envia uma resposta ao
+                    cliente para confirmar sua solicitação (DHCP ACK). O
+                    servidor legítimo para de se comunicar com o cliente porque
+                    a solicitação já foi confirmada.
+                  </p>
+                  <div class="text-center mt-3">
+                    <span class="badge-cisco" style="color: var(--danger)"
+                      >DHCP ACK (Unicast) - Atacante</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumo visual do ataque -->
+          <div
+            class="p-4"
+            style="background: var(--bg-secondary); border-radius: 12px"
+          >
+            <h6 class="text-center mb-3" style="color: var(--cisco-green)">
+              🎯 Resultado do Ataque DHCP Spoofing
+            </h6>
+            <div class="row text-center align-items-center">
+              <div class="col-md-4">
+                <i class="fas fa-laptop fa-2x"></i>
+                <div>Cliente</div>
+              </div>
+              <div class="col-md-4">
+                <i
+                  class="fas fa-arrow-right fa-2x"
+                  style="color: var(--danger)"
+                ></i>
+                <i
+                  class="fas fa-user-secret fa-2x"
+                  style="color: var(--danger)"
+                ></i>
+                <div style="color: var(--danger)">ATACANTE (MITM)</div>
+              </div>
+              <div class="col-md-4">
+                <i class="fas fa-globe fa-2x"></i>
+                <div>Gateway/Internet</div>
+              </div>
+            </div>
+            <p class="text-center mt-3 small" style="color: var(--text-muted)">
+              Cliente recebe gateway falso → tráfego passa pelo atacante
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4.1.9 - Tabela Comparativa de Ataques DNS e DHCP -->
+      <section
+        id="comparativo-ataques"
+        class="mb-5 reveal"
+        style="scroll-margin-top: 100px"
+      >
+        <h2 class="cisco-title">
+          <i class="fas fa-table me-2" style="color: var(--cisco-green)"></i>
+          4.1.9 Tabela comparativa de ataques a serviços IP
+        </h2>
+
+        <div class="content-card">
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Serviço</th>
+                  <th>Tipo de Ataque</th>
+                  <th>Descrição</th>
+                  <th>Impacto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="3"><span class="badge-cisco">ARP</span></td>
+                  <td>Envenenamento de Cache</td>
+                  <td>Injeção de entradas ARP falsas</td>
+                  <td>MITM, interceptação de tráfego</td>
+                </tr>
+                <tr>
+                  <td>ARP Gratuito Falso</td>
+                  <td>Anúncio não solicitado de MAC falso</td>
+                  <td>Redirecionamento de tráfego</td>
+                </tr>
+                <tr>
+                  <td>ARP Flooding</td>
+                  <td>Inundação com respostas ARP</td>
+                  <td>DoS, sobrecarga de switches</td>
+                </tr>
+
+                <tr>
+                  <td rowspan="4"><span class="badge-cisco">DNS</span></td>
+                  <td>Envenenamento de Cache</td>
+                  <td>Registros DNS falsos no cache</td>
+                  <td>Redirecionamento para sites maliciosos</td>
+                </tr>
+                <tr>
+                  <td>Amplificação/Reflexão</td>
+                  <td>Uso de resolvedores abertos para DDoS</td>
+                  <td>Ataques volumétricos</td>
+                </tr>
+                <tr>
+                  <td>Fast Flux</td>
+                  <td>Alteração rápida de IPs</td>
+                  <td>Dificulta rastreamento de botnets</td>
+                </tr>
+                <tr>
+                  <td>Tunelamento</td>
+                  <td>Dados não-DNS em consultas DNS</td>
+                  <td>Exfiltração de dados, C2 oculto</td>
+                </tr>
+
+                <tr>
+                  <td rowspan="2"><span class="badge-cisco">DHCP</span></td>
+                  <td>DHCP Spoofing</td>
+                  <td>Servidor DHCP falso oferece configurações</td>
+                  <td>MITM, DoS, redirecionamento DNS</td>
+                </tr>
+                <tr>
+                  <td>DHCP Starvation</td>
+                  <td>Consumo de todas as concessões IP</td>
+                  <td>Negacão de serviço para novos clientes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <i class="fas fa-shield-halved me-2"></i>
+            <strong>Recomendações de mitigação:</strong>
+            <ul class="mt-2 mb-0">
+              <li>ARP: Port Security, DAÍ, ARP Inspection</li>
+              <li>
+                DNS: DNSSEC, rate limiting, monitoramento de tráfego anômalo
+              </li>
+              <li>DHCP: DHCP Snooping, trusted ports</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer
+      class="footer"
+      style="
+        background: var(--bg-secondary);
+        border-top: 2px solid var(--cisco-green);
+        padding: 3rem 0 2rem;
+        margin-top: 4rem;
+      "
+    >
+      <div class="container">
+        <div class="row g-4">
+          <!-- Coluna 1: Sobre -->
+          <div class="col-md-4">
+            <h5 style="color: white; font-weight: 700; margin-bottom: 1.5rem">
+              <i
+                class="fas fa-shield-halved me-2"
+                style="color: var(--cisco-green)"
+              ></i>
+              NET<span style="color: var(--cisco-green)">SEC</span>
+            </h5>
+            <p style="color: var(--text-muted); font-size: 0.9rem">
+              Documentação interativa para estudos de redes e cibersegurança
+              baseada no currículo CCNAv7.
+            </p>
+            <div class="social-links mt-3">
+              <a href="#" class="me-3" style="color: var(--text-muted)"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="#" class="me-3" style="color: var(--text-muted)"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="#" class="me-3" style="color: var(--text-muted)"
+                ><i class="fab fa-discord"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Coluna 2: Links Rápidos -->
+          <div class="col-md-2">
+            <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem">
+              Módulos
+            </h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a
+                  href="/modulo1.html"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Módulo 1</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="/modulo2.html"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Módulo 2</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="/modulo3.html"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Módulo 3</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="/modulo4.html"
+                  style="color: var(--cisco-green); text-decoration: none"
+                  >Módulo 4</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 3: Recursos -->
+          <div class="col-md-3">
+            <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem">
+              Recursos
+            </h6>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Packet Tracer</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Comandos Cisco</a
+                >
+              </li>
+              <li class="mb-2">
+                <a
+                  href="#"
+                  style="color: var(--text-muted); text-decoration: none"
+                  >Glossário</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Coluna 4: Créditos -->
+          <div class="col-md-3">
+            <h6 style="color: white; font-weight: 600; margin-bottom: 1.2rem">
+              Créditos
+            </h6>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 0.85rem;
+                margin-bottom: 0.5rem;
+              "
+            >
+              🧙 Alfredo Allan
+            </p>
+            <p style="color: var(--text-muted); font-size: 0.8rem">
+              Conteúdo baseado no currículo<br />Cisco Networking Academy
+            </p>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 0.75rem;
+                margin-top: 1rem;
+              "
+            >
+              <i class="fas fa-code"></i> com assistência de IA
+            </p>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="row mt-4">
+          <div class="col-12 text-center">
+            <hr style="border-color: var(--border-primary)" />
+            <p style="color: var(--text-muted); font-size: 0.8rem">
+              © 2026 NETSEC Labs. Projeto independente sem vínculo oficial com a
+              Cisco Systems.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // REVEAL SECTIONS AO SCROLL
+        const revealElements = document.querySelectorAll(".reveal");
+        if (revealElements.length) {
+          revealElements.forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+          });
+
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.style.opacity = "1";
+                  entry.target.style.transform = "translateY(0)";
+                }
+              });
+            },
+            { threshold: 0.1 },
+          );
+
+          revealElements.forEach((el) => observer.observe(el));
+        }
+
+        // BARRA DE PROGRESSO
+        window.addEventListener("scroll", function () {
+          const winScroll =
+            document.body.scrollTop || document.documentElement.scrollTop;
+          const height =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+          const scrolled = (winScroll / height) * 100;
+          const progressBar = document.getElementById("readingProgress");
+          if (progressBar) progressBar.style.width = scrolled + "%";
+        });
+
+        // HOVER ANIMATION NOS CARDS
+        if (typeof anime !== "undefined") {
+          document.querySelectorAll(".content-card").forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+              anime({
+                targets: card,
+                scale: 1.02,
+                duration: 200,
+                easing: "easeOutQuad",
+              });
+            });
+
+            card.addEventListener("mouseleave", () => {
+              anime({
+                targets: card,
+                scale: 1,
+                duration: 200,
+                easing: "easeOutQuad",
+              });
+            });
+          });
+        }
+
+        // SCROLL SUAVE
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            const href = this.getAttribute("href");
+            if (href === "#") return;
+
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const offset = 100;
+              const position =
+                target.getBoundingClientRect().top +
+                window.pageYOffset -
+                offset;
+
+              window.scrollTo({
+                top: position,
+                behavior: "smooth",
+              });
+
+              const navbar = document.getElementById("navbarMain");
+              if (navbar && navbar.classList.contains("show")) {
+                navbar.classList.remove("show");
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
