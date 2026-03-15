@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 6 - Infraestrutura de Segurança | NETSEC</title>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <link rel="stylesheet" href="/css/modulo_6.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <!-- Toggler Mobile -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Principal -->
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO 6 (ATUAL) -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 6 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <li><h6 class="dropdown-header">🔰 INTRODUÇÃO</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2"></i>6.0.1 Por que fazer?</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#modulo-objetivos"><i class="fas fa-chevron-right me-2"></i>6.0.2 O que vou aprender?</a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+                <li><h6 class="dropdown-header">🔐 DISPOSITIVOS DE SEGURANÇA</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#firewall-operacao"><i class="fas fa-chevron-right me-2"></i>6.1.2 Firewalls - Operação</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#firewall-propriedades"><i class="fas fa-chevron-right me-2"></i>Propriedades comuns</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#firewall-beneficios"><i class="fas fa-chevron-right me-2"></i>Benefícios do firewall</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#firewall-limitacoes"><i class="fas fa-chevron-right me-2"></i>Limitações do firewall</a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+                <li><h6 class="dropdown-header">🏗️ ARQUITETURAS DE SEGURANÇA</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#arquiteturas"><i class="fas fa-chevron-right me-2"></i>6.1.3 Arquiteturas comuns</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#privado-publico"><i class="fas fa-chevron-right me-2"></i>Privado e Público</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#dmz"><i class="fas fa-chevron-right me-2"></i>Zona Desmilitarizada (DMZ)</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#zpf"><i class="fas fa-chevron-right me-2"></i>Firewalls baseados em zona (ZPF)</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i>
+                Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li>
+                    <a class="dropdown-item" href="#modulo-intro"><span class="badge-cisco me-2">6.0.1</span>Introdução</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#modulo-objetivos"><span class="badge-cisco me-2">6.0.2</span>Objetivos</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#firewall-operacao"><span class="badge-cisco me-2">6.1.2</span>Operação do Firewall</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#firewall-propriedades"><span class="badge-cisco me-2"></span>Propriedades</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#firewall-beneficios"><span class="badge-cisco me-2"></span>Benefícios</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#firewall-limitacoes"><span class="badge-cisco me-2"></span>Limitações</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#arquiteturas"><span class="badge-cisco me-2">6.1.3</span>Arquiteturas</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#privado-publico"><span class="badge-cisco me-2"></span>Privado x Público</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#dmz"><span class="badge-cisco me-2"></span>DMZ</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#zpf"><span class="badge-cisco me-2"></span>Firewalls ZPF</a>
+                  </li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress">
+      <div id="readingProgress" class="progress-bar" style="width: 0%"></div>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="container my-5">
+      <!-- Título do Módulo -->
+      <div class="mb-5">
+        <h1 class="cisco-title display-4">Módulo 6: Infraestrutura de Segurança de Rede</h1>
+        <p class="text-secondary lead">Explicar como os dispositivos e serviços são usados para aumentar a segurança da rede.</p>
+        <div class="d-flex gap-3 mt-3">
+          <span class="badge-cisco"><i class="fas fa-video me-1"></i> 2 vídeos</span>
+          <span class="badge-cisco"><i class="fas fa-network-wired me-1"></i> 1 Packet Tracer</span>
+          <span class="badge-cisco"><i class="fas fa-check-circle me-1"></i> 3 atividades</span>
+          <span class="badge-cisco"><i class="fas fa-question-circle me-1"></i> 1 questionário</span>
+        </div>
+      </div>
+
+      <!-- 6.0.1 Por que fazer esse módulo? -->
+      <section id="modulo-intro" class="content-card">
+        <h2 class="cisco-title">6.0.1 Por que devo fazer esse Módulo?</h2>
+        <p>
+          Com as muitas ameaças à segurança da rede, como as redes podem ser projetadas para proteger recursos de dados e garantir que os
+          serviços de rede sejam fornecidos conforme necessário? A infra-estrutura de segurança de rede define a forma como os dispositivos
+          são conectados entre si para obter comunicações seguras de ponta a ponta.
+        </p>
+        <p>
+          Assim como existem muitos tamanhos de redes, há também muitas maneiras de construir uma infraestrutura de rede segura. No entanto,
+          existem alguns projetos padrão que o setor de rede recomenda alcançar redes que estão disponíveis e seguras. Este capítulo abrange
+          o funcionamento básico das infra-estruturas de rede, os vários dispositivos de segurança da rede e os serviços de segurança
+          utilizados para monitorizar e manter a transmissão segura e eficiente de dados.
+        </p>
+      </section>
+
+      <!-- 6.0.2 O que vou aprender -->
+      <section id="modulo-objetivos" class="content-card">
+        <h2 class="cisco-title">6.0.2 O que vou aprender neste módulo?</h2>
+        <p>Este módulo contém o seguinte:</p>
+        <ul class="list-unstyled">
+          <li><i class="fas fa-video me-2" style="color: var(--cisco-green)"></i> 2 vídeos</li>
+          <li><i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i> 1 Atividade do Packet Tracer</li>
+          <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> 3 Atividades: Verifique sua compreensão</li>
+          <li><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i> 1 Questionário de Módulo</li>
+        </ul>
+
+        <div class="table-responsive mt-4">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Título do Tópico</th>
+                <th>Objetivo do Tópico</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Dispositivos de segurança</strong></td>
+                <td>Explicar como os dispositivos especializados são usados para aprimorar a segurança da rede.</td>
+              </tr>
+              <tr>
+                <td><strong>Serviços de segurança</strong></td>
+                <td>Explicar como os serviços de rede melhoram a segurança da rede.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 6.1.2 Firewalls - Operação -->
+      <section id="firewall-operacao" class="content-card">
+        <h2 class="cisco-title">6.1.2 Firewalls</h2>
+        <h3 class="h4 text-white mb-4">Operação de firewall</h3>
+
+        <p>Um firewall é um sistema ou grupo de sistemas que aplica uma política de controle de acesso entre redes.</p>
+
+        <div class="diagram-card">
+          <h4><i class="fas fa-play-circle me-2"></i> Animações - Regras de Firewall</h4>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="rule-item rule-allow">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Permitir</strong> tráfego de qualquer endereço externo para o servidor Web
+              </div>
+              <div class="rule-item rule-allow">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Permitir</strong> tráfego no servidor FTP
+              </div>
+              <div class="rule-item rule-allow">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Permitir</strong> tráfego para o servidor SMTP
+              </div>
+              <div class="rule-item rule-allow">
+                <i class="fas fa-check-circle me-2"></i>
+                <strong>Permitir</strong> tráfego no servidor IMAP interno
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="rule-item rule-deny">
+                <i class="fas fa-times-circle me-2"></i>
+                <strong>Negar</strong> tráfego de entrada com endereços de rede que correspondam a IPs internos
+              </div>
+              <div class="rule-item rule-deny">
+                <i class="fas fa-times-circle me-2"></i>
+                <strong>Negar</strong> tráfego de entrada de endereços externos para o servidor
+              </div>
+              <div class="rule-item rule-deny">
+                <i class="fas fa-times-circle me-2"></i>
+                <strong>Negar</strong> tráfego de entrada de ICMP echo requests
+              </div>
+              <div class="rule-item rule-deny">
+                <i class="fas fa-times-circle me-2"></i>
+                <strong>Negar</strong> consultas de entrada ao MS Active Directory
+              </div>
+              <div class="rule-item rule-deny">
+                <i class="fas fa-times-circle me-2"></i>
+                <strong>Negar</strong> tráfego de entrada para consultas no servidor MS SQL
+              </div>
+              <div class="rule-item rule-deny">
+                <i class="fas fa-times-circle me-2"></i>
+                <strong>Negar</strong> transmissões do MS Domain Local
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Propriedades comuns do Firewall -->
+      <section id="firewall-propriedades" class="content-card">
+        <h2 class="cisco-title">Propriedades comuns do Firewall</h2>
+
+        <p>Todos os firewalls compartilham algumas propriedades comuns:</p>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="diagram-box text-center h-100">
+              <i class="fas fa-shield-alt fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h5>Resistência a ataques</h5>
+              <p class="text-secondary small">Os firewalls são resistentes a ataques de rede.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="diagram-box text-center h-100">
+              <i class="fas fa-traffic-light fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h5>Ponto único de trânsito</h5>
+              <p class="text-secondary small">
+                Firewalls são o único ponto de trânsito entre redes corporativas internas e redes externas.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="diagram-box text-center h-100">
+              <i class="fas fa-gavel fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h5>Política de controle</h5>
+              <p class="text-secondary small">Firewalls reforçam a política de controle de acesso.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benefícios do Firewall -->
+      <section id="firewall-beneficios" class="content-card">
+        <h2 class="cisco-title">Benefícios do firewall</h2>
+
+        <p>Existem vários benefícios do uso de um firewall em uma rede:</p>
+
+        <ul class="list-group list-group-flush bg-transparent">
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+            Eles impedem a exposição de hosts, recursos e aplicações sensíveis a usuários não confiáveis.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-broom me-2" style="color: var(--cisco-green)"></i>
+            Eles sanitizam o fluxo do protocolo, o que impede a exploração de falhas no protocolo.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-ban me-2" style="color: var(--cisco-green)"></i>
+            Eles bloqueiam dados maliciosos de servidores e clientes.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-diagram-project me-2" style="color: var(--cisco-green)"></i>
+            Eles reduzem a complexidade do gerenciamento de segurança descarregando a maior parte do controle de acesso à rede para alguns
+            firewalls na rede.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Limitações do Firewall -->
+      <section id="firewall-limitacoes" class="content-card">
+        <h2 class="cisco-title">Limitações do Firewall</h2>
+
+        <p>Os firewalls também têm algumas limitações:</p>
+
+        <ul class="list-group list-group-flush bg-transparent">
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-red)"></i>
+            Um firewall mal configurado pode ter sérias conseqüências para a rede, como se tornar um único ponto de falha.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-red)"></i>
+            Os dados de muitos aplicativos não podem ser transmitidos por firewalls com segurança.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-red)"></i>
+            Os usuários podem procurar proativamente maneiras de contornar o firewall para receber material bloqueado, o que expõe a rede a
+            possíveis ataques.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-red)"></i>
+            O desempenho da rede pode diminuir.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-red)"></i>
+            O tráfego não autorizado pode ser encapsulado ou escondido como tráfego legítimo através do firewall.
+          </li>
+        </ul>
+      </section>
+
+      <!-- 6.1.3 Arquiteturas comuns de segurança -->
+      <section id="arquiteturas" class="content-card">
+        <h2 class="cisco-title">6.1.3 Arquiteturas comuns de segurança</h2>
+
+        <p>
+          O design do firewall é principalmente sobre interfaces de dispositivo que permitem ou negam tráfego com base na origem, no destino
+          e no tipo de tráfego. Alguns designs são tão simples quanto designar uma rede externa e uma rede interna, que são determinados por
+          duas interfaces em um firewall.
+        </p>
+
+        <div class="table-responsive mt-4">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Privado e Público</th>
+                <th>Zona Desmilitarizada</th>
+                <th>Firewalls de política baseados em zona</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </section>
+
+      <!-- Privado e Público -->
+      <section id="privado-publico" class="content-card">
+        <h2 class="cisco-title">Privado e Público</h2>
+
+        <p>Como mostrado na figura, a rede pública (ou rede externa) não é confiável e a rede privada (ou rede interna) é confiável.</p>
+
+        <p>Normalmente, um firewall com duas interfaces é configurado da seguinte forma:</p>
+
+        <ul class="list-group list-group-flush bg-transparent mb-4">
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+            O tráfego proveniente da rede privada é permitido e inspecionado à medida que viaja em direção à rede pública. É permitido o
+            tráfego inspecionado que retorna da rede pública e associado ao tráfego originado da rede privada.
+          </li>
+          <li class="list-group-item bg-transparent text-white border-secondary">
+            <i class="fas fa-times-circle me-2" style="color: var(--accent-red)"></i>
+            O tráfego originado da rede pública e que viaja para a rede privada geralmente é bloqueado.
+          </li>
+        </ul>
+
+        <div class="diagram-card">
+          <h4>Diagrama: Privado (confiável) x Público (não confiável)</h4>
+          <div class="row align-items-center">
+            <div class="col-md-4">
+              <div class="diagram-box">
+                <i class="fas fa-network-wired fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Privado (confiável)</h5>
+                <div class="small">
+                  <span class="badge bg-success">HTTP</span>
+                  <span class="badge bg-success">SMTP</span>
+                  <span class="badge bg-success">DNS</span>
+                </div>
+                <p class="mt-2 mb-0">Vlan 1</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green)"></i>
+              <div class="diagram-box mt-2">
+                <p class="mb-0"><strong>Firewall</strong></p>
+                <small>G0/0 → S0/0/0</small>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="diagram-box">
+                <i class="fas fa-globe fa-2x mb-2" style="color: var(--accent-red)"></i>
+                <h5>Público (não confiável)</h5>
+                <p class="mt-2 mb-0 text-danger">Sem acesso</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DMZ -->
+      <section id="dmz" class="content-card">
+        <h2 class="cisco-title">Zona Desmilitarizada (DMZ)</h2>
+
+        <p>
+          Uma zona desmilitarizada (DMZ) é um projeto de firewall onde normalmente há uma interface interna conectada à rede privada, uma
+          interface externa conectada à rede pública e uma interface DMZ.
+        </p>
+
+        <div class="row">
+          <div class="col-md-8">
+            <ul class="list-group list-group-flush bg-transparent">
+              <li class="list-group-item bg-transparent text-white border-secondary">
+                <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                <strong>Privada → Pública/DMZ:</strong> Tráfego inspecionado com pouca ou nenhuma restrição. Retorno permitido.
+              </li>
+              <li class="list-group-item bg-transparent text-white border-secondary">
+                <i class="fas fa-times-circle me-2" style="color: var(--accent-red)"></i>
+                <strong>DMZ → Privada:</strong> Geralmente bloqueado.
+              </li>
+              <li class="list-group-item bg-transparent text-white border-secondary">
+                <i class="fas fa-check-circle me-2" style="color: var(--accent-yellow)"></i>
+                <strong>DMZ → Pública:</strong> Permitido seletivamente com base nos requisitos de serviço.
+              </li>
+              <li class="list-group-item bg-transparent text-white border-secondary">
+                <i class="fas fa-check-circle me-2" style="color: var(--accent-yellow)"></i>
+                <strong>Pública → DMZ:</strong> Seletivamente permitido e inspecionado (email, DNS, HTTP, HTTPS). Retorno permitido.
+              </li>
+              <li class="list-group-item bg-transparent text-white border-secondary">
+                <i class="fas fa-times-circle me-2" style="color: var(--accent-red)"></i>
+                <strong>Pública → Privada:</strong> Bloqueado.
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <div class="legend-container bg-dark p-3 rounded">
+              <h5 class="text-white mb-3">Legenda:</h5>
+              <div class="legend-item">
+                <div class="legend-color allow"></div>
+                <span>Inspecionada e permitida com pouca ou nenhuma restrição</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color selective"></div>
+                <span>Permitido seletivamente</span>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color blocked"></div>
+                <span>Bloqueado</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="diagram-card mt-4">
+          <h4>Arquitetura DMZ</h4>
+          <div class="row text-center">
+            <div class="col-4">
+              <div class="diagram-box">
+                <i class="fas fa-home fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Privado (interior)</h5>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="diagram-box">
+                <i class="fas fa-cloud fa-2x mb-2" style="color: var(--accent-yellow)"></i>
+                <h5>DMZ</h5>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="diagram-box">
+                <i class="fas fa-globe fa-2x mb-2" style="color: var(--accent-red)"></i>
+                <h5>Internet</h5>
+                <p class="mb-0 small">Público (fora)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Firewalls baseados em zona (ZPF) -->
+      <section id="zpf" class="content-card">
+        <h2 class="cisco-title">Firewalls de política baseados em zona (ZPF)</h2>
+
+        <p>
+          Os firewalls de política baseados em zona (ZPFs) usam o conceito de zonas para fornecer flexibilidade adicional. Uma zona é um
+          grupo de uma ou mais interfaces que têm funções ou recursos semelhantes. As zonas ajudam a especificar onde uma regra ou política
+          de firewall do Cisco IOS deve ser aplicada.
+        </p>
+
+        <div class="row mb-4">
+          <div class="col-md-6">
+            <div class="diagram-box">
+              <h5>LAN 1</h5>
+              <p class="text-secondary mb-0">Membro da mesma zona</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="diagram-box">
+              <h5>LAN 2</h5>
+              <p class="text-secondary mb-0">Membro da mesma zona</p>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          Na figura, as políticas de segurança para LAN 1 e LAN 2 são semelhantes e podem ser agrupadas em uma zona para configurações de
+          firewall. Por padrão, o tráfego entre interfaces na mesma zona não está sujeito a nenhuma política e passa livremente. No entanto,
+          todo o tráfego de zona para zona está bloqueado. Para permitir o tráfego entre as zonas, uma política que permite ou inspeciona o
+          tráfego deve ser configurada.
+        </p>
+
+        <div class="alert" style="background-color: rgba(0, 255, 0, 0.1); border-left: 4px solid var(--cisco-green)">
+          <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i>
+          <strong>Zona própria do roteador:</strong> A única exceção a este padrão "deny any" é a zona própria do roteador. A zona auto é o
+          próprio roteador e inclui todos os endereços IP da interface do roteador. As configurações de política que incluem a zona
+          automática aplicar-se-iam ao tráfego destinado e proveniente do roteador. Por padrão, não há nenhuma política para esse tipo de
+          tráfego. O tráfego que deve ser considerado ao projetar uma política para a auto zona inclui o tráfego de plano de gerenciamento e
+          plano de controle, como SSH, SNMP e protocolos de roteamento.
+        </div>
+
+        <div class="diagram-card">
+          <h4>Diagrama ZPF</h4>
+          <div class="row">
+            <div class="col-4">
+              <div class="diagram-box">
+                <h5>DMZ</h5>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="diagram-box">
+                <h5>LAN privada 1</h5>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="diagram-box">
+                <h5>LAN privada 2</h5>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <span class="badge-cisco">Internet</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Laboratórios -->
+      <section id="laboratorios" class="content-card">
+        <h2 class="cisco-title">Laboratórios do Módulo 6</h2>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="diagram-box">
+              <i class="fas fa-network-wired fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h5>Packet Tracer - Configuração de Firewalls</h5>
+              <p class="text-secondary">Atividade prática para configurar regras de firewall em diferentes arquiteturas.</p>
+              <button class="btn btn-outline-success mt-2" style="border-color: var(--cisco-green); color: var(--cisco-green)">
+                <i class="fas fa-download me-2"></i>Baixar atividade
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="diagram-box">
+              <i class="fas fa-flask fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h5>Laboratório - Implementação de DMZ</h5>
+              <p class="text-secondary">Configuração completa de uma DMZ com políticas de acesso seletivo.</p>
+              <button class="btn btn-outline-success mt-2" style="border-color: var(--cisco-green); color: var(--cisco-green)">
+                <i class="fas fa-download me-2"></i>Baixar laboratório
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-credits">
+          <p>
+            <i class="fas fa-shield-halved me-2"></i>
+            🧙 Alfredo Allan |
+            <i class="fas fa-school me-1"></i> Cisco Academy | <i class="fas fa-robot me-1"></i> Gemini |
+            <i class="fas fa-dragon me-1"></i> DeepSeek
+          </p>
+          <p class="small mt-2">
+            <span class="badge-modulo">CCNAv7</span>
+            <span class="badge-modulo ms-2">Security</span>
+            <span class="badge-modulo ms-2">Enterprise Networking</span>
+          </p>
+          <p class="small text-secondary mt-3">© 2026 ☠ CyberSec | Estudos Cisco - Todos os direitos reservados</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Barra de progresso de leitura
+      window.addEventListener('scroll', function () {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        const scrolled = (winScroll / height) * 100
+        document.getElementById('readingProgress').style.width = scrolled + '%'
+      })
+
+      // Busca no índice rápido
+      document.getElementById('navSearch')?.addEventListener('keyup', function () {
+        const searchValue = this.value.toLowerCase()
+        const items = document.querySelectorAll('#sectionList .dropdown-item')
+
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase()
+          if (text.includes(searchValue)) {
+            item.style.display = 'block'
+          } else {
+            item.style.display = 'none'
+          }
+        })
+      })
+
+      // Scroll suave com offset
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+          const target = document.querySelector(this.getAttribute('href'))
+          if (target) {
+            const offset = 100
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            })
+          }
+        })
+      })
+
+      // Animações com Anime.js
+      document.addEventListener('DOMContentLoaded', function () {
+        // Animação para cards
+        anime({
+          targets: '.content-card',
+          opacity: [0, 1],
+          translateY: [50, 0],
+          duration: 800,
+          delay: anime.stagger(100)
+        })
+
+        // Animação para regras de firewall
+        anime({
+          targets: '.rule-item',
+          translateX: [-50, 0],
+          opacity: [0, 1],
+          duration: 600,
+          delay: anime.stagger(50)
+        })
+      })
+    </script>
+  </body>
+</html>

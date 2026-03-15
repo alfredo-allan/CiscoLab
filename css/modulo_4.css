@@ -1,11 +1,11 @@
 /* ===== VARIÁVEIS CSS ===== */
 :root {
   /* Cores Principais */
-  --cisco-green: #00ff00;
+  --cisco-green: #66bf53;
   --cisco-green-dim: #00cc00;
-  --bg-primary: #0a0a0a;
+  --bg-primary: #121212;
   --bg-secondary: #1a1a1a;
-  --bg-card: #252525;
+  --bg-card: #1e1e1e;
   --bg-card-hover: #2d2d2d;
 
   /* Cores de Texto */
@@ -30,8 +30,8 @@
   --glow-effect-strong: 0 0 20px rgba(0, 255, 0, 0.5);
 
   /* Tipografia */
-  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-code: "JetBrains Mono", "Fira Code", monospace;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-code: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Espaçamentos */
   --container-padding: 1rem;
@@ -57,7 +57,7 @@
 
 /* ===== ESTILOS GLOBAIS ===== */
 body {
-  background-color: var(--bg-primary);
+  background-color: var(--bg-primary) !important;
   font-family: var(--font-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -113,7 +113,7 @@ body {
 }
 
 .cisco-title::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -209,11 +209,7 @@ body {
 }
 
 .hacker-card {
-  background: linear-gradient(
-    145deg,
-    var(--bg-card) 0%,
-    var(--bg-secondary) 100%
-  );
+  background: linear-gradient(145deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
   border-left: 4px solid;
   border-radius: 8px;
   padding: 1.2rem;

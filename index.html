@@ -4,20 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>&#9760; Minha Documentação CyberSec - Cisco</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="/css/dropdow.css" />
   </head>
   <body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
     <nav
@@ -30,11 +22,7 @@
       "
     >
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="#"
-          style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem"
-        >
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
           &#9760; CyberSec |
           <span style="color: white; font-weight: 400">Estudos Cisco</span>
         </a>
@@ -52,561 +40,191 @@
           <!-- Menu Principal com Scrollspy automático -->
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <!-- Módulo 1 - Dropdown -->
-            <li class="nav-item dropdown">
+
+            <!-- Mega Menu Item -->
+            <li class="nav-item dropdown mega-menu">
               <a
                 class="nav-link dropdown-toggle text-white px-3"
                 href="#"
                 role="button"
                 data-bs-toggle="dropdown"
+                style="font-weight: 600; border-bottom: 2px solid var(--cisco-green)"
               >
-                <i
-                  class="fas fa-cube me-1"
-                  style="color: var(--cisco-green)"
-                ></i>
-                Módulo 1
+                <i class="fas fa-cubes me-1" style="color: var(--cisco-green)"></i>
+                Todos os Módulos <span class="badge-modulo">27</span>
               </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                style="
-                  background-color: #1a1a1a;
-                  border: 1px solid #333;
-                  max-height: 400px;
-                  overflow-y: auto;
-                "
-              >
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    🔰 FUNDAMENTOS
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#modulo-intro"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem"
-                    ></i
-                    >1.0.1 Introdução</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#modulo-aprendizado"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem"
-                    ></i
-                    >1.0.2 O que aprender</a
-                  >
-                </li>
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    🎯 AMEAÇAS
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#dominios-ameaca"
-                    ><i class="fas fa-shield-halved me-2"></i>Domínios de
-                    Ameaça</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#tipos-ameacas"
-                    ><i class="fas fa-bug me-2"></i>Tipos de Ameaças</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#origem-ameacas"
-                    ><i class="fas fa-user-secret me-2"></i>Origem das
-                    Ameaças</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#vulnerabilidades-usuario"
-                    ><i class="fas fa-users me-2"></i>Fator Humano</a
-                  >
-                </li>
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    ⚡ AVANÇADO
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#termos-avancados"
-                    ><i class="fas fa-skull me-2"></i>Glossário Técnico</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#malware-avancado"
-                    ><i class="fas fa-virus me-2"></i>Malware & APTs</a
-                  >
-                </li>
-              </ul>
+
+              <div class="dropdown-menu dropdown-menu-dark p-0">
+                <div class="container-fluid">
+                  <!-- DESKTOP: mostra todos os 27 módulos em grid -->
+                  <div class="modulos-grid">
+                    <!-- COLUNA 1: Módulos 1-5 -->
+                    <div class="modulo-coluna" data-modulo="1">
+                      <div class="modulo-titulo" onclick="toggleModulo(this)" style="cursor: pointer">
+                        <span><i class="fas fa-cube me-2" style="color: var(--cisco-green)"></i>Módulo 1</span>
+                        <i class="fas fa-chevron-right seta-mobile"></i>
+                      </div>
+                      <ul class="modulo-lista">
+                        <li>
+                          <a href="/pages/modulo_1.html"><i class="fas fa-chevron-right"></i>1.0 Introdução</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_1.html"><i class="fas fa-chevron-right"></i>1.1 Fundamentos</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_1.html"><i class="fas fa-chevron-right"></i>1.2 Ameaças</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_1.html"><i class="fas fa-chevron-right"></i>1.3 Laboratórios</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_1.html"><i class="fas fa-chevron-right"></i>1.4 Casos Reais</a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- COLUNA 1 (cont): Módulo 2 -->
+                    <div class="modulo-coluna" data-modulo="2">
+                      <div class="modulo-titulo" onclick="toggleModulo(this)">
+                        <span><i class="fas fa-cube me-2" style="color: var(--cisco-green)"></i>Módulo 2</span>
+                        <i class="fas fa-chevron-right seta-mobile"></i>
+                      </div>
+                      <ul class="modulo-lista">
+                        <li>
+                          <a href="/pages/modulo_2.html"><i class="fas fa-chevron-right"></i>2.0 Introdução</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_2.html"><i class="fas fa-chevron-right"></i>2.1 Situação Atual</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_2.html"><i class="fas fa-chevron-right"></i>2.2 Atores de Ameaça</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_2.html"><i class="fas fa-chevron-right"></i>2.3 Indicadores</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_2.html"><i class="fas fa-chevron-right"></i>2.4 Resumo</a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- Módulo 3 -->
+                    <div class="modulo-coluna" data-modulo="3">
+                      <div class="modulo-titulo" onclick="toggleModulo(this)">
+                        <span><i class="fas fa-cube me-2" style="color: var(--cisco-green)"></i>Módulo 3</span>
+                        <i class="fas fa-chevron-right seta-mobile"></i>
+                      </div>
+                      <ul class="modulo-lista">
+                        <li>
+                          <a href="/pages/modulo_3.html"><i class="fas fa-chevron-right"></i>3.0 Introdução</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_3.html"><i class="fas fa-chevron-right"></i>3.1 Cabeçalho IP</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_3.html"><i class="fas fa-chevron-right"></i>3.2 Vulnerabilidades IP</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_3.html"><i class="fas fa-chevron-right"></i>3.3 TCP/UDP</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_3.html"><i class="fas fa-chevron-right"></i>3.4 Resumo</a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- Módulo 4 -->
+                    <div class="modulo-coluna" data-modulo="4">
+                      <div class="modulo-titulo" onclick="toggleModulo(this)">
+                        <span><i class="fas fa-cube me-2" style="color: var(--cisco-green)"></i>Módulo 4</span>
+                        <i class="fas fa-chevron-right seta-mobile"></i>
+                      </div>
+                      <ul class="modulo-lista">
+                        <li>
+                          <a href="/pages/modulo_4.html"><i class="fas fa-chevron-right"></i>4.0 Introdução</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_4.html"><i class="fas fa-chevron-right"></i>4.1 Serviços IP</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_4.html"><i class="fas fa-chevron-right"></i>4.2 Serviços Corporativos</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_4.html"><i class="fas fa-chevron-right"></i>4.3 Mitigação</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_4.html"><i class="fas fa-chevron-right"></i>4.4 Resumo</a>
+                        </li>
+                        <li>
+                          <a href="/pages/modulo_4.html"><i class="fas fa-chevron-right"></i>Casos Reais</a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- Módulo 5 -->
+                    <div class="modulo-coluna" data-modulo="5">
+                      <div class="modulo-titulo" onclick="toggleModulo(this)">
+                        <span><i class="fas fa-cube me-2" style="color: var(--cisco-green)"></i>Módulo 5</span>
+                        <i class="fas fa-chevron-right seta-mobile"></i>
+                      </div>
+                      <ul class="modulo-lista">
+                        <li>
+                          <a href="#"><i class="fas fa-chevron-right"></i>5.0 Introdução</a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="fas fa-chevron-right"></i>5.1 Conceitos</a>
+                        </li>
+                        <li>
+                          <a href="#"><i class="fas fa-chevron-right"></i>5.2 Configurações</a>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <!-- CONTINUA PARA MÓDULOS 6-27... -->
+                    <!-- COLUNA 2: Módulos 6-10 -->
+                    <!-- COLUNA 3: Módulos 11-15 -->
+                    <!-- COLUNA 4: Módulos 16-20 -->
+                    <!-- COLUNA 5: Módulos 21-27 -->
+
+                    <!-- Exemplo de continuação (mais 4 colunas seriam adicionadas aqui) -->
+                  </div>
+
+                  <!-- Barra de busca rápida no mega menu -->
+                  <div class="mt-3 pt-3" style="border-top: 1px solid var(--border-primary)">
+                    <!-- <div class="row g-2 align-items-center">
+                      <div class="col-md-8">
+                        <input
+                          type="text"
+                          id="megaMenuSearch"
+                          class="form-control form-control-sm bg-dark text-white border-secondary"
+                          placeholder="🔍 Buscar em todos os módulos (ex: ARP, DNS, SQL, XSS...)"
+                        />
+                      </div>
+                      <div class="col-md-4">
+                        <span class="badge-cisco">27 módulos</span>
+                        <span class="badge-cisco ms-2">+200 tópicos</span>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
             </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-white px-3"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                style="font-weight: 500"
-              >
-                <i
-                  class="fas fa-cube me-1"
-                  style="color: var(--cisco-green)"
-                ></i>
-                Módulo 2
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                style="
-                  background-color: #1a1a1a;
-                  border: 1px solid #333;
-                  max-height: 400px;
-                  overflow-y: auto;
-                "
-              >
-                <!-- INTRODUÇÃO -->
-                <li>
-                  <h6 class="dropdown-header" style="color: #00ff00">
-                    🔰 INTRODUÇÃO
-                  </h6>
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.0.1 Por que fazer?</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.0.2 O que vou aprender</a
-                  >
-                </li>
-
-                <!-- SITUAÇÃO ATUAL -->
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-                <li>
-                  <h6 class="dropdown-header" style="color: #00ff00">
-                    🌐 SITUAÇÃO ATUAL
-                  </h6>
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.1.2 Redes são alvos</a
-                  >
-                </li>
-
-                <!-- ATORES DE AMEAÇA -->
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-                <li>
-                  <h6 class="dropdown-header" style="color: #00ff00">
-                    🎯 ATORES DE AMEAÇA
-                  </h6>
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.2.2 Hacker vs Ator</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >White, Gray e Black Hat</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.2.3 Evolução dos Atores</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.2.4 Cibercriminosos</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.2.5 Faleiras de Segurança</a
-                  >
-                </li>
-
-                <!-- INDICADORES E COMPARTILHAMENTO -->
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-                <li>
-                  <h6 class="dropdown-header" style="color: #00ff00">
-                    📊 INDICADORES
-                  </h6>
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.2.6 IOC e IOA</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="/pages/modulo_2.html"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.2.7 Compartilhamento (CISA)</a
-                  >
-                </li>
-
-                <!-- RESUMO E CASOS -->
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-                <li>
-                  <h6 class="dropdown-header" style="color: #00ff00">
-                    📚 CONCLUSÃO
-                  </h6>
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#resumo-modulo"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >2.3 Resumo e Casos de Uso</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#termos-seguranca"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >Glossário Completo</a
-                  >
-                </li>
-                <li>
-                  <a
-                    class="dropdown-item"
-                    href="#laboratorios"
-                    style="color: #e0e0e0"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem; color: #00ff00"
-                    ></i
-                    >Laboratórios</a
-                  >
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-white px-3"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-              >
-                <i
-                  class="fas fa-shield-halved me-1"
-                  style="color: var(--cisco-green)"
-                ></i>
-                Módulo 3
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                style="
-                  background-color: #1a1a1a;
-                  border: 1px solid #333;
-                  max-height: 400px;
-                  overflow-y: auto;
-                "
-              >
-                <!-- ========== INTRODUÇÃO ========== -->
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    <i class="fas fa-flag me-2"></i>INTRODUÇÃO
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem"
-                    ></i
-                    >3.0.1 Introdução</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#modulo3-aprendizado"
-                    ><i
-                      class="fas fa-chevron-right me-2"
-                      style="font-size: 0.7rem"
-                    ></i
-                    >3.0.2 O que aprender</a
-                  >
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-
-                <!-- ========== CABEÇALHO IP ========== -->
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    <i class="fas fa-network-wired me-2"></i>CABEÇALHO IP
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.htm"
-                    ><i class="fas fa-globe me-2"></i>3.1.1 IPv4 e IPv6</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#cabecalho-ipv4"
-                    ><i class="fas fa-code me-2"></i>3.1.2 Cabeçalho IPv4</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-code me-2"></i>3.1.4 Cabeçalho IPv6</a
-                  >
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-
-                <!-- ========== VULNERABILIDADES IP ========== -->
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    <i class="fas fa-exclamation-triangle me-2"></i
-                    >VULNERABILIDADES IP
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-exclamation-triangle me-2"></i>3.2.1
-                    Vulnerabilidades de IP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-bolt me-2"></i>3.2.2 Ataques ICMP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-ban me-2"></i>3.2.3 Ataques DoS</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-network-wired me-2"></i>3.2.4 Ataques
-                    DDoS</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-mask me-2"></i>3.2.5 Falsificação de
-                    Endereços</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-user-secret me-2"></i>3.2.6 Homem no Meio
-                    (MiTM)</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-link-slash me-2"></i>3.2.7 Sequestro de
-                    Sessão</a
-                  >
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-
-                <!-- ========== VULNERABILIDADES TCP/UDP ========== -->
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    <i class="fas fa-cubes me-2"></i>VULNERABILIDADES TCP/UDP
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-shield-halved me-2"></i>3.3 Visão Geral</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-code me-2"></i>3.3.1 Cabeçalho TCP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-handshake me-2"></i>3.3.2 Serviços TCP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-skull-crossbones me-2"></i>3.3.3 Ataques
-                    TCP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-bolt me-2"></i>3.3.4 Cabeçalho UDP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-water me-2"></i>3.3.5 Ataques UDP</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-table me-2"></i>3.3.6 Tabela
-                    Comparativa</a
-                  >
-                </li>
-
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-
-                <!-- ========== RESUMO DO MÓDULO ========== -->
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">
-                    <i class="fas fa-book-open me-2"></i>ENCERRAMENTO
-                  </h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i class="fas fa-layer-group me-2"></i>3.4 Resumo do
-                    Módulo</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/pages/modulo_3.html"
-                    ><i
-                      class="fas fa-question-circle me-2"
-                      style="color: var(--info)"
-                    ></i
-                    >Quiz: Verifique sua compreensão</a
-                  >
-                </li>
-              </ul>
-            </li>
-
             <!-- Links Diretos -->
             <li class="nav-item">
               <a class="nav-link text-white px-3" href="/pages/modulo_3.html">
-                <i
-                  class="fas fa-terminal me-1"
-                  style="color: var(--cisco-green)"
-                ></i>
+                <i class="fas fa-terminal me-1" style="color: var(--cisco-green)"></i>
                 Lab Status
               </a>
             </li>
 
             <!-- Menu de Seções (dropdown com todas as seções) -->
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle px-3"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                style="color: var(--cisco-green)"
-              >
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
                 <i class="fas fa-list-ul me-1"></i> Índice Rápido
               </a>
               <ul
                 class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
-                style="
-                  background-color: #1a1a1a;
-                  border: 1px solid #333;
-                  min-width: 280px;
-                  max-height: 450px;
-                  overflow-y: auto;
-                "
+                style="background-color: #1a1a1a; border: 1px solid #333; min-width: 280px; max-height: 450px; overflow-y: auto"
               >
                 <!-- Busca dentro do dropdown -->
                 <li>
@@ -621,68 +239,49 @@
                   </div>
                 </li>
                 <li>
-                  <hr
-                    class="dropdown-divider my-1"
-                    style="border-color: #333"
-                  />
+                  <hr class="dropdown-divider my-1" style="border-color: #333" />
                 </li>
 
                 <!-- Lista completa de seções -->
                 <div id="sectionList">
                   <li>
                     <a class="dropdown-item" href="#modulo-intro"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.0.1</span
-                      >Introdução</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.0.1</span>Introdução</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#modulo-aprendizado"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.0.2</span
-                      >O que aprender</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.0.2</span>O que aprender</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#dominios-ameaca"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.1.1</span
-                      >Domínios de Ameaça</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.1.1</span>Domínios de Ameaça</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#tipos-ameacas"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.1.2</span
-                      >Tipos de Ameaças</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.1.2</span>Tipos de Ameaças</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#origem-ameacas"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.1.5</span
-                      >Origem das Ameaças</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.1.5</span>Origem das Ameaças</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#vulnerabilidades-usuario"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.1.8</span
-                      >Vulnerabilidades</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.1.8</span>Vulnerabilidades</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#termos-avancados"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.2.1</span
-                      >Glossário Técnico</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.2.1</span>Glossário Técnico</a
                     >
                   </li>
                   <li>
                     <a class="dropdown-item" href="#malware-avancado"
-                      ><span class="badge-cisco me-2" style="font-size: 0.6rem"
-                        >1.2.2</span
-                      >Malware & APTs</a
+                      ><span class="badge-cisco me-2" style="font-size: 0.6rem">1.2.2</span>Malware & APTs</a
                     >
                   </li>
                 </div>
@@ -694,11 +293,7 @@
     </nav>
 
     <div class="container py-5">
-      <section
-        id="modulo-intro"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="modulo-intro" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.0.1 Por que devo fazer este módulo?
@@ -706,28 +301,16 @@
         <div class="content-card">
           <p class="mb-3">
             Bem-vindo ao início da jornada. Este módulo explora a gama de
-            <strong style="color: white">riscos e ameaças</strong> constantes no
-            mundo digital.
+            <strong style="color: white">riscos e ameaças</strong> constantes no mundo digital.
           </p>
 
           <div class="d-flex align-items-start text-muted mb-4">
-            <i
-              class="fas fa-user-secret icon-box mt-1"
-              style="font-size: 1.1rem; flex-shrink: 0"
-            ></i>
-            <p class="m-0 ps-1">
-              Criminosos buscam vulnerabilidades para roubar dados e ativos
-              financeiros.
-            </p>
+            <i class="fas fa-user-secret icon-box mt-1" style="font-size: 1.1rem; flex-shrink: 0"></i>
+            <p class="m-0 ps-1">Criminosos buscam vulnerabilidades para roubar dados e ativos financeiros.</p>
           </div>
 
-          <div
-            class="d-flex flex-wrap gap-2 pt-2 border-top"
-            style="border-color: #333 !important"
-          >
-            <div
-              class="d-flex flex-wrap justify-content-center justify-content-md-start gap-2"
-            >
+          <div class="d-flex flex-wrap gap-2 pt-2 border-top" style="border-color: #333 !important">
+            <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-2">
               <span class="badge-cisco">Ameaça</span>
               <span class="badge-cisco">Vulnerabilidade</span>
               <span class="badge-cisco">Efeito do Ataque</span>
@@ -737,44 +320,29 @@
       </section>
 
       <section id="modulo-aprendizado" class="reveal">
-        <h2 class="cisco-title">
-          <i class="fas fa-graduation-cap icon-box"></i>1.0.2 O que vou
-          aprender?
-        </h2>
+        <h2 class="cisco-title"><i class="fas fa-graduation-cap icon-box"></i>1.0.2 O que vou aprender?</h2>
         <div class="row mb-4">
           <div class="col-md-3">
             <div class="content-card text-center">
-              <i
-                class="fas fa-video mb-2"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-video mb-2" style="color: var(--cisco-green)"></i>
               <h6>4 Vídeos</h6>
             </div>
           </div>
           <div class="col-md-3">
             <div class="content-card text-center">
-              <i
-                class="fas fa-flask mb-2"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-flask mb-2" style="color: var(--cisco-green)"></i>
               <h6>1 Laboratório</h6>
             </div>
           </div>
           <div class="col-md-3">
             <div class="content-card text-center">
-              <i
-                class="fas fa-network-wired mb-2"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-network-wired mb-2" style="color: var(--cisco-green)"></i>
               <h6>Packet Tracer</h6>
             </div>
           </div>
           <div class="col-md-3">
             <div class="content-card text-center">
-              <i
-                class="fas fa-list-check mb-2"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-list-check mb-2" style="color: var(--cisco-green)"></i>
               <h6>Questionário</h6>
             </div>
           </div>
@@ -791,10 +359,7 @@
             <tbody>
               <tr>
                 <td>Ameaças comuns</td>
-                <td>
-                  Explicar ameaças, vulnerabilidades e ataques em vários
-                  domínios.
-                </td>
+                <td>Explicar ameaças, vulnerabilidades e ataques em vários domínios.</td>
               </tr>
               <tr>
                 <td>Disfarce</td>
@@ -816,67 +381,34 @@
           </table>
         </div>
       </section>
-      <section
-        id="dominios-ameaca"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="dominios-ameaca" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.1 Domínios de Ameaça
         </h2>
         <div class="content-card">
           <p>
-            Um <strong>"domínio de ameaça"</strong> é uma área de controle ou
-            proteção que invasores exploram para obter acesso a um sistema. É
-            fundamental que empresas entendam quais vulnerabilidades existem em
-            seus domínios para aplicar segurança robusta.
+            Um <strong>"domínio de ameaça"</strong> é uma área de controle ou proteção que invasores exploram para obter acesso a um
+            sistema. É fundamental que empresas entendam quais vulnerabilidades existem em seus domínios para aplicar segurança robusta.
           </p>
 
           <div class="mt-4">
-            <h6>
-              <i class="fas fa-search-location icon-box"></i>Vetores de
-              Exploração:
-            </h6>
+            <h6><i class="fas fa-search-location icon-box"></i>Vetores de Exploração:</h6>
             <div class="row mt-3">
               <div class="col-md-6">
                 <ul class="list-unstyled">
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i>Acesso
-                    físico a sistemas e redes
-                  </li>
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i>Redes
-                    sem fio além dos limites físicos
-                  </li>
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i
-                    >Bluetooth e dispositivos NFC
-                  </li>
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i>Anexos
-                    de e-mail maliciosos
-                  </li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Acesso físico a sistemas e redes</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Redes sem fio além dos limites físicos</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Bluetooth e dispositivos NFC</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Anexos de e-mail maliciosos</li>
                 </ul>
               </div>
               <div class="col-md-6">
                 <ul class="list-unstyled">
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i>Cadeia
-                    de fornecimento
-                  </li>
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i>Contas
-                    de mídia social
-                  </li>
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i>Mídia
-                    removível (pendrives)
-                  </li>
-                  <li>
-                    <i class="fas fa-check-circle text-success me-2"></i
-                    >Aplicativos baseados em nuvem
-                  </li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Cadeia de fornecimento</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Contas de mídia social</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Mídia removível (pendrives)</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i>Aplicativos baseados em nuvem</li>
                 </ul>
               </div>
             </div>
@@ -884,21 +416,15 @@
         </div>
       </section>
 
-      <section
-        id="tipos-ameacas"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="tipos-ameacas" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.2 Tipos de Ameaças Cibernéticas
         </h2>
         <div class="content-card">
           <p class="mb-4">
-            As ameaças digitais são classificadas em categorias para que
-            empresas possam avaliar a
-            <strong>probabilidade de ocorrência</strong> e o
-            <strong>impacto monetário</strong> sobre os ativos.
+            As ameaças digitais são classificadas em categorias para que empresas possam avaliar a
+            <strong>probabilidade de ocorrência</strong> e o <strong>impacto monetário</strong> sobre os ativos.
           </p>
 
           <div class="table-responsive">
@@ -913,48 +439,42 @@
                 <tr>
                   <td><span class="badge-cisco">Ataques de Software</span></td>
                   <td>
-                    <strong>Malware e DoS:</strong> Infiltração de vírus, worms
-                    ou ataques de negação de serviço que visam interromper a
+                    <strong>Malware e DoS:</strong> Infiltração de vírus, worms ou ataques de negação de serviço que visam interromper a
                     continuidade do negócio.
                   </td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Erros de Software</span></td>
                   <td>
-                    <strong>Vulnerabilidades de Código:</strong> Bugs críticos,
-                    sistemas offline por falha de lógica e exploração de
+                    <strong>Vulnerabilidades de Código:</strong> Bugs críticos, sistemas offline por falha de lógica e exploração de
                     <em>Cross-site Scripting (XSS)</em>.
                   </td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Sabotagem</span></td>
                   <td>
-                    <strong>Dano Deliberado:</strong> Penetração não autorizada
-                    em bancos de dados para vazamento de informações ou
+                    <strong>Dano Deliberado:</strong> Penetração não autorizada em bancos de dados para vazamento de informações ou
                     <em>Web Defacement</em> (desfiguração do site oficial).
                   </td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Erro Humano</span></td>
                   <td>
-                    <strong>Falha Operacional:</strong> Entrada de dados
-                    incorreta, exclusão acidental de arquivos críticos ou
-                    configuração falha de regras de Firewall.
+                    <strong>Falha Operacional:</strong> Entrada de dados incorreta, exclusão acidental de arquivos críticos ou configuração
+                    falha de regras de Firewall.
                   </td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Roubo</span></td>
                   <td>
-                    <strong>Perda de Ativos Físicos:</strong> Furto de laptops,
-                    servidores ou dispositivos móveis em áreas com controle de
+                    <strong>Perda de Ativos Físicos:</strong> Furto de laptops, servidores ou dispositivos móveis em áreas com controle de
                     acesso ineficiente.
                   </td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Falhas de Hardware</span></td>
                   <td>
-                    <strong>Degradação Física:</strong> Travamento de HDs,
-                    falhas em fontes de alimentação ou superaquecimento de
+                    <strong>Degradação Física:</strong> Travamento de HDs, falhas em fontes de alimentação ou superaquecimento de
                     componentes de rede.
                   </td>
                 </tr>
@@ -963,17 +483,15 @@
                     <span class="badge-cisco">Interrupção Utilitária</span>
                   </td>
                   <td>
-                    <strong>Infraestrutura:</strong> Quedas de energia
-                    prolongadas, picos de tensão ou danos causados por falhas em
-                    sistemas de <em>sprinklers</em>.
+                    <strong>Infraestrutura:</strong> Quedas de energia prolongadas, picos de tensão ou danos causados por falhas em sistemas
+                    de <em>sprinklers</em>.
                   </td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Desastres Naturais</span></td>
                   <td>
-                    <strong>Força Maior:</strong> Eventos como tempestades
-                    severas, inundações, incêndios ou terremotos que destroem o
-                    Data Center físico.
+                    <strong>Força Maior:</strong> Eventos como tempestades severas, inundações, incêndios ou terremotos que destroem o Data
+                    Center físico.
                   </td>
                 </tr>
               </tbody>
@@ -981,11 +499,7 @@
           </div>
         </div>
       </section>
-      <section
-        id="origem-ameacas"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="origem-ameacas" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.5 a 1.1.7 Origem e Alcance das Ameaças
@@ -993,47 +507,34 @@
         <div class="row">
           <div class="col-md-6 mb-4">
             <div class="content-card h-100">
-              <h5>
-                <i class="fas fa-user-shield icon-box"></i>Ameaças Internas
-              </h5>
+              <h5><i class="fas fa-user-shield icon-box"></i>Ameaças Internas</h5>
               <p>
-                Funcionários ou parceiros têm o potencial de causar danos
-                maiores que ameaças externas. Isso ocorre pelo acesso direto às
-                instalações, infraestrutura e conhecimento interno da rede e
-                contramedidas.
+                Funcionários ou parceiros têm o potencial de causar danos maiores que ameaças externas. Isso ocorre pelo acesso direto às
+                instalações, infraestrutura e conhecimento interno da rede e contramedidas.
               </p>
             </div>
           </div>
           <div class="col-md-6 mb-4">
             <div class="content-card h-100">
-              <h5>
-                <i class="fas fa-cloud-upload-alt icon-box"></i>Propagação
-                Digital
-              </h5>
+              <h5><i class="fas fa-cloud-upload-alt icon-box"></i>Propagação Digital</h5>
               <p>
-                Ameaças podem se espalhar por usuários, dispositivos conectados,
-                serviços em nuvem pública/privada e até ataques físicos se as
-                medidas de segurança falharem.
+                Ameaças podem se espalhar por usuários, dispositivos conectados, serviços em nuvem pública/privada e até ataques físicos se
+                as medidas de segurança falharem.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section
-        id="vulnerabilidades-usuario"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="vulnerabilidades-usuario" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.8 Vulnerabilidades do Fator Humano
         </h2>
         <div class="content-card">
           <p class="mb-4 text-warning">
-            <i class="fas fa-exclamation-triangle me-2"></i>Lembre-se: Nenhuma
-            solução técnica é mais segura do que os processos das pessoas que
-            usam os sistemas.
+            <i class="fas fa-exclamation-triangle me-2"></i>Lembre-se: Nenhuma solução técnica é mais segura do que os processos das pessoas
+            que usam os sistemas.
           </p>
 
           <div class="table-responsive">
@@ -1047,109 +548,65 @@
               <tbody>
                 <tr>
                   <td><span class="badge-cisco">Políticas Incorretas</span></td>
-                  <td>
-                    Usuários devem entender as políticas e as consequências da
-                    não conformidade.
-                  </td>
+                  <td>Usuários devem entender as políticas e as consequências da não conformidade.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Roubo de Dados</span></td>
-                  <td>
-                    Representa ameaça financeira e danos à reputação, além de
-                    responsabilidade legal.
-                  </td>
+                  <td>Representa ameaça financeira e danos à reputação, além de responsabilidade legal.</td>
                 </tr>
                 <tr>
                   <td>
                     <span class="badge-cisco">Mídias não Autorizadas</span>
                   </td>
-                  <td>
-                    Infeções por downloads, e-mails ou uso de USBs e discos
-                    externos não autorizados.
-                  </td>
+                  <td>Infeções por downloads, e-mails ou uso de USBs e discos externos não autorizados.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">VPNs não Autorizadas</span></td>
-                  <td>
-                    Podem ocultar roubo de informações pois a criptografia
-                    impede o rastreio pelo administrador.
-                  </td>
+                  <td>Podem ocultar roubo de informações pois a criptografia impede o rastreio pelo administrador.</td>
                 </tr>
                 <tr>
                   <td>
                     <span class="badge-cisco">Sites não Autorizados</span>
                   </td>
-                  <td>
-                    Risco de scripts maliciosos ou adware que podem assumir o
-                    controle do dispositivo.
-                  </td>
+                  <td>Risco de scripts maliciosos ou adware que podem assumir o controle do dispositivo.</td>
                 </tr>
                 <tr>
                   <td>
                     <span class="badge-cisco">Destruição de Sistemas</span>
                   </td>
-                  <td>
-                    Exclusão de dados ou sabotagem deliberada por ativistas ou
-                    funcionários descontentes.
-                  </td>
+                  <td>Exclusão de dados ou sabotagem deliberada por ativistas ou funcionários descontentes.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </section>
-      <section
-        id="dominios-ameaca"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="dominios-ameaca" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.1 Domínios de Ameaça
         </h2>
         <div class="content-card">
           <p>
-            Um <strong>"domínio de ameaça"</strong> é considerado como uma área
-            de controle, autoridade ou proteção que os invasores podem explorar
-            para obter acesso a um sistema.
+            Um <strong>"domínio de ameaça"</strong> é considerado como uma área de controle, autoridade ou proteção que os invasores podem
+            explorar para obter acesso a um sistema.
           </p>
 
           <div class="mt-4">
-            <h6>
-              <i class="fas fa-network-wired icon-box"></i>Os invasores podem
-              explorar sistemas com:
-            </h6>
+            <h6><i class="fas fa-network-wired icon-box"></i>Os invasores podem explorar sistemas com:</h6>
             <div class="row g-3 mt-2">
               <div class="col-md-6">
                 <ul class="list-unstyled">
-                  <li class="mb-2">
-                    <i class="fas fa-microchip text-success me-2"></i>Acesso
-                    direto e físico a sistemas
-                  </li>
-                  <li class="mb-2">
-                    <i class="fas fa-wifi text-success me-2"></i>Redes sem fio
-                    além dos limites
-                  </li>
-                  <li class="mb-2">
-                    <i class="fas fa-envelope-open-text text-success me-2"></i
-                    >Anexos de e-mail maliciosos
-                  </li>
+                  <li class="mb-2"><i class="fas fa-microchip text-success me-2"></i>Acesso direto e físico a sistemas</li>
+                  <li class="mb-2"><i class="fas fa-wifi text-success me-2"></i>Redes sem fio além dos limites</li>
+                  <li class="mb-2"><i class="fas fa-envelope-open-text text-success me-2"></i>Anexos de e-mail maliciosos</li>
                 </ul>
               </div>
               <div class="col-md-6">
                 <ul class="list-unstyled">
-                  <li class="mb-2">
-                    <i class="fas fa-share-alt text-success me-2"></i>Contas de
-                    mídia social
-                  </li>
-                  <li class="mb-2">
-                    <i class="fas fa-hdd text-success me-2"></i>Mídia removível
-                    (pendrives)
-                  </li>
-                  <li class="mb-2">
-                    <i class="fas fa-cloud text-success me-2"></i>Aplicativos
-                    baseados em nuvem
-                  </li>
+                  <li class="mb-2"><i class="fas fa-share-alt text-success me-2"></i>Contas de mídia social</li>
+                  <li class="mb-2"><i class="fas fa-hdd text-success me-2"></i>Mídia removível (pendrives)</li>
+                  <li class="mb-2"><i class="fas fa-cloud text-success me-2"></i>Aplicativos baseados em nuvem</li>
                 </ul>
               </div>
             </div>
@@ -1157,19 +614,14 @@
         </div>
       </section>
 
-      <section
-        id="tipos-detalhados"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="tipos-detalhados" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.2 Categorias de Ameaças Digitais
         </h2>
         <div class="content-card">
           <p class="mb-4">
-            As ameaças são classificadas para permitir que empresas avaliem a
-            probabilidade de ocorrência e o impacto monetário.
+            As ameaças são classificadas para permitir que empresas avaliem a probabilidade de ocorrência e o impacto monetário.
           </p>
 
           <div class="table-responsive">
@@ -1183,101 +635,64 @@
               <tbody>
                 <tr>
                   <td><span class="badge-cisco">Ataques de Software</span></td>
-                  <td>
-                    Ataque de negação de serviço (DoS) e vírus de computador.
-                  </td>
+                  <td>Ataque de negação de serviço (DoS) e vírus de computador.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Erro Humano</span></td>
-                  <td>
-                    Erros de entrada de dados e configuração incorreta do
-                    firewall.
-                  </td>
+                  <td>Erros de entrada de dados e configuração incorreta do firewall.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Sabotagem</span></td>
-                  <td>
-                    Comprometimento de banco de dados e desfiguração de sites.
-                  </td>
+                  <td>Comprometimento de banco de dados e desfiguração de sites.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Interrupção</span></td>
-                  <td>
-                    Cortes de energia elétrica e danos por falhas de sprinklers.
-                  </td>
+                  <td>Cortes de energia elétrica e danos por falhas de sprinklers.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">Desastres Naturais</span></td>
-                  <td>
-                    Tempestades severas, terremotos, inundações e incêndios.
-                  </td>
+                  <td>Tempestades severas, terremotos, inundações e incêndios.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </section>
-      <section
-        id="origem-ameacas"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="origem-ameacas" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.5 a 1.1.7 Ameaças Internas e Externas
         </h2>
         <div class="row">
           <div class="col-md-6 mb-4">
-            <div
-              class="content-card h-100 border-start border-danger"
-              style="border-width: 4px !important"
-            >
-              <h5>
-                <i class="fas fa-users-slash icon-box"></i>Ameaças Internas
-              </h5>
+            <div class="content-card h-100 border-start border-danger" style="border-width: 4px !important">
+              <h5><i class="fas fa-users-slash icon-box"></i>Ameaças Internas</h5>
               <p>
-                Podem causar danos maiores do que as externas. Funcionários ou
-                parceiros têm acesso direto à infraestrutura, conhecimento da
+                Podem causar danos maiores do que as externas. Funcionários ou parceiros têm acesso direto à infraestrutura, conhecimento da
                 rede e das contramedidas de segurança.
               </p>
               <span class="badge-cisco">Acesso Direto</span>
             </div>
           </div>
           <div class="col-md-6 mb-4">
-            <div
-              class="content-card h-100 border-start border-warning"
-              style="border-width: 4px !important"
-            >
-              <h5>
-                <i class="fas fa-globe-americas icon-box"></i>Ameaças Externas
-              </h5>
-              <p>
-                Invasores exploram vulnerabilidades em dispositivos voltados
-                para a rede ou usam engenharia social para obter acesso.
-              </p>
+            <div class="content-card h-100 border-start border-warning" style="border-width: 4px !important">
+              <h5><i class="fas fa-globe-americas icon-box"></i>Ameaças Externas</h5>
+              <p>Invasores exploram vulnerabilidades em dispositivos voltados para a rede ou usam engenharia social para obter acesso.</p>
               <span class="badge-cisco">Engenharia Social</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section
-        id="vulnerabilidades-dispositivos"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="vulnerabilidades-dispositivos" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.8 e 1.1.9 Vulnerabilidades do Usuário e Dispositivos
         </h2>
         <div class="content-card">
-          <blockquote
-            class="blockquote mb-4"
-            style="border-left: 5px solid #444; padding-left: 15px"
-          >
+          <blockquote class="blockquote mb-4" style="border-left: 5px solid #444; padding-left: 15px">
             <p class="mb-0 text-muted" style="font-style: italic">
-              "Não existem soluções técnicas mais seguras do que os processos e
-              comportamentos das pessoas que as utilizam."
+              "Não existem soluções técnicas mais seguras do que os processos e comportamentos das pessoas que as utilizam."
             </p>
           </blockquote>
 
@@ -1294,46 +709,30 @@
                   <td>
                     <span class="badge-cisco">Dispositivos Sem Supervisão</span>
                   </td>
-                  <td>
-                    Dispositivos deixados sozinhos podem ser acessados
-                    fisicamente por terceiros não autorizados.
-                  </td>
+                  <td>Dispositivos deixados sozinhos podem ser acessados fisicamente por terceiros não autorizados.</td>
                 </tr>
                 <tr>
                   <td>
                     <span class="badge-cisco">Mídias Não Autorizadas</span>
                   </td>
-                  <td>
-                    Infecções por meio de downloads, e-mails ou uso de mídias
-                    externas (USB) não verificadas.
-                  </td>
+                  <td>Infecções por meio de downloads, e-mails ou uso de mídias externas (USB) não verificadas.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">VPNs Não Autorizadas</span></td>
-                  <td>
-                    Podem ser usadas para ocultar o roubo de informações, pois a
-                    criptografia impede o rastreio.
-                  </td>
+                  <td>Podem ser usadas para ocultar o roubo de informações, pois a criptografia impede o rastreio.</td>
                 </tr>
                 <tr>
                   <td>
                     <span class="badge-cisco">Sites Não Autorizados</span>
                   </td>
-                  <td>
-                    Scripts maliciosos ou adware que podem assumir o controle do
-                    dispositivo do usuário.
-                  </td>
+                  <td>Scripts maliciosos ou adware que podem assumir o controle do dispositivo do usuário.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </section>
-      <section
-        id="vulnerabilidades-comportamento"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="vulnerabilidades-comportamento" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.1.8 e 1.1.9 O Fator Humano e Dispositivos
@@ -1341,14 +740,12 @@
         <div class="content-card">
           <div class="alert-cisco mb-4">
             <i class="fas fa-brain me-2"></i>
-            <strong>Insight de Segurança:</strong> Não existem soluções técnicas
-            mais seguras do que os processos e comportamentos das pessoas que as
-            utilizam.
+            <strong>Insight de Segurança:</strong> Não existem soluções técnicas mais seguras do que os processos e comportamentos das
+            pessoas que as utilizam.
           </div>
 
           <p class="mb-4">
-            As vulnerabilidades abaixo mostram como a falta de política ou
-            atenção do usuário pode comprometer toda a rede:
+            As vulnerabilidades abaixo mostram como a falta de política ou atenção do usuário pode comprometer toda a rede:
           </p>
 
           <div class="table-responsive">
@@ -1364,77 +761,50 @@
                   <td>
                     <span class="badge-cisco">Dispositivos Sem Supervisão</span>
                   </td>
-                  <td>
-                    Aparelhos deixados sozinhos podem ser acessados fisicamente
-                    por terceiros mal-intencionados.
-                  </td>
+                  <td>Aparelhos deixados sozinhos podem ser acessados fisicamente por terceiros mal-intencionados.</td>
                 </tr>
                 <tr>
                   <td>
                     <span class="badge-cisco">Mídias não Autorizadas</span>
                   </td>
-                  <td>
-                    Infecções via downloads, e-mails ou uso de USBs e unidades
-                    externas não verificadas.
-                  </td>
+                  <td>Infecções via downloads, e-mails ou uso de USBs e unidades externas não verificadas.</td>
                 </tr>
                 <tr>
                   <td><span class="badge-cisco">VPNs não Autorizadas</span></td>
-                  <td>
-                    Criptografia que oculta o tráfego de saída, impedindo que
-                    administradores rastreiem roubo de dados.
-                  </td>
+                  <td>Criptografia que oculta o tráfego de saída, impedindo que administradores rastreiem roubo de dados.</td>
                 </tr>
                 <tr>
                   <td>
                     <span class="badge-cisco">Destruição de Sistemas</span>
                   </td>
-                  <td>
-                    Sabotagem ou exclusão deliberada de dados por ativistas ou
-                    funcionários descontentes.
-                  </td>
+                  <td>Sabotagem ou exclusão deliberada de dados por ativistas ou funcionários descontentes.</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
       </section>
-      <section
-        id="termos-avancados"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="termos-avancados" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.2.1 Glossário Técnico e Casos Reais
         </h2>
         <div class="content-card">
-          <p class="mb-4 text-muted">
-            Abaixo, detalhamos as ameaças mais sofisticadas do cenário atual,
-            unindo teoria e prática forense.
-          </p>
+          <p class="mb-4 text-muted">Abaixo, detalhamos as ameaças mais sofisticadas do cenário atual, unindo teoria e prática forense.</p>
 
           <div class="mb-5">
             <div class="d-flex align-items-center mb-3">
               <span class="badge-cisco me-3">RAT</span>
-              <h5 class="m-0" style="color: var(--cisco-green)">
-                Remote Access Trojan
-              </h5>
+              <h5 class="m-0" style="color: var(--cisco-green)">Remote Access Trojan</h5>
             </div>
             <p>
-              <strong>O que é:</strong> Um malware que concede ao invasor
-              controle total (administrativo) sobre o sistema infectado, como se
+              <strong>O que é:</strong> Um malware que concede ao invasor controle total (administrativo) sobre o sistema infectado, como se
               ele estivesse sentado na frente do seu PC.
             </p>
-            <div
-              class="p-3 border-start border-success"
-              style="background: #252525; border-radius: 0 8px 8px 0"
-            >
+            <div class="p-3 border-start border-success" style="background: #252525; border-radius: 0 8px 8px 0">
               <strong><i class="fas fa-history me-2"></i>Caso de Uso:</strong>
-              Em 2015, a grade de energia da Ucrânia foi desligada por
-              atacantes. <br /><small class="text-white-50"
-                >Como agiu: O RAT permitiu que os hackers movessem o cursor do
-                mouse dos operadores legítimos em tempo real, fechando
+              Em 2015, a grade de energia da Ucrânia foi desligada por atacantes. <br /><small class="text-white-50"
+                >Como agiu: O RAT permitiu que os hackers movessem o cursor do mouse dos operadores legítimos em tempo real, fechando
                 disjuntores e deixando 230 mil pessoas no escuro.</small
               >
             </div>
@@ -1443,26 +813,17 @@
           <div class="mb-5">
             <div class="d-flex align-items-center mb-3">
               <span class="badge-cisco me-3">APT</span>
-              <h5 class="m-0" style="color: var(--cisco-green)">
-                Advanced Persistent Threat
-              </h5>
+              <h5 class="m-0" style="color: var(--cisco-green)">Advanced Persistent Threat</h5>
             </div>
             <p>
-              <strong>O que é:</strong> Ataques furtivos e contínuos, geralmente
-              orquestrados por estados-nação ou grupos organizados, com o
+              <strong>O que é:</strong> Ataques furtivos e contínuos, geralmente orquestrados por estados-nação ou grupos organizados, com o
               objetivo de espionagem a longo prazo, não apenas roubo rápido.
             </p>
-            <div
-              class="p-3 border-start border-success"
-              style="background: #252525; border-radius: 0 8px 8px 0"
-            >
-              <strong><i class="fas fa-history me-2"></i>Caso de Uso:</strong> O
-              ataque <em>Stuxnet</em>. <br /><small class="text-white-50"
-                >Como agiu: O código ficou "dormindo" nos sistemas iranianos por
-                meses, infectando apenas controladores específicos. Ele alterava
-                a velocidade de centrífugas nucleares para destruí-las
-                fisicamente enquanto os painéis de controle mostravam que tudo
-                estava normal.</small
+            <div class="p-3 border-start border-success" style="background: #252525; border-radius: 0 8px 8px 0">
+              <strong><i class="fas fa-history me-2"></i>Caso de Uso:</strong> O ataque <em>Stuxnet</em>. <br /><small class="text-white-50"
+                >Como agiu: O código ficou "dormindo" nos sistemas iranianos por meses, infectando apenas controladores específicos. Ele
+                alterava a velocidade de centrífugas nucleares para destruí-las fisicamente enquanto os painéis de controle mostravam que
+                tudo estava normal.</small
               >
             </div>
           </div>
@@ -1470,72 +831,47 @@
           <div class="mb-4">
             <div class="d-flex align-items-center mb-3">
               <span class="badge-cisco me-3">Ransomware</span>
-              <h5 class="m-0" style="color: var(--cisco-green)">
-                Sequestro de Dados
-              </h5>
+              <h5 class="m-0" style="color: var(--cisco-green)">Sequestro de Dados</h5>
             </div>
             <p>
-              <strong>O que é:</strong> Criptografia de arquivos sensíveis
-              seguida de um pedido de resgate (geralmente em criptomoedas).
+              <strong>O que é:</strong> Criptografia de arquivos sensíveis seguida de um pedido de resgate (geralmente em criptomoedas).
             </p>
-            <div
-              class="p-3 border-start border-success"
-              style="background: #252525; border-radius: 0 8px 8px 0"
-            >
+            <div class="p-3 border-start border-success" style="background: #252525; border-radius: 0 8px 8px 0">
               <strong><i class="fas fa-history me-2"></i>Caso de Uso:</strong>
               WannaCry (2017). <br /><small class="text-white-50"
-                >Como agiu: Explorou uma vulnerabilidade no protocolo SMB do
-                Windows. Em poucas horas, hospitais no Reino Unido pararam de
-                operar porque não conseguiam acessar prontuários médicos,
-                exigindo pagamento para liberar a chave de decriptação.</small
+                >Como agiu: Explorou uma vulnerabilidade no protocolo SMB do Windows. Em poucas horas, hospitais no Reino Unido pararam de
+                operar porque não conseguiam acessar prontuários médicos, exigindo pagamento para liberar a chave de decriptação.</small
               >
             </div>
           </div>
         </div>
       </section>
-      <section
-        id="malware-avancado"
-        class="mb-5 reveal"
-        style="scroll-margin-top: 100px"
-      >
+      <section id="malware-avancado" class="mb-5 reveal" style="scroll-margin-top: 100px">
         <h2 class="cisco-title">
           <span style="font-size: 0.8em; margin-right: 10px">&#9760;</span>
           1.2.2 Anatomia de Malware e APTs
         </h2>
         <div class="content-card">
           <p class="mb-4">
-            Para dominar a defesa, é preciso entender como o atacante mantém o
-            controle e se move silenciosamente pela rede.
+            Para dominar a defesa, é preciso entender como o atacante mantém o controle e se move silenciosamente pela rede.
           </p>
 
           <div class="mb-5">
             <div class="d-flex align-items-center mb-3">
               <span class="badge-cisco me-3">RAT</span>
-              <h5 class="m-0" style="color: var(--cisco-green)">
-                Remote Access Trojan
-              </h5>
+              <h5 class="m-0" style="color: var(--cisco-green)">Remote Access Trojan</h5>
             </div>
             <p>
-              <strong>O que é:</strong> Um malware que abre uma "porta dos
-              fundos" (backdoor) invisível, dando ao invasor controle
+              <strong>O que é:</strong> Um malware que abre uma "porta dos fundos" (backdoor) invisível, dando ao invasor controle
               administrativo total do seu computador remotamente.
             </p>
 
-            <div
-              class="alert-cisco mt-3"
-              style="background-color: rgba(255, 255, 255, 0.03)"
-            >
-              <strong
-                ><i class="fas fa-biohazard me-2"></i>Caso de Uso Real:
-                BlackEnergy (Ucrânia, 2015)</strong
-              >
+            <div class="alert-cisco mt-3" style="background-color: rgba(255, 255, 255, 0.03)">
+              <strong><i class="fas fa-biohazard me-2"></i>Caso de Uso Real: BlackEnergy (Ucrânia, 2015)</strong>
               <p class="small mt-2 mb-0">
-                Atacantes utilizaram um RAT para infectar os computadores de
-                operadores de uma usina elétrica. Eles assumiram o controle dos
-                mouses dos funcionários em tempo real, navegando pelo software
-                de controle industrial e desligando disjuntores que deixaram
-                cidades inteiras sem luz enquanto os operadores assistiam
-                impotentes.
+                Atacantes utilizaram um RAT para infectar os computadores de operadores de uma usina elétrica. Eles assumiram o controle dos
+                mouses dos funcionários em tempo real, navegando pelo software de controle industrial e desligando disjuntores que deixaram
+                cidades inteiras sem luz enquanto os operadores assistiam impotentes.
               </p>
             </div>
           </div>
@@ -1543,31 +879,19 @@
           <div class="mb-5">
             <div class="d-flex align-items-center mb-3">
               <span class="badge-cisco me-3">APT</span>
-              <h5 class="m-0" style="color: var(--cisco-green)">
-                Ameaça Persistente Avançada
-              </h5>
+              <h5 class="m-0" style="color: var(--cisco-green)">Ameaça Persistente Avançada</h5>
             </div>
             <p>
-              <strong>O que é:</strong> Não é apenas um vírus, mas uma
-              <strong>campanha</strong> de longo prazo. O atacante entra, não
-              rouba nada de imediato e foca em permanecer indetectável para
-              espionar ou sabotar no momento certo.
+              <strong>O que é:</strong> Não é apenas um vírus, mas uma <strong>campanha</strong> de longo prazo. O atacante entra, não rouba
+              nada de imediato e foca em permanecer indetectável para espionar ou sabotar no momento certo.
             </p>
 
-            <div
-              class="alert-cisco mt-3"
-              style="background-color: rgba(255, 255, 255, 0.03)"
-            >
-              <strong
-                ><i class="fas fa-user-ninja me-2"></i>Caso de Uso Real:
-                Operação Aurora (Google, 2009)</strong
-              >
+            <div class="alert-cisco mt-3" style="background-color: rgba(255, 255, 255, 0.03)">
+              <strong><i class="fas fa-user-ninja me-2"></i>Caso de Uso Real: Operação Aurora (Google, 2009)</strong>
               <p class="small mt-2 mb-0">
-                Um grupo APT atacou dezenas de empresas de tecnologia para
-                roubar propriedade intelectual e acessar contas de e-mail de
-                dissidentes chineses. O ataque durou meses de forma silenciosa,
-                provando que o objetivo era a persistência e a coleta de dados
-                valiosos, não apenas o lucro rápido.
+                Um grupo APT atacou dezenas de empresas de tecnologia para roubar propriedade intelectual e acessar contas de e-mail de
+                dissidentes chineses. O ataque durou meses de forma silenciosa, provando que o objetivo era a persistência e a coleta de
+                dados valiosos, não apenas o lucro rápido.
               </p>
             </div>
           </div>
@@ -1575,28 +899,648 @@
           <div class="row mt-4">
             <div class="col-md-6 mb-3">
               <div class="p-3 border border-secondary rounded h-100">
-                <h6 style="color: var(--cisco-green)">
-                  <i class="fas fa-ad me-2"></i>Adware
-                </h6>
+                <h6 style="color: var(--cisco-green)"><i class="fas fa-ad me-2"></i>Adware</h6>
                 <p class="small m-0">
-                  Geralmente instalado via "pacotes" de software gratuito. Ele
-                  monitora sua navegação para exibir anúncios forçados e pode
+                  Geralmente instalado via "pacotes" de software gratuito. Ele monitora sua navegação para exibir anúncios forçados e pode
                   degradar o desempenho do sistema drasticamente.
                 </p>
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <div class="p-3 border border-secondary rounded h-100">
-                <h6 style="color: var(--cisco-green)">
-                  <i class="fas fa-eye me-2"></i>Spyware
-                </h6>
+                <h6 style="color: var(--cisco-green)"><i class="fas fa-eye me-2"></i>Spyware</h6>
                 <p class="small m-0">
-                  Malware espião que coleta senhas, capturas de tela e histórico
-                  sem o seu consentimento. O exemplo clássico é o
+                  Malware espião que coleta senhas, capturas de tela e histórico sem o seu consentimento. O exemplo clássico é o
                   <strong>Keylogger</strong>, que grava cada tecla digitada.
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO ESPECIAL: CASOS REAIS DE ATAQUES -->
+      <!-- ============================================ -->
+
+      <section id="casos-reais" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-microscope me-2" style="color: var(--cisco-green)"></i>
+          Casos Reais: Ataques em Produção
+        </h2>
+
+        <div class="content-card mb-4">
+          <p class="mb-3" style="color: var(--text-secondary); font-size: 1.1rem">
+            A melhor forma de aprender sobre segurança cibernética é estudar como os ataques acontecem no mundo real. Abaixo, você
+            encontrará <strong class="text-white">casos reais documentados</strong> que ilustram perfeitamente os conceitos que estudamos
+            neste módulo. Cada caso inclui a técnica utilizada, o impacto real e as lições aprendidas.
+          </p>
+
+          <div class="terminal-card">
+            <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i>
+            <span style="color: var(--cisco-green); font-weight: 600">NOTA:</span>
+            <span style="color: var(--terminal-text)">
+              Todos os casos foram devidamente divulgados por pesquisadores de segurança ou equipes de resposta a incidentes.</span
+            >
+          </div>
+        </div>
+
+        <!-- TIMELINE VISUAL DE CASOS -->
+        <div class="position-relative mb-5" style="padding-left: 30px">
+          <!-- Linha vertical -->
+          <div
+            style="
+              position: absolute;
+              left: 15px;
+              top: 0;
+              bottom: 0;
+              width: 2px;
+              background: linear-gradient(to bottom, var(--cisco-green), transparent);
+            "
+          ></div>
+
+          <!-- Caso 1: ARP Spoofing (2025) -->
+          <div class="content-card mb-4 ms-4 position-relative" style="border-left: 4px solid var(--cisco-green)">
+            <div
+              style="
+                position: absolute;
+                left: -38px;
+                top: 20px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--cisco-green);
+                box-shadow: var(--glow-effect);
+              "
+            ></div>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge-cisco" style="font-size: 0.9rem">ARP SPOOFING</span>
+                <span class="badge-cisco ms-2" style="background: rgba(255, 170, 0, 0.2); color: var(--warning)">MITM</span>
+              </div>
+              <span class="text-muted" style="color: var(--text-muted) !important">Laboratório Controlado • 2025</span>
+            </div>
+
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              Demonstração Prática de ARP Spoofing com Ettercap
+            </h3>
+
+            <div class="row">
+              <div class="col-lg-8">
+                <p style="color: var(--text-secondary)">
+                  Em um laboratório controlado com três máquinas Kali Linux, um pesquisador demonstrou como um atacante pode interceptar
+                  todo o tráfego entre duas vítimas usando <strong class="text-white">ARP spoofing</strong> [citation:1][citation:7].
+                </p>
+
+                <h4 class="h6 text-white mt-3 mb-2">Configuração do Cenário:</h4>
+                <ul class="list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i> <strong>Atacante:</strong> Kali Linux
+                    (192.168.56.108)
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i> <strong>Vítima 1:</strong> Kali Linux
+                    (192.168.56.128)
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i> <strong>Vítima 2:</strong> Kali Linux
+                    (192.168.56.102)
+                  </li>
+                </ul>
+
+                <h4 class="h6 text-white mt-3 mb-2">O Ataque Passo a Passo:</h4>
+                <ol style="color: var(--text-secondary); padding-left: 1.2rem">
+                  <li class="mb-2">
+                    O atacante usou o Ettercap para realizar ARP spoofing:
+                    <code style="background: var(--bg-primary); padding: 2px 6px; border-radius: 4px"
+                      >sudo ettercap -T -q -i eth0 --mitm arp //192.168.56.128// //192.168.56.102//</code
+                    >
+                  </li>
+                  <li class="mb-2">Antes do ataque, a tabela ARP da vítima mostrava o MAC real do destino.</li>
+                  <li class="mb-2">
+                    Após o ataque, a vítima passou a associar o IP do destino ao <strong class="text-white">MAC do atacante</strong>.
+                  </li>
+                  <li class="mb-2">Todo tráfego ICMP (ping) entre as vítimas foi redirecionado pelo atacante.</li>
+                </ol>
+
+                <div class="terminal-card mt-3">
+                  <i class="fas fa-search me-2" style="color: var(--cisco-green)"></i>
+                  <span style="color: var(--cisco-green)">Análise no Wireshark:</span>
+                  <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">
+                    Ao capturar o tráfego, o MAC de destino dos pacotes ICMP era o do atacante, provando que o tráfego estava sendo
+                    interceptado antes de seguir para o destino legítimo.
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div style="background: var(--bg-primary); border: 1px solid var(--border-primary); border-radius: 8px; padding: 1rem">
+                  <span class="badge-cisco mb-2 w-100 text-center">LIÇÕES APRENDIDAS</span>
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2 small"><i class="fas fa-check-circle text-success me-2"></i>ARP é um protocolo sem autenticação</li>
+                    <li class="mb-2 small"><i class="fas fa-check-circle text-success me-2"></i>Qualquer host pode responder por outro</li>
+                    <li class="mb-2 small">
+                      <i class="fas fa-check-circle text-success me-2"></i>Monitorar tabelas ARP ajuda a detectar anomalias
+                    </li>
+                    <li class="mb-0 small">
+                      <i class="fas fa-check-circle text-success me-2"></i>Use ARP estático ou detecção de spoofing
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caso 2: Evasive Panda - DNS Poisoning (2022-2024) -->
+          <div class="content-card mb-4 ms-4 position-relative" style="border-left: 4px solid var(--cisco-green)">
+            <div
+              style="
+                position: absolute;
+                left: -38px;
+                top: 20px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--cisco-green);
+                box-shadow: var(--glow-effect);
+              "
+            ></div>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge-cisco" style="font-size: 0.9rem">DNS POISONING</span>
+                <span class="badge-cisco ms-2" style="background: rgba(255, 68, 68, 0.2); color: var(--danger)">APT</span>
+              </div>
+              <span class="text-muted" style="color: var(--text-muted) !important">2022-2024 • Turquia, China, Índia</span>
+            </div>
+
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              Operação do Grupo Evasive Panda: Envenenamento de DNS para Distribuição do Backdoor MgBot
+            </h3>
+
+            <p style="color: var(--text-secondary)">
+              O grupo de ameaça persistente avançada (APT) <strong class="text-white">Evasive Panda</strong> (também conhecido como Bronze
+              Highland, Daggerfly) conduziu uma sofisticada campanha de ciberespionagem entre novembro de 2022 e novembro de 2024,
+              utilizando <strong class="text-white">envenenamento de DNS</strong> como vetor principal [citation:2].
+            </p>
+
+            <h4 class="h6 text-white mt-3 mb-2">Técnica: Adversary-in-the-Middle (AitM)</h4>
+            <p style="color: var(--text-secondary)">
+              Os atacantes manipulavam respostas DNS para redirecionar vítimas selecionadas para servidores maliciosos, entregando o
+              backdoor <strong class="text-white">MgBot</strong> através de <strong class="text-white">atualizações falsas</strong> de
+              softwares legítimos.
+            </p>
+
+            <div class="row g-3 mt-2">
+              <div class="col-md-6">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2">ISCA UTILIZADA</span>
+                  <ul class="list-unstyled mb-0 small" style="color: var(--terminal-text)">
+                    <li><i class="fas fa-chevron-right me-1" style="color: var(--cisco-green)"></i> SohuVA (streaming)</li>
+                    <li><i class="fas fa-chevron-right me-1" style="color: var(--cisco-green)"></i> iQIYI Video (Baidu)</li>
+                    <li><i class="fas fa-chevron-right me-1" style="color: var(--cisco-green)"></i> IObit Smart Defrag</li>
+                    <li><i class="fas fa-chevron-right me-1" style="color: var(--cisco-green)"></i> Tencent QQ</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2">DOMÍNIOS ABUSADOS</span>
+                  <ul class="list-unstyled mb-0 small" style="color: var(--terminal-text)">
+                    <li><i class="fas fa-chevron-right me-1" style="color: var(--cisco-green)"></i> p2p.hd.sohu.com[.]cn</li>
+                    <li><i class="fas fa-chevron-right me-1" style="color: var(--cisco-green)"></i> dictionary.com</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <h4 class="h6 text-white mt-3 mb-2">Cadeia de Infecção em Múltiplos Estágios:</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem">
+              <span class="badge-cisco" style="background: var(--bg-card)">1. Atualização falsa</span>
+              <span class="badge-cisco" style="background: var(--bg-card)"><i class="fas fa-arrow-right"></i></span>
+              <span class="badge-cisco" style="background: var(--bg-card)">2. Shellcode inicial</span>
+              <span class="badge-cisco" style="background: var(--bg-card)"><i class="fas fa-arrow-right"></i></span>
+              <span class="badge-cisco" style="background: var(--bg-card)">3. DNS poisoning dictionary.com</span>
+              <span class="badge-cisco" style="background: var(--bg-card)"><i class="fas fa-arrow-right"></i></span>
+              <span class="badge-cisco" style="background: var(--bg-card)">4. Payload criptografado (PNG)</span>
+              <span class="badge-cisco" style="background: var(--bg-card)"><i class="fas fa-arrow-right"></i></span>
+              <span class="badge-cisco" style="background: var(--bg-card)">5. Backdoor MgBot</span>
+            </div>
+
+            <p style="color: var(--text-secondary)">
+              O payload era <strong class="text-white">criptografado especificamente para cada vítima</strong> usando DPAPI + RC5, só
+              podendo ser descriptografado no sistema alvo — dificultando análise por pesquisadores.
+            </p>
+
+            <div class="terminal-card mt-3">
+              <div class="d-flex">
+                <i class="fas fa-skull me-3 mt-1" style="color: var(--danger); font-size: 1.5rem"></i>
+                <div>
+                  <span style="color: var(--cisco-green)">CAPACIDADES DO MgBot:</span>
+                  <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">
+                    Coleta e exfiltração de arquivos • Keylogging • Captura de área de transferência • Gravação de áudio • Roubo de
+                    credenciais de navegadores
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caso 3: Ataques Homográficos (2025) -->
+          <div class="content-card mb-4 ms-4 position-relative" style="border-left: 4px solid var(--cisco-green)">
+            <div
+              style="
+                position: absolute;
+                left: -38px;
+                top: 20px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--cisco-green);
+                box-shadow: var(--glow-effect);
+              "
+            ></div>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge-cisco" style="font-size: 0.9rem">HOMOGLIFOS</span>
+                <span class="badge-cisco ms-2" style="background: rgba(51, 153, 255, 0.2); color: var(--info)">PHISHING</span>
+              </div>
+              <span class="text-muted" style="color: var(--text-muted) !important">2025 • Campanhas Globais</span>
+            </div>
+
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              Três Campanhas de Phishing com Homoglifos (Palo Alto Networks Unit 42)
+            </h3>
+
+            <p style="color: var(--text-secondary)">
+              Pesquisadores da <strong class="text-white">Unit 42 da Palo Alto Networks</strong> documentaram como ataques homográficos
+              estão evadindo filtros de e-mail e enganando usuários com caracteres visualmente idênticos [citation:4].
+            </p>
+
+            <div class="row g-3 mt-3">
+              <!-- Caso 3a: Google Drive -->
+              <div class="col-md-4">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2 w-100 text-center">CASO 1: GOOGLE DRIVE</span>
+                  <p class="small mb-2" style="color: var(--terminal-text)">
+                    <i class="fas fa-building me-1" style="color: var(--cisco-green)"></i> <strong>Alvo:</strong> Instituição financeira
+                  </p>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    <i class="fas fa-link me-1" style="color: var(--cisco-green)"></i>
+                    <strong>Domínio malicioso:</strong> messageconnection.blob.core[.]windows[.]net
+                  </p>
+                  <p class="small mt-2 mb-0" style="color: var(--terminal-text)">
+                    Nome de exibição usava caracteres homógrafos para imitar a empresa legítima.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Caso 3b: DocuSign -->
+              <div class="col-md-4">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2 w-100 text-center">CASO 2: DOCUSIGN FALSO</span>
+                  <p class="small mb-2" style="color: var(--terminal-text)">
+                    <i class="fas fa-font me-1" style="color: var(--cisco-green)"></i> <strong>Display name:</strong> Сonfidеntiаl e Ꭲiꮯkеt
+                  </p>
+                  <p class="small mb-2" style="color: var(--terminal-text)">
+                    <i class="fas fa-envelope me-1" style="color: var(--cisco-green)"></i> <strong>Assunto:</strong> Finаnꮯiаl Տtаtеmеnt
+                  </p>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    <i class="fas fa-link me-1" style="color: var(--cisco-green)"></i> <strong>Redirecionamento:</strong> kig.skyvaulyt[.]ru
+                  </p>
+                </div>
+              </div>
+
+              <!-- Caso 3c: Spotify -->
+              <div class="col-md-4">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2 w-100 text-center">CASO 3: SPOTIFY</span>
+                  <p class="small mb-2" style="color: var(--terminal-text)">
+                    <i class="fas fa-font me-1" style="color: var(--cisco-green)"></i> <strong>Display name:</strong> Sρօtifу
+                  </p>
+                  <p class="small mb-2" style="color: var(--terminal-text)">
+                    <i class="fas fa-credit-card me-1" style="color: var(--cisco-green)"></i> <strong>Isca:</strong> Atualizar método de
+                    pagamento
+                  </p>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    <i class="fas fa-link me-1" style="color: var(--cisco-green)"></i> <strong>Tática:</strong> URL shortening para ocultar
+                    destino
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 p-3" style="background: rgba(0, 0, 0, 0.3); border-radius: 8px">
+              <h5 class="h6 text-white mb-2">Exemplo Visual de Homoglifo:</h5>
+              <div class="d-flex align-items-center justify-content-center gap-4">
+                <div>
+                  <span class="badge-cisco">Legítimo</span>
+                  <div class="text-center mt-2" style="font-family: monospace; font-size: 1.5rem">Homograph</div>
+                </div>
+                <i class="fas fa-arrow-right" style="color: var(--cisco-green)"></i>
+                <div>
+                  <span class="badge-cisco">Homoglifo</span>
+                  <div class="text-center mt-2" style="font-family: monospace; font-size: 1.5rem; color: var(--warning)">Homоgraph</div>
+                  <small style="color: var(--text-muted)">(o cirílico)</small>
+                </div>
+              </div>
+              <p class="small text-center mt-2" style="color: var(--text-secondary)">
+                <i class="fas fa-info-circle me-1" style="color: var(--cisco-green)"></i>
+                A letra "o" em "Homоgraph" é do alfabeto cirílico, visualmente idêntica à latina
+              </p>
+            </div>
+          </div>
+
+          <!-- Caso 4: Homoglifo Microsoft (2025) -->
+          <div class="content-card mb-4 ms-4 position-relative" style="border-left: 4px solid var(--cisco-green)">
+            <div
+              style="
+                position: absolute;
+                left: -38px;
+                top: 20px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--cisco-green);
+                box-shadow: var(--glow-effect);
+              "
+            ></div>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge-cisco" style="font-size: 0.9rem">HOMOGLIFO</span>
+                <span class="badge-cisco ms-2" style="background: rgba(255, 68, 68, 0.2); color: var(--danger)">PHISHING</span>
+              </div>
+              <span class="text-muted" style="color: var(--text-muted) !important">Outubro 2025</span>
+            </div>
+
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              Suplantação da Microsoft com "rnicrosoft.com"
+            </h3>
+
+            <div class="row">
+              <div class="col-lg-8">
+                <p style="color: var(--text-secondary)">
+                  Uma campanha de phishing detectada em outubro de 2025 utilizou o domínio
+                  <strong class="text-white">rnicrosoft.com</strong> para enganar usuários da Microsoft 365 [citation:10]. A combinação
+                  <strong class="text-white">"rn"</strong> imita visualmente a letra <strong class="text-white">"m"</strong>
+                  em muitas fontes.
+                </p>
+
+                <h4 class="h6 text-white mt-3 mb-2">Detalhes do Ataque:</h4>
+                <ul class="list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-envelope me-2" style="color: var(--cisco-green)"></i> <strong>Assuntos dos e-mails:</strong> "Problema
+                    de segurança em sua conta Microsoft" e "Restabeleça sua senha urgentemente"
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-globe me-2" style="color: var(--cisco-green)"></i> <strong>Domínio falso:</strong> rnicrosoft[.]com
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-users me-2" style="color: var(--cisco-green)"></i> <strong>Alvos:</strong> Usuários na Espanha e
+                    América Latina
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-4">
+                <div
+                  style="
+                    background: var(--bg-primary);
+                    border: 1px solid var(--border-primary);
+                    border-radius: 8px;
+                    padding: 1rem;
+                    text-align: center;
+                  "
+                >
+                  <div style="font-family: monospace; font-size: 2rem; letter-spacing: 2px">
+                    <span style="color: var(--text-muted)">m</span>icrosoft.com
+                  </div>
+                  <div style="font-family: monospace; font-size: 2rem; letter-spacing: 2px; margin-top: 10px">
+                    <span style="color: var(--warning); font-weight: bold">rn</span>icrosoft.com
+                  </div>
+                  <span class="badge-cisco mt-2">Visualmente idêntico em muitas fontes</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Caso 5: HTTP 302 na NASA -->
+          <div class="content-card mb-4 ms-4 position-relative" style="border-left: 4px solid var(--cisco-green)">
+            <div
+              style="
+                position: absolute;
+                left: -38px;
+                top: 20px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--cisco-green);
+                box-shadow: var(--glow-effect);
+              "
+            ></div>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge-cisco" style="font-size: 0.9rem">HTTP 302</span>
+                <span class="badge-cisco ms-2" style="background: rgba(0, 255, 0, 0.2); color: var(--cisco-green)">BUG</span>
+              </div>
+              <span class="text-muted" style="color: var(--text-muted) !important">Novembro 2025 • NASA</span>
+            </div>
+
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              Vulnerabilidade de Redirecionamento 302 no goto.jpl.nasa.gov
+            </h3>
+
+            <p style="color: var(--text-secondary)">
+              Um pesquisador descobriu que o site <strong class="text-white">goto.jpl.nasa.gov</strong> retornava um redirecionamento 302
+              mas <strong class="text-white">incluía o conteúdo completo da página no corpo da resposta</strong> [citation:3].
+            </p>
+
+            <div class="terminal-card mt-3">
+              <p class="mb-2" style="color: var(--terminal-text)">
+                <i class="fas fa-exclamation-triangle me-2" style="color: var(--warning)"></i>
+                <strong>Impacto:</strong> Atacantes podiam ignorar o redirecionamento e interagir diretamente com a API, criando e
+                modificando encurtadores de URL sem autenticação — potencialmente facilitando ataques de phishing usando o domínio confiável
+                da NASA.
+              </p>
+              <p class="mb-0 small" style="color: var(--terminal-text)">
+                <i class="fas fa-check-circle me-2" style="color: var(--success)"></i>
+                <strong>Status:</strong> Vulnerabilidade corrigida (P4, Bugcrowd)
+              </p>
+            </div>
+          </div>
+
+          <!-- Caso 6: Detour Dog - DNS Hijacking (2025) -->
+          <div class="content-card mb-4 ms-4 position-relative" style="border-left: 4px solid var(--cisco-green)">
+            <div
+              style="
+                position: absolute;
+                left: -38px;
+                top: 20px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--cisco-green);
+                box-shadow: var(--glow-effect);
+              "
+            ></div>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge-cisco" style="font-size: 0.9rem">DNS HIJACKING</span>
+                <span class="badge-cisco ms-2" style="background: rgba(255, 68, 68, 0.2); color: var(--danger)">BOTNET</span>
+              </div>
+              <span class="text-muted" style="color: var(--text-muted) !important">2025 • 30.000 sites</span>
+            </div>
+
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              Detour Dog: Sequestro de DNS Infecta 30.000 Sites
+            </h3>
+
+            <p style="color: var(--text-secondary)">
+              Pesquisadores da Infoblox revelaram que o grupo <strong class="text-white">Detour Dog</strong> utilizou
+              <strong class="text-white">sequestro de DNS</strong> para comprometer mais de 30.000 sites em 89 países, distribuindo o
+              malware <strong class="text-white">Strela Stealer</strong> [citation:8].
+            </p>
+
+            <div class="row g-3 mt-2">
+              <div class="col-md-6">
+                <div class="terminal-card">
+                  <span class="badge-cisco mb-2">TÉCNICA</span>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    Exploração de <strong class="text-white">registros TXT do DNS</strong> para enviar comandos secretos aos sites
+                    infectados, permitindo redirecionamentos ou execução de código malicioso.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="terminal-card">
+                  <span class="badge-cisco mb-2">PERSISTÊNCIA</span>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    Abordagem seletiva manteve sites comprometidos ativos por <strong class="text-white">mais de um ano</strong>, afetando
+                    apenas uma pequena fração dos visitantes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p class="mt-3 small" style="color: var(--text-secondary)">
+              <i class="fas fa-link me-1" style="color: var(--cisco-green)"></i> <strong>Parceiros:</strong> Hive0145 (distribuição do
+              Strela Stealer), botnets REM Proxy e Tofsee
+            </p>
+          </div>
+
+          <!-- Caso 7: SQL Injection em WeGIA (2025) -->
+          <div class="content-card mb-4 ms-4 position-relative" style="border-left: 4px solid var(--cisco-green)">
+            <div
+              style="
+                position: absolute;
+                left: -38px;
+                top: 20px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--cisco-green);
+                box-shadow: var(--glow-effect);
+              "
+            ></div>
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <div>
+                <span class="badge-cisco" style="font-size: 0.9rem">SQL INJECTION</span>
+                <span class="badge-cisco ms-2" style="background: rgba(255, 68, 68, 0.2); color: var(--danger)">CRÍTICO</span>
+              </div>
+              <span class="text-muted" style="color: var(--text-muted) !important">Julho 2025 • WeGIA</span>
+            </div>
+
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              SQL Injection em Sistema de Gestão de Funcionários
+            </h3>
+
+            <p style="color: var(--text-secondary)">
+              Uma vulnerabilidade crítica de SQL Injection foi identificada no endpoint
+              <code style="background: var(--bg-primary); padding: 2px 4px">/html/funcionario/profile_funcionario.php</code>
+              do sistema WeGIA [citation:5].
+            </p>
+
+            <div class="terminal-card mt-3">
+              <p class="mb-2" style="color: var(--terminal-text)">
+                <i class="fas fa-code me-2" style="color: var(--cisco-green)"></i>
+                <strong>Prova de Conceito:</strong>
+              </p>
+              <pre
+                style="background: var(--bg-primary); padding: 0.5rem; border-radius: 4px; color: var(--terminal-text); font-size: 0.8rem"
+              >
+https://demo.wegia.org/html/funcionario/profile_funcionario.php?id_funcionario=1 UNION SELECT NULL,NULL,NULL--</pre
+              >
+              <p class="mt-2 small" style="color: var(--terminal-text)">
+                <i class="fas fa-exclamation-triangle me-1" style="color: var(--warning)"></i>
+                O erro retornado confirmava a execução da injeção: "Cardinality violation: 1222 The used SELECT statements have a different
+                number of columns"
+              </p>
+            </div>
+
+            <h4 class="h6 text-white mt-3 mb-2">Impacto Potencial:</h4>
+            <div class="row">
+              <div class="col-6">
+                <span class="badge-cisco w-100 text-center mb-2">CONFIDENCIALIDADE</span>
+                <p class="small text-center" style="color: var(--text-secondary)">Leitura de credenciais e dados sensíveis</p>
+              </div>
+              <div class="col-6">
+                <span class="badge-cisco w-100 text-center mb-2">INTEGRIDADE</span>
+                <p class="small text-center" style="color: var(--text-secondary)">Modificação/exclusão de dados no banco</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card de Conclusão/Lições -->
+        <div class="content-card mt-5">
+          <h3 class="h5 text-white mb-3">
+            <i class="fas fa-chalkboard-teacher me-2" style="color: var(--cisco-green)"></i>
+            O Que Aprendemos com Estes Casos?
+          </h3>
+
+          <div class="row g-3">
+            <div class="col-md-3">
+              <div class="text-center">
+                <i class="fas fa-shield-alt" style="color: var(--cisco-green); font-size: 2rem"></i>
+                <p class="small mt-2" style="color: var(--text-secondary)">
+                  <strong class="text-white">Nenhuma defesa é 100%</strong><br />Mas defesa em profundidade reduz riscos
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="text-center">
+                <i class="fas fa-user-graduate" style="color: var(--cisco-green); font-size: 2rem"></i>
+                <p class="small mt-2" style="color: var(--text-secondary)">
+                  <strong class="text-white">Usuário final</strong><br />Última linha de defesa
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="text-center">
+                <i class="fas fa-search" style="color: var(--cisco-green); font-size: 2rem"></i>
+                <p class="small mt-2" style="color: var(--text-secondary)">
+                  <strong class="text-white">Monitoramento</strong><br />Detecta anomalias antes do dano
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="text-center">
+                <i class="fas fa-sync-alt" style="color: var(--cisco-green); font-size: 2rem"></i>
+                <p class="small mt-2" style="color: var(--text-secondary)">
+                  <strong class="text-white">Atualizações</strong><br />Patches corrigem vetores conhecidos
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <i class="fas fa-quote-left me-2" style="color: var(--cisco-green)"></i>
+            <span style="color: var(--terminal-text)">
+              "A segurança não é um produto, mas um processo. Estudar ataques reais é a melhor forma de entender como proteger."
+            </span>
           </div>
         </div>
       </section>
@@ -1609,5 +1553,6 @@
 
     <!-- TERCEIRO: Seu código personalizado -->
     <script src="./js/main.js"></script>
+    <script src="./js/dropdown.js"></script>
   </body>
 </html>

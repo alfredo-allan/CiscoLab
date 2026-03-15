@@ -11,28 +11,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="/css/modulo_4.css" />
+    <link rel="stylesheet" href="/css/modulos.css" />
   </head>
   <body>
     <!-- ===== NAVBAR ===== -->
     <nav
       class="navbar navbar-expand-lg sticky-top"
       style="
-        background-color: rgba(10, 10, 10, 0.98);
+        background-color: rgba(30, 30, 30, 0.98);
         border-bottom: 2px solid var(--cisco-green);
         backdrop-filter: blur(10px);
         padding: 0.8rem 0;
-        z-index: 1030;
       "
     >
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="/index.html"
-          style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px"
-        >
-          <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
-          NET<span style="color: white">SEC</span>
-          <small style="font-size: 0.7rem; color: var(--text-muted); display: block; line-height: 1">estudos CCNA</small>
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
@@ -41,75 +36,6 @@
 
         <div class="collapse navbar-collapse" id="navbarMain">
           <ul class="navbar-nav ms-auto align-items-lg-center">
-            <!-- Módulo 1 -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown" style="font-weight: 500">
-                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
-                Módulo 1
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1a1a1a; border: 1px solid #333">
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">🔰 INTRODUÇÃO</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/modulo1.html#modulo-intro" style="color: #e0e0e0">1.0.1 Introdução</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/modulo1.html#modulo-aprendizado" style="color: #e0e0e0">1.0.2 O que aprender</a>
-                </li>
-              </ul>
-            </li>
-
-            <!-- Módulo 2 -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown" style="font-weight: 500">
-                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
-                Módulo 2
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                style="background-color: #1a1a1a; border: 1px solid #333; max-height: 400px; overflow-y: auto"
-              >
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">🔰 INTRODUÇÃO</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/modulo2.html#modulo-intro" style="color: #e0e0e0">2.0.1 Por que fazer?</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/modulo2.html#modulo-aprendizado" style="color: #e0e0e0">2.0.2 O que aprender</a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider" style="border-color: #333" />
-                </li>
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">🌐 SITUAÇÃO ATUAL</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/modulo2.html#redes-alvo" style="color: #e0e0e0">2.1.2 Redes são alvos</a>
-                </li>
-              </ul>
-            </li>
-
-            <!-- Módulo 3 -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown">
-                <i class="fas fa-shield-halved me-1" style="color: var(--cisco-green)"></i>
-                Módulo 3
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                style="background-color: #1a1a1a; border: 1px solid #333; max-height: 400px; overflow-y: auto"
-              >
-                <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">📦 CABEÇALHO IP</h6>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="/modulo3.html" style="color: #e0e0e0">3.1.1 IPv4 e IPv6</a>
-                </li>
-              </ul>
-            </li>
-
             <!-- Módulo 4 (ATIVO) -->
             <li class="nav-item dropdown">
               <a
@@ -161,22 +87,116 @@
                     ARP</a
                   >
                 </li>
+                <li>
+                  <a class="dropdown-item" href="#servicos-ip" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.1.3 DNS e DHCP</a
+                  >
+                </li>
 
                 <li>
                   <hr class="dropdown-divider" style="border-color: #333" />
                 </li>
 
-                <!-- EM BREVE -->
+                <!-- SERVIÇOS CORPORATIVOS -->
                 <li>
-                  <h6 class="dropdown-header" style="color: var(--cisco-green)">⏳ EM BREVE</h6>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">🏢 SERVIÇOS CORPORATIVOS</h6>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#" style="color: #666"><i class="fas fa-clock me-2"></i>4.2 Serviços Corporativos</a>
+                  <a class="dropdown-item" href="#exploits-http" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.2.2 Exploits HTTP
+                    Comuns</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#" style="color: #666"><i class="fas fa-clock me-2"></i>4.3 Mitigação de Ataques</a>
+                  <a class="dropdown-item" href="#iframes-maliciosos" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>IFrames Maliciosos</a
+                  >
                 </li>
+                <li>
+                  <a class="dropdown-item" href="#amortecimento-http" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>Amortecimento HTTP 302</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#sombreamento-dominio" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>Sombreamento de
+                    Domínio</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#ameacas-email" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.2.3 Ameaças por
+                    E-mail</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#servicos-corporativos" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.2.4 Aplicações Web</a
+                  >
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider" style="border-color: #333" />
+                </li>
+
+                <!-- MITIGAÇÃO DE ATAQUES -->
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">🛡️ MITIGAÇÃO DE ATAQUES</h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#defender-rede" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.1 Defender a Rede</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mitigando-malware" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.2 Mitigando
+                    Malware</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mitigando-worms" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.3 Mitigando Worms</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mitigando-reconhecimento" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.4 Ataques de
+                    Reconhecimento</a
+                  >
+                </li>
+
+                <li>
+                  <hr class="dropdown-divider" style="border-color: #333" />
+                </li>
+
+                <!-- RESUMO DO MÓDULO -->
+                <li>
+                  <h6 class="dropdown-header" style="color: var(--cisco-green)">📋 RESUMO DO MÓDULO</h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#resumo-modulo4" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.4 Resumo Geral</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#o-que-aprendi" style="color: #e0e0e0"
+                    ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.4.1 O que aprendi?</a
+                  >
+                </li>
+                <a class="dropdown-item" href="#casos-reais" style="color: #e0e0e0"
+                  ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>Casos Reais: Ataques em
+                  Produção</a
+                >
               </ul>
+            </li>
+            <!-- Ícone para Todos os Módulos -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -1835,6 +1855,1538 @@ if (!empty($vulnerabilities)) {
           </div>
         </div>
       </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.2 - AMEAÇAS BASEADAS EM WEB E E-MAIL -->
+      <!-- ============================================ -->
+
+      <!-- 4.2.2 Exploits HTTP comuns -->
+      <section id="exploits-http" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-globe me-2" style="color: var(--cisco-green)"></i>
+          4.2.2 Exploits HTTP Comuns
+        </h2>
+
+        <!-- Introdução -->
+        <div class="content-card mb-4">
+          <p class="mb-0" style="color: var(--text-secondary); font-size: 1.1rem">
+            Os ataques baseados na Web exploram funcionalidades legítimas do protocolo HTTP para comprometer sistemas. Conheça os principais
+            exploits utilizados por atores de ameaça e como se proteger.
+          </p>
+        </div>
+
+        <!-- Subseção: IFrames Maliciosos -->
+        <div id="iframes-maliciosos" class="content-card mb-4" style="scroll-margin-top: 100px">
+          <div class="d-flex align-items-center mb-3">
+            <span class="badge-cisco me-3" style="font-size: 1rem">IFRAME</span>
+            <h3 class="h4 mb-0 text-white">
+              <i class="fas fa-code me-2" style="color: var(--cisco-green)"></i>
+              IFrames Maliciosos
+            </h3>
+          </div>
+
+          <p style="color: var(--text-secondary)">
+            Os atores de ameaças costumam usar quadros inline maliciosos (iFrames). Um <strong class="text-white">iFrame</strong> é um
+            elemento HTML que permite que o navegador carregue outra página da Web a partir de outra fonte. Os ataques de iFrame tornaram-se
+            muito comuns, pois são frequentemente usados para inserir anúncios de outras fontes na página.
+          </p>
+
+          <p style="color: var(--text-secondary)">
+            Os atores de ameaças comprometem um servidor da Web e modificam páginas da Web adicionando HTML para o iFrame malicioso. O HTML
+            vincula ao servidor da web do ator da ameaça. Em alguns casos, a página iFrame carregada consiste em apenas alguns pixels. Isso
+            torna muito difícil para o usuário ver. Como o iFrame é executado na página, ele pode ser usado para fornecer uma exploração
+            mal-intencionada, como publicidade de spam, um kit de exploração e outros malwares.
+          </p>
+
+          <div class="terminal-card mt-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+              <span style="color: var(--cisco-green); font-weight: 600">CONTRAMEDIDAS</span>
+            </div>
+            <ul class="list-unstyled mb-0" style="color: var(--terminal-text)">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um proxy da Web para
+                bloquear sites mal-intencionados.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Verifique se os
+                desenvolvedores da Web não usam iFrames para isolar conteúdo de terceiros.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um serviço como o Cisco
+                Umbrella para bloquear sites maliciosos conhecidos.
+              </li>
+              <li class="mb-0">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Eduque os usuários finais
+                sobre o que é um iFrame e como ele é usado em ataques.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Subseção: Amortecimento HTTP 302 -->
+        <div id="amortecimento-http" class="content-card mb-4" style="scroll-margin-top: 100px">
+          <div class="d-flex align-items-center mb-3">
+            <span class="badge-cisco me-3" style="font-size: 1rem">HTTP 302</span>
+            <h3 class="h4 mb-0 text-white">
+              <i class="fas fa-redo-alt me-2" style="color: var(--cisco-green)"></i>
+              Amortecimento HTTP 302
+            </h3>
+          </div>
+
+          <p style="color: var(--text-secondary)">
+            Outro tipo de ataque HTTP é o ataque de <strong class="text-white">amortecimento HTTP 302</strong>. Os atores de ameaças usam o
+            código de status de resposta 302 Found HTTP para direcionar o navegador da Web do usuário para um novo local. Os atores de
+            ameaças costumam usar funções HTTP legítimas, como redirecionamentos HTTP para realizar seus ataques.
+          </p>
+
+          <p style="color: var(--text-secondary)">
+            HTTP permite que os servidores redirecionem a solicitação HTTP de um cliente para um servidor diferente. O redirecionamento HTTP
+            é usado, por exemplo, quando o conteúdo da Web é movido para um URL ou nome de domínio diferente. Isso permite que URLs e
+            marcadores antigos continuem a funcionar. Portanto, os analistas de segurança devem entender como uma função como o
+            redirecionamento HTTP funciona e como ela pode ser usada durante ataques.
+          </p>
+
+          <p style="color: var(--text-secondary)">
+            Quando a resposta do servidor é um status 302 Encontrado, ele também fornece a URL no campo de localização. O navegador acredita
+            que o novo local é o URL fornecido no cabeçalho. O navegador é convidado a solicitar este novo URL. Esta função de
+            redirecionamento pode ser usada várias vezes até que o navegador finalmente puxe na página que contém o exploit. Os
+            redirecionamentos podem ser difíceis de detectar devido ao fato de que redirecionamentos legítimos ocorrem frequentemente na
+            rede.
+          </p>
+
+          <div class="terminal-card mt-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+              <span style="color: var(--cisco-green); font-weight: 600">PREVENÇÃO</span>
+            </div>
+            <ul class="list-unstyled mb-0" style="color: var(--terminal-text)">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um proxy da Web para
+                bloquear sites mal-intencionados.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um serviço como o Cisco
+                Umbrella para impedir que os usuários naveguem para sites maliciosos.
+              </li>
+              <li class="mb-0">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Eduque os usuários finais
+                sobre como os redirecionamentos HTTP 302 funcionam.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Subseção: Sombreamento de Domínio -->
+        <div id="sombreamento-dominio" class="content-card mb-4" style="scroll-margin-top: 100px">
+          <div class="d-flex align-items-center mb-3">
+            <span class="badge-cisco me-3" style="font-size: 1rem">DOMAIN SHADOWING</span>
+            <h3 class="h4 mb-0 text-white">
+              <i class="fas fa-cloud-me-2" style="color: var(--cisco-green)"></i>
+              Sombreamento de Domínio
+            </h3>
+          </div>
+
+          <p style="color: var(--text-secondary)">
+            Quando um ator de ameaça deseja criar um ataque de <strong class="text-white">sombreamento de domínio</strong>, o ator de ameaça
+            deve primeiro comprometer um domínio. Em seguida, o ator de ameaça deve criar vários subdomínios desse domínio para ser usado
+            para os ataques. Logins de registro de domínio seqüestrados são usados para criar os muitos subdomínios necessários.
+          </p>
+
+          <p style="color: var(--text-secondary)">
+            Depois que esses subdomínios tiverem sido criados, os invasores podem usá-los como quiserem, mesmo que sejam encontrados
+            domínios mal-intencionados. Eles podem simplesmente fazer mais do domínio pai.
+          </p>
+
+          <h4 class="h6 text-white mt-4 mb-2" style="color: var(--cisco-green)">Sequência Típica do Ataque:</h4>
+          <div class="terminal-card mb-4" style="background: var(--bg-secondary)">
+            <ol class="mb-0" style="color: var(--terminal-text); padding-left: 1.2rem">
+              <li class="mb-1">Um site fica comprometido.</li>
+              <li class="mb-1">O amortecimento HTTP 302 é usado para enviar o navegador para sites maliciosos.</li>
+              <li class="mb-1">O sombreamento de domínio é usado para direcionar o navegador para um servidor comprometido.</li>
+              <li class="mb-1">Uma página inicial do kit de exploração é acessada.</li>
+              <li class="mb-0">Downloads de malware da página inicial do kit de exploração.</li>
+            </ol>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+              <span style="color: var(--cisco-green); font-weight: 600">MITIGAÇÃO</span>
+            </div>
+            <ul class="list-unstyled mb-0" style="color: var(--terminal-text)">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Proteja todas as contas de
+                proprietário do domínio com senhas fortes e autenticação de dois fatores.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um proxy da Web para
+                bloquear sites mal-intencionados.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um serviço como o Cisco
+                Umbrella para bloquear domínios maliciosos conhecidos.
+              </li>
+              <li class="mb-0">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Proprietários de domínio devem
+                validar contas de registro e procurar subdomínios não autorizados.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.2.3 E-mail -->
+      <section id="ameacas-email" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-envelope me-2" style="color: var(--cisco-green)"></i>
+          4.2.3 Ameaças por E-mail
+        </h2>
+
+        <div class="content-card">
+          <p style="color: var(--text-secondary)">
+            Nos últimos 25 anos, o email evoluiu de uma ferramenta usada principalmente por profissionais técnicos e de pesquisa para se
+            tornar a <strong class="text-white">espinha dorsal das comunicações corporativas</strong>. A cada dia, mais de 100 bilhões de
+            mensagens de e-mail corporativo são trocadas. À medida que o nível de uso aumenta, a segurança torna-se uma prioridade maior.
+          </p>
+
+          <p style="color: var(--text-secondary)">
+            A maneira como os usuários acessam o email hoje também aumenta a oportunidade de a ameaça de malware ser introduzida. Costumava
+            ser que os usuários corporativos acessavam e-mails baseados em texto a partir de um servidor corporativo. O servidor corporativo
+            estava em uma estação de trabalho protegida pelo firewall da empresa. Hoje, as mensagens HTML são acessadas a partir de muitos
+            dispositivos diferentes que muitas vezes não são protegidos pelo firewall da empresa. HTML permite mais ataques devido à
+            quantidade de acesso que às vezes pode ignorar diferentes camadas de segurança.
+          </p>
+
+          <h4 class="h6 text-white mt-4 mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-exclamation-triangle me-2" style="color: var(--cisco-green)"></i>
+            Principais Ameaças por E-mail:
+          </h4>
+
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <span class="badge-cisco mb-2">ANEXOS</span>
+                <p class="mb-0 small" style="color: var(--terminal-text)">
+                  Ataques baseados em anexos maliciosos que executam código ao serem abertos.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <span class="badge-cisco mb-2">SPOOFING</span>
+                <p class="mb-0 small" style="color: var(--terminal-text)">Falsificação de remetente para enganar o destinatário.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <span class="badge-cisco mb-2">SPAM</span>
+                <p class="mb-0 small" style="color: var(--terminal-text)">Mensagens não solicitadas em massa que sobrecarregam sistemas.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <span class="badge-cisco mb-2">OPEN RELAY</span>
+                <p class="mb-0 small" style="color: var(--terminal-text)">
+                  Servidores mal configurados que permitem envio anônimo de e-mails.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <span class="badge-cisco mb-2">HOMOGLIFOS</span>
+                <p class="mb-0 small" style="color: var(--terminal-text)">
+                  Caracteres visualmente idênticos usados para criar domínios falsos (ex: g00gle.com).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-card mt-3">
+            <div class="d-flex align-items-center mb-3">
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+              <span style="color: var(--cisco-green); font-weight: 600">ESTRATÉGIA DE DEFESA</span>
+            </div>
+
+            <p style="color: var(--terminal-text)" class="mb-3">
+              Assim como qualquer outro serviço que esteja escutando uma porta para conexões de entrada, os servidores SMTP também podem ter
+              vulnerabilidades. Mantenha sempre o software SMTP atualizado com patches e atualizações de segurança.
+            </p>
+
+            <h5 class="h6 text-white mt-3 mb-2">Contramedidas Técnicas:</h5>
+            <ul class="list-unstyled mb-3" style="color: var(--terminal-text)">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um Security Appliance
+                específico para e-mail, como o <strong>Cisco Email Security Appliance</strong>.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Implemente soluções para
+                detectar e bloquear phishing, spam e malware.
+              </li>
+            </ul>
+
+            <h5 class="h6 text-white mt-3 mb-2">A Última Linha de Defesa:</h5>
+            <div class="d-flex align-items-start">
+              <i class="fas fa-user-shield me-3 mt-1" style="color: var(--cisco-green); font-size: 1.5rem"></i>
+              <p class="mb-0" style="color: var(--terminal-text)">
+                <strong class="text-white">Eduque o usuário final.</strong> Quando os ataques passam pelas medidas de segurança em vigor — e
+                eles vão passar, às vezes — o usuário final é a última linha de defesa. Ensine-os a reconhecer spam, tentativas de phishing,
+                links e URLs suspeitos, homoglifos e a nunca abrir anexos suspeitos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 4.2.3 Ameaças por E-mail -->
+      <section id="ameacas-email" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-envelope me-2" style="color: var(--cisco-green)"></i>
+          4.2.3 Ameaças por E-mail
+        </h2>
+
+        <!-- Card Principal -->
+        <div class="content-card">
+          <p style="color: var(--text-secondary)">
+            Nos últimos 25 anos, o email evoluiu de uma ferramenta usada principalmente por profissionais técnicos e de pesquisa para se
+            tornar a <strong class="text-white">espinha dorsal das comunicações corporativas</strong>. A cada dia, mais de 100 bilhões de
+            mensagens de e-mail corporativo são trocadas. À medida que o nível de uso aumenta, a segurança torna-se uma prioridade maior.
+          </p>
+
+          <p style="color: var(--text-secondary)">
+            A maneira como os usuários acessam o email hoje também aumenta a oportunidade de a ameaça de malware ser introduzida. Costumava
+            ser que os usuários corporativos acessavam e-mails baseados em texto a partir de um servidor corporativo. O servidor corporativo
+            estava em uma estação de trabalho protegida pelo firewall da empresa. Hoje, as mensagens HTML são acessadas a partir de muitos
+            dispositivos diferentes que muitas vezes não são protegidos pelo firewall da empresa. HTML permite mais ataques devido à
+            quantidade de acesso que às vezes pode ignorar diferentes camadas de segurança.
+          </p>
+
+          <h4 class="h6 text-white mt-4 mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-exclamation-triangle me-2" style="color: var(--cisco-green)"></i>
+            Principais Ameaças por E-mail:
+          </h4>
+
+          <!-- ACCORDION DAS AMEAÇAS -->
+          <div class="accordion" id="accordionEmailThreats">
+            <!-- 1. Ataques baseados em anexos -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingAnexos">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseAnexos"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseAnexos"
+                >
+                  <span class="badge-cisco me-3">ANEXOS</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Ataques baseados em anexos</span>
+                </button>
+              </h2>
+              <div
+                id="collapseAnexos"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingAnexos"
+                data-bs-parent="#accordionEmailThreats"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    Os agentes de ameaças enviam e-mails não solicitados contendo anúncios ou ficheiros maliciosos. Esse tipo de e-mail é
+                    enviado com mais frequência para solicitar uma resposta, informando ao ator da ameaça que o e-mail é válido e que um
+                    usuário abriu o spam.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+                    <span style="color: var(--cisco-green)">Contramedida:</span> Nunca abra anexos suspeitos e utilize soluções de segurança
+                    de e-mail.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Falsificação de e-mail (Spoofing) -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingSpoofing">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSpoofing"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseSpoofing"
+                >
+                  <span class="badge-cisco me-3">SPOOFING</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Falsificação de e-mail</span>
+                </button>
+              </h2>
+              <div
+                id="collapseSpoofing"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingSpoofing"
+                data-bs-parent="#accordionEmailThreats"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    Os atores de ameaças criam mensagens de e-mail com um
+                    <strong class="text-white">endereço de remetente falsificado</strong> que visa enganar o destinatário a fornecer
+                    dinheiro ou informações confidenciais.
+                  </p>
+
+                  <p>
+                    Por exemplo, um banco envia um e-mail solicitando que você atualize suas credenciais. Quando este e-mail exibe o
+                    logotipo do banco idêntico ao e-mail que você abriu anteriormente e que era legítimo, ele tem uma maior chance de ser
+                    aberto, ter anexos abertos e links clicados. O e-mail falsificado pode até pedir que você verifique suas credenciais
+                    para que o banco tenha certeza de que você é você, expondo suas informações de login.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+                    <span style="color: var(--cisco-green)">Defesa:</span> Verifique sempre o endereço de e-mail do remetente e desconfie de
+                    solicitações urgentes de informações pessoais.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. E-mail de spam -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingSpam">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSpam"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseSpam"
+                >
+                  <span class="badge-cisco me-3">SPAM</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">E-mail de spam</span>
+                </button>
+              </h2>
+              <div
+                id="collapseSpam"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingSpam"
+                data-bs-parent="#accordionEmailThreats"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    Os agentes de ameaças enviam e-mails não solicitados contendo anúncios ou ficheiros maliciosos. Esse tipo de e-mail é
+                    enviado com mais frequência para solicitar uma resposta, informando ao ator da ameaça que o e-mail é válido e que um
+                    usuário abriu o spam.
+                  </p>
+
+                  <p>
+                    O spam não é apenas irritante, mas também pode ser um vetor para ataques mais sofisticados, servindo como primeira etapa
+                    para validar endereços de e-mail ativos.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+                    <span style="color: var(--cisco-green)">Mitigação:</span> Utilize filtros anti-spam e nunca responda a e-mails não
+                    solicitados.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Servidor de e-mail do tipo Open Relay -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingOpenRelay">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOpenRelay"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseOpenRelay"
+                >
+                  <span class="badge-cisco me-3">OPEN RELAY</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Servidor Open Relay</span>
+                </button>
+              </h2>
+              <div
+                id="collapseOpenRelay"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingOpenRelay"
+                data-bs-parent="#accordionEmailThreats"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    Os atores de ameaças aproveitam os
+                    <strong class="text-white"
+                      >servidores corporativos configurados incorretamente como retransmissores de email abertos</strong
+                    >
+                    para enviar grandes volumes de spam ou malware para usuários desavisados.
+                  </p>
+
+                  <p>
+                    O retransmissor de email aberto é um servidor SMTP que permite que qualquer pessoa na internet envie e-mails. Como
+                    qualquer pessoa pode usar o servidor, eles são vulneráveis a spammers e worms. Volumes muito grandes de spam podem ser
+                    enviados usando um retransmissor de email aberto.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+                    <span style="color: var(--cisco-green)">Prevenção:</span> É importante que os servidores de e-mail corporativos nunca
+                    sejam configurados como uma retransmissão aberta. Isso reduzirá consideravelmente a quantidade de e-mails não
+                    solicitados.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Homoglifos -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingHomoglifos">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseHomoglifos"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseHomoglifos"
+                >
+                  <span class="badge-cisco me-3">HOMOGLIFOS</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Homoglifos</span>
+                </button>
+              </h2>
+              <div
+                id="collapseHomoglifos"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingHomoglifos"
+                data-bs-parent="#accordionEmailThreats"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    Os atores de ameaças podem usar
+                    <strong class="text-white"
+                      >caracteres de texto muito semelhantes ou até mesmo idênticos aos caracteres de texto legítimos</strong
+                    >. Por exemplo, pode ser difícil distinguir entre um O (letra maiúscula O) e um 0 (número zero) ou um I (minúsculo "L")
+                    e um 1 (número um).
+                  </p>
+
+                  <p>
+                    Eles podem ser usados em e-mails de phishing para torná-los muito convincentes. No DNS, esses caracteres são muito
+                    diferentes do real. Quando o registro DNS é pesquisado, um URL completamente diferente é encontrado quando o link com o
+                    homoglifo é usado na pesquisa.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+                    <span style="color: var(--cisco-green)">Defesa:</span> Ensine os usuários a verificar URLs cuidadosamente e a digitar
+                    endereços manualmente quando tiverem dúvidas.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SEÇÃO DE VULNERABILIDADES SMTP E CONTRAMEDIDAS -->
+          <div class="terminal-card mt-4">
+            <div class="d-flex align-items-center mb-3">
+              <i class="fas fa-server me-2" style="color: var(--cisco-green)"></i>
+              <span style="color: var(--cisco-green); font-weight: 600">VULNERABILIDADES SMTP</span>
+            </div>
+
+            <p style="color: var(--terminal-text)" class="mb-3">
+              Assim como qualquer outro serviço que esteja escutando uma porta para conexões de entrada, os
+              <strong>servidores SMTP também podem ter vulnerabilidades</strong>. Mantenha sempre o software SMTP atualizado com patches e
+              atualizações de segurança.
+            </p>
+
+            <h5 class="h6 text-white mt-3 mb-2">Contramedidas Técnicas:</h5>
+            <ul class="list-unstyled mb-3" style="color: var(--terminal-text)">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Use um
+                <strong class="text-white">Security Appliance específico para e-mail</strong>, como o Cisco Email Security Appliance.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>Implemente soluções para
+                detectar e bloquear phishing, spam e malware.
+              </li>
+            </ul>
+
+            <!-- DESTAQUE PARA A ÚLTIMA LINHA DE DEFESA -->
+            <div class="mt-4 p-3" style="background: rgba(0, 255, 0, 0.1); border-left: 4px solid var(--cisco-green); border-radius: 4px">
+              <div class="d-flex">
+                <i class="fas fa-user-shield me-3" style="color: var(--cisco-green); font-size: 2rem"></i>
+                <div>
+                  <h5 class="h6 text-white mb-2">A ÚLTIMA LINHA DE DEFESA:</h5>
+                  <p class="mb-0" style="color: var(--terminal-text)">
+                    <strong class="text-white">Eduque o usuário final.</strong> Quando os ataques passam pelas medidas de segurança em vigor
+                    — e eles vão passar, às vezes — o usuário final é a última linha de defesa. Ensine-os a reconhecer spam, tentativas de
+                    phishing, links e URLs suspeitos, <strong class="text-white">homoglifos</strong> e a
+                    <strong class="text-white">nunca abrir anexos suspeitos</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.3 - MITIGANDO ATAQUES DE REDE COMUNS -->
+      <!-- ============================================ -->
+
+      <!-- 4.3.1 Defender a Rede -->
+      <section id="defender-rede" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>
+          4.3.1 Defender a Rede
+        </h2>
+
+        <div class="content-card">
+          <p class="mb-4" style="color: var(--text-secondary)">
+            Vigilância constante e educação contínua são necessários para defender sua rede contra ataques. Veja a seguir as
+            <strong class="text-white">melhores práticas para proteger uma rede</strong>:
+          </p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-file-alt me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Política de Segurança</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">
+                  Desenvolva uma política de segurança escrita para a empresa.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-user-graduate me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Educação</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">
+                  Eduque os funcionários sobre riscos de engenharia social e validação de identidades.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-lock me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Acesso Físico</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">Controle o acesso físico aos sistemas.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-key me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Senhas Fortes</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">Use senhas fortes e altere-as com frequência.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-lock me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Criptografia</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">Criptografe e proteja por senha dados sensíveis.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-fire me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Hardware/Software</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">
+                  Implemente firewalls, IPSs, VPNs, antivírus e filtragem de conteúdo.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-database me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Backups</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">Realize backups e teste os arquivos regularmente.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-power-off me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Serviços Desnecessários</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">Desligue serviços e portas não utilizados.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-sync-alt me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Patches</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">Mantenha as correções atualizadas semanal ou diariamente.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <i class="fas fa-search me-2" style="color: var(--cisco-green)"></i>
+                <span style="color: var(--cisco-green)">Auditorias</span>
+                <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">Execute auditorias de segurança para testar a rede.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.3.2 Mitigando Malware -->
+      <section id="mitigando-malware" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-virus me-2" style="color: var(--cisco-green)"></i>
+          4.3.2 Mitigando Malware
+        </h2>
+
+        <div class="content-card">
+          <p style="color: var(--text-secondary)">
+            Malware, incluindo vírus, worms e cavalos de Tróia, pode causar sérios problemas em redes e dispositivos finais. Os
+            administradores de rede têm vários meios de mitigar esses ataques.
+          </p>
+
+          <div class="terminal-card mb-4">
+            <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i>
+            <span style="color: var(--cisco-green)">NOTA:</span>
+            <span style="color: var(--terminal-text)"
+              >As técnicas de mitigação são frequentemente referidas na comunidade de segurança como <strong>"contramedidas"</strong>.</span
+            >
+          </div>
+
+          <!-- Software Antivírus -->
+          <div class="mb-4">
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-shield-virus me-2" style="color: var(--cisco-green)"></i>
+              Software Antivírus
+            </h3>
+            <p style="color: var(--text-secondary)">
+              Uma maneira de mitigar ataques de vírus e cavalos de Tróia é o software antivírus. O software antivírus ajuda a impedir que os
+              hosts sejam infectados e espalhem código malicioso. Isso requer muito mais tempo para limpar computadores infectados do que
+              para manter atualizações de software antivírus e definições de antivírus nas mesmas máquinas.
+            </p>
+            <p style="color: var(--text-secondary)">
+              O software antivírus é o produto de segurança mais amplamente implantado no mercado hoje. Várias empresas que criam software
+              antivírus, como Symantec, McAfee e Trend Micro, estão no negócio de detectar e eliminar vírus há mais de uma década. Muitas
+              corporações e instituições educacionais compram licenciamento por volume para seus usuários. Os usuários são capazes de fazer
+              login em um site com sua conta e baixar o software antivírus em seus desktops, laptops ou servidores.
+            </p>
+            <p style="color: var(--text-secondary)">
+              Os produtos antivírus têm opções de automação de atualização para que novas definições de vírus e novas atualizações de
+              software possam ser baixadas automaticamente ou sob demanda. Esta prática é o requisito mais crítico para manter uma rede
+              livre de vírus e deve ser formalizada em uma política de segurança de rede.
+            </p>
+          </div>
+
+          <!-- Limitações do Antivírus -->
+          <div class="mb-4">
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-exclamation-triangle me-2" style="color: var(--warning)"></i>
+              Limitações
+            </h3>
+            <p style="color: var(--text-secondary)">
+              Os produtos antivírus são <strong class="text-white">baseados em host</strong>. Esses produtos são instalados em computadores
+              e servidores para detectar e eliminar vírus. No entanto, eles
+              <strong class="text-white">não impedem que vírus entrem na rede</strong>, portanto, um profissional de segurança de rede deve
+              estar ciente dos principais vírus e acompanhar as atualizações de segurança em relação a vírus emergentes.
+            </p>
+          </div>
+
+          <!-- Defesa no Perímetro -->
+          <div>
+            <h3 class="h5 text-white mb-3">
+              <i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i>
+              Defesa no Perímetro
+            </h3>
+            <p style="color: var(--text-secondary)">
+              Outra maneira de mitigar ameaças de malware é evitar que arquivos de malware entrem na rede. Dispositivos de segurança no
+              perímetro da rede podem identificar arquivos de malware conhecidos com base em seus indicadores de compromisso. Os arquivos
+              podem ser removidos do fluxo de dados de entrada antes que eles possam causar um incidente.
+            </p>
+            <p style="color: var(--text-secondary)">
+              Infelizmente, os atores da ameaça estão cientes dessa contramedida e frequentemente alteram seu malware o suficiente para
+              evitar a detecção. Essas façanhas entrarão na rede e também evitarão software antivírus.
+              <strong class="text-white">Nenhuma técnica de mitigação pode ser 100% eficaz. Incidentes de segurança vão acontecer.</strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.3.3 Mitigando Worms -->
+      <section id="mitigando-worms" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-worm me-2" style="color: var(--cisco-green)"></i>
+          4.3.3 Mitigando Worms
+        </h2>
+
+        <div class="content-card">
+          <p style="color: var(--text-secondary)">
+            Worms são mais baseados em rede do que vírus. A mitigação de worm requer diligência e coordenação por parte dos profissionais de
+            segurança de rede.
+          </p>
+
+          <p style="color: var(--text-secondary)">
+            Como mostrado na figura, a resposta a um ataque de vermes pode ser dividida em quatro fases:
+            <strong class="text-white">contenção, inoculação, quarentena e tratamento</strong>.
+          </p>
+
+          <!-- ACCORDION DAS FASES -->
+          <div class="accordion mt-4" id="accordionWormPhases">
+            <!-- Contenção -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingContencao">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseContencao"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseContencao"
+                >
+                  <span class="badge-cisco me-3">FASE 1</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Contenção</span>
+                </button>
+              </h2>
+              <div
+                id="collapseContencao"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingContencao"
+                data-bs-parent="#accordionWormPhases"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    A fase de contenção envolve <strong class="text-white">limitar a propagação de uma infecção por vermes</strong> para
+                    áreas da rede que já estão afetadas. Isso requer compartimentação e segmentação da rede para abrandar ou parar o worm e
+                    evitar que hosts atualmente infectados segmentem e infectem outros sistemas.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+                    <span style="color: var(--cisco-green)">Implementação:</span>
+                    <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">
+                      A contenção requer o uso de ACLs de saída e entrada em roteadores e firewalls em pontos de controle dentro da rede.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Inoculação -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingInoculacao">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseInoculacao"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseInoculacao"
+                >
+                  <span class="badge-cisco me-3">FASE 2</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Inoculação</span>
+                </button>
+              </h2>
+              <div
+                id="collapseInoculacao"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingInoculacao"
+                data-bs-parent="#accordionWormPhases"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    A fase de inoculação corre <strong class="text-white">paralela ou subsequente à fase de contenção</strong>. Durante a
+                    fase de inoculação, todos os sistemas não infectados são corrigidos com o patch de fornecedor apropriado. O processo de
+                    inoculação priva ainda mais o worm de quaisquer alvos disponíveis.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quarentena -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingQuarentena">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseQuarentena"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseQuarentena"
+                >
+                  <span class="badge-cisco me-3">FASE 3</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Quarentena</span>
+                </button>
+              </h2>
+              <div
+                id="collapseQuarentena"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingQuarentena"
+                data-bs-parent="#accordionWormPhases"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    A fase de quarentena envolve <strong class="text-white">rastrear e identificar máquinas infectadas</strong> dentro das
+                    áreas contidas e desconectá-las, bloquear ou removê-las. Isto isola estes sistemas adequadamente para a fase de
+                    tratamento.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tratamento -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingTratamento">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTratamento"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseTratamento"
+                >
+                  <span class="badge-cisco me-3">FASE 4</span>
+                  <span style="color: var(--cisco-green); font-weight: 600">Tratamento</span>
+                </button>
+              </h2>
+              <div
+                id="collapseTratamento"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTratamento"
+                data-bs-parent="#accordionWormPhases"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <p>
+                    A fase de tratamento envolve a <strong class="text-white">desinfecção ativa dos sistemas infectados</strong>. Isso pode
+                    envolver encerrar o processo do worm, remover arquivos modificados ou configurações do sistema introduzidos pelo worm e
+                    corrigir a vulnerabilidade que o worm usou para explorar o sistema.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-exclamation-triangle me-2" style="color: var(--warning)"></i>
+                    <span style="color: var(--warning)">Caso Grave:</span>
+                    <p class="mt-2 mb-0 small" style="color: var(--terminal-text)">
+                      Alternativamente, em casos mais graves, o sistema pode precisar ser reinstalado para garantir que o worm e seus
+                      subprodutos sejam removidos.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4.3.4 Mitigando Ataques de Reconhecimento -->
+      <section id="mitigando-reconhecimento" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-search me-2" style="color: var(--cisco-green)"></i>
+          4.3.4 Mitigando Ataques de Reconhecimento
+        </h2>
+
+        <div class="content-card">
+          <p style="color: var(--text-secondary)">
+            Os ataques de reconhecimento são tipicamente o precursor de outros ataques que têm a intenção de obter acesso não autorizado a
+            uma rede ou interromper a funcionalidade da rede.
+          </p>
+
+          <h3 class="h5 text-white mt-4 mb-3">
+            <i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i>
+            Técnicas de mitigação
+          </h3>
+
+          <p style="color: var(--text-secondary)">
+            Um profissional de segurança de rede pode detectar quando um ataque de reconhecimento está em andamento recebendo
+            <strong class="text-white">notificações de alarmes pré-configuradas</strong>. Estes alarmes são provocados quando determinados
+            parâmetros são excedidos, tal como o número de pedidos ICMP por segundo.
+          </p>
+
+          <div class="terminal-card mt-3">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+              <span style="color: var(--cisco-green); font-weight: 600">DETECÇÃO PROATIVA</span>
+            </div>
+            <p class="mb-0" style="color: var(--terminal-text)">
+              Uma variedade de tecnologias está disponível para detectar padrões de tráfego anômalos que indicam atividades de
+              reconhecimento, permitindo que a equipe de segurança responda antes que um ataque mais grave ocorra.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 4.4 - RESUMO DO MÓDULO -->
+      <!-- ============================================ -->
+
+      <section id="resumo-modulo4" class="mb-5 reveal" style="scroll-margin-top: 100px">
+        <h2 class="cisco-title">
+          <i class="fas fa-book-open me-2" style="color: var(--cisco-green)"></i>
+          4.4 Resumo de Atacando o que Fazemos
+        </h2>
+
+        <!-- 4.4.1 O que aprendi neste módulo? -->
+        <div id="o-que-aprendi" class="content-card mb-4" style="scroll-margin-top: 100px">
+          <h3 class="h4 text-white mb-4">
+            <i class="fas fa-graduation-cap me-2" style="color: var(--cisco-green)"></i>
+            4.4.1 O que aprendi neste módulo?
+          </h3>
+
+          <div class="accordion" id="accordionResumo">
+            <!-- Resumo: Serviços IP -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingResumoIP">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseResumoIP"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseResumoIP"
+                >
+                  <span class="badge-cisco me-3">SERVIÇOS IP</span>
+                  <span style="color: var(--cisco-green)">ARP, DNS e DHCP</span>
+                </button>
+              </h2>
+              <div
+                id="collapseResumoIP"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingResumoIP"
+                data-bs-parent="#accordionResumo"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <ul class="list-unstyled">
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">ARP:</strong> Qualquer host pode enviar uma resposta ARP não solicitada ("ARP gratuito"),
+                      permitindo ataques de envenenamento de cache ARP e MiTM.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">DNS:</strong> Vulnerável a envenenamento de cache, amplificação/reflexão (DDoS), ataques de
+                      utilização de recursos, Fast Flux, Double IP Flux, domain shadowing e tunelamento DNS.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">DHCP:</strong> Ataques de spoofing ocorrem quando um servidor DHCP invasor fornece
+                      configurações falsas aos clientes.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resumo: Serviços Corporativos -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingResumoCorp">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseResumoCorp"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseResumoCorp"
+                >
+                  <span class="badge-cisco me-3">SERVIÇOS CORPORATIVOS</span>
+                  <span style="color: var(--cisco-green)">Web, E-mail e Aplicações</span>
+                </button>
+              </h2>
+              <div
+                id="collapseResumoCorp"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingResumoCorp"
+                data-bs-parent="#accordionResumo"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <ul class="list-unstyled">
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Ataques Web:</strong> Drive-by downloads, iFrames maliciosos, HTTP 302, domain shadowing.
+                      Contramedidas incluem proxies, OWASP e educação.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Ataques de E-mail:</strong> Anexos maliciosos, spoofing, spam, open relay, homoglifos. Use
+                      Cisco Email Security Appliance e eduque usuários.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Aplicações Web:</strong> Injeção SQL, XSS. Siga as práticas do OWASP Top 10.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Resumo: Mitigando Ataques -->
+            <div
+              class="accordion-item mb-3"
+              style="background: var(--bg-secondary); border: 1px solid var(--border-primary); border-radius: 8px; overflow: hidden"
+            >
+              <h2 class="accordion-header" id="headingResumoMitigacao">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseResumoMitigacao"
+                  style="background: var(--bg-card); color: white; border-bottom: 1px solid var(--border-primary)"
+                  aria-expanded="false"
+                  aria-controls="collapseResumoMitigacao"
+                >
+                  <span class="badge-cisco me-3">MITIGAÇÃO</span>
+                  <span style="color: var(--cisco-green)">Defendendo a Rede</span>
+                </button>
+              </h2>
+              <div
+                id="collapseResumoMitigacao"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingResumoMitigacao"
+                data-bs-parent="#accordionResumo"
+              >
+                <div class="accordion-body" style="background: var(--bg-secondary); color: var(--text-secondary)">
+                  <ul class="list-unstyled">
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Práticas Gerais:</strong> Política de segurança, educação, controle de acesso físico,
+                      senhas fortes, criptografia, backups, desligar serviços desnecessários, patches atualizados, auditorias.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Malware:</strong> Antivírus, defesa no perímetro, mas nenhuma solução é 100% eficaz.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Worms:</strong> Fases: Contenção, Inoculação, Quarentena, Tratamento.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Reconhecimento:</strong> Alarmes baseados em parâmetros (ex: ICMP por segundo).
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">Acesso:</strong> Autenticação, criptografia, patches, princípio do menor privilégio.
+                    </li>
+                    <li class="mb-3">
+                      <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                      <strong class="text-white">DoS:</strong> Monitore utilização da rede, muitos ataques DoS usam endereços falsificados.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SERVIÇOS IP (Detalhado) -->
+        <section id="servicos-ip" class="mb-4" style="scroll-margin-top: 100px">
+          <h3 class="h4 text-white mb-3">
+            <i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i>
+            Serviços IP
+          </h3>
+
+          <!-- ARP -->
+          <div class="content-card mb-3">
+            <div class="d-flex align-items-center mb-3">
+              <span class="badge-cisco me-3">ARP</span>
+              <h4 class="h5 mb-0 text-white">Address Resolution Protocol</h4>
+            </div>
+            <p style="color: var(--text-secondary)">
+              Os hosts transmitem uma solicitação ARP para outros hosts no segmento de rede para determinar o endereço MAC de um host com um
+              endereço IP específico.
+              <strong class="text-white">Qualquer cliente pode enviar uma resposta ARP não solicitada denominada "ARP gratuito"</strong>.
+              Esse recurso do ARP também significa que qualquer host pode reivindicar ser o proprietário de qualquer IP/MAC que escolher.
+            </p>
+            <div class="terminal-card mt-3">
+              <i class="fas fa-exclamation-triangle me-2" style="color: var(--warning)"></i>
+              <span style="color: var(--warning)">Ameaça:</span>
+              <span style="color: var(--terminal-text)">
+                Um ator de ameaça pode envenenar o cache ARP de dispositivos na rede local, criando um ataque MiTM para redirecionar o
+                tráfego.</span
+              >
+            </div>
+          </div>
+
+          <!-- DNS -->
+          <div class="content-card mb-3">
+            <div class="d-flex align-items-center mb-3">
+              <span class="badge-cisco me-3">DNS</span>
+              <h4 class="h5 mb-0 text-white">Domain Name Service</h4>
+            </div>
+            <p style="color: var(--text-secondary)">
+              O protocolo DNS define um serviço automatizado que combina nomes de recursos com o endereço de host IP numérico necessário. O
+              DNS é crucial para a operação de uma rede e deve ser protegido de acordo.
+            </p>
+
+            <h5 class="h6 text-white mt-3 mb-2">Vulnerabilidades:</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>
+                <strong class="text-white">Envenenamento de cache DNS:</strong> Registros falsificados são fornecidos ao resolver aberto.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>
+                <strong class="text-white">Ataques de amplificação e reflexão DNS:</strong> Exploram a natureza benigna do DNS para causar
+                ataques DoS/DDoS.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>
+                <strong class="text-white">Ataques de utilização de recursos DNS:</strong> DoS contra o próprio servidor DNS.
+              </li>
+            </ul>
+
+            <h5 class="h6 text-white mt-3 mb-2">Técnicas Furtivas:</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>
+                <strong class="text-white">Fast Flux:</strong> Servidores mal-intencionados mudam rapidamente seu endereço IP.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>
+                <strong class="text-white">Double IP Flux:</strong> Mudança rápida do nome de domínio para mapeamento IP e do servidor de
+                nomes autoritativo.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>
+                <strong class="text-white">Domain Shadowing:</strong> Criação silenciosa de múltiplos subdomínios usando credenciais de
+                contas de domínio comprometidas.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.8rem"></i>
+                <strong class="text-white">Tunelamento DNS:</strong> Tráfego não-DNS encapsulado em tráfego DNS para contornar soluções de
+                segurança.
+              </li>
+            </ul>
+
+            <div class="terminal-card mt-3">
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+              <span style="color: var(--cisco-green)">Contramedida:</span>
+              <span style="color: var(--terminal-text)">
+                Use filtros que inspecionem o tráfego DNS. Fique atento a servidores DNS dinâmicos.</span
+              >
+            </div>
+          </div>
+
+          <!-- DHCP -->
+          <div class="content-card mb-3">
+            <div class="d-flex align-items-center mb-3">
+              <span class="badge-cisco me-3">DHCP</span>
+              <h4 class="h5 mb-0 text-white">Dynamic Host Configuration Protocol</h4>
+            </div>
+            <p style="color: var(--text-secondary)">
+              O DHCP usa uma simples troca de mensagens broadcast e unicast para fornecer aos hosts informações de endereçamento.
+            </p>
+            <div class="terminal-card mt-3">
+              <i class="fas fa-exclamation-triangle me-2" style="color: var(--warning)"></i>
+              <span style="color: var(--warning)">Ataque de Spoofing:</span>
+              <span style="color: var(--terminal-text)">
+                Ocorre quando um servidor DHCP invasor está conectado à rede e fornece falsos parâmetros de configuração IP (gateway
+                incorreto, DNS falso, IP incorreto) aos clientes legítimos.</span
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVIÇOS CORPORATIVOS (Resumo) -->
+        <section id="servicos-corporativos" class="mb-4" style="scroll-margin-top: 100px">
+          <h3 class="h4 text-white mb-3">
+            <i class="fas fa-building me-2" style="color: var(--cisco-green)"></i>
+            Serviços Corporativos
+          </h3>
+
+          <div class="content-card mb-3">
+            <h4 class="h5 text-white mb-3">Ataques Baseados na Web</h4>
+            <p style="color: var(--text-secondary)">
+              Os estágios comuns de um ataque típico da Web incluem a vítima, sem saber, visitar uma página da Web que foi comprometida por
+              malware. A página Web comprometida redireciona o usuário para um site que hospeda códigos mal-intencionados. O navegador é
+              feito para visitar este site e código malicioso infecta seu computador. Isso é conhecido como um
+              <strong class="text-white">drive-by download</strong>.
+            </p>
+            <p style="color: var(--text-secondary)">
+              Independentemente do tipo de ataque, o objetivo principal é garantir que o navegador da vítima acabe na página web do ator da
+              ameaça, que serve o exploit malicioso.
+            </p>
+
+            <h5 class="h6 text-white mt-3 mb-2">Códigos de Status HTTP:</h5>
+            <div class="row g-2 mb-3">
+              <div class="col-6 col-md-2"><span class="badge-cisco">1xx</span> Informação</div>
+              <div class="col-6 col-md-2"><span class="badge-cisco">2xx</span> Sucesso</div>
+              <div class="col-6 col-md-2"><span class="badge-cisco">3xx</span> Redirecionamento</div>
+              <div class="col-6 col-md-2"><span class="badge-cisco">4xx</span> Erro Cliente</div>
+              <div class="col-6 col-md-2"><span class="badge-cisco">5xx</span> Erro Servidor</div>
+            </div>
+
+            <h5 class="h6 text-white mt-3 mb-2">Contramedidas Web:</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>Manter SO e navegadores atualizados com patches
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>Usar proxy da Web para bloquear sites
+                mal-intencionados
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>Seguir práticas OWASP no desenvolvimento web
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>Educar usuários finais sobre ataques baseados na
+                Web
+              </li>
+            </ul>
+          </div>
+
+          <div class="content-card mb-3">
+            <h4 class="h5 text-white mb-3">Aplicações Web e Bancos de Dados</h4>
+            <p style="color: var(--text-secondary)">
+              Aplicativos Web geralmente se conectam a bancos de dados. Como esses bancos de dados podem conter informações confidenciais,
+              eles são um alvo freqüente de ataques.
+            </p>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                <strong class="text-white">Injeção de código e SQL:</strong> Exploram campos de entrada insuficientemente validados para
+                enviar comandos a bancos de dados.
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-chevron-right me-2" style="color: var(--cisco-green)"></i>
+                <strong class="text-white">Cross-Site Scripting (XSS):</strong> Ocorre quando navegadores executam scripts mal-intencionados
+                no cliente.
+              </li>
+            </ul>
+            <p style="color: var(--text-secondary)">
+              O <strong class="text-white">OWASP Top 10</strong> Riscos de Segurança de Aplicativos Web foi projetado para ajudar as
+              organizações a criar aplicativos Web seguros.
+            </p>
+          </div>
+
+          <div class="content-card">
+            <h4 class="h5 text-white mb-3">Mitigando Ataques de Rede Comuns (Recapitulação)</h4>
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2">ACESSO</span>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    Senhas fortes, princípio da confiança mínima, criptografia, patches de SO e aplicativos.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2">DoS</span>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    Monitore utilização da rede. Muitos ataques DoS usam endereços falsificados.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2">RECONHECIMENTO</span>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    Autenticação, criptografia (anti-sniffer), infraestrutura comutada, firewall e IPS.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="terminal-card h-100">
+                  <span class="badge-cisco mb-2">MALWARE</span>
+                  <p class="small mb-0" style="color: var(--terminal-text)">
+                    Antivírus + defesa no perímetro. Nenhuma solução é 100% eficaz.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Chamada para ação / próximo módulo -->
+        <div class="terminal-card mt-4 p-4 text-center">
+          <i class="fas fa-flag-checkered me-2" style="color: var(--cisco-green); font-size: 2rem"></i>
+          <h4 class="h5 text-white mt-2">Módulo 4 Concluído!</h4>
+          <p style="color: var(--terminal-text)">
+            Você finalizou o estudo sobre ataques a serviços de rede e estratégias de mitigação. Continue para o próximo módulo.
+          </p>
+          <div class="d-flex justify-content-center gap-3 mt-3">
+            <span class="badge-cisco">ARP</span>
+            <span class="badge-cisco">DNS</span>
+            <span class="badge-cisco">DHCP</span>
+            <span class="badge-cisco">OWASP</span>
+            <span class="badge-cisco">XSS</span>
+          </div>
+        </div>
+      </section>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle text-white px-3"
+          href="#"
+          role="button"
+          data-bs-toggle="dropdown"
+          style="font-weight: 500; border-bottom: 2px solid var(--cisco-green)"
+        >
+          <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+          Módulo 4
+        </a>
+        <ul
+          class="dropdown-menu dropdown-menu-dark"
+          style="background-color: #1a1a1a; border: 1px solid #333; max-height: 400px; overflow-y: auto"
+        >
+          <!-- INTRODUÇÃO -->
+          <li>
+            <h6 class="dropdown-header" style="color: var(--cisco-green)">🔰 INTRODUÇÃO</h6>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#modulo4-intro" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.0.1 Por que fazer?</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#modulo4-aprendizado" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.0.2 O que aprender</a
+            >
+          </li>
+
+          <li>
+            <hr class="dropdown-divider" style="border-color: #333" />
+          </li>
+
+          <!-- SERVIÇOS IP -->
+          <li>
+            <h6 class="dropdown-header" style="color: var(--cisco-green)">🌐 SERVIÇOS IP</h6>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#vulnerabilidades-arp" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.1.1 Vulnerabilidades ARP</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#arp-poisoning" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.1.2 Envenenamento ARP</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#servicos-ip" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.1.3 DNS e DHCP</a
+            >
+          </li>
+
+          <li>
+            <hr class="dropdown-divider" style="border-color: #333" />
+          </li>
+
+          <!-- SERVIÇOS CORPORATIVOS -->
+          <li>
+            <h6 class="dropdown-header" style="color: var(--cisco-green)">🏢 SERVIÇOS CORPORATIVOS</h6>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#exploits-http" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.2.2 Exploits HTTP Comuns</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#iframes-maliciosos" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>IFrames Maliciosos</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#amortecimento-http" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>Amortecimento HTTP 302</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#sombreamento-dominio" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>Sombreamento de Domínio</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#ameacas-email" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.2.3 Ameaças por E-mail</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#servicos-corporativos" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.2.4 Aplicações Web</a
+            >
+          </li>
+
+          <li>
+            <hr class="dropdown-divider" style="border-color: #333" />
+          </li>
+
+          <!-- MITIGAÇÃO DE ATAQUES -->
+          <li>
+            <h6 class="dropdown-header" style="color: var(--cisco-green)">🛡️ MITIGAÇÃO DE ATAQUES</h6>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#defender-rede" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.1 Defender a Rede</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#mitigando-malware" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.2 Mitigando Malware</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#mitigando-worms" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.3 Mitigando Worms</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#mitigando-reconhecimento" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.3.4 Ataques de
+              Reconhecimento</a
+            >
+          </li>
+
+          <li>
+            <hr class="dropdown-divider" style="border-color: #333" />
+          </li>
+
+          <!-- RESUMO DO MÓDULO -->
+          <li>
+            <h6 class="dropdown-header" style="color: var(--cisco-green)">📋 RESUMO DO MÓDULO</h6>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#resumo-modulo4" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.4 Resumo Geral</a
+            >
+          </li>
+          <li>
+            <a class="dropdown-item" href="#o-que-aprendi" style="color: #e0e0e0"
+              ><i class="fas fa-chevron-right me-2" style="font-size: 0.7rem; color: var(--cisco-green)"></i>4.4.1 O que aprendi?</a
+            >
+          </li>
+        </ul>
+      </li>
     </main>
 
     <!-- ===== FOOTER ===== -->

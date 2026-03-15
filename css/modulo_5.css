@@ -1,0 +1,352 @@
+/* ===== VARIÁVEIS ===== */
+:root {
+  --cisco-green: #66bf53;
+  --bg-primary: #121212;
+  --bg-secondary: #1a1a1a;
+  --bg-card: #1e1e1e;
+  --border-primary: #333;
+  --text-primary: #e0e0e0;
+  --text-muted: #aaa;
+  --accent-blue: #0af;
+  --accent-purple: #90f;
+}
+
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  scroll-behavior: smooth;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  border-bottom: 2px solid var(--cisco-green);
+  backdrop-filter: blur(10px);
+  padding: 0.8rem 0;
+  z-index: 1030;
+}
+
+.navbar-brand {
+  color: var(--cisco-green) !important;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand small {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: block;
+  line-height: 1;
+}
+
+.nav-link {
+  color: white !important;
+  font-weight: 500;
+  padding: 0.5rem 1rem !important;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--cisco-green) !important;
+}
+
+.nav-link i {
+  color: var(--cisco-green);
+  margin-right: 0.25rem;
+}
+
+/* Dropdown personalizado */
+.dropdown-menu {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  min-width: 280px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  color: var(--text-primary);
+  padding: 0.5rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+  color: var(--cisco-green);
+}
+
+.dropdown-header {
+  color: var(--cisco-green);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}
+
+.dropdown-divider {
+  border-top-color: var(--border-primary);
+}
+
+/* Badge módulo */
+.badge-modulo {
+  background: rgba(0, 255, 0, 0.1);
+  color: var(--cisco-green);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+/* Barra de progresso */
+.progress {
+  height: 3px;
+  position: sticky;
+  top: 76px;
+  z-index: 1020;
+  border-radius: 0;
+  background-color: var(--bg-secondary);
+}
+
+.progress-bar {
+  background-color: var(--cisco-green);
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* ===== COMPONENTES ===== */
+.content-section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.content-section:last-child {
+  border-bottom: none;
+}
+
+.section-badge {
+  margin-bottom: 1.5rem;
+}
+
+.badge-cisco {
+  background: rgba(0, 255, 0, 0.1);
+  color: var(--cisco-green);
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-left: 3px solid var(--cisco-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cisco-title {
+  color: white;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.cisco-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: var(--cisco-green);
+}
+
+.content-card {
+  background: var(--bg-card);
+  border-radius: 8px;
+  padding: 1.8rem;
+  height: 100%;
+  border: 1px solid var(--border-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.content-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cisco-green);
+  box-shadow: 0 8px 30px rgba(0, 255, 0, 0.1);
+}
+
+.card-icon {
+  font-size: 2rem;
+  color: var(--cisco-green);
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+/* Tabela Cisco */
+.table-cisco {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table-cisco th {
+  background-color: rgba(0, 255, 0, 0.1);
+  color: var(--cisco-green);
+  font-weight: 600;
+  border-bottom: 2px solid var(--cisco-green);
+  padding: 1rem;
+}
+
+.table-cisco td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.table-cisco tr:last-child td {
+  border-bottom: none;
+}
+
+.table-cisco tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Lista estilizada */
+.styled-list {
+  list-style: none;
+  padding: 0;
+}
+
+.styled-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--border-primary);
+  display: flex;
+  align-items: center;
+}
+
+.styled-list li:last-child {
+  border-bottom: none;
+}
+
+.styled-list li i {
+  color: var(--cisco-green);
+  margin-right: 0.75rem;
+  font-size: 0.9rem;
+}
+
+/* Video card */
+.video-card {
+  background: linear-gradient(145deg, var(--bg-card), #1e1e1e);
+  border-radius: 8px;
+  padding: 1.5rem;
+  border: 1px solid var(--border-primary);
+  margin-bottom: 1.5rem;
+}
+
+.video-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.video-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.video-meta i {
+  color: var(--cisco-green);
+  margin-right: 0.5rem;
+}
+
+.video-description {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.btn-cisco {
+  background: transparent;
+  color: var(--cisco-green);
+  border: 1px solid var(--cisco-green);
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-cisco:hover {
+  background: var(--cisco-green);
+  color: var(--bg-primary);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 2px solid var(--border-primary);
+  padding: 3rem 0 2rem;
+  margin-top: 3rem;
+}
+
+.footer-credit {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-credit i {
+  color: var(--cisco-green);
+}
+
+.footer-credit a {
+  color: var(--cisco-green);
+  text-decoration: none;
+}
+
+.footer-credit a:hover {
+  text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .cisco-title {
+    font-size: 1.8rem;
+  }
+
+  .content-section {
+    padding: 2.5rem 0;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+}
+
+.table-cisco th,
+td {
+  background-color: var(--bg-card) !important;
+  color: var(--text-muted) !important ;
+}
+
+.text-muted,
+.text-muted.mt-3,
+.bg-dark.p-3.rounded.mb-4 {
+  color: var(--text-muted) !important ;
+}

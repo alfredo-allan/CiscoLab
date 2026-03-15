@@ -1,0 +1,2961 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 5 - Comunicação Sem Fio | NetSec Estudos CCNA</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/modulo_5.css" />
+    <link rel="stylesheet" href="/css/dropdow.css" />
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <!-- Toggler Mobile -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <!-- Menu Principal -->
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL (Módulo 5) -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown">
+                <i class="fas fa-cube me-1"></i>
+                Módulo 5 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <!-- 🔰 INTRODUÇÃO -->
+                <li><h6 class="dropdown-header">🔰 INTRODUÇÃO</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-intro"> <i class="fas fa-chevron-right me-2"></i>5.0.1 Por que usar este módulo? </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-objetivos"> <i class="fas fa-chevron-right me-2"></i>5.0.2 O que vou aprender? </a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- 📡 COMUNICAÇÕES SEM FIO -->
+                <li><h6 class="dropdown-header">📡 COMUNICAÇÕES SEM FIO</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-video1"> <i class="fas fa-chevron-right me-2"></i>5.1.1 Vídeo - Operação WLAN </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-wlan-vs-wired"> <i class="fas fa-chevron-right me-2"></i>5.1.2 Wireless vs Wired </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-frame">
+                    <i class="fas fa-chevron-right me-2"></i>5.1.3 Estrutura do Quadro 802.11
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-csmaca"> <i class="fas fa-chevron-right me-2"></i>5.1.4 CSMA/CA </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-association">
+                    <i class="fas fa-chevron-right me-2"></i>5.1.5 Cliente e Associação AP
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-parameters">
+                    <i class="fas fa-chevron-right me-2"></i>5.1.6 Parâmetros de Associação
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-discovery-modes">
+                    <i class="fas fa-chevron-right me-2"></i>5.1.7 Modos Passivo/Ativo
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-quiz"> <i class="fas fa-chevron-right me-2"></i>5.1.8 Verificação de Compreensão </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-devices"> <i class="fas fa-chevron-right me-2"></i>5.1.9 AP, LWAP e WLC </a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- ⚠️ AMEAÇAS DE WLAN -->
+                <li><h6 class="dropdown-header">⚠️ AMEAÇAS DE WLAN</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-security-overview">
+                    <i class="fas fa-chevron-right me-2"></i>5.2.1 Visão Geral da Segurança
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-dos"> <i class="fas fa-chevron-right me-2"></i>5.2.2 Ataques DoS </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-rogue-ap">
+                    <i class="fas fa-chevron-right me-2"></i>5.2.3 Pontos de Acesso Não Autorizados
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-mitm"> <i class="fas fa-chevron-right me-2"></i>5.2.4 Ataque MITM (Evil Twin) </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-threats-quiz">
+                    <i class="fas fa-chevron-right me-2"></i>5.2.5 Verificação de Ameaças
+                  </a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- 🔒 WLANS SEGURAS -->
+                <li><h6 class="dropdown-header">🔒 WLANS SEGURAS</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-ssid-cloaking">
+                    <i class="fas fa-chevron-right me-2"></i>5.3.1 SSID Cloaking e Filtragem MAC
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-auth-methods">
+                    <i class="fas fa-chevron-right me-2"></i>5.3.2 Métodos originais 802.11
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-shared-key">
+                    <i class="fas fa-chevron-right me-2"></i>5.3.3 Métodos de Chave Compartilhada
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-home-auth">
+                    <i class="fas fa-chevron-right me-2"></i>5.3.4 Autenticação de usuário doméstico
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-encryption">
+                    <i class="fas fa-chevron-right me-2"></i>5.3.5 Métodos de Criptografia
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-enterprise">
+                    <i class="fas fa-chevron-right me-2"></i>5.3.6 Autenticação na Empresa
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-wpa3"> <i class="fas fa-chevron-right me-2"></i>5.3.7 WPA3 - Próxima Geração </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mod5-secure-quiz">
+                    <i class="fas fa-chevron-right me-2"></i>5.3.8 Verificação de WLANs Seguras
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1"></i>
+                Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li>
+                    <a class="dropdown-item" href="#mod5-intro"><span class="badge-cisco me-2">5.0.1</span>Introdução</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#mod5-objetivos"><span class="badge-cisco me-2">5.0.2</span>Objetivos</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#mod5-video1"><span class="badge-cisco me-2">5.1.1</span>Vídeo Operação WLAN</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#mod5-wlan-vs-wired"><span class="badge-cisco me-2">5.1.2</span>Wireless vs Wired</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#mod5-frame"><span class="badge-cisco me-2">5.1.3</span>Quadro 802.11</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#mod5-csmaca"><span class="badge-cisco me-2">5.1.4</span>CSMA/CA</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#mod5-association"><span class="badge-cisco me-2">5.1.5</span>Associação AP</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#mod5-parameters"><span class="badge-cisco me-2">5.1.6</span>Parâmetros</a>
+                  </li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress">
+      <div id="readingProgress" class="progress-bar" style="width: 0%"></div>
+    </div>
+
+    <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+    <main>
+      <!-- INTRODUÇÃO - 5.0.1 -->
+      <section id="mod5-intro" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.0.1</span>
+          </div>
+          <h2 class="cisco-title">Por que devo usar este módulo?</h2>
+          <div class="content-card">
+            <div class="card-icon">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <p style="font-size: 1.1rem; margin-bottom: 1.5rem">
+              Existem muitas maneiras de se conectar sem fios. Como tudo que envolve redes, estes tipos de conexão são melhor utilizadas em
+              situações especiais. Elas necessitam de dispositivos específicos e também estão mais propensas a certos tipos de ataques. E é
+              claro, existem soluções para mitigar estes ataques.
+            </p>
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <ul class="styled-list">
+                  <li><i class="fas fa-wifi"></i> Conexões sem fio em situações especiais</li>
+                  <li><i class="fas fa-shield-alt"></i> Dispositivos específicos necessários</li>
+                  <li><i class="fas fa-exclamation-triangle"></i> Mais propensas a ataques</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="styled-list">
+                  <li><i class="fas fa-lock"></i> Soluções para mitigar ataques</li>
+                  <li><i class="fas fa-book"></i> Conhecimento necessário para entender WLANs</li>
+                  <li><i class="fas fa-tools"></i> Como proteger redes sem fio</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OBJETIVOS - 5.0.2 -->
+      <section id="mod5-objetivos" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.0.2</span>
+          </div>
+          <h2 class="cisco-title">O que vou aprender neste módulo?</h2>
+
+          <!-- Cards de estatísticas -->
+          <div class="row g-4 mb-5">
+            <div class="col-sm-6 col-lg-3">
+              <div class="content-card text-center">
+                <i class="fas fa-video card-icon"></i>
+                <h3 class="card-title">3 Vídeos</h3>
+                <p class="text-muted">Explicações visuais detalhadas</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="content-card text-center">
+                <i class="fas fa-network-wired card-icon"></i>
+                <h3 class="card-title">2 Packet Tracer</h3>
+                <p class="text-muted">Atividades práticas</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="content-card text-center">
+                <i class="fas fa-check-circle card-icon"></i>
+                <h3 class="card-title">4 Verificações</h3>
+                <p class="text-muted">Atividades de compreensão</p>
+              </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+              <div class="content-card text-center">
+                <i class="fas fa-question card-icon"></i>
+                <h3 class="card-title">1 Questionário</h3>
+                <p class="text-muted">Módulo final</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela de objetivos -->
+          <div class="content-card">
+            <h3 class="card-title mb-4">Objetivo do Módulo: Solucionar problemas de uma rede sem fio</h3>
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Comunicações sem fio</strong></td>
+                  <td>Explicar como os dispositivos sem fio viabilizam a comunicação de rede.</td>
+                </tr>
+                <tr>
+                  <td><strong>Ameaças de WLAN</strong></td>
+                  <td>Descrever ameaças à WLAN.</td>
+                </tr>
+                <tr>
+                  <td><strong>WLANs seguras</strong></td>
+                  <td>Solucionar problemas em uma conexão sem fio.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- VÍDEO 5.1.1 - Operação WLAN (resumido em cards) -->
+      <section id="mod5-video1" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.1</span>
+            <span class="badge-cisco ms-2" style="background: rgba(0, 170, 255, 0.1); color: #0af; border-left-color: #0af">🎥 VÍDEO</span>
+          </div>
+          <h2 class="cisco-title">Operação WLAN</h2>
+
+          <!-- Resumo do vídeo em cards didáticos -->
+          <div class="row g-4">
+            <!-- Modo Infraestrutura -->
+            <div class="col-md-6 col-lg-4">
+              <div class="video-card h-100">
+                <div class="video-title">
+                  <i class="fas fa-building me-2" style="color: var(--cisco-green)"></i>
+                  Modo Infraestrutura
+                </div>
+                <div class="video-meta"><i class="fas fa-clock"></i> 00:19 - 00:59</div>
+                <div class="video-description">
+                  Rede sem fio conectada a dispositivos sem fio, ligada a um sistema de distribuição <strong>com fio</strong>. O roteador
+                  sem fio se conecta via cabo Ethernet à infraestrutura.
+                </div>
+                <div class="mt-3">
+                  <span class="badge bg-dark text-white me-2">AP + Distribuição</span>
+                  <span class="badge bg-dark text-white">Estrutura Fixa</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modo Ad Hoc -->
+            <div class="col-md-6 col-lg-4">
+              <div class="video-card h-100">
+                <div class="video-title">
+                  <i class="fas fa-link me-2" style="color: var(--cisco-green)"></i>
+                  Modo Ad Hoc
+                </div>
+                <div class="video-meta"><i class="fas fa-clock"></i> 01:01 - 01:33</div>
+                <div class="video-description">
+                  Conexão ponto a ponto entre dispositivos, <strong>sem infraestrutura de rede</strong>. Exemplos: Bluetooth, AirDrop.
+                  Dispositivo a dispositivo.
+                </div>
+                <div class="mt-3">
+                  <span class="badge bg-dark text-white me-2">P2P</span>
+                  <span class="badge bg-dark text-white">Sem AP</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tethering/Hotspot -->
+            <div class="col-md-6 col-lg-4">
+              <div class="video-card h-100">
+                <div class="video-title">
+                  <i class="fas fa-mobile-alt me-2" style="color: var(--cisco-green)"></i>
+                  Tethering (Hotspot)
+                </div>
+                <div class="video-meta"><i class="fas fa-clock"></i> 01:33 - 02:34</div>
+                <div class="video-description">
+                  Dispositivo celular com acesso a dados funciona como <strong>ponto de acesso</strong> para outros dispositivos. O celular
+                  se conecta à rede de dados celular e cria um sinal Wi-Fi.
+                </div>
+                <div class="mt-3">
+                  <span class="badge bg-dark text-white me-2">Hotspot</span>
+                  <span class="badge bg-dark text-white">4G/5G</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- BSS e ESS -->
+            <div class="col-md-6">
+              <div class="video-card h-100">
+                <div class="video-title">
+                  <i class="fas fa-dot-circle me-2" style="color: var(--cisco-green)"></i>
+                  BSS (Basic Service Set)
+                </div>
+                <div class="video-meta"><i class="fas fa-clock"></i> 02:40 - 03:37</div>
+                <div class="video-description">
+                  <strong>BSA (Basic Service Area):</strong> Área de cobertura do sinal (bolha amarela).<br />
+                  <strong>BSSID:</strong> Endereço MAC do ponto de acesso.
+                </div>
+                <div class="mt-2">
+                  <span class="badge bg-dark text-white me-2">1 AP</span>
+                  <span class="badge bg-dark text-white">Cobertura limitada</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="video-card h-100">
+                <div class="video-title">
+                  <i class="fas fa-arrows-alt me-2" style="color: var(--cisco-green)"></i>
+                  ESS (Extended Service Set)
+                </div>
+                <div class="video-meta"><i class="fas fa-clock"></i> 03:45 - 04:43</div>
+                <div class="video-description">
+                  Múltiplos APs conectados ao <strong>mesmo sistema de distribuição com fio</strong>. Permite
+                  <strong>roaming</strong> contínuo entre áreas de cobertura.
+                </div>
+                <div class="mt-2">
+                  <span class="badge bg-dark text-white me-2">Roaming</span>
+                  <span class="badge bg-dark text-white">Múltiplos APs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Call to action do vídeo -->
+          <div class="text-center mt-4">
+            <a
+              href="#"
+              class="btn-cisco"
+              onclick="
+                alert('Player de vídeo seria integrado aqui')
+                return false
+              "
+            >
+              <i class="fas fa-play me-2"></i> Assistir vídeo completo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.1.2 Wireless vs Wired -->
+      <section id="mod5-wlan-vs-wired" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.2</span>
+          </div>
+          <h2 class="cisco-title">LANs Wireless versus LANs Wired</h2>
+
+          <div class="row">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <div class="content-card h-100">
+                <h3 class="card-title">Principais Diferenças</h3>
+                <ul class="styled-list">
+                  <li><i class="fas fa-wifi"></i> <strong>WLANs</strong> conectam clientes via ponto de acesso (AP) ou roteador sem fio</li>
+                  <li><i class="fas fa-ethernet"></i> <strong>LANs com fio</strong> conectam via switch Ethernet</li>
+                  <li><i class="fas fa-battery-three-quarters"></i> Dispositivos WLAN geralmente são móveis e alimentados por bateria</li>
+                  <li><i class="fas fa-exclamation-circle"></i> WLANs usam CSMA/CA (prevenção) enquanto Ethernet usa CSMA/CD (detecção)</li>
+                  <li><i class="fas fa-exchange-alt"></i> Formato de quadro diferente (802.11 vs 802.3)</li>
+                  <li><i class="fas fa-eye"></i> Mais problemas de privacidade em WLANs (RF pode extrapolar limites)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="content-card">
+                <h3 class="card-title">Comparativo Técnico</h3>
+                <table class="table table-cisco">
+                  <thead>
+                    <tr>
+                      <th>Característica</th>
+                      <th>802.11 WLAN</th>
+                      <th>802.3 Ethernet</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Camada Física</td>
+                      <td>Radiofrequência (RF)</td>
+                      <td>Cabos físicos</td>
+                    </tr>
+                    <tr>
+                      <td>Acesso à mídia</td>
+                      <td>Prevenção de colisão (CSMA/CA)</td>
+                      <td>Detecção de colisão (CSMA/CD)</td>
+                    </tr>
+                    <tr>
+                      <td>Disponibilidade</td>
+                      <td>Qualquer pessoa com placa de rede ao alcance</td>
+                      <td>Conexão de cabo físico necessária</td>
+                    </tr>
+                    <tr>
+                      <td>Interferência de sinal</td>
+                      <td>Sim</td>
+                      <td>Mínima</td>
+                    </tr>
+                    <tr>
+                      <td>Regulamentações</td>
+                      <td>Diferentes por país</td>
+                      <td>Padrão IEEE dita</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.1.3 Estrutura do Quadro 802.11 -->
+      <section id="mod5-frame" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.3</span>
+          </div>
+          <h2 class="cisco-title">Estrutura do Quadro 802.11</h2>
+
+          <div class="content-card mb-4">
+            <p>
+              Todos os quadros da camada 2 consistem em cabeçalho, payload e FCS. O formato 802.11 é similar ao Ethernet, mas contém
+              <strong>mais campos</strong>.
+            </p>
+
+            <!-- Representação visual do quadro -->
+            <div class="bg-dark p-3 rounded mb-4" style="border: 1px solid var(--border-primary); overflow-x: auto">
+              <div style="display: flex; min-width: 800px">
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 1; text-align: center">
+                  <small class="text-muted">Controle<br />do quadro</small>
+                </div>
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 1; text-align: center">
+                  <small class="text-muted">Duração</small>
+                </div>
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 1; text-align: center">
+                  <small class="text-muted">Endereço 1</small>
+                </div>
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 1; text-align: center">
+                  <small class="text-muted">Endereço 2</small>
+                </div>
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 1; text-align: center">
+                  <small class="text-muted">Endereço 3</small>
+                </div>
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 1; text-align: center">
+                  <small class="text-muted">Controle<br />Sequência</small>
+                </div>
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 1; text-align: center">
+                  <small class="text-muted">Endereço 4</small>
+                </div>
+                <div style="background: #333; padding: 10px; border-right: 2px solid #00ff00; flex: 3; text-align: center">
+                  <small class="text-muted">Payload</small>
+                </div>
+                <div style="background: #333; padding: 10px; flex: 1; text-align: center">
+                  <small class="text-muted">FCS</small>
+                </div>
+              </div>
+              <div style="display: flex; margin-top: 5px; min-width: 800px">
+                <div style="flex: 6; text-align: center; color: #00ff00">← Cabeçalho →</div>
+                <div style="flex: 3; text-align: center; color: #ffaa00">Dados</div>
+                <div style="flex: 1; text-align: center; color: #ff5555">FCS</div>
+              </div>
+            </div>
+
+            <div class="row g-4 mt-3">
+              <div class="col-md-6">
+                <h4 class="card-title" style="font-size: 1.2rem">Campos do Quadro</h4>
+                <ul class="styled-list">
+                  <li>
+                    <i class="fas fa-tag"></i> <strong>Controle de quadro:</strong> Tipo de quadro, versão protocolo, gerenciamento de
+                    energia
+                  </li>
+                  <li><i class="fas fa-hourglass-half"></i> <strong>Duração:</strong> Tempo restante para próxima transmissão</li>
+                  <li><i class="fas fa-map-pin"></i> <strong>Endereço 1:</strong> MAC do dispositivo/AP receptor</li>
+                  <li><i class="fas fa-map-pin"></i> <strong>Endereço 2:</strong> MAC do dispositivo/AP transmissor</li>
+                  <li><i class="fas fa-map-pin"></i> <strong>Endereço 3:</strong> MAC do destino (ex: gateway)</li>
+                  <li><i class="fas fa-sort-amount-up"></i> <strong>Controle de sequência:</strong> Sequenciamento e fragmentação</li>
+                  <li><i class="fas fa-map-pin"></i> <strong>Endereço 4:</strong> Usado em modo ad hoc</li>
+                  <li><i class="fas fa-database"></i> <strong>Payload:</strong> Dados para transmissão</li>
+                  <li><i class="fas fa-check-double"></i> <strong>FCS:</strong> Controle de erro camada 2</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="content-card" style="background: rgba(0, 255, 0, 0.05)">
+                  <h4 class="card-title" style="font-size: 1.2rem">Função dos Endereços</h4>
+                  <p><strong>Address1 →</strong> Endereço MAC do ponto de acesso receptor</p>
+                  <p><strong>Address2 →</strong> Endereço MAC do dispositivo transmissor</p>
+                  <p><strong>Address3 →</strong> Endereço MAC do gateway (roteador)</p>
+                  <p><strong>Address4 →</strong> Usado em modo ad hoc (comunicação direta)</p>
+                  <div class="mt-3 p-2" style="border-left: 3px solid var(--cisco-green)">
+                    <i class="fas fa-info-circle me-2"></i>
+                    O quadro 802.11 precisa de mais campos porque lida com a comunicação sem fio entre cliente e AP, que por sua vez se
+                    conecta à rede com fio.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.1.4 CSMA/CA -->
+      <section id="mod5-csmaca" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.4</span>
+          </div>
+          <h2 class="cisco-title">CSMA/CA (Prevenção de Colisões)</h2>
+
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="content-card h-100">
+                <h3 class="card-title">Como funciona?</h3>
+                <p>
+                  WLANs são half-duplex e mídia compartilhada: apenas um cliente transmite por vez. Como o cliente não pode ouvir enquanto
+                  envia, é impossível detectar colisões (diferente de Ethernet).
+                </p>
+
+                <div class="mt-4">
+                  <h4 class="card-title" style="font-size: 1.1rem">Processo CSMA/CA:</h4>
+                  <div class="step-item d-flex mb-3">
+                    <div
+                      class="me-3"
+                      style="
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(0, 255, 0, 0.1);
+                        border: 1px solid #00ff00;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #00ff00;
+                        font-weight: bold;
+                      "
+                    >
+                      1
+                    </div>
+                    <div><strong>Ouve o canal</strong> - Verifica se está ocioso (portadora livre)</div>
+                  </div>
+                  <div class="step-item d-flex mb-3">
+                    <div
+                      class="me-3"
+                      style="
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(0, 255, 0, 0.1);
+                        border: 1px solid #00ff00;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #00ff00;
+                        font-weight: bold;
+                      "
+                    >
+                      2
+                    </div>
+                    <div><strong>Envia RTS</strong> (Ready to Send) ao AP solicitando acesso dedicado</div>
+                  </div>
+                  <div class="step-item d-flex mb-3">
+                    <div
+                      class="me-3"
+                      style="
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(0, 255, 0, 0.1);
+                        border: 1px solid #00ff00;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #00ff00;
+                        font-weight: bold;
+                      "
+                    >
+                      3
+                    </div>
+                    <div><strong>Recebe CTS</strong> (Clear to Send) do AP concedendo acesso</div>
+                  </div>
+                  <div class="step-item d-flex mb-3">
+                    <div
+                      class="me-3"
+                      style="
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(0, 255, 0, 0.1);
+                        border: 1px solid #00ff00;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #00ff00;
+                        font-weight: bold;
+                      "
+                    >
+                      4
+                    </div>
+                    <div>Se não receber CTS, aguarda tempo aleatório e reinicia</div>
+                  </div>
+                  <div class="step-item d-flex mb-3">
+                    <div
+                      class="me-3"
+                      style="
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(0, 255, 0, 0.1);
+                        border: 1px solid #00ff00;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #00ff00;
+                        font-weight: bold;
+                      "
+                    >
+                      5
+                    </div>
+                    <div><strong>Transmite dados</strong> após receber CTS</div>
+                  </div>
+                  <div class="step-item d-flex">
+                    <div
+                      class="me-3"
+                      style="
+                        width: 30px;
+                        height: 30px;
+                        background: rgba(0, 255, 0, 0.1);
+                        border: 1px solid #00ff00;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: #00ff00;
+                        font-weight: bold;
+                      "
+                    >
+                      6
+                    </div>
+                    <div><strong>Aguardar confirmação</strong> - Se não receber, assume colisão e reinicia</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="content-card h-100" style="background: linear-gradient(145deg, #1e1e1e, #252525)">
+                <h3 class="card-title">Carrier Sense Multiple Access with Collision Avoidance</h3>
+                <div style="text-align: center; margin: 20px 0">
+                  <i class="fas fa-broadcast-tower" style="font-size: 3rem; color: #00ff00; opacity: 0.5"></i>
+                  <i class="fas fa-exchange-alt mx-3" style="font-size: 2rem; color: #00ff00"></i>
+                  <i class="fas fa-mobile-alt" style="font-size: 3rem; color: #00ff00; opacity: 0.5"></i>
+                </div>
+                <ul class="styled-list">
+                  <li><i class="fas fa-head-side-vr"></i> <strong>Carrier Sense:</strong> Ouvir o meio</li>
+                  <li><i class="fas fa-users"></i> <strong>Multiple Access:</strong> Muitos dispositivos compartilham</li>
+                  <li><i class="fas fa-shield-virus"></i> <strong>Collision Avoidance:</strong> Evitar colisões proativamente</li>
+                </ul>
+                <div class="alert" style="background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; margin-top: 20px">
+                  <i class="fas fa-lightbulb"></i> CSMA/CA é usado porque em RF é impossível detectar colisões durante a transmissão.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.1.5 Cliente e Associação AP -->
+      <section id="mod5-association" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.5</span>
+          </div>
+          <h2 class="cisco-title">Cliente sem fio e associação de AP</h2>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title">Processo de 3 estágios</h3>
+                <p>Para dispositivos sem fio se comunicarem, devem primeiro se associar a um AP ou roteador sem fio:</p>
+
+                <div style="position: relative; margin: 30px 0">
+                  <!-- Diagrama simples de associação -->
+                  <div style="display: flex; justify-content: space-between; align-items: center">
+                    <div style="background: #333; padding: 15px; border-radius: 8px; border-left: 4px solid #00ff00; width: 40%">
+                      <i class="fas fa-laptop"></i> Cliente
+                    </div>
+                    <div style="color: #00ff00; font-size: 1.5rem">→</div>
+                    <div
+                      style="
+                        background: #333;
+                        padding: 15px;
+                        border-radius: 8px;
+                        border-right: 4px solid #00ff00;
+                        width: 40%;
+                        text-align: right;
+                      "
+                    >
+                      <i class="fas fa-wifi"></i> AP
+                    </div>
+                  </div>
+                </div>
+
+                <ol class="styled-list" style="list-style-type: decimal; padding-left: 1.5rem">
+                  <li style="display: list-item; border-bottom: none"><strong>Descoberta</strong> - Encontrar novo AP sem fio</li>
+                  <li style="display: list-item; border-bottom: none"><strong>Autenticação</strong> - Autenticar-se no AP</li>
+                  <li style="display: list-item; border-bottom: none"><strong>Associação</strong> - Associar-se ao AP</li>
+                </ol>
+
+                <div class="mt-4 p-3" style="background: rgba(0, 0, 0, 0.3); border-radius: 8px">
+                  <i class="fas fa-broadcast-tower me-2"></i>
+                  <strong>Beacon:</strong> APs enviam periodicamente beacons com SSID, padrões suportados e configurações de segurança.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title">Modos de Descoberta</h3>
+
+                <div class="mb-4">
+                  <h4 style="color: #00ff00; font-size: 1.1rem">Modo Passivo (padrão)</h4>
+                  <ul class="styled-list">
+                    <li><i class="fas fa-check-circle"></i> APs enviam beacons em intervalos</li>
+                    <li><i class="fas fa-check-circle"></i> Cliente escuta e descobre redes</li>
+                    <li><i class="fas fa-check-circle"></i> Mais simples para o cliente</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 style="color: #00ff00; font-size: 1.1rem">Modo Ativo</h4>
+                  <ul class="styled-list">
+                    <li><i class="fas fa-exclamation-triangle"></i> Cliente não ouve beacon</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Necessário configurar SSID manualmente</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Cliente envia probe requests</li>
+                  </ul>
+                </div>
+
+                <div class="mt-3 small text-muted">
+                  <i class="fas fa-info-circle"></i> No modo ativo, o cliente deve ter o SSID e padrões configurados manualmente para se
+                  conectar.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.1.6 Parâmetros de Associação -->
+      <section id="mod5-parameters" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.6</span>
+          </div>
+          <h2 class="cisco-title">Parâmetros de Associação</h2>
+
+          <div class="content-card">
+            <p>
+              Para uma associação bem-sucedida, cliente e AP devem concordar com parâmetros específicos configurados no AP e negociados com
+              o cliente.
+            </p>
+
+            <div class="row g-4 mt-3">
+              <div class="col-md-6">
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 8px; height: 100%">
+                  <h4 class="card-title" style="font-size: 1.2rem"><i class="fas fa-wifi me-2"></i> SSID</h4>
+                  <p>
+                    Nome da rede que aparece na lista de redes disponíveis. Em organizações maiores, cada SSID pode ser mapeado para uma
+                    VLAN diferente.
+                  </p>
+                  <span class="badge bg-dark">Exemplo: "SENAI-Wifi", "Cisco-Internal"</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 8px; height: 100%">
+                  <h4 class="card-title" style="font-size: 1.2rem"><i class="fas fa-lock me-2"></i> Senha</h4>
+                  <p>Exigida do cliente para autenticação no AP. Deve ser configurada corretamente no cliente.</p>
+                  <span class="badge bg-dark">WPA2/WPA3 PSK</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 8px; height: 100%">
+                  <h4 class="card-title" style="font-size: 1.2rem"><i class="fas fa-tachometer-alt me-2"></i> Modo de Rede</h4>
+                  <p>
+                    Padrões 802.11 suportados (a/b/g/n/ac/ad). APs em <strong>modo misto</strong> suportam múltiplos padrões
+                    simultaneamente.
+                  </p>
+                  <span class="badge bg-dark">802.11a/b/g/n/ac</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 8px; height: 100%">
+                  <h4 class="card-title" style="font-size: 1.2rem"><i class="fas fa-shield-alt me-2"></i> Modo de Segurança</h4>
+                  <p>WEP, WPA, WPA2, WPA3. Sempre habilitar o nível mais alto suportado. Inclui criptografia (TKIP/AES).</p>
+                  <span class="badge bg-dark">WPA2-AES</span>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div style="background: rgba(0, 255, 0, 0.05); padding: 1.5rem; border-radius: 8px">
+                  <h4 class="card-title" style="font-size: 1.2rem"><i class="fas fa-sliders-h me-2"></i> Configurações de Canal</h4>
+                  <p>
+                    Bandas de frequência usadas para transmissão. APs podem selecionar automaticamente ou configurar manualmente para evitar
+                    interferência com outros dispositivos.
+                  </p>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <ul class="styled-list">
+                        <li><i class="fas fa-wave-square"></i> 2.4 GHz (canais 1-11/14)</li>
+                        <li><i class="fas fa-wave-square"></i> 5 GHz (canais 36-165)</li>
+                      </ul>
+                    </div>
+                    <div class="col-sm-6">
+                      <ul class="styled-list">
+                        <li><i class="fas fa-check-circle"></i> Seleção automática</li>
+                        <li><i class="fas fa-tools"></i> Configuração manual para evitar interferência</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4 p-3" style="background: #1a1a1a; border-left: 4px solid #00ff00">
+              <i class="fas fa-handshake"></i> <strong>Associação completa:</strong> Quando todos os parâmetros estão alinhados (SSID,
+              senha, modo de rede, segurança, canal), o cliente é associado com sucesso ao AP.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LABORATÓRIOS (Packet Tracer) -->
+      <section id="laboratorios" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco" style="background: rgba(0, 170, 255, 0.1); color: #0af; border-left-color: #0af">🔬 LABS</span>
+          </div>
+          <h2 class="cisco-title">Atividades Packet Tracer</h2>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="card-icon">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+                <h3 class="card-title">Packet Tracer - Configuração Básica WLAN</h3>
+                <p>Configure um roteador sem fio, defina SSID, segurança WPA2 e conecte clientes.</p>
+                <ul class="styled-list small">
+                  <li><i class="fas fa-check"></i> Configurar SSID</li>
+                  <li><i class="fas fa-check"></i> Definir senha WPA2</li>
+                  <li><i class="fas fa-check"></i> Conectar clientes sem fio</li>
+                </ul>
+                <button class="btn-cisco mt-3" onclick="alert('Laboratório seria aberto aqui')">
+                  <i class="fas fa-download me-2"></i> Baixar .pkt
+                </button>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="card-icon">
+                  <i class="fas fa-wifi"></i>
+                </div>
+                <h3 class="card-title">Packet Tracer - Roaming entre APs</h3>
+                <p>Configure múltiplos APs com mesmo SSID e observe o roaming do cliente.</p>
+                <ul class="styled-list small">
+                  <li><i class="fas fa-check"></i> Múltiplos APs</li>
+                  <li><i class="fas fa-check"></i> Mesmo SSID</li>
+                  <li><i class="fas fa-check"></i> Roaming contínuo</li>
+                </ul>
+                <button class="btn-cisco mt-3" onclick="alert('Laboratório seria aberto aqui')">
+                  <i class="fas fa-download me-2"></i> Baixar .pkt
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================= -->
+      <!-- 5.1.6 Modo de Descoberta Passiva e Ativa -->
+      <!-- ============================================= -->
+      <section id="mod5-discovery-modes" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.6</span>
+          </div>
+          <h2 class="cisco-title">Modo de Descoberta Passiva e Ativa</h2>
+
+          <div class="content-card mb-4">
+            <p class="lead">
+              Os dispositivos sem fio devem descobrir e conectar-se a um ponto de acesso ou roteador sem fio. Os clientes sem fio se
+              conectam ao ponto de acesso usando um processo de verificação (probe). Este processo pode ser <strong>passivo</strong> ou
+              <strong>ativo</strong>.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <!-- Modo Passivo -->
+            <div class="col-lg-6">
+              <div class="content-card h-100" style="border-left: 4px solid #00ff00">
+                <div class="d-flex align-items-center mb-3">
+                  <span class="badge-cisco me-2" style="background: rgba(0, 255, 0, 0.2)">📡 MODO PASSIVO</span>
+                </div>
+
+                <p>
+                  No modo passivo, o ponto de acesso anuncia abertamente seu serviço enviando periodicamente
+                  <strong>quadros de beacon</strong> de transmissão contendo:
+                </p>
+
+                <ul class="styled-list">
+                  <li><i class="fas fa-tag"></i> SSID (nome da rede)</li>
+                  <li><i class="fas fa-tachometer-alt"></i> Padrões suportados (802.11a/b/g/n/ac)</li>
+                  <li><i class="fas fa-lock"></i> Configurações de segurança</li>
+                </ul>
+
+                <div class="mt-3 p-3" style="background: rgba(0, 0, 0, 0.3); border-radius: 8px">
+                  <i class="fas fa-info-circle text-info me-2"></i>
+                  <strong>Objetivo principal do beacon:</strong> Permitir que clientes sem fio aprendam quais redes e pontos de acesso estão
+                  disponíveis em uma determinada área, possibilitando escolher qual rede e ponto de acesso usar.
+                </div>
+
+                <!-- Diagrama visual do modo passivo -->
+                <div class="mt-4 p-3" style="border: 1px dashed #333; border-radius: 8px">
+                  <div style="display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap">
+                    <div style="text-align: center">
+                      <i class="fas fa-broadcast-tower" style="font-size: 2rem; color: #00ff00"></i>
+                      <div style="background: #333; padding: 10px; border-radius: 8px; margin-top: 10px">
+                        <small><strong>AP</strong></small>
+                      </div>
+                    </div>
+                    <i class="fas fa-arrow-right" style="color: #00ff00; font-size: 1.5rem"></i>
+                    <div style="background: #252525; padding: 15px; border-radius: 8px; border: 1px solid #00ff00">
+                      <small><i class="fas fa-broadcast-tower"></i> Beacon</small><br />
+                      <small class="text-muted">SSID, Padrões, Segurança</small>
+                    </div>
+                    <i class="fas fa-arrow-right" style="color: #00ff00; font-size: 1.5rem"></i>
+                    <div style="text-align: center">
+                      <i class="fas fa-laptop" style="font-size: 2rem; color: #fff"></i>
+                      <div style="background: #333; padding: 10px; border-radius: 8px; margin-top: 10px">
+                        <small><strong>Cliente</strong></small>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-center text-muted small mt-2">AP envia beacons periodicamente | Cliente escuta passivamente</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modo Ativo -->
+            <div class="col-lg-6">
+              <div class="content-card h-100" style="border-left: 4px solid #00ff00">
+                <div class="d-flex align-items-center mb-3">
+                  <span class="badge-cisco ms-2" style="background: rgba(0, 170, 255, 0.2); border-left-color: #0af">⚡ MODO ATIVO</span>
+                </div>
+
+                <p>
+                  No modo ativo, os clientes sem fio devem saber o nome do SSID. O cliente inicia o processo transmitindo um
+                  <strong>quadro de solicitação de análise (probe request)</strong> em vários canais.
+                </p>
+
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <h5 style="color: #00ff00">Solicitação de sonda</h5>
+                    <ul class="styled-list">
+                      <li><i class="fas fa-tag"></i> SSID (conhecido)</li>
+                      <li><i class="fas fa-tachometer-alt"></i> Padrões suportados</li>
+                    </ul>
+                  </div>
+                  <div class="col-md-6">
+                    <h5 style="color: #00ff00">Resposta da sonda</h5>
+                    <ul class="styled-list">
+                      <li><i class="fas fa-tag"></i> SSID</li>
+                      <li><i class="fas fa-tachometer-alt"></i> Padrões suportados</li>
+                      <li><i class="fas fa-lock"></i> Configurações de segurança</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="alert" style="background: rgba(0, 170, 255, 0.1); border: 1px solid #0af; margin-top: 15px">
+                  <i class="fas fa-exclamation-triangle me-2"></i>
+                  <strong>Importante:</strong> O modo ativo pode ser necessário se um AP estiver configurado para
+                  <strong>não transmitir quadros de beacon</strong> (SSID oculto).
+                </div>
+
+                <!-- Diagrama modo ativo -->
+                <div class="mt-3 p-3" style="border: 1px dashed #333; border-radius: 8px">
+                  <div style="display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap">
+                    <div style="text-align: center">
+                      <i class="fas fa-laptop" style="font-size: 2rem; color: #fff"></i>
+                      <div style="background: #333; padding: 10px; border-radius: 8px; margin-top: 10px">
+                        <small><strong>Cliente</strong></small>
+                      </div>
+                    </div>
+                    <i class="fas fa-arrow-right" style="color: #0af; font-size: 1.5rem"></i>
+                    <div style="background: #252525; padding: 15px; border-radius: 8px; border: 1px solid #0af">
+                      <small><i class="fas fa-search"></i> Probe Request</small><br />
+                      <small class="text-muted">SSID, Padrões</small>
+                    </div>
+                    <i class="fas fa-arrow-left" style="color: #0af; font-size: 1.5rem"></i>
+                    <div style="text-align: center">
+                      <i class="fas fa-broadcast-tower" style="font-size: 2rem; color: #00ff00"></i>
+                      <div style="background: #333; padding: 10px; border-radius: 8px; margin-top: 10px">
+                        <small><strong>AP</strong></small>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="text-center text-muted small mt-2">Cliente inicia solicitação | AP responde com configurações</p>
+                </div>
+
+                <div class="mt-3">
+                  <p>
+                    <i class="fas fa-info-circle me-2 text-info"></i> Um cliente sem fio também pode enviar uma solicitação de análise
+                    <strong>sem um nome SSID</strong> para descobrir redes WLAN próximas. APs configurados para transmitir beacons respondem
+                    com uma resposta do probe e fornecem o SSID.
+                    <span class="text-warning">APs com SSID de transmissão desativado não respondem.</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela comparativa -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">Comparativo: Modo Passivo vs Ativo</h3>
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th>Modo Passivo</th>
+                  <th>Modo Ativo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Quem inicia?</td>
+                  <td>AP (envia beacons)</td>
+                  <td>Cliente (envia probe request)</td>
+                </tr>
+                <tr>
+                  <td>SSID necessário no cliente?</td>
+                  <td>Não (descobre por beacon)</td>
+                  <td>Sim (deve saber o SSID)</td>
+                </tr>
+                <tr>
+                  <td>AP com SSID oculto</td>
+                  <td>Não funciona (sem beacon)</td>
+                  <td>Funciona se cliente souber SSID</td>
+                </tr>
+                <tr>
+                  <td>Consumo de bateria</td>
+                  <td>Menor (cliente só escuta)</td>
+                  <td>Maior (cliente transmite probes)</td>
+                </tr>
+                <tr>
+                  <td>Descoberta de redes</td>
+                  <td>Passiva, baseada em beacons</td>
+                  <td>Ativa, cliente procura redes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- 5.1.7 Verifique sua compreensão (Quiz Cards) -->
+      <!-- ============================================= -->
+      <section id="mod5-quiz" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border-left-color: #ffc107"
+              >📝 VERIFICAÇÃO</span
+            >
+            <span class="badge-cisco ms-2">5.1.7</span>
+          </div>
+          <h2 class="cisco-title">Verifique sua compreensão - Etapas no processo de cliente e AP</h2>
+
+          <div class="row g-4">
+            <!-- Pergunta 1 -->
+            <div class="col-md-4">
+              <div class="content-card h-100" style="border-top: 3px solid #ffc107">
+                <h3 class="card-title" style="font-size: 1.3rem">Pergunta 1</h3>
+                <p class="fw-bold">
+                  Quais são dois eventos que podem ocorrer na Etapa 1 (Descoberta) do processo de associação cliente e AP? (Escolha duas.)
+                </p>
+
+                <div class="mt-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q1a1" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q1a1"> ✅ Ouvir quadros de beacon para encontrar SSIDs WLAN (modo passivo) </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q1a2" disabled />
+                    <label class="form-check-label" for="q1a2"> ❌ Concordar com o AP para compartilhar a autenticação aberta </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q1a3" disabled />
+                    <label class="form-check-label" for="q1a3"> ❌ Enviar o endereço MAC do cliente para AP </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q1a4" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q1a4">
+                      ✅ Enviar uma solicitação de teste para o AP com ou sem um SSID conhecido (modo ativo)
+                    </label>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 255, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Respostas corretas:</strong> ouvir beacons (passivo) e enviar solicitação de teste (ativo)
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="col-md-4">
+              <div class="content-card h-100" style="border-top: 3px solid #ffc107">
+                <h3 class="card-title" style="font-size: 1.3rem">Pergunta 2</h3>
+                <p class="fw-bold">
+                  Quais são dois eventos que podem ocorrer na Etapa 2 (Autenticação) do processo de associação cliente e AP? (Escolha duas.)
+                </p>
+
+                <div class="mt-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q2a1" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q2a1"> ✅ Receber o endereço MAC do AP (BSSID) </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q2a2" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q2a2"> ✅ Iniciar o processo de autenticação de chave compartilhada </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q2a3" disabled />
+                    <label class="form-check-label" for="q2a3"> ❌ Enviar o endereço MAC do cliente para AP </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q2a4" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q2a4"> ✅ Concordar com o AP para compartilhar a autenticação aberta </label>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 255, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Respostas corretas:</strong> receber BSSID, iniciar autenticação de chave compartilhada, concordar com
+                  autenticação aberta
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="col-md-4">
+              <div class="content-card h-100" style="border-top: 3px solid #ffc107">
+                <h3 class="card-title" style="font-size: 1.3rem">Pergunta 3</h3>
+                <p class="fw-bold">
+                  Quais são os três eventos que podem ocorrer na Etapa 3 (Associação) do cliente e processo de associação AP? (Escolha
+                  três.)
+                </p>
+
+                <div class="mt-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q3a1" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q3a1"> ✅ Enviar o endereço MAC do cliente para AP </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q3a2" disabled />
+                    <label class="form-check-label" for="q3a2"> ❌ Iniciar solicitação de chave compartilhada </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q3a3" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q3a3"> ✅ Receber o identificador de associação da AP (AID) </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q3a4" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label" for="q3a4"> ✅ Receber o endereço MAC do AP (BSSID) </label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="q3a5" disabled />
+                    <label class="form-check-label" for="q3a5"> ❌ Concordar com o AP para compartilhar a autenticação aberta </label>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 255, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Respostas corretas:</strong> enviar MAC, receber AID, receber BSSID
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini quiz interativo adicional -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">Teste Rápido: Dispositivos de Rede</h3>
+
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="p-3" style="background: #1e1e1e; border-radius: 8px">
+                  <p class="mb-2">
+                    <strong>Pergunta:</strong> Qual dispositivo deve se conectar a outro dispositivo para obter acesso à rede?
+                  </p>
+                  <div class="text-success fw-bold"><i class="fas fa-check-circle me-2"></i> Dispositivos finais</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3" style="background: #1e1e1e; border-radius: 8px">
+                  <p class="mb-2"><strong>Pergunta:</strong> Qual dispositivo conecta clientes sem fio à rede?</p>
+                  <div class="text-success fw-bold"><i class="fas fa-check-circle me-2"></i> Ponto de acesso sem fio (WAP)</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3" style="background: #1e1e1e; border-radius: 8px">
+                  <p class="mb-2"><strong>Pergunta:</strong> Qual dispositivo usa endereços MAC para determinar a porta de saída?</p>
+                  <div class="text-success fw-bold"><i class="fas fa-check-circle me-2"></i> Switch</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================= -->
+      <!-- 5.1.8 Dispositivos sem fio - AP, LWAP e WLC -->
+      <!-- ============================================= -->
+      <section id="mod5-devices" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.1.8</span>
+          </div>
+          <h2 class="cisco-title">Dispositivos sem fio - AP, LWAP e WLC</h2>
+
+          <div class="content-card mb-4">
+            <p>
+              Uma implementação comum de dados sem fio permite que dispositivos se conectem sem fio por meio de uma LAN. Em geral, uma LAN
+              sem fio requer <strong>pontos de acesso sem fio</strong> e clientes que tenham NICs sem fio.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <!-- Roteadores domésticos/SMB -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-home fa-2x me-3" style="color: #00ff00"></i>
+                  <h3 class="card-title mb-0">Roteadores Domésticos/SMB</h3>
+                </div>
+
+                <p>Os roteadores sem fio domésticos e de pequenas empresas <strong>integram as funções</strong> de um:</p>
+
+                <div class="row text-center g-2 mb-3">
+                  <div class="col-4">
+                    <div class="p-2" style="background: #252525; border-radius: 8px">
+                      <i class="fas fa-route fa-2x" style="color: #00ff00"></i>
+                      <div><small>Roteador</small></div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="p-2" style="background: #252525; border-radius: 8px">
+                      <i class="fas fa-network-wired fa-2x" style="color: #00ff00"></i>
+                      <div><small>Switch</small></div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="p-2" style="background: #252525; border-radius: 8px">
+                      <i class="fas fa-wifi fa-2x" style="color: #00ff00"></i>
+                      <div><small>AP</small></div>
+                    </div>
+                  </div>
+                </div>
+
+                <p>
+                  Em redes pequenas, o roteador sem fio pode ser o <strong>único AP</strong> porque apenas uma área pequena requer cobertura
+                  sem fio. Em redes maiores, pode haver muitos APs.
+                </p>
+
+                <div class="mt-3 p-2 text-center" style="background: #1a1a1a; border-radius: 8px">
+                  <i class="fas fa-info-circle"></i> Exemplo: Cisco C1109-4PLTE2P SS4x
+                </div>
+              </div>
+            </div>
+
+            <!-- WLC e LWAP -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-server fa-2x me-3" style="color: #00ff00"></i>
+                  <h3 class="card-title mb-0">WLC e LWAPs</h3>
+                </div>
+
+                <p>
+                  Todas as funções de controle e gerenciamento dos APs em uma rede podem ser
+                  <strong>centralizadas em um Wireless LAN Controller (WLC)</strong>.
+                </p>
+
+                <div class="d-flex justify-content-around align-items-center my-4">
+                  <div style="text-align: center">
+                    <i class="fas fa-wifi fa-2x" style="color: #aaa"></i>
+                    <div><small>LWAP</small></div>
+                  </div>
+                  <i class="fas fa-arrow-right fa-2x" style="color: #00ff00"></i>
+                  <div style="text-align: center">
+                    <i class="fas fa-server fa-3x" style="color: #00ff00"></i>
+                    <div><strong>WLC</strong></div>
+                  </div>
+                  <i class="fas fa-arrow-left fa-2x" style="color: #00ff00"></i>
+                  <div style="text-align: center">
+                    <i class="fas fa-wifi fa-2x" style="color: #aaa"></i>
+                    <div><small>LWAP</small></div>
+                  </div>
+                </div>
+
+                <p>
+                  Ao usar uma WLC, os APs não atuam mais de forma autônoma, mas atuam como <strong>APs leves (LWAPs)</strong>. Os LWAPs
+                  apenas encaminham dados entre a LAN sem fio e a WLC.
+                </p>
+
+                <ul class="styled-list">
+                  <li><i class="fas fa-check"></i> <strong>LWAP:</strong> Apenas encaminha dados entre cliente e WLC</li>
+                  <li><i class="fas fa-check"></i> <strong>WLC:</strong> Gerencia SSIDs, autenticação, configuração</li>
+                  <li><i class="fas fa-check"></i> <strong>Benefício:</strong> Configuração simplificada e monitoramento centralizado</li>
+                </ul>
+
+                <div class="alert" style="background: rgba(0, 255, 0, 0.1); border: 1px solid #00ff00; margin-top: 15px">
+                  <i class="fas fa-star me-2"></i>
+                  <strong>Grande benefício:</strong> Centralização das funções de gerenciamento de AP na WLC permite configuração
+                  simplificada e monitoramento de vários pontos de acesso.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Diagrama de arquitetura -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">Arquitetura com WLC</h3>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px; margin: 30px 0">
+              <!-- Clientes -->
+              <div style="text-align: center">
+                <i class="fas fa-mobile-alt fa-2x" style="color: #fff"></i><br />
+                <i class="fas fa-laptop fa-2x mt-2" style="color: #fff"></i><br />
+                <small>Clientes</small>
+              </div>
+
+              <i class="fas fa-arrow-right fa-2x" style="color: #00ff00"></i>
+
+              <!-- LWAPs -->
+              <div style="display: flex; gap: 15px">
+                <div style="text-align: center">
+                  <i class="fas fa-wifi fa-2x" style="color: #00ff00"></i>
+                  <div style="background: #333; padding: 5px 10px; border-radius: 4px">LWAP 1</div>
+                </div>
+                <div style="text-align: center">
+                  <i class="fas fa-wifi fa-2x" style="color: #00ff00"></i>
+                  <div style="background: #333; padding: 5px 10px; border-radius: 4px">LWAP 2</div>
+                </div>
+                <div style="text-align: center">
+                  <i class="fas fa-wifi fa-2x" style="color: #00ff00"></i>
+                  <div style="background: #333; padding: 5px 10px; border-radius: 4px">LWAP 3</div>
+                </div>
+              </div>
+
+              <i class="fas fa-arrow-right fa-2x" style="color: #00ff00"></i>
+
+              <!-- WLC -->
+              <div style="text-align: center">
+                <i class="fas fa-server fa-3x" style="color: #ffaa00"></i>
+                <div style="background: #333; padding: 5px 15px; border-radius: 4px; font-weight: bold">WLC</div>
+              </div>
+
+              <i class="fas fa-arrow-right fa-2x" style="color: #00ff00"></i>
+
+              <!-- Rede com fio -->
+              <div style="text-align: center">
+                <i class="fas fa-network-wired fa-2x" style="color: #fff"></i>
+                <div>Rede Corporativa</div>
+              </div>
+            </div>
+
+            <p class="text-center text-muted">LWAPs encaminham tráfego para WLC centralizado | WLC gerencia todas as configurações</p>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================= -->
+      <!-- SEÇÃO 5.2 - AMEAÇAS DE WLAN -->
+      <!-- ============================================= -->
+
+      <!-- 5.2.2 Visão Geral da Segurança Wireless -->
+      <section id="mod5-security-overview" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco" style="background: rgba(255, 0, 0, 0.1); color: #ff5555; border-left-color: #ff5555">⚠️ AMEAÇAS</span>
+            <span class="badge-cisco ms-2">5.2.2</span>
+          </div>
+          <h2 class="cisco-title">Visão Geral da Segurança Wireless</h2>
+
+          <div class="content-card mb-4">
+            <p class="lead">
+              Uma WLAN é aberta a qualquer pessoa dentro do alcance de um ponto de acesso e com as credenciais apropriadas para se associar
+              a ele. Com uma placa de rede sem fio e o conhecimento de técnicas de cracking, um invasor pode não precisar entrar fisicamente
+              no local de trabalho para obter acesso a uma WLAN.
+            </p>
+
+            <div class="row mt-4">
+              <div class="col-md-6">
+                <div class="p-3" style="background: rgba(255, 0, 0, 0.05); border-radius: 8px; height: 100%">
+                  <h4 class="card-title" style="font-size: 1.2rem">Fontes de Ataques</h4>
+                  <ul class="styled-list">
+                    <li><i class="fas fa-user-ninja"></i> Pessoas de fora (invasores externos)</li>
+                    <li><i class="fas fa-user-tie"></i> Funcionários descontentes (insiders)</li>
+                    <li><i class="fas fa-user-check"></i> Acidentalmente por funcionários</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3" style="background: rgba(255, 0, 0, 0.05); border-radius: 8px; height: 100%">
+                  <h4 class="card-title" style="font-size: 1.2rem">Vulnerabilidades Específicas</h4>
+                  <ul class="styled-list">
+                    <li><i class="fas fa-eye"></i> Interceptação de dados</li>
+                    <li><i class="fas fa-user-secret"></i> Intrusos wireless</li>
+                    <li><i class="fas fa-ban"></i> Ataques de Negação de Serviço (DoS)</li>
+                    <li><i class="fas fa-broadcast-tower"></i> APs não autorizados</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cards das ameaças -->
+          <div class="row g-4 mt-2">
+            <div class="col-md-3">
+              <div class="content-card h-100 text-center">
+                <i class="fas fa-lock-open fa-3x mb-3" style="color: #ff5555"></i>
+                <h4 class="card-title">Interceptação de dados</h4>
+                <p class="small">Dados sem fio devem ser criptografados para evitar que sejam lidos por bisbilhoteiros.</p>
+                <span class="badge bg-danger">Risco: Alto</span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="content-card h-100 text-center">
+                <i class="fas fa-user-secret fa-3x mb-3" style="color: #ff5555"></i>
+                <h4 class="card-title">Intrusos wireless</h4>
+                <p class="small">Usuários não autorizados tentando acessar recursos de rede.</p>
+                <span class="badge bg-danger">Mitigação: Autenticação</span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="content-card h-100 text-center">
+                <i class="fas fa-skull-crossbones fa-3x mb-3" style="color: #ff5555"></i>
+                <h4 class="card-title">Ataques DoS</h4>
+                <p class="small">Acesso aos serviços WLAN comprometido acidental ou maliciosamente.</p>
+                <span class="badge bg-danger">Múltiplas causas</span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="content-card h-100 text-center">
+                <i class="fas fa-tower-broadcast fa-3x mb-3" style="color: #ff5555"></i>
+                <h4 class="card-title">APs não autorizados</h4>
+                <p class="small">Instalados por usuários bem-intencionados ou para fins maliciosos.</p>
+                <span class="badge bg-danger">Detecção: Software</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.2.3 Ataques DoS -->
+      <section id="mod5-dos" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.2.3</span>
+          </div>
+          <h2 class="cisco-title">Ataques de Negação de Serviço (DoS)</h2>
+
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="content-card h-100">
+                <h3 class="card-title">Causas de Ataques DoS sem fio</h3>
+
+                <div class="mt-4">
+                  <!-- Causa 1 -->
+                  <div class="d-flex mb-4">
+                    <div class="me-3">
+                      <span
+                        class="badge"
+                        style="
+                          background: #ff5555;
+                          width: 40px;
+                          height: 40px;
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-size: 1.2rem;
+                        "
+                        >1</span
+                      >
+                    </div>
+                    <div>
+                      <h4 style="color: #ff5555">Dispositivos configurados incorretamente</h4>
+                      <p>
+                        Erros de configuração podem desativar a WLAN. Exemplo: um administrador altera acidentalmente uma configuração e
+                        desativa a rede, ou um invasor com privilégios de administrador desativa intencionalmente uma WLAN.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Causa 2 -->
+                  <div class="d-flex mb-4">
+                    <div class="me-3">
+                      <span
+                        class="badge"
+                        style="
+                          background: #ff5555;
+                          width: 40px;
+                          height: 40px;
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-size: 1.2rem;
+                        "
+                        >2</span
+                      >
+                    </div>
+                    <div>
+                      <h4 style="color: #ff5555">Usuário mal intencionado</h4>
+                      <p>
+                        Interferência intencional na comunicação sem fio com o objetivo de desativar completamente a rede sem fio ou ao
+                        ponto em que nenhum dispositivo legítimo pode acessar o meio.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Causa 3 -->
+                  <div class="d-flex mb-4">
+                    <div class="me-3">
+                      <span
+                        class="badge"
+                        style="
+                          background: #ff5555;
+                          width: 40px;
+                          height: 40px;
+                          border-radius: 50%;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+                          font-size: 1.2rem;
+                        "
+                        >3</span
+                      >
+                    </div>
+                    <div>
+                      <h4 style="color: #ff5555">Interferência acidental</h4>
+                      <p>
+                        WLANs são propensas a interferências de outros dispositivos sem fio, incluindo fornos de microondas, telefones sem
+                        fio, monitores de bebês e muito mais. A banda de 2,4 GHz é mais propensa a interferências do que a banda de 5 GHz.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-3" style="background: rgba(255, 85, 85, 0.1); border-left: 4px solid #ff5555">
+                  <i class="fas fa-shield-alt me-2"></i>
+                  <strong>Mitigação:</strong> Monitore a WLAN quanto a problemas de interferência acidental e resolva-os assim que
+                  aparecerem. Use a banda de 5 GHz em áreas propensas a interferências.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="content-card h-100">
+                <h3 class="card-title">Fontes de Interferência</h3>
+
+                <div style="text-align: center; margin-bottom: 20px">
+                  <i class="fas fa-wave-square fa-4x" style="color: #ff5555; opacity: 0.5"></i>
+                </div>
+
+                <ul class="styled-list">
+                  <li><i class="fas fa-utensils"></i> Fornos de microondas</li>
+                  <li><i class="fas fa-phone"></i> Telefones sem fio</li>
+                  <li><i class="fas fa-baby"></i> Monitores de bebês</li>
+                  <li><i class="fas fa-bluetooth"></i> Dispositivos Bluetooth</li>
+                  <li><i class="fas fa-tv"></i> Equipamentos médicos</li>
+                </ul>
+
+                <div class="mt-4">
+                  <h4 style="font-size: 1.1rem">Comparação de Bandas</h4>
+                  <table class="table table-cisco small">
+                    <tr>
+                      <th>Banda</th>
+                      <th>Propensa a interferência</th>
+                      <th>Dispositivos comuns</th>
+                    </tr>
+                    <tr>
+                      <td>2.4 GHz</td>
+                      <td><span style="color: #ff5555">Alta</span></td>
+                      <td>Microondas, telefones, Bluetooth</td>
+                    </tr>
+                    <tr>
+                      <td>5 GHz</td>
+                      <td><span style="color: #00ff00">Baixa</span></td>
+                      <td>Menos dispositivos</td>
+                    </tr>
+                  </table>
+                </div>
+
+                <div class="mt-3 small text-muted">
+                  <i class="fas fa-info-circle"></i> A banda de 2.4 GHz é mais congestionada por ser utilizada por diversos equipamentos.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Boas práticas -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">Minimizando Riscos de DoS</h3>
+            <div class="row">
+              <div class="col-md-3">
+                <div class="text-center">
+                  <i class="fas fa-lock fa-2x" style="color: #00ff00"></i>
+                  <p class="mt-2">Proteja todos os dispositivos</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="text-center">
+                  <i class="fas fa-key fa-2x" style="color: #00ff00"></i>
+                  <p class="mt-2">Mantenha senhas seguras</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="text-center">
+                  <i class="fas fa-database fa-2x" style="color: #00ff00"></i>
+                  <p class="mt-2">Crie backups</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="text-center">
+                  <i class="fas fa-clock fa-2x" style="color: #00ff00"></i>
+                  <p class="mt-2">Mudanças fora do horário comercial</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.2.4 Pontos de acesso não autorizados -->
+      <section id="mod5-rogue-ap" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.2.4</span>
+          </div>
+          <h2 class="cisco-title">Pontos de Acesso Não Autorizados (Rogue APs)</h2>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="content-card h-100">
+                <h3 class="card-title">O que é um Rogue AP?</h3>
+
+                <p>
+                  Um <strong>ponto de acesso não autorizado</strong> é um ponto de acesso ou roteador sem fio que foi conectado a uma rede
+                  corporativa <span class="text-danger">sem autorização explícita</span> e contra a política corporativa.
+                </p>
+
+                <div class="alert" style="background: rgba(255, 0, 0, 0.1); border: 1px solid #ff5555">
+                  <i class="fas fa-exclamation-triangle me-2"></i>
+                  Qualquer pessoa com acesso às instalações pode instalar (de forma maliciosa ou não) um roteador sem fio barato que possa
+                  permitir o acesso a um recurso de rede seguro.
+                </div>
+
+                <h4 class="mt-4" style="font-size: 1.1rem">Riscos:</h4>
+                <ul class="styled-list">
+                  <li><i class="fas fa-fingerprint"></i> Capturar endereços MAC</li>
+                  <li><i class="fas fa-cube"></i> Capturar pacotes de dados</li>
+                  <li><i class="fas fa-door-open"></i> Obter acesso a recursos de rede</li>
+                  <li><i class="fas fa-user-ninja"></i> Iniciar um ataque intermediário (MITM)</li>
+                </ul>
+
+                <h4 class="mt-4" style="font-size: 1.1rem">Hotspot de rede pessoal:</h4>
+                <p>
+                  Um usuário com acesso seguro à rede permite que seu host autorizado do Windows se torne um ponto de acesso Wi-Fi. Isso
+                  evita as medidas de segurança e outros dispositivos não autorizados podem acessar os recursos de rede.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="content-card h-100">
+                <h3 class="card-title">Prevenção e Detecção</h3>
+
+                <p>Para impedir a instalação de pontos de acesso não autorizados, as organizações devem:</p>
+
+                <ol class="styled-list" style="list-style-type: decimal; padding-left: 1.5rem">
+                  <li style="display: list-item">Configurar WLCs com <strong>políticas de pontos de acesso não autorizados</strong></li>
+                  <li style="display: list-item">Usar software de monitoramento para monitorar ativamente o espectro de rádio</li>
+                </ol>
+
+                <!-- Interface WLC simulada -->
+                <div class="mt-4" style="background: #0f0f0f; border: 1px solid #333; border-radius: 8px; overflow: hidden">
+                  <div style="background: #1a1a1a; padding: 10px; border-bottom: 1px solid #00ff00">
+                    <i class="fas fa-wifi me-2"></i> Wireless LAN Controller - Rogue Policies
+                  </div>
+                  <div style="padding: 15px">
+                    <h5 style="color: #00ff00; font-size: 0.9rem">Rogue Detection Security Level</h5>
+                    <div class="mb-2">
+                      <span class="badge bg-dark me-2">Low</span>
+                      <span class="badge bg-dark me-2">High</span>
+                      <span class="badge bg-dark me-2">Critical</span>
+                      <span class="badge bg-success">Custom</span>
+                    </div>
+
+                    <h5 class="mt-3" style="color: #00ff00; font-size: 0.9rem">Auto Contain</h5>
+                    <div class="small">
+                      <div><i class="fas fa-check-circle text-success me-2"></i> Auto Containment Level: Auto</div>
+                      <div><i class="fas fa-check-circle text-success me-2"></i> Auto Containment only for Monitor mode APs</div>
+                      <div><i class="fas fa-check-circle text-success me-2"></i> Valid client on Rogue AP</div>
+                      <div><i class="fas fa-check-circle text-success me-2"></i> AdHoc Rogue AP</div>
+                    </div>
+
+                    <div class="mt-3 d-flex gap-2">
+                      <button class="btn btn-sm btn-outline-success">Save Configuration</button>
+                      <button class="btn btn-sm btn-outline-secondary">Apply</button>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="mt-3 small text-muted">
+                  <i class="fas fa-info-circle"></i> WLCs podem ser configurados com políticas específicas para detectar e conter rogue APs
+                  automaticamente.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta de verificação -->
+          <div class="content-card mt-4" style="border-left: 4px solid #ffc107">
+            <h4 class="card-title">Verificação Rápida</h4>
+            <p>
+              <strong>Verdadeiro ou falso:</strong> Um ponto de acesso não autorizado é um ponto de configuração incorreto conectado à rede
+              e uma possível fonte de ataques de DoS.
+            </p>
+            <div class="d-flex gap-3">
+              <span class="badge bg-success p-2"><i class="fas fa-check"></i> Verdadeiro</span>
+              <span class="badge bg-danger p-2"><i class="fas fa-times"></i> Falso</span>
+            </div>
+            <p class="mt-2 text-success">
+              <i class="fas fa-check-circle"></i> Resposta: Verdadeiro - rogue APs são uma ameaça significativa.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.2.5 Ataque Homem no Meio (MITM) - Evil Twin AP -->
+      <section id="mod5-mitm" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.2.5</span>
+          </div>
+          <h2 class="cisco-title">Ataque Homem no Meio (MITM) - Evil Twin AP</h2>
+
+          <div class="content-card mb-4">
+            <p class="lead">
+              Em um ataque homem no meio (MITM), o hacker é posicionado entre duas entidades legítimas para ler ou modificar os dados que
+              passam entre as duas partes.
+            </p>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="content-card h-100">
+                <h3 class="card-title">Ataque de "AP Gêmeo do Mal" (Evil Twin)</h3>
+
+                <p>
+                  Um ataque MITM sem fio popular onde um invasor introduz um <strong>ponto de acesso não autorizado</strong> e o configura
+                  com o <strong>mesmo SSID</strong> que um ponto de acesso legítimo.
+                </p>
+
+                <div class="alert" style="background: rgba(255, 0, 0, 0.1)">
+                  <i class="fas fa-map-marker-alt me-2"></i>
+                  <strong>Locais comuns:</strong> Aeroportos, cafés e restaurantes que oferecem Wi-Fi gratuito (autenticação aberta).
+                </div>
+
+                <h4 class="mt-3">Como funciona:</h4>
+                <ol class="styled-list" style="list-style-type: decimal; padding-left: 1.5rem">
+                  <li style="display: list-item">Clientes veem dois APs com o mesmo SSID</li>
+                  <li style="display: list-item">Clientes próximos ao AP malicioso encontram sinal mais forte e se associam a ele</li>
+                  <li style="display: list-item">Tráfego do usuário é enviado ao AP não autorizado</li>
+                  <li style="display: list-item">AP malicioso captura os dados e os encaminha ao AP legítimo</li>
+                  <li style="display: list-item">Tráfego de retorno segue o mesmo caminho, sendo capturado novamente</li>
+                </ol>
+
+                <div class="mt-3 p-2" style="background: #1a1a1a; border-radius: 4px">
+                  <i class="fas fa-skull"></i> <strong>Consequências:</strong> O invasor pode roubar senhas, informações pessoais, obter
+                  acesso ao dispositivo e comprometer o sistema.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="content-card h-100">
+                <h3 class="card-title">Diagrama do Ataque</h3>
+
+                <div style="text-align: center; margin: 20px 0">
+                  <i class="fas fa-globe fa-2x" style="color: #00ff00"></i>
+                  <div style="margin: 10px 0">Internet</div>
+
+                  <div style="display: flex; justify-content: space-around; align-items: center; margin: 20px 0">
+                    <div style="text-align: center">
+                      <i class="fas fa-coffee fa-2x"></i>
+                      <div><small>Bob's Latte</small></div>
+                      <div style="font-size: 0.7rem">SSID: Bob latte</div>
+                      <div style="font-size: 0.7rem">Canal: 6</div>
+                    </div>
+
+                    <i class="fas fa-arrow-right fa-2x" style="color: #ff5555"></i>
+
+                    <div style="text-align: center; position: relative">
+                      <i class="fas fa-skull fa-3x" style="color: #ff5555"></i>
+                      <div><small style="color: #ff5555">Evil Twin AP</small></div>
+                      <div style="font-size: 0.7rem">SSID: Bob latte</div>
+                      <div style="font-size: 0.7rem">Sinal mais forte</div>
+                    </div>
+
+                    <i class="fas fa-arrow-right fa-2x" style="color: #ff5555"></i>
+
+                    <div style="text-align: center">
+                      <i class="fas fa-user fa-2x"></i>
+                      <div><small>Usuário</small></div>
+                    </div>
+                  </div>
+
+                  <div style="border: 1px dashed #ff5555; padding: 10px; margin-top: 10px">
+                    <i class="fas fa-exchange-alt fa-rotate-90 me-2"></i>
+                    Todo tráfego passa pelo AP malicioso
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prevenção MITM -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">Prevenindo Ataques MITM</h3>
+
+            <p>
+              Impedir um ataque MITM depende da <strong>sofisticação da infraestrutura da WLAN</strong> e da
+              <strong>vigilância no monitoramento</strong> da atividade na rede.
+            </p>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="p-3" style="background: #1e1e1e; border-radius: 8px">
+                  <h5><i class="fas fa-check-circle text-success me-2"></i> Etapa 1: Identificação</h5>
+                  <p>Identificar dispositivos legítimos na WLAN. Para isso, os usuários devem ser <strong>autenticados</strong>.</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3" style="background: #1e1e1e; border-radius: 8px">
+                  <h5><i class="fas fa-check-circle text-success me-2"></i> Etapa 2: Monitoramento</h5>
+                  <p>
+                    Depois que todos os dispositivos legítimos são conhecidos, a rede pode ser monitorada quanto a dispositivos ou tráfego
+                    anormais.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 text-center">
+              <i class="fas fa-shield-alt fa-3x" style="color: #00ff00"></i>
+              <p class="mt-2">A autenticação é a base para identificar dispositivos legítimos e detectar invasores.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz de Verificação - Ameaças WLAN -->
+      <section id="mod5-threats-quiz" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border-left-color: #ffc107"
+              >📝 VERIFICAÇÃO</span
+            >
+            <span class="badge-cisco ms-2">5.2.6</span>
+          </div>
+          <h2 class="cisco-title">Verifique sua compreensão - Ameaças de WLAN</h2>
+
+          <div class="row g-4">
+            <!-- Pergunta 1 -->
+            <div class="col-md-4">
+              <div class="content-card h-100" style="border-top: 3px solid #ffc107">
+                <h3 class="card-title" style="font-size: 1.2rem">Pergunta 1</h3>
+                <p>Qual das alternativas a seguir <strong>NÃO</strong> é provavelmente a fonte de um ataque de DoS sem fio?</p>
+
+                <div class="mt-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled />
+                    <label class="form-check-label">Usuários malicioso</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled />
+                    <label class="form-check-label">Dispositivos configurados incorretamente</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label fw-bold">✅ AP invasor</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled />
+                    <label class="form-check-label">Interferência de rádio</label>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 255, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Resposta:</strong> AP invasor (rogue AP) é mais associado a ataques MITM, não DoS.
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="col-md-4">
+              <div class="content-card h-100" style="border-top: 3px solid #ffc107">
+                <h3 class="card-title" style="font-size: 1.2rem">Pergunta 2</h3>
+                <p>
+                  Verdadeiro ou falso: Um ponto de acesso não autorizado é um ponto de configuração incorreto conectado à rede e uma
+                  possível fonte de ataques de DoS.
+                </p>
+
+                <div class="mt-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label fw-bold">✅ Verdadeiro</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled />
+                    <label class="form-check-label">Falso</label>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 255, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Resposta:</strong> Verdadeiro - rogue APs podem causar DoS e são uma ameaça.
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="col-md-4">
+              <div class="content-card h-100" style="border-top: 3px solid #ffc107">
+                <h3 class="card-title" style="font-size: 1.2rem">Pergunta 3</h3>
+                <p>Que tipo de ataque é um ataque de "Ponto de acesso gêmeo do mal" (Evil Twin AP)?</p>
+
+                <div class="mt-3">
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled />
+                    <label class="form-check-label">Intruso sem fio</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled />
+                    <label class="form-check-label">Interferência de rádio</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" checked disabled style="accent-color: #00ff00" />
+                    <label class="form-check-label fw-bold">✅ MITM (Homem no Meio)</label>
+                  </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled />
+                    <label class="form-check-label">DoS</label>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 255, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Resposta:</strong> MITM - o invasor se posiciona entre o usuário e o AP legítimo.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================= -->
+      <!-- SEÇÃO 5.3 - WLANS SEGURAS -->
+      <!-- ============================================= -->
+
+      <!-- 5.3.2 SSID Cloaking e Filtragem de Endereço MAC -->
+      <section id="mod5-ssid-cloaking" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco" style="background: rgba(0, 170, 255, 0.1); color: #0af; border-left-color: #0af">🔒 SEGURANÇA</span>
+            <span class="badge-cisco ms-2">5.3.2</span>
+          </div>
+          <h2 class="cisco-title">SSID Cloaking e Filtragem de Endereço MAC</h2>
+
+          <div class="content-card mb-4">
+            <p class="lead">
+              Os sinais sem fio podem atravessar materiais sólidos como tetos, pisos, paredes, etc. Sem medidas rigorosas de segurança, o
+              acesso a esses dispositivos pode ser feito por meio de um endereço MAC especificado.
+            </p>
+            <p>
+              Para lidar com as ameaças de invasores sem fio e proteger dados, dois recursos de segurança são usados:
+              <strong>camuflagem SSID</strong> e <strong>filtragem de endereço MAC</strong>.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <!-- SSID Cloaking -->
+            <div class="col-lg-6">
+              <div class="content-card h-100">
+                <h3 class="card-title">
+                  <i class="fas fa-eye-slash me-2" style="color: #0af"></i>
+                  Ocultação do SSID
+                </h3>
+
+                <p>
+                  Os pontos de acesso e alguns roteadores sem fio permitem que o quadro de sinalização SSID seja
+                  <strong>desativado</strong>. Os clientes sem fio devem configurar manualmente o SSID para se conectar à rede.
+                </p>
+
+                <!-- Interface do roteador simulada -->
+                <div class="mt-4" style="background: #0f0f0f; border: 1px solid #333; border-radius: 8px; overflow: hidden">
+                  <div style="background: #1a1a1a; padding: 10px; border-bottom: 1px solid #0af">
+                    <i class="fas fa-wifi me-2"></i> Wireless Tri-Band Home Router - Basic Wireless Settings
+                  </div>
+                  <div style="padding: 15px">
+                    <div class="mb-3">
+                      <label class="text-muted small">Network Mode:</label>
+                      <div class="bg-dark p-2 rounded">Auto</div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="text-muted small">Network Name (SSID):</label>
+                      <div class="bg-dark p-2 rounded">Default</div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="text-muted small">SSID Broadcast:</label>
+                      <div class="d-flex gap-3">
+                        <span class="badge bg-secondary">Enabled</span>
+                        <span class="badge bg-success">Disabled ✓</span>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="text-muted small">Standard Channel:</label>
+                      <div class="bg-dark p-2 rounded">1 - 2.412GHz</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 170, 255, 0.1); border-radius: 4px">
+                  <i class="fas fa-info-circle me-2"></i>
+                  Com SSID Broadcast desativado, clientes precisam configurar o SSID manualmente.
+                </div>
+              </div>
+            </div>
+
+            <!-- MAC Filtering -->
+            <div class="col-lg-6">
+              <div class="content-card h-100">
+                <h3 class="card-title">
+                  <i class="fas fa-filter me-2" style="color: #0af"></i>
+                  Filtragem de Endereços MAC
+                </h3>
+
+                <p>
+                  Um administrador pode permitir ou negar manualmente o acesso sem fio dos clientes com base em seu endereço físico de
+                  hardware MAC.
+                </p>
+
+                <!-- Interface de filtro MAC -->
+                <div class="mt-4" style="background: #0f0f0f; border: 1px solid #333; border-radius: 8px; overflow: hidden">
+                  <div style="background: #1a1a1a; padding: 10px; border-bottom: 1px solid #0af">
+                    <i class="fas fa-wifi me-2"></i> Wireless MAC Filter
+                  </div>
+                  <div style="padding: 15px">
+                    <div class="mb-3">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" checked disabled />
+                        <label class="form-check-label">Permitir PCs listados abaixo</label>
+                      </div>
+                    </div>
+
+                    <table class="table table-sm table-dark">
+                      <tr>
+                        <td>MAC 01:</td>
+                        <td>00:D0:97:39:06:A6</td>
+                      </tr>
+                      <tr>
+                        <td>MAC 02:</td>
+                        <td>00:E0:A3:7A:26:2B</td>
+                      </tr>
+                      <tr>
+                        <td>MAC 03:</td>
+                        <td class="text-muted">00:00:00:00:00:00</td>
+                      </tr>
+                      <tr>
+                        <td>MAC 04:</td>
+                        <td class="text-muted">00:00:00:00:00:00</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+                <div class="mt-3 alert" style="background: rgba(255, 0, 0, 0.1)">
+                  <i class="fas fa-exclamation-triangle me-2 text-warning"></i>
+                  <strong>Limitação:</strong> SSIDs são facilmente descobertos e endereços MAC podem ser falsificados. Essas medidas não
+                  impedem intrusos determinados.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Observação importante -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">A melhor defesa</h3>
+            <p>
+              A melhor maneira de proteger uma rede sem fio é usar <strong>sistemas de autenticação e criptografia</strong> robustos, não
+              apenas ocultação de SSID ou filtragem MAC.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3.3 Métodos de autenticação originais 802.11 -->
+      <section id="mod5-auth-methods" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.3.3</span>
+          </div>
+          <h2 class="cisco-title">Métodos de autenticação originais 802.11</h2>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #ffaa00">Autenticação de Sistema Aberto</h3>
+                <div style="text-align: center; margin: 20px 0">
+                  <i class="fas fa-door-open fa-3x" style="color: #ffaa00"></i>
+                </div>
+                <ul class="styled-list">
+                  <li><i class="fas fa-check-circle"></i> Qualquer cliente pode se conectar facilmente</li>
+                  <li><i class="fas fa-check-circle"></i> Sem necessidade de senha</li>
+                  <li><i class="fas fa-check-circle"></i> Usado em locais públicos (cafés, hotéis, aeroportos)</li>
+                  <li><i class="fas fa-check-circle"></i> Cliente é responsável pela própria segurança (ex: VPN)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #00ff00">Autenticação de Chave Compartilhada</h3>
+                <div style="text-align: center; margin: 20px 0">
+                  <i class="fas fa-key fa-3x" style="color: #00ff00"></i>
+                </div>
+                <ul class="styled-list">
+                  <li><i class="fas fa-check-circle"></i> Fornece mecanismos de autenticação e criptografia</li>
+                  <li><i class="fas fa-check-circle"></i> WEP, WPA, WPA2, WPA3</li>
+                  <li><i class="fas fa-check-circle"></i> Senha pré-compartilhada entre cliente e AP</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gráfico resumo -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">Resumo dos Métodos de Autenticação</h3>
+
+            <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px">
+              <div style="text-align: center; min-width: 200px">
+                <div style="background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #ffaa00">
+                  <h4 style="color: #ffaa00">Aberta</h4>
+                  <p class="small">Não é necessário utilizar senha.<br />Qualquer cliente pode se associar.<br />Uso público.</p>
+                </div>
+              </div>
+
+              <i class="fas fa-arrow-right fa-2x" style="color: #00ff00"></i>
+
+              <div style="text-align: center; min-width: 200px">
+                <div style="background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #00ff00">
+                  <h4 style="color: #00ff00">Chave Compartilhada</h4>
+                  <div style="display: flex; justify-content: center; gap: 10px; flex-wrap: wrap">
+                    <span class="badge bg-secondary">WEP</span>
+                    <span class="badge bg-secondary">WPA</span>
+                    <span class="badge bg-success">WPA2</span>
+                    <span class="badge bg-info">WPA3</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3.4 Métodos de Autenticação de Chave Compartilhada -->
+      <section id="mod5-shared-key" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.3.4</span>
+          </div>
+          <h2 class="cisco-title">Métodos de Autenticação de Chave Compartilhada</h2>
+
+          <div class="content-card">
+            <p class="lead">
+              Existem quatro técnicas de autenticação de chave compartilhada disponíveis. Até que a disponibilidade dos dispositivos WPA3 se
+              torne onipresente, as redes sem fio devem usar o padrão <strong>WPA2</strong>.
+            </p>
+
+            <table class="table table-cisco mt-4">
+              <thead>
+                <tr>
+                  <th>Método</th>
+                  <th>Descrição</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>WEP</strong> (Wired Equivalent Privacy)</td>
+                  <td>Especificação 802.11 original. Usa criptografia RC4 com chave estática que nunca muda, facilitando invasão.</td>
+                  <td><span class="badge bg-danger">NÃO RECOMENDADO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>WPA</strong> (Wi-Fi Protected Access)</td>
+                  <td>Usa WEP mas com TKIP (Temporal Key Integrity Protocol). Muda a chave para cada pacote.</td>
+                  <td><span class="badge bg-warning text-dark">Herdado</span></td>
+                </tr>
+                <tr>
+                  <td><strong>WPA2</strong></td>
+                  <td>
+                    Padrão atual da indústria. Usa criptografia AES (Advanced Encryption Standard). Atualmente o protocolo mais forte
+                    amplamente disponível.
+                  </td>
+                  <td><span class="badge bg-success">RECOMENDADO</span></td>
+                </tr>
+                <tr>
+                  <td><strong>WPA3</strong></td>
+                  <td>
+                    Próxima geração. Usa métodos de segurança mais recentes, desaprova protocolos herdados e exige PMF (Protected Management
+                    Frames).
+                  </td>
+                  <td><span class="badge bg-info">Futuro</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3.5 Autenticação de um usuário doméstico -->
+      <section id="mod5-home-auth" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.3.5</span>
+          </div>
+          <h2 class="cisco-title">Autenticação de um usuário doméstico</h2>
+
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="content-card h-100">
+                <h3 class="card-title">Opções de Autenticação WPA2</h3>
+
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div style="background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #00ff00; height: 100%">
+                      <h4 style="color: #00ff00">Pessoal (Personal)</h4>
+                      <ul class="styled-list">
+                        <li><i class="fas fa-home"></i> Redes domésticas ou pequenos escritórios</li>
+                        <li><i class="fas fa-key"></i> Chave pré-compartilhada (PSK)</li>
+                        <li><i class="fas fa-check"></i> Senha compartilhada entre cliente e roteador</li>
+                        <li><i class="fas fa-times"></i> Não requer servidor de autenticação</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div style="background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #0af; height: 100%">
+                      <h4 style="color: #0af">Enterprise</h4>
+                      <ul class="styled-list">
+                        <li><i class="fas fa-building"></i> Redes corporativas</li>
+                        <li><i class="fas fa-server"></i> Requer servidor RADIUS</li>
+                        <li><i class="fas fa-shield-alt"></i> Segurança adicional</li>
+                        <li><i class="fas fa-exchange-alt"></i> Usa 802.1X e EAP</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Interface do roteador -->
+                <div class="mt-4" style="background: #0f0f0f; border: 1px solid #333; border-radius: 8px">
+                  <div style="background: #1a1a1a; padding: 10px; border-bottom: 1px solid #00ff00">Wireless Security Configuration</div>
+                  <div style="padding: 15px">
+                    <div class="mb-2">
+                      <span class="text-muted">2.4 GHz Security Mode:</span>
+                    </div>
+                    <div class="d-flex gap-2 flex-wrap">
+                      <span class="badge bg-secondary">Disabled</span>
+                      <span class="badge bg-secondary">WEP</span>
+                      <span class="badge bg-secondary">WPA Personal</span>
+                      <span class="badge bg-secondary">WPA Enterprise</span>
+                      <span class="badge bg-success">WPA2 Personal</span>
+                      <span class="badge bg-info">WPA2 Enterprise</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="content-card h-100">
+                <h3 class="card-title">Configuração WPA2 Personal</h3>
+
+                <div style="background: #0f0f0f; border: 1px solid #333; border-radius: 8px; padding: 15px">
+                  <div class="mb-3">
+                    <label class="text-muted small">Security Mode:</label>
+                    <div class="bg-dark p-2 rounded">WPA2 Personal</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Encryption:</label>
+                    <div class="bg-dark p-2 rounded"><span class="badge bg-success">AES</span> (recomendado)</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Passphrase:</label>
+                    <div class="bg-dark p-2 rounded">••••••••••</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Key Renewal:</label>
+                    <div class="bg-dark p-2 rounded">3600 seconds</div>
+                  </div>
+                </div>
+
+                <p class="mt-3 small text-muted">
+                  Na figura, o administrador configura o roteador com WPA2 Personal e criptografia AES na faixa de 2.4 GHz.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3.6 Métodos de Criptografia -->
+      <section id="mod5-encryption" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.3.6</span>
+          </div>
+          <h2 class="cisco-title">Métodos de Criptografia</h2>
+
+          <div class="content-card mb-4">
+            <p class="lead">
+              Criptografia é usada para proteger os dados. Se um invasor capturar dados criptografados, não poderá decifrá-los em um período
+              de tempo razoável.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #ffaa00">TKIP</h3>
+                <p><em>Temporal Key Integrity Protocol</em></p>
+
+                <ul class="styled-list">
+                  <li><i class="fas fa-check"></i> Método de criptografia usado pelo WPA</li>
+                  <li><i class="fas fa-check"></i> Suporte para equipamentos WLAN herdados</li>
+                  <li><i class="fas fa-check"></i> Aborda falhas do WEP original</li>
+                  <li><i class="fas fa-check"></i> Usa WEP mas criptografa payload da camada 2</li>
+                  <li><i class="fas fa-check"></i> Executa MIC (Message Integrity Check)</li>
+                </ul>
+
+                <div class="mt-3 p-2" style="background: rgba(255, 170, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-key"></i> Muda a chave para cada pacote
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #00ff00">AES</h3>
+                <p><em>Advanced Encryption Standard</em></p>
+
+                <ul class="styled-list">
+                  <li><i class="fas fa-check-circle"></i> Método de criptografia usado pelo WPA2</li>
+                  <li><i class="fas fa-check-circle"></i> <strong>Método preferido</strong> - muito mais forte</li>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Usa CCMP (Counter Mode Cipher Block Chaining Message Authentication Code Protocol)
+                  </li>
+                  <li><i class="fas fa-check-circle"></i> Permite que hosts reconheçam se bits foram alterados</li>
+                </ul>
+
+                <div class="mt-3 p-2" style="background: rgba(0, 255, 0, 0.1); border-radius: 4px">
+                  <i class="fas fa-shield-alt"></i> AES é o padrão de criptografia mais forte atualmente
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interface de configuração -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">Configuração no Roteador</h3>
+
+            <div style="background: #0f0f0f; border: 1px solid #333; border-radius: 8px; max-width: 500px; margin: 0 auto">
+              <div style="background: #1a1a1a; padding: 10px; border-bottom: 1px solid #00ff00">Wireless Security - 2.4 GHz</div>
+              <div style="padding: 15px">
+                <div class="mb-3">
+                  <span class="text-muted">Security Mode:</span>
+                  <div>WPA2 Personal</div>
+                </div>
+                <div class="mb-3">
+                  <span class="text-muted">Encryption:</span>
+                  <div class="d-flex gap-2">
+                    <span class="badge bg-secondary">TKIP</span>
+                    <span class="badge bg-success">AES ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3.7 Autenticação na Empresa -->
+      <section id="mod5-enterprise" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.3.7</span>
+          </div>
+          <h2 class="cisco-title">Autenticação na Empresa</h2>
+
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="content-card h-100">
+                <h3 class="card-title">WPA2 Enterprise com RADIUS</h3>
+
+                <p>
+                  Em redes com requisitos de segurança mais rígidos, é necessária autenticação adicional. A opção
+                  <strong>Enterprise</strong> requer um servidor RADIUS (AAA).
+                </p>
+
+                <div class="mt-4">
+                  <h4 style="font-size: 1.1rem">Parâmetros necessários:</h4>
+                  <ul class="styled-list">
+                    <li><i class="fas fa-server"></i> <strong>Endereço IP do servidor RADIUS</strong> - Endereço acessível do servidor</li>
+                    <li>
+                      <i class="fas fa-plug"></i> <strong>Números de porta UDP</strong> - 1812 (autenticação) e 1813 (contabilidade) ou
+                      1645/1646
+                    </li>
+                    <li><i class="fas fa-key"></i> <strong>Chave compartilhada</strong> - Autentica o AP com o servidor RADIUS</li>
+                  </ul>
+                </div>
+
+                <div class="alert" style="background: rgba(0, 170, 255, 0.1)">
+                  <i class="fas fa-info-circle"></i>
+                  <strong>Importante:</strong> A chave compartilhada não é configurada no cliente. É necessária apenas no AP para
+                  autenticação com o servidor RADIUS.
+                </div>
+
+                <p>
+                  A autenticação e autorização do usuário são tratadas pelo padrão <strong>802.1X</strong>, que fornece autenticação
+                  centralizada e baseada em servidor.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="content-card h-100">
+                <h3 class="card-title">Configuração WPA2 Enterprise</h3>
+
+                <div style="background: #0f0f0f; border: 1px solid #333; border-radius: 8px; padding: 15px">
+                  <div class="mb-3">
+                    <label class="text-muted small">Security Mode:</label>
+                    <div class="bg-dark p-2 rounded">WPA2 Enterprise</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Encryption:</label>
+                    <div class="bg-dark p-2 rounded">AES</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">RADIUS Server:</label>
+                    <div class="bg-dark p-2 rounded">10.10.10.100</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">RADIUS Port:</label>
+                    <div class="bg-dark p-2 rounded">1645</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Shared Secret:</label>
+                    <div class="bg-dark p-2 rounded">J#A).a3XQnq5KsJT</div>
+                  </div>
+                  <div class="mb-3">
+                    <label class="text-muted small">Key Renewal:</label>
+                    <div class="bg-dark p-2 rounded">3600 seconds</div>
+                  </div>
+                </div>
+
+                <p class="mt-3 small text-muted">O processo de login 802.1X usa o EAP para comunicação com o AP e servidor RADIUS.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explicação 802.1X e EAP -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">802.1X e EAP</h3>
+
+            <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 20px">
+              <div style="text-align: center">
+                <i class="fas fa-laptop fa-3x"></i>
+                <div>Cliente</div>
+              </div>
+              <i class="fas fa-arrow-right fa-2x"></i>
+              <div style="text-align: center">
+                <i class="fas fa-wifi fa-3x"></i>
+                <div>AP</div>
+              </div>
+              <i class="fas fa-arrow-right fa-2x"></i>
+              <div style="text-align: center">
+                <i class="fas fa-server fa-3x" style="color: #00ff00"></i>
+                <div>RADIUS</div>
+              </div>
+            </div>
+
+            <p class="mt-3">
+              O <strong>EAP (Extensible Authentication Protocol)</strong> é uma estrutura para autenticar o acesso à rede. Ele fornece
+              autenticação segura e negocia uma chave privada para a sessão de criptografia (TKIP ou AES).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5.3.8 WPA3 -->
+      <section id="mod5-wpa3" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco">5.3.8</span>
+            <span class="badge-cisco ms-2" style="background: rgba(0, 255, 0, 0.2)">🆕 WPA3</span>
+          </div>
+          <h2 class="cisco-title">WPA3 - A Próxima Geração</h2>
+
+          <div class="content-card mb-4">
+            <p class="lead">
+              No momento, dispositivos com suporte a WPA3 ainda não estão amplamente disponíveis, mas o WPA2 não é mais considerado seguro.
+              WPA3 é o método de autenticação 802.11 recomendado para o futuro.
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <!-- WPA3-Personal -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #00ff00">WPA3-Personal (Pessoal)</h3>
+
+                <p>No WPA2-Personal, atacantes podem ouvir o "handshake" entre cliente e AP e usar força bruta para adivinhar o PSK.</p>
+
+                <div class="mt-3 p-3" style="background: #1a1a1a; border-radius: 8px">
+                  <i class="fas fa-shield-alt fa-2x mb-2" style="color: #00ff00"></i>
+                  <p>
+                    <strong>WPA3-Personal impede isso usando SAE (Simultaneous Authentication of Equals)</strong>, um recurso do IEEE
+                    802.11-2016. O PSK nunca é exposto, tornando impossível para o atacante adivinhar.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- WPA3-Enterprise -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #0af">WPA3-Enterprise (Corporativo)</h3>
+
+                <ul class="styled-list">
+                  <li><i class="fas fa-check"></i> Ainda usa autenticação 802.1X/EAP</li>
+                  <li><i class="fas fa-check"></i> Requer conjunto criptográfico de <strong>192 bits</strong></li>
+                  <li><i class="fas fa-check"></i> Elimina mistura de protocolos de segurança anteriores</li>
+                  <li><i class="fas fa-check"></i> Adere ao CNSA (Commercial National Security Algorithm)</li>
+                </ul>
+
+                <p class="small text-muted mt-2">Usado em redes Wi-Fi de alta segurança.</p>
+              </div>
+            </div>
+
+            <!-- Redes Abertas -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #ffaa00">Redes Abertas</h3>
+
+                <p>No WPA2, redes abertas enviam tráfego em texto não autenticado e limpo.</p>
+
+                <div class="mt-3 p-3" style="background: #1a1a1a; border-radius: 8px">
+                  <i class="fas fa-lock-open fa-2x mb-2" style="color: #ffaa00"></i>
+                  <p>
+                    No <strong>WPA3</strong>, redes Wi-Fi abertas ou públicas ainda não usam autenticação, mas usam
+                    <strong>OWE (Opportunistic Wireless Encryption)</strong> para criptografar todo o tráfego sem fio.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Integração IoT -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <h3 class="card-title" style="color: #ff66aa">Integração da Internet das Coisas (IoT)</h3>
+
+                <p>Dispositivos IoT são tipicamente "headless" (sem GUI para configuração).</p>
+
+                <div class="mt-3">
+                  <div style="background: #1a1a1a; padding: 15px; border-radius: 8px">
+                    <h5 style="color: #ff66aa">Problema com WPS:</h5>
+                    <p class="small">WPA2 incluiu WPS para dispositivos embarcados, mas WPS é vulnerável a ataques e não é recomendado.</p>
+
+                    <h5 class="mt-2" style="color: #00ff00">Solução: DPP (Device Provisioning Protocol)</h5>
+                    <p class="small">
+                      Cada dispositivo tem chave pública codificada no firmware/hardware, impressa como <strong>QR Code</strong>.
+                      Administrador escaneia e integra rapidamente o dispositivo.
+                    </p>
+
+                    <div style="text-align: center; margin: 10px 0">
+                      <i class="fas fa-qrcode fa-3x"></i>
+                    </div>
+
+                    <p class="small text-muted">DPP substituirá o WPS ao longo do tempo.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparativo WPA2 vs WPA3 -->
+          <div class="content-card mt-4">
+            <h3 class="card-title">WPA2 vs WPA3</h3>
+
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th>WPA2</th>
+                  <th>WPA3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Personal</td>
+                  <td>PSK exposto a ataques de força bruta</td>
+                  <td>SAE protege PSK (nunca exposto)</td>
+                </tr>
+                <tr>
+                  <td>Enterprise</td>
+                  <td>Vários protocolos</td>
+                  <td>Conjunto criptográfico de 192 bits, CNSA</td>
+                </tr>
+                <tr>
+                  <td>Redes Abertas</td>
+                  <td>Tráfego em texto limpo</td>
+                  <td>OWE (criptografia oportunística)</td>
+                </tr>
+                <tr>
+                  <td>IoT</td>
+                  <td>WPS (vulnerável)</td>
+                  <td>DPP com QR Code</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz de Verificação - WLANs Seguras -->
+      <section id="mod5-secure-quiz" class="content-section">
+        <div class="container">
+          <div class="section-badge" data-aos="fade-up">
+            <span class="badge-cisco" style="background: rgba(255, 193, 7, 0.1); color: #ffc107; border-left-color: #ffc107"
+              >📝 VERIFICAÇÃO</span
+            >
+            <span class="badge-cisco ms-2">5.3.9</span>
+          </div>
+          <h2 class="cisco-title">Verifique sua compreensão - WLANs Seguras</h2>
+
+          <div class="row g-4">
+            <!-- Pergunta 1 -->
+            <div class="col-md-6">
+              <div class="content-card">
+                <h4>1. Qual método de criptografia é o mais forte e recomendado para WPA2?</h4>
+                <div class="mt-3">
+                  <span class="badge bg-success p-2">AES</span>
+                  <span class="badge bg-secondary p-2 ms-2">TKIP</span>
+                  <span class="badge bg-secondary p-2 ms-2">RC4</span>
+                </div>
+                <p class="mt-2 text-success"><i class="fas fa-check-circle"></i> AES é o método preferido por ser muito mais forte.</p>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="col-md-6">
+              <div class="content-card">
+                <h4>2. Qual servidor é necessário para autenticação WPA2 Enterprise?</h4>
+                <div class="mt-3">
+                  <span class="badge bg-success p-2">RADIUS</span>
+                  <span class="badge bg-secondary p-2 ms-2">DNS</span>
+                  <span class="badge bg-secondary p-2 ms-2">DHCP</span>
+                </div>
+                <p class="mt-2 text-success">
+                  <i class="fas fa-check-circle"></i> WPA2 Enterprise requer servidor RADIUS para autenticação centralizada.
+                </p>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="col-md-6">
+              <div class="content-card">
+                <h4>3. Qual recurso do WPA3 protege contra ataques de força bruta no handshake?</h4>
+                <div class="mt-3">
+                  <span class="badge bg-success p-2">SAE</span>
+                  <span class="badge bg-secondary p-2 ms-2">WPS</span>
+                  <span class="badge bg-secondary p-2 ms-2">TKIP</span>
+                </div>
+                <p class="mt-2 text-success">
+                  <i class="fas fa-check-circle"></i> SAE (Simultaneous Authentication of Equals) nunca expõe o PSK.
+                </p>
+              </div>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="col-md-6">
+              <div class="content-card">
+                <h4>4. Qual protocolo substituirá o WPS para integração de dispositivos IoT?</h4>
+                <div class="mt-3">
+                  <span class="badge bg-success p-2">DPP</span>
+                  <span class="badge bg-secondary p-2 ms-2">EAP</span>
+                  <span class="badge bg-secondary p-2 ms-2">TKIP</span>
+                </div>
+                <p class="mt-2 text-success">
+                  <i class="fas fa-check-circle"></i> DPP (Device Provisioning Protocol) usa QR Code para integração segura.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <a class="navbar-brand" href="/index.html" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+              <i class="fas fa-shield-halved me-2"></i>
+              NET<span style="color: white">SEC</span>
+            </a>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <div class="footer-credit">
+              <p class="mb-1">
+                <i class="fas fa-code me-1"></i> Desenvolvido por
+                <a href="#" target="_blank">🧙 Alfredo Allan</a>
+              </p>
+              <p class="mb-1">
+                <i class="fas fa-graduation-cap me-1"></i> Currículo
+                <a href="#" target="_blank">Cisco Academy</a>
+              </p>
+              <p class="mb-1">
+                <i class="fas fa-robot me-1"></i> Assistido por <a href="#" target="_blank">Gemini</a> e
+                <a href="#" target="_blank">DeepSeek</a>
+              </p>
+              <p class="mt-3 mb-0">
+                <small class="text-muted">© 2026 NetSec Estudos. Todos os direitos reservados.</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // ===== BARRA DE PROGRESSO =====
+      window.addEventListener('scroll', function () {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        const scrolled = (winScroll / height) * 100
+        document.getElementById('readingProgress').style.width = scrolled + '%'
+      })
+
+      // ===== ANIMAÇÕES COM ANIME.JS =====
+      document.addEventListener('DOMContentLoaded', function () {
+        // Animar títulos ao aparecer
+        anime({
+          targets: '.cisco-title',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          duration: 800,
+          delay: anime.stagger(100)
+        })
+
+        // Animar cards
+        anime({
+          targets: '.content-card',
+          opacity: [0, 1],
+          scale: [0.95, 1],
+          duration: 600,
+          delay: anime.stagger(100)
+        })
+      })
+
+      // ===== BUSCA NO ÍNDICE =====
+      document.getElementById('navSearch')?.addEventListener('keyup', function (e) {
+        const search = e.target.value.toLowerCase()
+        const items = document.querySelectorAll('#sectionList .dropdown-item')
+
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase()
+          if (text.includes(search)) {
+            item.style.display = 'block'
+          } else {
+            item.style.display = 'none'
+          }
+        })
+      })
+
+      // ===== SCROLL SUAVE COM OFFSET =====
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault()
+          const target = document.querySelector(this.getAttribute('href'))
+          if (target) {
+            const offset = 100
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            })
+
+            // Fechar dropdowns se necessário
+            const dropdown = bootstrap.Dropdown.getInstance(document.querySelector('.dropdown-toggle'))
+            if (dropdown) dropdown.hide()
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

@@ -1,192 +1,378 @@
- /* Variáveis CSS - Identidade Visual */
-      :root {
-        --cisco-green: #00ff00;
-        --cisco-green-dim: #00cc00;
-        --bg-primary: #0a0a0a;
-        --bg-secondary: #1a1a1a;
-        --bg-card: #252525;
-        --bg-card-hover: #2d2d2d;
-        --text-primary: #ffffff;
-        --text-secondary: #e0e0e0;
-        --text-muted: #a0a0a0;
-        --border-primary: #333333;
-        --terminal-bg: #0d0d0d;
-        --danger: #ff4444;
-        --info: #3399ff;
-      }
+/* ===== VARIÁVEIS CSS - Identidade Visual ===== */
+:root {
+  /* Cores Principais */
+  --cisco-green: #66bf53;
+  --cisco-green-dim: #4a9e3a;
+  --cisco-green-soft: rgba(102, 191, 83, 0.1);
 
-      /* Estilos Globais */
-      body {
-        background-color: var(--bg-primary);
-        font-family: 'Inter', sans-serif;
-        color: var(--text-primary);
-        padding-top: 0;
-      }
+  /* Fundos */
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-card: #1e1e1e;
+  --bg-card-hover: #2a2a2a;
+  --terminal-bg: #0a0a0a;
 
-      /* Scroll Suave */
-      html {
-        scroll-behavior: smooth;
-      }
+  /* Textos */
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-muted: #b0b0b0;
 
-      /* Títulos de Seção */
-      .cisco-title {
-        font-weight: 800;
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 2px solid var(--border-primary);
-        color: white;
-        letter-spacing: -0.02em;
-        position: relative;
-      }
+  /* Bordas */
+  --border-primary: #333333;
 
-      .cisco-title::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100px;
-        height: 2px;
-        background: var(--cisco-green);
-      }
+  /* Cores de Feedback */
+  --danger: #ff4444;
+  --info: #3399ff;
 
-      /* Content Card */
-      .content-card {
-        background: var(--bg-card) !important;
-        border-radius: 12px;
-        padding: 1.5rem;
-        border: 1px solid var(--border-primary);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
-      }
+  /* Tipografia */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-terminal: 'Courier New', monospace;
+  --dark-bg: #121212;
+}
 
-      .content-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 15px rgba(0, 255, 0, 0.1);
-        border-color: var(--cisco-green);
-      }
+/* ===== ESTILOS GLOBAIS ===== */
+body {
+  background-color: #121212 !important;
+  font-family: var(--font-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  padding-top: 0;
+}
 
-      /* Terminal Card */
-      .terminal-card {
-        background: var(--terminal-bg);
-        border-left: 4px solid var(--cisco-green);
-        padding: 1rem;
-        border-radius: 0 8px 8px 0;
-        font-family: 'Courier New', monospace;
-      }
+/* Scroll Suave */
+html {
+  scroll-behavior: smooth;
+}
 
-      /* Badge Cisco */
-      .badge-cisco {
-        background: rgba(0, 255, 0, 0.1);
-        color: var(--cisco-green);
-        padding: 0.2rem 0.5rem;
-        border-radius: 4px;
-        font-size: 0.7rem;
-        font-weight: 600;
-        border: 1px solid rgba(0, 255, 0, 0.2);
-        display: inline-block;
-      }
+/* ===== TÍTULOS DE SEÇÃO ===== */
+.cisco-title {
+  color: var(--cisco-green);
+  font-weight: 800;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-left: 5px solid var(--cisco-green);
+  padding-left: 15px;
+  margin-bottom: 30px;
+  position: relative;
+}
 
-      /* Tabela Cisco */
-      .table-cisco {
-        width: 100%;
-        background: var(--bg-card);
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid var(--border-primary);
-      }
+/* Tablet */
+@media (min-width: 768px) {
+  .cisco-title {
+    font-size: 2.2rem;
+  }
+}
 
-      .table-cisco thead {
-        background: var(--bg-secondary);
-        border-bottom: 2px solid var(--cisco-green);
-      }
+/* Desktop */
+@media (min-width: 992px) {
+  .cisco-title {
+    font-size: 2.5rem;
+  }
+}
 
-      .table-cisco th {
-        padding: 1rem;
-        font-weight: 600;
-        color: var(--cisco-green);
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        letter-spacing: 0.5px;
-      }
+/* ===== CONTENT CARD ===== */
+.content-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 20px;
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
 
-      .table-cisco td {
-        padding: 0.75rem 1rem;
-        border-bottom: 1px solid var(--border-primary);
-        color: var(--text-secondary);
-      }
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(102, 191, 83, 0.1);
+  border-color: var(--cisco-green);
+}
 
-      /* Accordion */
-      .accordion-button {
-        background-color: var(--bg-secondary) !important;
-        color: var(--cisco-green) !important;
-        border: none !important;
-        box-shadow: none !important;
-      }
+/* ===== TERMINAL CARD ===== */
+.terminal-card {
+  background: var(--terminal-bg);
+  border-left: 4px solid var(--cisco-green);
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+  font-family: var(--font-terminal);
+  color: var(--cisco-green);
+}
 
-      .accordion-button:not(.collapsed) {
-        background-color: var(--bg-secondary) !important;
-        color: var(--cisco-green) !important;
-      }
+/* ===== BADGE CISCO ===== */
+.badge-cisco {
+  background: var(--cisco-green-soft);
+  color: var(--cisco-green);
+  border: 1px solid var(--cisco-green);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
 
-      .accordion-button::after {
-        filter: invert(0.8) sepia(1) hue-rotate(60deg);
-      }
+/* Badge menor para dropdowns */
+.dropdown .badge-cisco {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  border-radius: 4px;
+}
 
-      .accordion-body {
-        background-color: var(--bg-primary);
-        color: var(--text-secondary);
-        border-top: 1px solid var(--border-primary);
-      }
+/* Media Query para Mobile */
+@media (max-width: 768px) {
+  .badge-cisco {
+    width: 100%;
+    min-width: 140px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
 
-      .accordion-item {
-        background: var(--bg-secondary);
-        border: 1px solid var(--border-primary);
-        margin-bottom: 8px;
-      }
+  .gap-2 {
+    gap: 0.75rem !important;
+  }
+}
 
-      /* Dropdown */
-      .dropdown-item {
-        transition: all 0.2s;
-        border-left: 3px solid transparent;
-        color: var(--text-secondary);
-      }
+/* ===== TABELA CISCO ===== */
+.table-cisco {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-primary);
+}
 
-      .dropdown-item:hover {
-        background-color: rgba(0, 255, 0, 0.1) !important;
-        border-left-color: var(--cisco-green);
-        transform: translateX(5px);
-        color: white;
-      }
+.table-cisco thead {
+  background: var(--bg-secondary);
+  border-bottom: 2px solid var(--cisco-green);
+}
 
-      .dropdown-header {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
+.table-cisco th {
+  padding: 1rem;
+  font-weight: 600;
+  color: var(--cisco-green);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  background-color: var(--bg-secondary);
+}
 
-      /* Scrollbar customizada */
-      .dropdown-menu::-webkit-scrollbar {
-        width: 6px;
-      }
+.table-cisco td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+  background-color: var(--bg-card);
+}
 
-      .dropdown-menu::-webkit-scrollbar-track {
-        background: #333;
-      }
+.table-cisco tr:hover td {
+  background: var(--cisco-green-soft);
+}
 
-      .dropdown-menu::-webkit-scrollbar-thumb {
-        background: var(--cisco-green);
-        border-radius: 3px;
-      }
+.table-cisco tr:last-child td {
+  border-bottom: none;
+}
 
-      /* Alert Cisco */
-      .alert-cisco {
-        background: rgba(0, 255, 0, 0.05);
-        border-left: 4px solid var(--cisco-green);
-        padding: 1rem;
-      }
-
-
-.table-responsive th, td {
+/* ===== TABELA RESPONSIVA ===== */
+.table-responsive th,
+.table-responsive td {
   background-color: var(--bg-card) !important;
+}
+
+/* ===== ACCORDION ===== */
+.accordion-button {
+  background-color: var(--bg-secondary) !important;
+  color: var(--cisco-green) !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: 500;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--bg-secondary) !important;
+  color: var(--cisco-green) !important;
+}
+
+.accordion-button::after {
+  filter: invert(0.8) sepia(1) hue-rotate(60deg);
+}
+
+.accordion-button:focus {
+  border-color: var(--cisco-green);
+  box-shadow: none;
+}
+
+.accordion-body {
+  background-color: var(--bg-primary);
+  color: var(--text-secondary);
+  border-top: 1px solid var(--border-primary);
+}
+
+.accordion-item {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* ===== DROPDOWN ===== */
+.dropdown-item {
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  color: var(--text-secondary);
+}
+
+.dropdown-item:hover {
+  background-color: var(--cisco-green-soft) !important;
+  border-left-color: var(--cisco-green);
+  transform: translateX(5px);
+  color: var(--text-primary);
+}
+
+.dropdown-header {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--cisco-green);
+  font-weight: 700;
+}
+
+/* Scrollbar customizada para dropdown */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: #333;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--cisco-green);
+  border-radius: 3px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: var(--cisco-green-dim);
+}
+
+/* ===== ALERT CISCO ===== */
+.alert-cisco {
+  background: var(--cisco-green-soft);
+  border-left: 4px solid var(--cisco-green);
+  padding: 1rem;
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+/* ===== NAVBAR E LINKS ===== */
+.nav-link {
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: var(--cisco-green) !important;
+  transform: translateY(-2px);
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress {
+  height: 3px;
+  position: sticky;
+  top: 76px;
+  z-index: 1020;
+  border-radius: 0;
+  background-color: var(--bg-secondary);
+}
+
+.progress-bar {
+  background-color: var(--cisco-green);
+  width: 0%;
+  transition: width 0.1s ease;
+}
+
+/* ===== ICON BOX ===== */
+.icon-box {
+  color: var(--cisco-green);
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+/* ===== ANIMAÇÕES ===== */
+.reveal {
+  opacity: 0;
+}
+
+/* ===== UTILITÁRIOS ===== */
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.m-0.ps-1 {
+  color: var(--text-muted) !important;
+}
+
+.mb-0,
+.mb-4 {
+  color: var(--text-muted) !important;
+}
+
+/* ===== RESPONSIVIDADE MOBILE ===== */
+@media (max-width: 991px) {
+  .navbar-nav .dropdown-menu {
+    background-color: rgba(30, 30, 30, 0.95) !important;
+    border: none !important;
+    padding-left: 1rem;
+    max-height: 300px !important;
+  }
+
+  .dropdown-item {
+    white-space: normal !important;
+    padding: 0.5rem 1rem !important;
+  }
+
+  .progress {
+    top: 60px !important;
+  }
+
+  a.navbar-brand {
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-card {
+    padding: 1.2rem;
+  }
+
+  .table-responsive {
+    margin: 0 -1rem;
+    width: calc(100% + 2rem);
+  }
+
+  a.navbar-brand {
+    font-size: 14px !important;
+  }
+}
+
+/* ===== SCROLLBAR GLOBAL ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cisco-green);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cisco-green-dim);
 }

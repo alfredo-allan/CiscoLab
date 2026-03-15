@@ -1,0 +1,151 @@
+/* ESTILOS ESPECÍFICOS PARA O MEGA MENU */
+:root {
+  --card-bg: #1e1e1e;
+}
+.mega-menu {
+  position: static !important;
+}
+
+.mega-menu .dropdown-menu {
+  width: 100%;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-top: 2px solid var(--cisco-green);
+  border-radius: 0 0 12px 12px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* DESKTOP: mostra os módulos em grid */
+@media (min-width: 992px) {
+  .mega-menu .dropdown-menu {
+    padding: 2rem;
+  }
+
+  .modulos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 colunas no desktop */
+    gap: 1.5rem;
+  }
+
+  .modulo-coluna {
+    border-right: 1px solid var(--border-primary);
+    padding-right: 1.5rem;
+  }
+
+  .modulo-coluna:last-child {
+    border-right: none;
+  }
+}
+
+/* MOBILE/TABLET: lista simples */
+@media (max-width: 991px) {
+  .mega-menu .dropdown-menu {
+    padding: 1rem;
+    max-height: 70vh;
+  }
+
+  .modulos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .modulo-coluna {
+    border-bottom: 1px solid var(--border-primary);
+    padding-bottom: 1rem;
+  }
+
+  .modulo-coluna:last-child {
+    border-bottom: none;
+  }
+
+  /* No mobile, mostra apenas os títulos dos módulos */
+  .modulo-lista li {
+    display: none; /* Esconde todos os itens por padrão no mobile */
+  }
+
+  /* Quando o módulo está expandido, mostra os itens */
+  .modulo-coluna.expandido .modulo-lista li {
+    display: block;
+  }
+
+  .modulo-toggle {
+    cursor: pointer;
+  }
+}
+
+.modulo-titulo {
+  color: var(--cisco-green);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--cisco-green);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modulo-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modulo-lista li {
+  margin-bottom: 0.5rem;
+}
+
+.modulo-lista a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0;
+  transition: all 0.2s ease;
+}
+
+.modulo-lista a:hover {
+  color: var(--cisco-green);
+  transform: translateX(5px);
+}
+
+.modulo-lista a i {
+  color: var(--cisco-green);
+  font-size: 0.7rem;
+  margin-right: 0.5rem;
+  opacity: 0.7;
+}
+
+.badge-modulo {
+  background: rgba(0, 255, 0, 0.1);
+  color: var(--cisco-green);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  margin-left: 0.5rem;
+  border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.seta-mobile {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .seta-mobile {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  .modulo-coluna.expandido .seta-mobile {
+    transform: rotate(90deg);
+  }
+}
+
+.container-fluid {
+  background-color: var(--card-bg);
+}

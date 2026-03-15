@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NETSEC · Todos os Módulos CCNA</title>
+
+    <!-- FONTES -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- BOOTSTRAP CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/modulos.css" />
+  </head>
+  <body>
+    <!-- NAVBAR SIMPLES -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+        <a href="/index.html" class="btn btn-sm" style="color: var(--cisco-green); border: 1px solid var(--cisco-green)">
+          <i class="fas fa-arrow-left me-1"></i> Voltar
+        </a>
+      </div>
+    </nav>
+
+    <!-- PÁGINA DE MÓDULOS -->
+    <main class="modulos-page">
+      <div class="container">
+        <!-- TÍTULO -->
+        <h1 class="page-title">
+          <i class="fas fa-cubes me-3" style="color: var(--cisco-green)"></i>
+          Todos os Módulos CCNA
+        </h1>
+
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div class="stat-value">27</div>
+            <div class="stat-label">Módulos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">200+</div>
+            <div class="stat-label">Tópicos</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">15+</div>
+            <div class="stat-label">Laboratórios</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">10</div>
+            <div class="stat-label">Casos Reais</div>
+          </div>
+        </div>
+
+        <!-- GRID DE MÓDULOS (5 colunas no desktop) -->
+        <div class="modulos-grid">
+          <!-- MÓDULO 1 -->
+          <div class="modulo-coluna" data-modulo="1" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 1</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Introdução às Redes</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag"></i> INTRODUÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/index.html#modulo-intro" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.0.1 Introdução</a
+                  >
+                </li>
+                <li>
+                  <a href="/index.html#modulo-aprendizado" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.0.2 O que aprender</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-shield-halved"></i> AMEAÇAS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/index.html#dominios-ameaca" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.1 Domínios de Ameaça</a
+                  >
+                </li>
+                <li>
+                  <a href="/index.html#tipos-ameacas" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.2 Tipos de Ameaças</a
+                  >
+                </li>
+                <li>
+                  <a href="/index.html#origem-ameacas" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.5 Origem das Ameaças</a
+                  >
+                </li>
+                <li>
+                  <a href="/index.html#vulnerabilidades-usuario" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.8 Vulnerabilidades</a
+                  >
+                </li>
+                <li>
+                  <a href="/index.html#termos-avancados" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.2.1 Glossário Técnico</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <a href="/index.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+
+          <!-- MÓDULO 2 -->
+          <div class="modulo-coluna" data-modulo="2" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 2</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Atores e Ameaças</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag"></i> INTRODUÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_2.html#modulo-intro" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.0.1 Por que fazer?</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_2.html#modulo-aprendizado" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.0.2 O que vou aprender</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_2.html#redes-alvo" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.1.2 Redes são alvos</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-user-secret"></i> ATORES
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_2.html#hacker-vs-ator" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.2.2 Hacker vs Ator</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_2.html#tipos-hackers" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>White, Gray e Black Hat</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_2.html#evolucao-atores" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.2.3 Evolução dos Atores</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_2.html#cibercriminosos" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.2.4 Cibercriminosos</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <a href="/pages/modulo_2.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+
+          <!-- MÓDULO 3 -->
+          <div class="modulo-coluna" data-modulo="3" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 3</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Protocolos e Vulnerabilidades</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag"></i> INTRODUÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_3.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>3.0 Introdução</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-network-wired"></i> PROTOCOLOS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_3.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>3.1 Cabeçalho IP</a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_3.html" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>3.2 Vulnerabilidades IP</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_3.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>3.3 TCP/UDP</a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_3.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>3.4 Resumo</a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="/pages/modulo_3.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+
+          <!-- MÓDULO 4 -->
+          <div class="modulo-coluna" data-modulo="4" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 4</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Serviços e Mitigação</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag"></i> INTRODUÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.0 Introdução</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-cogs"></i> SERVIÇOS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.1 Serviços IP</a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_4.html" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>4.2 Serviços Corporativos</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-shield-alt"></i> MITIGAÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.3 Mitigação</a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.4 Resumo</a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_4.html#casos-reais" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>Casos Reais</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <a href="/pages/modulo_4.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+
+          <!-- MÓDULO 5 (completo com subcategorias) -->
+          <div class="modulo-coluna" data-modulo="5" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 5</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Comunicação de Rede Sem Fio</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag"></i> INTRODUÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-intro" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.0.1 Por que usar?</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-objetivos" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.0.2 Objetivos</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-wifi"></i> COMUNICAÇÕES SEM FIO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-video1" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.1 Vídeo Operação WLAN</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-wlan-vs-wired" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.2 Wireless vs Wired</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-frame" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.3 Quadro 802.11</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-csmaca" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.4 CSMA/CA</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-association" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.5 Cliente e Associação AP</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-parameters" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.6 Parâmetros de Associação</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-discovery-modes" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.7 Modos Passivo/Ativo</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-quiz" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.8 Verificação</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-devices" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.9 AP, LWAP e WLC</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-exclamation-triangle"></i> AMEAÇAS DE WLAN
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-security-overview" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.2.1 Visão Geral</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-dos" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.2.2 Ataques DoS</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-rogue-ap" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.2.3 Rogue APs</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-mitm" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.2.4 Ataque MITM</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-threats-quiz" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.2.5 Verificação</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-lock"></i> WLANS SEGURAS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-ssid-cloaking" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.1 SSID Cloaking</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-auth-methods" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.2 Métodos 802.11</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-shared-key" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.3 Chave Compartilhada</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-home-auth" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.4 Autenticação Doméstica</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-encryption" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.5 Criptografia</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-enterprise" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.6 Autenticação Empresa</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-wpa3" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.7 WPA3</a
+                  >
+                </li>
+                <li>
+                  <a href="/pages/modulo_5.html#mod5-secure-quiz" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.8 Verificação</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <a href="/pages/modulo_5.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Acessar Módulo 5 <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- SEGUNDA LINHA: Módulos 6-10 (simplificados) -->
+        <div class="modulos-grid mt-4">
+          <!-- Módulo 6 -->
+          <div class="modulo-coluna" data-modulo="6" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 6</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Roteamento</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-route"></i> ROTEAMENTO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>6.1 Roteamento Estático</a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>6.2 Roteamento Dinâmico</a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>6.3 OSPF</a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
+          </div>
+
+          <!-- Módulo 7 -->
+          <div class="modulo-coluna" data-modulo="7" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 7</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Wi-Fi e Segurança</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-wifi"></i> WIRELESS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>7.1 Fundamentos Wireless</a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>7.2 WPA2/3</a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
+          </div>
+
+          <!-- Módulo 8 -->
+          <div class="modulo-coluna" data-modulo="8" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 8</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">VPN e Criptografia</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-lock"></i> VPN
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>8.1 IPSec</a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>8.2 SSL/TLS</a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
+          </div>
+
+          <!-- Módulo 9 -->
+          <div class="modulo-coluna" data-modulo="9" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 9</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Firewalls</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-fire"></i> FIREWALL
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>9.1 Tipos de Firewall</a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>9.2 ACLs</a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
+          </div>
+
+          <!-- Módulo 10 -->
+          <div class="modulo-coluna" data-modulo="10" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 10</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">IDS/IPS</span>
+
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-shield-virus"></i> IDS/IPS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>10.1 Detecção</a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>10.2 Prevenção</a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
+          </div>
+        </div>
+
+        <!-- Mensagem para mais módulos -->
+        <div class="terminal-card mt-5 text-center p-4">
+          <i class="fas fa-rocket me-2" style="color: var(--cisco-green)"></i>
+          <span style="color: var(--terminal-text)"
+            >+17 módulos em desenvolvimento • Roteamento avançado, Segurança de endpoint, Automação, IoT e muito mais</span
+          >
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5 style="color: white; font-weight: 700">
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+              NET<span style="color: var(--cisco-green)">SEC</span>
+            </h5>
+            <p style="color: var(--text-muted)">Documentação interativa CCNAv7</p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p style="color: var(--text-muted)">🧙 Alfredo Allan • Conteúdo Cisco Academy</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Função para toggle no mobile (expande/recolhe o card inteiro)
+      function toggleModulo(elemento) {
+        if (window.innerWidth <= 991) {
+          elemento.classList.toggle('expandido')
+        }
+      }
+
+      // Função para toggle das categorias (abre/fecha lista de tópicos)
+      function toggleCategoria(event, header) {
+        event.stopPropagation()
+        const lista = header.nextElementSibling
+        const icon = header.querySelector('.toggle-icon')
+
+        if (lista.classList.contains('collapsed')) {
+          lista.classList.remove('collapsed')
+          icon.classList.remove('fa-chevron-down')
+          icon.classList.add('fa-chevron-up')
+        } else {
+          lista.classList.add('collapsed')
+          icon.classList.remove('fa-chevron-up')
+          icon.classList.add('fa-chevron-down')
+        }
+      }
+
+      // Previne que o clique nos links feche o card no mobile
+      document.querySelectorAll('.modulo-lista a, .categoria-lista a, .link-ver-todos').forEach((link) => {
+        link.addEventListener('click', function (e) {
+          e.stopPropagation()
+        })
+      })
+
+      // Por padrão, deixa todas as categorias abertas no desktop
+      // e fechadas no mobile (opcional)
+      function ajustarCategoriasPorTela() {
+        const isMobile = window.innerWidth <= 991
+        const categorias = document.querySelectorAll('.categoria-lista')
+        const icons = document.querySelectorAll('.toggle-icon')
+
+        categorias.forEach((lista, index) => {
+          if (isMobile) {
+            lista.classList.add('collapsed')
+            icons[index]?.classList.remove('fa-chevron-up')
+            icons[index]?.classList.add('fa-chevron-down')
+          } else {
+            lista.classList.remove('collapsed')
+            icons[index]?.classList.remove('fa-chevron-down')
+            icons[index]?.classList.add('fa-chevron-up')
+          }
+        })
+      }
+
+      // Executa no carregamento e ao redimensionar
+      window.addEventListener('load', ajustarCategoriasPorTela)
+      window.addEventListener('resize', ajustarCategoriasPorTela)
+    </script>
+  </body>
+</html>
