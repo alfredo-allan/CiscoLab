@@ -637,6 +637,779 @@
           </div>
         </div>
       </section>
+      <section id="tipos-firewall" class="content-section">
+        <div class="container">
+          <!-- Cabeçalho da seção com numeração Cisco -->
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">6.1.4</span>
+            <h2 class="cisco-title">Descrições de tipos de firewall</h2>
+            <p class="section-description">
+              É importante entender os diferentes tipos de firewalls e suas capacidades específicas para que o firewall correto seja usado
+              para cada situação.
+            </p>
+          </div>
+
+          <!-- TABELA COMPARATIVA DOS 4 TIPOS PRINCIPAIS -->
+          <div class="table-responsive mb-5" data-aos="fade-up">
+            <table class="table table-cisco table-hover">
+              <thead>
+                <tr>
+                  <th>Firewall de filtragem de pacotes <br /><small class="text-muted">(sem estado)</small></th>
+                  <th>Firewall com monitoração de estado</th>
+                  <th>Firewall de gateway de aplicativo</th>
+                  <th>Firewall de próxima geração</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+
+          <!-- GRID DOS 4 TIPOS (CARDS DETALHADOS) -->
+          <div class="row g-4 mb-5">
+            <!-- Card 1: Firewall de filtragem de pacotes -->
+            <div class="col-md-6 col-lg-3">
+              <div class="content-card h-100" data-aos="flip-left" data-aos-delay="100">
+                <div class="card-header-cisco">
+                  <i class="fas fa-filter fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                  <h4>Filtragem de Pacotes</h4>
+                  <span class="badge-cisco">Sem estado</span>
+                </div>
+                <div class="card-body-cisco">
+                  <p>
+                    Geralmente fazem parte de um firewall de roteador, que permite ou nega tráfego com base nas informações da
+                    <strong>Camada 3 e Camada 4</strong>.
+                  </p>
+                  <p>
+                    São firewalls <strong>sem estado</strong> que usam uma simples pesquisa de tabela de políticas que filtra o tráfego com
+                    base em critérios específicos.
+                  </p>
+                  <div class="example-box">
+                    <small><i class="fas fa-example-circle me-1"></i> Exemplo:</small>
+                    <p class="mt-1">
+                      Servidores SMTP escutam a porta 25. Um admin pode configurar o firewall para <strong>bloquear a porta 25</strong> de
+                      uma estação de trabalho específica para impedir que ele transmita um vírus de e-mail.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Firewall com monitoração de estado -->
+            <div class="col-md-6 col-lg-3">
+              <div class="content-card h-100" data-aos="flip-left" data-aos-delay="200">
+                <div class="card-header-cisco">
+                  <i class="fas fa-route fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                  <h4>Monitoração de Estado</h4>
+                  <span class="badge-cisco">Stateful</span>
+                </div>
+                <div class="card-body-cisco">
+                  <p>São as tecnologias de firewall mais <strong>versáteis e mais comuns</strong> em uso.</p>
+                  <p>
+                    Fornecem filtragem de pacotes <strong>stateful</strong> usando informações de conexão mantidas em uma
+                    <strong>tabela de estado</strong>.
+                  </p>
+                  <p>
+                    Arquitetura classificada na <strong>camada de rede</strong>. Analisa o tráfego na
+                    <strong>camada 4 da OSI e na camada 5</strong>.
+                  </p>
+                  <ul class="cisco-list mt-2">
+                    <li><i class="fas fa-chevron-circle-right"></i> Mantém tabela de conexões ativas</li>
+                    <li><i class="fas fa-chevron-circle-right"></i> Mais seguro que filtragem simples</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Firewall de gateway de aplicativo -->
+            <div class="col-md-6 col-lg-3">
+              <div class="content-card h-100" data-aos="flip-left" data-aos-delay="300">
+                <div class="card-header-cisco">
+                  <i class="fas fa-server fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                  <h4>Gateway de Aplicativo</h4>
+                  <span class="badge-cisco">Proxy</span>
+                </div>
+                <div class="card-body-cisco">
+                  <p>Filtra informações nas <strong>camadas 3, 4, 5 e 7</strong> do modelo OSI.</p>
+                  <p>A maior parte do controle e filtragem é feita em <strong>software</strong>.</p>
+                  <div class="proxy-explanation">
+                    <p>
+                      <i class="fas fa-arrow-right text-cisco-green"></i> Quando um cliente precisa acessar um servidor remoto, ele se
+                      conecta a um <strong>servidor proxy</strong>.
+                    </p>
+                    <p>
+                      <i class="fas fa-arrow-right text-cisco-green"></i> O servidor proxy se conecta ao servidor remoto
+                      <strong>em nome do cliente</strong>.
+                    </p>
+                    <p><i class="fas fa-arrow-right text-cisco-green"></i> O servidor só vê uma conexão do servidor proxy.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Firewall de próxima geração (NGFW) -->
+            <div class="col-md-6 col-lg-3">
+              <div class="content-card h-100" data-aos="flip-left" data-aos-delay="400">
+                <div class="card-header-cisco">
+                  <i class="fas fa-microchip fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                  <h4>Próxima Geração</h4>
+                  <span class="badge-cisco">NGFW</span>
+                </div>
+                <div class="card-body-cisco">
+                  <p>Vão além dos firewalls de estado, fornecendo:</p>
+                  <ul class="cisco-list">
+                    <li><i class="fas fa-shield-halved"></i> <strong>Prevenção de intrusão</strong> integrada</li>
+                    <li><i class="fas fa-eye"></i> <strong>Reconhecimento e controle</strong> de aplicativos</li>
+                    <li><i class="fas fa-ban"></i> Bloquear <strong>aplicativos arriscados</strong></li>
+                    <li><i class="fas fa-cloud-arrow-up"></i> <strong>Caminhos de atualização</strong> para futuros feeds</li>
+                    <li><i class="fas fa-bug"></i> Técnicas para ameaças <strong>em evolução</strong></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIAGRAMA DAS CAMADAS OSI (baseado nas capturas) -->
+          <div class="row align-items-center mb-5" data-aos="fade-up">
+            <div class="col-lg-5">
+              <div class="content-card">
+                <h3 class="content-card-title">
+                  <i class="fas fa-layer-group me-2" style="color: var(--cisco-green)"></i>
+                  Camadas de atuação dos firewalls
+                </h3>
+                <p>Cada tipo de firewall atua em diferentes camadas do modelo OSI:</p>
+
+                <!-- Visualização das camadas estilo barra vertical -->
+                <div class="osi-layers">
+                  <div class="layer-item">
+                    <span class="layer-number">7</span> Aplicação
+                    <span class="layer-badge" style="background: rgba(102, 191, 83, 0.2)">Gateway App</span>
+                  </div>
+                  <div class="layer-item">
+                    <span class="layer-number">6</span> Apresentação <span class="layer-badge" style="opacity: 0.5">—</span>
+                  </div>
+                  <div class="layer-item">
+                    <span class="layer-number">5</span> Sessão
+                    <span class="layer-badge" style="background: rgba(102, 191, 83, 0.2)">Gateway App / Stateful</span>
+                  </div>
+                  <div class="layer-item">
+                    <span class="layer-number">4</span> Transporte
+                    <span class="layer-badge" style="background: rgba(102, 191, 83, 0.2)">Stateful</span>
+                  </div>
+                  <div class="layer-item">
+                    <span class="layer-number">3</span> Rede
+                    <span class="layer-badge" style="background: rgba(102, 191, 83, 0.2)">Packet Filter</span>
+                  </div>
+                  <div class="layer-item">
+                    <span class="layer-number">2</span> Enlace de Dados <span class="layer-badge" style="opacity: 0.5">—</span>
+                  </div>
+                  <div class="layer-item">
+                    <span class="layer-number">1</span> Física <span class="layer-badge" style="opacity: 0.5">—</span>
+                  </div>
+                </div>
+
+                <!-- Legenda -->
+                <div class="mt-3 small text-muted">
+                  <i class="fas fa-square me-1" style="color: var(--cisco-green)"></i> Camadas onde ocorre filtragem
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7">
+              <div class="content-card text-center">
+                <!-- Placeholder para a imagem/diagrama oficial -->
+                <div
+                  class="diagram-placeholder p-4"
+                  style="background: rgba(0, 0, 0, 0.3); border: 2px dashed var(--cisco-green); border-radius: 8px"
+                >
+                  <i class="fas fa-diagram-project fa-4x mb-3" style="color: var(--cisco-green); opacity: 0.5"></i>
+                  <h5>Diagrama de Camadas OSI</h5>
+                  <p class="text-muted">[Aguardando imagem oficial]</p>
+                  <!-- Quando receber a imagem, substitua o bloco acima por: -->
+                  <!-- <img src="assets/images/modulo6/osi-firewall-layers.png" alt="Diagrama OSI com camadas de firewall" class="img-fluid rounded" style="border: 2px solid rgba(102, 191, 83, 0.3);"> -->
+                </div>
+                <p class="image-caption mt-2">
+                  <i class="fas fa-diagram-project me-1" style="color: var(--cisco-green)"></i>
+                  Figura 6.1.4.1 - Camadas de atuação dos firewalls no modelo OSI
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- OUTROS MÉTODOS DE IMPLEMENTAÇÃO -->
+          <div class="row" data-aos="fade-up">
+            <div class="col-12">
+              <div class="content-card">
+                <h3 class="content-card-title">
+                  <i class="fas fa-cogs me-2" style="color: var(--cisco-green)"></i>
+                  Outros métodos de implementação de firewalls
+                </h3>
+
+                <div class="row g-4 mt-2">
+                  <!-- Firewall baseado em host -->
+                  <div class="col-md-4">
+                    <div
+                      class="method-item p-3"
+                      style="background: rgba(102, 191, 83, 0.05); border-left: 4px solid var(--cisco-green); border-radius: 0 8px 8px 0"
+                    >
+                      <h5><i class="fas fa-computer me-2"></i> Firewalls baseados em host</h5>
+                      <p>
+                        Um PC ou servidor com <strong>software de firewall</strong> em execução nele. Protege o dispositivo individualmente.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Firewall transparente -->
+                  <div class="col-md-4">
+                    <div
+                      class="method-item p-3"
+                      style="background: rgba(102, 191, 83, 0.05); border-left: 4px solid var(--cisco-green); border-radius: 0 8px 8px 0"
+                    >
+                      <h5><i class="fas fa-bridge me-2"></i> Firewall transparente</h5>
+                      <p>
+                        Filtra o <strong>tráfego IP</strong> entre um par de interfaces em ponte. Opera sem precisar de configuração de IP
+                        nos hosts.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- Firewall híbrido -->
+                  <div class="col-md-4">
+                    <div
+                      class="method-item p-3"
+                      style="background: rgba(102, 191, 83, 0.05); border-left: 4px solid var(--cisco-green); border-radius: 0 8px 8px 0"
+                    >
+                      <h5><i class="fas fa-dna me-2"></i> Firewall híbrido</h5>
+                      <p>
+                        Uma <strong>combinação</strong> dos vários tipos de firewall. Ex: firewall de inspeção de aplicações combina um
+                        firewall com estado com um firewall de gateway de aplicativo.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NOTA IMPORTANTE -->
+          <div class="alert alert-cisco mt-5" role="alert" data-aos="fade-up">
+            <i class="fas fa-circle-exclamation me-2"></i>
+            <strong>Nota Cisco:</strong> A escolha do firewall depende do cenário de rede, requisitos de segurança e desempenho necessário.
+            Redes modernas frequentemente utilizam uma <strong>combinação de múltiplos tipos</strong> (defesa em profundidade).
+          </div>
+
+          <!-- Navegação para próxima seção -->
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- SEÇÃO 6.2.1 - CONTROLE DE TRÁFEGO COM ACLs -->
+      <!-- ============================================ -->
+      <section id="acl" class="content-section">
+        <div class="container">
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">6.2.1</span>
+            <h2 class="cisco-title">Controle de tráfego com ACLs</h2>
+            <p class="section-description">
+              Access Control Lists (ACLs) são o mecanismo fundamental para permitir ou negar tráfego em roteadores Cisco
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-right">
+                <h3 class="content-card-title">
+                  <i class="fas fa-list-alt me-2" style="color: var(--cisco-green)"></i>
+                  O que são ACLs?
+                </h3>
+                <p>
+                  ACLs são listas sequenciais de instruções "permit" ou "deny" aplicadas em interfaces de roteadores/switches para controlar
+                  tráfego:
+                </p>
+
+                <ul class="cisco-list">
+                  <li><i class="fas fa-chevron-circle-right"></i> <strong>ACLs padrão (1-99):</strong> Filtram apenas por IP de origem</li>
+                  <li>
+                    <i class="fas fa-chevron-circle-right"></i> <strong>ACLs estendidas (100-199):</strong> Filtram por IP origem/destino,
+                    porta, protocolo
+                  </li>
+                  <li><i class="fas fa-chevron-circle-right"></i> <strong>ACLs nomeadas:</strong> Mais fáceis de gerenciar</li>
+                </ul>
+
+                <div class="code-block mt-3">
+                  <div class="code-header">
+                    <span>📌 Exemplo ACL estendida</span>
+                  </div>
+                  <pre><code>access-list 100 permit tcp 192.168.1.0 0.0.0.255 any eq 80
+access-list 100 deny ip any any
+interface g0/0
+ ip access-group 100 in</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-left">
+                <h3 class="content-card-title">
+                  <i class="fas fa-diagram-project me-2" style="color: var(--cisco-green)"></i>
+                  Funcionamento prático
+                </h3>
+                <p>As ACLs são avaliadas em ordem sequencial - na primeira correspondência, a ação é executada:</p>
+
+                <div class="acl-flowchart p-3" style="background: rgba(0, 0, 0, 0.3); border-radius: 8px">
+                  <div class="acl-step"><span class="badge-cisco me-2">1</span> Pacote chega na interface</div>
+                  <div class="acl-step"><span class="badge-cisco me-2">2</span> ACL existe? → Não: permite</div>
+                  <div class="acl-step"><span class="badge-cisco me-2">3</span> Sim: compara com linha 1</div>
+                  <div class="acl-step"><span class="badge-cisco me-2">4</span> Match? → Executa permit/deny</div>
+                  <div class="acl-step"><span class="badge-cisco me-2">5</span> Não: próxima linha</div>
+                  <div class="acl-step"><span class="badge-cisco me-2">6</span> Fim da lista? → Deny implícito</div>
+                </div>
+
+                <div class="alert alert-cisco mt-3">
+                  <i class="fas fa-exclamation-triangle me-2"></i>
+                  <strong>Importante:</strong> Toda ACL tem um "deny any any" implícito no final!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 6.2.2 - SERVIÇOS DE MONITORAMENTO -->
+      <!-- ============================================ -->
+      <section id="monitoramento" class="content-section">
+        <div class="container">
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">6.2.2</span>
+            <h2 class="cisco-title">Serviços de monitoramento de rede</h2>
+            <p class="section-description">
+              SNMP, NetFlow, Syslog e NTP trabalham juntos para manter a visibilidade e segurança da infraestrutura
+            </p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="content-card" data-aos="flip-left">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-network-wired fa-2x me-3" style="color: var(--cisco-green)"></i>
+                  <h4 class="mb-0">SNMP (Simple Network Management Protocol)</h4>
+                </div>
+                <p>Protocolo para coleta de informações e gerenciamento de dispositivos de rede:</p>
+                <ul class="cisco-list">
+                  <li><strong>SNMPv1/v2c:</strong> Comunidade como senha (fraca)</li>
+                  <li><strong>SNMPv3:</strong> Autenticação e criptografia</li>
+                  <li><strong>MIB (Management Information Base):</strong> Banco de dados com informações do dispositivo</li>
+                </ul>
+                <div class="code-block small">
+                  <pre><code>snmp-server community public RO
+snmp-server community private RW
+snmp-server location "Data Center SP"
+snmp-server contact "admin@empresa.com"</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card" data-aos="flip-left" data-aos-delay="100">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-chart-line fa-2x me-3" style="color: var(--cisco-green)"></i>
+                  <h4 class="mb-0">NetFlow</h4>
+                </div>
+                <p>Tecnologia Cisco para coleta de metadados do tráfego IP:</p>
+                <ul class="cisco-list">
+                  <li>Quem? (IP origem/destino)</li>
+                  <li>O quê? (Portas, protocolo)</li>
+                  <li>Quando? (Timestamp)</li>
+                  <li>Quanto? (Bytes/pacotes)</li>
+                </ul>
+                <p><strong>Aplicação:</strong> Detecção de anomalias, análise de largura de banda, investigação forense</p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card" data-aos="flip-left" data-aos-delay="200">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-copy fa-2x me-3" style="color: var(--cisco-green)"></i>
+                  <h4 class="mb-0">Espelhamento de portas (SPAN)</h4>
+                </div>
+                <p>Cópia do tráfego de uma porta/plan para análise:</p>
+                <ul class="cisco-list">
+                  <li><strong>IDS/IPS:</strong> Analisar tráfego em tempo real</li>
+                  <li><strong>Wireshark:</strong> Troubleshooting</li>
+                  <li><strong>Registro forense:</strong> Evidências</li>
+                </ul>
+                <div class="code-block small">
+                  <pre><code>monitor session 1 source interface g0/1 both
+monitor session 1 destination interface g0/24</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card" data-aos="flip-left" data-aos-delay="300">
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-clock fa-2x me-3" style="color: var(--cisco-green)"></i>
+                  <h4 class="mb-0">Syslog e NTP</h4>
+                </div>
+                <p><strong>Syslog:</strong> Centralização de logs de todos os dispositivos</p>
+                <ul class="cisco-list">
+                  <li>0 - Emergências</li>
+                  <li>1-2: Alertas/Crítico</li>
+                  <li>3-4: Erro/Aviso</li>
+                  <li>5-7: Notificação/Informação/Debug</li>
+                </ul>
+                <p><strong>NTP (Network Time Protocol):</strong> Sincronização de tempo CRÍTICA para:</p>
+                <ul class="cisco-list">
+                  <li>Correlacionar logs entre dispositivos</li>
+                  <li>Validade de certificados digitais</li>
+                  <li>Auditoria e conformidade</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 6.2.3 - SERVIÇOS AAA E VPN -->
+      <!-- ============================================ -->
+      <section id="aaa-vpn" class="content-section">
+        <div class="container">
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">6.2.3</span>
+            <h2 class="cisco-title">Autenticação, Autorização e Controle Remoto</h2>
+            <p class="section-description">AAA (Authentication, Authorization, Accounting) e VPN garantem acesso seguro aos recursos</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-right">
+                <h3 class="content-card-title">
+                  <i class="fas fa-id-card me-2" style="color: var(--cisco-green)"></i>
+                  Servidores AAA
+                </h3>
+                <p>Framework de segurança para controle de acesso:</p>
+
+                <div class="aaa-components mb-4">
+                  <div class="aaa-item p-3 mb-2" style="background: rgba(102, 191, 83, 0.1); border-radius: 8px">
+                    <strong>🔐 Authentication:</strong> Quem é você? (Login/senha, tokens, biometria)
+                  </div>
+                  <div class="aaa-item p-3 mb-2" style="background: rgba(102, 191, 83, 0.1); border-radius: 8px">
+                    <strong>📋 Authorization:</strong> O que você pode fazer? (Permissões, níveis de acesso)
+                  </div>
+                  <div class="aaa-item p-3 mb-2" style="background: rgba(102, 191, 83, 0.1); border-radius: 8px">
+                    <strong>📊 Accounting:</strong> O que você fez? (Logs, auditoria, billing)
+                  </div>
+                </div>
+
+                <h5 class="mt-4">Protocolos:</h5>
+                <ul class="cisco-list">
+                  <li><strong>RADIUS (UDP 1812):</strong> Cisco, wireless, switches - apenas criptografa senha</li>
+                  <li><strong>TACACS+ (TCP 49):</strong> Cisco - criptografia completa, separação AAA</li>
+                </ul>
+
+                <div class="code-block">
+                  <pre><code>aaa new-model
+aaa authentication login default group tacacs+ local
+aaa authorization exec default group tacacs+ local
+tacacs-server host 192.168.1.100 key CISCO123</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-left">
+                <h3 class="content-card-title">
+                  <i class="fas fa-lock me-2" style="color: var(--cisco-green)"></i>
+                  VPN (Virtual Private Network)
+                </h3>
+                <p>Conexão segura através de redes públicas:</p>
+
+                <div class="vpn-types">
+                  <div class="vpn-item p-3 mb-3" style="border-left: 4px solid var(--cisco-green)">
+                    <h5><i class="fas fa-building"></i> Site-to-Site VPN</h5>
+                    <p>Conecta escritórios inteiros via Internet (IPsec/GRE)</p>
+                  </div>
+                  <div class="vpn-item p-3 mb-3" style="border-left: 4px solid var(--cisco-green)">
+                    <h5><i class="fas fa-user-tie"></i> Remote Access VPN</h5>
+                    <p>Usuários remotos conectam-se à rede corporativa (SSL/AnyConnect)</p>
+                  </div>
+                </div>
+
+                <h5 class="mt-3">Componentes IPsec:</h5>
+                <ul class="cisco-list">
+                  <li><strong>IKE (Internet Key Exchange):</strong> Negociação de chaves (UDP 500)</li>
+                  <li><strong>ESP (Encapsulating Security Payload):</strong> Criptografia dos dados</li>
+                  <li><strong>AH (Authentication Header):</strong> Autenticação (sem criptografia)</li>
+                </ul>
+
+                <div class="alert alert-cisco mt-3">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Caso real:</strong> Funcionário em casa → Internet → VPN → Rede corporativa (acesso como se estivesse no
+                  escritório)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 6.2.4 - CASO REAL: EMPRESA FICTÍCIA -->
+      <!-- ============================================ -->
+      <section id="caso-real" class="content-section">
+        <div class="container">
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">6.2.4</span>
+            <h2 class="cisco-title">🎯 Laboratório Mental: Implementando segurança na "EmpresaXYZ"</h2>
+            <p class="section-description">Aplicação integrada de TODOS os conceitos do módulo em um cenário empresarial real</p>
+          </div>
+
+          <!-- Cenário -->
+          <div class="content-card" data-aos="fade-up">
+            <h3 class="content-card-title">📋 Cenário inicial</h3>
+            <p>A <strong>EmpresaXYZ</strong> tem:</p>
+            <ul class="cisco-list">
+              <li>Matriz em SP (200 funcionários) + Filial no RJ (50 funcionários)</li>
+              <li>Servidores Web, Email e DNS públicos</li>
+              <li>Funcionários remotos precisam acessar sistemas internos</li>
+              <li>PCI DSS (segurança para cartões) e LGPD</li>
+            </ul>
+          </div>
+
+          <!-- Solução aplicada -->
+          <div class="row g-4 mt-3">
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-right">
+                <h4><i class="fas fa-fire"></i> Firewalls</h4>
+                <ul class="cisco-list">
+                  <li><strong>Perímetro:</strong> NGFW (Firepower) com IPS integrado</li>
+                  <li><strong>DMZ:</strong> Servidores Web/Email/DNS isolados</li>
+                  <li><strong>ZPF:</strong> Zonas: Trust (funcionários), DMZ (servidores), Untrust (Internet)</li>
+                  <li><strong>Regras:</strong> Permitido apenas HTTP/HTTPS para DMZ, SSH apenas da rede interna</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-left">
+                <h4><i class="fas fa-route"></i> ACLs</h4>
+                <ul class="cisco-list">
+                  <li><strong>ACL 110:</strong> Permitir HTTP da Internet para Web server (192.168.2.10)</li>
+                  <li><strong>ACL 120:</strong> Bloquear acesso à rede interna (10.0.0.0/8) vindo da DMZ</li>
+                  <li><strong>ACL 130:</strong> Permitir apenas SSH da rede admin (10.1.1.0/24) para roteadores</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-right" data-aos-delay="100">
+                <h4><i class="fas fa-chart-simple"></i> Monitoramento</h4>
+                <ul class="cisco-list">
+                  <li><strong>SNMPv3:</strong> Monitoramento de CPU/memória dos equipamentos</li>
+                  <li><strong>NetFlow:</strong> Análise de tráfego - detectou botnet tentando C&C</li>
+                  <li><strong>Syslog:</strong> Logs centralizados no servidor Graylog</li>
+                  <li><strong>NTP:</strong> Todos dispositivos sincronizados com pool.ntp.br</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="content-card h-100" data-aos="fade-left" data-aos-delay="100">
+                <h4><i class="fas fa-key"></i> AAA e VPN</h4>
+                <ul class="cisco-list">
+                  <li><strong>TACACS+:</strong> Administradores autenticados com 2FA (Google Authenticator)</li>
+                  <li><strong>RADIUS:</strong> Autenticação 802.1X para WiFi corporativo</li>
+                  <li><strong>VPN IPsec:</strong> Túnel site-to-site SP-RJ (circuito dedicado virtual)</li>
+                  <li><strong>SSL VPN (AnyConnect):</strong> Home office acessa sistemas internos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resultados -->
+          <div class="content-card mt-4" data-aos="fade-up">
+            <h4><i class="fas fa-trophy" style="color: var(--cisco-green)"></i> Resultados alcançados</h4>
+            <div class="row text-center g-4">
+              <div class="col-md-3">
+                <div class="result-box p-3" style="background: rgba(102, 191, 83, 0.1); border-radius: 10px">
+                  <span class="display-4" style="color: var(--cisco-green)">0</span>
+                  <p>Invasões bem-sucedidas em 2 anos</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="result-box p-3" style="background: rgba(102, 191, 83, 0.1); border-radius: 10px">
+                  <span class="display-4" style="color: var(--cisco-green)">3</span>
+                  <p>Ameaças detectadas pelo IPS</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="result-box p-3" style="background: rgba(102, 191, 83, 0.1); border-radius: 10px">
+                  <span class="display-4" style="color: var(--cisco-green)">99.9%</span>
+                  <p>Uptime dos serviços críticos</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="result-box p-3" style="background: rgba(102, 191, 83, 0.1); border-radius: 10px">
+                  <span class="display-4" style="color: var(--cisco-green)">PCI</span>
+                  <p>Certificação de conformidade</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lições aprendidas -->
+          <div class="alert alert-cisco mt-4">
+            <i class="fas fa-graduation-cap fa-2x me-3 float-start"></i>
+            <div>
+              <strong>🔑 Lições aprendidas:</strong><br />
+              1. <strong>Defesa em profundidade:</strong> Firewall sozinho não basta - precisa de monitoramento, AAA e VPN<br />
+              2. <strong>Logs salvam:</strong> NetFlow detectou comunicação com C&C antes do dano<br />
+              3. <strong>Sincronização é crítica:</strong> NTP permitiu correlacionar ataques em SP e RJ<br />
+              4. <strong>Menor privilégio:</strong> ACLs restritivas + AAA com 2FA impediram acesso não autorizado
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- SEÇÃO 6.2.5 - VERIFIQUE SUA COMPREENSÃO -->
+      <!-- ============================================ -->
+      <section id="verificacao" class="content-section">
+        <div class="container">
+          <div class="section-header" data-aos="fade-up">
+            <span class="section-tag">6.2.5</span>
+            <h2 class="cisco-title">Verifique sua compreensão</h2>
+            <p class="section-description">Teste seus conhecimentos sobre infraestrutura de segurança</p>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="content-card h-100" data-aos="fade-right">
+                <h4>📝 Questão 1</h4>
+                <p>Qual tipo de firewall opera nas camadas 3, 4, 5 e 7, atuando como intermediário entre cliente e servidor?</p>
+                <div class="quiz-options">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1a" />
+                    <label class="form-check-label" for="q1a">A) Firewall de filtragem de pacotes</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1b" />
+                    <label class="form-check-label" for="q1b">B) Firewall com monitoração de estado</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1c" />
+                    <label class="form-check-label" for="q1c">C) Firewall de gateway de aplicativo (proxy)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q1" id="q1d" />
+                    <label class="form-check-label" for="q1d">D) Firewall de próxima geração</label>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline-cisco mt-3" onclick="revealAnswer(1)">Ver resposta</button>
+                <div id="answer1" class="mt-2 text-cisco-green" style="display: none">
+                  ✅ Resposta correta: C - Gateway de aplicativo atua como proxy nas camadas superiores
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card h-100" data-aos="fade-left">
+                <h4>📝 Questão 2</h4>
+                <p>Qual serviço permite cópia do tráfego de uma porta para análise por um IDS?</p>
+                <div class="quiz-options">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2a" />
+                    <label class="form-check-label" for="q2a">A) SNMP</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2b" />
+                    <label class="form-check-label" for="q2b">B) NetFlow</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2c" />
+                    <label class="form-check-label" for="q2c">C) SPAN (port mirroring)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q2" id="q2d" />
+                    <label class="form-check-label" for="q2d">D) Syslog</label>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline-cisco mt-3" onclick="revealAnswer(2)">Ver resposta</button>
+                <div id="answer2" class="mt-2 text-cisco-green" style="display: none">
+                  ✅ Resposta correta: C - SPAN/port mirroring envia cópia do tráfego para análise
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card h-100" data-aos="fade-right">
+                <h4>📝 Questão 3</h4>
+                <p>
+                  Qual protocolo AAA é preferido para dispositivos Cisco por criptografar TODOS os pacotes e separar autenticação de
+                  autorização?
+                </p>
+                <div class="quiz-options">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3a" />
+                    <label class="form-check-label" for="q3a">A) RADIUS</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3b" />
+                    <label class="form-check-label" for="q3b">B) TACACS+</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3c" />
+                    <label class="form-check-label" for="q3c">C) LDAP</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q3" id="q3d" />
+                    <label class="form-check-label" for="q3d">D) Kerberos</label>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline-cisco mt-3" onclick="revealAnswer(3)">Ver resposta</button>
+                <div id="answer3" class="mt-2 text-cisco-green" style="display: none">
+                  ✅ Resposta correta: B - TACACS+ é proprietário Cisco com criptografia completa
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="content-card h-100" data-aos="fade-left">
+                <h4>📝 Questão 4</h4>
+                <p>Na arquitetura DMZ, qual afirmação é VERDADEIRA?</p>
+                <div class="quiz-options">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4a" />
+                    <label class="form-check-label" for="q4a">A) Tráfego da DMZ para a rede privada é totalmente liberado</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4b" />
+                    <label class="form-check-label" for="q4b">B) Servidores públicos ficam na rede privada</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4c" />
+                    <label class="form-check-label" for="q4c">C) Tráfego da Internet para DMZ é seletivamente permitido (HTTP, SMTP)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="q4" id="q4d" />
+                    <label class="form-check-label" for="q4d">D) Firewall tem apenas duas interfaces</label>
+                  </div>
+                </div>
+                <button class="btn btn-sm btn-outline-cisco mt-3" onclick="revealAnswer(4)">Ver resposta</button>
+                <div id="answer4" class="mt-2 text-cisco-green" style="display: none">
+                  ✅ Resposta correta: C - DMZ permite acesso seletivo da Internet aos servidores públicos
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão final -->
+          <div class="text-center mt-5">
+            <a href="#" class="btn btn-cisco-success btn-lg">
+              <i class="fas fa-check-double me-2"></i>
+              Concluir Módulo 6 e seguir para Módulo 7
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- JavaScript para as questões -->
     </main>
 
     <!-- Footer -->
@@ -722,6 +1495,15 @@
           delay: anime.stagger(50)
         })
       })
+
+      function revealAnswer(num) {
+        const answer = document.getElementById('answer' + num)
+        if (answer.style.display === 'none') {
+          answer.style.display = 'block'
+        } else {
+          answer.style.display = 'none'
+        }
+      }
     </script>
   </body>
 </html>

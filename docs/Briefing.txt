@@ -208,7 +208,7 @@ markdown
 
 PROJETO: Documentação CyberSec (estilo Cisco Academy)
 TECHS: Bootstrap 5.3, Font Awesome 6, Anime.js
-CORES: --cisco-green: #00ff00, --bg-primary: #121212, --bg-card: #1e1e1e;
+CORES: --cisco-green: #66bf53, --bg-primary: #121212, --bg-card: #1e1e1e;
 FONTE: 'Inter', sans-serif
 COMPONENTES: .content-card, .cisco-title, .badge-cisco, .badge-modulo, .table-cisco
 NAVBAR:
