@@ -389,3 +389,7 @@ footer {
   font-size: 0.85rem;
   letter-spacing: 0.5px;
 }
+
+.btn.btn-sm.btn-outline-cisco.mt-3 {
+  color: var(--cisco-green);
+}

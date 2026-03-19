@@ -294,3 +294,231 @@ body {
     font-size: 15px !important;
   }
 }
+
+/* Container da busca */
+.cybersec-search-container {
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 2px solid #66bf53;
+  border-radius: 12px;
+  margin: 2rem 0 3rem 0;
+  box-shadow: 0 10px 30px rgba(102, 191, 83, 0.2);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* Header */
+.cybersec-search-header {
+  background: rgba(102, 191, 83, 0.15);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #66bf53;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cybersec-search-header i {
+  color: #66bf53;
+  font-size: 1.2rem;
+}
+
+.cybersec-search-title {
+  color: #66bf53;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.cybersec-search-badge {
+  background: rgba(102, 191, 83, 0.2);
+  color: #66bf53;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  border: 1px solid #66bf53;
+  margin-left: auto;
+}
+
+/* Input area */
+.cybersec-search-input-wrapper {
+  position: relative;
+  padding: 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.cybersec-search-input {
+  width: 100%;
+  background: #0a0a0a;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 1rem 1rem 1rem 3rem;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cybersec-search-input:focus {
+  outline: none;
+  border-color: #66bf53;
+  box-shadow: 0 0 15px rgba(102, 191, 83, 0.3);
+  background: #111;
+}
+
+.cybersec-search-input::placeholder {
+  color: #666;
+  font-style: italic;
+}
+
+.cybersec-search-icon {
+  position: absolute;
+  left: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #66bf53;
+  font-size: 1rem;
+  z-index: 1;
+}
+
+/* Stats */
+.cybersec-search-stats {
+  padding: 0.5rem 1.5rem;
+  background: #111;
+  border-bottom: 1px solid #333;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.cybersec-search-stats i {
+  color: #66bf53;
+  margin-right: 0.5rem;
+}
+
+/* Results area */
+.cybersec-search-results {
+  max-height: 500px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #0a0a0a;
+}
+
+/* Scrollbar */
+.cybersec-search-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cybersec-search-results::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.cybersec-search-results::-webkit-scrollbar-thumb {
+  background: #66bf53;
+  border-radius: 4px;
+}
+
+/* Result item */
+.cybersec-result-item {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.cybersec-result-item:hover {
+  border-color: #66bf53;
+  transform: translateX(5px);
+  background: #1a1a1a;
+  box-shadow: 0 5px 15px rgba(102, 191, 83, 0.2);
+}
+
+.cybersec-result-module {
+  display: inline-block;
+  background: rgba(102, 191, 83, 0.15);
+  color: #66bf53;
+  padding: 0.2rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.cybersec-result-title {
+  color: #fff;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.cybersec-result-snippet {
+  color: #b0b0b0;
+  font-size: 0.85rem;
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.cybersec-result-snippet mark {
+  background: rgba(102, 191, 83, 0.3);
+  color: #66bf53;
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.cybersec-result-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.cybersec-result-meta i {
+  color: #66bf53;
+  width: 12px;
+  margin-right: 0.3rem;
+}
+
+.cybersec-no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-style: italic;
+}
+
+.cybersec-no-results i {
+  color: #66bf53;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.cybersec-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #66bf53;
+}
+
+.cybersec-loading i {
+  margin-right: 0.5rem;
+}
+
+/* Footer */
+.cybersec-search-footer {
+  padding: 0.8rem 1.5rem;
+  background: #111;
+  border-top: 1px solid #333;
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.cybersec-search-footer i {
+  color: #66bf53;
+  margin-right: 0.3rem;
+}
