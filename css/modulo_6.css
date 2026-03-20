@@ -393,3 +393,17 @@ footer {
 .btn.btn-sm.btn-outline-cisco.mt-3 {
   color: var(--cisco-green);
 }
+.table-cisco td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-primary);
+  color: var(--text-secondary);
+  background-color: var(--bg-card) !important;
+}
+
+.table-cisco tr:hover td {
+  background: var(--cisco-green-soft) !important;
+}
+
+.table-cisco tr:last-child td {
+  border-bottom: none;
+}

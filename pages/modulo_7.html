@@ -1,241 +1,334 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>☠ CyberSec | Módulo 7 - Windows</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>☠ CyberSec | Módulo 7 - Windows</title>
 
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Font Awesome 6.4.0 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-  <!-- Bootstrap 5.3.0 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-  <!-- CSS Personalizado -->
-  <link rel="stylesheet" href="/css/modulo_7.css">
-</head>
-<body>
-  <!-- Navbar (configurada para Módulo 7) -->
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <!-- Logo/Brand -->
-      <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
-        &#9760; CyberSec |
-        <span style="color: white; font-weight: 400">Estudos Cisco</span>
-      </a>
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="/css/modulo_7.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
 
-      <!-- Toggler Mobile -->
-      <button
-        class="navbar-toggler border-0"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarMain"
-      >
-        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-      </button>
+        <!-- Toggler Mobile -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
 
-      <!-- Menu Principal -->
-      <div class="collapse navbar-collapse" id="navbarMain">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <!-- DROPDOWN DO MÓDULO ATUAL (Módulo 7) -->
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle text-white px-3"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              style="border-bottom: 2px solid var(--cisco-green);"
-            >
-              <i class="fas fa-cube me-1" style="color: var(--cisco-green);"></i>
-              Módulo 7
-              <span class="badge-modulo ms-2">ativo</span>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 280px;">
-              <li><h6 class="dropdown-header">🔰 INTRODUÇÃO</h6></li>
-              <li>
-                <a class="dropdown-item" href="#modulo-intro">
-                  <i class="fas fa-chevron-right me-2"></i>7.0.1 Por que fazer?
-                </a>
-              </li>
+        <!-- Menu Principal -->
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL (Módulo 7) -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 7 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 300px">
+                <!-- INTRODUÇÃO -->
+                <li><h6 class="dropdown-header">🔰 INTRODUÇÃO</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2"></i>7.0.1 Por que fazer?</a>
+                </li>
 
-              <li><h6 class="dropdown-header">📚 HISTÓRIA</h6></li>
-              <li>
-                <a class="dropdown-item" href="#historia-dos">
-                  <i class="fas fa-chevron-right me-2"></i>7.1.1 Sistema Operacional de Disco
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#versoes-windows">
-                  <i class="fas fa-chevron-right me-2"></i>7.1.2 Versões do Windows
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#windows-gui">
-                  <i class="fas fa-chevron-right me-2"></i>7.1.3 Windows GUI
-                </a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#personalizacao">
-                  <i class="fas fa-chevron-right me-2"></i>7.1.4 Personalização e Menu de Contexto
-                </a>
-              </li>
-            </ul>
-          </li>
+                <li><hr class="dropdown-divider" /></li>
 
-          <!-- LABS (link direto) -->
-          <li class="nav-item">
-            <a class="nav-link text-white px-3" href="#laboratorios">
-              <i class="fas fa-flask me-1"></i> Labs
-            </a>
-          </li>
-
-          <!-- ÍCONE PARA TODOS OS MÓDULOS -->
-          <li class="nav-item">
-            <a
-              class="nav-link text-white px-3"
-              href="/pages/modulos.html"
-              title="Ver todos os 27 módulos"
-            >
-              <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem;"></i>
-              <span class="d-none d-lg-inline">Módulos</span>
-              <span class="badge-modulo ms-1">27</span>
-            </a>
-          </li>
-
-          <!-- DROPDOWN ÍNDICE RÁPIDO -->
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle px-3"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              style="color: var(--cisco-green);"
-            >
-              <i class="fas fa-list-ul me-1"></i> Índice
-            </a>
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px;">
-              <li>
-                <div class="px-3 py-2">
-                  <input
-                    type="text"
-                    id="navSearch"
-                    class="form-control form-control-sm bg-dark text-white border-secondary"
-                    placeholder="🔍 Buscar seção..."
+                <!-- HISTÓRIA DO WINDOWS -->
+                <li><h6 class="dropdown-header">📚 HISTÓRIA DO WINDOWS</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#historia-dos"
+                    ><i class="fas fa-chevron-right me-2"></i>7.1.1 Sistema Operacional de Disco</a
                   >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#versoes-windows"><i class="fas fa-chevron-right me-2"></i>7.1.2 Versões do Windows</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#windows-gui"><i class="fas fa-chevron-right me-2"></i>7.1.3 Windows GUI</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#vulnerabilidades"
+                    ><i class="fas fa-chevron-right me-2"></i>7.1.4 Vulnerabilidades do SO</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#personalizacao"
+                    ><i class="fas fa-chevron-right me-2"></i>7.1.5 Personalização e Menu de Contexto</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- ARQUITETURA E OPERAÇÕES -->
+                <li><h6 class="dropdown-header">🏗️ ARQUITETURA E OPERAÇÕES</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#hal"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.1 Camada de Abstração de Hardware (HAL)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#user-kernel-mode"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.2 Modo de Usuário e Modo Kernel</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#sistemas-arquivos"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.3 Sistemas de Arquivos do Windows</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#fluxos-dados"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.4 Fluxos de Dados Alternativos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#processo-inicializacao"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.5 Processo de Inicialização do Windows</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#inicializacao-windows"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.6 Inicialização do Windows (MSConfig)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#desligamento-windows"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.7 Desligamento do Windows</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#processos-threads"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.8 Processos, Threads e Serviços</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#alocacao-memoria"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.9 Alocação e Alças de Memória</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#registro-windows"
+                    ><i class="fas fa-chevron-right me-2"></i>7.2.10 O Registro do Windows</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- LABORATÓRIOS -->
+                <li><h6 class="dropdown-header">🧪 LABORATÓRIOS</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>7.4.1 Lab - Linha de Comando</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios"> <i class="fas fa-flask me-1"></i> Labs </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li>
+                    <a class="dropdown-item" href="#modulo-intro"><span class="badge-cisco me-2">7.0.1</span>Por que fazer?</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#historia-dos"
+                      ><span class="badge-cisco me-2">7.1.1</span>Sistema Operacional de Disco</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#versoes-windows"><span class="badge-cisco me-2">7.1.2</span>Versões do Windows</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#windows-gui"><span class="badge-cisco me-2">7.1.3</span>Windows GUI</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#vulnerabilidades"><span class="badge-cisco me-2">7.1.4</span>Vulnerabilidades</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#personalizacao"><span class="badge-cisco me-2">7.1.5</span>Personalização</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#hal"><span class="badge-cisco me-2">7.2.1</span>Camada de Abstração de Hardware</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#user-kernel-mode"
+                      ><span class="badge-cisco me-2">7.2.2</span>Modo de Usuário e Kernel</a
+                    >
+                  </li>
                 </div>
-              </li>
-              <li><hr class="dropdown-divider my-1"></li>
-              <div id="sectionList">
-                <li>
-                  <a class="dropdown-item" href="#modulo-intro">
-                    <span class="badge-cisco me-2">7.0.1</span>Por que fazer?
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#historia-dos">
-                    <span class="badge-cisco me-2">7.1.1</span>Sistema Operacional de Disco
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#versoes-windows">
-                    <span class="badge-cisco me-2">7.1.2</span>Versões do Windows
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#windows-gui">
-                    <span class="badge-cisco me-2">7.1.3</span>Windows GUI
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#personalizacao">
-                    <span class="badge-cisco me-2">7.1.4</span>Personalização
-                  </a>
-                </li>
-              </div>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Barra de Progresso -->
-  <div class="progress">
-    <div id="readingProgress" class="progress-bar" style="width: 0%;"></div>
-  </div>
-
-  <!-- CONTEÚDO PRINCIPAL - MÓDULO 7 -->
-  <main class="container py-5">
-    <!-- Título principal do módulo -->
-    <div class="mb-5" id="modulo-intro">
-      <h1 class="display-4 fw-bold" style="color: var(--cisco-green);">
-        7.0 O Sistema Operacional Windows
-      </h1>
-      <p class="lead text-muted">
-        Desde seus humildes começos há mais de 35 anos, em 1985, até as versões modernas.
-      </p>
-      <hr style="background-color: var(--cisco-green); height: 2px; opacity: 0.3;">
-    </div>
-
-    <!-- SEÇÃO 7.1 - Histórico do Windows -->
-    <section id="historia-windows">
-      <h2 class="cisco-title display-6 mb-4">7.1 Histórico do Windows</h2>
-
-      <!-- 7.1.1 - Sistema Operacional de Disco -->
-      <div class="content-card" id="historia-dos">
-        <h3 class="cisco-subtitle">7.1.1 Sistema Operacional de Disco</h3>
-
-        <p class="mb-4">
-          Os primeiros computadores não tinham dispositivos de armazenamento modernos, como discos rígidos, unidades ópticas ou armazenamento flash. Os primeiros métodos de armazenamento usavam cartões perfurados, fita de papel, fita magnética e até cassetes de áudio.
-        </p>
-
-        <p class="mb-4">
-          Disquetes e armazenamento em disco rígido exigem software para ler, gravar e gerenciar os dados que eles armazenam. O sistema operacional de disco (DOS) é um sistema operacional que o computador usa para habilitar esses dispositivos de armazenamento de dados para ler e gravar arquivos. DOS fornece um sistema de arquivos que organiza os arquivos de uma forma específica no disco. A Microsoft comprou o DOS e desenvolveu o MS-DOS.
-        </p>
-
-        <p class="mb-4">
-          MS-DOS usou uma linha de comando como a interface para as pessoas criarem programas e manipularem arquivos de dados, como mostrado na saída do comando. Os comandos DOS são mostrados em negrito.
-        </p>
-
-        <!-- Tabela de Comandos MS-DOS -->
-        <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green);">
-          📋 Principais Comandos MS-DOS
-        </h4>
-        <div class="table-responsive">
-          <table class="table table-cisco">
-            <thead>
-              <tr>
-                <th>Comando MS-DOS</th>
-                <th>Descrição</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>dir</td><td>Mostra uma lista de todos os arquivos no diretório atual (pasta)</td></tr>
-              <tr><td>cd directory</td><td>Altera o diretório para o diretório indicado</td></tr>
-              <tr><td>cd ..</td><td>Muda o diretório para o diretório acima do diretório atual</td></tr>
-              <tr><td>cd \</td><td>Muda o diretório para o diretório raiz (geralmente C:)</td></tr>
-              <tr><td>copy source destination</td><td>Copia arquivos para outro local</td></tr>
-              <tr><td>del filename</td><td>Exclui um ou mais arquivos.</td></tr>
-              <tr><td>find</td><td>Procura texto em arquivos</td></tr>
-              <tr><td>mkdir directory</td><td>Cria um novo diretório.</td></tr>
-              <tr><td>ren oldname newname</td><td>Renomeia um arquivo</td></tr>
-              <tr><td>ajuda</td><td>Exibe todos os comandos que podem ser usados, com uma breve descrição</td></tr>
-              <tr><td>help command</td><td>Exibe a ajuda extensa para o comando indicado</td></tr>
-            </tbody>
-          </table>
+              </ul>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
 
-        <!-- Simulação de Terminal MS-DOS -->
-        <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green);">
-          💻 Exemplo de Sessão MS-DOS
-        </h4>
-        <div class="terminal-card">
-          <pre>Starting MS-DOS...
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL - MÓDULO 7 -->
+    <main class="container py-5">
+      <!-- Título principal do módulo -->
+      <div class="mb-5" id="modulo-intro">
+        <h1 class="display-4 fw-bold" style="color: var(--cisco-green)">7.0 O Sistema Operacional Windows</h1>
+        <p class="lead text-muted">Desde seus humildes começos há mais de 35 anos, em 1985, até as versões modernas.</p>
+        <hr style="background-color: var(--cisco-green); height: 2px; opacity: 0.3" />
+      </div>
+
+      <!-- SEÇÃO 7.1 - Histórico do Windows -->
+      <section id="historia-windows">
+        <h2 class="cisco-title display-6 mb-4">7.1 Histórico do Windows</h2>
+
+        <!-- 7.1.1 - Sistema Operacional de Disco -->
+        <div class="content-card" id="historia-dos">
+          <h3 class="cisco-subtitle">7.1.1 Sistema Operacional de Disco</h3>
+
+          <p class="mb-4">
+            Os primeiros computadores não tinham dispositivos de armazenamento modernos, como discos rígidos, unidades ópticas ou
+            armazenamento flash. Os primeiros métodos de armazenamento usavam cartões perfurados, fita de papel, fita magnética e até
+            cassetes de áudio.
+          </p>
+
+          <p class="mb-4">
+            Disquetes e armazenamento em disco rígido exigem software para ler, gravar e gerenciar os dados que eles armazenam. O sistema
+            operacional de disco (DOS) é um sistema operacional que o computador usa para habilitar esses dispositivos de armazenamento de
+            dados para ler e gravar arquivos. DOS fornece um sistema de arquivos que organiza os arquivos de uma forma específica no disco.
+            A Microsoft comprou o DOS e desenvolveu o MS-DOS.
+          </p>
+
+          <p class="mb-4">
+            MS-DOS usou uma linha de comando como a interface para as pessoas criarem programas e manipularem arquivos de dados, como
+            mostrado na saída do comando. Os comandos DOS são mostrados em negrito.
+          </p>
+
+          <!-- Tabela de Comandos MS-DOS -->
+          <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">📋 Principais Comandos MS-DOS</h4>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Comando MS-DOS</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>dir</td>
+                  <td>Mostra uma lista de todos os arquivos no diretório atual (pasta)</td>
+                </tr>
+                <tr>
+                  <td>cd directory</td>
+                  <td>Altera o diretório para o diretório indicado</td>
+                </tr>
+                <tr>
+                  <td>cd ..</td>
+                  <td>Muda o diretório para o diretório acima do diretório atual</td>
+                </tr>
+                <tr>
+                  <td>cd \</td>
+                  <td>Muda o diretório para o diretório raiz (geralmente C:)</td>
+                </tr>
+                <tr>
+                  <td>copy source destination</td>
+                  <td>Copia arquivos para outro local</td>
+                </tr>
+                <tr>
+                  <td>del filename</td>
+                  <td>Exclui um ou mais arquivos.</td>
+                </tr>
+                <tr>
+                  <td>find</td>
+                  <td>Procura texto em arquivos</td>
+                </tr>
+                <tr>
+                  <td>mkdir directory</td>
+                  <td>Cria um novo diretório.</td>
+                </tr>
+                <tr>
+                  <td>ren oldname newname</td>
+                  <td>Renomeia um arquivo</td>
+                </tr>
+                <tr>
+                  <td>ajuda</td>
+                  <td>Exibe todos os comandos que podem ser usados, com uma breve descrição</td>
+                </tr>
+                <tr>
+                  <td>help command</td>
+                  <td>Exibe a ajuda extensa para o comando indicado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Simulação de Terminal MS-DOS -->
+          <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">💻 Exemplo de Sessão MS-DOS</h4>
+          <div class="terminal-card">
+            <pre><code>Starting MS-DOS...
 HIMEM is testing extended memory... done.
 C:\> C:\DOS\SMARTDRV.EXE /X
 C:\> dir
@@ -243,433 +336,2310 @@ Volume in drive C is MS-DOS 6
 Volume Serial Number is 4006-6939
 Directory of C:\
 
-DOS            <DIR>    05-06-17  1:09p
+DOS            &lt;DIR&gt;    05-06-17  1:09p
 COMMAND     COM     54,645    05-31-94  6:22a
 WINA20     386      9,349    05-31-94  6:22a
 CONFIG      SYS         71    05-06-17  1:10p
 AUTOEXEC    BAT         78    05-06-17  1:10p
         5 file(s)     64,143 bytes
         517,021,696 bytes free
-C:\></pre>
-        </div>
+C:\&gt;</code></pre>
+          </div>
 
-        <!-- Bloco de citação explicativo -->
-        <div class="cisco-quote">
-          <p class="mb-0">
-            <i class="fas fa-quote-left me-2" style="color: var(--cisco-green); opacity: 0.5;"></i>
-            Com o MS-DOS, o computador tinha um conhecimento básico de trabalho de como acessar a unidade de disco e carregar os arquivos do sistema operacional diretamente do disco como parte do processo de inicialização. Quando ele foi carregado, o MS-DOS poderia acessar facilmente o disco porque ele foi incorporado no sistema operacional.
+          <!-- Bloco de citação explicativo -->
+          <div class="cisco-quote">
+            <p class="mb-0">
+              <i class="fas fa-quote-left me-2" style="color: var(--cisco-green); opacity: 0.5"></i>
+              Com o MS-DOS, o computador tinha um conhecimento básico de trabalho de como acessar a unidade de disco e carregar os arquivos
+              do sistema operacional diretamente do disco como parte do processo de inicialização. Quando ele foi carregado, o MS-DOS
+              poderia acessar facilmente o disco porque ele foi incorporado no sistema operacional.
+            </p>
+          </div>
+
+          <p class="mb-3">
+            As primeiras versões do Windows consistiam em uma interface gráfica do usuário (GUI) que executava o MS-DOS, começando com o
+            Windows 1.0 em 1985. O DOS ainda controlava o computador e seu hardware. Um sistema operacional moderno como o Windows 10 não é
+            considerado um sistema operacional de disco. Ele é construído no Windows NT, que significa "Novas Tecnologias". O próprio
+            sistema operacional está no controle direto do computador e seu hardware. NT é um sistema operacional com suporte para vários
+            processos de usuário. Isso é muito diferente do MS-DOS de um único processo e de usuário único.
           </p>
+
+          <p>
+            Hoje, muitas coisas que costumavam ser realizadas através da interface de linha de comando do MS-DOS podem ser realizadas na GUI
+            do Windows. Você ainda pode experimentar como era usar o MS-DOS abrindo uma janela de comando, mas o que você vê não é mais
+            MS-DOS, é uma função do Windows. Para experimentar um pouco do que era trabalhar no MS-DOS, abra uma janela de comando digitando
+            cmd na Pesquisa do Windows e pressionando Enter. A tabela lista alguns comandos que você pode usar. Digite help seguido pelo
+            comando para saber mais sobre o comando.
+          </p>
+
+          <!-- Badge de dica -->
+          <div class="mt-4">
+            <span class="badge-cisco"> <i class="fas fa-terminal me-1"></i> Dica: Use cmd no Windows para testar comandos </span>
+          </div>
         </div>
 
-        <p class="mb-3">
-          As primeiras versões do Windows consistiam em uma interface gráfica do usuário (GUI) que executava o MS-DOS, começando com o Windows 1.0 em 1985. O DOS ainda controlava o computador e seu hardware. Um sistema operacional moderno como o Windows 10 não é considerado um sistema operacional de disco. Ele é construído no Windows NT, que significa "Novas Tecnologias". O próprio sistema operacional está no controle direto do computador e seu hardware. NT é um sistema operacional com suporte para vários processos de usuário. Isso é muito diferente do MS-DOS de um único processo e de usuário único.
-        </p>
+        <!-- 7.1.2 Versões do Windows -->
+        <section id="versoes-windows" class="content-card">
+          <h2 class="cisco-subtitle">7.1.2 Versões do Windows</h2>
 
-        <p>
-          Hoje, muitas coisas que costumavam ser realizadas através da interface de linha de comando do MS-DOS podem ser realizadas na GUI do Windows. Você ainda pode experimentar como era usar o MS-DOS abrindo uma janela de comando, mas o que você vê não é mais MS-DOS, é uma função do Windows. Para experimentar um pouco do que era trabalhar no MS-DOS, abra uma janela de comando digitando cmd na Pesquisa do Windows e pressionando Enter. A tabela lista alguns comandos que você pode usar. Digite help seguido pelo comando para saber mais sobre o comando.
-        </p>
+          <p>
+            Desde 1993, houve mais de 20 lançamentos do Windows que são baseados no sistema operacional NT. A maioria dessas versões era
+            para uso pelo público em geral e pelas empresas devido à segurança de arquivos oferecida pelo sistema de arquivos usado pelo
+            sistema operacional NT. As empresas também adotaram sistemas operacionais Windows baseados em SO NT. Isso ocorre porque muitas
+            edições foram criadas especificamente para estações de trabalho, profissionais, servidores, servidores avançados e servidores de
+            datacenter, para citar apenas algumas das muitas versões criadas para fins específicos.
+          </p>
 
-        <!-- Badge de dica -->
-        <div class="mt-4">
-          <span class="badge-cisco">
-            <i class="fas fa-terminal me-1"></i> Dica: Use cmd no Windows para testar comandos
-          </span>
+          <p>
+            A partir do Windows XP, uma edição de 64 bits estava disponível. O sistema operacional de 64 bits era uma arquitetura totalmente
+            nova. Ele tinha um espaço de endereço de 64 bits em vez de um espaço de endereço de 32 bits. Isto não é simplesmente o dobro da
+            quantidade de espaço porque estes bits são números binários. Embora o Windows de 32 bits possa endereçar um pouco menos de 4 GB
+            de RAM, o Windows de 64 bits pode, teoricamente, endereçar 16,8 milhões de terabytes. Quando o sistema operacional e o hardware
+            suportam a operação de 64 bits, conjuntos de dados extremamente grandes podem ser usados. Esses grandes conjuntos de dados
+            incluem bancos de dados muito grandes, computação científica e manipulação de vídeo digital de alta definição com efeitos
+            especiais. Em geral, computadores e sistemas operacionais de 64 bits são compatíveis com programas mais antigos de 32 bits, mas
+            programas de 64 bits não podem ser executados em hardware mais antigo de 32 bits.
+          </p>
+
+          <p>
+            Com cada versão subsequente do Windows, o sistema operacional tornou-se mais refinado ao incorporar mais recursos. O Windows 7
+            foi oferecido com seis edições diferentes, o Windows 8 com até cinco e o Windows 10 com oito edições diferentes! Cada edição não
+            só oferece diferentes capacidades, mas também diferentes pontos de preço. A Microsoft disse que o Windows 10 é a última versão
+            do Windows, e que o Windows se tornou um serviço em vez de apenas um sistema operacional. Eles dizem que, em vez de comprar
+            novos sistemas operacionais, os usuários apenas atualizarão o Windows 10 em vez disso.
+          </p>
+
+          <p>A tabela lista versões comuns do Windows.</p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>SO</th>
+                  <th>Versões</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Windows 7</strong></td>
+                  <td>Starter, Home Basic, Home Premium, Professional, Enterprise, Ultimate</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows Server 2008 R2</strong></td>
+                  <td>Foundation, Standard, Enterprise, Datacenter, Web Server, HPC Server, Itanium-Based Systems</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows Home Server 2011</strong></td>
+                  <td>Nenhuma</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows 8</strong></td>
+                  <td>Windows 8, Windows 8 Pro, Windows 8 Enterprise, Windows RT</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows Server 2012</strong></td>
+                  <td>Foundation, Essentials, Standard, Datacenter</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows 8.1</strong></td>
+                  <td>Windows 8.1, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows RT 8.1</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows Server 2012 R2</strong></td>
+                  <td>Foundation, Essentials, Standard, Datacenter</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows 10</strong></td>
+                  <td>Home, Pro, Pro Education, Enterprise, Education, IoT Core, Mobile, Mobile Enterprise</td>
+                </tr>
+                <tr>
+                  <td><strong>Windows Server 2016</strong></td>
+                  <td>Essentials, Standard, Datacenter, Multipoint Premium Server, Storage Server, Hyper-V Server</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Destaque sobre arquitetura 32 vs 64 bits -->
+          <div class="alert mt-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="fas fa-microchip fa-2x" style="color: var(--cisco-green)"></i>
+              </div>
+              <div>
+                <strong>Arquitetura 32 bits vs 64 bits:</strong>
+                <ul class="mt-2 mb-0">
+                  <li><strong>32 bits:</strong> Endereça até ~4 GB de RAM</li>
+                  <li><strong>64 bits:</strong> Endereça até 16,8 milhões de terabytes (teoricamente)</li>
+                  <li>Compatível com programas de 32 bits</li>
+                  <li>Programas de 64 bits NÃO rodam em hardware 32 bits</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badges de versões -->
+          <div class="mt-4">
+            <span class="badge-cisco me-2"><i class="fab fa-windows me-1"></i>Windows 7</span>
+            <span class="badge-cisco me-2"><i class="fab fa-windows me-1"></i>Windows 8/8.1</span>
+            <span class="badge-cisco me-2"><i class="fab fa-windows me-1"></i>Windows 10</span>
+            <span class="badge-cisco"><i class="fas fa-server me-1"></i>Windows Server</span>
+          </div>
+        </section>
+
+        <!-- 7.1.3 Windows GUI -->
+        <section id="windows-gui" class="content-card">
+          <h2 class="cisco-subtitle">7.1.3 Windows GUI</h2>
+
+          <p>
+            O Windows tem uma interface gráfica do usuário (GUI) para que os usuários trabalhem com arquivos de dados e software. A GUI tem
+            uma área principal que é conhecida como Área de Trabalho, mostrada na figura.
+          </p>
+
+          <!-- Placeholder para imagem da Área de Trabalho -->
+          <div class="text-center my-4">
+            <div
+              class="diagram-placeholder p-4"
+              style="
+                background: rgba(0, 0, 0, 0.3);
+                border: 2px dashed var(--cisco-green);
+                border-radius: 8px;
+                max-width: 800px;
+                margin: 0 auto;
+              "
+            >
+              <i class="fas fa-desktop fa-4x mb-3" style="color: var(--cisco-green); opacity: 0.5"></i>
+              <h5>Área de Trabalho do Windows</h5>
+              <div class="row mt-3 text-start small">
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li><i class="fas fa-trash me-2" style="color: var(--cisco-green)"></i> Ícone de lixeira</li>
+                    <li><i class="fas fa-desktop me-2" style="color: var(--cisco-green)"></i> Área de trabalho</li>
+                    <li><i class="fas fa-window-maximize me-2" style="color: var(--cisco-green)"></i> Barra de Tarefas</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul class="list-unstyled">
+                    <li><i class="fas fa-search me-2" style="color: var(--cisco-green)"></i> Menu Iniciar e Pesquisa</li>
+                    <li><i class="fas fa-rocket me-2" style="color: var(--cisco-green)"></i> Ícones de inicialização rápida</li>
+                    <li><i class="fas fa-bell me-2" style="color: var(--cisco-green)"></i> Área de Notificação</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <p class="image-caption mt-2 text-muted">
+              <i class="fas fa-diagram-project me-1" style="color: var(--cisco-green)"></i>
+              Figura 7.1.3.1 - Elementos da Área de Trabalho do Windows
+            </p>
+          </div>
+
+          <h3 class="h5 text-white mt-4 mb-3">📌 Componentes da Área de Trabalho</h3>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div
+                class="component-item p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <h5><i class="fas fa-trash me-2" style="color: var(--cisco-green)"></i> Ícone de lixeira</h5>
+                <p class="text-secondary small">
+                  Armazena arquivos excluídos temporariamente. Arquivos podem ser restaurados ou a lixeira pode ser esvaziada para exclusão
+                  permanente.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div
+                class="component-item p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <h5><i class="fas fa-desktop me-2" style="color: var(--cisco-green)"></i> Área de trabalho</h5>
+                <p class="text-secondary small">
+                  Pode armazenar arquivos, pastas, atalhos para locais, programas e aplicativos. Personalizável com cores e imagens de
+                  fundo.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div
+                class="component-item p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <h5><i class="fas fa-window-maximize me-2" style="color: var(--cisco-green)"></i> Barra de Tarefas</h5>
+                <p class="text-secondary small">
+                  Localizada na parte inferior da área de trabalho. Contém o menu Iniciar, ícones de inicialização rápida e área de
+                  notificação.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div
+                class="component-item p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <h5><i class="fas fa-windows me-2" style="color: var(--cisco-green)"></i> Menu Iniciar e Pesquisa</h5>
+                <p class="text-secondary small">
+                  Acessa todos os programas instalados, opções de configuração e recurso de pesquisa integrado.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div
+                class="component-item p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <h5><i class="fas fa-rocket me-2" style="color: var(--cisco-green)"></i> Ícones de inicialização rápida</h5>
+                <p class="text-secondary small">
+                  Localizados no centro da Barra de Tarefas. Executam programas específicos ou abrem pastas com um clique.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div
+                class="component-item p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <h5><i class="fas fa-bell me-2" style="color: var(--cisco-green)"></i> Área de Notificação</h5>
+                <p class="text-secondary small">
+                  À direita da barra de tarefas. Mostra status de programas (ex: envelope piscando = novo e-mail, "x" vermelho = problema de
+                  rede).
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7.1.4 Vulnerabilidades do sistema operacional -->
+        <section id="vulnerabilidades" class="content-card">
+          <h2 class="cisco-subtitle">7.1.4 Vulnerabilidades do sistema operacional</h2>
+
+          <p>
+            Os sistemas operacionais consistem em milhões de linhas de código. O software instalado também pode conter milhões de linhas de
+            código. Com todo esse código vem vulnerabilidades. Uma vulnerabilidade é alguma falha ou fraqueza que pode ser explorada por um
+            invasor para reduzir a viabilidade das informações de um computador. Para tirar proveito de uma vulnerabilidade do sistema
+            operacional, o invasor deve usar uma técnica ou uma ferramenta para explorar a vulnerabilidade. O invasor pode então usar a
+            vulnerabilidade para fazer com que o computador atue de forma fora do design pretendido. Em geral, o objetivo é obter controle
+            não autorizado do computador, alterar permissões ou manipular ou roubar dados.
+          </p>
+
+          <p class="mt-4 mb-3">
+            <strong
+              ><i class="fas fa-hand-pointer me-2" style="color: var(--cisco-green)"></i> Clique em cada um dos títulos abaixo para ver
+              algumas recomendações comuns de segurança do sistema operacional Windows.</strong
+            >
+          </p>
+
+          <!-- Accordion Component -->
+          <div class="accordion" id="vulnerabilidadesAccordion">
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln1"
+                  aria-expanded="false"
+                  aria-controls="vuln1"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-shield-virus me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Proteção contra vírus ou malware</strong>
+                </button>
+              </h2>
+              <div id="vuln1" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Por padrão, o Windows usa o Windows
+                      Defender para proteção contra malware.
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> O Windows Defender fornece um conjunto de
+                      ferramentas de proteção incorporadas ao sistema.
+                    </li>
+                    <li>
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> Se o Windows Defender estiver desativado, o
+                      sistema ficará mais vulnerável a ataques e malware.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln2"
+                  aria-expanded="false"
+                  aria-controls="vuln2"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-cogs me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Serviços desconhecidos ou não gerenciados</strong>
+                </button>
+              </h2>
+              <div id="vuln2" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Há muitos serviços que funcionam nos
+                      bastidores.
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> É importante certificar-se de que cada
+                      serviço é identificável e seguro.
+                    </li>
+                    <li>
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> Com um serviço desconhecido em execução em
+                      segundo plano, o computador pode ficar vulnerável a ataques.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln3"
+                  aria-expanded="false"
+                  aria-controls="vuln3"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-lock me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Criptografia</strong>
+                </button>
+              </h2>
+              <div id="vuln3" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> Quando os dados não são criptografados, eles
+                      podem ser facilmente coletados e explorados.
+                    </li>
+                    <li>
+                      <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Isso não é importante apenas para
+                      computadores desktop, mas especialmente dispositivos móveis.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln4"
+                  aria-expanded="false"
+                  aria-controls="vuln4"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-gavel me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Política de segurança</strong>
+                </button>
+              </h2>
+              <div id="vuln4" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Uma boa política de segurança deve ser
+                      configurada e seguida.
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Muitas configurações no controle de
+                      Diretiva de Segurança do Windows podem impedir ataques.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln5"
+                  aria-expanded="false"
+                  aria-controls="vuln5"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-firewall me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Firewall</strong>
+                </button>
+              </h2>
+              <div id="vuln5" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Por padrão, o Windows usa o Firewall do
+                      Windows para limitar a comunicação com dispositivos na rede.
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Com o tempo, as regras podem não se aplicar
+                      mais.
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-example-circle me-2" style="color: #ffc107"></i> Por exemplo, uma porta pode ser deixada aberta que
+                      não deve mais estar prontamente disponível.
+                    </li>
+                    <li>
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> É importante revisar periodicamente as
+                      configurações do firewall para garantir que as regras ainda são aplicáveis e remover as que não se aplicam mais.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln6"
+                  aria-expanded="false"
+                  aria-controls="vuln6"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-folder-share me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Permissões de arquivo e compartilhamento</strong>
+                </button>
+              </h2>
+              <div id="vuln6" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Essas permissões devem ser definidas
+                      corretamente.
+                    </li>
+                    <li class="mb-2">
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> É fácil dar ao grupo "Todos" Controle Total,
+                      mas isso permite que todas as pessoas façam o que quiserem com todos os arquivos.
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> É melhor fornecer a cada usuário ou grupo
+                      as permissões mínimas necessárias para todos os arquivos e pastas.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln7"
+                  aria-expanded="false"
+                  aria-controls="vuln7"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-key me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Senha fraca ou sem senha</strong>
+                </button>
+              </h2>
+              <div id="vuln7" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> Muitas pessoas escolhem senhas fracas ou não
+                      usam nenhuma senha.
+                    </li>
+                    <li>
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> É especialmente importante certificar-se de
+                      que todas as contas, especialmente a conta de Administrador, têm uma senha muito forte.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#vuln8"
+                  aria-expanded="false"
+                  aria-controls="vuln8"
+                  style="
+                    background-color: #2a2a2a !important;
+                    color: var(--cisco-green) !important;
+                    border: 1px solid #444;
+                    border-radius: 8px;
+                  "
+                >
+                  <i class="fas fa-user-shield me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Login como Administrador</strong>
+                </button>
+              </h2>
+              <div id="vuln8" class="accordion-collapse collapse" data-bs-parent="#vulnerabilidadesAccordion">
+                <div
+                  class="accordion-body"
+                  style="
+                    background-color: #1a1a1a;
+                    border-radius: 0 0 8px 8px;
+                    border-left: 1px solid #444;
+                    border-right: 1px solid #444;
+                    border-bottom: 1px solid #444;
+                  "
+                >
+                  <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                      <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> Quando um usuário faz logon como
+                      administrador, qualquer programa executado terá os privilégios dessa conta.
+                    </li>
+                    <li>
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> É melhor fazer login como um Usuário Padrão
+                      e usar apenas a senha de administrador para realizar determinadas tarefas.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumo das boas práticas -->
+          <div class="mt-5 p-4" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+            <h4 class="text-white mb-3">
+              <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>
+              Boas práticas de segurança no Windows
+            </h4>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Mantenha o Windows Defender ativo
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Monitore serviços em execução
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Use criptografia (BitLocker)
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Revise políticas de segurança
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Configure o firewall corretamente
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Aplique permissões mínimas
+                  </li>
+                  <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Use senhas fortes</li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Evite logon como Administrador
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <span class="badge-cisco">
+              <i class="fas fa-lightbulb me-1"></i> Lembre-se: A segurança é um processo contínuo, não um estado final
+            </span>
+          </div>
+        </section>
+
+        <!-- 7.1.5 Personalização e Menu de Contexto -->
+        <section id="personalizacao" class="content-card">
+          <h2 class="cisco-subtitle">7.1.5 Personalização e Menu de Contexto</h2>
+
+          <p>
+            A área de trabalho pode ser personalizada com várias cores e imagens de fundo. O Windows suporta vários usuários, para que cada
+            usuário possa personalizar a Área de Trabalho ao seu gosto. A Área de Trabalho pode armazenar arquivos, pastas, atalhos para
+            locais e programas e aplicativos. A área de trabalho também tem um ícone de lixeira, onde os arquivos são armazenados quando o
+            usuário os exclui. Os arquivos podem ser restaurados da lixeira ou a lixeira pode ser esvaziada de arquivos, o que realmente os
+            exclui.
+          </p>
+
+          <p>
+            Na parte inferior da área de trabalho está a Barra de Tarefas. A Barra de Tarefas tem três áreas que são usadas para diferentes
+            fins. À esquerda está o menu Iniciar. Ele é usado para acessar todos os programas instalados, opções de configuração e o recurso
+            de pesquisa. No centro da Barra de Tarefas, os usuários colocam ícones de inicialização rápida que executam programas
+            específicos ou abrem pastas específicas quando clicam. Finalmente, à direita da barra de tarefas está a área de notificação. A
+            área de notificação mostra, em resumo, a funcionalidade de muitos programas e recursos diferentes. Por exemplo, um ícone de
+            envelope intermitente pode indicar um novo e-mail ou um ícone de rede com um “x” vermelho pode indicar um problema com a rede.
+          </p>
+
+          <p>
+            Muitas vezes, clicar com o botão direito do mouse em um ícone trará funções adicionais que podem ser usadas. Esta lista é
+            conhecida como um Menu de Contexto, mostrado na figura.
+          </p>
+
+          <!-- Menu de Contexto -->
+          <div class="row mt-4 align-items-center">
+            <div class="col-md-5">
+              <div class="context-menu-example p-4" style="background: #2a2a2a; border-radius: 8px; border: 1px solid #444">
+                <h5 class="text-white mb-3">
+                  <i class="fas fa-mouse-pointer me-2" style="color: var(--cisco-green)"></i> Menu de Contexto
+                </h5>
+                <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc">Copiar</div>
+                <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc">Colar</div>
+                <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc">Excluir</div>
+                <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc">Renomear</div>
+                <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc">Propriedades</div>
+                <div class="menu-item p-2" style="color: #ccc">Compartilhar</div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="ps-md-4">
+                <p><strong>Há Menus de Contexto para:</strong></p>
+                <ul class="cisco-list">
+                  <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Ícones na área de notificação</li>
+                  <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Ícones de inicialização rápida</li>
+                  <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Ícones de configuração do sistema</li>
+                  <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Arquivos e pastas</li>
+                </ul>
+                <p class="mt-3">
+                  O Menu de Contexto fornece muitas das funções mais comumente usadas com apenas um clique. Por exemplo, o Menu de Contexto
+                  de um arquivo conterá itens como copiar, excluir, compartilhar e imprimir. Para abrir pastas e manipular arquivos, o
+                  Windows usa o Explorador de Arquivos do Windows.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Explorador de Arquivos -->
+          <div class="mt-4 p-4" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+            <h5><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Explorador de Arquivos do Windows</h5>
+            <p>Ferramenta principal para navegação e gerenciamento de arquivos e pastas.</p>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="quick-access p-3" style="background: #1a1a1a; border-radius: 8px">
+                  <h6 class="text-white"><i class="fas fa-bolt me-2" style="color: var(--cisco-green)"></i> Acesso Rápido</h6>
+                  <ul class="list-unstyled small">
+                    <li class="py-1">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem"></i> ACTIVE
+                    </li>
+                    <li class="py-1">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem"></i> _2019 - 2020
+                    </li>
+                    <li class="py-1">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem"></i> COURSES
+                    </li>
+                    <li class="py-1">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem"></i> CCNA S - CET
+                    </li>
+                    <li class="py-1">
+                      <i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem"></i> CISCO
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="this-pc p-3" style="background: #1a1a1a; border-radius: 8px">
+                  <h6 class="text-white"><i class="fas fa-computer me-2" style="color: var(--cisco-green)"></i> Este Computador</h6>
+                  <ul class="list-unstyled small">
+                    <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green)"></i> 3D Objects</li>
+                    <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green)"></i> Desktop</li>
+                    <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green)"></i> Documents</li>
+                    <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green)"></i> Downloads</li>
+                    <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green)"></i> Music</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="status p-3" style="background: #1a1a1a; border-radius: 8px">
+                  <h6 class="text-white"><i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Status</h6>
+                  <p class="small mb-0"><span class="badge-cisco">4 items</span></p>
+                  <p class="small mb-0 mt-2"><span class="badge-cisco">1 item selected 6.18 MB</span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <span class="badge-cisco">
+              <i class="fas fa-lightbulb me-1"></i> Dica: Clique com o botão direito em qualquer ícone para ver o Menu de Contexto
+            </span>
+          </div>
+        </section>
+      </section>
+
+      <!-- 7.2 Arquitetura e operações do Windows -->
+      <section id="arquitetura-windows" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">7.2 Arquitetura e operações do Windows</h2>
+
+        <!-- 7.2.1 Camada de Abstração de Hardware -->
+        <div id="hal" class="content-card">
+          <h3 class="cisco-subtitle">7.2.1 Camada de Abstração de Hardware</h3>
+
+          <p>
+            Computadores Windows usam muitos tipos diferentes de hardware. O sistema operacional pode ser instalado em um computador
+            comprado ou em um computador que é montado pelo usuário. Quando o sistema operacional está instalado, ele deve ser isolado das
+            diferenças no hardware. A arquitetura básica do Windows é mostrada na figura.
+          </p>
+
+          <p>
+            Uma camada de abstração de hardware (HAL) é um software que lida com toda a comunicação entre o hardware e o kernel. O kernel é
+            o núcleo do sistema operacional e tem controle sobre todo o computador. Ele lida com todas as solicitações de entrada e saída,
+            memória e todos os periféricos conectados ao computador.
+          </p>
+
+          <p>
+            Em alguns casos, o kernel ainda se comunica diretamente com o hardware, portanto não é completamente independente do HAL. O HAL
+            também precisa do kernel para executar algumas funções.
+          </p>
+
+          <!-- Diagrama da Arquitetura Windows -->
+          <div class="diagram-container mt-5 mb-4">
+            <h4 class="text-center mb-4" style="color: var(--cisco-green)">
+              <i class="fas fa-layer-group me-2"></i> Arquitetura básica do Windows
+            </h4>
+
+            <div class="windows-architecture" style="max-width: 500px; margin: 0 auto">
+              <div
+                class="arch-layer"
+                style="
+                  background: #2a2a2a;
+                  border-radius: 8px;
+                  padding: 12px;
+                  margin-bottom: 2px;
+                  text-align: center;
+                  border-left: 4px solid var(--cisco-green);
+                "
+              >
+                <i class="fas fa-window-maximize me-2" style="color: var(--cisco-green)"></i>
+                <strong>Aplicações</strong>
+              </div>
+
+              <div
+                class="arch-layer"
+                style="
+                  background: #2a2a2a;
+                  border-radius: 8px;
+                  padding: 12px;
+                  margin-bottom: 2px;
+                  text-align: center;
+                  border-left: 4px solid var(--cisco-green);
+                "
+              >
+                <i class="fas fa-plug me-2" style="color: var(--cisco-green)"></i>
+                <strong>Drivers de modo de usuário</strong>
+              </div>
+
+              <div
+                class="arch-layer"
+                style="
+                  background: #2a2a2a;
+                  border-radius: 8px;
+                  padding: 12px;
+                  margin-bottom: 2px;
+                  text-align: center;
+                  border-left: 4px solid var(--cisco-green);
+                "
+              >
+                <i class="fas fa-code me-2" style="color: var(--cisco-green)"></i>
+                <strong>API do Windows</strong>
+              </div>
+
+              <div
+                class="arch-layer"
+                style="
+                  background: #2a2a2a;
+                  border-radius: 8px;
+                  padding: 12px;
+                  margin-bottom: 2px;
+                  text-align: center;
+                  border-left: 4px solid var(--cisco-green);
+                "
+              >
+                <i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i>
+                <strong>Outros drivers de modo kernel</strong>
+              </div>
+
+              <div
+                class="arch-layer"
+                style="
+                  background: #1e3a1e;
+                  border-radius: 8px;
+                  padding: 12px;
+                  margin-bottom: 2px;
+                  text-align: center;
+                  border-left: 4px solid var(--cisco-green);
+                "
+              >
+                <i class="fas fa-crown me-2" style="color: var(--cisco-green)"></i>
+                <strong>Kernel do sistema operacional</strong>
+              </div>
+
+              <div
+                class="arch-layer"
+                style="
+                  background: #2a2a2a;
+                  border-radius: 8px;
+                  padding: 12px;
+                  margin-bottom: 2px;
+                  text-align: center;
+                  border-left: 4px solid var(--cisco-green);
+                "
+              >
+                <i class="fas fa-layer-group me-2" style="color: var(--cisco-green)"></i>
+                <strong>Camada de abstração de hardware (HAL)</strong>
+              </div>
+
+              <div
+                class="arch-layer"
+                style="
+                  background: #2a2a2a;
+                  border-radius: 8px;
+                  padding: 12px;
+                  text-align: center;
+                  border-left: 4px solid var(--cisco-green);
+                "
+              >
+                <i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i>
+                <strong>Hardware</strong>
+              </div>
+            </div>
+
+            <div class="legend-container mt-4 p-3" style="background: #1a1a1a; border-radius: 8px">
+              <div class="row text-center">
+                <div class="col-md-4">
+                  <i class="fas fa-window-maximize me-2" style="color: var(--cisco-green)"></i>
+                  <span class="text-muted small">Aplicações</span>
+                </div>
+                <div class="col-md-4">
+                  <i class="fas fa-plug me-2" style="color: var(--cisco-green)"></i>
+                  <span class="text-muted small">Drivers de modo de usuário</span>
+                </div>
+                <div class="col-md-4">
+                  <i class="fas fa-code me-2" style="color: var(--cisco-green)"></i>
+                  <span class="text-muted small">API do Windows</span>
+                </div>
+                <div class="col-md-4 mt-2">
+                  <i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i>
+                  <span class="text-muted small">Outros drivers de modo kernel</span>
+                </div>
+                <div class="col-md-4 mt-2">
+                  <i class="fas fa-crown me-2" style="color: var(--cisco-green)"></i>
+                  <span class="text-muted small">Kernel do sistema operacional</span>
+                </div>
+                <div class="col-md-4 mt-2">
+                  <i class="fas fa-layer-group me-2" style="color: var(--cisco-green)"></i>
+                  <span class="text-muted small">Camada de abstração de hardware</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert mt-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="fas fa-info-circle fa-2x" style="color: var(--cisco-green)"></i>
+              </div>
+              <div>
+                <strong>Função da HAL:</strong>
+                <p class="mb-0 mt-1">
+                  A Camada de Abstração de Hardware isola o sistema operacional das diferenças de hardware, permitindo que o Windows
+                  funcione em diferentes tipos de computadores sem modificações no código do kernel.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <!-- 7.1.2 Versões do Windows -->
-      <section id="versoes-windows" class="content-card">
-        <h2 class="cisco-subtitle">7.1.2 Versões do Windows</h2>
+        <!-- 7.2.2 Modo de Usuário e Modo Kernel -->
+        <div id="user-kernel-mode" class="content-card mt-4">
+          <h3 class="cisco-subtitle">7.2.2 Modo de Usuário e Modo Kernel</h3>
+
+          <p>
+            Conforme identificado na figura, existem dois modos diferentes em que uma CPU opera quando o computador tem o Windows instalado:
+            o modo de usuário e o modo kernel.
+          </p>
+
+          <div class="row mt-4 mb-4">
+            <div class="col-md-6">
+              <div
+                class="mode-card p-4"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; border: 1px solid #444; height: 100%"
+              >
+                <h4 class="text-center mb-3" style="color: var(--cisco-green)"><i class="fas fa-user me-2"></i> Modo de Usuário</h4>
+                <ul class="list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Programas como aplicativos de usuário
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Não tem acesso direto a locais de hardware ou
+                    memória
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Deve passar pelo sistema operacional para
+                    acessar recursos
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Falhas são restritas apenas ao aplicativo
+                  </li>
+                  <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Falhas são recuperáveis</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div
+                class="mode-card p-4"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; border: 1px solid #444; height: 100%"
+              >
+                <h4 class="text-center mb-3" style="color: var(--cisco-green)"><i class="fas fa-crown me-2"></i> Modo Kernel</h4>
+                <ul class="list-unstyled">
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Código do sistema operacional
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Acesso irrestrito ao hardware subjacente
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Pode executar qualquer instrução de CPU
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Pode referenciar qualquer endereço de memória
+                    diretamente
+                  </li>
+                  <li>
+                    <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> Falhas param a operação de todo o computador
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Os aplicativos instalados são executados no modo de usuário e o código do sistema operacional é executado no modo kernel. O
+            código que está sendo executado no modo kernel tem acesso irrestrito ao hardware subjacente e é capaz de executar qualquer
+            instrução de CPU. O código do modo kernel também pode referenciar qualquer endereço de memória diretamente. Geralmente reservado
+            para as funções mais confiáveis do sistema operacional, falhas no código em execução no modo kernel param a operação de todo o
+            computador. Por outro lado, programas como aplicativos de usuário são executados no modo de usuário e não têm acesso direto a
+            locais de hardware ou memória. O código do modo de usuário deve passar pelo sistema operacional para acessar recursos de
+            hardware. Devido ao isolamento fornecido pelo modo de usuário, as falhas no modo de usuário são restritas apenas ao aplicativo e
+            são recuperáveis. A maioria dos programas no Windows são executados no modo de usuário. Drivers de dispositivo, peças de
+            software que permitem que o sistema operacional e um dispositivo se comuniquem, podem ser executados no modo kernel ou usuário,
+            dependendo do driver.
+          </p>
+
+          <p>
+            Todo o código que é executado no modo kernel usa o mesmo espaço de endereço. Os drivers de modo kernel não têm isolamento do
+            sistema operacional. Se ocorrer um erro com o driver em execução no modo kernel e ele gravar no espaço de endereço errado, o
+            sistema operacional ou outro driver de modo kernel pode ser afetado negativamente. A este respeito, o driver pode falhar,
+            fazendo com que todo o sistema operacional falhe.
+          </p>
+
+          <p>
+            Quando o código de modo de usuário é executado, ele é concedido seu próprio espaço de endereço restrito pelo kernel, juntamente
+            com um processo criado especificamente para o aplicativo. A razão para essa funcionalidade é principalmente para impedir que
+            aplicativos alterem o código do sistema operacional que está sendo executado ao mesmo tempo. Ao ter seu próprio processo, esse
+            aplicativo tem seu próprio espaço de endereço privado, tornando outros aplicativos incapazes de modificar os dados nele. Isso
+            também ajuda a evitar que o sistema operacional e outros aplicativos falhe.
+          </p>
+
+          <div class="diagram-container mt-5">
+            <h4 class="text-center mb-4" style="color: var(--cisco-green)">
+              <i class="fas fa-diagram-project me-2"></i> Modos de Operação do Windows
+            </h4>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="text-center p-3" style="background: #1a3a1a; border-radius: 8px">
+                  <i class="fas fa-user-circle fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                  <h5>Modo de Usuário</h5>
+                  <div class="small text-muted">
+                    <div>✓ Aplicações</div>
+                    <div>✓ Drivers de modo de usuário</div>
+                    <div>✓ API do Windows</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="text-center p-3" style="background: #1a3a1a; border-radius: 8px">
+                  <i class="fas fa-microchip fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                  <h5>Modo Kernel</h5>
+                  <div class="small text-muted">
+                    <div>✓ Kernel do sistema operacional</div>
+                    <div>✓ Drivers de modo kernel</div>
+                    <div>✓ Drivers de sistema de arquivos</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-3 p-3" style="background: #1a1a1a; border-radius: 8px">
+              <i class="fas fa-layer-group me-2" style="color: var(--cisco-green)"></i>
+              <strong>Camada de abstração de hardware (HAL)</strong>
+              <div class="small text-muted mt-1">Gerencia comunicação entre kernel e hardware</div>
+            </div>
+
+            <div class="text-center mt-2 p-3" style="background: #0a0a0a; border-radius: 8px">
+              <i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i>
+              <strong>Hardware</strong>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <span class="badge-cisco">
+              <i class="fas fa-lightbulb me-1"></i> Importante: Drivers de dispositivo mal escritos são uma das principais causas de falhas
+              no sistema operacional
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- LABORATÓRIOS -->
+      <section id="laboratorios" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">Laboratórios do Módulo</h2>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center mb-3">
+                <i class="fas fa-flask fa-2x me-3" style="color: var(--cisco-green)"></i>
+                <h5 class="mb-0 fw-semibold">Lab 7.1: Linha de Comando</h5>
+              </div>
+              <p class="text-muted small">Prática com comandos básicos do CMD.</p>
+              <span class="badge-cisco">Em breve</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 7.2.4 Fluxos de Dados Alternativos -->
+      <section id="fluxos-dados" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.2.4 Fluxos de Dados Alternativos</h3>
 
         <p>
-          Desde 1993, houve mais de 20 lançamentos do Windows que são baseados no sistema operacional NT. A maioria dessas versões era para uso pelo público em geral e pelas empresas devido à segurança de arquivos oferecida pelo sistema de arquivos usado pelo sistema operacional NT. As empresas também adotaram sistemas operacionais Windows baseados em SO NT. Isso ocorre porque muitas edições foram criadas especificamente para estações de trabalho, profissionais, servidores, servidores avançados e servidores de datacenter, para citar apenas algumas das muitas versões criadas para fins específicos.
+          NTFS armazena arquivos como uma série de atributos, como o nome do arquivo ou um carimbo de data/hora. Os dados que o arquivo
+          contém são armazenados no atributo $DATA, e é conhecido como um fluxo de dados. Usando NTFS, você pode conectar fluxos de dados
+          alternativos (ADSs) ao arquivo. Às vezes, isso é usado por aplicativos que estão armazenando informações adicionais sobre o
+          arquivo. O ADS é um fator importante ao discutir malware. Isso ocorre porque é fácil ocultar dados em um ADS. Um invasor pode
+          armazenar código mal-intencionado dentro de um ADS que pode ser chamado de um arquivo diferente.
         </p>
 
         <p>
-          A partir do Windows XP, uma edição de 64 bits estava disponível. O sistema operacional de 64 bits era uma arquitetura totalmente nova. Ele tinha um espaço de endereço de 64 bits em vez de um espaço de endereço de 32 bits. Isto não é simplesmente o dobro da quantidade de espaço porque estes bits são números binários. Embora o Windows de 32 bits possa endereçar um pouco menos de 4 GB de RAM, o Windows de 64 bits pode, teoricamente, endereçar 16,8 milhões de terabytes. Quando o sistema operacional e o hardware suportam a operação de 64 bits, conjuntos de dados extremamente grandes podem ser usados. Esses grandes conjuntos de dados incluem bancos de dados muito grandes, computação científica e manipulação de vídeo digital de alta definição com efeitos especiais. Em geral, computadores e sistemas operacionais de 64 bits são compatíveis com programas mais antigos de 32 bits, mas programas de 64 bits não podem ser executados em hardware mais antigo de 32 bits.
+          No sistema de arquivos NTFS, um arquivo com um ADS é identificado após o nome do arquivo e dois pontos, por exemplo,
+          <code>Testfile.txt:ADS</code>. Este nome de arquivo indica que um ADS chamado ADS está associado ao arquivo chamado
+          <code>Testfile.txt</code>. Um exemplo de ADS é mostrado na saída do comando.
         </p>
 
-        <p>
-          Com cada versão subsequente do Windows, o sistema operacional tornou-se mais refinado ao incorporar mais recursos. O Windows 7 foi oferecido com seis edições diferentes, o Windows 8 com até cinco e o Windows 10 com oito edições diferentes! Cada edição não só oferece diferentes capacidades, mas também diferentes pontos de preço. A Microsoft disse que o Windows 10 é a última versão do Windows, e que o Windows se tornou um serviço em vez de apenas um sistema operacional. Eles dizem que, em vez de comprar novos sistemas operacionais, os usuários apenas atualizarão o Windows 10 em vez disso.
-        </p>
-
-        <p>A tabela lista versões comuns do Windows.</p>
-
-        <div class="table-responsive mt-4">
-          <table class="table table-cisco">
-            <thead>
-              <tr>
-                <th>SO</th>
-                <th>Versões</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Windows 7</strong></td>
-                <td>Starter, Home Basic, Home Premium, Professional, Enterprise, Ultimate</td>
-              </tr>
-              <tr>
-                <td><strong>Windows Server 2008 R2</strong></td>
-                <td>Foundation, Standard, Enterprise, Datacenter, Web Server, HPC Server, Itanium-Based Systems</td>
-              </tr>
-              <tr>
-                <td><strong>Windows Home Server 2011</strong></td>
-                <td>Nenhuma</td>
-              </tr>
-              <tr>
-                <td><strong>Windows 8</strong></td>
-                <td>Windows 8, Windows 8 Pro, Windows 8 Enterprise, Windows RT</td>
-              </tr>
-              <tr>
-                <td><strong>Windows Server 2012</strong></td>
-                <td>Foundation, Essentials, Standard, Datacenter</td>
-              </tr>
-              <tr>
-                <td><strong>Windows 8.1</strong></td>
-                <td>Windows 8.1, Windows 8.1 Pro, Windows 8.1 Enterprise, Windows RT 8.1</td>
-              </tr>
-              <tr>
-                <td><strong>Windows Server 2012 R2</strong></td>
-                <td>Foundation, Essentials, Standard, Datacenter</td>
-              </tr>
-              <tr>
-                <td><strong>Windows 10</strong></td>
-                <td>Home, Pro, Pro Education, Enterprise, Education, IoT Core, Mobile, Mobile Enterprise</td>
-              </tr>
-              <tr>
-                <td><strong>Windows Server 2016</strong></td>
-                <td>Essentials, Standard, Datacenter, Multipoint Premium Server, Storage Server, Hyper-V Server</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Exemplo de comando ADS -->
+        <div class="terminal-card mt-4">
+          <pre><code>C:\ADS> echo "Alternate Data Here" > Testfile.txt:ADS
+C:\ADS> dir
+    Volume in drive C is Windows
+    Volume Serial Number is A606-CB1B
+    Directory of C:\ADS
+    2020-04-28  04:01 PM    &lt;DIR&gt;          .
+    2020-04-28  04:01 PM    &lt;DIR&gt;          ..
+    2020-04-28  04:01 PM                 0 Testfile.txt
+                   1 File(s)              0 bytes
+                   2 Dir(s)  43,509,571,584 bytes free
+C:\ADS> more &lt; Testfile.txt:ADS
+"Alternate Data Here"
+C:\ADS> dir /r
+    Volume in drive C is Windows
+    Volume Serial Number is A606-CB1B
+    Directory of C:\ADS
+    2020-04-28  04:01 PM    &lt;DIR&gt;          .
+    2020-04-28  04:01 PM    &lt;DIR&gt;          ..
+    2020-04-28  04:01 PM                26 Testfile.txt
+                                    26 Testfile.txt:ADS:$DATA
+                   1 File(s)             26 bytes
+                   2 Dir(s)  43,509,571,584 bytes free</code></pre>
         </div>
 
-        <!-- Destaque sobre arquitetura 32 vs 64 bits -->
-        <div class="alert mt-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green);">
+        <div class="cisco-quote mt-4">
+          <p class="mb-0">
+            <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i>
+            <strong>Explicação dos comandos:</strong>
+          </p>
+          <ul class="mt-2 mb-0">
+            <li>O primeiro comando coloca o texto "Dados Alternativos Aqui" em um ADS do arquivo Testfile.txt chamado "ADS".</li>
+            <li>Depois disso, <code>dir</code> mostra que o arquivo foi criado, mas o ADS não está visível.</li>
+            <li>O próximo comando mostra que há dados no fluxo de dados Testfile.txt:ADS.</li>
+            <li>
+              O último comando mostra o ADS do arquivo Testfile.txt porque a opção <code>/r</code> foi usada com o comando <code>dir</code>.
+            </li>
+          </ul>
+        </div>
+
+        <div class="alert mt-4" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
           <div class="d-flex">
             <div class="me-3">
-              <i class="fas fa-microchip fa-2x" style="color: var(--cisco-green);"></i>
+              <i class="fas fa-exclamation-triangle fa-2x" style="color: #ffc107"></i>
             </div>
             <div>
-              <strong>Arquitetura 32 bits vs 64 bits:</strong>
-              <ul class="mt-2 mb-0">
-                <li><strong>32 bits:</strong> Endereça até ~4 GB de RAM</li>
-                <li><strong>64 bits:</strong> Endereça até 16,8 milhões de terabytes (teoricamente)</li>
-                <li>Compatível com programas de 32 bits</li>
-                <li>Programas de 64 bits NÃO rodam em hardware 32 bits</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- Badges de versões -->
-        <div class="mt-4">
-          <span class="badge-cisco me-2"><i class="fab fa-windows me-1"></i>Windows 7</span>
-          <span class="badge-cisco me-2"><i class="fab fa-windows me-1"></i>Windows 8/8.1</span>
-          <span class="badge-cisco me-2"><i class="fab fa-windows me-1"></i>Windows 10</span>
-          <span class="badge-cisco"><i class="fas fa-server me-1"></i>Windows Server</span>
-        </div>
-      </section>
-
-      <!-- 7.1.3 Windows GUI -->
-      <section id="windows-gui" class="content-card">
-        <h2 class="cisco-subtitle">7.1.3 Windows GUI</h2>
-
-        <p>
-          O Windows tem uma interface gráfica do usuário (GUI) para que os usuários trabalhem com arquivos de dados e software. A GUI tem uma área principal que é conhecida como Área de Trabalho, mostrada na figura.
-        </p>
-
-        <!-- Placeholder para imagem da Área de Trabalho -->
-        <div class="text-center my-4">
-          <div class="diagram-placeholder p-4" style="background: rgba(0, 0, 0, 0.3); border: 2px dashed var(--cisco-green); border-radius: 8px; max-width: 800px; margin: 0 auto;">
-            <i class="fas fa-desktop fa-4x mb-3" style="color: var(--cisco-green); opacity: 0.5;"></i>
-            <h5>Área de Trabalho do Windows</h5>
-            <div class="row mt-3 text-start small">
-              <div class="col-md-6">
-                <ul class="list-unstyled">
-                  <li><i class="fas fa-trash me-2" style="color: var(--cisco-green);"></i> Ícone de lixeira</li>
-                  <li><i class="fas fa-desktop me-2" style="color: var(--cisco-green);"></i> Área de trabalho</li>
-                  <li><i class="fas fa-window-maximize me-2" style="color: var(--cisco-green);"></i> Barra de Tarefas</li>
-                </ul>
-              </div>
-              <div class="col-md-6">
-                <ul class="list-unstyled">
-                  <li><i class="fas fa-search me-2" style="color: var(--cisco-green);"></i> Menu Iniciar e Pesquisa</li>
-                  <li><i class="fas fa-rocket me-2" style="color: var(--cisco-green);"></i> Ícones de inicialização rápida</li>
-                  <li><i class="fas fa-bell me-2" style="color: var(--cisco-green);"></i> Área de Notificação</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <p class="image-caption mt-2 text-muted">
-            <i class="fas fa-diagram-project me-1" style="color: var(--cisco-green);"></i>
-            Figura 7.1.3.1 - Elementos da Área de Trabalho do Windows
-          </p>
-        </div>
-
-        <h3 class="h5 text-white mt-4 mb-3">📌 Componentes da Área de Trabalho</h3>
-
-        <div class="row g-4">
-          <!-- Lixeira -->
-          <div class="col-md-6">
-            <div class="component-item p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green);">
-              <h5><i class="fas fa-trash me-2" style="color: var(--cisco-green);"></i> Ícone de lixeira</h5>
-              <p class="text-secondary small">Armazena arquivos excluídos temporariamente. Arquivos podem ser restaurados ou a lixeira pode ser esvaziada para exclusão permanente.</p>
-            </div>
-          </div>
-
-          <!-- Área de Trabalho -->
-          <div class="col-md-6">
-            <div class="component-item p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green);">
-              <h5><i class="fas fa-desktop me-2" style="color: var(--cisco-green);"></i> Área de trabalho</h5>
-              <p class="text-secondary small">Pode armazenar arquivos, pastas, atalhos para locais, programas e aplicativos. Personalizável com cores e imagens de fundo.</p>
-            </div>
-          </div>
-
-          <!-- Barra de Tarefas -->
-          <div class="col-md-6">
-            <div class="component-item p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green);">
-              <h5><i class="fas fa-window-maximize me-2" style="color: var(--cisco-green);"></i> Barra de Tarefas</h5>
-              <p class="text-secondary small">Localizada na parte inferior da área de trabalho. Contém o menu Iniciar, ícones de inicialização rápida e área de notificação.</p>
-            </div>
-          </div>
-
-          <!-- Menu Iniciar -->
-          <div class="col-md-6">
-            <div class="component-item p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green);">
-              <h5><i class="fas fa-windows me-2" style="color: var(--cisco-green);"></i> Menu Iniciar e Pesquisa</h5>
-              <p class="text-secondary small">Acessa todos os programas instalados, opções de configuração e recurso de pesquisa integrado.</p>
-            </div>
-          </div>
-
-          <!-- Inicialização Rápida -->
-          <div class="col-md-6">
-            <div class="component-item p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green);">
-              <h5><i class="fas fa-rocket me-2" style="color: var(--cisco-green);"></i> Ícones de inicialização rápida</h5>
-              <p class="text-secondary small">Localizados no centro da Barra de Tarefas. Executam programas específicos ou abrem pastas com um clique.</p>
-            </div>
-          </div>
-
-          <!-- Área de Notificação -->
-          <div class="col-md-6">
-            <div class="component-item p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green);">
-              <h5><i class="fas fa-bell me-2" style="color: var(--cisco-green);"></i> Área de Notificação</h5>
-              <p class="text-secondary small">À direita da barra de tarefas. Mostra status de programas (ex: envelope piscando = novo e-mail, "x" vermelho = problema de rede).</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 7.1.4 Personalização e Menu de Contexto -->
-      <section id="personalizacao" class="content-card">
-        <h2 class="cisco-subtitle">7.1.4 Personalização e Menu de Contexto</h2>
-
-        <p>
-          A área de trabalho pode ser personalizada com várias cores e imagens de fundo. O Windows suporta vários usuários, para que cada usuário possa personalizar a Área de Trabalho ao seu gosto. A Área de Trabalho pode armazenar arquivos, pastas, atalhos para locais e programas e aplicativos. A área de trabalho também tem um ícone de lixeira, onde os arquivos são armazenados quando o usuário os exclui. Os arquivos podem ser restaurados da lixeira ou a lixeira pode ser esvaziada de arquivos, o que realmente os exclui.
-        </p>
-
-        <p>
-          Na parte inferior da área de trabalho está a Barra de Tarefas. A Barra de Tarefas tem três áreas que são usadas para diferentes fins. À esquerda está o menu Iniciar. Ele é usado para acessar todos os programas instalados, opções de configuração e o recurso de pesquisa. No centro da Barra de Tarefas, os usuários colocam ícones de inicialização rápida que executam programas específicos ou abrem pastas específicas quando clicam. Finalmente, à direita da barra de tarefas está a área de notificação. A área de notificação mostra, em resumo, a funcionalidade de muitos programas e recursos diferentes. Por exemplo, um ícone de envelope intermitente pode indicar um novo e-mail ou um ícone de rede com um “x” vermelho pode indicar um problema com a rede.
-        </p>
-
-        <p>
-          Muitas vezes, clicar com o botão direito do mouse em um ícone trará funções adicionais que podem ser usadas. Esta lista é conhecida como um Menu de Contexto, mostrado na figura.
-        </p>
-
-        <!-- Menu de Contexto -->
-        <div class="row mt-4 align-items-center">
-          <div class="col-md-5">
-            <div class="context-menu-example p-4" style="background: #2a2a2a; border-radius: 8px; border: 1px solid #444;">
-              <h5 class="text-white mb-3"><i class="fas fa-mouse-pointer me-2" style="color: var(--cisco-green);"></i> Menu de Contexto</h5>
-              <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc;">Copiar</div>
-              <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc;">Colar</div>
-              <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc;">Excluir</div>
-              <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc;">Renomear</div>
-              <div class="menu-item p-2" style="border-bottom: 1px solid #444; color: #ccc;">Propriedades</div>
-              <div class="menu-item p-2" style="color: #ccc;">Compartilhar</div>
-            </div>
-          </div>
-          <div class="col-md-7">
-            <div class="ps-md-4">
-              <p><strong>Há Menus de Contexto para:</strong></p>
-              <ul class="cisco-list">
-                <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i> Ícones na área de notificação</li>
-                <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i> Ícones de inicialização rápida</li>
-                <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i> Ícones de configuração do sistema</li>
-                <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i> Arquivos e pastas</li>
-              </ul>
-              <p class="mt-3">
-                O Menu de Contexto fornece muitas das funções mais comumente usadas com apenas um clique. Por exemplo, o Menu de Contexto de um arquivo conterá itens como copiar, excluir, compartilhar e imprimir. Para abrir pastas e manipular arquivos, o Windows usa o Explorador de Arquivos do Windows.
+              <strong>Atenção - Implicações de Segurança:</strong>
+              <p class="mb-0 mt-1">
+                Fluxos de Dados Alternativos (ADS) são frequentemente usados por malware para ocultar código malicioso. Ferramentas de
+                segurança e análise forense devem ser capazes de detectar e inspecionar ADSs em busca de atividades suspeitas.
               </p>
             </div>
           </div>
         </div>
 
-        <!-- Explorador de Arquivos -->
-        <div class="mt-4 p-4" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px;">
-          <h5><i class="fas fa-folder-open me-2" style="color: var(--cisco-green);"></i> Explorador de Arquivos do Windows</h5>
-          <p>Ferramenta principal para navegação e gerenciamento de arquivos e pastas.</p>
-
-          <div class="row">
-            <div class="col-md-4">
-              <div class="quick-access p-3" style="background: #1a1a1a; border-radius: 8px;">
-                <h6 class="text-white"><i class="fas fa-bolt me-2" style="color: var(--cisco-green);"></i> Acesso Rápido</h6>
-                <ul class="list-unstyled small">
-                  <li class="py-1"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem;"></i> ACTIVE</li>
-                  <li class="py-1"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem;"></i> _2019 - 2020</li>
-                  <li class="py-1"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem;"></i> COURSES</li>
-                  <li class="py-1"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem;"></i> CCNA S - CET</li>
-                  <li class="py-1"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green); font-size: 0.7rem;"></i> CISCO</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="this-pc p-3" style="background: #1a1a1a; border-radius: 8px;">
-                <h6 class="text-white"><i class="fas fa-computer me-2" style="color: var(--cisco-green);"></i> Este Computador</h6>
-                <ul class="list-unstyled small">
-                  <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green);"></i> 3D Objects</li>
-                  <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green);"></i> Desktop</li>
-                  <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green);"></i> Documents</li>
-                  <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green);"></i> Downloads</li>
-                  <li class="py-1"><i class="fas fa-folder me-2" style="color: var(--cisco-green);"></i> Music</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="status p-3" style="background: #1a1a1a; border-radius: 8px;">
-                <h6 class="text-white"><i class="fas fa-info-circle me-2" style="color: var(--cisco-green);"></i> Status</h6>
-                <p class="small mb-0"><span class="badge-cisco">4 items</span></p>
-                <p class="small mb-0 mt-2"><span class="badge-cisco">1 item selected 6.18 MB</span></p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Dica rápida -->
+        <!-- Dica para detecção -->
         <div class="mt-4">
           <span class="badge-cisco">
-            <i class="fas fa-lightbulb me-1"></i> Dica: Clique com o botão direito em qualquer ícone para ver o Menu de Contexto
+            <i class="fas fa-terminal me-1"></i> Dica: Use o comando <code>dir /r</code> no prompt de comando para visualizar Fluxos de
+            Dados Alternativos em arquivos NTFS
           </span>
         </div>
       </section>
-    </section>
+      <!-- 7.2.5 Processo de Inicialização do Windows -->
+      <section id="processo-inicializacao" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.2.5 Processo de Inicialização do Windows</h3>
 
-    <!-- LABORATÓRIOS -->
-    <section id="laboratorios" class="mt-5">
-      <h2 class="cisco-title display-6 mb-4">Laboratórios do Módulo</h2>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="content-card h-100">
-            <div class="d-flex align-items-center mb-3">
-              <i class="fas fa-flask fa-2x me-3" style="color: var(--cisco-green);"></i>
-              <h5 class="mb-0 fw-semibold">Lab 7.1: Linha de Comando</h5>
+        <p>
+          Muitas ações ocorrem entre os processos e não são feitas por um único processo. Isso é conhecido como o processo de inicialização
+          do Windows.
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-lg-6">
+            <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)"><i class="fas fa-microchip me-2"></i> Tipos de Firmware</h4>
+
+            <!-- BIOS -->
+            <div
+              class="fw-item p-3 mb-3"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+            >
+              <h5><i class="fas fa-memory me-2" style="color: var(--cisco-green)"></i> Basic Input-Output System (BIOS)</h5>
+              <p class="text-secondary small mb-0">
+                O firmware do BIOS foi criado no início dos anos 80 e funciona da mesma maneira que quando foi criado. À medida que os
+                computadores evoluíram, tornou-se difícil para o firmware do BIOS suportar todos os novos recursos solicitados pelos
+                usuários.
+              </p>
             </div>
-            <p class="text-muted small">Prática com comandos básicos do CMD.</p>
-            <span class="badge-cisco">Em breve</span>
+
+            <!-- UEFI -->
+            <div
+              class="fw-item p-3"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+            >
+              <h5><i class="fas fa-bolt me-2" style="color: var(--cisco-green)"></i> Unified Extensible Firmware Interface (UEFI)</h5>
+              <p class="text-secondary small mb-0">O UEFI foi projetado para substituir o BIOS e oferecer suporte aos novos recursos.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+              <i class="fas fa-diagram-project me-2"></i> Diagrama do Processo
+            </h4>
+
+            <div class="boot-diagram p-3" style="background: #1a1a1a; border-radius: 8px">
+              <div class="d-flex flex-column">
+                <span class="badge-cisco mb-2 p-2 text-center">Inicialização do BIOS / Inicialização UEFI</span>
+                <span class="badge-cisco mb-2 p-2 text-center">POST / Arquivos EFI</span>
+                <span class="badge-cisco mb-2 p-2 text-center">MBR / ESP (EFI System Partition)</span>
+                <span class="badge-cisco mb-2 p-2 text-center">Bootmgr.exe</span>
+                <div class="d-flex justify-content-center gap-2 mb-2">
+                  <span class="badge-cisco p-2">Hibernação?</span>
+                  <i class="fas fa-arrow-right mt-2" style="color: var(--cisco-green)"></i>
+                  <span class="badge-cisco p-2">Winresume.exe</span>
+                  <span class="badge-cisco p-2">Hiberfil.sys</span>
+                </div>
+                <span class="badge-cisco mb-2 p-2 text-center">Winload.exe</span>
+                <span class="badge-cisco mb-2 p-2 text-center">KMCS (Kernel Mode Code Signing)</span>
+                <span class="badge-cisco mb-2 p-2 text-center">Ntoskrnl.exe</span>
+                <span class="badge-cisco mb-2 p-2 text-center">HAL (Hardware Abstraction Layer)</span>
+                <span class="badge-cisco mb-2 p-2 text-center">SMSS (Session Manager Subsystem)</span>
+                <span class="badge-cisco p-2 text-center">Logon</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <p>
+            No firmware do BIOS, o processo começa com a fase de inicialização do BIOS. Isso ocorre quando os dispositivos de hardware são
+            inicializados e um POST (Power On Self-Test) é executado para garantir que todos esses dispositivos estejam se comunicando.
+            Quando o disco do sistema é descoberto, o POST termina. A última instrução no POST é procurar o registro mestre de inicialização
+            (MBR).
+          </p>
+
+          <p>
+            A MBR contém um pequeno programa que é responsável por localizar e carregar o sistema operacional. O BIOS executa esse código e
+            o sistema operacional começa a carregar.
+          </p>
+
+          <p>
+            Em contraste com o firmware do BIOS, o firmware UEFI tem muita visibilidade sobre o processo de inicialização. O UEFI inicializa
+            carregando arquivos de programa EFI, armazenados como arquivos .efi em uma partição de disco especial, conhecida como EFI System
+            Partition (ESP).
+          </p>
+
+          <div class="alert mt-3" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+            <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i>
+            <strong>Nota:</strong> Um computador que usa UEFI armazena o código de inicialização no firmware. Isso ajuda a aumentar a
+            segurança do computador no momento da inicialização porque o computador entra diretamente no modo protegido.
+          </div>
+
+          <p class="mt-3">
+            Independentemente de o firmware ser BIOS ou UEFI, depois que uma instalação válida do Windows for localizada, o arquivo
+            <code>Bootmgr.exe</code> será executado. <code>Bootmgr.exe</code> alterna o sistema do modo real para o modo protegido para que
+            toda a memória do sistema possa ser usada.
+          </p>
+
+          <p>
+            <code>Bootmgr.exe</code> lê o banco de dados de configuração de inicialização (BCD). O BCD contém qualquer código adicional
+            necessário para iniciar o computador, juntamente com uma indicação de se o computador está saindo da hibernação ou se este é um
+            arranque a frio. Se o computador estiver saindo da hibernação, o processo de inicialização continuará com o
+            <code>Winresume.exe</code>. Isso permite que o computador leia o arquivo <code>Hiberfil.sys</code> que contém o estado do
+            computador quando foi colocado em hibernação.
+          </p>
+
+          <p>
+            Se o computador estiver sendo inicializado a partir de uma inicialização a frio, o arquivo <code>Winload.exe</code> será
+            carregado. O arquivo <code>Winload.exe</code> cria um registro da configuração de hardware no registro. O registro é um registro
+            de todas as configurações, opções, hardware e software do computador. <code>Winload.exe</code> também usa Kernel Mode Code
+            Signing (KMCS) para garantir que todos os drivers sejam assinados digitalmente. Isso garante que os drivers são seguros para
+            carregar à medida que o computador é iniciado.
+          </p>
+
+          <p>
+            Depois que os drivers forem examinados, o <code>Winload.exe</code> executa o <code>Ntoskrnl.exe</code>, que inicia o kernel do
+            Windows e configura o HAL. Finalmente, o Subsistema do Gestor de Sessões (SMSS) lê o registo para criar o ambiente do
+            utilizador, iniciar o serviço Winlogon e preparar a área de trabalho de cada utilizador à medida que inicia sessão.
+          </p>
+        </div>
+
+        <div class="mt-4">
+          <span class="badge-cisco">
+            <i class="fas fa-lightbulb me-1"></i> Curiosidade: O processo de inicialização UEFI é mais rápido e seguro que o BIOS
+            tradicional
+          </span>
+        </div>
+      </section>
+      <!-- 7.2.6 Inicialização do Windows -->
+      <section id="inicializacao-windows" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.2.6 Inicialização do Windows</h3>
+
+        <p>Há dois itens de registro importantes que são usados para iniciar automaticamente aplicativos e serviços:</p>
+
+        <div class="row g-3 mb-4">
+          <div class="col-md-6">
+            <div
+              class="registry-item p-3"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+            >
+              <h5><i class="fas fa-database me-2" style="color: var(--cisco-green)"></i> HKEY_LOCAL_MACHINE</h5>
+              <p class="text-secondary small mb-0">
+                Vários aspectos da configuração do Windows são armazenados nesta chave, incluindo informações sobre serviços que iniciam com
+                cada inicialização.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div
+              class="registry-item p-3"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+            >
+              <h5><i class="fas fa-user me-2" style="color: var(--cisco-green)"></i> HKEY_CURRENT_USER</h5>
+              <p class="text-secondary small mb-0">
+                Vários aspectos relacionados ao usuário logado são armazenados nesta chave, incluindo informações sobre serviços que iniciam
+                somente quando o usuário faz login no computador.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          Entradas diferentes nesses locais de registro definem quais serviços e aplicativos serão iniciados, conforme indicado pelo tipo de
+          entrada. Esses tipos incluem Run, RunOnce, RunServices, RunServicesOnce e Userinit. Essas entradas podem ser inseridas manualmente
+          no registro, mas é muito mais seguro usar a ferramenta <strong>MSConfig.exe</strong>. Esta ferramenta é usada para exibir e
+          alterar todas as opções de inicialização do computador. Use a caixa de pesquisa para localizar e abrir a ferramenta MSConfig.
+        </p>
+
+        <p>
+          A ferramenta MSConfig abre a janela <strong>Configuração do Sistema</strong>. Existem cinco guias que contêm as opções de
+          configuração.
+        </p>
+
+        <!-- MSConfig Tabs -->
+        <div class="msconfig-container mt-4">
+          <h4 class="text-center mb-4" style="color: var(--cisco-green)">
+            <i class="fas fa-sliders-h me-2"></i> Configuração do Sistema (MSConfig)
+          </h4>
+
+          <div class="row g-4">
+            <!-- Guia General -->
+            <div class="col-md-6 col-lg-4">
+              <div class="msconfig-tab p-3" style="background: #1a1a1a; border-radius: 8px; border: 1px solid #444; height: 100%">
+                <h5 class="text-white"><i class="fas fa-cog me-2" style="color: var(--cisco-green)"></i> Geral</h5>
+                <p class="small text-secondary">Três tipos de inicialização diferentes podem ser escolhidos aqui:</p>
+                <ul class="small text-secondary">
+                  <li><strong>Normal</strong> - Carrega todos os drivers e serviços</li>
+                  <li><strong>Diagnóstico</strong> - Carrega apenas drivers e serviços básicos</li>
+                  <li><strong>Seletivo</strong> - Permite que o usuário escolha o que carregar na inicialização</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Guia Boot -->
+            <div class="col-md-6 col-lg-4">
+              <div class="msconfig-tab p-3" style="background: #1a1a1a; border-radius: 8px; border: 1px solid #444; height: 100%">
+                <h5 class="text-white"><i class="fas fa-play me-2" style="color: var(--cisco-green)"></i> Inicialização do Sistema</h5>
+                <p class="small text-secondary">
+                  Qualquer sistema operacional instalado pode ser escolhido aqui para iniciar. Existem também opções para a inicialização
+                  segura (Safe Boot), que é usada para solucionar problemas de inicialização.
+                </p>
+              </div>
+            </div>
+
+            <!-- Guia Services -->
+            <div class="col-md-6 col-lg-4">
+              <div class="msconfig-tab p-3" style="background: #1a1a1a; border-radius: 8px; border: 1px solid #444; height: 100%">
+                <h5 class="text-white"><i class="fas fa-server me-2" style="color: var(--cisco-green)"></i> Serviços</h5>
+                <p class="small text-secondary">
+                  Todos os serviços instalados estão listados aqui para que possam ser escolhidos para iniciar na inicialização.
+                </p>
+              </div>
+            </div>
+
+            <!-- Guia Startup -->
+            <div class="col-md-6 col-lg-4">
+              <div class="msconfig-tab p-3" style="background: #1a1a1a; border-radius: 8px; border: 1px solid #444; height: 100%">
+                <h5 class="text-white"><i class="fas fa-rocket me-2" style="color: var(--cisco-green)"></i> Inicialização de Programas</h5>
+                <p class="small text-secondary">
+                  Todos os aplicativos e serviços configurados para iniciar automaticamente na inicialização podem ser ativados ou
+                  desabilitados abrindo o Gerenciador de Tarefas a partir desta guia.
+                </p>
+                <span class="badge-cisco mt-2">Abrir Gerenciador de Tarefas</span>
+              </div>
+            </div>
+
+            <!-- Guia Tools -->
+            <div class="col-md-6 col-lg-4">
+              <div class="msconfig-tab p-3" style="background: #1a1a1a; border-radius: 8px; border: 1px solid #444; height: 100%">
+                <h5 class="text-white"><i class="fas fa-tools me-2" style="color: var(--cisco-green)"></i> Ferramentas</h5>
+                <p class="small text-secondary">
+                  Muitas ferramentas comuns do sistema operacional podem ser iniciadas diretamente a partir desta guia, como:
+                </p>
+                <ul class="small text-secondary">
+                  <li>Informações do Windows (winver)</li>
+                  <li>Configurações de UAC</li>
+                  <li>Gerenciamento do Computador</li>
+                  <li>Visualizador de Eventos</li>
+                  <li>Propriedades do Sistema</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Dica adicional -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="msconfig-tab p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border: 1px solid var(--cisco-green); height: 100%"
+              >
+                <h5 class="text-white"><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> Como Acessar</h5>
+                <p class="small text-secondary">Para abrir o MSConfig:</p>
+                <div class="terminal-card p-2 mt-2" style="background: #0a0a0a">
+                  <code>Windows + R → digite "msconfig" → Enter</code>
+                </div>
+                <p class="small text-secondary mt-2">Ou use a caixa de pesquisa do Windows e digite "Configuração do Sistema".</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exemplo de MSConfig - General Tab -->
+        <div class="mt-4 p-4" style="background: #1a1a1a; border-radius: 8px">
+          <h5 class="text-white mb-3">
+            <i class="fas fa-cog me-2" style="color: var(--cisco-green)"></i> Guia Geral - Opções de Inicialização
+          </h5>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="p-3" style="background: #0a0a0a; border-radius: 8px">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="startup" id="normal" checked disabled />
+                  <label class="form-check-label text-secondary" for="normal">
+                    <strong>Inicialização normal</strong> - Carrega todos os drivers e serviços
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="startup" id="diagnostic" disabled />
+                  <label class="form-check-label text-secondary" for="diagnostic">
+                    <strong>Inicialização de diagnóstico</strong> - Carrega apenas dispositivos e serviços básicos
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="startup" id="selective" disabled />
+                  <label class="form-check-label text-secondary" for="selective">
+                    <strong>Inicialização seletiva</strong>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: #0a0a0a; border-radius: 8px">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="systemServices" checked disabled />
+                  <label class="form-check-label text-secondary" for="systemServices">Carregar serviços do sistema</label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" id="startupItems" checked disabled />
+                  <label class="form-check-label text-secondary" for="startupItems">Carregar itens de inicialização</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="originalBoot" checked disabled />
+                  <label class="form-check-label text-secondary" for="originalBoot">Usar configuração de inicialização original</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nota sobre segurança -->
+        <div class="alert mt-4" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-exclamation-triangle fa-2x" style="color: #ffc107"></i>
+            </div>
+            <div>
+              <strong>Cuidado ao modificar a inicialização:</strong>
+              <p class="mb-0 mt-1">
+                Alterações incorretas no MSConfig podem impedir o sistema de inicializar corretamente. Sempre tenha um backup e evite
+                desabilitar serviços críticos do sistema.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <span class="badge-cisco">
+            <i class="fas fa-lightbulb me-1"></i> Dica: Use o MSConfig para diagnosticar problemas de inicialização, desabilitando
+            temporariamente serviços e programas de inicialização
+          </span>
+        </div>
+      </section>
+      <!-- 7.2.7 Desligamento do Windows -->
+      <section id="desligamento-windows" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.2.7 Desligamento do Windows</h3>
+
+        <p>
+          É sempre melhor executar um desligamento adequado para desligar o computador. Arquivos que são deixados abertos, serviços que são
+          fechados fora de ordem e aplicativos que travam podem ser danificados se a energia for desligada sem primeiro informar o sistema
+          operacional. O computador precisa de tempo para fechar cada aplicativo, desligar cada serviço e registrar quaisquer alterações de
+          configuração antes que a energia seja perdida.
+        </p>
+
+        <p>
+          Durante o desligamento, o computador fechará os aplicativos do modo de usuário primeiro, seguido pelos processos do modo kernel.
+          Se um processo de modo de usuário não responder dentro de um determinado período de tempo, o sistema operacional exibirá a
+          notificação e permitirá que o usuário aguarde a aplicação responder ou encerre o processo forçosamente. Se um processo de modo
+          kernel não responder, o desligamento parecerá travar e poderá ser necessário desligar o computador com o botão liga/desliga.
+        </p>
+
+        <div class="row mt-4 g-4">
+          <div class="col-md-6">
+            <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+              <i class="fas fa-power-off me-2"></i> Formas de Desligar o Windows
+            </h4>
+            <ul class="cisco-list">
+              <li><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Opções de energia do menu Iniciar</li>
+              <li>
+                <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Comando <code>shutdown</code> da linha de comando
+              </li>
+              <li>
+                <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> <strong>Ctrl+Alt+Delete</strong> → ícone de
+                energia
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-6">
+            <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)"><i class="fas fa-list me-2"></i> Opções de Desligamento</h4>
+            <div class="shutdown-options">
+              <div
+                class="option-item p-3 mb-2"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <strong><i class="fas fa-power-off me-2" style="color: var(--cisco-green)"></i> Desligar</strong>
+                <p class="text-secondary small mb-0">Desliga o computador completamente.</p>
+              </div>
+              <div
+                class="option-item p-3 mb-2"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <strong><i class="fas fa-sync-alt me-2" style="color: var(--cisco-green)"></i> Reiniciar</strong>
+                <p class="text-secondary small mb-0">Reinicia o computador (desliga e liga novamente).</p>
+              </div>
+              <div
+                class="option-item p-3"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)"
+              >
+                <strong><i class="fas fa-bed me-2" style="color: var(--cisco-green)"></i> Hibernar</strong>
+                <p class="text-secondary small mb-0">
+                  Registra o estado atual do computador e do ambiente do usuário e armazena em um arquivo (<code>Hiberfil.sys</code>).
+                  Permite que os usuários retomem exatamente de onde pararam muito rapidamente, com todos os seus arquivos e programas ainda
+                  abertos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="terminal-card mt-4">
+          <pre><code>C:\> shutdown /s /t 0     # Desliga imediatamente
+C:\> shutdown /r /t 30    # Reinicia após 30 segundos
+C:\> shutdown /h          # Hiberna o computador
+C:\> shutdown /a          # Aborta desligamento pendente</code></pre>
+        </div>
+
+        <div class="alert mt-4" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
+          <i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i>
+          <strong>Importante:</strong> Nunca desligue o computador diretamente pela fonte de energia sem antes realizar o desligamento
+          adequado pelo sistema operacional. Isso pode causar corrupção de arquivos e perda de dados.
+        </div>
+      </section>
+      <!-- 7.2.8 Processos, Threads e Serviços -->
+      <section id="processos-threads" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.2.8 Processos, Threads e Serviços</h3>
+
+        <p>
+          Um aplicativo do Windows é composto de processos. O aplicativo pode ter um ou muitos processos dedicados a ele. Um
+          <strong>processo</strong> é qualquer programa em execução no momento. Cada processo que é executado é composto de pelo menos um
+          <strong>thread</strong>. Um thread é uma parte do processo que pode ser executado. O processador executa cálculos na thread. Para
+          configurar processos do Windows, procure o Gerenciador de Tarefas.
+        </p>
+
+        <div class="row mt-4 g-4">
+          <div class="col-md-6">
+            <div
+              class="process-card p-3"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border: 1px solid #444; height: 100%"
+            >
+              <h4 class="text-center mb-3" style="color: var(--cisco-green)"><i class="fas fa-tasks me-2"></i> Processos</h4>
+              <p class="small text-secondary">
+                Programas em execução no momento. Um aplicativo pode ter um ou muitos processos dedicados a ele.
+              </p>
+              <div class="terminal-card p-2 mt-2">
+                <pre><code>Apps (6)
+  Calculator         0%    9.6 MB
+  Microsoft Edge     0%   13.3 MB
+  Task Manager      1.2%   9.0 MB
+
+Background processes (23)
+  Application Frame Host
+  COM Surrogate
+  Cortana</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div
+              class="thread-card p-3"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border: 1px solid #444; height: 100%"
+            >
+              <h4 class="text-center mb-3" style="color: var(--cisco-green)"><i class="fas fa-code-branch me-2"></i> Threads</h4>
+              <p class="small text-secondary">Parte de um processo que pode ser executado. O processador executa cálculos na thread.</p>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between mb-2">
+                  <span>Processo:</span>
+                  <span class="badge-cisco">Navegador</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span class="ms-3">↳ Thread 1:</span>
+                  <span>Carregar página</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span class="ms-3">↳ Thread 2:</span>
+                  <span>Processar JavaScript</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <span class="ms-3">↳ Thread 3:</span>
+                  <span>Renderizar vídeo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-4">
+          Todos os threads dedicados a um processo estão contidos no mesmo espaço de endereço. Isso significa que esses threads podem não
+          acessar o espaço de endereço de qualquer outro processo. Isso evita a corrupção de outros processos. Como Windows é multitarefas,
+          vários threads podem ser executados ao mesmo tempo. A quantidade de threads que podem ser executados ao mesmo tempo depende do
+          número de processadores do computador.
+        </p>
+
+        <div class="services-section mt-4 p-4" style="background: #1a1a1a; border-radius: 8px">
+          <h4 class="text-white mb-3"><i class="fas fa-cogs me-2" style="color: var(--cisco-green)"></i> Serviços do Windows</h4>
+          <p>
+            Alguns dos processos executados pelo Windows são <strong>serviços</strong>. Estes são programas que são executados em segundo
+            plano para suportar o sistema operativo e as aplicações. Eles podem ser configurados para iniciar automaticamente quando o
+            Windows for inicializado ou podem ser iniciados manualmente. Eles também podem ser interrompidos, reiniciados ou desativados.
+          </p>
+          <p>Os serviços fornecem funcionalidade de longa execução, como sem fio ou acesso a um servidor FTP.</p>
+
+          <div class="terminal-card mt-3">
+            <pre><code>Serviços (services.msc)
+
+  Windows Update               - Em execução
+  Print Spooler                - Em execução
+  Windows Defender             - Em execução
+  Remote Desktop Services      - Parado
+  Bluetooth Support Service    - Parado</code></pre>
+          </div>
+
+          <div class="mt-3">
+            <span class="badge-cisco"
+              ><i class="fas fa-info-circle me-1"></i> Acesse: <code>services.msc</code> no Executar (Windows + R)</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- 7.2.9 Alocação e Alças de Memória -->
+      <section id="alocacao-memoria" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.2.9 Alocação e Alças de Memória</h3>
+
+        <p>
+          Um computador funciona armazenando instruções na RAM até que a CPU os processe. O espaço de endereço virtual para um processo é o
+          conjunto de endereços virtuais que o processo pode usar. O endereço virtual não é o local físico real na memória, mas uma entrada
+          em uma tabela de página que é usada para traduzir o endereço virtual para o endereço físico.
+        </p>
+
+        <div class="row mt-4 g-4">
+          <div class="col-md-6">
+            <div
+              class="memory-card p-3 text-center"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border: 1px solid #444"
+            >
+              <i class="fas fa-microchip fa-3x mb-2" style="color: var(--cisco-green)"></i>
+              <h5>Windows 32 bits</h5>
+              <p class="display-6 fw-bold" style="color: var(--cisco-green)">4 GB</p>
+              <p class="text-secondary small">Espaço de endereço virtual por processo</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div
+              class="memory-card p-3 text-center"
+              style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border: 1px solid #444"
+            >
+              <i class="fas fa-microchip fa-3x mb-2" style="color: var(--cisco-green)"></i>
+              <h5>Windows 64 bits</h5>
+              <p class="display-6 fw-bold" style="color: var(--cisco-green)">8 TB</p>
+              <p class="text-secondary small">Espaço de endereço virtual por processo</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-4">
+          Cada processo de espaço do usuário é executado em um espaço de endereço privado, separado de outros processos de espaço do
+          usuário. Quando o processo de espaço do usuário precisa acessar recursos do kernel, ele deve usar um identificador de processo
+          (handle). Isso ocorre porque o processo de espaço do usuário não tem permissão para acessar diretamente esses recursos do kernel.
+          O identificador do processo fornece o acesso necessário para o processo de espaço do usuário sem uma conexão direta com ele.
+        </p>
+
+        <div class="diagram-container mt-4 p-4" style="background: #1a1a1a; border-radius: 8px">
+          <h5 class="text-center mb-3" style="color: var(--cisco-green)"><i class="fas fa-exchange-alt me-2"></i> Alocação de Memória</h5>
+          <div class="row text-center">
+            <div class="col-4">
+              <div class="p-2" style="background: #0a0a0a; border-radius: 8px">
+                <i class="fas fa-file-alt fa-2x mb-1" style="color: var(--cisco-green)"></i>
+                <p class="small mb-0">Processo A</p>
+                <span class="badge-cisco">Espaço privado</span>
+              </div>
+            </div>
+            <div class="col-4">
+              <i class="fas fa-arrow-right fa-2x mt-3" style="color: var(--cisco-green)"></i>
+            </div>
+            <div class="col-4">
+              <div class="p-2" style="background: #0a0a0a; border-radius: 8px">
+                <i class="fas fa-crown fa-2x mb-1" style="color: var(--cisco-green)"></i>
+                <p class="small mb-0">Kernel</p>
+                <span class="badge-cisco">Recursos protegidos</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-center text-secondary small mt-3">
+            <i class="fas fa-key me-1"></i> Handle (identificador) → Acesso controlado ao kernel
+          </p>
+        </div>
+
+        <div class="alert mt-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-chart-line fa-2x" style="color: var(--cisco-green)"></i>
+            </div>
+            <div>
+              <strong>Ferramenta: RAMMap</strong>
+              <p class="mb-0 mt-1">
+                Uma ferramenta poderosa para visualizar a alocação de memória. Faz parte do conjunto de ferramentas do Windows Sysinternals.
+                RAMMap fornece uma riqueza de informações sobre como o Windows alocou memória do sistema para o kernel, processos, drivers e
+                aplicativos.
+              </p>
+              <span class="badge-cisco mt-2">Disponível no Microsoft Sysinternals</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 7.2.10 O Registro do Windows -->
+      <section id="registro-windows" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.2.10 O Registro do Windows</h3>
+
+        <p>
+          O Windows armazena todas as informações sobre hardware, aplicativos, usuários e configurações do sistema em um banco de dados
+          grande conhecido como o <strong>Registro</strong>. As formas como esses objetos interagem também são registradas, como quais
+          arquivos um aplicativo abre e todos os detalhes de propriedade de pastas e aplicativos. O registro é um banco de dados hierárquico
+          onde o nível mais alto é conhecido como um ramo (hive), abaixo que existem chaves, seguido por subchaves. Os valores armazenam
+          dados e são armazenados nas chaves e subchaves. Uma chave do Registro pode ter até <strong>512 níveis de profundidade</strong>.
+        </p>
+
+        <p class="mb-4">
+          <strong
+            ><i class="fas fa-hand-pointer me-2" style="color: var(--cisco-green)"></i> Selecione os títulos abaixo para descobrir mais
+            sobre as cinco seções de registro do Windows.</strong
+          >
+        </p>
+
+        <!-- Accordion das 5 seções do Registro -->
+        <div class="accordion" id="registroAccordion">
+          <!-- HKEY_CURRENT_USER (HKCU) -->
+          <div class="accordion-item bg-transparent border-secondary mb-2">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-dark text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#hkcu"
+                aria-expanded="false"
+                aria-controls="hkcu"
+                style="
+                  background-color: #2a2a2a !important;
+                  color: var(--cisco-green) !important;
+                  border: 1px solid #444;
+                  border-radius: 8px;
+                "
+              >
+                <i class="fas fa-user me-3" style="color: var(--cisco-green)"></i>
+                <strong>HKEY_CURRENT_USER (HKCU)</strong>
+              </button>
+            </h2>
+            <div id="hkcu" class="accordion-collapse collapse" data-bs-parent="#registroAccordion">
+              <div
+                class="accordion-body"
+                style="
+                  background-color: #1a1a1a;
+                  border-radius: 0 0 8px 8px;
+                  border-left: 1px solid #444;
+                  border-right: 1px solid #444;
+                  border-bottom: 1px solid #444;
+                "
+              >
+                <p class="mb-0">Contém informações sobre o usuário conectado no momento.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- HKEY_USERS (HKU) -->
+          <div class="accordion-item bg-transparent border-secondary mb-2">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-dark text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#hku"
+                aria-expanded="false"
+                aria-controls="hku"
+                style="
+                  background-color: #2a2a2a !important;
+                  color: var(--cisco-green) !important;
+                  border: 1px solid #444;
+                  border-radius: 8px;
+                "
+              >
+                <i class="fas fa-users me-3" style="color: var(--cisco-green)"></i>
+                <strong>HKEY_USERS (HKU)</strong>
+              </button>
+            </h2>
+            <div id="hku" class="accordion-collapse collapse" data-bs-parent="#registroAccordion">
+              <div
+                class="accordion-body"
+                style="
+                  background-color: #1a1a1a;
+                  border-radius: 0 0 8px 8px;
+                  border-left: 1px solid #444;
+                  border-right: 1px solid #444;
+                  border-bottom: 1px solid #444;
+                "
+              >
+                <p class="mb-0">Contém informações relativas a todas as contas de usuário no host.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- HKEY_CLASSES_ROOT (HKCR) -->
+          <div class="accordion-item bg-transparent border-secondary mb-2">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-dark text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#hkcr"
+                aria-expanded="false"
+                aria-controls="hkcr"
+                style="
+                  background-color: #2a2a2a !important;
+                  color: var(--cisco-green) !important;
+                  border: 1px solid #444;
+                  border-radius: 8px;
+                "
+              >
+                <i class="fas fa-file-alt me-3" style="color: var(--cisco-green)"></i>
+                <strong>HKEY_CLASSES_ROOT (HKCR)</strong>
+              </button>
+            </h2>
+            <div id="hkcr" class="accordion-collapse collapse" data-bs-parent="#registroAccordion">
+              <div
+                class="accordion-body"
+                style="
+                  background-color: #1a1a1a;
+                  border-radius: 0 0 8px 8px;
+                  border-left: 1px solid #444;
+                  border-right: 1px solid #444;
+                  border-bottom: 1px solid #444;
+                "
+              >
+                <p class="mb-0">
+                  Contém informações sobre registros OLE (vinculação e incorporação de objetos). OLE permite que os usuários incorporem
+                  objetos de outros aplicativos (como uma planilha) em um único documento (como um documento do Word).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- HKEY_LOCAL_MACHINE (HKLM) -->
+          <div class="accordion-item bg-transparent border-secondary mb-2">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-dark text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#hklm"
+                aria-expanded="false"
+                aria-controls="hklm"
+                style="
+                  background-color: #2a2a2a !important;
+                  color: var(--cisco-green) !important;
+                  border: 1px solid #444;
+                  border-radius: 8px;
+                "
+              >
+                <i class="fas fa-desktop me-3" style="color: var(--cisco-green)"></i>
+                <strong>HKEY_LOCAL_MACHINE (HKLM)</strong>
+              </button>
+            </h2>
+            <div id="hklm" class="accordion-collapse collapse" data-bs-parent="#registroAccordion">
+              <div
+                class="accordion-body"
+                style="
+                  background-color: #1a1a1a;
+                  border-radius: 0 0 8px 8px;
+                  border-left: 1px solid #444;
+                  border-right: 1px solid #444;
+                  border-bottom: 1px solid #444;
+                "
+              >
+                <p class="mb-0">Contém informações relacionadas ao sistema.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- HKEY_CURRENT_CONFIG (HKCC) -->
+          <div class="accordion-item bg-transparent border-secondary mb-2">
+            <h2 class="accordion-header">
+              <button
+                class="accordion-button collapsed bg-dark text-white"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#hkcc"
+                aria-expanded="false"
+                aria-controls="hkcc"
+                style="
+                  background-color: #2a2a2a !important;
+                  color: var(--cisco-green) !important;
+                  border: 1px solid #444;
+                  border-radius: 8px;
+                "
+              >
+                <i class="fas fa-sliders-h me-3" style="color: var(--cisco-green)"></i>
+                <strong>HKEY_CURRENT_CONFIG (HKCC)</strong>
+              </button>
+            </h2>
+            <div id="hkcc" class="accordion-collapse collapse" data-bs-parent="#registroAccordion">
+              <div
+                class="accordion-body"
+                style="
+                  background-color: #1a1a1a;
+                  border-radius: 0 0 8px 8px;
+                  border-left: 1px solid #444;
+                  border-right: 1px solid #444;
+                  border-bottom: 1px solid #444;
+                "
+              >
+                <p class="mb-0">Contém informações sobre o perfil de hardware atual.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regedit - Visualização -->
+        <div class="mt-5">
+          <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-edit me-2"></i> Editor do Registro (regedit.exe)
+          </h4>
+          <p>
+            A navegação no registro é muito semelhante ao explorador de arquivos do Windows. Use o painel esquerdo para navegar nas seções
+            (hives) e na estrutura abaixo dele e use o painel direito para ver o conteúdo do item realçado no painel esquerdo. Com tantas
+            chaves e subchaves, o caminho da chave pode se tornar muito longo. O caminho é exibido na parte inferior da janela para
+            referência. A barra invertida (<code>\</code>) é usada para diferenciar a hierarquia do banco de dados.
+          </p>
+
+          <div class="registry-editor mt-4 p-3" style="background: #0a0a0a; border-radius: 8px">
+            <div class="d-flex justify-content-between mb-2">
+              <span><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Arquivo</span>
+              <span><i class="fas fa-edit me-2" style="color: var(--cisco-green)"></i> Editar</span>
+              <span><i class="fas fa-eye me-2" style="color: var(--cisco-green)"></i> Exibir</span>
+              <span><i class="fas fa-star me-2" style="color: var(--cisco-green)"></i> Favoritos</span>
+              <span><i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Ajuda</span>
+            </div>
+            <div class="row">
+              <div class="col-md-4 p-2" style="border-right: 1px solid #333">
+                <div class="registry-tree">
+                  <div><i class="fas fa-database me-1" style="color: var(--cisco-green)"></i> Computador</div>
+                  <div class="ms-3"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> HKEY_CLASSES_ROOT</div>
+                  <div class="ms-3"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> HKEY_CURRENT_USER</div>
+                  <div class="ms-3"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> HKEY_LOCAL_MACHINE</div>
+                  <div class="ms-4"><i class="fas fa-folder me-1" style="color: #888"></i> BCD00000000</div>
+                  <div class="ms-4"><i class="fas fa-folder me-1" style="color: #888"></i> HARDWARE</div>
+                  <div class="ms-4"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> SAM</div>
+                  <div class="ms-4"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> SECURITY</div>
+                  <div class="ms-4"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> SOFTWARE</div>
+                  <div class="ms-4"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> SYSTEM</div>
+                  <div class="ms-3"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> HKEY_USERS</div>
+                  <div class="ms-3"><i class="fas fa-folder-open me-1" style="color: var(--cisco-green)"></i> HKEY_CURRENT_CONFIG</div>
+                </div>
+              </div>
+              <div class="col-md-8 p-2">
+                <table class="table table-sm table-dark table-borderless small">
+                  <thead>
+                    <tr class="text-secondary">
+                      <th>Nome</th>
+                      <th>Tipo</th>
+                      <th>Dados</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>(Padrão)</td>
+                      <td>REG_SZ</td>
+                      <td>(valor não definido)</td>
+                    </tr>
+                    <tr>
+                      <td>CurrentVersion</td>
+                      <td>REG_SZ</td>
+                      <td>10.0</td>
+                    </tr>
+                    <tr>
+                      <td>InstallationType</td>
+                      <td>REG_SZ</td>
+                      <td>Client</td>
+                    </tr>
+                    <tr>
+                      <td>ProductName</td>
+                      <td>REG_SZ</td>
+                      <td>Windows 10 Pro</td>
+                    </tr>
+                    <tr>
+                      <td>RegisteredOrganization</td>
+                      <td>REG_SZ</td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td>RegisteredOwner</td>
+                      <td>REG_SZ</td>
+                      <td>User</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="mt-2 p-2 text-secondary small" style="border-top: 1px solid #333">
+              Computador\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion
+            </div>
+          </div>
+
+          <h5 class="mt-4 text-white">Tipos de valores do Registro:</h5>
+          <div class="row g-2 mt-2">
+            <div class="col-md-4">
+              <span class="badge-cisco d-block p-2 text-center">REG_BINARY</span>
+              <p class="small text-secondary text-center">Números ou valores booleanos</p>
+            </div>
+            <div class="col-md-4">
+              <span class="badge-cisco d-block p-2 text-center">REG_DWORD</span>
+              <p class="small text-secondary text-center">Números maiores que 32 bits ou dados brutos</p>
+            </div>
+            <div class="col-md-4">
+              <span class="badge-cisco d-block p-2 text-center">REG_SZ</span>
+              <p class="small text-secondary text-center">Valores de string</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Importância de Segurança -->
+        <div class="alert mt-5" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-shield-alt fa-2x" style="color: #ffc107"></i>
+            </div>
+            <div>
+              <strong>Importância na Segurança e Forense:</strong>
+              <p class="mt-1 mb-2">
+                Como o registro contém quase toda informação do sistema operacional e do usuário, é essencial garantir que ele não seja
+                comprometido:
+              </p>
+              <ul class="small mb-0">
+                <li>
+                  Aplicativos mal-intencionados podem adicionar chaves do Registro para iniciar automaticamente sem conhecimento do usuário
+                  (ex: keyloggers)
+                </li>
+                <li>O registro contém histórico de dispositivos de hardware (nome, fabricante, número de série)</li>
+                <li>Armazena quais documentos foram abertos, onde estão localizados e quando foram acessados</li>
+                <li>Informações forenses valiosas para investigações</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <div class="terminal-card p-3">
+            <p class="mb-2">
+              <i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> <strong>Como acessar o Editor do Registro:</strong>
+            </p>
+            <code>Windows + R → digite "regedit" → Enter</code>
+            <div class="alert mt-3 mb-0" style="background-color: rgba(255, 0, 0, 0.1); border-left: 4px solid #ff4444">
+              <i class="fas fa-exclamation-triangle me-2" style="color: #ff4444"></i>
+              <strong class="text-white">CUIDADO:</strong> Alterações menores no registro podem ter efeitos massivos ou mesmo catastróficos.
+              Sempre faça backup antes de modificar!
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <!-- FOOTER -->
-  <footer class="cyber-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 mb-4 mb-md-0">
-          <h4 style="color: var(--cisco-green);">☠ CyberSec</h4>
-          <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
-          <p class="small text-muted">
-            <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan ·
-            <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
-            <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
-          </p>
-        </div>
-        <div class="col-md-6 text-md-end">
-          <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
-          <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const progressBar = document.getElementById('readingProgress')
 
-  <!-- Main JS personalizado -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // ========== BARRA DE PROGRESSO ==========
-      const progressBar = document.getElementById('readingProgress');
+        function updateProgress() {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+          const scrolled = (winScroll / height) * 100
+          if (progressBar) progressBar.style.width = scrolled + '%'
+        }
 
-      function updateProgress() {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        if (progressBar) progressBar.style.width = scrolled + '%';
-      }
+        window.addEventListener('scroll', updateProgress)
+        window.addEventListener('resize', updateProgress)
 
-      window.addEventListener('scroll', updateProgress);
-      window.addEventListener('resize', updateProgress);
+        anime({
+          targets: '.content-card',
+          opacity: [0, 1],
+          translateY: [20, 0],
+          easing: 'easeOutQuad',
+          duration: 800,
+          delay: (el, i) => i * 150
+        })
 
-      // ========== ANIMAÇÕES COM ANIME.JS ==========
-      anime({
-        targets: '.content-card',
-        opacity: [0, 1],
-        translateY: [20, 0],
-        easing: 'easeOutQuad',
-        duration: 800,
-        delay: (el, i) => i * 150
-      });
+        anime({
+          targets: '.cisco-title, .cisco-subtitle',
+          opacity: [0, 1],
+          translateX: [-10, 0],
+          easing: 'easeOutQuad',
+          duration: 600
+        })
 
-      anime({
-        targets: '.cisco-title, .cisco-subtitle',
-        opacity: [0, 1],
-        translateX: [-10, 0],
-        easing: 'easeOutQuad',
-        duration: 600
-      });
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault()
+            const targetId = this.getAttribute('href')
+            if (targetId === '#') return
 
-      // ========== SCROLL SUAVE COM OFFSET ==========
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const targetId = this.getAttribute('href');
-          if (targetId === '#') return;
+            const targetElement = document.querySelector(targetId)
+            if (targetElement) {
+              const offset = 90
+              const elementPosition = targetElement.getBoundingClientRect().top
+              const offsetPosition = elementPosition + window.pageYOffset - offset
 
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            const offset = 90;
-            const elementPosition = targetElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - offset;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              })
 
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-
-            const navbarCollapse = document.getElementById('navbarMain');
-            if (navbarCollapse.classList.contains('show')) {
-              navbarCollapse.classList.remove('show');
+              const navbarCollapse = document.getElementById('navbarMain')
+              if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show')
+              }
             }
-          }
-        });
-      });
+          })
+        })
 
-      // ========== BUSCA NO ÍNDICE ==========
-      const searchInput = document.getElementById('navSearch');
-      if (searchInput) {
-        searchInput.addEventListener('keyup', function() {
-          const filter = this.value.toLowerCase();
-          const items = document.querySelectorAll('#sectionList .dropdown-item');
-          items.forEach(item => {
-            const text = item.textContent.toLowerCase();
-            item.style.display = text.includes(filter) ? 'block' : 'none';
-          });
-        });
-      }
-    });
-  </script>
-</body>
+        const searchInput = document.getElementById('navSearch')
+        if (searchInput) {
+          searchInput.addEventListener('keyup', function () {
+            const filter = this.value.toLowerCase()
+            const items = document.querySelectorAll('#sectionList .dropdown-item')
+            items.forEach((item) => {
+              const text = item.textContent.toLowerCase()
+              item.style.display = text.includes(filter) ? 'block' : 'none'
+            })
+          })
+        }
+      })
+    </script>
+  </body>
 </html>
