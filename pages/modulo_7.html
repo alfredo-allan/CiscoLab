@@ -20,7 +20,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- CSS Personalizado -->
-    <link rel="stylesheet" href="/css/modulo_7.css" />
+    <link rel="stylesheet" href="../css/modulo_7.css" />
+    <link rel="stylesheet" href="../css/dropdow.css">
   </head>
   <body>
     <!-- Navbar -->
@@ -50,113 +51,148 @@
           <ul class="navbar-nav ms-auto align-items-lg-center">
             <!-- DROPDOWN DO MÓDULO ATUAL (Módulo 7) -->
             <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle text-white px-3"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                style="border-bottom: 2px solid var(--cisco-green)"
-              >
-                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
-                Módulo 7 <span class="badge-modulo ms-2">ativo</span>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 300px">
-                <!-- INTRODUÇÃO -->
-                <li><h6 class="dropdown-header">🔰 INTRODUÇÃO</h6></li>
-                <li>
-                  <a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2"></i>7.0.1 Por que fazer?</a>
-                </li>
+  <a
+    class="nav-link dropdown-toggle text-white px-3"
+    href="#"
+    role="button"
+    data-bs-toggle="dropdown"
+    style="border-bottom: 2px solid var(--cisco-green)"
+  >
+    <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+    Módulo 7 <span class="badge-modulo ms-2">ativo</span>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
 
-                <li><hr class="dropdown-divider" /></li>
+    <!-- INTRODUÇÃO -->
+    <li><h6 class="dropdown-header">🔰 INTRODUÇÃO</h6></li>
+    <li>
+      <a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2"></i>7.0.1 Por que fazer?</a>
+    </li>
 
-                <!-- HISTÓRIA DO WINDOWS -->
-                <li><h6 class="dropdown-header">📚 HISTÓRIA DO WINDOWS</h6></li>
-                <li>
-                  <a class="dropdown-item" href="#historia-dos"
-                    ><i class="fas fa-chevron-right me-2"></i>7.1.1 Sistema Operacional de Disco</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#versoes-windows"><i class="fas fa-chevron-right me-2"></i>7.1.2 Versões do Windows</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#windows-gui"><i class="fas fa-chevron-right me-2"></i>7.1.3 Windows GUI</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#vulnerabilidades"
-                    ><i class="fas fa-chevron-right me-2"></i>7.1.4 Vulnerabilidades do SO</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#personalizacao"
-                    ><i class="fas fa-chevron-right me-2"></i>7.1.5 Personalização e Menu de Contexto</a
-                  >
-                </li>
+    <li><hr class="dropdown-divider" /></li>
 
-                <li><hr class="dropdown-divider" /></li>
+    <!-- HISTÓRIA DO WINDOWS -->
+    <li><h6 class="dropdown-header">📚 HISTÓRIA DO WINDOWS</h6></li>
+    <li>
+      <a class="dropdown-item" href="#historia-dos"><i class="fas fa-chevron-right me-2"></i>7.1.1 Sistema Operacional de Disco</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#versoes-windows"><i class="fas fa-chevron-right me-2"></i>7.1.2 Versões do Windows</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#windows-gui"><i class="fas fa-chevron-right me-2"></i>7.1.3 Windows GUI</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#vulnerabilidades"><i class="fas fa-chevron-right me-2"></i>7.1.4 Vulnerabilidades do SO</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#personalizacao"><i class="fas fa-chevron-right me-2"></i>7.1.5 Personalização e Menu de Contexto</a>
+    </li>
 
-                <!-- ARQUITETURA E OPERAÇÕES -->
-                <li><h6 class="dropdown-header">🏗️ ARQUITETURA E OPERAÇÕES</h6></li>
-                <li>
-                  <a class="dropdown-item" href="#hal"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.1 Camada de Abstração de Hardware (HAL)</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#user-kernel-mode"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.2 Modo de Usuário e Modo Kernel</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#sistemas-arquivos"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.3 Sistemas de Arquivos do Windows</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#fluxos-dados"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.4 Fluxos de Dados Alternativos</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#processo-inicializacao"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.5 Processo de Inicialização do Windows</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#inicializacao-windows"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.6 Inicialização do Windows (MSConfig)</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#desligamento-windows"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.7 Desligamento do Windows</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#processos-threads"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.8 Processos, Threads e Serviços</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#alocacao-memoria"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.9 Alocação e Alças de Memória</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#registro-windows"
-                    ><i class="fas fa-chevron-right me-2"></i>7.2.10 O Registro do Windows</a
-                  >
-                </li>
+    <li><hr class="dropdown-divider" /></li>
 
-                <li><hr class="dropdown-divider" /></li>
+    <!-- ARQUITETURA E OPERAÇÕES -->
+    <li><h6 class="dropdown-header">🏗️ ARQUITETURA E OPERAÇÕES</h6></li>
+    <li>
+      <a class="dropdown-item" href="#hal"><i class="fas fa-chevron-right me-2"></i>7.2.1 Camada de Abstração de Hardware (HAL)</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#user-kernel-mode"><i class="fas fa-chevron-right me-2"></i>7.2.2 Modo de Usuário e Modo Kernel</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#sistemas-arquivos"><i class="fas fa-chevron-right me-2"></i>7.2.3 Sistemas de Arquivos do Windows</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#fluxos-dados"><i class="fas fa-chevron-right me-2"></i>7.2.4 Fluxos de Dados Alternativos</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#processo-inicializacao"><i class="fas fa-chevron-right me-2"></i>7.2.5 Processo de Inicialização do Windows</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#inicializacao-windows"><i class="fas fa-chevron-right me-2"></i>7.2.6 Inicialização do Windows (MSConfig)</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#desligamento-windows"><i class="fas fa-chevron-right me-2"></i>7.2.7 Desligamento do Windows</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#processos-threads"><i class="fas fa-chevron-right me-2"></i>7.2.8 Processos, Threads e Serviços</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#alocacao-memoria"><i class="fas fa-chevron-right me-2"></i>7.2.9 Alocação e Alças de Memória</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#registro-windows"><i class="fas fa-chevron-right me-2"></i>7.2.10 O Registro do Windows</a>
+    </li>
 
-                <!-- LABORATÓRIOS -->
-                <li><h6 class="dropdown-header">🧪 LABORATÓRIOS</h6></li>
-                <li>
-                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>7.4.1 Lab - Linha de Comando</a>
-                </li>
-              </ul>
-            </li>
+    <li><hr class="dropdown-divider" /></li>
+
+    <!-- CONFIGURAÇÃO E MONITORAMENTO -->
+    <li><h6 class="dropdown-header">⚙️ CONFIGURAÇÃO E MONITORAMENTO</h6></li>
+    <li>
+      <a class="dropdown-item" href="#executar-como-administrador"><i class="fas fa-chevron-right me-2"></i>7.3.1 Executar como Administrador</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#usuarios-dominios"><i class="fas fa-chevron-right me-2"></i>7.3.2 Usuários e Domínios Locais</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#cli-powershell"><i class="fas fa-chevron-right me-2"></i>7.3.3 CLI e PowerShell</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#wmi"><i class="fas fa-chevron-right me-2"></i>7.3.4 Instrumentação de Gerenciamento do Windows (WMI)</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#comando-net"><i class="fas fa-chevron-right me-2"></i>7.3.5 O Comando net</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#gerenciador-recursos"><i class="fas fa-chevron-right me-2"></i>7.3.6 Gerenciador de Tarefas e Monitor de Recursos</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#rede"><i class="fas fa-chevron-right me-2"></i>7.3.7 Rede</a>
+    </li>
+
+    <li><hr class="dropdown-divider" /></li>
+
+    <!-- SEGURANÇA DO WINDOWS -->
+    <li><h6 class="dropdown-header">🛡️ SEGURANÇA DO WINDOWS</h6></li>
+    <li>
+      <a class="dropdown-item" href="#netstat-seguranca"><i class="fas fa-chevron-right me-2"></i>7.4.1 O Comando netstat</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#visualizador-eventos"><i class="fas fa-chevron-right me-2"></i>7.4.2 Visualizador de Eventos</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#windows-update"><i class="fas fa-chevron-right me-2"></i>7.4.3 Gerenciamento de atualizações do Windows</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#politica-seguranca-local"><i class="fas fa-chevron-right me-2"></i>7.4.4 Política de Segurança Local</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#windows-defender"><i class="fas fa-chevron-right me-2"></i>7.4.5 Windows Defender</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#windows-firewall"><i class="fas fa-chevron-right me-2"></i>7.4.6 Windows Defender Firewall</a>
+    </li>
+    <li>
+      <a class="dropdown-item" href="#verifique-compreensao"><i class="fas fa-chevron-right me-2"></i>7.4.7 Verifique sua compreensão</a>
+    </li>
+
+    <li><hr class="dropdown-divider" /></li>
+
+    <!-- RESUMO DO MÓDULO -->
+    <li><h6 class="dropdown-header">📌 RESUMO DO MÓDULO</h6></li>
+    <li>
+      <a class="dropdown-item" href="#resumo-windows"><i class="fas fa-chevron-right me-2"></i>7.5 Resumo do Sistema Operacional Windows</a>
+    </li>
+
+    <li><hr class="dropdown-divider" /></li>
+
+    <!-- LABORATÓRIOS -->
+    <li><h6 class="dropdown-header">🧪 LABORATÓRIOS</h6></li>
+    <li>
+      <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>7.6.1 Lab - Linha de Comando</a>
+    </li>
+  </ul>
+</li>
 
             <!-- LABS (link direto) -->
             <li class="nav-item">
@@ -2546,6 +2582,3137 @@ Background processes (23)
           </div>
         </div>
       </section>
+      <!-- 7.3 Configuração e monitoramento do Windows -->
+      <section id="configuracao-windows" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">7.3 Configuração e monitoramento do Windows</h2>
+
+        <!-- 7.3.1 Executar como Administrador -->
+        <div id="executar-como-administrador" class="content-card">
+          <h3 class="cisco-subtitle">7.3.1 Executar como Administrador</h3>
+
+          <p>
+            Como prática recomendada de segurança,
+            <strong class="text-white"
+              >não é aconselhável fazer logon no Windows usando a conta de Administrador ou uma conta com privilégios
+              administrativos</strong
+            >. Isso ocorre porque qualquer programa que é executado enquanto conectado com esses privilégios herdará privilégios
+            administrativos. O malware que tem privilégios administrativos tem acesso total a todos os arquivos e pastas no computador.
+          </p>
+
+          <div class="alert mt-3 mb-4" style="background-color: rgba(255, 75, 75, 0.1); border-left: 4px solid #ff4b4b">
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="fas fa-skull-crossbones fa-2x" style="color: #ff4b4b"></i>
+              </div>
+              <div>
+                <strong>Risco de Segurança:</strong>
+                <p class="mb-0 mt-1">
+                  Se um invasor conseguir executar código malicioso enquanto você está logado como Administrador, ele terá controle total
+                  sobre o sistema, podendo instalar keyloggers, ransomware, ou comprometer completamente o computador e os dados.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p>
+            Às vezes, é necessário executar ou instalar software que requer os privilégios do Administrador. Para conseguir isso, existem
+            duas maneiras principais:
+          </p>
+
+          <div class="row mt-4 g-4">
+            <!-- Card 1: Administrador via Menu de Contexto -->
+            <div class="col-md-6">
+              <div
+                class="admin-card p-4"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; border: 1px solid #444; height: 100%"
+              >
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-user-shield fa-2x me-3" style="color: var(--cisco-green)"></i>
+                  <h4 class="mb-0 fw-semibold" style="color: var(--cisco-green)">1. Executar como Administrador</h4>
+                </div>
+                <p>
+                  Clique com o botão direito no executável do programa ou no atalho no Explorador de Arquivos do Windows e escolha
+                  <strong class="text-white">"Executar como administrador"</strong> no Menu de Contexto.
+                </p>
+
+                <!-- Menu de Contexto Exemplo -->
+                <div class="context-menu-demo mt-3 p-3" style="background: #1a1a1a; border-radius: 8px">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-cog me-2" style="color: var(--cisco-green)"></i>
+                    <span class="text-white">setup.exe</span>
+                    <span class="ms-2 badge-cisco">Application</span>
+                  </div>
+                  <div class="ms-3">
+                    <div class="context-item p-1"><i class="fas fa-play me-2" style="color: #aaa; width: 20px"></i> Open</div>
+                    <div class="context-item p-1" style="background: rgba(102, 191, 83, 0.2); border-left: 3px solid var(--cisco-green)">
+                      <i class="fas fa-user-shield me-2" style="color: var(--cisco-green); width: 20px"></i>
+                      <strong style="color: var(--cisco-green)">Run as administrator</strong>
+                    </div>
+                    <div class="context-item p-1"><i class="fas fa-thumbtack me-2" style="color: #aaa; width: 20px"></i> Pin to Start</div>
+                    <div class="context-item p-1">
+                      <i class="fas fa-shield-alt me-2" style="color: #aaa; width: 20px"></i> Scan with Windows Defender...
+                    </div>
+                    <div class="context-item p-1"><i class="fas fa-trash me-2" style="color: #aaa; width: 20px"></i> Delete</div>
+                    <div class="context-item p-1"><i class="fas fa-info-circle me-2" style="color: #aaa; width: 20px"></i> Properties</div>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <span class="badge-cisco">
+                    <i class="fas fa-lightbulb me-1"></i> Dica: Procure pelo ícone de escudo 🛡️ nos atalhos — ele indica que o programa pode
+                    exigir privilégios administrativos
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: Prompt de Comando como Administrador -->
+            <div class="col-md-6">
+              <div
+                class="admin-card p-4"
+                style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; border: 1px solid #444; height: 100%"
+              >
+                <div class="d-flex align-items-center mb-3">
+                  <i class="fas fa-terminal fa-2x me-3" style="color: var(--cisco-green)"></i>
+                  <h4 class="mb-0 fw-semibold" style="color: var(--cisco-green)">2. Prompt de Comando como Administrador</h4>
+                </div>
+                <p>
+                  Procure por <strong class="text-white">"cmd"</strong> ou <strong class="text-white">"Prompt de Comando"</strong> no menu
+                  Iniciar, clique com o botão direito no resultado e escolha
+                  <strong class="text-white">"Executar como administrador"</strong> no menu de contexto.
+                </p>
+
+                <!-- Exemplo da Pesquisa do Windows -->
+                <div class="search-demo mt-3 p-3" style="background: #1a1a1a; border-radius: 8px">
+                  <div class="d-flex align-items-center mb-2">
+                    <i class="fas fa-search me-2" style="color: var(--cisco-green)"></i>
+                    <span class="text-white">Best match</span>
+                  </div>
+                  <div class="ms-3 mb-2 p-2" style="background: #0a0a0a; border-radius: 6px">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-terminal me-2" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                      <div>
+                        <div class="text-white fw-semibold">Command Prompt</div>
+                        <div class="text-secondary small">Desktop app</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ms-3">
+                    <div class="context-item p-1" style="background: rgba(102, 191, 83, 0.2); border-left: 3px solid var(--cisco-green)">
+                      <i class="fas fa-user-shield me-2" style="color: var(--cisco-green); width: 20px"></i>
+                      <strong style="color: var(--cisco-green)">Run as administrator</strong>
+                    </div>
+                    <div class="context-item p-1">
+                      <i class="fas fa-folder-open me-2" style="color: #aaa; width: 20px"></i> Open file location
+                    </div>
+                    <div class="context-item p-1"><i class="fas fa-thumbtack me-2" style="color: #aaa; width: 20px"></i> Pin to Start</div>
+                    <div class="context-item p-1"><i class="fas fa-tasks me-2" style="color: #aaa; width: 20px"></i> Pin to taskbar</div>
+                  </div>
+                </div>
+
+                <div class="mt-3">
+                  <span class="badge-cisco">
+                    <i class="fas fa-info-circle me-1"></i> Cada comando executado a partir desta linha de comando será realizado com
+                    privilégios de Administrador
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bloco de informações adicionais -->
+          <div class="mt-5 p-4" style="background: #1a1a1a; border-radius: 12px">
+            <h4 class="text-white mb-3">
+              <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>
+              Práticas recomendadas de segurança
+            </h4>
+
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="cisco-list">
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                    <strong class="text-white">Use uma conta padrão</strong> para atividades diárias (navegação, e-mail, documentos)
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                    <strong class="text-white">Eleve privilégios apenas quando necessário</strong> — use "Executar como administrador"
+                    apenas para tarefas específicas
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                    <strong class="text-white">Habilite o Controle de Conta de Usuário (UAC)</strong> para ser notificado quando um programa
+                    tenta fazer alterações no sistema
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="cisco-list">
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                    <strong class="text-white">Verifique a origem do software</strong> antes de executá-lo como administrador
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                    <strong class="text-white">Use senhas fortes</strong> para a conta de administrador
+                  </li>
+                  <li class="mb-2">
+                    <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                    <strong class="text-white">Nunca deixe sessões administrativas ativas</strong> quando não estiver em uso
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela comparativa -->
+          <div class="mt-4">
+            <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+              <i class="fas fa-balance-scale me-2"></i>
+              Comparativo: Conta Padrão vs Conta Administrador
+            </h4>
+            <div class="table-responsive">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Aspecto</th>
+                    <th>Conta Padrão (Usuário)</th>
+                    <th>Conta Administrador</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Instalação de software</strong></td>
+                    <td>Requer senha de administrador</td>
+                    <td>Permissão direta</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Alterações no sistema</strong></td>
+                    <td>Bloqueadas (UAC solicita confirmação)</td>
+                    <td>Permitidas diretamente</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Impacto de malware</strong></td>
+                    <td>Limitado ao usuário</td>
+                    <td>Comprometimento total do sistema</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Uso recomendado</strong></td>
+                    <td>Atividades diárias</td>
+                    <td>Apenas para manutenção e configuração</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Acesso a arquivos de outros usuários</strong></td>
+                    <td>Restrito</td>
+                    <td>Total</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- UAC (Controle de Conta de Usuário) -->
+          <div class="mt-5 p-4" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+            <div class="d-flex flex-wrap align-items-start gap-3">
+              <div class="flex-shrink-0 text-center">
+                <i class="fas fa-shield-virus fa-3x" style="color: var(--cisco-green)"></i>
+                <div class="small text-secondary mt-1">UAC</div>
+              </div>
+              <div>
+                <h5 class="text-white mb-2">Controle de Conta de Usuário (UAC)</h5>
+                <p class="mb-0">
+                  O UAC é um recurso de segurança do Windows que ajuda a prevenir alterações não autorizadas no sistema. Quando um programa
+                  tenta fazer alterações que requerem privilégios administrativos, o UAC exibe uma notificação solicitando confirmação. Isso
+                  dá ao usuário a oportunidade de revisar e aprovar a ação antes que ela seja executada.
+                </p>
+                <div class="mt-3">
+                  <span class="badge-cisco">
+                    <i class="fas fa-sliders-h me-1"></i> Acesse: Painel de Controle → Contas de Usuário → Alterar configurações de Controle
+                    de Conta de Usuário
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <span class="badge-cisco">
+              <i class="fas fa-lightbulb me-1"></i>
+              Lembre-se: O princípio do menor privilégio (PoLP) dita que usuários e programas devem ter apenas os privilégios mínimos
+              necessários para realizar suas funções.
+            </span>
+          </div>
+        </div>
+      </section>
+      <!-- 7.3.2 Usuários e Domínios Locais -->
+      <div id="usuarios-dominios" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.3.2 Usuários e Domínios Locais</h3>
+
+        <p>
+          Quando inicia um novo computador pela primeira vez ou instala o Windows, será pedido para criar uma conta de usuário. Isso é
+          conhecido como um
+          <strong class="text-white">usuário local</strong>. Essa conta conterá todas as configurações de personalização, permissões de
+          acesso, locais de arquivos e muitos outros dados específicos do usuário. Há também duas outras contas presentes: o convidado e o
+          administrador. Ambas as contas são desabilitadas por padrão.
+        </p>
+
+        <div class="alert mt-3 mb-4" style="background-color: rgba(255, 75, 75, 0.1); border-left: 4px solid #ff4b4b">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-shield-alt fa-2x" style="color: #ff4b4b"></i>
+            </div>
+            <div>
+              <strong>Prática recomendada de segurança:</strong>
+              <p class="mb-0 mt-1">
+                Não habilite a conta Administrador e não conceda privilégios administrativos aos usuários padrão. Se um usuário precisar
+                executar qualquer função que exija privilégios administrativos, o sistema solicitará a senha de Administrador e permitirá
+                que somente essa tarefa seja executada como administrador.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          A conta <strong class="text-white">Convidados</strong> não deve ser ativada. A conta de convidado não tem uma senha associada a
+          ela porque é criada quando um computador vai ser usado por muitas pessoas diferentes que não têm contas no computador. Cada vez
+          que a conta de convidado faz logon, um ambiente padrão é fornecido a eles com privilégios limitados.
+        </p>
+
+        <!-- Grupos do Windows -->
+        <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)"><i class="fas fa-users me-2"></i> Grupos do Windows</h4>
+
+        <p>
+          Para facilitar a administração de usuários, o Windows usa <strong class="text-white">grupos</strong>. Um grupo terá um nome e um
+          conjunto específico de permissões associadas a ele. Quando um usuário é colocado em um grupo, as permissões desse grupo são dadas
+          a esse usuário. Um usuário pode ser colocado em vários grupos para ser fornecido com muitas permissões diferentes. Quando as
+          permissões se sobrepõem, certas permissões, como <strong class="text-white">"negar explicitamente"</strong>, substituirão a
+          permissão fornecida por um grupo diferente.
+        </p>
+
+        <p>
+          Há muitos grupos de usuários diferentes incorporados no Windows que são usados para tarefas específicas. Por exemplo, o grupo
+          <strong class="text-white">Usuários do Log de Desempenho</strong> permite que os membros agendem o log de contadores de desempenho
+          e coletem logs localmente ou remotamente.
+        </p>
+
+        <!-- Tabela de Grupos do Windows -->
+        <div class="table-responsive mt-4">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Grupo</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong class="text-white">Administrators</strong></td>
+                <td>Acesso completo e irrestrito ao sistema/td></td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Backup Operators</strong></td>
+                <td>Podem substituir restrições de segurança para backup e restauração</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Cryptographic Operators</strong></td>
+                <td>Autorizados a realizar operações criptográficas</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Distributed COM Users</strong></td>
+                <td>Podem iniciar, ativar e usar objetos COM distribuídos</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Event Log Readers</strong></td>
+                <td>Podem ler logs de eventos de máquinas locais</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Guests</strong></td>
+                <td>Mesmo acesso que membros do grupo Users (desabilitado por padrão)</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Hyper-V Administrators</strong></td>
+                <td>Acesso completo e irrestrito aos recursos do Hyper-V</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Network Configuration Operators</strong></td>
+                <td>Privilégios administrativos para configuração de rede</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Performance Log Users</strong></td>
+                <td>Podem agendar coleta de logs de desempenho</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Performance Monitor Users</strong></td>
+                <td>Podem acessar contadores de desempenho</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Power Users</strong></td>
+                <td>Incluído para compatibilidade com aplicativos legados</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Remote Desktop Users</strong></td>
+                <td>Permissão para logon remoto via RDP</td>
+              </tr>
+              <tr>
+                <td><strong class="text-white">Users</strong></td>
+                <td>Impedidos de fazer alterações acidentais ou intencionais no sistema</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Gerenciamento de Usuários e Grupos -->
+        <div class="row mt-5 g-4">
+          <div class="col-md-7">
+            <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+              <i class="fas fa-tools me-2"></i> Gerenciamento de Usuários e Grupos Locais
+            </h4>
+            <p>
+              Os usuários e grupos locais são gerenciados com o snap-in do painel de controle
+              <code class="text-white">lusrmgr.msc</code>, conforme mostrado na figura ao lado.
+            </p>
+
+            <div class="terminal-card mt-3">
+              <pre><code>Windows + R → digite "lusrmgr.msc" → Enter</code></pre>
+            </div>
+
+            <div class="mt-3 p-3" style="background: #1a1a1a; border-radius: 8px">
+              <h5 class="text-white mb-2">Principais pastas do lusrmgr.msc:</h5>
+              <ul class="cisco-list">
+                <li>
+                  <i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> <strong>Users</strong> - Gerencia contas de
+                  usuários locais
+                </li>
+                <li>
+                  <i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> <strong>Groups</strong> - Gerencia grupos locais
+                  e suas permissões
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-5">
+            <!-- Simulação do lusrmgr.msc -->
+            <div class="lusrmgr-demo" style="background: #1a1a1a; border-radius: 8px; overflow: hidden">
+              <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+                <span class="text-white small">lusrmgr - [Local Users and Groups (Local)\Groups]</span>
+              </div>
+              <div class="row g-0">
+                <div class="col-4 p-2" style="border-right: 1px solid #333">
+                  <div class="text-secondary small mb-2">Local Users and Groups (Local)</div>
+                  <div><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Users</div>
+                  <div class="mt-1"><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> <strong>Groups</strong></div>
+                </div>
+                <div class="col-8 p-2">
+                  <div class="small text-secondary mb-2">Groups</div>
+                  <div class="group-list">
+                    <div class="d-flex justify-content-between small">
+                      <span>Administrators</span>
+                      <span class="text-secondary">...complete and unrestricted access</span>
+                    </div>
+                    <div class="d-flex justify-content-between small mt-1">
+                      <span>Backup Operators</span>
+                      <span class="text-secondary">...override security restrictions</span>
+                    </div>
+                    <div class="d-flex justify-content-between small mt-1">
+                      <span>Guests</span>
+                      <span class="text-secondary">...same access as Users group</span>
+                    </div>
+                    <div class="d-flex justify-content-between small mt-1">
+                      <span>Performance Log Users</span>
+                      <span class="text-secondary">...schedule logging of performance data</span>
+                    </div>
+                    <div class="d-flex justify-content-between small mt-1">
+                      <span>Remote Desktop Users</span>
+                      <span class="text-secondary">...granted the right to log on remotely</span>
+                    </div>
+                    <div class="d-flex justify-content-between small mt-1">
+                      <span>Users</span>
+                      <span class="text-secondary">...prevented from making accidental changes</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domínios -->
+        <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">
+          <i class="fas fa-network-wired me-2"></i> Domínios do Windows
+        </h4>
+
+        <p>
+          Além dos grupos, o Windows também pode usar <strong class="text-white">domínios</strong> para definir permissões. Um domínio é um
+          tipo de serviço de rede onde todos os usuários, grupos, computadores, periféricos e configurações de segurança são armazenados e
+          controlados por um banco de dados. Este banco de dados é armazenado em computadores especiais ou grupos de computadores chamados
+          <strong class="text-white">controladores de domínio (DCs)</strong>.
+        </p>
+
+        <p>
+          Cada usuário e computador no domínio tem de autenticar contra o controlador de domínio para iniciar sessão e acessar os recursos
+          de rede. As configurações de segurança para cada usuário e cada computador são definidas pelo controlador de domínio para cada
+          sessão, substituindo qualquer configuração fornecida pelo controlador de domínio padrão para o computador local ou configuração de
+          conta de usuário.
+        </p>
+
+        <div class="row mt-4 g-4">
+          <div class="col-md-6">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)">
+              <h5 class="text-white"><i class="fas fa-user me-2" style="color: var(--cisco-green)"></i> Usuário Local</h5>
+              <p class="text-secondary small mb-0">
+                Conta armazenada localmente no computador. Funciona apenas naquela máquina específica.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; border-left: 4px solid var(--cisco-green)">
+              <h5 class="text-white"><i class="fas fa-cloud me-2" style="color: var(--cisco-green)"></i> Usuário de Domínio</h5>
+              <p class="text-secondary small mb-0">
+                Conta centralizada no controlador de domínio. Permite acesso a recursos de rede e logon em qualquer computador do domínio.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <span class="badge-cisco">
+            <i class="fas fa-lightbulb me-1"></i>
+            Dica: Em ambientes corporativos, o gerenciamento via Active Directory (domínios) substitui o gerenciamento local de usuários e
+            grupos.
+          </span>
+        </div>
+      </div>
+
+      <!-- 7.3.3 CLI e PowerShell -->
+      <div id="cli-powershell" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.3.3 CLI e PowerShell</h3>
+
+        <p>
+          A interface de linha de comando (CLI) do Windows pode ser usada para executar programas, navegar no sistema de arquivos e
+          gerenciar arquivos e pastas. Além disso, arquivos chamados de <strong class="text-white">batch</strong> (.bat) podem ser criados
+          para executar vários comandos sucessivamente, assim como um script básico.
+        </p>
+
+        <div class="row mt-4 g-4">
+          <div class="col-md-6">
+            <div class="p-3" style="background: #1a1a1a; border-radius: 8px; height: 100%">
+              <h5 class="text-white mb-3"><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> Como abrir a CLI</h5>
+              <p>Para abrir a CLI do Windows, procure <code class="text-white">cmd.exe</code> e clique no programa.</p>
+              <div class="alert mt-2" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+                <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i>
+                <strong>Dica:</strong> Clicar com o botão direito do mouse no programa oferece a opção de
+                <strong class="text-white">"Executar como administrador"</strong>, dando muito mais poder aos comandos que serão usados.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="p-3" style="background: #1a1a1a; border-radius: 8px; height: 100%">
+              <h5 class="text-white mb-3">
+                <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Dicas importantes da CLI
+              </h5>
+              <ul class="cisco-list mb-0">
+                <li>Nomes de arquivo e caminhos <strong>não diferenciam maiúsculas de minúsculas</strong>, por padrão.</li>
+                <li>Dispositivos de armazenamento recebem uma letra (ex: <code>C:\</code>, <code>D:\</code>).</li>
+                <li>Comandos com opções opcionais usam a <strong>barra (/)</strong> para delinear entre o comando e a opção.</li>
+                <li>Use a tecla <kbd>Tab</kbd> para completar comandos automaticamente.</li>
+                <li>Use as <strong>setas para cima/baixo</strong> para acessar o histórico de comandos.</li>
+                <li>Para alternar entre dispositivos, digite a letra seguida de dois pontos e <kbd>Enter</kbd>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PowerShell -->
+        <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)"><i class="fab fa-powershell me-2"></i> Windows PowerShell</h4>
+
+        <p>
+          Mesmo que a CLI tenha muitos comandos e recursos, ela não pode funcionar em conjunto com o núcleo do Windows ou a GUI. Outro
+          ambiente, chamado <strong class="text-white">Windows PowerShell</strong>, pode ser usado para criar scripts para automatizar
+          tarefas que a CLI normal não consegue criar. O PowerShell também fornece uma CLI para iniciar comandos.
+        </p>
+
+        <p>
+          O PowerShell é um programa integrado no Windows e pode ser aberto pesquisando por
+          <strong class="text-white">"powershell"</strong> e clicando no programa. Assim como a CLI, o PowerShell também pode ser executado
+          com privilégios administrativos.
+        </p>
+
+        <div class="row mt-4 g-4">
+          <div class="col-md-4">
+            <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+              <i class="fas fa-terminal fa-3x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="text-white">Cmdlets</h5>
+              <p class="small text-secondary mb-0">Comandos que executam uma ação e retornam uma saída ou objeto para o próximo comando.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+              <i class="fas fa-file-code fa-3x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="text-white">Scripts .ps1</h5>
+              <p class="small text-secondary mb-0">Arquivos que contêm comandos do PowerShell que são executados sequencialmente.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+              <i class="fas fa-code-branch fa-3x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="text-white">Funções</h5>
+              <p class="small text-secondary mb-0">Pedaços de código que podem ser referenciados e reutilizados em scripts.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Simulação do PowerShell com help -->
+        <div class="mt-5">
+          <h5 class="text-white mb-3"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i> Ajuda no PowerShell</h5>
+          <p>
+            Para ver mais informações sobre o Windows PowerShell e começar a usá-lo, digite <code class="text-white">help</code> no
+            PowerShell.
+          </p>
+
+          <div class="terminal-card">
+            <pre><code>Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Try the new cross-platform PowerShell https://aka.ms/pscore6
+
+PS C:\WINDOWS\system32> help
+
+TOPIC
+    Windows PowerShell Help System
+
+SHORT DESCRIPTION
+    Displays help about Windows PowerShell cmdlets and concepts.
+
+LONG DESCRIPTION
+    Windows PowerShell Help describes Windows PowerShell cmdlets, functions,
+    scripts, and modules, and explains concepts, including the elements of
+    the Windows PowerShell language.
+
+    You can use the Update-Help cmdlet to download help files to your computer
+    and then use the Get-Help cmdlet to display the help topics at the command line.
+
+ONLINE HELP
+    To open online help for any cmdlet or function, type:
+        Get-Help -Online
+
+UPDATE-HELP
+    To download and install help files on your computer:
+    1. Start Windows PowerShell with the "Run as administrator" option.
+    2. Type:
+        Update-Help</code></pre>
+          </div>
+        </div>
+
+        <!-- Níveis de ajuda Get-Help -->
+        <div class="mt-4">
+          <h5 class="text-white mb-3">
+            <i class="fas fa-layer-group me-2" style="color: var(--cisco-green)"></i> Níveis de ajuda do Get-Help
+          </h5>
+          <p>Há quatro níveis de ajuda no Windows PowerShell para o comando <code class="text-white">Get-Help</code>:</p>
+
+          <div class="row g-3 mt-2">
+            <div class="col-md-3">
+              <div class="p-3 text-center" style="background: #1a1a1a; border-radius: 8px">
+                <code class="text-white">Get-Help</code>
+                <p class="small text-secondary mt-2 mb-0">Ajuda básica para um comando</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="p-3 text-center" style="background: #1a1a1a; border-radius: 8px">
+                <code class="text-white">Get-Help -Examples</code>
+                <p class="small text-secondary mt-2 mb-0">Ajuda básica com exemplos</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="p-3 text-center" style="background: #1a1a1a; border-radius: 8px">
+                <code class="text-white">Get-Help -Detailed</code>
+                <p class="small text-secondary mt-2 mb-0">Ajuda detalhada com exemplos</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="p-3 text-center" style="background: #1a1a1a; border-radius: 8px">
+                <code class="text-white">Get-Help -Full</code>
+                <p class="small text-secondary mt-2 mb-0">Todas as informações com exemplos detalhados</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3" style="background: #1a1a1a; border-radius: 8px">
+            <h6 class="text-white mb-2">
+              <i class="fas fa-download me-2" style="color: var(--cisco-green)"></i> Atualizando a ajuda do PowerShell
+            </h6>
+            <p class="small text-secondary mb-0">
+              O PowerShell não inclui arquivos de ajuda por padrão. Para baixar e instalar os arquivos de ajuda no seu computador, execute o
+              PowerShell como administrador e digite: <code class="text-white">Update-Help</code>
+            </p>
+          </div>
+        </div>
+
+        <!-- Tabela comparativa CLI vs PowerShell -->
+        <div class="mt-5">
+          <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-chart-simple me-2"></i> Comparativo: CMD vs PowerShell
+          </h4>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Característica</th>
+                  <th>CMD (Command Prompt)</th>
+                  <th>PowerShell</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Saída</strong></td>
+                  <td>Texto simples</td>
+                  <td>Objetos (.NET)</td>
+                </tr>
+                <tr>
+                  <td><strong>Scripting</strong></td>
+                  <td>Arquivos .bat (limitado)</td>
+                  <td>Scripts .ps1 (completo)</td>
+                </tr>
+                <tr>
+                  <td><strong>Pipeline</strong></td>
+                  <td>Texto entre comandos</td>
+                  <td>Objetos entre cmdlets</td>
+                </tr>
+                <tr>
+                  <td><strong>Acesso a APIs</strong></td>
+                  <td>Limitado</td>
+                  <td>Total (WMI, .NET, COM)</td>
+                </tr>
+                <tr>
+                  <td><strong>Automação</strong></td>
+                  <td>Básica</td>
+                  <td>Avançada (administração do sistema)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <span class="badge-cisco">
+            <i class="fas fa-lightbulb me-1"></i>
+            Dica: O PowerShell é a ferramenta preferida para administração do Windows em ambientes modernos. Muitos comandos do CMD ainda
+            funcionam, mas o PowerShell oferece muito mais recursos.
+          </span>
+        </div>
+      </div>
+      <!-- 7.3.4 Instrumentação de Gerenciamento do Windows (WMI) -->
+      <div id="wmi" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.3.4 Instrumentação de Gerenciamento do Windows (WMI)</h3>
+
+        <p>
+          A <strong class="text-white">Instrumentação de Gerenciamento do Windows (WMI)</strong> é usada para gerenciar computadores
+          remotos. Ele pode recuperar informações sobre componentes de computador, estatísticas de hardware e software e monitorar a
+          integridade de computadores remotos.
+        </p>
+
+        <div class="row mt-4 g-4">
+          <div class="col-md-6">
+            <div class="p-3" style="background: #1a1a1a; border-radius: 8px; height: 100%">
+              <h5 class="text-white mb-3"><i class="fas fa-folder-tree me-2" style="color: var(--cisco-green)"></i> Como acessar o WMI</h5>
+              <p>Para abrir o controle WMI no Painel de Controle:</p>
+              <ol class="small text-secondary">
+                <li>Abra <strong class="text-white">Ferramentas Administrativas</strong> no Painel de Controle</li>
+                <li>Clique duas vezes em <strong class="text-white">Gerenciamento do Computador</strong></li>
+                <li>Expanda a árvore <strong class="text-white">Serviços e Aplicativos</strong></li>
+                <li>
+                  Clique com o botão direito no ícone <strong class="text-white">Controle WMI</strong> →
+                  <strong class="text-white">Propriedades</strong>
+                </li>
+              </ol>
+              <div class="terminal-card mt-2">
+                <pre><code>Windows + R → compmgmt.msc → Serviços e Aplicativos → WMI Control</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <!-- Simulação da janela WMI Control Properties -->
+            <div class="wmi-demo" style="background: #1a1a1a; border-radius: 8px; overflow: hidden">
+              <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+                <span class="text-white small">Windows Management Instrumentation (WMI)</span>
+              </div>
+              <div class="p-3">
+                <div class="d-flex gap-2 mb-3">
+                  <span class="badge-cisco">General</span>
+                  <span class="badge-modulo">Backup/Restore</span>
+                  <span class="badge-modulo">Security</span>
+                  <span class="badge-modulo">Advanced</span>
+                </div>
+                <div class="mb-2">
+                  <span class="text-secondary small">Successfully Connected to:</span>
+                  <span class="text-white ms-2">&lt;local computer&gt;</span>
+                </div>
+                <div class="info-row mb-1">
+                  <span class="text-secondary small">Processor:</span>
+                  <span class="text-white ms-2">Intel(R) Core(TM) i7-7600U CPU @ 2.80GHz</span>
+                </div>
+                <div class="info-row mb-1">
+                  <span class="text-secondary small">Operating System:</span>
+                  <span class="text-white ms-2">Microsoft Windows 10 Enterprise</span>
+                </div>
+                <div class="info-row mb-1">
+                  <span class="text-secondary small">OS Version:</span>
+                  <span class="text-white ms-2">10.0.17134</span>
+                </div>
+                <div class="info-row mb-1">
+                  <span class="text-secondary small">WMI Version:</span>
+                  <span class="text-white ms-2">17134.1</span>
+                </div>
+                <div class="info-row">
+                  <span class="text-secondary small">WMI location:</span>
+                  <span class="text-white ms-2">C:\WINDOWS\system32\wbem</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Guias do WMI -->
+        <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">
+          <i class="fas fa-tab me-2"></i> Guias da janela Propriedades de Controle WMI
+        </h4>
+
+        <div class="row g-4 mt-2">
+          <div class="col-md-3">
+            <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+              <i class="fas fa-info-circle fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="text-white">Geral</h5>
+              <p class="small text-secondary mb-0">Informações resumidas sobre o computador local e o WMI.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+              <i class="fas fa-database fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="text-white">Backup/Restaurar</h5>
+              <p class="small text-secondary mb-0">Permite o backup manual das estatísticas coletadas pelo WMI.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+              <i class="fas fa-shield-alt fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="text-white">Segurança</h5>
+              <p class="small text-secondary mb-0">Configura quem tem acesso a diferentes estatísticas WMI.</p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+              <i class="fas fa-sliders-h fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="text-white">Avançado</h5>
+              <p class="small text-secondary mb-0">Configurações para configurar o namespace padrão para WMI.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alerta de segurança WMI -->
+        <div class="alert mt-4" style="background-color: rgba(255, 75, 75, 0.1); border-left: 4px solid #ff4b4b">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-skull-crossbones fa-2x" style="color: #ff4b4b"></i>
+            </div>
+            <div>
+              <strong>Importante - Segurança WMI:</strong>
+              <p class="mb-0 mt-1">
+                Alguns ataques hoje usam o WMI para se conectar a sistemas remotos, modificar o registro e executar comandos. O WMI ajuda-os
+                a evitar a detecção porque é tráfego comum, na maioria das vezes confiável pelos dispositivos de segurança de rede e os
+                comandos WMI remotos geralmente não deixam evidências no host remoto. Devido a isso,
+                <strong class="text-white">o acesso WMI deve ser estritamente limitado</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <span class="badge-cisco">
+            <i class="fas fa-lightbulb me-1"></i>
+            Dica: Monitore o uso de WMI em ambientes corporativos para detectar possíveis atividades maliciosas.
+          </span>
+        </div>
+      </div>
+
+      <!-- 7.3.5 O Comando net -->
+      <div id="comando-net" class="content-card mt-4">
+        <h3 class="cisco-subtitle">7.3.5 O Comando net</h3>
+
+        <p>
+          O Windows tem muitos comandos que podem ser inseridos na linha de comando. Um comando importante é o comando
+          <strong class="text-white">net</strong>, que é usado na administração e manutenção do SO. O comando
+          <strong class="text-white">net</strong> suporta muitos subcomandos que seguem o comando <strong class="text-white">net</strong> e
+          podem ser combinados com opções para focar em uma saída específica.
+        </p>
+
+        <div class="terminal-card mt-3">
+          <pre><code>C:\> net help
+The syntax of this command is:
+NET HELP command
+    -or-
+NET command /HELP
+
+Commands available are:
+NET ACCOUNTS     NET HELPMSG      NET STATISTICS
+NET COMPUTER     NET LOCALGROUP   NET STOP
+NET CONFIG       NET PAUSE        NET TIME
+NET CONTINUE     NET SESSION      NET USE
+NET FILE         NET SHARE        NET USER
+NET GROUP        NET START        NET VIEW
+
+NET HELP NAMES explains different types of names in NET HELP syntax lines.
+NET HELP SERVICES lists some of the services you can start.
+NET HELP SYNTAX explains how to read NET HELP syntax lines.
+NET HELP command | MORE displays Help one screen at a time.
+C:\></code></pre>
+        </div>
+
+        <p class="mt-3">
+          Para ver a ajuda detalhada sobre qualquer um dos comandos net, digite <code class="text-white">net help [comando]</code> ou
+          <code class="text-white">net [comando] /help</code>.
+        </p>
+
+        <!-- Tabela de comandos net -->
+        <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">
+          <i class="fas fa-table-list me-2"></i> Principais Subcomandos do net
+        </h4>
+
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Comando</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code class="text-white">net accounts</code></td>
+                <td>Define os requisitos de senha e logon para usuários</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net session</code></td>
+                <td>Lista ou desconecta sessões entre um computador e outros computadores na rede</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net share</code></td>
+                <td>Cria, remove ou gerencia recursos compartilhados</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net start</code></td>
+                <td>Inicia um serviço de rede</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net stop</code></td>
+                <td>Para um serviço de rede</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net use</code></td>
+                <td>Conecta, desconecta e exibe informações sobre recursos de rede compartilhados</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net view</code></td>
+                <td>Mostra uma lista de computadores e dispositivos de rede na rede</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net user</code></td>
+                <td>Adiciona, modifica ou exibe contas de usuário</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net group</code></td>
+                <td>Adiciona, modifica ou exibe grupos globais em domínios</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net localgroup</code></td>
+                <td>Adiciona, modifica ou exibe grupos locais</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net config</code></td>
+                <td>Exibe configurações de serviços em execução</td>
+              </tr>
+              <tr>
+                <td><code class="text-white">net statistics</code></td>
+                <td>Exibe estatísticas de log do servidor ou workstation</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Exemplos de comandos net -->
+        <div class="mt-4 p-3" style="background: #1a1a1a; border-radius: 8px">
+          <h5 class="text-white mb-3"><i class="fas fa-code me-2" style="color: var(--cisco-green)"></i> Exemplos práticos</h5>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="terminal-card p-2">
+                <pre><code>net view          # Lista computadores na rede
+net use Z: \\servidor\compartilhamento  # Mapeia unidade de rede
+net user         # Lista usuários locais
+net share        # Lista compartilhamentos ativos</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-2">
+                <pre><code>net stop spooler  # Para o serviço de impressão
+net start spooler # Inicia o serviço de impressão
+net session       # Lista sessões ativas
+net accounts      # Mostra políticas de senha</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <span class="badge-cisco">
+            <i class="fas fa-terminal me-1"></i>
+            Dica: Use <code class="text-white">net help [comando]</code> para obter ajuda detalhada sobre cada subcomando
+          </span>
+        </div>
+      </div>
+
+      <!-- 7.3.6 Gerenciador de Tarefas e Monitor de Recursos -->
+<div id="gerenciador-recursos" class="content-card mt-4">
+  <h3 class="cisco-subtitle">7.3.6 Gerenciador de Tarefas e Monitor de Recursos</h3>
+
+  <p>
+    Existem duas ferramentas muito importantes e úteis para ajudar um administrador a compreender os vários aplicativos, serviços e
+    processos diferentes que estão sendo executados em um computador Windows. Essas ferramentas também fornecem informações sobre o
+    desempenho do computador, como CPU, memória e uso da rede.
+  </p>
+
+  <div class="alert mt-3 mb-4" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
+    <div class="d-flex">
+      <div class="me-3">
+        <i class="fas fa-shield-virus fa-2x" style="color: #ffc107"></i>
+      </div>
+      <div>
+        <strong>Investigação de Malware:</strong>
+        <p class="mb-0 mt-1">
+          Essas ferramentas são especialmente úteis ao investigar um problema em que o malware é suspeito. Quando um componente não está
+          executando da maneira que deveria ser, essas ferramentas podem ser usadas para determinar qual o problema pode ser.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- GERENCIADOR DE TAREFAS -->
+  <!-- ========================================= -->
+  <h4 class="fw-semibold mt-4 mb-3" style="color: var(--cisco-green)">
+    <i class="fas fa-tasks me-2"></i> Gerenciador de Tarefas (Task Manager)
+  </h4>
+
+  <p>
+    O Gerenciador de Tarefas fornece muitas informações sobre o software em execução e o desempenho geral do computador.
+  </p>
+
+  <!-- Simulação do Gerenciador de Tarefas -->
+  <div class="taskmanager-full mt-3 mb-4" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+    <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+      <span class="text-white small">Task Manager</span>
+    </div>
+    <div class="p-3">
+      <div class="d-flex gap-2 flex-wrap mb-3">
+        <span class="badge-cisco">Processos</span>
+        <span class="badge-modulo">Desempenho</span>
+        <span class="badge-modulo">Histórico de aplicativos</span>
+        <span class="badge-modulo">Inicializar</span>
+        <span class="badge-modulo">Usuários</span>
+        <span class="badge-modulo">Detalhes</span>
+        <span class="badge-modulo">Serviços</span>
+      </div>
+
+      <!-- Tabela de Processos -->
+      <div class="table-responsive">
+        <table class="table table-sm table-dark table-borderless small">
+          <thead>
+            <tr class="text-secondary">
+              <th>Nome</th>
+              <th>CPU</th>
+              <th>Memória</th>
+              <th>Disco</th>
+              <th>Rede</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-white">
+              <td colspan="5"><strong>Apps (3)</strong></td>
+            </tr>
+            <tr>
+              <td>Resource and Performance Monitor</td>
+              <td>4.4%</td>
+              <td>16.8 MB</td>
+              <td>0 MB/s</td>
+              <td>0 Mbps</td>
+            </tr>
+            <tr>
+              <td>Task Manager</td>
+              <td>0%</td>
+              <td>8.4 MB</td>
+              <td>0 MB/s</td>
+              <td>0 Mbps</td>
+            </tr>
+            <tr>
+              <td>Windows Command Processor</td>
+              <td>0%</td>
+              <td>0.1 MB</td>
+              <td>0 MB/s</td>
+              <td>0 Mbps</td>
+            </tr>
+            <tr class="text-white">
+              <td colspan="5"><strong>Background processes (21)</strong></td>
+            </tr>
+            <tr>
+              <td>Application Frame Host</td>
+              <td>0%</td>
+              <td>2.1 MB</td>
+              <td>0 MB/s</td>
+              <td>0 Mbps</td>
+            </tr>
+            <tr>
+              <td>COM Surrogate</td>
+              <td>0%</td>
+              <td>1.8 MB</td>
+              <td>0 MB/s</td>
+              <td>0 Mbps</td>
+            </tr>
+            <tr>
+              <td>Cortana</td>
+              <td>0%</td>
+              <td>12.4 MB</td>
+              <td>0 MB/s</td>
+              <td>0 Mbps</td>
+            </tr>
+            <tr>
+              <td>Host Process for Windows Tasks</td>
+              <td>0%</td>
+              <td>4.2 MB</td>
+              <td>0 MB/s</td>
+              <td>0 Mbps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guias do Gerenciador de Tarefas -->
+  <div class="row g-4 mt-2">
+    <!-- Processos -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i> Processos</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Lista todos os programas e processos que estão em execução no momento</li>
+          <li>Exibe a utilização da CPU, memória, disco e rede de cada processo</li>
+          <li>Propriedades de um processo podem ser examinadas ou encerradas se não estiver se comportando corretamente</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Desempenho -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i> Desempenho</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Visão geral de todas as estatísticas de desempenho (CPU, memória, disco, rede)</li>
+          <li>Clicar em cada item no painel esquerdo mostra estatísticas detalhadas no painel direito</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Histórico de aplicativos -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-history me-2" style="color: var(--cisco-green)"></i> Histórico de aplicativos</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Uso de recursos por aplicativo ao longo do tempo</li>
+          <li>Clique em <strong>Opções</strong> → <strong>Mostrar histórico de todos os processos</strong> para ver histórico completo</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Inicializar -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-rocket me-2" style="color: var(--cisco-green)"></i> Inicializar</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Mostra todos os aplicativos e serviços que iniciam quando o computador é inicializado</li>
+          <li>Para desativar: clique com botão direito → <strong>Desativar</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Usuários -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-users me-2" style="color: var(--cisco-green)"></i> Usuários</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Todos os usuários conectados ao computador</li>
+          <li>Mostra recursos que cada usuário está utilizando</li>
+          <li>Administrador pode desconectar um usuário do computador</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Detalhes -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Detalhes</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Semelhante à guia Processos, com opções de gerenciamento adicionais</li>
+          <li>Definir <strong>prioridade</strong> (processador dedica mais/menos tempo)</li>
+          <li>Definir <strong>afinidade da CPU</strong> (qual núcleo o programa usará)</li>
+          <li><strong>Analisar cadeia de espera</strong> - mostra processos que outro processo está aguardando</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Serviços -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-cogs me-2" style="color: var(--cisco-green)"></i> Serviços</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Todos os serviços carregados são mostrados</li>
+          <li>PID (Process ID) e breve descrição</li>
+          <li>Status: <strong>Executando</strong> ou <strong>Parado</strong></li>
+          <li>Botão para abrir o console <strong>Serviços</strong> (services.msc)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================= -->
+  <!-- MONITOR DE RECURSOS -->
+  <!-- ========================================= -->
+  <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">
+    <i class="fas fa-chart-simple me-2"></i> Monitor de Recursos (Resource Monitor)
+  </h4>
+
+  <p>
+    Quando forem necessárias informações mais detalhadas sobre o uso de recursos, você poderá usar o Monitor de Recursos.
+    Ao procurar o motivo pelo qual um computador pode estar agindo de forma irregular, o Monitor de Recursos pode ajudar a encontrar a origem do problema.
+  </p>
+
+  <!-- Simulação do Resource Monitor -->
+  <div class="resource-monitor-full mt-3 mb-4" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+    <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+      <span class="text-white small">Resource Monitor</span>
+    </div>
+    <div class="p-3">
+      <div class="d-flex gap-2 flex-wrap mb-3">
+        <span class="badge-cisco">Overview</span>
+        <span class="badge-modulo">CPU</span>
+        <span class="badge-modulo">Memory</span>
+        <span class="badge-modulo">Disk</span>
+        <span class="badge-modulo">Network</span>
+      </div>
+
+      <!-- Métricas Gerais -->
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <div class="p-2 text-center" style="background: #0a0a0a; border-radius: 8px">
+            <div class="text-secondary small">CPU Usage</div>
+            <div class="text-white fw-bold">2%</div>
+            <div class="text-secondary small">Maximum Frequency</div>
+            <div class="text-white fw-bold">100%</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-2 text-center" style="background: #0a0a0a; border-radius: 8px">
+            <div class="text-secondary small">Disk I/O</div>
+            <div class="text-white fw-bold">0 KB/sec</div>
+            <div class="text-secondary small">Highest Active Time</div>
+            <div class="text-white fw-bold">0%</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-2 text-center" style="background: #0a0a0a; border-radius: 8px">
+            <div class="text-secondary small">Network I/O</div>
+            <div class="text-white fw-bold">0 Kbps</div>
+            <div class="text-secondary small">Network Utilization</div>
+            <div class="text-white fw-bold">0%</div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-2 text-center" style="background: #0a0a0a; border-radius: 8px">
+            <div class="text-secondary small">Hard Faults/sec</div>
+            <div class="text-white fw-bold">0</div>
+            <div class="text-secondary small">Used Physical Memory</div>
+            <div class="text-white fw-bold">48%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabela de Processos -->
+      <div class="table-responsive">
+        <table class="table table-sm table-dark table-borderless small">
+          <thead>
+            <tr class="text-secondary">
+              <th>Image</th>
+              <th>PID</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Threads</th>
+              <th>CPU</th>
+              <th>Average CPU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>SearchUI.exe</td><td>4516</td><td>Search and Cortana app...</td><td>Suspended</td><td>43</td><td>0.00</td><td>0.00</td></tr>
+            <tr><td>ShellExperienceHost.exe</td><td>3500</td><td>Windows Shell Experience...</td><td>Suspended</td><td>31</td><td>0.00</td><td>0.00</td></tr>
+            <tr><td>WinStoreApp.exe</td><td>5472</td><td>Store</td><td>Suspended</td><td>21</td><td>0.00</td><td>0.00</td></tr>
+            <tr><td>SkypeHost.exe</td><td>392</td><td>Microsoft Skype</td><td>Suspended</td><td>8</td><td>0.00</td><td>0.00</td></tr>
+            <tr><td>perfmon.exe</td><td>3144</td><td>Resource and Performance...</td><td>Running</td><td>17</td><td>7.97</td><td>0.35</td></tr>
+            <tr><td>dwm.exe</td><td>3092</td><td>Desktop Window Manager</td><td>Running</td><td>12</td><td>0.35</td><td>0.18</td></tr>
+            <tr><td>System Interrupts</td><td>-</td><td>Deferred Procedure Calls</td><td>Running</td><td>-</td><td>0.18</td><td>0.18</td></tr>
+            <tr><td>System</td><td>4</td><td>NT Kernel & System</td><td>Running</td><td>92</td><td>0.10</td><td>0.10</td></tr>
+            <tr><td>svchost.exe</td><td>644</td><td>Host Process for Windows...</td><td>Running</td><td>14</td><td>0.08</td><td>0.08</td></tr>
+            <tr><td>explorer.exe</td><td>2740</td><td>Windows Explorer</td><td>Running</td><td>37</td><td>0.05</td><td>0.05</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Guias do Monitor de Recursos -->
+  <h5 class="text-white mt-4 mb-3">As cinco guias do Monitor de Recursos:</h5>
+
+  <div class="row g-4">
+    <!-- Overview -->
+    <div class="col-md-6 col-lg-4">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-chart-pie me-2" style="color: var(--cisco-green)"></i> Visão Geral (Overview)</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Exibe o uso geral de cada recurso (CPU, Memória, Disco, Rede)</li>
+          <li>Se selecionar um único processo, ele será filtrado em todas as guias</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CPU -->
+    <div class="col-md-6 col-lg-4">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i> CPU</h5>
+        <ul class="small text-secondary mb-0">
+          <li>PID, número de threads, qual CPU o processo está usando</li>
+          <li>Uso médio da CPU de cada processo</li>
+          <li>Informações adicionais: serviços baseados, identificadores e módulos associados</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Memória -->
+    <div class="col-md-6 col-lg-4">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-memory me-2" style="color: var(--cisco-green)"></i> Memória</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Informações estatísticas sobre como cada processo usa memória</li>
+          <li>Visão geral do uso de toda a RAM abaixo da linha Processos</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Disco -->
+    <div class="col-md-6 col-lg-4">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-hdd me-2" style="color: var(--cisco-green)"></i> Disco</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Todos os processos que estão usando um disco</li>
+          <li>Estatísticas de leitura/gravação</li>
+          <li>Visão geral de cada dispositivo de armazenamento</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Rede -->
+    <div class="col-md-6 col-lg-4">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i> Rede</h5>
+        <ul class="small text-secondary mb-0">
+          <li>Todos os processos que estão usando a rede, com estatísticas de leitura/gravação</li>
+          <li>Conexões TCP atuais e portas que estão escutando</li>
+          <li><strong class="text-white">Útil para detectar processos não autorizados acessando a rede</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Dica de Investigação -->
+    <div class="col-md-6 col-lg-4">
+      <div class="p-3" style="background: rgba(255, 193, 7, 0.1); border-radius: 8px; height: 100%; border-left: 4px solid #ffc107">
+        <h5 class="text-white"><i class="fas fa-search me-2" style="color: #ffc107"></i> Investigação de Malware</h5>
+        <ul class="small text-secondary mb-0">
+          <li>A guia <strong>Rede</strong> permite saber se um processo não autorizado está acessando a rede</li>
+          <li>Identifica portas que estão escutando e endereços de comunicação</li>
+          <li>Fundamental para detectar backdoors e comunicação C2 (Command & Control)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabela de Atalhos Rápidos -->
+  <div class="mt-5">
+    <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+      <i class="fas fa-keyboard me-2"></i> Atalhos e Comandos Rápidos
+    </h4>
+    <div class="table-responsive">
+      <table class="table table-cisco">
+        <thead>
+          <tr>
+            <th>Ferramenta</th>
+            <th>Atalho / Comando</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gerenciador de Tarefas</td>
+            <td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd></td>
+            <td>Abre diretamente o Gerenciador de Tarefas</td>
+          </tr>
+          <tr>
+            <td>Gerenciador de Tarefas</td>
+            <td><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Del</kbd></td>
+            <td>Acesso via tela de segurança</td>
+          </tr>
+          <tr>
+            <td>Monitor de Recursos</td>
+            <td><code class="text-white">resmon</code> (Executar)</td>
+            <td>Abre o Monitor de Recursos</td>
+          </tr>
+          <tr>
+            <td>Monitor de Desempenho</td>
+            <td><code class="text-white">perfmon</code> (Executar)</td>
+            <td>Abre o Monitor de Desempenho com gráficos avançados</td>
+          </tr>
+          <tr>
+            <td>Serviços</td>
+            <td><code class="text-white">services.msc</code></td>
+            <td>Abre o console de gerenciamento de serviços</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 7.3.7 Rede -->
+<div id="rede" class="content-card mt-4">
+  <h3 class="cisco-subtitle">7.3.7 Rede</h3>
+
+  <p>
+    Um dos recursos mais importantes de qualquer sistema operacional é a capacidade do computador se conectar a uma rede. Sem esse recurso,
+    não há acesso aos recursos de rede ou à internet. Para configurar as propriedades de rede do Windows e testar as configurações de rede,
+    o <strong class="text-white">Centro de Rede e Compartilhamento</strong> é utilizado.
+  </p>
+
+  <div class="terminal-card mt-3 mb-4">
+    <pre><code>Painel de Controle → Rede e Internet → Centro de Rede e Compartilhamento
+ou
+Windows + R → ncpa.cpl → (abre conexões de rede diretamente)</code></pre>
+  </div>
+
+  <!-- Centro de Rede e Compartilhamento -->
+  <h4 class="fw-semibold mt-4 mb-3" style="color: var(--cisco-green)">
+    <i class="fas fa-network-wired me-2"></i> Centro de Rede e Compartilhamento
+  </h4>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <!-- Simulação do Network and Sharing Center -->
+      <div class="network-center-demo" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+        <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+          <span class="text-white small">Network and Sharing Center</span>
+        </div>
+        <div class="p-3">
+          <div class="mb-3">
+            <div class="text-secondary small">Control Panel Home</div>
+            <ul class="list-unstyled small">
+              <li><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.7rem"></i> Change adapter settings</li>
+              <li><i class="fas fa-chevron-right me-2" style="color: var(--cisco-green); font-size: 0.7rem"></i> Change advanced sharing settings</li>
+            </ul>
+          </div>
+
+          <div class="mb-3">
+            <div class="text-secondary small">View your basic network information and set up connections</div>
+            <div class="mt-2 p-2" style="background: #0a0a0a; border-radius: 8px">
+              <span class="badge-cisco me-2">Domain network</span>
+              <span class="text-white small">Internet Access</span>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="text-secondary small">Change your networking settings</div>
+            <div class="mt-1">
+              <span class="badge-modulo">Set up a new connection or network</span>
+              <p class="small text-secondary mt-1">Set up a broadband, dial-up, or VPN connection; or set up a router or access point.</p>
+            </div>
+            <div class="mt-2">
+              <span class="badge-modulo">Troubleshoot problems</span>
+              <p class="small text-secondary mt-1">Diagnose and repair network problems, or get troubleshooting information.</p>
+            </div>
+          </div>
+
+          <div>
+            <div class="text-secondary small">See also</div>
+            <div class="d-flex gap-2 mt-1">
+              <span class="badge-modulo">Infrared</span>
+              <span class="badge-modulo">Internet Options</span>
+              <span class="badge-modulo">Windows Defender Firewall</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Funcionalidades do Centro de Rede</h5>
+        <ul class="cisco-list">
+          <li>Visão geral da rede ativa (acesso à Internet, tipo de rede)</li>
+          <li>Identifica se a rede é <strong class="text-white">privada, pública ou convidada</strong></li>
+          <li>Tipo de rede: com ou sem fio</li>
+          <li>Visualização do Grupo Doméstico (removido no Windows 10 versão 1803+)</li>
+          <li>Alterar configurações do adaptador</li>
+          <li>Alterar configurações de compartilhamento avançado</li>
+          <li>Configurar nova conexão ou rede</li>
+          <li>Solucionar problemas de rede</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Propriedades do Adaptador -->
+  <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">
+    <i class="fas fa-ethernet me-2"></i> Propriedades do Adaptador de Rede
+  </h4>
+
+  <p>
+    Para configurar um adaptador de rede, escolha <strong class="text-white">Alterar configurações do adaptador</strong> no Centro de Rede
+    e Compartilhamento para mostrar todas as conexões de rede disponíveis. Selecione o adaptador que você deseja configurar.
+  </p>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-5">
+      <!-- Simulação do menu de contexto do adaptador -->
+      <div class="adapter-menu-demo" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+        <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+          <span class="text-white small">Network Connections</span>
+        </div>
+        <div class="p-3">
+          <div class="d-flex align-items-center mb-2 p-2" style="background: #0a0a0a; border-radius: 8px">
+            <i class="fas fa-ethernet me-3" style="color: var(--cisco-green)"></i>
+            <div>
+              <div class="text-white">Ethernet</div>
+              <div class="text-secondary small">Intel(R) PRO/1000 MT Desktop Adapter</div>
+            </div>
+          </div>
+          <div class="ms-3">
+            <div class="context-item p-1"><i class="fas fa-power-off me-2" style="color: #ff4b4b; width: 20px"></i> Disable this network device</div>
+            <div class="context-item p-1"><i class="fas fa-stethoscope me-2" style="color: var(--cisco-green); width: 20px"></i> Diagnose this connection</div>
+            <div class="context-item p-1"><i class="fas fa-info-circle me-2" style="color: #aaa; width: 20px"></i> Status</div>
+            <div class="context-item p-1"><i class="fas fa-chart-line me-2" style="color: #aaa; width: 20px"></i> Bridge Connections</div>
+            <div class="context-item p-1" style="background: rgba(102, 191, 83, 0.2); border-left: 3px solid var(--cisco-green)">
+              <i class="fas fa-cog me-2" style="color: var(--cisco-green); width: 20px"></i>
+              <strong style="color: var(--cisco-green)">Properties</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+        <p>Clique com o botão direito do mouse no adaptador que deseja configurar e escolha <strong class="text-white">Propriedades</strong>.</p>
+        <p>Na janela de propriedades, você pode selecionar:</p>
+        <ul class="cisco-list">
+          <li><strong class="text-white">Internet Protocol Version 4 (TCP/IPv4)</strong> - para configuração IPv4</li>
+          <li><strong class="text-white">Internet Protocol Version 6 (TCP/IPv6)</strong> - para configuração IPv6</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Propriedades TCP/IPv4 -->
+  <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">
+    <i class="fas fa-globe me-2"></i> Propriedades do Protocolo TCP/IPv4
+  </h4>
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <!-- Simulação da janela TCP/IPv4 Properties -->
+      <div class="tcpip-demo" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+        <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+          <span class="text-white small">Internet Protocol Version 4 (TCP/IPv4) Properties</span>
+        </div>
+        <div class="p-3">
+          <div class="d-flex gap-2 mb-3">
+            <span class="badge-cisco">General</span>
+            <span class="badge-modulo">Alternate Configuration</span>
+          </div>
+
+          <p class="small text-secondary mb-3">
+            You can get IP settings assigned automatically if your network supports this capability. Otherwise, you need to ask your
+            network administrator for the appropriate IP settings.
+          </p>
+
+          <div class="mb-3">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="ipConfig" id="autoIP" checked disabled>
+              <label class="form-check-label text-white" for="autoIP">
+                <strong>Obtain an IP address automatically</strong>
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="ipConfig" id="manualIP" disabled>
+              <label class="form-check-label text-white" for="manualIP">
+                <strong>Use the following IP address:</strong>
+              </label>
+            </div>
+            <div class="ms-4 mt-2">
+              <div class="row g-2">
+                <div class="col-4"><span class="text-secondary small">IP address:</span></div>
+                <div class="col-8"><input type="text" class="form-control form-control-sm bg-dark text-white border-secondary" value="" disabled placeholder="192.168.1.100"></div>
+                <div class="col-4"><span class="text-secondary small">Subnet mask:</span></div>
+                <div class="col-8"><input type="text" class="form-control form-control-sm bg-dark text-white border-secondary" value="" disabled placeholder="255.255.255.0"></div>
+                <div class="col-4"><span class="text-secondary small">Default gateway:</span></div>
+                <div class="col-8"><input type="text" class="form-control form-control-sm bg-dark text-white border-secondary" value="" disabled placeholder="192.168.1.1"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="form-check mb-2">
+              <input class="form-check-input" type="radio" name="dnsConfig" id="autoDNS" checked disabled>
+              <label class="form-check-label text-white" for="autoDNS">
+                <strong>Obtain DNS server address automatically</strong>
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="dnsConfig" id="manualDNS" disabled>
+              <label class="form-check-label text-white" for="manualDNS">
+                <strong>Use the following DNS server addresses:</strong>
+              </label>
+            </div>
+            <div class="ms-4 mt-2">
+              <div class="row g-2">
+                <div class="col-4"><span class="text-secondary small">Preferred DNS server:</span></div>
+                <div class="col-8"><input type="text" class="form-control form-control-sm bg-dark text-white border-secondary" value="" disabled placeholder="8.8.8.8"></div>
+                <div class="col-4"><span class="text-secondary small">Alternate DNS server:</span></div>
+                <div class="col-8"><input type="text" class="form-control form-control-sm bg-dark text-white border-secondary" value="" disabled placeholder="8.8.4.4"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="validateSettings" disabled>
+            <label class="form-check-label text-secondary small" for="validateSettings">Validate settings upon exit</label>
+          </div>
+
+          <div class="d-flex gap-2">
+            <button class="btn btn-sm" style="background: #2a2a2a; color: white; border: none;" disabled>Advanced...</button>
+            <button class="btn btn-sm" style="background: #2a2a2a; color: white; border: none;" disabled>OK</button>
+            <button class="btn btn-sm" style="background: #2a2a2a; color: white; border: none;" disabled>Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-sliders-h me-2" style="color: var(--cisco-green)"></i> Opções de Configuração</h5>
+
+        <p><strong class="text-white">Obter um endereço IP automaticamente:</strong></p>
+        <p class="small text-secondary">Utiliza um servidor <strong class="text-white">DHCP (Dynamic Host Configuration Protocol)</strong> na rede para atribuir automaticamente endereço IP, máscara de sub-rede, gateway e DNS.</p>
+
+        <p class="mt-3"><strong class="text-white">Usar o seguinte endereço IP:</strong></p>
+        <p class="small text-secondary">Configuração manual (estática) para ambientes que não possuem DHCP ou quando é necessário um endereço fixo.</p>
+
+        <div class="alert mt-3" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+          <i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i>
+          <strong>Ferramenta netsh.exe:</strong>
+          <p class="small mb-0 mt-1">Você também pode usar a ferramenta <code class="text-white">netsh.exe</code> para configurar os parâmetros de rede em um prompt de comando. Digite <code class="text-white">netsh /?</code> para ver todas as opções.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testes de Rede: nslookup e netstat -->
+  <h4 class="fw-semibold mt-5 mb-3" style="color: var(--cisco-green)">
+    <i class="fas fa-search me-2"></i> Testes de Rede: nslookup e netstat
+  </h4>
+
+  <p>
+    O <strong class="text-white">Sistema de Nomes de Domínio (DNS)</strong> também deve ser testado porque é essencial encontrar o endereço
+    dos hosts traduzindo-o a partir de um nome, como uma URL. Use o comando <code class="text-white">nslookup</code> para testar o DNS.
+  </p>
+
+  <div class="row g-4 mt-2">
+    <!-- nslookup -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-globe me-2" style="color: var(--cisco-green)"></i> nslookup - Teste de DNS</h5>
+        <p class="small text-secondary">Digite <code class="text-white">nslookup cisco.com</code> no prompt de comando para encontrar o endereço do servidor da Web Cisco. Quando o endereço é retornado, você sabe que o DNS está funcionando corretamente.</p>
+
+        <div class="terminal-card mt-3">
+          <pre><code>C:\> nslookup cisco.com
+Server:  dns.google
+Address:  8.8.8.8
+
+Non-authoritative answer:
+Name:    cisco.com
+Addresses:  2001:420:1101:1::a
+          72.163.4.185
+          72.163.4.161</code></pre>
+        </div>
+
+        <div class="mt-2">
+          <span class="badge-cisco">
+            <i class="fas fa-lightbulb me-1"></i>
+            Use <code>nslookup</code> para diagnosticar problemas de resolução de nomes
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- netstat -->
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+        <h5 class="text-white"><i class="fas fa-chart-network me-2" style="color: var(--cisco-green)"></i> netstat - Conexões de Rede</h5>
+        <p class="small text-secondary">Digite <code class="text-white">netstat</code> na linha de comando para ver os detalhes das conexões de rede ativas.</p>
+
+        <div class="terminal-card mt-3">
+          <pre><code>C:\Users\USER>netstat
+
+Active Connections
+
+  Proto  Local Address          Foreign Address        State
+  TCP    127.0.0.1:3030         USER-VGFFA:58652       ESTABLISHED
+  TCP    127.0.0.1:3030         USER-VGFFA:62114       ESTABLISHED
+  TCP    127.0.0.1:3030         USER-VGFFA:62480       TIME_WAIT
+  TCP    127.0.0.1:3030         USER-VGFFA:62481       TIME_WAIT
+  TCP    192.168.1.100:50432    192.168.1.1:443        ESTABLISHED</code></pre>
+        </div>
+
+        <div class="mt-3">
+          <h6 class="text-white mb-2">Opções úteis do netstat:</h6>
+          <div class="table-responsive">
+            <table class="table table-sm table-borderless small">
+              <tr><td><code class="text-white">netstat -a</code></td><td class="text-secondary">Mostra todas as conexões e portas escutando</td></tr>
+              <tr><td><code class="text-white">netstat -b</code></td><td class="text-secondary">Mostra o executável que criou a conexão</td></tr>
+              <tr><td><code class="text-white">netstat -n</code></td><td class="text-secondary">Mostra endereços e portas em formato numérico</td></tr>
+              <tr><td><code class="text-white">netstat -an</code></td><td class="text-secondary">Combinação para listar todas as conexões numericamente</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estados das Conexões TCP -->
+  <div class="mt-4">
+    <h5 class="text-white mb-3"><i class="fas fa-exchange-alt me-2" style="color: var(--cisco-green)"></i> Estados das Conexões TCP</h5>
+    <div class="row g-3">
+      <div class="col-md-3">
+        <div class="p-2 text-center" style="background: #1a1a1a; border-radius: 8px">
+          <code class="text-white">ESTABLISHED</code>
+          <p class="small text-secondary mt-1 mb-0">Conexão ativa estabelecida</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-2 text-center" style="background: #1a1a1a; border-radius: 8px">
+          <code class="text-white">LISTENING</code>
+          <p class="small text-secondary mt-1 mb-0">Porta aguardando conexão</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-2 text-center" style="background: #1a1a1a; border-radius: 8px">
+          <code class="text-white">TIME_WAIT</code>
+          <p class="small text-secondary mt-1 mb-0">Conexão encerrada, aguardando</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-2 text-center" style="background: #1a1a1a; border-radius: 8px">
+          <code class="text-white">CLOSE_WAIT</code>
+          <p class="small text-secondary mt-1 mb-0">Aguardando encerramento local</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resumo de Comandos -->
+  <div class="mt-5">
+    <h4 class="fw-semibold mb-3" style="color: var(--cisco-green)">
+      <i class="fas fa-terminal me-2"></i> Comandos de Rede Essenciais
+    </h4>
+    <div class="table-responsive">
+      <table class="table table-cisco">
+        <thead>
+          <tr>
+            <th>Comando</th>
+            <th>Descrição</th>
+            <th>Exemplo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code class="text-white">ipconfig</code></td>
+            <td>Exibe configuração de IP do adaptador</td>
+            <td><code>ipconfig /all</code> (detalhado)</td>
+          </tr>
+          <tr>
+            <td><code class="text-white">ping</code></td>
+            <td>Testa conectividade com um host</td>
+            <td><code>ping 8.8.8.8</code></td>
+          </tr>
+          <tr>
+            <td><code class="text-white">tracert</code></td>
+            <td>Mostra rota até o destino</td>
+            <td><code>tracert google.com</code></td>
+          </tr>
+          <tr>
+            <td><code class="text-white">nslookup</code></td>
+            一卷Consulta registros DNS</td>
+            <td><code>nslookup cisco.com</code></td>
+          </tr>
+          <tr>
+            <td><code class="text-white">netstat</code></td>
+            <td>Exibe conexões de rede</td>
+            <td><code>netstat -an</code></td>
+          </tr>
+          <tr>
+            <td><code class="text-white">netsh</code></td>
+            <td>Configura rede via CLI</td>
+            <td><code>netsh interface ip show config</code></td>
+          </tr>
+        </tbody>
+       </table>
+    </div>
+  </div>
+  <!-- ========================================= -->
+<!-- 7.4 SEGURANÇA DO WINDOWS -->
+<!-- ========================================= -->
+<section id="seguranca-windows" class="mt-5">
+  <h2 class="cisco-title display-6 mb-4">7.4 Segurança do Windows</h2>
+
+  <!-- 7.4.1 O Comando netstat -->
+  <div id="netstat-seguranca" class="content-card">
+    <h3 class="cisco-subtitle">7.4.1 O Comando netstat</h3>
+
+    <p>
+      Quando o malware está presente em um computador, ele geralmente abre portas de comunicação no host para enviar e receber dados.
+      O comando <strong class="text-white">netstat</strong> pode ser usado para procurar conexões de entrada ou saída não autorizadas.
+      Quando usado sozinho, o comando <code class="text-white">netstat</code> exibirá todas as conexões TCP ativas.
+    </p>
+
+    <div class="alert mt-3 mb-4" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
+      <div class="d-flex">
+        <div class="me-3">
+          <i class="fas fa-bug fa-2x" style="color: #ffc107"></i>
+        </div>
+        <div>
+          <strong>Detecção de Malware com netstat:</strong>
+          <p class="mb-0 mt-1">
+            Examinando as conexões TCP ativas, um analista deve ser capaz de determinar se há algum programa suspeito que esteja escutando
+            conexões de entrada no host. Quando um programa é suspeito de ser malware, uma pequena pesquisa pode ser realizada para determinar
+            sua legitimidade.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      Para facilitar esse processo, você pode vincular as conexões aos processos em execução que as criaram. Para fazer isso, abra um prompt
+      de comando com privilégios administrativos e digite o comando <code class="text-white">netstat -abno</code>.
+    </p>
+
+    <div class="terminal-card mt-3">
+      <pre><code>C:\WINDOWS\system32> netstat -abno
+
+Active Connections
+
+  Proto  Local Address   Foreign Address   State        PID
+  TCP    0.0.0.0:80      0.0.0.0:0         LISTENING    4
+  Can not obtain ownership information
+
+  TCP    0.0.0.0:135     0.0.0.0:0         LISTENING    952
+  RpcSs
+  [svchost.exe]
+
+  TCP    0.0.0.0:445     0.0.0.0:0         LISTENING    4
+  Can not obtain ownership information
+
+  TCP    0.0.0.0:3389    0.0.0.0:0         LISTENING    1396
+  TermService
+  [svchost.exe]
+
+  TCP    0.0.0.0:8099    0.0.0.0:0         LISTENING    5248
+  [SolarWinds TFTP Server.exe]</code></pre>
+    </div>
+
+    <div class="row mt-4 g-4">
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i> Opções do netstat</h5>
+          <table class="table table-sm table-borderless small">
+            <tr><td><code class="text-white">-a</code></td><td class="text-secondary">Mostra todas as conexões e portas escutando</td></tr>
+            <tr><td><code class="text-white">-b</code></td><td class="text-secondary">Mostra o executável que criou a conexão</td></tr>
+            <tr><td><code class="text-white">-n</code></td><td class="text-secondary">Mostra endereços e portas em formato numérico</td></tr>
+            <tr><td><code class="text-white">-o</code></td><td class="text-secondary">Mostra o PID (Process Identifier) de cada conexão</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-tasks me-2" style="color: var(--cisco-green)"></i> Encontrando o processo pelo PID</h5>
+          <p class="small text-secondary">
+            Cada processo em execução no computador tem um PID exclusivo. Para exibir os PIDs dos processos no Gerenciador de Tarefas,
+            abra o Gerenciador de Tarefas, clique com o botão direito do mouse no cabeçalho da tabela e selecione <strong>PID</strong>.
+          </p>
+          <div class="terminal-card p-2 mt-2">
+            <pre><code>Task Manager → Details → PID column</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <span class="badge-cisco">
+        <i class="fas fa-terminal me-1"></i>
+        Dica: Se você não estiver no modo administrador, aparecerá a mensagem "A operação solicitada requer elevação". Execute o Prompt
+        de Comando como Administrador.
+      </span>
+    </div>
+  </div>
+
+  <!-- 7.4.2 Visualizador de Eventos -->
+  <div id="visualizador-eventos" class="content-card mt-4">
+    <h3 class="cisco-subtitle">7.4.2 Visualizador de Eventos</h3>
+
+    <p>
+      O <strong class="text-white">Visualizador de Eventos</strong> do Windows registra o histórico de eventos de aplicativos, segurança e sistema.
+      Esses arquivos de log são uma valiosa ferramenta de solução de problemas porque fornecem informações para identificar um problema.
+    </p>
+
+    <div class="terminal-card mt-3 mb-4">
+      <pre><code>Windows + R → eventvwr.msc → Enter</code></pre>
+    </div>
+
+    <!-- Simulação do Event Viewer -->
+    <div class="eventviewer-demo" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+      <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+        <span class="text-white small">Event Viewer</span>
+      </div>
+      <div class="row g-0">
+        <div class="col-md-4 p-2" style="border-right: 1px solid #333">
+          <div class="text-secondary small mb-2">Event Viewer (Local)</div>
+          <div><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Custom Views</div>
+          <div class="ms-3"><span class="text-secondary">Administrative Events</span></div>
+          <div class="mt-2"><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Windows Logs</div>
+          <div class="ms-3">
+            <div>Application</div>
+            <div><span class="badge-cisco">Security</span></div>
+            <div>Setup</div>
+            <div>System</div>
+            <div>Forwarded Events</div>
+          </div>
+          <div class="mt-2"><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Applications and Services Logs</div>
+        </div>
+        <div class="col-md-8 p-3">
+          <h5 class="text-white mb-3">Overview and Summary</h5>
+          <div class="small">
+            <div class="text-secondary">Summary of Administrative Events</div>
+            <div class="d-flex justify-content-between mt-2">
+              <span>Event Type</span>
+              <span>Count</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-times-circle me-2" style="color: #ff4b4b"></i> Critical</span>
+              <span>0</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-exclamation-triangle me-2" style="color: #ffc107"></i> Error</span>
+              <span>12</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-exclamation-circle me-2" style="color: #ffa500"></i> Warning</span>
+              <span>45</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span><i class="fas fa-info-circle me-2" style="color: #66bf53"></i> Information</span>
+              <span>1,234</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-4 g-4">
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-layer-group me-2" style="color: var(--cisco-green)"></i> Categorias de Logs</h5>
+          <ul class="small text-secondary">
+            <li><strong>Logs do Windows</strong> - Application, Security, Setup, System, Forwarded Events</li>
+            <li><strong>Logs de Aplicativos e Serviços</strong> - Logs específicos de aplicativos e serviços</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-chart-simple me-2" style="color: var(--cisco-green)"></i> Níveis de Evento</h5>
+          <ul class="small text-secondary">
+            <li><span class="badge-cisco">Informações</span> - Evento informativo bem-sucedido</li>
+            <li><span class="badge-modulo">Aviso</span> - Problema potencial, não crítico</li>
+            <li><span class="badge-modulo">Erro</span> - Problema que afeta a funcionalidade</li>
+            <li><span class="badge-modulo">Crítico</span> - Falha que requer atenção imediata</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <p>
+        O Windows inclui duas categorias de logs de eventos: <strong class="text-white">Logs do Windows</strong> e
+        <strong class="text-white">Logs de Aplicativos e Serviços</strong>. Cada uma dessas categorias tem vários tipos de log.
+        Os eventos exibidos nesses logs têm um nível: informações, aviso, erro ou crítico. Eles também têm a data e hora em que o evento
+        ocorreu, juntamente com a origem do evento e um ID que se relaciona com esse tipo de evento.
+      </p>
+      <p>
+        Também é possível criar uma <strong class="text-white">visualização personalizada</strong>. Isso é útil ao procurar certos tipos de
+        eventos, encontrar eventos que aconteceram durante um determinado período de tempo, exibir eventos de um determinado nível e muitos
+        outros critérios. Há uma exibição personalizada interna chamada <strong class="text-white">Eventos administrativos</strong> que mostra
+        todos os eventos críticos, de erro e de aviso de todos os logs administrativos. Esta é uma boa visão para começar ao tentar solucionar
+        um problema.
+      </p>
+      <div class="alert mt-3" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+        <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>
+        <strong>Logs de Segurança:</strong> Os logs de eventos de segurança são encontrados em <strong>Logs do Windows → Security</strong>.
+        Eles usam IDs de evento para identificar o tipo de evento, como falhas de login (ID 4625) ou logons bem-sucedidos (ID 4624).
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <span class="badge-cisco">
+        <i class="fas fa-lightbulb me-1"></i>
+        Dica: Use visualizações personalizadas para filtrar eventos críticos e erros durante investigações de segurança.
+      </span>
+    </div>
+  </div>
+
+  <!-- 7.4.3 Gerenciamento de atualizações do Windows -->
+  <div id="windows-update" class="content-card mt-4">
+    <h3 class="cisco-subtitle">7.4.3 Gerenciamento de atualizações do Windows</h3>
+
+    <p>
+      Nenhum software é perfeito e o sistema operacional Windows não é exceção. Os invasores estão constantemente criando novas maneiras de
+      comprometer computadores e explorar códigos ruins. Alguns desses ataques vêm tão rapidamente que as defesas contra eles ainda não foram
+      criadas e distribuídas. Estes são chamados de <strong class="text-white">ataque de dia zero</strong>.
+    </p>
+
+    <div class="alert mt-3 mb-4" style="background-color: rgba(255, 75, 75, 0.1); border-left: 4px solid #ff4b4b">
+      <div class="d-flex">
+        <div class="me-3">
+          <i class="fas fa-biohazard fa-2x" style="color: #ff4b4b"></i>
+        </div>
+        <div>
+          <strong>Ataques de Dia Zero (Zero-Day):</strong>
+          <p class="mb-0 mt-1">
+            Ataques que exploram vulnerabilidades desconhecidas pelos fabricantes. Microsoft e desenvolvedores de software de segurança estão
+            sempre tentando ficar à frente dos atacantes, mas eles nem sempre são bem-sucedidos.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p>
+      Para garantir o mais alto nível de proteção contra esses ataques, certifique-se sempre de que o Windows está atualizado com os
+      <strong class="text-white">service packs</strong> e <strong class="text-white">patches de segurança</strong> mais recentes.
+    </p>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+          <h5 class="text-white"><i class="fas fa-patch me-2" style="color: var(--cisco-green)"></i> Patches e Service Packs</h5>
+          <ul class="cisco-list">
+            <li><strong class="text-white">Patches:</strong> Atualizações de código que os fabricantes fornecem para prevenir ataques de vírus ou worms recém-descobertos.</li>
+            <li><strong class="text-white">Service Packs:</strong> Combinação de patches e atualizações em uma aplicação completa de atualização.</li>
+          </ul>
+          <div class="mt-3 p-2" style="background: #1a1a1a; border-radius: 8px">
+            <p class="small text-secondary mb-0">
+              <i class="fas fa-quote-left me-1" style="color: var(--cisco-green)"></i>
+              Muitos ataques devastadores de vírus poderiam ter sido muito menos graves, se mais usuários tivessem baixado e instalado o service pack mais recente.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <!-- Simulação do Windows Update -->
+        <div class="windows-update-demo" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+          <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+            <span class="text-white small">Settings → Update & Security</span>
+          </div>
+          <div class="p-3">
+            <h5 class="text-white mb-3">Windows Update</h5>
+            <div class="update-status p-3" style="background: #0a0a0a; border-radius: 8px">
+              <div class="text-secondary small">Update status</div>
+              <div class="text-white fw-bold mt-1">Your device is up to date</div>
+              <div class="text-secondary small">Last checked: Yesterday, 4:06 PM</div>
+              <button class="btn btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none;" disabled>Check for updates</button>
+            </div>
+            <div class="mt-3">
+              <div class="text-secondary small">Update settings</div>
+              <p class="small text-secondary mt-1">Available updates will be downloaded and installed automatically, except over metered connections.</p>
+              <div class="d-flex gap-2 mt-2">
+                <span class="badge-modulo">Change active hours</span>
+                <span class="badge-modulo">Restart options</span>
+                <span class="badge-modulo">Advanced options</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-4">
+      O Windows verifica regularmente o site <strong class="text-white">Windows Update</strong> por atualizações de alta prioridade que podem
+      ajudar a proteger o computador contra as mais recentes ameaças de segurança. Essas atualizações incluem atualizações de segurança,
+      atualizações críticas e service packs. Dependendo da configuração escolhida, o Windows baixa e instala automaticamente todas as
+      atualizações de alta prioridade, ou notifica o usuário conforme essas atualizações estiverem disponíveis.
+    </p>
+
+    <div class="mt-3">
+      <span class="badge-cisco">
+        <i class="fas fa-lightbulb me-1"></i>
+        Dica: É altamente desejável que as empresas utilizem sistemas que distribuam, instalem e rastreiem automaticamente as atualizações de segurança, como WSUS (Windows Server Update Services).
+      </span>
+    </div>
+  </div>
+
+  <!-- 7.4.4 Política de Segurança Local -->
+  <div id="politica-seguranca-local" class="content-card mt-4">
+    <h3 class="cisco-subtitle">7.4.4 Política de Segurança Local</h3>
+
+    <p>
+      Uma <strong class="text-white">política de segurança</strong> é um conjunto de objetivos que garante a segurança de uma rede, dos dados
+      e dos sistemas de computador em uma organização. A política de segurança é um documento em constante desenvolvimento, baseado em mudanças
+      na tecnologia, nos negócios e nas necessidades dos funcionários.
+    </p>
+
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+          <h5 class="text-white"><i class="fas fa-building me-2" style="color: var(--cisco-green)"></i> Ambientes com Domínio</h5>
+          <p class="small text-secondary">
+            Na maioria das redes que usam computadores Windows, o <strong class="text-white">Active Directory</strong> é configurado com domínios
+            em um servidor Windows. Computadores Windows ingressam no domínio. O administrador configura uma
+            <strong class="text-white">Política de Segurança de Domínio</strong> que se aplica a todos os computadores que ingressam no domínio.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+          <h5 class="text-white"><i class="fas fa-desktop me-2" style="color: var(--cisco-green)"></i> Computadores Autônomos</h5>
+          <p class="small text-secondary">
+            A <strong class="text-white">Política de Segurança Local</strong> do Windows pode ser usada para computadores autônomos que não
+            fazem parte de um domínio do Active Directory. Para abrir o aplicativo, procure
+            <strong class="text-white">"Política de Segurança Local"</strong>.
+          </p>
+          <div class="terminal-card p-2 mt-2">
+            <pre><code>Windows + R → secpol.msc → Enter</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simulação do Local Security Policy -->
+    <div class="security-policy-demo mt-4" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+      <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+        <span class="text-white small">Local Security Policy</span>
+      </div>
+      <div class="row g-0">
+        <div class="col-md-5 p-2" style="border-right: 1px solid #333">
+          <div class="text-secondary small mb-2">Security Settings</div>
+          <div><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Account Policies</div>
+          <div class="ms-3"><span class="text-secondary">Password Policy</span></div>
+          <div class="ms-3"><span class="text-secondary">Account Lockout Policy</span></div>
+          <div class="mt-2"><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Local Policies</div>
+          <div class="mt-2"><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Windows Firewall with Advanced Security</div>
+          <div class="mt-2"><i class="fas fa-folder-open me-2" style="color: var(--cisco-green)"></i> Application Control Policies</div>
+        </div>
+        <div class="col-md-7 p-3">
+          <h5 class="text-white mb-3">Account Policies → Password Policy</h5>
+          <div class="small">
+            <div class="d-flex justify-content-between">
+              <span>Enforce password history</span>
+              <span>24 passwords remembered</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+              <span>Maximum password age</span>
+              <span>42 days</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+              <span>Minimum password age</span>
+              <span>1 day</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+              <span>Minimum password length</span>
+              <span>8 characters</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2">
+              <span>Password must meet complexity requirements</span>
+              <span>Enabled</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Política de Senha -->
+    <h4 class="fw-semibold mt-4 mb-3" style="color: var(--cisco-green)">
+      <i class="fas fa-key me-2"></i> Política de Senha
+    </h4>
+
+    <p>
+      As diretrizes de senha são um componente importante de uma política de segurança. Qualquer usuário que fizer logon em um computador ou
+      se conectar a um recurso de rede deve ter uma senha. As senhas ajudam a evitar roubo de dados e atos mal-intencionados. As senhas também
+      ajudam a confirmar se o registro de eventos é válido, garantindo que o usuário seja quem diz ser.
+    </p>
+
+    <div class="table-responsive mt-3">
+      <table class="table table-cisco">
+        <thead>
+          <tr><th>Configuração</th><th>Recomendação</th><th>Descrição</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Enforce password history</td><td>24 senhas</td><td>Impede reutilização de senhas antigas</td></tr>
+          <tr><td>Maximum password age</td><td>42-90 dias</td><td>Tempo máximo que uma senha pode ser usada</td></tr>
+          <tr><td>Minimum password age</td><td>1 dia</td><td>Tempo mínimo antes de alterar a senha</td></tr>
+          <tr><td>Minimum password length</td><td>8 caracteres</td><td>Tamanho mínimo da senha</td></tr>
+          <tr><td>Password must meet complexity requirements</td><td>Enabled</td><td>Requer maiúsculas, minúsculas, números e símbolos</td></tr>
+        </tbody>
+       </table>
+    </div>
+
+    <!-- Política de Bloqueio de Conta -->
+    <h4 class="fw-semibold mt-4 mb-3" style="color: var(--cisco-green)">
+      <i class="fas fa-lock me-2"></i> Política de Bloqueio de Conta
+    </h4>
+
+    <p>
+      Use a <strong class="text-white">Diretiva de Bloqueio de Conta</strong> em Diretivas de Conta, para impedir tentativas de login por
+      força bruta. Por exemplo, você pode definir a política para permitir que o usuário insira um nome de usuário e/ou senha incorretos
+      cinco vezes. Após cinco tentativas, a conta é bloqueada por 30 minutos. Depois de 30 minutos, o número de tentativas é redefinido
+      para zero e o usuário pode tentar entrar novamente.
+    </p>
+
+    <div class="table-responsive mt-3">
+      <table class="table table-cisco">
+        <thead>
+          <tr><th>Configuração</th><th>Recomendação</th><th>Descrição</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Account lockout duration</td><td>30 minutos</td><td>Tempo que a conta permanece bloqueada</td></tr>
+          <tr><td>Account lockout threshold</td><td>5 tentativas inválidas</td><td>Número de tentativas antes do bloqueio</td></tr>
+          <tr><td>Reset account lockout counter after</td><td>30 minutos</td><td>Tempo para resetar o contador de tentativas</td></tr>
+        </tbody>
+       </table>
+    </div>
+
+    <!-- Bloqueio de Tela -->
+    <h4 class="fw-semibold mt-4 mb-3" style="color: var(--cisco-green)">
+      <i class="fas fa-desktop me-2"></i> Bloqueio de Tela e Proteção de Tela
+    </h4>
+
+    <p>
+      É importante garantir que os computadores estejam seguros quando os usuários estiverem ausentes. Uma política de segurança deve conter
+      uma regra sobre a necessidade de se bloquear um computador quando a proteção de tela for iniciada. Isso garantirá que, depois de um
+      curto período de tempo longe do computador, a proteção de tela será iniciada e o computador não poderá ser usado até que o usuário
+      faça login novamente.
+    </p>
+
+    <!-- Exportar Política -->
+    <h4 class="fw-semibold mt-4 mb-3" style="color: var(--cisco-green)">
+      <i class="fas fa-file-export me-2"></i> Exportar Política de Segurança
+    </h4>
+
+    <div class="row g-4">
+      <div class="col-md-8">
+        <p>
+          Se a política de segurança local em cada computador autônomo for a mesma, use o recurso <strong class="text-white">Exportar política</strong>.
+          Salve a diretiva com um nome, como <code class="text-white">workstation.inf</code>. Copie o arquivo de política para uma mídia externa
+          ou unidade de rede para usar em outros computadores independentes. Isso é particularmente útil quando o administrador precisa configurar
+          diretivas locais abrangentes para direitos de usuário e opções de segurança.
+        </p>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-tools me-2" style="color: var(--cisco-green)"></i> Outras Configurações</h5>
+          <ul class="small text-secondary mb-0">
+            <li>Direitos de Usuário</li>
+            <li>Regras de Firewall</li>
+            <li>AppLocker (restringir execução de arquivos)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <span class="badge-cisco">
+        <i class="fas fa-lightbulb me-1"></i>
+        Dica: O miniaplicativo Diretiva de Segurança Local contém muitas outras configurações de segurança que se aplicam especificamente
+        ao computador local, incluindo Direitos de Usuário, Regras de Firewall e AppLocker.
+      </span>
+    </div>
+  </div>
+</section>
+
+  <div class="mt-4">
+    <span class="badge-cisco">
+      <i class="fas fa-lightbulb me-1"></i>
+      Dica: Use <code class="text-white">nslookup</code> para verificar a resolução de DNS e <code class="text-white">netstat -b</code>
+      (como administrador) para identificar quais programas estão se comunicando pela rede.
+    </span>
+  </div>
+</div>
+<!-- 7.4.5 Windows Defender -->
+<div id="windows-defender" class="content-card mt-4">
+  <h3 class="cisco-subtitle">7.4.5 Windows Defender</h3>
+
+  <p>
+    <strong class="text-white">Malware</strong> inclui vírus, worms, cavalos de Troia, keyloggers, spyware e adware. Eles são projetados
+    para invadir a privacidade, roubar informações, danificar o computador ou corromper dados. É importante que você proteja os computadores
+    e dispositivos móveis com software antimalware de qualidade.
+  </p>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+        <h5 class="text-white"><i class="fas fa-shield-virus me-2" style="color: var(--cisco-green)"></i> Tipos de Proteção Antimalware</h5>
+        <ul class="cisco-list">
+          <li><strong class="text-white">Proteção antivírus</strong> - Monitora continuamente a presença de vírus. Quando detectado, o usuário é avisado e o programa tenta colocar o vírus em quarentena ou excluí-lo.</li>
+          <li><strong class="text-white">Proteção contra adware</strong> - Procura continuamente por programas que exibam publicidade indesejada no computador.</li>
+          <li><strong class="text-white">Proteção contra phishing</strong> - Bloqueia endereços IP de sites de phishing conhecidos e avisa o usuário sobre sites suspeitos.</li>
+          <li><strong class="text-white">Proteção contra spyware</strong> - Verifica keyloggers e outros spywares que monitoram atividades do usuário.</li>
+          <li><strong class="text-white">Fontes confiáveis/não confiáveis</strong> - Este programa avisa sobre programas inseguros prestes a serem instalados ou sites inseguros antes de serem visitados.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <!-- Simulação do Windows Defender Security Center -->
+      <div class="defender-demo" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+        <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+          <span class="text-white small">Windows Defender Security Center</span>
+        </div>
+        <div class="p-3">
+          <h5 class="text-white mb-3">Security at a glance</h5>
+          <p class="small text-secondary mb-3">See what's happening with the security and health of your device and take any actions needed.</p>
+
+          <div class="status-item d-flex justify-content-between align-items-center p-2 mb-2" style="background: #0a0a0a; border-radius: 8px">
+            <span><i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i> Virus & threat protection</span>
+            <span class="badge-cisco">No actions needed</span>
+          </div>
+          <div class="status-item d-flex justify-content-between align-items-center p-2 mb-2" style="background: #0a0a0a; border-radius: 8px">
+            <span><i class="fas fa-user-shield me-2" style="color: var(--cisco-green)"></i> Account protection</span>
+            <span class="badge-cisco">No action needed</span>
+          </div>
+          <div class="status-item d-flex justify-content-between align-items-center p-2 mb-2" style="background: #0a0a0a; border-radius: 8px">
+            <span><i class="fas fa-firewall me-2" style="color: var(--cisco-green)"></i> Firewall & network protection</span>
+            <span class="badge-cisco">No action needed</span>
+          </div>
+          <div class="status-item d-flex justify-content-between align-items-center p-2 mb-2" style="background: #0a0a0a; border-radius: 8px">
+            <span><i class="fas fa-globe me-2" style="color: var(--cisco-green)"></i> App & browser control</span>
+            <span class="badge-cisco">No action needed</span>
+          </div>
+          <div class="status-item d-flex justify-content-between align-items-center p-2" style="background: #0a0a0a; border-radius: 8px">
+            <span><i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i> Device security</span>
+            <span class="badge-cisco">No action needed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert mt-4" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
+    <div class="d-flex">
+      <div class="me-3">
+        <i class="fas fa-info-circle fa-2x" style="color: #ffc107"></i>
+      </div>
+      <div>
+        <strong>Importante:</strong>
+        <p class="mb-0 mt-1">
+          O Windows Defender está <strong class="text-white">ativado por padrão</strong> para fornecer proteção em tempo real contra infecções.
+          Pode ser necessário usar vários programas diferentes e fazer várias varreduras para remover completamente todos os softwares
+          mal-intencionados. <strong class="text-white">Execute apenas um programa de proteção contra malware por vez.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <p class="mt-3">
+    Várias empresas de segurança confiáveis, como <strong class="text-white">McAfee, Symantec e Kaspersky</strong>, oferecem proteção completa
+    contra malware para computadores e dispositivos móveis. O Windows possui proteção interna contra vírus e spyware chamada
+    <strong class="text-white">Windows Defender</strong>.
+  </p>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-4">
+      <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+        <i class="fas fa-search fa-2x mb-2" style="color: var(--cisco-green)"></i>
+        <h5 class="text-white">Varreduras Manuais</h5>
+        <p class="small text-secondary mb-0">Execute varreduras manuais do computador e dispositivos de armazenamento quando necessário.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+        <i class="fas fa-sync-alt fa-2x mb-2" style="color: var(--cisco-green)"></i>
+        <h5 class="text-white">Atualizar Definições</h5>
+        <p class="small text-secondary mb-0">Na guia <strong>Atualizar</strong>, você pode atualizar manualmente as definições de vírus e spyware.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="p-3 text-center" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+        <i class="fas fa-history fa-2x mb-2" style="color: var(--cisco-green)"></i>
+        <h5 class="text-white">Histórico</h5>
+        <p class="small text-secondary mb-0">Na guia <strong>Histórico</strong>, você pode ver todos os itens encontrados durante varreduras anteriores.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <span class="badge-cisco">
+      <i class="fas fa-lightbulb me-1"></i>
+      Dica: Para abrir o Windows Defender, procure por "Windows Security" ou "Windows Defender Security Center" no menu Iniciar.
+    </span>
+  </div>
+</div>
+
+<!-- 7.4.6 Windows Defender Firewall -->
+<div id="windows-firewall" class="content-card mt-4">
+  <h3 class="cisco-subtitle">7.4.6 Windows Defender Firewall</h3>
+
+  <p>
+    Um <strong class="text-white">firewall</strong> nega, seletivamente, o tráfego a um computador ou a um segmento de rede. Os firewalls
+    trabalham, geralmente, abrindo e fechando as portas usadas por vários aplicativos.
+  </p>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+        <h5 class="text-white"><i class="fas fa-ban me-2" style="color: var(--cisco-green)"></i> Política Restritiva</h5>
+        <p class="small text-secondary">
+          Ao abrir apenas as portas necessárias em um firewall, você está implementando uma política de segurança restritiva.
+          <strong class="text-white">Qualquer pacote não explicitamente permitido é negado.</strong>
+        </p>
+        <div class="mt-2 p-2" style="background: #0a0a0a; border-radius: 8px">
+          <p class="small text-secondary mb-0">
+            <i class="fas fa-check-circle me-1" style="color: var(--cisco-green)"></i> Padrão atual: configurações mais restritivas possível
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(255, 75, 75, 0.05); border-radius: 12px">
+        <h5 class="text-white"><i class="fas fa-door-open me-2" style="color: #ff4b4b"></i> Política Permissiva</h5>
+        <p class="small text-secondary">
+          Uma política de segurança permissiva permite acesso por todas as portas, exceto aquelas explicitamente negadas.
+          <strong class="text-white">Configurações permissivas padrão deixavam muitos dispositivos expostos a invasores.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Simulação do Firewall -->
+  <div class="firewall-demo mt-4" style="background: #1a1a1a; border-radius: 12px; overflow: hidden">
+    <div class="p-2" style="background: #0a0a0a; border-bottom: 1px solid #333">
+      <span class="text-white small">Windows Defender Firewall</span>
+    </div>
+    <div class="p-3">
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="p-2 text-center" style="background: #0a0a0a; border-radius: 8px">
+            <div class="fw-bold text-white">Domain networks</div>
+            <div class="small text-secondary">Network at a workplace that are attached to a domain</div>
+            <div class="mt-2"><span class="badge-cisco">On</span></div>
+            <div class="small text-secondary mt-1">Block all connections to apps not on the list</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-2 text-center" style="background: #0a0a0a; border-radius: 8px">
+            <div class="fw-bold text-white">Private networks</div>
+            <div class="small text-secondary">Networks at home or work where you trust the devices</div>
+            <div class="mt-2"><span class="badge-cisco">On</span></div>
+            <div class="small text-secondary mt-1">Block all connections to apps not on the list</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-2 text-center" style="background: #0a0a0a; border-radius: 8px">
+            <div class="fw-bold text-white">Guest or public networks</div>
+            <div class="small text-secondary">Networks in public places such as airports or coffee shops</div>
+            <div class="mt-2"><span class="badge-cisco">On</span></div>
+            <div class="small text-secondary mt-1">Block all connections to apps not on the list</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 p-3" style="background: #0a0a0a; border-radius: 8px">
+        <div class="text-secondary small mb-2">Control Panel Home</div>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge-modulo">Allow an app or feature through Windows Defender Firewall</span>
+          <span class="badge-modulo">Change notification settings</span>
+          <span class="badge-modulo">Turn Windows Defender Firewall on or off</span>
+          <span class="badge-modulo">Restore defaults</span>
+          <span class="badge-modulo">Advanced settings</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="mt-4">
+    Para permitir o acesso ao programa através do Firewall do Windows Defender, procure por <strong class="text-white">Painel de Controle</strong>.
+    Em <strong class="text-white">Sistemas e Segurança</strong>, localize o <strong class="text-white">Firewall do Windows Defender</strong>.
+    Clique em <strong class="text-white">Permitir um aplicativo ou recurso por meio do Firewall do Windows Defender</strong>.
+  </p>
+
+  <div class="row g-4 mt-2">
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+        <h5 class="text-white"><i class="fas fa-power-off me-2" style="color: var(--cisco-green)"></i> Desativar o Firewall</h5>
+        <p class="small text-secondary">
+          Se desejar usar um firewall por software diferente, você precisará desativar o firewall do Windows. Para desativar, clique em
+          <strong class="text-white">Ativar ou desativar o Firewall do Windows</strong>.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+        <h5 class="text-white"><i class="fas fa-cog me-2" style="color: var(--cisco-green)"></i> Configurações Avançadas</h5>
+        <p class="small text-secondary">
+          Muitas configurações adicionais podem ser encontradas em <strong class="text-white">Configurações avançadas</strong>. Aqui você pode
+          criar regras de tráfego de entrada ou saída com base em critérios diferentes. Você também pode importar e exportar políticas ou
+          monitorar diferentes aspectos do firewall.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <span class="badge-cisco">
+      <i class="fas fa-lightbulb me-1"></i>
+      Dica: Use as configurações avançadas do firewall para criar regras específicas para aplicativos que precisam de acesso à rede.
+    </span>
+  </div>
+</div>
+
+<!-- 7.4.7 Verifique sua compreensão - Identifique a ferramenta do Windows -->
+<div id="verifique-compreensao" class="content-card mt-4">
+  <h3 class="cisco-subtitle">7.4.7 Verifique sua compreensão - Identifique a ferramenta do Windows</h3>
+
+  <p>Teste seus conhecimentos sobre as ferramentas de segurança e administração do Windows respondendo às perguntas abaixo.</p>
+
+  <!-- Pergunta 1 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 1</h5>
+    <p class="text-white">Qual ferramenta do Windows nega seletivamente o tráfego para um computador ou segmento de rede?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q1" id="q1_a" value="resource-monitor">
+        <label class="form-check-label text-secondary" for="q1_a">Resource Monitor</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q1" id="q1_b" value="task-manager">
+        <label class="form-check-label text-secondary" for="q1_b">Gerenciador de Tarefas</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q1" id="q1_c" value="windows-defender">
+        <label class="form-check-label text-secondary" for="q1_c">Windows Defender</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q1" id="q1_d" value="firewall">
+        <label class="form-check-label text-secondary" for="q1_d">Firewall do Windows Defender</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q1" id="q1_e" value="event-viewer">
+        <label class="form-check-label text-secondary" for="q1_e">Visualizador de Eventos</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q1" id="q1_f" value="registry">
+        <label class="form-check-label text-secondary" for="q1_f">Registro do Windows</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="1" data-answer="firewall">Verificar</button>
+  </div>
+
+  <!-- Pergunta 2 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 2</h5>
+    <p class="text-white">Qual ferramenta do Windows registra histórico, aplicativos, segurança e eventos do sistema?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q2" id="q2_a" value="firewall">
+        <label class="form-check-label text-secondary" for="q2_a">Firewall do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q2" id="q2_b" value="event-viewer">
+        <label class="form-check-label text-secondary" for="q2_b">Visualizador de Eventos</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q2" id="q2_c" value="registry">
+        <label class="form-check-label text-secondary" for="q2_c">Registro do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q2" id="q2_d" value="resource-monitor">
+        <label class="form-check-label text-secondary" for="q2_d">Resource Monitor</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q2" id="q2_e" value="windows-defender">
+        <label class="form-check-label text-secondary" for="q2_e">Windows Defender</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q2" id="q2_f" value="task-manager">
+        <label class="form-check-label text-secondary" for="q2_f">Gerenciador de Tarefas</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="2" data-answer="event-viewer">Verificar</button>
+  </div>
+
+  <!-- Pergunta 3 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 3</h5>
+    <p class="text-white">Qual ferramenta ou comando do Windows pode ser usado para procurar conexões TCP de entrada ou saída em um host Windows que não estão autorizadas?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q3" id="q3_a" value="regedit">
+        <label class="form-check-label text-secondary" for="q3_a">Regedit</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q3" id="q3_b" value="nslookup">
+        <label class="form-check-label text-secondary" for="q3_b">Nslookup</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q3" id="q3_c" value="netstat">
+        <label class="form-check-label text-secondary" for="q3_c">Netstat</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q3" id="q3_d" value="resource-monitor">
+        <label class="form-check-label text-secondary" for="q3_d">Monitor de recursos</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q3" id="q3_e" value="network">
+        <label class="form-check-label text-secondary" for="q3_e">Rede</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q3" id="q3_f" value="network-center">
+        <label class="form-check-label text-secondary" for="q3_f">Centro de Rede e Compartilhamento</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="3" data-answer="netstat">Verificar</button>
+  </div>
+
+  <!-- Pergunta 4 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 4</h5>
+    <p class="text-white">Qual ferramenta do Windows fornece informações sobre recursos, configurações e problemas?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q4" id="q4_a" value="task-manager">
+        <label class="form-check-label text-secondary" for="q4_a">Gerenciador de Tarefas</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q4" id="q4_b" value="event-viewer">
+        <label class="form-check-label text-secondary" for="q4_b">Visualizador de Eventos</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q4" id="q4_c" value="windows-defender">
+        <label class="form-check-label text-secondary" for="q4_c">Windows Defender</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q4" id="q4_d" value="firewall">
+        <label class="form-check-label text-secondary" for="q4_d">Firewall do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q4" id="q4_e" value="registry">
+        <label class="form-check-label text-secondary" for="q4_e">Registro do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q4" id="q4_f" value="resource-monitor">
+        <label class="form-check-label text-secondary" for="q4_f">Resource Monitor</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="4" data-answer="resource-monitor">Verificar</button>
+  </div>
+
+  <!-- Pergunta 5 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 5</h5>
+    <p class="text-white">Qual ferramenta do Windows é a proteção interna contra vírus e spyware?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q5" id="q5_a" value="registry">
+        <label class="form-check-label text-secondary" for="q5_a">Registro do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q5" id="q5_b" value="resource-monitor">
+        <label class="form-check-label text-secondary" for="q5_b">Resource Monitor</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q5" id="q5_c" value="event-viewer">
+        <label class="form-check-label text-secondary" for="q5_c">Visualizador de Eventos</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q5" id="q5_d" value="windows-defender">
+        <label class="form-check-label text-secondary" for="q5_d">Windows Defender</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q5" id="q5_e" value="firewall">
+        <label class="form-check-label text-secondary" for="q5_e">Firewall do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q5" id="q5_f" value="task-manager">
+        <label class="form-check-label text-secondary" for="q5_f">Gerenciador de Tarefas</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="5" data-answer="windows-defender">Verificar</button>
+  </div>
+
+  <!-- Pergunta 6 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 6</h5>
+    <p class="text-white">Qual comando ou ferramenta localiza o endereço IP de um servidor a partir de uma URL?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q6" id="q6_a" value="net-session">
+        <label class="form-check-label text-secondary" for="q6_a">Net Session</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q6" id="q6_b" value="network">
+        <label class="form-check-label text-secondary" for="q6_b">Rede</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q6" id="q6_c" value="netstat">
+        <label class="form-check-label text-secondary" for="q6_c">Netstat</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q6" id="q6_d" value="registry">
+        <label class="form-check-label text-secondary" for="q6_d">Registro do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q6" id="q6_e" value="nslookup">
+        <label class="form-check-label text-secondary" for="q6_e">Nslookup</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="6" data-answer="nslookup">Verificar</button>
+  </div>
+
+  <!-- Pergunta 7 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 7</h5>
+    <p class="text-white">Qual ferramenta do Windows fornece informações sobre aplicativos, processos e serviços em execução no computador?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q7" id="q7_a" value="resource-monitor">
+        <label class="form-check-label text-secondary" for="q7_a">Resource Monitor</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q7" id="q7_b" value="registry">
+        <label class="form-check-label text-secondary" for="q7_b">Registro do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q7" id="q7_c" value="task-manager">
+        <label class="form-check-label text-secondary" for="q7_c">Gerenciador de Tarefas</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q7" id="q7_d" value="event-viewer">
+        <label class="form-check-label text-secondary" for="q7_d">Visualizador de Eventos</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q7" id="q7_e" value="firewall">
+        <label class="form-check-label text-secondary" for="q7_e">Firewall do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q7" id="q7_f" value="windows-defender">
+        <label class="form-check-label text-secondary" for="q7_f">Windows Defender</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="7" data-answer="task-manager">Verificar</button>
+  </div>
+
+  <!-- Pergunta 8 -->
+  <div class="quiz-question p-3 mb-4" style="background: #1a1a1a; border-radius: 12px">
+    <h5 class="text-white mb-3">Pergunta 8</h5>
+    <p class="text-white">Qual ferramenta do Windows é o banco de dados que armazena todas as informações sobre hardware, aplicativos, usuários e configurações do sistema?</p>
+    <div class="quiz-options">
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q8" id="q8_a" value="task-manager">
+        <label class="form-check-label text-secondary" for="q8_a">Gerenciador de Tarefas</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q8" id="q8_b" value="windows-defender">
+        <label class="form-check-label text-secondary" for="q8_b">Windows Defender</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q8" id="q8_c" value="event-viewer">
+        <label class="form-check-label text-secondary" for="q8_c">Visualizador de Eventos</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q8" id="q8_d" value="resource-monitor">
+        <label class="form-check-label text-secondary" for="q8_d">Resource Monitor</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q8" id="q8_e" value="firewall">
+        <label class="form-check-label text-secondary" for="q8_e">Firewall do Windows</label>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="radio" name="q8" id="q8_f" value="registry">
+        <label class="form-check-label text-secondary" for="q8_f">Registro do Windows</label>
+      </div>
+    </div>
+    <div class="quiz-feedback mt-2 small" style="display: none;"></div>
+    <button class="btn-check-answer btn-sm mt-2" style="background: var(--cisco-green); color: #0a0a0a; border: none; padding: 4px 12px; border-radius: 4px;" data-question="8" data-answer="registry">Verificar</button>
+  </div>
+
+  <div class="mt-4 text-center">
+    <button id="reset-quiz" class="btn" style="background: #2a2a2a; color: var(--cisco-green); border: 1px solid var(--cisco-green);">Resetar todas as respostas</button>
+  </div>
+</div>
+
+  <div class="mt-4">
+    <span class="badge-cisco">
+      <i class="fas fa-lightbulb me-1"></i>
+      Dica: Use o Monitor de Recursos quando o Gerenciador de Tarefas não fornecer detalhes suficientes. A guia de Rede é essencial para
+      detectar atividades suspeitas de malware.
+    </span>
+  </div>
+</div>
+<!-- ========================================= -->
+<!-- 7.5 RESUMO DO SISTEMA OPERACIONAL WINDOWS -->
+<!-- ========================================= -->
+<section id="resumo-windows" class="mt-5">
+  <h2 class="cisco-title display-6 mb-4">7.5 Resumo do Sistema Operacional Windows</h2>
+
+  <!-- Resumo 7.1 - Histórico do Windows -->
+  <div class="content-card">
+    <h3 class="cisco-subtitle">📜 7.1 Histórico do Windows</h3>
+    <p>
+      Os primeiros computadores precisaram de um <strong class="text-white">Sistema Operacional de Disco (DOS)</strong> para criar e gerenciar arquivos.
+      A Microsoft desenvolveu o <strong class="text-white">MS-DOS</strong> como uma interface de linha de comando (CLI) para acessar a unidade de disco
+      e carregar os arquivos do sistema operacional.
+    </p>
+    <p>
+      As versões anteriores do Windows consistiam em uma <strong class="text-white">Interface Gráfica do Usuário (GUI)</strong> que executava o MS-DOS.
+      No entanto, as versões modernas do Windows estão no controle direto do computador e seu hardware e suportam vários processos de usuário. Isso é
+      muito diferente do MS-DOS de processo único e apenas um usuário.
+    </p>
+    <p>
+      Desde 1993, houve mais de 20 lançamentos do Windows baseados no sistema operacional <strong class="text-white">NT</strong>. Os usuários usam uma
+      GUI do Windows para trabalhar com arquivos de dados e software. A GUI tem uma área principal conhecida como <strong class="text-white">Área de Trabalho</strong>
+      e uma <strong class="text-white">Barra de Tarefas</strong> situada abaixo da área de trabalho. A Barra de Tarefas inclui o menu Iniciar, ícones de
+      inicialização rápida e uma área de notificação.
+    </p>
+    <p>
+      O Windows tem muitas vulnerabilidades. Recomendações para proteger o sistema operacional Windows incluem o uso de proteção contra vírus ou malware,
+      uso de senhas fortes, uso de firewall e uso limitado da conta de administrador, entre outras.
+    </p>
+  </div>
+
+  <!-- Resumo 7.2 - Arquitetura e operações do Windows -->
+  <div class="content-card mt-4">
+    <h3 class="cisco-subtitle">🏗️ 7.2 Arquitetura e operações do Windows</h3>
+    <p>
+      O Windows consiste em uma <strong class="text-white">Camada de Abstração de Hardware (HAL)</strong> que é um software que lida com toda a comunicação
+      entre o hardware e o <strong class="text-white">kernel</strong>. O kernel tem controle sobre todo o computador e lida com solicitações de entrada e
+      saída, memória e todos os periféricos conectados ao computador.
+    </p>
+    <p>
+      O Windows opera em dois modos diferentes:
+    </p>
+    <ul class="cisco-list">
+      <li><strong class="text-white">Modo de usuário</strong> - A maioria dos programas do Windows são executados neste modo.</li>
+      <li><strong class="text-white">Modo kernel</strong> - Permite o acesso direto do código do sistema operacional ao hardware do computador.</li>
+    </ul>
+    <p>
+      O Windows suporta vários sistemas de arquivos diferentes, mas o <strong class="text-white">NTFS</strong> é o mais utilizado. Os volumes NTFS incluem
+      o setor de inicialização de partição, tabela de arquivos mestre, arquivos de sistema e a área de arquivo.
+    </p>
+    <p>
+      Quando um computador inicializa, ele primeiro acessa as informações do sistema e o código armazenados no hardware do BIOS. O código de inicialização
+      do BIOS executa um auto-teste do sistema chamado <strong class="text-white">POST</strong>, localiza e carrega o sistema operacional Windows e carrega
+      outros programas associados para iniciar o sistema operacional. O Windows deve ser sempre desligado corretamente.
+    </p>
+    <p>
+      Um computador funciona armazenando instruções na RAM até que a CPU os processe. Cada processo em um computador Windows de 32 bits suporta um espaço
+      de endereço virtual que permite endereçar até <strong class="text-white">4 gigabytes</strong>. Cada processo num computador Windows de 64 bits suporta
+      um espaço de endereço virtual de até <strong class="text-white">8 terabytes</strong>.
+    </p>
+    <p>
+      O Windows armazena todas as informações sobre hardware, aplicativos, usuários e configurações do sistema em um banco de dados grande conhecido como
+      o <strong class="text-white">Registro</strong>. O registro é um banco de dados hierárquico onde o nível mais alto é conhecido como um
+      <strong class="text-white">ramo (hive)</strong>, abaixo que existem chaves, seguindo por subchaves. Existem cinco seções de registro que contêm dados
+      relativos à configuração e operação do Windows. Existem centenas de chaves e subchaves.
+    </p>
+  </div>
+
+  <!-- Resumo 7.3 - Configuração e monitoramento do Windows -->
+  <div class="content-card mt-4">
+    <h3 class="cisco-subtitle">⚙️ 7.3 Configuração e monitoramento do Windows</h3>
+    <p>
+      Por razões de segurança, <strong class="text-white">não é aconselhável iniciar sessão no Windows utilizando a conta de Administrador</strong> ou
+      uma conta com privilégios administrativos. Não dê privilégios administrativos aos usuários padrão. Não ative a conta Convidados, a menos que o
+      computador seja usado por muitas pessoas diferentes que não tenham contas.
+    </p>
+    <p>
+      Use <strong class="text-white">grupos do Windows</strong> para facilitar a administração de usuários. Usuários e grupos locais são gerenciados com
+      o applet do painel de controle <code class="text-white">lusrmgr.msc</code>.
+    </p>
+    <p>
+      Você pode usar a <strong class="text-white">CLI</strong> (Command Prompt) ou o <strong class="text-white">Windows PowerShell</strong> para executar
+      comandos. O PowerShell pode ser usado para criar scripts para automatizar tarefas que a CLI normal não consegue automatizar.
+    </p>
+    <p>
+      A <strong class="text-white">Instrumentação de Gerenciamento do Windows (WMI)</strong> é usada para gerenciar computadores remotos. O comando
+      <code class="text-white">net</code> pode ser combinado com switches para focar em uma saída específica.
+    </p>
+    <p>
+      O <strong class="text-white">Gerenciador de Tarefas</strong> fornece muitas informações sobre o que está sendo executado e o desempenho geral do
+      computador. O <strong class="text-white">Monitor de Recursos</strong> fornece informações mais detalhadas sobre o uso de recursos.
+    </p>
+    <p>
+      O <strong class="text-white">Centro de Rede e Compartilhamento</strong> é utilizado para configurar as propriedades de rede do Windows e testar as
+      definições de rede. O protocolo <strong class="text-white">SMB (Server Message Block)</strong> é usado para compartilhar recursos de rede, como
+      arquivos em hosts remotos. O formato <strong class="text-white">UNC (Convenção Universal de Nomenclatura)</strong> é usado para se conectar a recursos.
+    </p>
+    <p>
+      O <strong class="text-white">Windows Server</strong> é uma edição do Windows que é usada principalmente em data centers. Ele fornece serviços de rede,
+      arquivos, Web e gerenciamento para uma rede ou domínio do Windows.
+    </p>
+  </div>
+
+  <!-- Resumo 7.4 - Segurança do Windows -->
+  <div class="content-card mt-4">
+    <h3 class="cisco-subtitle">🛡️ 7.4 Segurança do Windows</h3>
+    <p>
+      O malware pode abrir portas de comunicação para se comunicar e espalhar. O comando <strong class="text-white">netstat</strong> do Windows exibe todas
+      as portas de comunicação abertas em um computador e também pode exibir os processos de software associados às portas. Isso permite que softwares
+      potencialmente mal-intencionados desconhecidos sejam identificados e desativados.
+    </p>
+    <p>
+      O <strong class="text-white">Visualizador de Eventos</strong> do Windows fornece acesso a vários eventos registrados em relação à operação de um
+      computador. O registro do Windows registra eventos de aplicativos e serviços do Windows. Os níveis de gravidade de eventos registrados variam por
+      meio das informações, advertência, erro ou níveis críticos.
+    </p>
+    <p>
+      É muito importante manter o Windows atualizado para se proteger contra novas ameaças à segurança. Os <strong class="text-white">patches de software</strong>,
+      as <strong class="text-white">atualizações</strong> e os <strong class="text-white">service packs</strong> abordam as vulnerabilidades de segurança
+      à medida que são descobertas. O Windows deve ser configurado para baixar e instalar atualizações automaticamente à medida que elas se tornarem disponíveis.
+      O Windows pode ser configurado para instalar e reiniciar um computador em horários especificados do dia.
+    </p>
+  </div>
+
+  <!-- Tabela de Ferramentas de Segurança do Windows -->
+  <div class="content-card mt-4">
+    <h3 class="cisco-subtitle">📋 Ferramentas de Segurança do Windows - Referência Rápida</h3>
+    <div class="table-responsive">
+      <table class="table table-cisco">
+        <thead>
+          <tr>
+            <th>Ferramenta/Comando</th>
+            <th>Função Principal</th>
+            <th>Como Acessar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong class="text-white">netstat -abno</strong></td>
+            <td>Exibe portas abertas e processos associados (detecção de malware)</td>
+            <td><code>Prompt como Admin → netstat -abno</code></td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">Visualizador de Eventos</strong></td>
+            <td>Registra eventos de aplicativos, segurança e sistema</td>
+            <td><code>eventvwr.msc</code></td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">Windows Update</strong></td>
+            <td>Mantém o sistema atualizado com patches de segurança</td>
+            <td>Configurações → Atualização e Segurança</td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">Windows Defender</strong></td>
+            <td>Proteção em tempo real contra vírus e malware</td>
+            <td>Windows Security → Virus & threat protection</td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">Windows Defender Firewall</strong></td>
+            <td>Controla tráfego de rede de entrada e saída</td>
+            <td>Painel de Controle → Firewall do Windows</td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">Gerenciador de Tarefas</strong></td>
+            <td>Monitora processos, desempenho e serviços</td>
+            <td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd></td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">Resource Monitor</strong></td>
+            <td>Informações detalhadas de CPU, memória, disco e rede</td>
+            <td><code>resmon</code></td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">Registro do Windows</strong></td>
+            <td>Banco de dados de configurações do sistema</td>
+            <td><code>regedit</code></td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">nslookup</strong></td>
+            <td>Testa resolução de DNS (URL → IP)</td>
+            <td><code>nslookup cisco.com</code></td>
+          </tr>
+          <tr>
+            <td><strong class="text-white">lusrmgr.msc</strong></td>
+            <td>Gerencia usuários e grupos locais</td>
+            <td><code>lusrmgr.msc</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Bloco de Conceitos Fundamentais -->
+  <div class="content-card mt-4">
+    <h3 class="cisco-subtitle">💡 Conceitos Fundamentais do Windows</h3>
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-microchip me-2" style="color: var(--cisco-green)"></i> Arquitetura</h5>
+          <ul class="small text-secondary mb-0">
+            <li><strong>HAL</strong> - Camada de abstração entre hardware e kernel</li>
+            <li><strong>Kernel</strong> - Núcleo do SO com controle total do sistema</li>
+            <li><strong>Modo Usuário</strong> - Aplicativos, acesso restrito</li>
+            <li><strong>Modo Kernel</strong> - Código do SO, acesso irrestrito</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-database me-2" style="color: var(--cisco-green)"></i> Armazenamento</h5>
+          <ul class="small text-secondary mb-0">
+            <li><strong>NTFS</strong> - Sistema de arquivos principal</li>
+            <li><strong>Registro</strong> - Banco de dados de configurações</li>
+            <li><strong>ADS</strong> - Fluxos de dados alternativos (segurança)</li>
+            <li><strong>UNC Path</strong> - Formato para recursos de rede (\servidor\recurso)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i> Segurança</h5>
+          <ul class="small text-secondary mb-0">
+            <li><strong>Princípio do Menor Privilégio</strong> - Usar conta padrão</li>
+            <li><strong>UAC</strong> - Controle de Conta de Usuário</li>
+            <li><strong>Windows Defender</strong> - Proteção antimalware</li>
+            <li><strong>Firewall</strong> - Controle de tráfego de rede</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+          <h5 class="text-white"><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> Administração</h5>
+          <ul class="small text-secondary mb-0">
+            <li><strong>PowerShell</strong> - Automação avançada</li>
+            <li><strong>WMI</strong> - Gerenciamento remoto</li>
+            <li><strong>Comando net</strong> - Administração de rede e usuários</li>
+            <li><strong>Group Policy</strong> - Políticas de segurança</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boas Práticas de Segurança -->
+  <div class="content-card mt-4">
+    <h3 class="cisco-subtitle">✅ Boas Práticas de Segurança - Checklist</h3>
+    <div class="row g-3 mt-2">
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Não usar conta Administrador no dia a dia</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Manter o Windows Update ativo</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Usar senhas fortes e complexas</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Manter o Windows Defender ativo</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Firewall ativo com política restritiva</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Monitorar conexões com netstat -abno</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Revisar logs no Visualizador de Eventos</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Usar grupos para gerenciar permissões</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-2 d-flex align-items-center gap-2">
+          <i class="fas fa-check-circle" style="color: var(--cisco-green)"></i>
+          <span class="small">Bloquear tela ao ausentar-se</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conclusão -->
+  <div class="content-card mt-4" style="background: linear-gradient(135deg, rgba(102, 191, 83, 0.1) 0%, rgba(0, 0, 0, 0) 100%); border-left: 4px solid var(--cisco-green);">
+    <div class="d-flex flex-wrap align-items-center gap-4">
+      <div class="flex-shrink-0 text-center">
+        <i class="fas fa-flag-checkered fa-3x" style="color: var(--cisco-green)"></i>
+      </div>
+      <div>
+        <h4 class="text-white mb-2">Conclusão do Módulo 7</h4>
+        <p class="mb-0">
+          O Windows é um sistema operacional complexo e poderoso que oferece inúmeras ferramentas para administração, monitoramento e segurança.
+          Compreender sua arquitetura, componentes e ferramentas de segurança é essencial para profissionais de TI e segurança cibernética.
+          As práticas recomendadas apresentadas neste módulo ajudam a proteger sistemas contra ameaças e garantir operações confiáveis.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
     </main>
 
     <!-- FOOTER -->
@@ -2571,7 +5738,8 @@ Background processes (23)
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-
+<script src="../js/drpdow.js"></script>
+    <script src="../js/main.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const progressBar = document.getElementById('readingProgress')
@@ -2641,5 +5809,48 @@ Background processes (23)
         }
       })
     </script>
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Função para verificar respostas
+    document.querySelectorAll('.btn-check-answer').forEach(button => {
+      button.addEventListener('click', function() {
+        const questionDiv = this.closest('.quiz-question');
+        const selectedOption = questionDiv.querySelector('input[type="radio"]:checked');
+        const feedbackDiv = questionDiv.querySelector('.quiz-feedback');
+        const correctAnswer = this.getAttribute('data-answer');
+
+        if (!selectedOption) {
+          feedbackDiv.innerHTML = '<span style="color: #ffc107;">⚠️ Por favor, selecione uma resposta primeiro.</span>';
+          feedbackDiv.style.display = 'block';
+          return;
+        }
+
+        const selectedValue = selectedOption.value;
+
+        if (selectedValue === correctAnswer) {
+          feedbackDiv.innerHTML = '<span style="color: var(--cisco-green);">✅ Correto! Excelente!</span>';
+          feedbackDiv.style.display = 'block';
+          this.disabled = true;
+        } else {
+          feedbackDiv.innerHTML = '<span style="color: #ff4b4b;">❌ Incorreto. Tente novamente!</span>';
+          feedbackDiv.style.display = 'block';
+        }
+      });
+    });
+
+    // Botão de reset
+    document.getElementById('reset-quiz').addEventListener('click', function() {
+      document.querySelectorAll('.quiz-question').forEach(question => {
+        const radios = question.querySelectorAll('input[type="radio"]');
+        radios.forEach(radio => radio.checked = false);
+        const feedback = question.querySelector('.quiz-feedback');
+        feedback.style.display = 'none';
+        feedback.innerHTML = '';
+        const button = question.querySelector('.btn-check-answer');
+        button.disabled = false;
+      });
+    });
+  });
+</script>
   </body>
 </html>

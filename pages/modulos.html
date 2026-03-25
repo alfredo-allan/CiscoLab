@@ -14,6 +14,7 @@
     <!-- BOOTSTRAP CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/modulos.css" />
+    <link rel="stylesheet" href="../css/dropdow.css" />
   </head>
   <body>
     <!-- NAVBAR SIMPLES -->
@@ -661,24 +662,234 @@
               <span><i class="fas fa-cube me-2"></i>Módulo 7</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
             </div>
-            <span class="badge-modulo mb-2">Wi-Fi e Segurança</span>
+            <span class="badge-modulo mb-2">Windows - Arquitetura e Segurança</span>
 
+            <!-- HISTÓRICO DO WINDOWS -->
             <div class="modulo-categoria">
               <div class="categoria-header" onclick="toggleCategoria(event, this)">
-                <i class="fas fa-wifi"></i> WIRELESS
+                <i class="fas fa-history"></i> HISTÓRICO DO WINDOWS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>7.1 Fundamentos Wireless</a>
+                  <a href="/pages/modulo_7.html#historia-dos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.1 Sistema Operacional de Disco (DOS)
+                  </a>
                 </li>
                 <li>
-                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>7.2 WPA2/3</a>
+                  <a href="/pages/modulo_7.html#versoes-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.2 Versões do Windows (7, 8, 10, 11, Server)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#windows-gui" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.3 Windows GUI (Área de Trabalho, Barra de Tarefas)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#vulnerabilidades" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.4 Vulnerabilidades do SO
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#personalizacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.5 Personalização e Menu de Contexto
+                  </a>
                 </li>
               </ul>
             </div>
 
-            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
+            <!-- ARQUITETURA E OPERAÇÕES -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-microchip"></i> ARQUITETURA E OPERAÇÕES
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_7.html#hal" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.1 Camada de Abstração de Hardware (HAL)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#user-kernel-mode" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.2 Modo de Usuário e Modo Kernel
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#sistemas-arquivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.3 Sistemas de Arquivos do Windows
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#fluxos-dados" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.4 Fluxos de Dados Alternativos (ADS)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#processo-inicializacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.5 Processo de Inicialização do Windows
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#inicializacao-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.6 Inicialização do Windows (MSConfig)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#desligamento-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.7 Desligamento do Windows
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#processos-threads" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.8 Processos, Threads e Serviços
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#alocacao-memoria" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.9 Alocação e Alças de Memória
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#registro-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.10 O Registro do Windows
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CONFIGURAÇÃO E MONITORAMENTO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-sliders-h"></i> CONFIGURAÇÃO E MONITORAMENTO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_7.html#executar-como-administrador" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.1 Executar como Administrador
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#usuarios-dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.2 Usuários e Domínios Locais
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#cli-powershell" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.3 CLI e PowerShell
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#wmi" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.4 Instrumentação de Gerenciamento do Windows (WMI)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#comando-net" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.5 O Comando net
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#gerenciador-recursos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.6 Gerenciador de Tarefas e Monitor de Recursos
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#rede" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.7 Rede (Centro de Rede, nslookup, netstat)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- SEGURANÇA DO WINDOWS -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-shield-alt"></i> SEGURANÇA DO WINDOWS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_7.html#netstat-seguranca" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.1 O Comando netstat (Detecção de Malware)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#visualizador-eventos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.2 Visualizador de Eventos
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#windows-update" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.3 Gerenciamento de atualizações do Windows
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#politica-seguranca-local" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.4 Política de Segurança Local
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#windows-defender" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.5 Windows Defender (Antimalware)
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#windows-firewall" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.6 Windows Defender Firewall
+                  </a>
+                </li>
+                <li>
+                  <a href="/pages/modulo_7.html#verifique-compreensao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.7 Verifique sua compreensão (Quiz)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RESUMO DO MÓDULO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_7.html#resumo-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.5 Resumo do Sistema Operacional Windows
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- LABORATÓRIOS -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flask"></i> LABORATÓRIOS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="/pages/modulo_7.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.6.1 Lab - Linha de Comando (CMD)
+                  </a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()"> <i class="fas fa-chevron-right"></i>7.6.2 Lab - PowerShell (Em breve) </a>
+                </li>
+                <li>
+                  <a href="#" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.6.3 Lab - Gerenciador de Tarefas (Em breve)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="/pages/modulo_7.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
           </div>
 
           <!-- Módulo 8 -->
@@ -823,7 +1034,8 @@
 
     <!-- BOOTSTRAP JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/modulos.js"></script>
+    <script src="../js/drpdow.js"></script>
+    <script src="../js/main.js"></script>
     <script>
       // Função para toggle no mobile (expande/recolhe o card inteiro)
       function toggleModulo(elemento) {
