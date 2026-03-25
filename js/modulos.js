@@ -8,8 +8,8 @@ class CyberSecGlobalSearch {
       { path: '/pages/modulo_4.html', name: 'Módulo 4', title: 'Serviços e Mitigação' },
       { path: '/pages/modulo_5.html', name: 'Módulo 5', title: 'Comunicação de Rede Sem Fio' },
       { path: '/pages/modulo_6.html', name: 'Módulo 6', title: 'Infraestrutura de Segurança' },
-      { path: '/pages/modulo_7.html', name: 'Módulo 7', title: 'Sistema Operacional Windows' }
-
+      { path: '/pages/modulo_7.html', name: 'Módulo 7', title: 'Sistema Operacional Windows' },
+      { path: '/pages/modulo_8.html', name: 'Módulo 8', title: 'Visão Geral do Linux' }
     ]
 
     this.searchTimeout = null

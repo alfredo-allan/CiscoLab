@@ -26,23 +26,16 @@
     <nav
       class="navbar navbar-expand-lg sticky-top"
       style="
-        background-color: rgba(10, 10, 10, 0.98);
+        background-color: rgba(30, 30, 30, 0.98);
         border-bottom: 2px solid var(--cisco-green);
         backdrop-filter: blur(10px);
         padding: 0.8rem 0;
-        z-index: 1030;
       "
     >
       <div class="container">
-        <!-- Logo/Brand -->
-        <a
-          class="navbar-brand"
-          href="/index.html"
-          style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px"
-        >
-          <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
-          NET<span style="color: white">SEC</span>
-          <small style="font-size: 0.7rem; color: var(--text-muted); display: block; line-height: 1">☠ CyberSec | Estudos Cisco</small>
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
         </a>
 
         <!-- Toggler Mobile -->
@@ -78,7 +71,7 @@
                   border: 1px solid var(--border-primary);
                   max-height: 400px;
                   overflow-y: auto;
-                  min-width: 300px;
+                  min-width: 320px;
                 "
               >
                 <!-- INTRODUÇÃO -->
@@ -102,6 +95,173 @@
                 </li>
                 <li>
                   <a class="dropdown-item" href="#ferramentas-soc"><i class="fas fa-chevron-right me-2"></i>8.1.4 Ferramentas do SOC</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#ferramentas-linux"
+                    ><i class="fas fa-chevron-right me-2"></i>8.1.5 Kali Linux e Pentesting</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- TRABALHANDO NO LINUX SHELL -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">🖥️ TRABALHANDO NO LINUX SHELL</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#shell-linux"><i class="fas fa-chevron-right me-2"></i>8.2.1 O Shell Linux</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#comandos-basicos"><i class="fas fa-chevron-right me-2"></i>8.2.2 Comandos Básicos</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#comandos-arquivos"
+                    ><i class="fas fa-chevron-right me-2"></i>8.2.3 Comandos de arquivo e diretório</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#editores-texto"
+                    ><i class="fas fa-chevron-right me-2"></i>8.2.4 Trabalhando com arquivos de texto (nano)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#arquivos-texto"
+                    ><i class="fas fa-chevron-right me-2"></i>8.2.5 A importância dos arquivos de texto no Linux</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#comandos-adicionais"
+                    ><i class="fas fa-chevron-right me-2"></i>8.2.6 Comandos Adicionais</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- SERVIDORES E CLIENTES LINUX -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">🌐 SERVIDORES E CLIENTES LINUX</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#cliente-servidor"
+                    ><i class="fas fa-chevron-right me-2"></i>8.3.1 Introdução às comunicações cliente-servidor</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#portas-servicos"
+                    ><i class="fas fa-chevron-right me-2"></i>8.3.2 Servidores, serviços e suas portas</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#clientes"><i class="fas fa-chevron-right me-2"></i>8.3.3 Clientes</a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- ADMINISTRAÇÃO BÁSICA DO SERVIDOR -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">⚙️ ADMINISTRAÇÃO BÁSICA DO SERVIDOR</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#arquivos-configuracao"
+                    ><i class="fas fa-chevron-right me-2"></i>8.4.1 Arquivos de configuração de serviço</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#hardening"
+                    ><i class="fas fa-chevron-right me-2"></i>8.4.2 Dispositivos de endurecimento (Hardening)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#monitoramento-logs"
+                    ><i class="fas fa-chevron-right me-2"></i>8.4.3 Monitoramento de logs de serviço</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- O SISTEMA DE ARQUIVOS LINUX -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">📁 O SISTEMA DE ARQUIVOS LINUX</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#tipos-sistemas-arquivos"
+                    ><i class="fas fa-chevron-right me-2"></i>8.5.1 Tipos de sistema de arquivos no Linux</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#permissoes-arquivos"
+                    ><i class="fas fa-chevron-right me-2"></i>8.5.2 Permissões de arquivo no Linux</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#links-linux"
+                    ><i class="fas fa-chevron-right me-2"></i>8.5.3 Links rígidos e links simbólicos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#montagem-linux"
+                    ><i class="fas fa-chevron-right me-2"></i>8.5.4 Montagem de sistemas de arquivos</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- TRABALHANDO COM A GUI LINUX -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">🖼️ TRABALHANDO COM A GUI LINUX</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#x-window"><i class="fas fa-chevron-right me-2"></i>8.6.1 X Window System</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#gui-ubuntu"
+                    ><i class="fas fa-chevron-right me-2"></i>8.6.2 A GUI do Linux (Ubuntu/Gnome 3)</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- TRABALHANDO EM UM HOST LINUX -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">💻 TRABALHANDO EM UM HOST LINUX</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#gerenciadores-pacotes"
+                    ><i class="fas fa-chevron-right me-2"></i>8.7.1 Instalando e executando aplicativos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#atualizacoes"
+                    ><i class="fas fa-chevron-right me-2"></i>8.7.2 Manter o sistema atualizado</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#processos-linux"
+                    ><i class="fas fa-chevron-right me-2"></i>8.7.3 Gerenciamento de processos (ps, top, kill)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#malware-linux"><i class="fas fa-chevron-right me-2"></i>8.7.4 Malware em um host Linux</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#rootkit-linux"
+                    ><i class="fas fa-chevron-right me-2"></i>8.7.5 Verificação de Rootkit (chkrootkit)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#pipe-linux"
+                    ><i class="fas fa-chevron-right me-2"></i>8.7.6 Comandos de tubulação (Pipe |)</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- RESUMO DO MÓDULO -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">📌 RESUMO DO MÓDULO</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#resumo-linux"><i class="fas fa-chevron-right me-2"></i>8.8 Resumo do Linux</a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- LABORATÓRIOS -->
+                <li><h6 class="dropdown-header" style="color: var(--cisco-green)">🧪 LABORATÓRIOS</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>8.9.1 Lab - Comandos Básicos Linux</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>8.9.2 Lab - Análise de Logs</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>8.9.3 Lab - Wireshark no Linux</a>
                 </li>
               </ul>
             </li>
@@ -597,6 +757,2310 @@
               </div>
               <p class="text-muted small">Captura e análise de pacotes com Wireshark.</p>
               <span class="badge-cisco">Em breve</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 8.1.4 Ferramentas Linux (Kali) -->
+      <div class="content-card" id="ferramentas-linux">
+        <h3 class="cisco-subtitle">8.1.4 Ferramentas Linux para Pentesting</h3>
+        <p>
+          Além das ferramentas específicas de SOC, os computadores Linux que são usados no SOC geralmente contêm
+          <strong class="text-white">ferramentas de teste de penetração</strong>. Também conhecido como Pentesting, um teste de penetração é
+          o processo de procurar vulnerabilidades em uma rede ou computador atacando-o. Geradores de pacotes, scanners de porta e
+          explorações de prova de conceito são exemplos de ferramentas Pentesting.
+        </p>
+
+        <div class="row g-4 mt-2">
+          <div class="col-md-7">
+            <div class="p-3" style="background: #1a1a1a; border-radius: 12px">
+              <h5 class="text-white mb-3"><i class="fab fa-kali-linux me-2" style="color: var(--cisco-green)"></i> Kali Linux</h5>
+              <p class="small text-secondary">
+                <strong class="text-white">Kali Linux</strong> é uma distribuição Linux que agrupa muitas ferramentas de penetração juntas
+                em uma única distribuição. Kali contém uma grande variedade de ferramentas organizadas por categorias.
+              </p>
+              <div class="row">
+                <div class="col-6">
+                  <ul class="small text-secondary mb-0">
+                    <li>01 - Information Gathering</li>
+                    <li>02 - Vulnerability Analysis</li>
+                    <li>03 - Web Application Analysis</li>
+                    <li>04 - Database Assessment</li>
+                    <li>05 - Password Attacks</li>
+                    <li>06 - Wireless Attacks</li>
+                    <li>07 - Reverse Engineering</li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <ul class="small text-secondary mb-0">
+                    <li>08 - Exploitation Tools</li>
+                    <li>09 - Sniffing & Spoofing</li>
+                    <li>10 - Post Exploitation</li>
+                    <li>11 - Forensics</li>
+                    <li>12 - Reporting Tools</li>
+                    <li>13 - Social Engineering Tools</li>
+                    <li>14 - System Services</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="soc-terminal" style="background: #1a1a1a; border-radius: 12px; padding: 1rem">
+              <div class="text-center mb-2">
+                <i class="fab fa-kali-linux fa-3x" style="color: var(--cisco-green)"></i>
+                <div class="text-white fw-bold mt-2">Kali Linux</div>
+              </div>
+              <div class="line"><span class="prompt">root@kali:~#</span> <span style="color: #66bf53">msfconsole</span></div>
+              <div class="line mt-2"><span class="prompt">msf6 ></span> <span style="color: #ffaa44">search exploit</span></div>
+              <div class="line mt-2">
+                <span class="prompt">msf6 ></span> <span style="color: #ffaa44">use exploit/windows/smb/ms17_010_eternalblue</span>
+              </div>
+              <div class="line mt-2"><span class="prompt">msf6 ></span> <span style="color: #ffaa44">set RHOSTS 192.168.1.100</span></div>
+              <div class="line mt-2"><span class="prompt">msf6 ></span> <span style="color: #ffaa44">run</span></div>
+              <div class="line mt-2" style="color: #66bf53">[*] Sending exploit...</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 8.2 - TRABALHANDO NO LINUX SHELL -->
+      <section id="trabalhando-linux-shell" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">8.2 Trabalhando no Linux Shell</h2>
+
+        <!-- 8.2.1 O Shell Linux -->
+        <div class="content-card" id="shell-linux">
+          <h3 class="cisco-subtitle">8.2.1 O Shell Linux</h3>
+          <p>
+            No Linux, o usuário se comunica com o SO usando a CLI ou a GUI. O Linux geralmente inicia na GUI por padrão. Isso oculta a CLI
+            do usuário. Uma maneira de acessar a CLI a partir da GUI é por meio de um aplicativo de
+            <strong class="text-white">emulador de terminal</strong>. Esses aplicativos fornecem acesso do usuário ao CLI e geralmente são
+            nomeados como uma variação da palavra "terminal". No Linux, emuladores de terminal populares são Terminator, eterm, xterm,
+            console e gnome-terminal.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code>rod@desktop:~$ uname -a
+Linux desktop 3.13.0-32-generic #57-Ubuntu SMP Tue Jul 15 03:51:08 UTC 2014 x86_64 x86_64 GNU/Linux
+rod@desktop:~$
+rod@desktop:~$ ls -l Documents/
+total 12
+drwxrwxr-x 3 rod rod 4096 Dec  8  2013 air
+drwxrwxr-x 3 rod rod 4096 Aug 13 13:24 backups
+-rw-rw-r-- 1 rod rod    0 Aug 13 13:27 configs
+-rw-rw-r-- 1 rod rod    0 Aug 13 13:28 notes
+drwxrwxr-x 2 rod rod 4096 Aug 13 13:26 os_images
+rod@desktop:~$
+rod@desktop:~$ ls -l Documents/ | grep OS
+drwxrwxr-x 2 rod rod 4096 Aug 13 13:26 os_images
+rod@desktop:~$</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> JSLinux</h5>
+                <p class="small text-secondary">
+                  Fabrice Bellard criou <strong class="text-white">JSLinux</strong> que permite que uma versão emulada do Linux seja
+                  executada em um navegador. Abra um console Linux em JSLinux e digite o comando <code class="text-white">ls</code> para
+                  listar o conteúdo do diretório atual.
+                </p>
+                <div class="mt-3">
+                  <span class="badge-cisco"><i class="fas fa-terminal me-1"></i> Emuladores populares</span>
+                  <span class="badge-modulo ms-2">Terminator</span>
+                  <span class="badge-modulo ms-2">xterm</span>
+                  <span class="badge-modulo ms-2">gnome-terminal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <span class="badge-cisco">
+              <i class="fas fa-lightbulb me-1"></i>
+              Os termos shell, console, janela do console, terminal da CLI e janela do terminal são frequentemente usados de forma
+              intercambiável.
+            </span>
+          </div>
+        </div>
+
+        <!-- 8.2.2 Comandos Básicos -->
+        <div class="content-card" id="comandos-basicos">
+          <h3 class="cisco-subtitle">8.2.2 Comandos Básicos do Linux</h3>
+          <p>
+            Os comandos Linux são programas criados para executar uma tarefa específica. Use o comando
+            <strong class="text-white">man</strong> (abreviação para manual) para obter documentação sobre comandos. Como exemplo,
+            <code class="text-white">man ls</code> fornece a documentação sobre o comando <strong class="text-white">ls</strong> no manual
+            do usuário.
+          </p>
+          <p>
+            Como os comandos são programas armazenados no disco, quando um usuário digita um comando, o shell deve encontrá-lo no disco
+            antes que ele possa ser executado. A lista de diretórios verificados pelo shell é chamada de
+            <strong class="text-white">caminho (PATH)</strong>. Se um comando não estiver no caminho, o usuário deve especificar sua
+            localização.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Comando</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="text-white">mv</code></td>
+                  <td>Move ou renomeia arquivos e diretórios</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">chmod</code></td>
+                  <td>Modifica as permissões de arquivos</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">chown</code></td>
+                  <td>Altera o dono de um arquivo</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">dd</code></td>
+                  <td>Copia os dados de uma entrada para uma saída</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">pwd</code></td>
+                  <td>Exibe o nome do diretório atual</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">ps</code></td>
+                  <td>Lista os processos que estão atualmente em execução no sistema</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">su</code></td>
+                  <td>Simula um login como outro usuário ou para se tornar um superusuário</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">sudo</code></td>
+                  <td>Executa um comando como superusuário</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">grep</code></td>
+                  <td>Pesquisa cadeias de caracteres específicas em um arquivo ou outras saídas de comando</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">ifconfig</code></td>
+                  <td>Exibe ou configura informações relacionadas à placa de rede (obsoleto, use <code>ip address</code>)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 8.2.3 Comandos de arquivo e diretório -->
+        <div class="content-card" id="comandos-arquivos">
+          <h3 class="cisco-subtitle">8.2.3 Comandos de arquivo e diretório</h3>
+          <p>
+            Muitas ferramentas de linha de comando estão incluídas no Linux por padrão. Para ajustar a operação do comando, os usuários
+            podem passar
+            <strong class="text-white">parâmetros e opções</strong> junto com o comando.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Comando</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="text-white">ls</code></td>
+                  <td>Exibe os arquivos dentro de um diretório</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">cd</code></td>
+                  <td>Muda o diretório atual</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">mkdir</code></td>
+                  <td>Cria um diretório no diretório atual</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">cp</code></td>
+                  <td>Copia arquivos da origem para o destino</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">mv</code></td>
+                  <td>Move ou renomeia arquivos e diretórios</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">rm</code></td>
+                  <td>Remove arquivos</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">grep</code></td>
+                  <td>Pesquisa cadeias de caracteres específicas em um arquivo</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">cat</code></td>
+                  <td>Lista o conteúdo de um arquivo e espera o nome do arquivo como parâmetro</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Exemplos de uso
+$ ls -la /home/user
+$ cd /var/log
+$ mkdir novo_diretorio
+$ cp arquivo.txt backup/
+$ mv arquivo_antigo.txt arquivo_novo.txt
+$ rm arquivo_temporario.txt
+$ grep "error" /var/log/syslog
+$ cat /etc/passwd</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Dica importante</h5>
+                <p class="small text-secondary mb-0">
+                  Supõe-se que o usuário tenha as permissões adequadas para executar o comando. As permissões de arquivos no Linux são
+                  abordadas posteriormente neste módulo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8.2.4 Trabalhando com arquivos de texto -->
+        <div class="content-card" id="editores-texto">
+          <h3 class="cisco-subtitle">8.2.4 Trabalhando com arquivos de texto</h3>
+          <p>
+            Linux tem muitos <strong class="text-white">editores de texto</strong> diferentes, com vários recursos e funções. Alguns
+            editores de texto incluem interfaces gráficas, enquanto outros são apenas ferramentas de linha de comando. Cada editor de texto
+            inclui um conjunto de recursos projetado para suportar um tipo específico de tarefa. Alguns editores de texto se concentram no
+            programador e incluem recursos como realce de sintaxe, parênteses e verificação de parênteses e outros recursos focados na
+            programação.
+          </p>
+
+          <div class="alert mt-3 mb-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="fas fa-terminal fa-2x" style="color: var(--cisco-green)"></i>
+              </div>
+              <div>
+                <strong>Importância dos editores baseados em linha de comando:</strong>
+                <p class="mb-0 mt-1">
+                  Embora os editores de texto gráficos sejam convenientes e fáceis de usar, os editores de texto baseados em linha de
+                  comando são muito importantes para os usuários do Linux. O principal benefício é que eles permitem a edição de arquivos de
+                  texto a partir de um computador remoto via SSH.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <h5 class="text-white mb-3"><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> GNU Nano</h5>
+              <div class="terminal-card">
+                <pre><code># GNU nano 4.9.2               iptables_rules.sh
+
+sudo iptables -t nat -A POSTROUTING -o r1-eth0 -j MASQUERADE
+sudo iptables -A FORWARD -i r1-eth0 -o r1-eth1 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i r1-eth1 -o r1-eth0 -j ACCEPT
+sudo iptables -N LOGGING
+sudo iptables -A FORWARD -j LOGGING
+#sudo iptables -A LOGGING -j LOG --log-prefix "IPTables-Dropped: " --log-level 7
+sudo iptables -A LOGGING -j ULOG --ulog-prefix "IPTables-Dropped"
+sudo iptables -A LOGGING -j DROP
+
+^G Obter Ajuda   ^O Salvar        ^W Pesquisar      ^K Recortar      ^X Sair</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+                <h5 class="text-white"><i class="fas fa-keyboard me-2" style="color: var(--cisco-green)"></i> Atalhos do Nano</h5>
+                <p class="small text-secondary">
+                  Devido à falta de suporte gráfico, nano (ou GNU nano) só pode ser controlado com o teclado:
+                </p>
+                <ul class="small text-secondary">
+                  <li><kbd>CTRL</kbd> + <kbd>O</kbd> - Salva o arquivo atual</li>
+                  <li><kbd>CTRL</kbd> + <kbd>W</kbd> - Abre o menu de pesquisa</li>
+                  <li><kbd>CTRL</kbd> + <kbd>X</kbd> - Sai do editor</li>
+                  <li><kbd>CTRL</kbd> + <kbd>G</kbd> - Tela de ajuda e lista de comandos</li>
+                </ul>
+                <p class="small text-secondary mt-3">
+                  GNU nano usa uma barra de atalho de duas linhas na parte inferior da tela, onde os comandos para o contexto atual são
+                  listados.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <h5 class="text-white mb-2">Outros editores de texto populares no Linux:</h5>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge-cisco"><i class="fas fa-terminal me-1"></i> Vim</span>
+              <span class="badge-cisco"><i class="fas fa-terminal me-1"></i> Emacs</span>
+              <span class="badge-cisco"><i class="fas fa-terminal me-1"></i> Vi</span>
+              <span class="badge-cisco"><i class="fas fa-terminal me-1"></i> Gedit (GUI)</span>
+              <span class="badge-cisco"><i class="fas fa-terminal me-1"></i> VSCode (GUI)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabela adicional de comandos - iwconfig, shutdown, passwd, etc -->
+        <div class="content-card" id="comandos-adicionais">
+          <h3 class="cisco-subtitle">8.2.5 Comandos Adicionais</h3>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Comando</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="text-white">iwconfig</code></td>
+                  <td>Usado para exibir ou configurar informações relacionadas à placa de rede sem fio</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">shutdown</code></td>
+                  <td>Desliga o sistema, pode executar tarefas como reiniciar, parar, suspender</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">passwd</code></td>
+                  <td>Usado para alterar a senha do usuário atual</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">cat</code></td>
+                  <td>Lista o conteúdo de um arquivo</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">man</code></td>
+                  <td>Exibe a documentação de um comando específico</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <!-- 8.2.5 A importância dos arquivos de texto no Linux -->
+      <div class="content-card" id="arquivos-texto">
+        <h3 class="cisco-subtitle">8.2.5 A importância dos arquivos de texto no Linux</h3>
+        <p>
+          No Linux, <strong class="text-white">tudo é tratado como um arquivo</strong>. Isso inclui a memória, os discos, o monitor e os
+          diretórios. Por exemplo, do ponto de vista do sistema operacional, mostrar informações na tela significa gravar no arquivo que
+          representa o dispositivo de exibição. Não deve ser surpresa que o próprio computador esteja configurado através de arquivos.
+        </p>
+
+        <div class="alert mt-3 mb-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-file-alt fa-2x" style="color: var(--cisco-green)"></i>
+            </div>
+            <div>
+              <strong>Arquivos de Configuração</strong>
+              <p class="mb-0 mt-1">
+                Conhecidos como <strong class="text-white">arquivos de configuração</strong>, eles geralmente são arquivos de texto usados
+                para armazenar ajustes e configurações para aplicativos ou serviços específicos. Praticamente tudo no Linux depende de
+                arquivos de configuração para funcionar.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-7">
+            <div class="terminal-card">
+              <pre><code>[analyst@secOps ~]$ sudo nano /etc/hosts
+
+# GNU nano 4.9.2                    /etc/hosts
+
+127.0.0.1       localhost
+127.0.1.1       secOps.localdomain   secOps
+::1             localhost ip6-localhost ip6-loopback
+ff02::1         ip6-allnodes
+ff02::2         ip6-allrouters
+
+# Mapeamentos estáticos de host
+192.168.1.10    webserver
+192.168.1.20    database-server
+10.0.0.5        mailserver
+
+^G Obter Ajuda   ^O Salvar        ^W Pesquisar      ^K Recortar      ^X Sair</code></pre>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+              <h5 class="text-white">
+                <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Sobre o arquivo /etc/hosts
+              </h5>
+              <p class="small text-secondary">
+                O arquivo <strong class="text-white">/etc/hosts</strong> contém mapeamentos estáticos de endereços IP do host para nomes. Os
+                nomes servem como atalhos que permitem a conexão com outros dispositivos usando um nome em vez de um endereço IP.
+              </p>
+              <div class="mt-3 p-2" style="background: #0a0a0a; border-radius: 8px">
+                <p class="small text-secondary mb-0">
+                  <i class="fas fa-terminal me-1" style="color: var(--cisco-green)"></i>
+                  <strong>Nota:</strong> O administrador usou o comando <code class="text-white">sudo nano /etc/hosts</code> para abrir o
+                  arquivo. O comando <strong class="text-white">sudo</strong> (abreviação de "superusuário do") invoca o privilégio de
+                  superusuário.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="mt-3">
+          Os usuários com níveis de permissão adequados podem usar editores de texto para alterar o conteúdo dos arquivos de configuração.
+          Depois que as alterações são feitas, o arquivo é salvo e pode ser usado pelo serviço ou aplicativo relacionado. Quando iniciados,
+          serviços e aplicativos verificam o conteúdo de arquivos de configuração específicos para ajustar seu comportamento de acordo.
+        </p>
+      </div>
+
+      <!-- SEÇÃO 8.3 - SERVIDORES E CLIENTES LINUX -->
+      <section id="servidores-clientes" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">8.3 Servidores e clientes Linux</h2>
+
+        <!-- 8.3.1 Introdução às Comunicações Cliente-Servidor -->
+        <div class="content-card" id="cliente-servidor">
+          <h3 class="cisco-subtitle">8.3.1 Uma Introdução às Comunicações Cliente-Servidor</h3>
+          <p>
+            <strong class="text-white">Servidores</strong> são computadores com software instalado que lhes permite fornecer serviços aos
+            clientes em toda a rede. Existem muitos tipos de serviços. Alguns fornecem recursos externos, como arquivos, mensagens de e-mail
+            ou páginas da Web para clientes mediante solicitação. Outros serviços executam tarefas de manutenção, como gerenciamento de
+            registros, gerenciamento de memória, varredura de disco e muito mais.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="soc-terminal" style="background: #1a1a1a; border-radius: 12px; padding: 1.5rem">
+                <div class="text-center">
+                  <i class="fas fa-server fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                  <h5 class="text-white">Servidor</h5>
+                  <p class="small text-secondary">Armazena recursos e fornece serviços</p>
+                  <div class="d-flex justify-content-center gap-3 mt-2">
+                    <span class="badge-cisco">Arquivos</span>
+                    <span class="badge-cisco">E-mail</span>
+                    <span class="badge-cisco">Web</span>
+                  </div>
+                </div>
+                <div class="text-center mt-3">
+                  <i class="fas fa-arrow-down fa-2x" style="color: var(--cisco-green)"></i>
+                  <div class="text-secondary small">Download / Upload</div>
+                  <i class="fas fa-arrow-up fa-2x mt-2" style="color: var(--cisco-green)"></i>
+                </div>
+                <div class="text-center mt-3">
+                  <i class="fas fa-laptop fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                  <h5 class="text-white">Cliente</h5>
+                  <p class="small text-secondary">Solicita e consome recursos</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white">
+                  <i class="fas fa-exchange-alt me-2" style="color: var(--cisco-green)"></i> Modelo Cliente-Servidor
+                </h5>
+                <p class="small text-secondary">
+                  Cada serviço exige um software de servidor separado. Por exemplo, um servidor pode usar um software de servidor de
+                  arquivos para fornecer aos clientes a capacidade de recuperar e enviar arquivos.
+                </p>
+                <ul class="cisco-list">
+                  <li><strong class="text-white">Servidor:</strong> Fornece recursos e serviços</li>
+                  <li><strong class="text-white">Cliente:</strong> Solicita e consome recursos</li>
+                  <li><strong class="text-white">Rede:</strong> Meio de comunicação entre eles</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8.3.2 Servidores, Serviços e Suas Portas -->
+        <div class="content-card" id="portas-servicos">
+          <h3 class="cisco-subtitle">8.3.2 Servidores, Serviços e Suas Portas</h3>
+          <p>
+            Para que um computador possa ser o servidor de vários serviços, as <strong class="text-white">portas</strong> são usadas. Uma
+            porta é um recurso de rede reservado usado por um serviço. Um servidor é dito estar
+            <strong class="text-white">"escutando"</strong>
+            em uma porta quando ele se associou a essa porta.
+          </p>
+          <p>
+            Embora o administrador possa decidir qual porta usar com qualquer serviço específico, muitos clientes são configurados para usar
+            uma porta específica por padrão. É prática comum deixar o serviço em execução em sua
+            <strong class="text-white">porta padrão</strong>.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Porta</th>
+                  <th>Serviço</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>20/21</td>
+                  <td><code class="text-white">FTP</code></td>
+                  <td>File Transfer Protocol</td>
+                </tr>
+                <tr>
+                  <td>22</td>
+                  <td><code class="text-white">SSH</code></td>
+                  <td>Secure Shell</td>
+                </tr>
+                <tr>
+                  <td>23</td>
+                  <td><code class="text-white">Telnet</code></td>
+                  <td>Login remoto não seguro</td>
+                </tr>
+                <tr>
+                  <td>25</td>
+                  <td><code class="text-white">SMTP</code></td>
+                  <td>Simple Mail Transfer Protocol</td>
+                </tr>
+                <tr>
+                  <td>53</td>
+                  <td><code class="text-white">DNS</code></td>
+                  <td>Domain Name System</td>
+                </tr>
+                <tr>
+                  <td>67/68</td>
+                  <td><code class="text-white">DHCP</code></td>
+                  <td>Dynamic Host Configuration Protocol</td>
+                </tr>
+                <tr>
+                  <td>80</td>
+                  <td><code class="text-white">HTTP</code></td>
+                  <td>Hypertext Transfer Protocol</td>
+                </tr>
+                <tr>
+                  <td>110</td>
+                  <td><code class="text-white">POP3</code></td>
+                  <td>Post Office Protocol v3</td>
+                </tr>
+                <tr>
+                  <td>123</td>
+                  <td><code class="text-white">NTP</code></td>
+                  <td>Network Time Protocol</td>
+                </tr>
+                <tr>
+                  <td>143</td>
+                  <td><code class="text-white">IMAP</code></td>
+                  <td>Internet Message Access Protocol</td>
+                </tr>
+                <tr>
+                  <td>161/162</td>
+                  <td><code class="text-white">SNMP</code></td>
+                  <td>Simple Network Management Protocol</td>
+                </tr>
+                <tr>
+                  <td>443</td>
+                  <td><code class="text-white">HTTPS</code></td>
+                  <td>HTTP Secure</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 8.3.3 Clientes -->
+        <div class="content-card" id="clientes">
+          <h3 class="cisco-subtitle">8.3.3 Clientes</h3>
+          <p>
+            Os <strong class="text-white">clientes</strong> são programas ou aplicativos projetados para se comunicar com um tipo específico
+            de servidor. Também conhecidos como <strong class="text-white">aplicativos cliente</strong>, eles usam um protocolo bem definido
+            para se comunicar com o servidor.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-globe me-2" style="color: var(--cisco-green)"></i> Exemplos de Clientes</h5>
+                <ul class="cisco-list">
+                  <li><strong class="text-white">Navegadores Web</strong> - Clientes HTTP/HTTPS (portas 80/443)</li>
+                  <li><strong class="text-white">Cliente FTP</strong> - Transferência de arquivos (portas 20/21)</li>
+                  <li><strong class="text-white">Cliente SSH</strong> - Acesso remoto seguro (porta 22)</li>
+                  <li><strong class="text-white">Cliente de E-mail</strong> - POP3/IMAP/SMTP</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="soc-terminal text-center p-3" style="background: #1a1a1a; border-radius: 12px">
+                <i class="fas fa-upload fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <p class="small text-secondary">Upload de arquivos do cliente para o servidor</p>
+                <div class="d-flex justify-content-center align-items-center gap-3">
+                  <div>
+                    <i class="fas fa-laptop fa-2x" style="color: var(--cisco-green)"></i>
+                    <div class="small">Cliente</div>
+                  </div>
+                  <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green)"></i>
+                  <div>
+                    <i class="fas fa-server fa-2x" style="color: var(--cisco-green)"></i>
+                    <div class="small">Servidor</div>
+                  </div>
+                </div>
+                <p class="small text-secondary mt-2">Os arquivos são carregados do cliente para o armazenamento no servidor.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 8.4 - ADMINISTRAÇÃO BÁSICA DO SERVIDOR -->
+      <section id="administracao-servidor" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">8.4 Administração Básica do Servidor</h2>
+
+        <!-- 8.4.1 Arquivos de configuração de serviço -->
+        <div class="content-card" id="arquivos-configuracao">
+          <h3 class="cisco-subtitle">8.4.1 Arquivos de configuração de serviço</h3>
+          <p>
+            No Linux, os serviços são gerenciados usando <strong class="text-white">arquivos de configuração</strong>. As opções comuns nos
+            arquivos de configuração são o número da porta, a localização dos recursos hospedados e os detalhes da autorização do cliente.
+            Quando o serviço é iniciado, ele procura seus arquivos de configuração, carrega-os na memória e se ajusta de acordo com as
+            configurações nos arquivos.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code>[analyst@secOps ~]$ cat /etc/nginx/nginx.conf
+#user http;
+worker_processes 1;
+#error_log logs/error.log;
+#error_log logs/error.log notice;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include mime.types;
+    default_type application/octet-stream;
+    #log_format main ...
+    #access_log logs/access.log main;</code></pre>
+              </div>
+              <p class="small text-secondary mt-2">Arquivo de configuração do Nginx (servidor web)</p>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code>[analyst@secOps ~]$ cat /etc/ntp.conf
+# Associate to Arch's NTP pool
+server 0.arch.pool.ntp.org
+server 1.arch.pool.ntp.org
+server 2.arch.pool.ntp.org
+server 3.arch.pool.ntp.org
+
+# Restrict access
+restrict default kod limited nomodify nopeer nquery notrap
+restrict 127.0.0.1
+restrict ::1</code></pre>
+              </div>
+              <p class="small text-secondary mt-2">Arquivo de configuração do NTP (Network Time Protocol)</p>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <div class="terminal-card">
+              <pre><code>[analyst@secOps ~]$ cat /etc/snort/snort.conf
+# Step #1: Set the network variables
+ipvar HOME_NET [209.165.200.224/27]
+ipvar EXTERNAL_NET any
+
+# O caractere hash (#) é usado para indicar comentários
+# Formato opção = valor é frequentemente usado</code></pre>
+            </div>
+            <p class="small text-secondary mt-2">
+              <i class="fas fa-info-circle me-1" style="color: var(--cisco-green)"></i>
+              <strong>Nota:</strong> Não há regra para um formato de arquivo de configuração; é a escolha do desenvolvedor do serviço. No
+              entanto, o formato <strong class="text-white">opção = valor</strong> é frequentemente usado.
+            </p>
+          </div>
+        </div>
+
+        <!-- 8.4.2 Dispositivos de endurecimento (Hardening) -->
+        <div class="content-card" id="hardening">
+          <h3 class="cisco-subtitle">8.4.2 Dispositivos de endurecimento (Hardening)</h3>
+          <p>
+            O <strong class="text-white">fortalecimento (hardening)</strong> do dispositivo envolve a implementação de métodos comprovados
+            de proteção do dispositivo e proteção de seu acesso administrativo. Dependendo da distribuição Linux, muitos serviços são
+            habilitados por padrão. Alguns desses recursos estão habilitados por motivos históricos, mas não são mais necessários.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white">
+                  <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i> Práticas recomendadas de Hardening
+                </h5>
+                <ul class="cisco-list">
+                  <li>Garantir a segurança física</li>
+                  <li>Minimizar pacotes instalados</li>
+                  <li>Desativar serviços não utilizados</li>
+                  <li>Usar SSH e desabilitar login da conta root por SSH</li>
+                  <li>Manter o sistema atualizado</li>
+                  <li>Desativar a detecção automática de USB</li>
+                  <li>Aplicar senhas fortes</li>
+                  <li>Forçar mudanças de senha periódicas</li>
+                  <li>Impedir reutilização de senhas antigas</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white">
+                  <i class="fas fa-database me-2" style="color: var(--cisco-green)"></i> Por que o hardening é importante?
+                </h5>
+                <p class="small text-secondary">
+                  As atualizações do sistema operacional são extremamente importantes para manter um dispositivo reforçado. Novas
+                  vulnerabilidades são descobertas todos os dias. Os desenvolvedores de SO criam e emitem correções e patches regularmente.
+                  <strong class="text-white">Um computador atualizado é menos provável que seja comprometido.</strong>
+                </p>
+                <div class="mt-3">
+                  <span class="badge-cisco"><i class="fas fa-sync-alt me-1"></i> Atualizações regulares</span>
+                  <span class="badge-cisco ms-2"><i class="fas fa-lock me-1"></i> Senhas fortes</span>
+                  <span class="badge-cisco ms-2"><i class="fas fa-user-secret me-1"></i> SSH seguro</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8.4.3 Monitoramento de logs de serviço -->
+        <div class="content-card" id="monitoramento-logs">
+          <h3 class="cisco-subtitle">8.4.3 Monitoramento de logs de serviço</h3>
+          <p>
+            <strong class="text-white">Arquivos de log</strong> são os registros que um computador armazena para manter o controle de
+            eventos importantes. Kernel, serviços e eventos de aplicativos são todos registrados em arquivos de log. É muito importante que
+            um administrador revise periodicamente os logs de um computador para mantê-lo saudável.
+          </p>
+
+          <div class="alert mt-3 mb-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+            <i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i>
+            <strong>Análise de logs:</strong> Ao monitorar arquivos de log do Linux, um administrador obtém uma visão clara do desempenho do
+            computador, status de segurança e quaisquer problemas subjacentes.
+          </div>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Arquivo de Log</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="text-white">/var/log/messages</code></td>
+                  <td>Logs genéricos de atividade do computador (Debian: /var/log/syslog)</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/auth.log</code></td>
+                  <td>Eventos relacionados à autenticação (Debian/Ubuntu)</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/secure</code></td>
+                  <td>Eventos de autenticação (RedHat/CentOS), inclui logins sudo e SSH</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/boot.log</code></td>
+                  <td>Informações relacionadas à inicialização do computador</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/dmesg</code></td>
+                  <td>Mensagens do buffer do anel do kernel (hardware e drivers)</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/kern.log</code></td>
+                  <td>Informações registradas pelo kernel</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/cron</code></td>
+                  <td>Eventos do serviço Cron (tarefas agendadas)</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/mysqld.log</code></td>
+                  <td>Logs do MySQL (RedHat/CentOS)</td>
+                </tr>
+                <tr>
+                  <td><code class="text-white">/var/log/mysql.log</code></td>
+                  <td>Logs do MySQL (Debian/Ubuntu)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <pre><code>[analyst@secOps ~]$ sudo cat /var/log/messages
+Mar 20 15:28:45 secOps kernel: Linux version 4.15.10-1-ARCH
+Mar 20 15:28:45 secOps kernel: Command line: BOOT_IMAGE=/boot/vmlinux-linux
+Mar 20 15:28:45 secOps kernel: KERNEL supported cpus: Intel GenuineIntel, AMD AuthenticAMD
+Mar 20 15:28:45 secOps kernel: x86/fpu: Supporting XSAVE feature 0x001: 'x87 floating point registers'
+Mar 20 15:28:45 secOps kernel: SMBIOS 2.5 present.
+Mar 20 15:28:45 secOps kernel: DMI: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox
+Mar 20 15:28:45 secOps kernel: Hypervisor detected: KVM</code></pre>
+          </div>
+          <p class="small text-secondary mt-2">
+            <i class="fas fa-calendar-alt me-1" style="color: var(--cisco-green)"></i>
+            Cada linha representa um evento registrado. Os carimbos de data/hora no início das linhas marcam o momento em que o evento
+            ocorreu.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-folder-tree me-2" style="color: var(--cisco-green)"></i> Categorias de Logs</h5>
+                <ul class="small text-secondary mb-0">
+                  <li>Registros de aplicação</li>
+                  <li>Logs de eventos</li>
+                  <li>Registros de serviço</li>
+                  <li>Registros do sistema</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-cogs me-2" style="color: var(--cisco-green)"></i> O que é um Daemon?</h5>
+                <p class="small text-secondary mb-0">
+                  Um <strong class="text-white">daemon</strong> é um processo em segundo plano que é executado sem a necessidade de
+                  interação do usuário. Por exemplo, o <strong class="text-white">System Security Services Daemon (SSSD)</strong> gerencia o
+                  acesso remoto e a autenticação para recursos de logon único.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SEÇÃO 8.5 - O SISTEMA DE ARQUIVOS LINUX -->
+      <section id="sistema-arquivos-linux" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">8.5 O sistema de arquivos Linux</h2>
+
+        <!-- 8.5.1 Tipos de sistema de arquivos -->
+        <div class="content-card" id="tipos-sistemas-arquivos">
+          <h3 class="cisco-subtitle">8.5.1 Os tipos de sistema de arquivos no Linux</h3>
+          <p>
+            Existem muitos tipos diferentes de sistemas de arquivos, variando em propriedades de velocidade, flexibilidade, segurança,
+            tamanho, estrutura, lógica e muito mais. Cabe ao administrador decidir qual tipo de sistema de arquivos melhor se adequa ao
+            sistema operacional e aos arquivos que ele armazenará.
+          </p>
+
+          <p class="mt-3 mb-3">
+            Selecione os títulos para descobrir mais sobre os tipos de sistemas de arquivos normalmente encontrados e compatíveis com o
+            Linux:
+          </p>
+
+          <!-- Accordion de Sistemas de Arquivos -->
+          <div class="accordion" id="fsAccordion">
+            <!-- ext2 -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#ext2"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-hdd me-3" style="color: var(--cisco-green)"></i>
+                  <strong>ext2 (segundo sistema de arquivos estendido)</strong>
+                </button>
+              </h2>
+              <div id="ext2" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>ext2 era o sistema de arquivos padrão em várias distribuições Linux principais até ser suplantado pelo ext3.</li>
+                    <li>Quase totalmente compatível com ext2, ext3 também suporta registro no diário.</li>
+                    <li>
+                      O ext2 ainda é o sistema de arquivos escolhido para mídia de armazenamento baseada em flash porque sua falta de diário
+                      aumenta o desempenho e minimiza o número de gravações.
+                    </li>
+                    <li>
+                      Como os dispositivos de memória flash têm um número limitado de operações de gravação, a minimização das operações de
+                      gravação aumenta a vida útil do dispositivo.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- ext3 -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#ext3"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-hdd me-3" style="color: var(--cisco-green)"></i>
+                  <strong>ext3 (terceiro sistema de arquivos estendido)</strong>
+                </button>
+              </h2>
+              <div id="ext3" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>ext3 é um sistema de arquivo registrado projetado para melhorar o sistema de arquivo ext2 existente.</li>
+                    <li>
+                      Um <strong class="text-white">diário (journal)</strong>, o principal recurso adicionado a ext3, é uma técnica usada
+                      para minimizar o risco de danos ao sistema de arquivos no caso de perda repentina de energia.
+                    </li>
+                    <li>
+                      Os sistemas de arquivos mantêm um registro (ou diário) de todas as alterações do sistema de arquivos prestes a ser
+                      feitas.
+                    </li>
+                    <li>
+                      Se o computador falhar antes da conclusão da alteração, o diário pode ser usado para restaurar ou corrigir quaisquer
+                      eventuais problemas.
+                    </li>
+                    <li>O tamanho máximo do arquivo em sistemas de arquivos ext3 é <strong class="text-white">32 TB</strong>.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- ext4 -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#ext4"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-hdd me-3" style="color: var(--cisco-green)"></i>
+                  <strong>ext4 (quarto sistema de arquivos estendido)</strong>
+                </button>
+              </h2>
+              <div id="ext4" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>Projetado como um sucessor de ext3, ext4 foi criado com base em uma série de extensões para ext3.</li>
+                    <li>Enquanto as extensões melhoram o desempenho do ext3 e aumentam o tamanho dos arquivos suportados.</li>
+                    <li>
+                      O projeto ext3 foi dividido em dois; um mantido como ext3 e seu desenvolvimento normal e o outro, denominado ext4,
+                      incorporou as extensões mencionadas.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- NFS -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#nfs"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-network-wired me-3" style="color: var(--cisco-green)"></i>
+                  <strong>NFS (Network File System)</strong>
+                </button>
+              </h2>
+              <div id="nfs" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>NFS é um sistema de arquivos baseado em rede, permitindo acesso a arquivos pela rede.</li>
+                    <li>
+                      Do ponto de vista do usuário, não há diferença entre acessar um arquivo armazenado localmente ou em outro computador
+                      da rede.
+                    </li>
+                    <li>O NFS é um padrão aberto, o que permite que qualquer pessoa o implemente.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- CDFS -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#cdfs"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-compact-disc me-3" style="color: var(--cisco-green)"></i>
+                  <strong>CDFS (Compact Disc File System)</strong>
+                </button>
+              </h2>
+              <div id="cdfs" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>O CDFS foi criado especificamente para mídia de disco óptico (CDs e DVDs).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Swap File System -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#swap"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-memory me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Sistema de troca (Swap)</strong>
+                </button>
+              </h2>
+              <div id="swap" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>O sistema de arquivos de troca é usado pelo Linux quando fica sem RAM.</li>
+                    <li>
+                      Tecnicamente, é uma partição de swap que não tem um sistema de arquivos específico, mas é relevante para a discussão
+                      do sistema de arquivos.
+                    </li>
+                    <li>Quando isso acontece, o kernel move o conteúdo inativo da RAM para a partição de troca no disco.</li>
+                    <li>
+                      Embora as partições de swap possam ser úteis para computadores Linux com uma quantidade limitada de memória, elas não
+                      devem ser consideradas como uma solução primária.
+                    </li>
+                    <li>A partição de swap é armazenada no disco que tem velocidades de acesso muito mais baixas do que a RAM.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- HFS+ -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#hfs"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fab fa-apple me-3" style="color: var(--cisco-green)"></i>
+                  <strong>HFS Plus ou HFS+ (Hierarchical File System Plus)</strong>
+                </button>
+              </h2>
+              <div id="hfs" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>Um sistema de arquivos usado pela Apple em seus computadores Macintosh.</li>
+                    <li>O kernel Linux inclui um módulo para montar HFS+ para operações de leitura-gravação.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- APFS -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#apfs"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fab fa-apple me-3" style="color: var(--cisco-green)"></i>
+                  <strong>APFS (Apple File System)</strong>
+                </button>
+              </h2>
+              <div id="apfs" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>Um sistema de arquivos atualizado que é usado por dispositivos Apple.</li>
+                    <li>Ele fornece criptografia forte e é otimizado para unidades flash e de estado sólido (SSD).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- MBR -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#mbr"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-boot me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Registro Mestre de Inicialização (MBR)</strong>
+                </button>
+              </h2>
+              <div id="mbr" class="accordion-collapse collapse" data-bs-parent="#fsAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a; border-radius: 0 0 8px 8px">
+                  <ul class="mb-0">
+                    <li>
+                      Localizado no primeiro setor de um computador particionado, o MBR armazena todas as informações sobre a forma como o
+                      sistema de arquivos é organizado.
+                    </li>
+                    <li>O MBR entrega rapidamente o controle a uma função de carregamento, que carrega o sistema operacional.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8.5.2 Permissões de arquivo no Linux -->
+        <div class="content-card" id="permissoes-arquivos">
+          <h3 class="cisco-subtitle">8.5.2 Permissões de arquivo no Linux</h3>
+          <p>
+            No Linux, a maioria das entidades do sistema são tratadas como arquivos. Para organizar o sistema e impor limites dentro do
+            computador, o Linux usa <strong class="text-white">permissões de arquivo</strong>. As permissões de arquivo são incorporadas à
+            estrutura do sistema de arquivos e fornecem um mecanismo para definir permissões em cada arquivo.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-7">
+              <div class="terminal-card">
+                <pre><code>[analyst@secOps ~]$ ls -l space.txt
+-rwxrw-r-- 1 analyst staff 253 May 20 12:49 space.txt
+(1)(2)(3)(4) (5)    (6)   (7)      (8)      (9)
+
+(1) Permissões: -rwxrw-r--
+(2) Número de links: 1
+(3) Usuário proprietário: analyst
+(4) Grupo proprietário: staff
+(5) Tamanho: 253 bytes
+(6) Data da última modificação: May 20 12:49
+(7) Nome do arquivo: space.txt</code></pre>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white">
+                  <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Estrutura das Permissões
+                </h5>
+                <div class="text-center mb-3">
+                  <div class="d-flex justify-content-center gap-2 mb-2">
+                    <span class="badge-cisco">Usuário</span>
+                    <span class="badge-cisco">Grupo</span>
+                    <span class="badge-cisco">Outros</span>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <code class="text-white">- rwx rw- r--</code>
+                  </div>
+                  <div class="small text-secondary mt-2">
+                    <div>• <strong class="text-white">-</strong> = arquivo (d = diretório)</div>
+                    <div>• <strong class="text-white">rwx</strong> = Leitura, Escrita, Execução (Usuário)</div>
+                    <div>• <strong class="text-white">rw-</strong> = Leitura, Escrita (Grupo)</div>
+                    <div>• <strong class="text-white">r--</strong> = Somente Leitura (Outros)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white">
+                  <i class="fas fa-chart-simple me-2" style="color: var(--cisco-green)"></i> Tabela de Permissões (Octal)
+                </h5>
+                <div class="table-responsive">
+                  <table class="table table-cisco table-sm">
+                    <thead>
+                      <tr>
+                        <th>Binário</th>
+                        <th>Octal</th>
+                        <th>Permissão</th>
+                        <th>Descrição</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>000</td>
+                        <td>0</td>
+                        <td>---</td>
+                        <td>Sem acesso</td>
+                      </tr>
+                      <tr>
+                        <td>001</td>
+                        <td>1</td>
+                        <td>--x</td>
+                        <td>Executar apenas</td>
+                      </tr>
+                      <tr>
+                        <td>010</td>
+                        <td>2</td>
+                        <td>-w-</td>
+                        <td>Somente escrita</td>
+                      </tr>
+                      <tr>
+                        <td>011</td>
+                        <td>3</td>
+                        <td>-wx</td>
+                        <td>Edição e execução</td>
+                      </tr>
+                      <tr>
+                        <td>100</td>
+                        <td>4</td>
+                        <td>r--</td>
+                        <td>Somente leitura</td>
+                      </tr>
+                      <tr>
+                        <td>101</td>
+                        <td>5</td>
+                        <td>r-x</td>
+                        <td>Ler e executar</td>
+                      </tr>
+                      <tr>
+                        <td>110</td>
+                        <td>6</td>
+                        <td>rw-</td>
+                        <td>Leitura e Escrita</td>
+                      </tr>
+                      <tr>
+                        <td>111</td>
+                        <td>7</td>
+                        <td>rwx</td>
+                        <td>Ler, escrever e executar</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i> Comandos de Permissão</h5>
+                <div class="terminal-card">
+                  <pre><code># Alterar permissões (modo octal)
+chmod 755 arquivo.sh   # rwxr-xr-x
+
+# Alterar permissões (modo simbólico)
+chmod u+x arquivo.sh   # Adiciona execução para usuário
+chmod g-w arquivo.txt  # Remove escrita do grupo
+
+# Alterar proprietário
+chown analyst arquivo.txt
+
+# Alterar grupo
+chgrp staff arquivo.txt</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert mt-4" style="background-color: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107">
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="fas fa-crown fa-2x" style="color: #ffc107"></i>
+              </div>
+              <div>
+                <strong>O Poder do Root:</strong>
+                <p class="mb-0 mt-1">
+                  O único usuário que pode substituir a permissão de arquivo em um computador Linux é o
+                  <strong class="text-white">usuário root</strong>. Como o usuário root tem o poder de substituir as permissões de arquivo,
+                  o usuário root pode gravar em qualquer arquivo. Devido ao poder do usuário root, as credenciais root devem usar senhas
+                  fortes e não ser compartilhadas com ninguém além de administradores de sistema.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Montagem de sistemas de arquivos -->
+        <div class="content-card" id="montagem-linux">
+          <h3 class="cisco-subtitle">8.5.3 Montagem de sistemas de arquivos no Linux</h3>
+          <p>
+            <strong class="text-white">Montagem</strong> é o termo usado para descrever o processo de anexar um sistema de arquivos a um
+            diretório existente (chamado ponto de montagem). No Linux, ao contrário do Windows que usa letras de unidade (C:, D:), os
+            sistemas de arquivos são montados em diretórios.
+          </p>
+
+          <div class="terminal-card mt-3">
+            <pre><code>[analyst@secOps ~]$ mount
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+sys on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+dev on /dev type devtmpfs (rw,nosuid,relatime,size=494944k)
+run on /run type tmpfs (rw,nosuid,nodev,relatime,mode=755)
+<span style="background-color: rgba(102, 191, 83, 0.3);">/dev/sda1 on / type ext4 (rw,relatime)</span>
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620)</code></pre>
+          </div>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white">
+                  <i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Entendendo a saída do mount
+                </h5>
+                <ul class="small text-secondary">
+                  <li>
+                    Quando emitido sem opções, <code class="text-white">mount</code> retorna a lista de sistemas de arquivos atualmente
+                    montados.
+                  </li>
+                  <li>
+                    O sistema de arquivos raiz é representado pelo símbolo <strong class="text-white">"/"</strong> e contém todos os
+                    arquivos no computador por padrão.
+                  </li>
+                  <li>
+                    Na saída destacada, <code class="text-white">/dev/sda1</code> está montado em <code class="text-white">/</code> (raiz) e
+                    formatado como <strong class="text-white">ext4</strong>.
+                  </li>
+                  <li><code class="text-white">/dev/sda1</code> significa: primeira partição (1) do primeiro disco (sda).</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> Comandos úteis</h5>
+                <div class="terminal-card">
+                  <pre><code># Montar um dispositivo
+sudo mount /dev/sdb1 /mnt/usb
+
+# Desmontar um dispositivo
+sudo umount /mnt/usb
+
+# Ver espaço em disco
+df -h
+
+# Ver espaço em disco com tipo de sistema de arquivos
+df -T</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <span class="badge-cisco">
+              <i class="fas fa-lightbulb me-1"></i>
+              A montagem bem-sucedida torna o sistema de arquivos acessível no ponto de montagem especificado. Diferente do Windows, Linux
+              não usa letras de unidade.
+            </span>
+          </div>
+        </div>
+      </section>
+      <!-- 8.5.3 Links rígidos e links simbólicos -->
+      <div class="content-card" id="links-linux">
+        <h3 class="cisco-subtitle">8.5.3 Links rígidos e links simbólicos</h3>
+
+        <p>
+          Um <strong class="text-white">link rígido (hard link)</strong> é outro arquivo que aponta para o mesmo local que o arquivo
+          original. Use o comando <code class="text-white">ln</code> para criar um link rígido. O primeiro argumento é o arquivo existente e
+          o segundo argumento é o novo arquivo.
+        </p>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="terminal-card">
+              <pre><code>[analyst@secOps ~]$ ln space.txt space.hard.txt
+[analyst@secOps ~]$ ls -l space*
+-rw-r--r-- 2 analyst analyst 239 May 7 18:18 space.hard.txt
+-rw-r--r-- 2 analyst analyst 239 May 7 18:18 space.txt
+
+[analyst@secOps ~]$ echo "Testing hard link" >> space.hard.txt
+[analyst@secOps ~]$ ls -l space*
+-rw-r--r-- 2 analyst analyst 257 May 7 18:19 space.hard.txt
+-rw-r--r-- 2 analyst analyst 257 May 7 18:19 space.txt
+
+[analyst@secOps ~]$ rm space.hard.txt
+[analyst@secOps ~]$ more space.txt
+Space... The final frontier...
+These are the voyages...
+Testing hard link</code></pre>
+            </div>
+            <div class="mt-3 p-2" style="background: rgba(102, 191, 83, 0.05); border-radius: 8px">
+              <p class="small text-secondary mb-0">
+                <i class="fas fa-info-circle me-1" style="color: var(--cisco-green)"></i>
+                Ambos os arquivos apontam para o mesmo local no sistema de arquivos. Se você alterar um arquivo, o outro também será
+                alterado. Se você excluir um, o outro ainda existe.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="terminal-card">
+              <pre><code>[analyst@secOps ~]$ ln -s test.txt mytest.txt
+[analyst@secOps ~]$ echo "Hello World!" > test.txt
+[analyst@secOps ~]$ echo "It's a lovely day!" >> test.txt
+[analyst@secOps ~]$ more mytest.txt
+Hello World!
+It's a lovely day!
+
+[analyst@secOps ~]$ rm test.txt
+[analyst@secOps ~]$ more mytest.txt
+more: stat of mytest.txt failed: No such file or directory
+
+[analyst@secOps ~]$ ls -l mytest.txt
+lrwxrwxrwx 1 analyst analyst 8 May 7 20:17 mytest.txt -> test.txt</code></pre>
+            </div>
+            <div class="mt-3 p-2" style="background: rgba(255, 193, 7, 0.1); border-radius: 8px">
+              <p class="small text-secondary mb-0">
+                <i class="fas fa-link me-1" style="color: #ffc107"></i>
+                <strong>Link simbólico (soft link):</strong> Aponta para o arquivo original. Se o original for excluído, o link fica
+                quebrado.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-3">
+          <div class="col-md-6">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <h5 class="text-white"><i class="fas fa-link me-2" style="color: var(--cisco-green)"></i> Benefícios dos Links Simbólicos</h5>
+              <ul class="small text-secondary">
+                <li>
+                  Localizar links rígidos é difícil. Links simbólicos mostram a localização do arquivo original no <code>ls -l</code>.
+                </li>
+                <li>
+                  Links rígidos são limitados ao sistema de arquivos onde são criados. Links simbólicos podem vincular a um arquivo em outro
+                  sistema de arquivos.
+                </li>
+                <li>Links rígidos não podem vincular a um diretório. Links simbólicos podem vincular a diretórios.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <h5 class="text-white"><i class="fas fa-terminal me-2" style="color: var(--cisco-green)"></i> Comandos para Links</h5>
+              <div class="terminal-card">
+                <pre><code># Criar link rígido
+ln arquivo_original link_hard
+
+# Criar link simbólico
+ln -s arquivo_original link_simbolico
+
+# Ver links
+ls -l</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 8.6 - TRABALHANDO COM A GUI LINUX -->
+      <section id="gui-linux" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">8.6 Trabalhando com a GUI Linux</h2>
+
+        <!-- 8.6.1 X Window System -->
+        <div class="content-card" id="x-window">
+          <h3 class="cisco-subtitle">8.6.1 X Window System</h3>
+          <p>
+            A interface gráfica presente na maioria dos computadores Linux é baseada no <strong class="text-white">X Window System</strong>.
+            Também conhecido como <strong class="text-white">X ou X11</strong>, X Window é um sistema de janelas projetado para fornecer a
+            estrutura básica para uma GUI. X inclui funções para desenhar e mover janelas no dispositivo de exibição e interagir com um
+            mouse e teclado.
+          </p>
+
+          <div class="alert mt-3 mb-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="fas fa-network-wired fa-2x" style="color: var(--cisco-green)"></i>
+              </div>
+              <div>
+                <strong>X como servidor remoto:</strong>
+                <p class="mb-0 mt-1">
+                  X funciona como um servidor que permite que um usuário remoto use a rede para se conectar, iniciar um aplicativo gráfico e
+                  ter a janela gráfica aberta no terminal remoto. Enquanto o aplicativo em si é executado no servidor, o aspecto gráfico
+                  dele é enviado por X pela rede e exibido no computador remoto.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-th-large me-2" style="color: var(--cisco-green)"></i> Gerenciadores de Janelas</h5>
+                <p class="small text-secondary">
+                  X não especifica a interface do usuário, deixando para outros programas, como
+                  <strong class="text-white">gerenciadores de janelas</strong>, definir todos os componentes gráficos. Essa abstração
+                  permite grande flexibilidade e personalização.
+                </p>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <span class="badge-cisco">Gnome</span>
+                  <span class="badge-cisco">KDE</span>
+                  <span class="badge-cisco">XFCE</span>
+                  <span class="badge-cisco">LXDE</span>
+                  <span class="badge-cisco">Cinnamon</span>
+                  <span class="badge-cisco">MATE</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="soc-terminal p-3" style="background: #1a1a1a; border-radius: 12px">
+                <div class="text-center">
+                  <i class="fas fa-desktop fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                  <h5 class="text-white">Gnome 3 Desktop</h5>
+                  <div class="d-flex justify-content-center gap-3 mt-2">
+                    <div class="text-center">
+                      <i class="fas fa-th-large"></i>
+                      <div class="small">Activities</div>
+                    </div>
+                    <div class="text-center">
+                      <i class="fas fa-dock"></i>
+                      <div class="small">Dock</div>
+                    </div>
+                    <div class="text-center">
+                      <i class="fas fa-bell"></i>
+                      <div class="small">Notifications</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8.6.2 A GUI do Linux -->
+        <div class="content-card" id="gui-ubuntu">
+          <h3 class="cisco-subtitle">8.6.2 A GUI do Linux (Ubuntu/Gnome 3)</h3>
+          <p>
+            Embora um sistema operacional não exija uma GUI para funcionar, as GUIs são consideradas mais fáceis de usar do que a CLI. A GUI
+            Linux como um todo pode ser facilmente substituída pelo usuário. Este capítulo se concentra no
+            <strong class="text-white">Ubuntu</strong> porque é uma distribuição muito popular e amigável. Ubuntu Linux usa
+            <strong class="text-white">Gnome 3</strong> como sua GUI padrão.
+          </p>
+
+          <!-- Simulação da GUI Ubuntu -->
+          <div class="ubuntu-gui-demo mt-4" style="background: #1e2a3a; border-radius: 16px; overflow: hidden">
+            <div class="p-3" style="background: #2c3e4e">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-3">
+                  <i class="fas fa-th-large text-white"></i>
+                  <span class="text-white small">Activities</span>
+                </div>
+                <div class="text-white small">Mon 13:20</div>
+              </div>
+            </div>
+            <div class="p-3" style="background: #1a2a3a">
+              <div class="d-flex gap-3 mb-3">
+                <div class="p-2 text-center" style="background: #0a1a2a; border-radius: 8px; width: 80px">
+                  <i class="fas fa-folder fa-2x" style="color: #66bf53"></i>
+                  <div class="small text-white">Files</div>
+                </div>
+                <div class="p-2 text-center" style="background: #0a1a2a; border-radius: 8px; width: 80px">
+                  <i class="fas fa-globe fa-2x" style="color: #66bf53"></i>
+                  <div class="small text-white">Firefox</div>
+                </div>
+                <div class="p-2 text-center" style="background: #0a1a2a; border-radius: 8px; width: 80px">
+                  <i class="fas fa-terminal fa-2x" style="color: #66bf53"></i>
+                  <div class="small text-white">Terminal</div>
+                </div>
+                <div class="p-2 text-center" style="background: #0a1a2a; border-radius: 8px; width: 80px">
+                  <i class="fas fa-cog fa-2x" style="color: #66bf53"></i>
+                  <div class="small text-white">Settings</div>
+                </div>
+              </div>
+              <div class="p-3" style="background: #0a1a2a; border-radius: 12px">
+                <div class="text-white small">Type to search...</div>
+                <div class="mt-2">
+                  <div class="d-flex gap-2 flex-wrap">
+                    <span class="badge-cisco">All</span>
+                    <span class="badge-modulo">Accessories</span>
+                    <span class="badge-modulo">Games</span>
+                    <span class="badge-modulo">Graphics</span>
+                    <span class="badge-modulo">Internet</span>
+                    <span class="badge-modulo">Office</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Componente UI</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong class="text-white">Menu Apps</strong></td>
+                  <td>
+                    Mostra ícones para os aplicativos instalados. Menu com botão direito fornece atalhos. Caixa de pesquisa disponível na
+                    Exibição de Atividades.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong class="text-white">Dock do Ubuntu</strong></td>
+                  <td>
+                    Dock no lado esquerdo da tela como inicializador e alternador de aplicativos. Clique para iniciar, clique novamente para
+                    alternar.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong class="text-white">Barra superior</strong></td>
+                  <td>
+                    Contém menu do aplicativo em foco, hora atual, indicadores de sistema, acesso à visualização Atividade e Menu Status.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong class="text-white">Calendário e bandeja de mensagens</strong></td>
+                  <td>Clique no dia/hora para ver calendário de compromissos e mensagens do sistema.</td>
+                </tr>
+                <tr>
+                  <td><strong class="text-white">Atividades</strong></td>
+                  <td>
+                    Alterna para exibição de aplicativos, ferramenta de pesquisa poderosa, permite alternar entre espaços de trabalho.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong class="text-white">Menu de Status</strong></td>
+                  <td>
+                    Configuração de rede e dispositivos, logoff do usuário, alterações de configuração, bloqueio/desligamento da estação.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 8.7 - TRABALHANDO EM UM HOST LINUX -->
+      <section id="host-linux" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">8.7 Trabalhando em um host Linux</h2>
+
+        <!-- 8.7.1 Instalando e executando aplicativos -->
+        <div class="content-card" id="gerenciadores-pacotes">
+          <h3 class="cisco-subtitle">8.7.1 Instalando e executando aplicativos em um host Linux</h3>
+          <p>
+            Muitos aplicativos de usuário final são programas complexos escritos em linguagens compiladas. Para ajudar no processo de
+            instalação, o Linux geralmente inclui programas chamados <strong class="text-white">gerenciadores de pacotes</strong>. Um
+            <strong class="text-white">pacote</strong> é o termo usado para se referir a um programa e todos os seus arquivos de suporte.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white">
+                  <i class="fas fa-box me-2" style="color: var(--cisco-green)"></i> Gerenciadores de Pacotes por Distribuição
+                </h5>
+                <div class="table-responsive">
+                  <table class="table table-cisco table-sm">
+                    <thead>
+                      <tr>
+                        <th>Distribuição</th>
+                        <th>Gerenciador</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Arch Linux</td>
+                        <td><code class="text-white">pacman</code></td>
+                      </tr>
+                      <tr>
+                        <td>Debian/Ubuntu</td>
+                        <td><code class="text-white">dpkg</code>, <code class="text-white">apt</code></td>
+                      </tr>
+                      <tr>
+                        <td>Red Hat/CentOS/Fedora</td>
+                        <td>
+                          <code class="text-white">rpm</code>, <code class="text-white">yum</code>, <code class="text-white">dnf</code>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>openSUSE</td>
+                        <td><code class="text-white">zypper</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code>[analyst@cuckoo ~]$ sudo apt-get update
+[sudo] password for analyst:
+Hit:1 http://us.archive.ubuntu.com/ubuntu xenial InRelease
+Get:2 http://us.archive.ubuntu.com/ubuntu xenial-updates InRelease
+Get:3 http://security.ubuntu.com/ubuntu xenial-security InRelease
+Fetched 4,613 kB in 4s (1,003 kB/s)
+Reading package lists... Done
+
+[analyst@cuckoo ~]$ sudo apt-get upgrade
+Reading package lists Done
+Building dependency tree
+The following packages will be upgraded:
+firefox firefox-locale-en libwebkit2gtk-4.0-37 openssh-client</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8.7.2 Manter o sistema atualizado -->
+        <div class="content-card" id="atualizacoes">
+          <h3 class="cisco-subtitle">8.7.2 Manter o sistema atualizado</h3>
+          <p>
+            Também conhecido como <strong class="text-white">patches</strong>, as atualizações do sistema operacional são lançadas
+            periodicamente por empresas de sistema operacional para resolver quaisquer vulnerabilidades conhecidas em seus sistemas
+            operacionais. Embora as empresas tenham programações de atualização, o lançamento de atualizações não programadas pode acontecer
+            quando uma vulnerabilidade importante é encontrada.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Tarefa</th>
+                  <th>Arch Linux (pacman)</th>
+                  <th>Debian/Ubuntu (apt)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Instalar um pacote pelo nome</td>
+                  <td><code class="text-white">pacman -S</code></td>
+                  <td><code class="text-white">apt install</code></td>
+                </tr>
+                <tr>
+                  <td>Remover um pacote pelo nome</td>
+                  <td><code class="text-white">pacman -Rs</code></td>
+                  <td><code class="text-white">apt remove</code></td>
+                </tr>
+                <tr>
+                  <td>Atualizar lista de pacotes local</td>
+                  <td><code class="text-white">pacman -Syy</code></td>
+                  <td><code class="text-white">apt-get update</code></td>
+                </tr>
+                <tr>
+                  <td>Atualizar todos os pacotes instalados</td>
+                  <td><code class="text-white">pacman -Syu</code></td>
+                  <td><code class="text-white">apt-get upgrade</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row g-4 mt-3">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Atualizar lista de pacotes
+sudo apt-get update
+
+# Atualizar pacotes instalados
+sudo apt-get upgrade
+
+# Atualizar distribuição completa
+sudo apt-get dist-upgrade
+
+# Remover pacotes desnecessários
+sudo apt-get autoremove</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+                <h5 class="text-white"><i class="fas fa-sync-alt me-2" style="color: var(--cisco-green)"></i> GUI para Atualizações</h5>
+                <p class="small text-secondary">
+                  No Ubuntu, para instalar atualizações via GUI, clique em <strong class="text-white">Dash Search Box</strong>, digite
+                  <strong class="text-white">Software Updater</strong> e clique no ícone.
+                </p>
+                <div class="d-flex align-items-center gap-2 mt-2 p-2" style="background: #0a0a0a; border-radius: 8px">
+                  <i class="fas fa-search" style="color: var(--cisco-green)"></i>
+                  <span class="text-white">Software Updater</span>
+                  <i class="fas fa-arrow-right ms-auto" style="color: var(--cisco-green)"></i>
+                  <span class="badge-cisco">Atualizar</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert mt-4" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+            <div class="d-flex">
+              <div class="me-3">
+                <i class="fas fa-info-circle fa-2x" style="color: var(--cisco-green)"></i>
+              </div>
+              <div>
+                <strong>Importância das atualizações:</strong>
+                <p class="mb-0 mt-1">
+                  Os sistemas operacionais modernos alertarão o usuário quando atualizações estiverem disponíveis para download e
+                  instalação, mas o usuário pode verificar as atualizações a qualquer momento. Manter o sistema atualizado é fundamental
+                  para a segurança.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 8.7.4 Malware em um host Linux -->
+      <div class="content-card" id="malware-linux">
+        <h3 class="cisco-subtitle">8.7.4 Malware em um host Linux</h3>
+        <p>
+          O malware do Linux inclui vírus, cavalos de Tróia, worms e outros tipos de malware que podem afetar o sistema operacional. Devido
+          a uma série de componentes de design, tais como estrutura do sistema de arquivos, permissões de arquivo e restrições de conta de
+          usuário, sistemas operacionais Linux são geralmente considerados como
+          <strong class="text-white">melhor protegidos contra malware</strong>.
+        </p>
+
+        <div class="alert mt-3 mb-4" style="background-color: rgba(255, 75, 75, 0.1); border-left: 4px solid #ff4b4b">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-bug fa-2x" style="color: #ff4b4b"></i>
+            </div>
+            <div>
+              <strong>Linux não é imune a malware!</strong>
+              <p class="mb-0 mt-1">
+                Embora indiscutivelmente mais protegido, o Linux não é imune a malware. Muitas vulnerabilidades foram encontradas e
+                exploradas no Linux. Estes variam de software de servidor a vulnerabilidades de kernel. Como o Linux é de código aberto,
+                correções e patches são frequentemente disponibilizados em poucas horas após a descoberta de tais problemas.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-2">
+          <div class="col-md-7">
+            <div class="terminal-card">
+              <pre><code>[analyst@secOps ~]$ telnet 209.165.200.224 80
+Trying 209.165.200.224...
+Connected to 209.165.200.224.
+Escape character is '^]'.
+HTTP/1.1 400 Bad Request
+<span style="color: #66bf53;">Server: nginx/1.12.0</span>
+Date: Wed, 17 May 2017 14:27:30 GMT
+Content-Type: text/html
+Content-Length: 173
+Connection: close
+
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;
+&lt;body bgcolor="white"&gt;
+&lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;
+&lt;h2&gt;&lt;center&gt;nginx/1.12.0&lt;/center&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+Connection closed by foreign host.</code></pre>
+            </div>
+            <p class="small text-secondary mt-2">
+              <i class="fas fa-search me-1" style="color: var(--cisco-green)"></i>
+              Um invasor pode usar Telnet para testar a natureza e a versão de um servidor Web (porta 80). Com esse conhecimento, podem
+              pesquisar vulnerabilidades conhecidas para essa versão específica.
+            </p>
+          </div>
+          <div class="col-md-5">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px; height: 100%">
+              <h5 class="text-white">
+                <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i> Vetores de ataque comuns no Linux
+              </h5>
+              <ul class="cisco-list">
+                <li>Serviços e processos desatualizados</li>
+                <li>Portas abertas não monitoradas</li>
+                <li>Versões antigas de servidores (Apache, Nginx, SSH)</li>
+                <li>Vulnerabilidades de kernel não corrigidas</li>
+              </ul>
+              <div class="mt-3 p-2" style="background: #0a0a0a; border-radius: 8px">
+                <p class="small text-secondary mb-0">
+                  <i class="fas fa-lightbulb me-1" style="color: #ffc107"></i>
+                  <strong>Melhores práticas:</strong> Manter o sistema atualizado e fechar todos os serviços e portas não utilizados reduz
+                  as oportunidades de ataque.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8.7.5 Verificação de Rootkit (chkrootkit) -->
+      <div class="content-card" id="rootkit-linux">
+        <h3 class="cisco-subtitle">8.7.5 Verificação de Rootkit (chkrootkit)</h3>
+        <p>
+          Um <strong class="text-white">rootkit</strong> é um tipo de malware projetado para aumentar os privilégios de um usuário não
+          autorizado ou conceder acesso a partes do software que normalmente não devem ser permitidas. Rootkits também são frequentemente
+          usados para proteger uma <strong class="text-white">porta traseira (backdoor)</strong> para um computador comprometido.
+        </p>
+
+        <div class="row g-4 mt-2">
+          <div class="col-md-6">
+            <div class="terminal-card">
+              <pre><code>[analyst@cuckoo ~]$ sudo ./chkrootkit
+[sudo] password for analyst:
+ROOTDIR is '/'
+Checking 'amd'... not found
+Checking 'basename'... not infected
+Checking 'biff'... not found
+Checking 'chfn'... not infected
+Checking 'chsh'... not infected
+Checking 'cron'... not infected
+Checking 'date'... not infected
+Checking 'du'... not infected
+Checking 'dirname'... not infected
+Checking 'echo'... not infected
+Checking 'egrep'... not infected
+Checking 'env'... not infected
+Checking 'find'... not infected
+Checking 'grep'... not infected
+Checking 'ifconfig'... not infected
+Checking 'inetd'... not tested
+Checking 'su'... not infected</code></pre>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3" style="background: rgba(255, 193, 7, 0.1); border-radius: 12px; height: 100%">
+              <h5 class="text-white"><i class="fas fa-skull me-2" style="color: #ffc107"></i> Sobre Rootkits</h5>
+              <ul class="small text-secondary">
+                <li>
+                  <strong class="text-white">Destrutivo:</strong> Altera o código do kernel e seus módulos, modificando operações
+                  fundamentais do SO.
+                </li>
+                <li>
+                  <strong class="text-white">Furtivo:</strong> Pode ocultar a intrusão, remover vestígios de instalação e adulterar
+                  ferramentas de diagnóstico.
+                </li>
+                <li>
+                  <strong class="text-white">Instalação:</strong> A maioria dos compromissos de rootkit requer acesso root ou administrador.
+                </li>
+              </ul>
+              <div class="mt-3 p-2" style="background: #0a0a0a; border-radius: 8px">
+                <p class="small text-secondary mb-0">
+                  <i class="fas fa-info-circle me-1" style="color: var(--cisco-green)"></i>
+                  <strong>chkrootkit</strong> é um popular programa baseado em Linux projetado para verificar o computador para rootkits
+                  conhecidos. É um script shell que usa ferramentas comuns do Linux como <code>strings</code> e <code>grep</code> para
+                  comparar assinaturas de programas principais.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert mt-3" style="background-color: rgba(102, 191, 83, 0.1); border-left: 4px solid var(--cisco-green)">
+          <div class="d-flex">
+            <div class="me-3">
+              <i class="fas fa-exclamation-triangle fa-2x" style="color: #ffc107"></i>
+            </div>
+            <div>
+              <strong>Detecção e remoção de Rootkits:</strong>
+              <p class="mb-0 mt-1">
+                A detecção de rootkit pode ser muito difícil. Métodos comuns incluem inicializar o computador a partir de mídia confiável
+                (CD/DVD) e inspecionar o sistema de arquivos comprometido. A remoção pode ser complicada e muitas vezes impossível —
+                especialmente quando o rootkit reside no kernel.
+                <strong class="text-white">A reinstalação do sistema operacional geralmente é a única solução real.</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8.7.6 Comandos de tubulação (Pipe) -->
+      <div class="content-card" id="pipe-linux">
+        <h3 class="cisco-subtitle">8.7.6 Comandos de tubulação (Pipe |)</h3>
+        <p>
+          Embora as ferramentas de linha de comando geralmente sejam projetadas para executar uma tarefa específica e bem definida, muitos
+          comandos podem ser combinados para executar tarefas mais complexas por uma técnica conhecida como
+          <strong class="text-white">tubulação (piping)</strong>. Nomeado após seu caractere definidor, o pipe
+          <strong class="text-white">(|)</strong>, a tubulação consiste em encadear comandos juntos, alimentando a saída de um comando na
+          entrada de outro.
+        </p>
+
+        <div class="terminal-card mt-3">
+          <pre><code>[analyst@secOps ~]$ ls -l
+total 40
+drwxr-xr-x 2 analyst analyst 4096 Mar 22 2018 Desktop
+drwxr-xr-x 3 analyst analyst 4096 Apr 2 14:44 Downloads
+-rw-r--r-- 1 analyst analyst    9 May 20 10:51 hostfile1.txt
+-rw-r--r-- 1 analyst analyst    9 May 20 10:51 Hostfile2.txt
+-rw-r--r-- 1 analyst analyst    9 May 20 10:52 hostfile3.txt
+drwxr-xr-x 9 analyst analyst 4096 Jul 19 2018 lab.support.files
+-rw-r--r-- 1 analyst analyst  129 May 20 10:53 mytest.com
+-rw-r--r-- 1 analyst analyst  257 May 20 10:52 space.txt
+
+[analyst@secOps ~]$ ls -l | grep host
+-rw-r--r-- 1 analyst analyst 9 May 20 10:51 hostfile1.txt
+-rw-r--r-- 1 analyst analyst 9 May 20 10:51 Hostfile2.txt
+-rw-r--r-- 1 analyst analyst 9 May 20 10:52 hostfile3.txt
+
+[analyst@secOps ~]$ ls -l | grep file
+-rw-r--r-- 1 analyst analyst 9 May 20 10:51 hostfile1.txt
+-rw-r--r-- 1 analyst analyst 9 May 20 10:51 Hostfile2.txt
+-rw-r--r-- 1 analyst analyst 9 May 20 10:52 hostfile3.txt
+drwxr-xr-x 9 analyst analyst 4096 Jul 19 2018 lab.support.files</code></pre>
+        </div>
+
+        <div class="row g-4 mt-3">
+          <div class="col-md-6">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <h5 class="text-white"><i class="fas fa-code-branch me-2" style="color: var(--cisco-green)"></i> Exemplos de Pipe</h5>
+              <div class="terminal-card p-2">
+                <pre><code># Filtrar processos por nome
+ps aux | grep ssh
+
+# Contar arquivos em um diretório
+ls -l | wc -l
+
+# Buscar palavra em arquivos
+grep "error" /var/log/* | less
+
+# Combinar múltiplos pipes
+cat access.log | grep "404" | sort | uniq -c</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="p-3" style="background: rgba(102, 191, 83, 0.05); border-radius: 12px">
+              <h5 class="text-white"><i class="fas fa-info-circle me-2" style="color: var(--cisco-green)"></i> Como funciona o Pipe</h5>
+              <div class="text-center p-3">
+                <code class="text-white">comando1 | comando2 | comando3</code>
+                <div class="d-flex justify-content-center gap-3 mt-2">
+                  <span class="badge-cisco">Saída</span>
+                  <i class="fas fa-arrow-right" style="color: var(--cisco-green)"></i>
+                  <span class="badge-cisco">Entrada</span>
+                  <i class="fas fa-arrow-right" style="color: var(--cisco-green)"></i>
+                  <span class="badge-cisco">Resultado</span>
+                </div>
+              </div>
+              <p class="small text-secondary mt-2 mb-0">
+                O pipe redireciona a saída padrão (stdout) de um comando para a entrada padrão (stdin) de outro comando, permitindo
+                combinações poderosas sem arquivos temporários.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 8.8 - RESUMO DO LINUX -->
+      <section id="resumo-linux" class="mt-5">
+        <h2 class="cisco-title display-6 mb-4">8.8 Resumo do Linux</h2>
+
+        <div class="content-card">
+          <h3 class="cisco-subtitle">8.8.1 O que aprendi neste módulo?</h3>
+          <p>Clique nos cabeçalhos para ver um resumo dos tópicos cobertos neste módulo.</p>
+
+          <div class="accordion" id="resumoAccordion">
+            <!-- Noções básicas do Linux -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumo1"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fab fa-linux me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Noções básicas do Linux</strong>
+                </button>
+              </h2>
+              <div id="resumo1" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a">
+                  <p class="mb-0">
+                    O Linux é um sistema operacional rápido, confiável e pequeno de <strong class="text-white">código aberto</strong>.
+                    Requer poucos recursos de hardware para executar e é altamente personalizável. Ele foi projetado para ser usado em
+                    redes. O kernel Linux é distribuído por diferentes organizações com diferentes ferramentas e pacotes de software. Uma
+                    versão personalizada do Linux, chamada <strong class="text-white">Security Onion</strong>, contém software e ferramentas
+                    projetadas para uso no monitoramento de segurança de rede por analistas de segurança cibernética. O
+                    <strong class="text-white">Kali Linux</strong> é outra distribuição do Linux personalizada que possui inúmeras
+                    ferramentas projetadas para testes de penetração de segurança de rede.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trabalhando no Shell do Linux -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumo2"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-terminal me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Trabalhando no Shell do Linux</strong>
+                </button>
+              </h2>
+              <div id="resumo2" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a">
+                  <p class="mb-0">
+                    No Linux, o usuário se comunica com o sistema operacional por meio de uma GUI ou uma interface de linha de comando (CLI)
+                    ou shell. Se uma GUI estiver em execução, o shell será acessado por meio de um aplicativo de terminal, como o Xterm ou
+                    GNOME terminal. Os comandos Linux são programas que executam uma tarefa específica. O comando <code>man</code>, seguido
+                    por um comando específico, fornece a documentação para esse comando. É importante saber pelo menos os comandos básicos
+                    do Linux, comandos de arquivos e diretórios e comandos para trabalhar com arquivos de texto. No Linux,
+                    <strong class="text-white">tudo é tratado como se fosse um arquivo</strong>, incluindo memória, discos, monitor e
+                    diretórios.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Servidores e Clientes Linux -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumo3"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-server me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Servidores e Clientes Linux</strong>
+                </button>
+              </h2>
+              <div id="resumo3" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a">
+                  <p>
+                    Os servidores são computadores que possuem software instalado que lhes permite fornecer serviços aos computadores
+                    clientes em toda a rede. Alguns serviços fornecem acesso a recursos externos (como arquivos, email e páginas Web) aos
+                    clientes, mediante solicitação.
+                  </p>
+                  <p class="mb-0">
+                    Para permitir que um computador forneça vários serviços, são usadas <strong class="text-white">portas</strong>. Uma
+                    porta é um recurso de rede reservado que "ouve" as solicitações dos clientes. Embora o número da porta usada por um
+                    serviço possa ser configurada, a maioria dos serviços usa as
+                    <strong class="text-white">portas "bem conhecidas"</strong>. Os aplicativos de software cliente foram projetados para se
+                    comunicar com tipos específicos de servidores.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Administração Básica do Servidor -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumo4"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-shield-alt me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Administração Básica do Servidor</strong>
+                </button>
+              </h2>
+              <div id="resumo4" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a">
+                  <p>
+                    No Linux, os servidores são gerenciados usando <strong class="text-white">arquivos de configuração</strong>. Várias
+                    configurações podem ser modificadas e salvas em arquivos de configuração. Quando um serviço é iniciado, ele analisa seus
+                    arquivos de configuração para saber como deve ser executado.
+                  </p>
+                  <p>
+                    Os dispositivos Linux devem ser protegidos usando métodos comprovados para proteger o dispositivo e o acesso
+                    administrativo a ele. Isso é conhecido como
+                    <strong class="text-white">Proteção do dispositivo (Device Hardening)</strong>.
+                  </p>
+                  <p class="mb-0">
+                    Por fim, clientes e servidores Linux usam <strong class="text-white">arquivos de log</strong> para registrar a operação
+                    do sistema e eventos importantes. São mantidos vários arquivos de logs diferentes, incluindo logs de aplicativos, logs
+                    de eventos, logs de serviços e logs do sistema.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- O Sistema de Arquivos Linux -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumo5"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-folder-tree me-3" style="color: var(--cisco-green)"></i>
+                  <strong>O Sistema de Arquivos Linux</strong>
+                </button>
+              </h2>
+              <div id="resumo5" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a">
+                  <p>
+                    O Linux suporta vários sistemas de arquivos diferentes que variam de acordo com a velocidade, flexibilidade, segurança,
+                    tamanho, estrutura, lógica e muito mais. Alguns dos sistemas de arquivos suportados são
+                    <strong class="text-white">EXT2, EXT3, EXT4, NFS e CDFS</strong>.
+                  </p>
+                  <p>
+                    O Linux usa <strong class="text-white">permissões de arquivo</strong> para controlar quem tem permissão para ter
+                    diferentes tipos de acesso a arquivos e diretórios. As permissões incluem leitura (r), gravação (w) e execução (x).
+                    Arquivos e diretórios têm permissões atribuídas a usuários, grupos e outros.
+                  </p>
+                  <p class="mb-0">
+                    <strong class="text-white">Hard links</strong> criam outro arquivo com um nome diferente vinculado ao mesmo local no
+                    sistema de arquivos. <strong class="text-white">Links simbólicos (symlinks)</strong> são semelhantes, mas apontam para o
+                    arquivo original e podem cruzar sistemas de arquivos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trabalhando com a GUI do Linux -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumo6"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-desktop me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Trabalhando com a GUI do Linux</strong>
+                </button>
+              </h2>
+              <div id="resumo6" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a">
+                  <p>
+                    O sistema <strong class="text-white">X Windows (X11)</strong> é uma estrutura básica de software que inclui funções para
+                    criar, controlar e configurar uma GUI de janelas em uma interface de apontar e clicar. Diferentes fornecedores usam o
+                    sistema X Windows para criar diferentes GUIs do Gerenciador de Janelas para o Linux. Exemplos de Gerenciador de Janelas
+                    são <strong class="text-white">Gnome e KDE</strong>.
+                  </p>
+                  <p class="mb-0">
+                    A distribuição do Ubuntu Linux usa o <strong class="text-white">GNOME 3</strong> por padrão. O GNOME 3 Desktop consiste
+                    no menu de aplicativos, dock ubuntu, barra superior, calendário e bandeja de mensagens do sistema, a área de atividades
+                    e o menu de status.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Trabalhando em um Host Linux -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumo7"
+                  style="background-color: #2a2a2a !important; color: var(--cisco-green) !important; border-radius: 8px"
+                >
+                  <i class="fas fa-laptop-code me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Trabalhando em um Host Linux</strong>
+                </button>
+              </h2>
+              <div id="resumo7" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body" style="background-color: #1a1a1a">
+                  <p>
+                    Para instalar aplicativos nos Hosts Linux, são usados programas chamados
+                    <strong class="text-white">gerenciadores de pacotes</strong>. Diferentes distribuições Linux usam diferentes
+                    gerenciadores de pacotes. Por exemplo, o Arch Linux usa o <strong class="text-white">Pacman</strong>, o Debian/Ubuntu
+                    usam <strong class="text-white">APT/DPKG</strong>.
+                  </p>
+                  <p>
+                    Os sistemas operacionais multitarefa podem executar muitos processos ao mesmo tempo. O comando <code>ps</code> lista os
+                    processos em execução, o comando <code>top</code> exibe informações dinâmicas sobre os processos e <code>kill</code> é
+                    usado para gerenciar processos.
+                  </p>
+                  <p>
+                    Embora o Linux seja considerado mais bem protegido contra malware, ele ainda é suscetível a Cavalos de Tróia, Vermes e
+                    outros tipos de malware. O programa <strong class="text-white">chkrootkit</strong> foi projetado para detectar malware
+                    rootkit.
+                  </p>
+                  <p class="mb-0">
+                    Os comandos de <strong class="text-white">tubulação (piping)</strong> usam o símbolo "|" para encadear diferentes
+                    comandos, usando a saída de um comando como entrada para outro.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
