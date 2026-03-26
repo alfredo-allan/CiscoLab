@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 14 | Listas de Controle de Acesso (ACL) - CyberSec Cisco Academy</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3.0 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+   <link rel="stylesheet" href="../css/dropdow.css">
+    <link rel="stylesheet" href="../css/modulo_7.css">
+    <style>
+       .accordion-body  {
+            color: #b0b0b0 !important;
+        }
+    </style>
+</head>
+<body>
+
+     <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" style="box-shadow: none;">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown" style="font-weight: 500; border-bottom: 2px solid var(--cisco-green);">
+                            <i class="fas fa-cube me-1" style="color: var(--cisco-green);"></i>
+                            Módulo 14 <span class="badge-modulo ms-2">ativo</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); max-height: 400px; overflow-y: auto; min-width: 280px;">
+                            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🔰 INTRODUÇÃO</h6></li>
+                            <li><a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2"></i>14.0.1 Por que fazer?</a></li>
+                            <li><a class="dropdown-item" href="#modulo-objetivos"><i class="fas fa-chevron-right me-2"></i>14.0.2 Objetivos do Módulo</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">📚 CONTEÚDO PRINCIPAL</h6></li>
+                            <li><a class="dropdown-item" href="#intro-acl"><i class="fas fa-chevron-right me-2"></i>14.1 Introdução às ACLs</a></li>
+                            <li><a class="dropdown-item" href="#o-que-e-acl"><i class="fas fa-chevron-right me-2"></i>14.1.1 O que é uma ACL?</a></li>
+                            <li><a class="dropdown-item" href="#filtragem-pacote"><i class="fas fa-chevron-right me-2"></i>14.1.2 Filtragem de pacote</a></li>
+                            <li><a class="dropdown-item" href="#tipos-acl"><i class="fas fa-chevron-right me-2"></i>Tipos de ACLs</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="#laboratorios">
+                            <i class="fas fa-flask me-1" style="color: var(--cisco-green);"></i>
+                            Labs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link text-white px-3" href="/modulos.html" title="Ver todos os 27 módulos">
+                            <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem;"></i>
+                            <span class="d-none d-lg-inline">Módulos</span>
+                            <span class="badge-modulo ms-1">27</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green);">
+                            <i class="fas fa-list-ul me-1"></i> Índice
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); min-width: 280px;">
+                            <li>
+                                <div class="px-3 py-2">
+                                    <input type="text" id="navSearch" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="🔍 Buscar seção...">
+                                </div>
+                            </li>
+                            <li><hr class="dropdown-divider my-1"></li>
+                            <div id="sectionList">
+                                <li><a class="dropdown-item" href="#modulo-intro"><span class="badge-cisco me-2">14.0.1</span>Por que fazer?</a></li>
+                                <li><a class="dropdown-item" href="#modulo-objetivos"><span class="badge-cisco me-2">14.0.2</span>Objetivos</a></li>
+                                <li><a class="dropdown-item" href="#intro-acl"><span class="badge-cisco me-2">14.1</span>Introdução às ACLs</a></li>
+                                <li><a class="dropdown-item" href="#o-que-e-acl"><span class="badge-cisco me-2">14.1.1</span>O que é uma ACL?</a></li>
+                                <li><a class="dropdown-item" href="#filtragem-pacote"><span class="badge-cisco me-2">14.1.2</span>Filtragem de pacote</a></li>
+                            </div>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0;">
+        <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green);"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container py-4">
+        
+        <!-- 14.0 Introdução -->
+        <section id="modulo-intro" class="content-card">
+            <h1 class="cisco-title"><i class="fas fa-shield-alt me-2"></i>14.0 Introdução</h1>
+            <div class="text-muted mb-3">
+                <i class="fas fa-arrow-down me-1"></i> Role para começar 🔍
+            </div>
+            <h3 class="section-title" style="margin-top: 1rem;">14.0.1 Por que devo fazer este módulo?</h3>
+            <p>No condomínio fechado onde seus avós vivem, existem regras para quem pode entrar e sair das instalações. O guarda não levantará o portão para deixar você entrar para a comunidade até que alguém confirme que você está em uma lista de visitantes aprovados. Assim como o guarda da comunidade fechada, o tráfego de rede que passa por uma interface configurada com uma lista de controle de acesso (ACL) permitiu e negou tráfego. Como configurar essas ACLs? Como modificá-los se eles não estiverem funcionando corretamente ou se eles precisarem de outras alterações? Comece a usar este módulo para saber mais!</p>
+        </section>
+
+        <!-- 14.0.2 Objetivos -->
+        <section id="modulo-objetivos" class="content-card">
+            <h3 class="section-title">14.0.2 O que irei aprender neste módulo?</h3>
+            <p>Este módulo contém o seguinte:</p>
+            <ul class="task-list mb-4">
+                <li><i class="fas fa-microchip"></i> 6 atividades do Packet Tracer</li>
+                <li><i class="fas fa-code"></i> 1 atividades do verificação de sintaxe</li>
+                <li><i class="fas fa-question-circle"></i> 5 Atividade: Verifique sua compreensão</li>
+                <li><i class="fas fa-clipboard-list"></i> 1 Questionário de Módulo</li>
+            </ul>
+            
+            <p><strong>Título do módulo:</strong> Listas de Controle de Acesso</p>
+            <p><strong>Objetivo do módulo:</strong> Implementar listas de controle de acesso (ACLs) para filtrar o tráfego e mitigar ataques de rede.</p>
+            
+            <div class="table-responsive mt-4">
+                <table class="table table-cisco">
+                    <thead>
+                        <tr>
+                            <th>Título do Tópico</th>
+                            <th>Objetivo do Tópico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Introdução às listas de controle de acesso</td><td>Descreva ACLs IPv4 padrão e estendidas.</td></tr>
+                        <tr><td>Máscaras Curinga</td><td>Explicar como as ACLs usam máscaras curinga.</td></tr>
+                        <tr><td>Configurar ACLs</td><td>Explique como configurar ACLs.</td></tr>
+                        <tr><td>Modificar ACLs</td><td>Usar números de sequência para editar ACLs IPv4 padrão existentes.</td></tr>
+                        <tr><td>Implementar ACLSs</td><td>Implementar ACLSs.</td></tr>
+                        <tr><td>Mitigar ataques com ACLs</td><td>Use ACLs para mitigar ataques a rede comuns.</td></tr>
+                        <tr><td>IPv6 ACLs</td><td>Configurar as ACLs IPv6 usando a CLI.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 14.1 Introdução às listas de controle de acesso -->
+        <section id="intro-acl" class="content-card">
+            <h2 class="cisco-title"><i class="fas fa-list-ul me-2"></i>14.1 Introdução às listas de controle de acesso</h2>
+            <div class="text-muted mb-4">
+                <i class="fas fa-arrow-down me-1"></i> Role para começar ⬇️
+            </div>
+            
+            <div id="o-que-e-acl">
+                <h3 class="section-title">14.1.1 O que é uma ACL?</h3>
+                <p>Os roteadores tomam decisões de roteamento com base nas informações no cabeçalho do pacote. O tráfego que entra na interface do roteador é roteado apenas com base nas informações da tabela de roteamento. O roteador compara o endereço IP de destino com as rotas na tabela de roteamento para encontrar a melhor correspondência e, em seguida, encaminha o pacote com base na melhor rota de correspondência. Esse mesmo processo pode ser usado para filtrar tráfego usando uma lista de controle de acesso (ACL).</p>
+                <p>Uma ACL é uma série de comandos do IOS usados para filtrar pacotes com base nas informações encontradas no cabeçalho do pacote. Por padrão, um roteador não tem nenhuma ACLs configurada. Entretanto, quando uma ACL for aplicada a uma interface, o roteador executará a tarefa adicional de avaliar todos os pacotes de rede que passam pela interface para determinar se o pacote pode ser enviado.</p>
+                <p>Uma ACL usa uma lista sequencial de instruções de permissão ou negação, conhecidas como entradas de controle de acesso (ACEs).</p>
+                <p class="text-muted"><strong>Nota:</strong> As ACEs também são comumente chamadas de declarações da ACL.</p>
+                <p>Quando o tráfego da rede passa através de uma interface configurada com uma ACL, o roteador compara as informações no pacote com cada ACE, em ordem sequencial, para determinar se o pacote corresponde a uma das ACEs. Esse processo é chamado de filtragem de pacote.</p>
+                <p>Várias tarefas executadas por roteadores exigem o uso de ACLs para identificar o tráfego. A tabela lista algumas dessas tarefas com exemplos.</p>
+                
+                <!-- Lista de tarefas com checkboxes (conforme print) -->
+                <div class="mt-4 mb-4">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="task-card">
+                                <h5><i class="fas fa-tachometer-alt me-2"></i>Limitar o tráfego e aumentar o desempenho da rede</h5>
+                                <p>Uma política corporativa proíbe o tráfego de vídeo na rede para reduzir a carga da rede. Uma política pode ser aplicada usando ACLs para bloquear o tráfego de vídeo.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="task-card">
+                                <h5><i class="fas fa-chart-line me-2"></i>Fornecer controle de fluxo de tráfego</h5>
+                                <p>Uma política corporativa requer que o tráfego de protocolo de roteamento seja limitado apenas a determinados links. Uma política pode ser implementada usando ACLs para restringir a entrega de atualizações de roteamento apenas para aqueles que vêm de uma fonte conhecida.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="task-card">
+                                <h5><i class="fas fa-lock me-2"></i>Fornecer um nível básico de segurança para acesso à rede</h5>
+                                <p>A política corporativa exige que o acesso à rede de Recursos Humanos seja restrito apenas a usuários autorizados. Uma política pode ser aplicada usando ACLs para limitar o acesso a redes especificadas.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="task-card">
+                                <h5><i class="fas fa-filter me-2"></i>Filtrar o tráfego com base no tipo de tráfego</h5>
+                                <p>A política corporativa exige que o tráfego de e-mail seja permitido em uma rede, mas que o acesso Telnet seja negado. Uma política pode ser implementada usando ACLs para filtrar tráfego por tipo.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="task-card">
+                                <h5><i class="fas fa-users me-2"></i>Screen hosts para permitir ou negar acesso aos serviços de rede</h5>
+                                <p>A política corporativa exige que o acesso a alguns tipos de arquivos (por exemplo, FTP ou HTTP) se limitasse aos grupos de usuários. Uma política pode ser implementada usando ACLs para filtrar o acesso ao usuário aos serviços.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="task-card">
+                                <h5><i class="fas fa-phone-alt me-2"></i>Fornecer prioridade a determinadas classes de tráfego de rede</h5>
+                                <p>O tráfego corporativo especifica que o tráfego de voz seja encaminhado o mais rápido possível para evitar qualquer interrupção. Uma política pode ser implementada usando serviços ACLs e QoS para identificar o tráfego de voz e processá-lo imediatamente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="filtragem-pacote">
+                <h3 class="section-title">14.1.2 Filtragem de pacote:</h3>
+                <p>A filtragem de pacotes controla o acesso a uma rede analisando os pacotes de entrada e / ou saída e encaminhando-os ou descartando-os com base nos critérios fornecidos. A filtragem de pacotes pode ocorrer na camada 3 ou camada 4, como mostrado na figura.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="osi-model">
+                            <h5 class="mb-3" style="color: var(--cisco-green);">Modelo OSI</h5>
+                            <div class="osi-layer"><span class="osi-number">7</span><span class="osi-name">Aplicação</span></div>
+                            <div class="osi-layer"><span class="osi-number">6</span><span class="osi-name">Apresentação</span></div>
+                            <div class="osi-layer"><span class="osi-number">5</span><span class="osi-name">Sessão</span></div>
+                            <div class="osi-layer"><span class="osi-number">4</span><span class="osi-name" style="color: var(--cisco-green); font-weight: bold;">Transporte</span></div>
+                            <div class="osi-layer"><span class="osi-number">3</span><span class="osi-name" style="color: var(--cisco-green); font-weight: bold;">Rede</span></div>
+                            <div class="osi-layer"><span class="osi-number">2</span><span class="osi-name">Enlace de Dados</span></div>
+                            <div class="osi-layer"><span class="osi-number">1</span><span class="osi-name">Física</span></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="diagram-card">
+                            <i class="fas fa-filter" style="font-size: 2.5rem; color: var(--cisco-green);"></i>
+                            <h4 class="mt-3">Filtragem de Pacotes</h4>
+                            <p class="text-muted">Camada 3 (Rede) e Camada 4 (Transporte)</p>
+                            <div class="diagram-box">
+                                <i class="fas fa-arrow-right me-2"></i> IP de Origem/Destino
+                                <hr class="my-2">
+                                <i class="fas fa-arrow-right me-2"></i> Portas TCP/UDP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tipos-acl" class="mt-4">
+                <h3 class="section-title">Tipos de ACLs</h3>
+                <p>Os roteadores Cisco suportam dois tipos de ACLs:</p>
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-square me-2" style="color: var(--cisco-green);"></i>
+                            <h4 class="mt-2">ACLs padrão</h4>
+                            <p class="text-muted">As ACLs filtram apenas na Camada 3 usando apenas o endereço IPv4 de origem.</p>
+                            <div class="code-block" style="background: #0a0a0a; font-family: monospace; padding: 0.75rem; border-radius: 6px;">
+                                <code>access-list 10 permit 192.168.1.0 0.0.0.255</code>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-expand me-2" style="color: var(--cisco-green);"></i>
+                            <h4 class="mt-2">ACLs estendidas</h4>
+                            <p class="text-muted">Os ACLs filtram na Camada 3 usando o endereço IPv4 de origem e/ou destino. Eles também podem filtrar na Camada 4 usando TCP, portas UDP e informações de tipo de protocolo opcional para controle mais fino.</p>
+                            <div class="code-block" style="background: #0a0a0a; font-family: monospace; padding: 0.75rem; border-radius: 6px;">
+                                <code>access-list 100 permit tcp 192.168.1.0 0.0.0.255 any eq 80</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Laboratórios -->
+        <section id="laboratorios" class="content-card">
+            <h2 class="cisco-title"><i class="fas fa-flask me-2"></i>Laboratórios Packet Tracer</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="diagram-card">
+                        <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                        <h4 class="mt-3">6 atividades do Packet Tracer</h4>
+                        <p>Atividades práticas para configurar e testar ACLs em ambiente simulado.</p>
+                        <button class="btn btn-outline-cisco mt-2" disabled><i class="fas fa-download me-2"></i>Disponível no NetAcad</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="diagram-card">
+                        <i class="fas fa-check-circle" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                        <h4 class="mt-3">Verifique sua compreensão</h4>
+                        <p>1 atividade de verificação de sintaxe e 5 questões para testar seus conhecimentos.</p>
+                        <button class="btn btn-outline-cisco mt-2" disabled><i class="fas fa-play me-2"></i>Iniciar atividade</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Continuando após a seção 14.1.4, adicionar as novas seções -->
+
+        <!-- 14.1.3 ACLs nomeadas e numeradas -->
+        <section id="acls-nomeadas-numeradas" class="content-card">
+            <h3 class="section-title">14.1.3 ACLs nomeadas e numeradas</h3>
+            
+            <h4 class="mt-3" style="color: var(--cisco-green);">ACLs numeradas</h4>
+            <p>ACLs número 1 a 99, ou 1300 a 1999 são ACLs padrão, enquanto ACLs número 100 a 199, ou 2000 a 2699 são ACLs estendidas, conforme mostrado na saída.</p>
+            
+            <div class="code-block">
+                <pre><code>R1(config)# access-list ?
+
+&lt;1-99&gt;     IP standard access list
+&lt;100-199&gt;   IP extended access list
+&lt;1100-1199&gt; Extended 48-bit MAC address access list
+&lt;1200-1999&gt; IP standard access list (expanded range)
+&lt;2000-2699&gt; Protocol type-code access list
+&lt;2000-2699&gt; IP extended access list (expanded range)
+&lt;700-799&gt;   48-bit MAC address access list
+rate-limit    Simple rate-limit specific access list
+template      Enable IP template acls
+R1(config)# access-list</code></pre>
+            </div>
+            
+            <h4 class="mt-4" style="color: var(--cisco-green);">ACLs nomeadas</h4>
+            <p>ACLs nomeadas é o método preferido a ser usado ao configurar ACLs. Especificamente, as ACLs padrão e estendidas podem ser nomeadas para fornecer informações sobre a finalidade da ACL. Por exemplo, nomear uma ACL FTP-FILTER estendida é muito melhor do que ter uma ACL 100 numerada.</p>
+            <p>O comando <code>ip access-list</code> na configuração global é usado para criar uma ACL nomeada, como mostrado no exemplo a seguir.</p>
+            
+            <div class="code-block">
+                <pre><code>R1(config)# ip access-list extended FTP-FILTER
+R1(config-ext-nacl)# permit tcp 192.168.10.0 0.0.0.255 any eq ftp
+R1(config-ext-nacl)# permit tcp 192.168.10.0 0.0.0.255 any eq ftp-data
+R1(config-ext-nacl)#</code></pre>
+            </div>
+            
+            <div class="mt-3 p-3" style="background: rgba(102, 191, 83, 0.1); border-left: 3px solid var(--cisco-green); border-radius: 4px;">
+                <h5 style="color: var(--cisco-green);">Regras para ACLs nomeadas:</h5>
+                <ul class="mt-2">
+                    <li>Atribua um nome para identificar o objetivo da ACL.</li>
+                    <li>Os nomes podem conter caracteres alfanuméricos.</li>
+                    <li>Os nomes não podem conter espaços ou pontuação.</li>
+                    <li>Sugerimos que o nome seja escrito em LETRAS MAIÚSCULAS.</li>
+                    <li>É possível adicionar ou excluir entradas na ACL.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 14.1.4 Operação ACL -->
+        <section id="operacao-acl" class="content-card">
+            <h3 class="section-title">14.1.4 Operação ACL</h3>
+            <p>As listas de acesso expressam o conjunto de regras que permitem maior controle dos pacotes que chegam às interfaces de entrada, pacotes que são retransmitidos através do roteador e pacotes que saem das interfaces do roteador.</p>
+            <p>As ACLs podem ser configuradas para serem aplicadas ao tráfego de entrada e ao tráfego de saída, conforme mostrado na figura.</p>
+            
+            <div class="row mt-4 mb-4">
+                <div class="col-md-6">
+                    <div class="diagram-card">
+                        <i class="fas fa-arrow-right-to-bracket" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                        <h4 class="mt-3">ACL de entrada</h4>
+                        <div class="diagram-box">
+                            <code>R1(config-if)# ip access-group 10 in</code>
+                        </div>
+                        <p class="mt-2 text-muted small">Filtra pacotes antes de serem roteados para a interface de saída</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="diagram-card">
+                        <i class="fas fa-arrow-right-from-bracket" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                        <h4 class="mt-3">ACL de saída</h4>
+                        <div class="diagram-box">
+                            <code>R1(config-if)# ip access-group 10 out</code>
+                        </div>
+                        <p class="mt-2 text-muted small">Filtra pacotes após seu roteamento, independentemente da interface de entrada</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert alert-dark" style="background: #2a2a2a; border-color: var(--cisco-green);">
+                <i class="fas fa-info-circle me-2" style="color: var(--cisco-green);"></i>
+                <strong>Nota:</strong> ACLs não atuam em pacotes originados do próprio roteador.
+            </div>
+            
+            <h5 class="mt-4" style="color: var(--cisco-green);">ACL de entrada</h5>
+            <p>Uma ACL de entrada filtra pacotes antes de serem roteados para a interface de saída. Uma ACL de entrada é eficiente porque salva a sobrecarga de pesquisas de roteamento se o pacote é descartado. Se o pacote for permitido pela ACL, ele será processado para roteamento. As ACLs de entrada são mais usadas para filtrar pacotes quando a rede conectada a uma interface de entrada é a única origem dos pacotes que precisa ser examinada.</p>
+            
+            <h5 class="mt-4" style="color: var(--cisco-green);">ACL de saída</h5>
+            <p>Uma ACL de saída filtra pacotes após seu roteamento, independentemente da interface de entrada. Pacotes de entrada são roteados para a interface de saída e são processados através da ACL de saída. As ACLs de saída são mais usadas quando o mesmo filtro é aplicado aos pacotes que vêm de várias interfaces de entrada antes de saírem da mesma interface de saída.</p>
+            
+            <h5 class="mt-4" style="color: var(--cisco-green);">Procedimento Operacional</h5>
+            <p>Quando uma ACL é aplicada a uma interface, ela segue um procedimento operacional específico. Por exemplo, aqui estão as etapas operacionais usadas quando o tráfego entrou em uma interface de roteador com uma ACL IPv4 configurada no padrão de entrada.</p>
+            
+            <ol class="mt-3" style="padding-left: 1.5rem;">
+                <li class="mb-2">O roteador extrai o endereço IPv4 de origem do cabeçalho do pacote.</li>
+                <li class="mb-2">O roteador inicia na parte superior da ACL e compara o endereço IPv4 de origem a cada ACE em uma ordem sequencial.</li>
+                <li class="mb-2">Quando houver correspondência, o roteador realizará a instrução, permitindo ou negando o pacote.</li>
+                <li class="mb-2">Se o endereço IPv4 de origem não corresponder a nenhuma ACEs na ACL, o pacote será descartado porque há uma ACE de negação implícita aplicada automaticamente a todas as ACLs.</li>
+            </ol>
+            
+            <div class="alert alert-dark mt-3" style="background: #2a2a2a; border-left: 3px solid var(--accent-red);">
+                <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-red);"></i>
+                <strong>Importante:</strong> A última instrução ACE de uma ACL é sempre uma negação implícita que bloqueia todo o tráfego. Por padrão, essa instrução é automaticamente implícita no final de uma ACL, mesmo que esteja oculta e não exibida na configuração.
+            </div>
+            
+            <div class="alert alert-dark mt-3" style="background: #2a2a2a; border-left: 3px solid var(--cisco-green);">
+                <i class="fas fa-lightbulb me-2" style="color: var(--cisco-green);"></i>
+                <strong>Nota:</strong> Uma ACL deve ter pelo menos uma declaração de permissão, caso contrário, todo o tráfego será negado devido à declaração de negação ACE implícita.
+            </div>
+        </section>
+
+        <!-- 14.2 Máscaras Curinga -->
+        <section id="mascaras-curinga" class="content-card">
+            <h2 class="cisco-title"><i class="fas fa-code-branch me-2"></i>14.2 Máscaras curinga</h2>
+            <div class="text-muted mb-4">
+                <i class="fas fa-arrow-down me-1"></i> Role para começar
+            </div>
+            
+            <div id="visao-geral-mascara">
+                <h3 class="section-title">14.2.1 Visão geral da máscara curinga</h3>
+                <p>No tópico anterior, você aprendeu sobre o propósito dos ACLs. Este tópico explica como os ACLs usam máscaras curingas. Uma ACE IPv4 usa uma máscara curinga de 32 bits para determinar quais bits do endereço examinar para uma correspondência. As máscaras curinga também são usadas pelo protocolo de roteamento Open Shortest Path First (OSPF).</p>
+                <p>Uma máscara curinga é semelhante a uma máscara de sub-rede na vez que usa o processo de ANDing para identificar quais bits em um endereço IPv4 devem corresponder. No entanto, eles diferem na forma como combinam 1s e 0s binários. Diferente de uma máscara de sub-rede, na qual o binário 1 é igual a uma correspondência e o binário 0 não é uma correspondência, em uma máscara curinga, o inverso é verdadeiro.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="diagram-card">
+                            <h4><i class="fas fa-check-circle me-2"></i>Regras da Máscara Curinga</h4>
+                            <ul class="text-start mt-3">
+                                <li><strong class="text-success">Máscara curinga bit 0</strong> - Corresponde ao valor do bit correspondente no endereço</li>
+                                <li><strong class="text-warning">Máscara curinga bit 1</strong> - Ignora o valor do bit correspondente no endereço</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="table-responsive">
+                            <table class="table table-cisco">
+                                <thead>
+                                    <tr>
+                                        <th>Máscara Curinga</th>
+                                        <th>Último octeto (binário)</th>
+                                        <th>Significado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>0.0.0.0</td><td>00000000</td><td>Combine todos os octetos.</td></tr>
+                                    <tr><td>0.0.0.63</td><td>00111111</td><td>Combine os três primeiros octetos, combine os dois bits mais à esquerda do último octeto, ignore os últimos 6 bits</td></tr>
+                                    <tr><td>0.0.0.15</td><td>00001111</td><td>Combine os três primeiros octetos, combine os quatro bits mais à esquerda do último octeto, ignore os últimos 4 bits</td></tr>
+                                    <tr><td>0.0.0.252</td><td>11111100</td><td>Combine os três primeiros octetos, ignore os seis bits mais à esquerda do último octeto, combine os dois últimos bits</td></tr>
+                                    <tr><td>0.0.0.255</td><td>11111111</td><td>Combine os três primeiros octetos, ignore o último octeto</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="tipos-mascara-curinga" class="mt-5">
+                <h3 class="section-title">14.2.2 Tipos de Máscara de Curinga</h3>
+                <p>Usar máscaras curinga vai levar alguma prática. Consulte os exemplos para saber como a máscara curinga é usada para filtrar o tráfego de um host, uma sub-rede e um intervalo de endereços IPv4.</p>
+                
+                <!-- Accordion para os 3 tipos de máscara -->
+                <div class="accordion mt-4" id="accordionWildcard">
+                    <!-- Tipo 1: Host -->
+                    <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary); margin-bottom: 1rem; border-radius: 8px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#wildcardHost" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-server me-2" style="color: var(--cisco-green);"></i>
+                                <strong>Curinga para corresponder a um host</strong>
+                            </button>
+                        </h2>
+                        <div id="wildcardHost" class="accordion-collapse collapse" data-bs-parent="#accordionWildcard">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Neste exemplo, a ACL 10 precisa de uma ACE que permita apenas o host com endereço IPv4 192.168.1.1. Lembre-se que "0" é igual a uma correspondência e "1" é igual a ignorar. Para corresponder a um endereço IPv4 de host específico, é necessária uma máscara curinga que consiste em todos os zeros (ou seja, 0.0.0.0).</p>
+                                <p>A máscara curinga 0.0.0.0 estipula que cada bit deve corresponder exatamente. Portanto, quando a ACE é processada, a máscara curinga permitirá apenas o endereço 192.168.1.1.</p>
+                                <div class="code-block mt-3">
+                                    <pre><code>access-list 10 permit 192.168.1.1 0.0.0.0</code></pre>
+                                </div>
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-cisco table-sm">
+                                        <thead><tr><th></th><th>Decimal</th><th>Binário</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Endereço IPv4</td><td>192.168.1.1</td><td>11000000.10101000.00000001.00000001</td></tr>
+                                            <tr><td>Máscara Curinga</td><td>0.0.0.0</td><td>00000000.00000000.00000000.00000000</td></tr>
+                                            <tr><td>Endereço IPv4 permitido</td><td>192.168.1.1</td><td>11000000.10101000.00000001.00000001</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tipo 2: Sub-rede -->
+                    <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary); margin-bottom: 1rem; border-radius: 8px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#wildcardSubnet" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-network-wired me-2" style="color: var(--cisco-green);"></i>
+                                <strong>Máscara curinga para corresponder a uma sub-rede IPv4</strong>
+                            </button>
+                        </h2>
+                        <div id="wildcardSubnet" class="accordion-collapse collapse" data-bs-parent="#accordionWildcard">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Neste exemplo, a ACL 10 precisa de uma ACE que permita todos os hosts na rede 192.168.1.0/24. A máscara curinga 0.0.0.255 estipula que os três primeiros octetos devem corresponder exatamente, mas o quarto octeto não.</p>
+                                <p>Quando processado, a máscara curinga 0.0.0.255 permite todos os hosts na rede 192.168.1.0/24.</p>
+                                <div class="code-block mt-3">
+                                    <pre><code>access-list 10 permit 192.168.1.0 0.0.0.255</code></pre>
+                                </div>
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-cisco table-sm">
+                                        <thead><tr><th></th><th>Decimal</th><th>Binário</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Endereço IPv4</td><td>192.168.1.0</td><td>11000000.10101000.00000001.00000000</td></tr>
+                                            <tr><td>Máscara Curinga</td><td>0.0.0.255</td><td>00000000.00000000.00000000.11111111</td></tr>
+                                            <tr><td>Endereços IPv4 permitidos</td><td>192.168.1.1 a 192.168.1.254</td><td>11000000.10101000.00000001.00000001 a 11111111</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tipo 3: Intervalo de endereços -->
+                    <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary); border-radius: 8px;">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#wildcardRange" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-chart-line me-2" style="color: var(--cisco-green);"></i>
+                                <strong>Máscara curinga para corresponder a um intervalo de endereços IPv4</strong>
+                            </button>
+                        </h2>
+                        <div id="wildcardRange" class="accordion-collapse collapse" data-bs-parent="#accordionWildcard">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Neste exemplo, a ACL 10 precisa de uma ACE que permita todos os hosts nas redes 192.168.16.0/24, 192.168.17.0/24,..., 192.168.31.0/24. A máscara curinga 0.0.15.255 filtraria corretamente esse intervalo de endereços.</p>
+                                <p>Os bits de máscara curinga realizados identificam quais bits do endereço IPv4 devem corresponder. Quando processada, a máscara curinga 0.0.15.255 permite que todos os hosts nas redes 192.168.16.0/24 a 192.168.31.0/24.</p>
+                                <div class="code-block mt-3">
+                                    <pre><code>access-list 10 permit 192.168.16.0 0.0.15.255</code></pre>
+                                </div>
+                                <div class="table-responsive mt-3">
+                                    <table class="table table-cisco table-sm">
+                                        <thead><tr><th></th><th>Decimal</th><th>Binário</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Endereço IPv4</td><td>192.168.16.0</td><td>11000000.10101000.00010000.00000000</td></tr>
+                                            <tr><td>Máscara Curinga</td><td>0.0.15.255</td><td>00000000.00000000.00001111.11111111</td></tr>
+                                            <tr><td>Endereços IPv4 permitidos</td><td>192.168.16.1 a 192.168.31.254</td><td>11000000.10101000.00010000.00000000 a 11000000.10101000.00011111.11111111</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="alert alert-dark mt-3" style="background: #1a1a1a;">
+                                    <i class="fas fa-lightbulb me-2" style="color: var(--cisco-green);"></i>
+                                    <strong>Explicação:</strong> A máscara 0.0.15.255 permite variação nos bits 16-19 do terceiro octeto (00010000 a 00011111), que corresponde às redes 16 a 31.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- 14.2.3 Cálculo da máscara curinga -->
+        <section id="calculo-mascara-curinga" class="content-card">
+            <h3 class="section-title">14.2.3 Cálculo da máscara curinga</h3>
+            <p>Calcular as máscaras curinga pode ser um desafio. Um método de atalho é subtrair a máscara de sub-rede de 255.255.255.255. Consulte os exemplos para saber como calcular a máscara curinga usando a máscara de sub-rede.</p>
+            
+            <!-- Accordion para os 4 exemplos -->
+            <div class="accordion mt-4" id="accordionWildcardCalc">
+                <!-- Exemplo 1 -->
+                <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary); margin-bottom: 1rem; border-radius: 8px;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#calcExemplo1" style="background-color: var(--bg-card); color: var(--text-primary);">
+                            <span class="badge-cisco me-3">Exemplo 1</span>
+                            <strong>Rede 192.168.3.0/24</strong>
+                        </button>
+                    </h2>
+                    <div id="calcExemplo1" class="accordion-collapse collapse" data-bs-parent="#accordionWildcardCalc">
+                        <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                            <p>Suponha que você desejasse uma ACE na ACL 10 para permitir o acesso a todos os usuários na rede 192.168.3.0/24. Para calcular a máscara de curinga, subtraia a máscara de sub-rede (i.e., 255.255.255.0) de 255.255.255.255, conforme mostrado na tabela.</p>
+                            <p>A solução produz a máscara curinga <strong class="text-success">0.0.0.255</strong>. Portanto, o ACE seria:</p>
+                            <div class="code-block">
+                                <pre><code>access-list 10 permit 192.168.3.0 0.0.0.255</code></pre>
+                            </div>
+                            <div class="table-responsive mt-3">
+                                <table class="table table-cisco">
+                                    <tr><td style="background: #2a2a2a;"><strong>Valor inicial</strong></td><td>255.255.255.255</td></tr>
+                                    <tr><td style="background: #2a2a2a;"><strong>Subtrair a máscara de sub-rede</strong></td><td>- 255.255.255.0</td></tr>
+                                    <tr><td style="background: #2a2a2a; color: var(--cisco-green);"><strong>Máscara curinga resultante</strong></td><td><strong class="text-success">0.0.0.255</strong></td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Exemplo 2 -->
+                <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary); margin-bottom: 1rem; border-radius: 8px;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#calcExemplo2" style="background-color: var(--bg-card); color: var(--text-primary);">
+                            <span class="badge-cisco me-3">Exemplo 2</span>
+                            <strong>Sub-rede 192.168.3.32/28</strong>
+                        </button>
+                    </h2>
+                    <div id="calcExemplo2" class="accordion-collapse collapse" data-bs-parent="#accordionWildcardCalc">
+                        <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                            <p>Neste exemplo, suponha que você desejasse uma ACE na ACL 10 para permitir o acesso à rede para os 14 usuários na sub-rede 192.168.3.32/28. Subtraia a sub-rede (i.e., 255.255.255.240) de 255.255.255.255, conforme mostrado na tabela.</p>
+                            <p>Esta solução produz a máscara curinga <strong class="text-success">0.0.0.15</strong>. A ACE seria:</p>
+                            <div class="code-block">
+                                <pre><code>access-list 10 permit 192.168.3.32 0.0.0.15</code></pre>
+                            </div>
+                            <div class="table-responsive mt-3">
+                                <table class="table table-cisco">
+                                    <tr><td style="background: #2a2a2a;"><strong>Valor inicial</strong></td><td>255.255.255.255</td></tr>
+                                    <tr><td style="background: #2a2a2a;"><strong>Subtrair a máscara de sub-rede</strong></td><td>- 255.255.255.240</td></tr>
+                                    <tr><td style="background: #2a2a2a; color: var(--cisco-green);"><strong>Máscara curinga resultante</strong></td><td><strong class="text-success">0.0.0.15</strong></td></tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Exemplo 3 -->
+                <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary); margin-bottom: 1rem; border-radius: 8px;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#calcExemplo3" style="background-color: var(--bg-card); color: var(--text-primary);">
+                            <span class="badge-cisco me-3">Exemplo 3</span>
+                            <strong>Redes 192.168.10.0 e 192.168.11.0 (/23)</strong>
+                        </button>
+                    </h2>
+                    <div id="calcExemplo3" class="accordion-collapse collapse" data-bs-parent="#accordionWildcardCalc">
+                        <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                            <p>Neste exemplo, suponha que você precisava de uma ACE na ACL 10 para permitir somente redes 192.168.10.0 e 192.168.11.0. Essas duas redes podem ser resumidas como 192.168.10.0/23, que é uma máscara de sub-rede de 255.255.254.0. Novamente, subtrair a máscara de sub-rede 255.255.254.0 de 255.255.255.255, conforme mostrado na tabela.</p>
+                            <p>Esta solução produz a máscara curinga <strong class="text-success">0.0.1.255</strong>. Portanto, o ACE seria:</p>
+                            <div class="code-block">
+                                <pre><code>access-list 10 permit 192.168.10.0 0.0.1.255</code></pre>
+                            </div>
+                            <div class="table-responsive mt-3">
+                                <table class="table table-cisco">
+                                    <tr><td style="background: #2a2a2a;"><strong>Valor inicial</strong></td><td>255.255.255.255</td></tr>
+                                    <tr><td style="background: #2a2a2a;"><strong>Subtrair a máscara de sub-rede</strong></td><td>- 255.255.254.0</td></tr>
+                                    <tr><td style="background: #2a2a2a; color: var(--cisco-green);"><strong>Máscara curinga resultante</strong></td><td><strong class="text-success">0.0.1.255</strong></td></tr>
+                                </table>
+                            </div>
+                            <div class="alert alert-dark mt-3" style="background: #1a1a1a;">
+                                <i class="fas fa-info-circle me-2" style="color: var(--cisco-green);"></i>
+                                <strong>Nota:</strong> As redes 192.168.10.0/24 e 192.168.11.0/24 são resumidas como 192.168.10.0/23.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Exemplo 4 -->
+                <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary); border-radius: 8px;">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#calcExemplo4" style="background-color: var(--bg-card); color: var(--text-primary);">
+                            <span class="badge-cisco me-3">Exemplo 4</span>
+                            <strong>Intervalo 192.168.16.0/24 a 192.168.31.0/24 (/20)</strong>
+                        </button>
+                    </h2>
+                    <div id="calcExemplo4" class="accordion-collapse collapse" data-bs-parent="#accordionWildcardCalc">
+                        <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                            <p>Considere um exemplo no qual você precisa de um número de ACL 10 para corresponder a redes no intervalo entre 192.168.16.0/24 e 192.168.31.0/24. Esse intervalo de rede pode ser resumido como 192.168.16.0/20, que é uma máscara de sub-rede de 255.255.240.0. Portanto, subtraia 255.255.240.0 máscara de sub-rede de 255.255.255.255, conforme mostrado na tabela.</p>
+                            <p>Esta solução produz a máscara curinga <strong class="text-success">0.0.15.255</strong>. Portanto, o ACE seria:</p>
+                            <div class="code-block">
+                                <pre><code>access-list 10 permit 192.168.16.0 0.0.15.255</code></pre>
+                            </div>
+                            <div class="table-responsive mt-3">
+                                <table class="table table-cisco">
+                                    <tr><td style="background: #2a2a2a;"><strong>Valor inicial</strong></td><td>255.255.255.255</td></tr>
+                                    <tr><td style="background: #2a2a2a;"><strong>Subtrair a máscara de sub-rede</strong></td><td>- 255.255.240.0</td></tr>
+                                    <tr><td style="background: #2a2a2a; color: var(--cisco-green);"><strong>Máscara curinga resultante</strong></td><td><strong class="text-success">0.0.15.255</strong></td></tr>
+                                </table>
+                            </div>
+                            <div class="alert alert-dark mt-3" style="background: #1a1a1a;">
+                                <i class="fas fa-lightbulb me-2" style="color: var(--cisco-green);"></i>
+                                <strong>Dica:</strong> Este é o mesmo exemplo do tópico 14.2.2, agora calculado usando o método de subtração.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14.2.4 Palavras-chave de máscara curinga -->
+        <section id="palavras-chave-mascara" class="content-card">
+            <h3 class="section-title">14.2.4 Palavras-chave de máscara curinga</h3>
+            <p>Trabalhar com representações decimais de bits binários de máscara curinga pode ser entediante. Para simplificar esta tarefa, o Cisco IOS fornece duas palavras-chave para identificar os usos mais comuns do mascaramento de curinga. As palavras-chave reduzem os pressionamentos de teclas da ACL, mas, mais importante, as palavras-chave facilitam a leitura da ACE.</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="diagram-card text-start">
+                        <i class="fas fa-server me-2" style="color: var(--cisco-green);"></i>
+                        <h4 class="mt-2">Palavra-chave <code class="text-success">host</code></h4>
+                        <p>Esta palavra-chave substitui a máscara <strong>0.0.0.0</strong>. Essa máscara indica que todos os bits do endereço IPv4 precisam corresponder para filtrar apenas um endereço de host.</p>
+                        <div class="code-block mt-2">
+                            <pre><code>access-list 10 permit host 192.168.10.10</code></pre>
+                        </div>
+                        <p class="text-muted small mt-2">Equivalente a: <code>access-list 10 permit 192.168.10.10 0.0.0.0</code></p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="diagram-card text-start">
+                        <i class="fas fa-globe me-2" style="color: var(--cisco-green);"></i>
+                        <h4 class="mt-2">Palavra-chave <code class="text-success">any</code></h4>
+                        <p>Esta palavra-chave substitui a máscara <strong>255.255.255.255</strong>. Essa máscara instrui o sistema a ignorar todo o endereço IPv4 ou a aceitar qualquer endereço.</p>
+                        <div class="code-block mt-2">
+                            <pre><code>access-list 11 permit any</code></pre>
+                        </div>
+                        <p class="text-muted small mt-2">Equivalente a: <code>access-list 11 permit 0.0.0.0 255.255.255.255</code></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                <p>Por exemplo, na saída do comando, duas ACLs são configuradas. A ACL 10 ACE permite apenas o host 192.168.10.10 e a ACL 11 ACE permite todos os hosts.</p>
+                <div class="code-block">
+                    <pre><code>R1(config)# access-list 10 permit 192.168.10.10 0.0.0.0
+R1(config)# access-list 11 permit 0.0.0.0 255.255.255.255
+R1(config)#</code></pre>
+                </div>
+                <p>Alternativamente, as palavras-chaves <strong class="text-success">host</strong> e <strong class="text-success">any</strong> poderiam ter sido usadas para substituir a saída realçada.</p>
+                <div class="code-block">
+                    <pre><code>R1(config)# access-list 10 permit host 192.168.10.10
+R1(config)# access-list 11 permit any
+R1(config)#</code></pre>
+                </div>
+                <p class="text-muted">Os comandos a seguir realizam a mesma tarefa que os comandos anteriores.</p>
+            </div>
+        </section>
+
+        <!-- 14.2.5 Verifique seu entendimento - Máscaras curinga em ACLs -->
+        <section id="verificacao-mascaras" class="content-card">
+            <h3 class="section-title">14.2.5 Verifique seu entendimento - Máscaras curinga em ACLs</h3>
+            <p>Verifique sua compreensão das máscaras curinga em ACLs, escolhendo a MELHOR resposta para as seguintes perguntas.</p>
+            
+            <!-- Pergunta 1 -->
+            <div class="quiz-card mt-4" style="background: var(--bg-secondary); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h5 style="color: var(--cisco-green);">Pergunta 1</h5>
+                <p><strong>Qual máscara curinga permitiria apenas o host 10.10.10.1?</strong></p>
+                <div class="options mt-3">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_a" value="0.0.0.255">
+                        <label class="form-check-label" for="q1_a">0.0.0.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_b" value="255.255.255.255">
+                        <label class="form-check-label" for="q1_b">255.255.255.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_c" value="0.0.0.31">
+                        <label class="form-check-label" for="q1_c">0.0.0.31</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_d" value="0.0.255.255">
+                        <label class="form-check-label" for="q1_d">0.0.255.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q1" id="q1_e" value="0.0.0.0">
+                        <label class="form-check-label" for="q1_e">0.0.0.0</label>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-sm btn-outline-cisco" onclick="checkAnswer(1, '0.0.0.0')">Enviar</button>
+                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="showFeedback(1)">Mostrar feedback</button>
+                </div>
+                <div id="feedback1" class="mt-3" style="display: none;">
+                    <div class="alert alert-success" style="background: rgba(102, 191, 83, 0.1); border-color: var(--cisco-green);">
+                        <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                        <strong>Correto!</strong> A máscara curinga 0.0.0.0 indica que todos os bits devem corresponder exatamente, permitindo apenas o host 10.10.10.1.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pergunta 2 -->
+            <div class="quiz-card" style="background: var(--bg-secondary); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h5 style="color: var(--cisco-green);">Pergunta 2</h5>
+                <p><strong>Qual máscara curinga permitiria somente hosts da rede 10.10.0.0/16?</strong></p>
+                <div class="options mt-3">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_a" value="0.0.255.255">
+                        <label class="form-check-label" for="q2_a">0.0.255.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_b" value="0.0.0.0">
+                        <label class="form-check-label" for="q2_b">0.0.0.0</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_c" value="255.255.255.255">
+                        <label class="form-check-label" for="q2_c">255.255.255.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_d" value="0.0.0.255">
+                        <label class="form-check-label" for="q2_d">0.0.0.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q2" id="q2_e" value="0.0.0.31">
+                        <label class="form-check-label" for="q2_e">0.0.0.31</label>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-sm btn-outline-cisco" onclick="checkAnswer(2, '0.0.255.255')">Enviar</button>
+                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="showFeedback(2)">Mostrar feedback</button>
+                </div>
+                <div id="feedback2" class="mt-3" style="display: none;">
+                    <div class="alert alert-success" style="background: rgba(102, 191, 83, 0.1); border-color: var(--cisco-green);">
+                        <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                        <strong>Correto!</strong> Para a rede /16, os dois primeiros octetos devem corresponder exatamente, e os dois últimos podem variar. Máscara 0.0.255.255.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pergunta 3 -->
+            <div class="quiz-card" style="background: var(--bg-secondary); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <h5 style="color: var(--cisco-green);">Pergunta 3</h5>
+                <p><strong>Que máscara curinga permitiria todos os hosts?</strong></p>
+                <div class="options mt-3">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q3" id="q3_a" value="0.0.255.255">
+                        <label class="form-check-label" for="q3_a">0.0.255.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q3" id="q3_b" value="0.0.0.255">
+                        <label class="form-check-label" for="q3_b">0.0.0.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q3" id="q3_c" value="0.0.0.31">
+                        <label class="form-check-label" for="q3_c">0.0.0.31</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q3" id="q3_d" value="0.0.0.0">
+                        <label class="form-check-label" for="q3_d">0.0.0.0</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q3" id="q3_e" value="255.255.255.255">
+                        <label class="form-check-label" for="q3_e">255.255.255.255</label>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-sm btn-outline-cisco" onclick="checkAnswer(3, '255.255.255.255')">Enviar</button>
+                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="showFeedback(3)">Mostrar feedback</button>
+                </div>
+                <div id="feedback3" class="mt-3" style="display: none;">
+                    <div class="alert alert-success" style="background: rgba(102, 191, 83, 0.1); border-color: var(--cisco-green);">
+                        <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                        <strong>Correto!</strong> A máscara 255.255.255.255 indica que todos os bits são ignorados, permitindo qualquer endereço.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pergunta 4 -->
+            <div class="quiz-card" style="background: var(--bg-secondary); border-radius: 8px; padding: 1.5rem;">
+                <h5 style="color: var(--cisco-green);">Pergunta 4</h5>
+                <p><strong>Qual máscara curinga permitiria que todos os hosts da rede 192.168.10.0/24?</strong></p>
+                <div class="options mt-3">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q4" id="q4_a" value="0.0.0.255">
+                        <label class="form-check-label" for="q4_a">0.0.0.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q4" id="q4_b" value="0.0.0.0">
+                        <label class="form-check-label" for="q4_b">0.0.0.0</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q4" id="q4_c" value="255.255.255.255">
+                        <label class="form-check-label" for="q4_c">255.255.255.255</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q4" id="q4_d" value="0.0.0.31">
+                        <label class="form-check-label" for="q4_d">0.0.0.31</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="q4" id="q4_e" value="0.0.255.255">
+                        <label class="form-check-label" for="q4_e">0.0.255.255</label>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-sm btn-outline-cisco" onclick="checkAnswer(4, '0.0.0.255')">Enviar</button>
+                    <button class="btn btn-sm btn-outline-secondary ms-2" onclick="showFeedback(4)">Mostrar feedback</button>
+                </div>
+                <div id="feedback4" class="mt-3" style="display: none;">
+                    <div class="alert alert-success" style="background: rgba(102, 191, 83, 0.1); border-color: var(--cisco-green);">
+                        <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                        <strong>Correto!</strong> Para a rede /24, os três primeiros octetos devem corresponder exatamente, e o último octeto pode variar. Máscara 0.0.0.255.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Atualizar o script para incluir o dropdown do índice com os novos tópicos -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-credits">
+                <i class="fas fa-shield-halved"></i> NETSEC | ☠ CyberSec | Estudos Cisco Academy<br>
+                🧙‍♂️ Alfredo Allan • Cisco Networking Academy • Gemini • DeepSeek<br>
+                <span class="text-muted small">Módulo 14 - Listas de Controle de Acesso (ACL)</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Barra de progresso
+        window.addEventListener('scroll', function() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // Busca no índice rápido
+        const searchInput = document.getElementById('navSearch');
+        if(searchInput) {
+            searchInput.addEventListener('keyup', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const items = document.querySelectorAll('#sectionList .dropdown-item');
+                items.forEach(item => {
+                    const text = item.textContent.toLowerCase();
+                    if(text.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Animação de entrada dos cards
+        anime({
+            targets: '.content-card',
+            translateY: [20, 0],
+            opacity: [0, 1],
+            duration: 600,
+            delay: anime.stagger(100),
+            easing: 'easeOutQuad'
+        });
+
+        // Funções para o quiz
+function checkAnswer(questionNumber, correctAnswer) {
+    const selectedRadio = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+    if (!selectedRadio) {
+        alert('Por favor, selecione uma resposta antes de enviar.');
+        return;
+    }
+    
+    const selectedValue = selectedRadio.value;
+    const feedbackDiv = document.getElementById(`feedback${questionNumber}`);
+    
+    if (selectedValue === correctAnswer) {
+        feedbackDiv.style.display = 'block';
+        // Scroll suave para o feedback
+        feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else {
+        feedbackDiv.style.display = 'none';
+        alert('Resposta incorreta. Tente novamente ou clique em "Mostrar feedback" para ver a explicação.');
+    }
+}
+
+function showFeedback(questionNumber) {
+    const feedbackDiv = document.getElementById(`feedback${questionNumber}`);
+    feedbackDiv.style.display = 'block';
+    feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+    </script>
+    
+</body>
+</html>
