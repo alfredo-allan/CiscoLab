@@ -47,61 +47,146 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown" style="font-weight: 500; border-bottom: 2px solid var(--cisco-green);">
-                            <i class="fas fa-cube me-1" style="color: var(--cisco-green);"></i>
-                            Módulo 14 <span class="badge-modulo ms-2">ativo</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); max-height: 400px; overflow-y: auto; min-width: 280px;">
-                            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🔰 INTRODUÇÃO</h6></li>
-                            <li><a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2"></i>14.0.1 Por que fazer?</a></li>
-                            <li><a class="dropdown-item" href="#modulo-objetivos"><i class="fas fa-chevron-right me-2"></i>14.0.2 Objetivos do Módulo</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">📚 CONTEÚDO PRINCIPAL</h6></li>
-                            <li><a class="dropdown-item" href="#intro-acl"><i class="fas fa-chevron-right me-2"></i>14.1 Introdução às ACLs</a></li>
-                            <li><a class="dropdown-item" href="#o-que-e-acl"><i class="fas fa-chevron-right me-2"></i>14.1.1 O que é uma ACL?</a></li>
-                            <li><a class="dropdown-item" href="#filtragem-pacote"><i class="fas fa-chevron-right me-2"></i>14.1.2 Filtragem de pacote</a></li>
-                            <li><a class="dropdown-item" href="#tipos-acl"><i class="fas fa-chevron-right me-2"></i>Tipos de ACLs</a></li>
-                        </ul>
-                    </li>
+               <ul class="navbar-nav ms-auto align-items-lg-center">
+    <!-- DROPDOWN DO MÓDULO ATUAL (Módulo 14) -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white px-3" href="#" role="button" data-bs-toggle="dropdown" style="font-weight: 500; border-bottom: 2px solid var(--cisco-green);">
+            <i class="fas fa-cube me-1" style="color: var(--cisco-green);"></i>
+            Módulo 14 <span class="badge-modulo ms-2">ativo</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); max-height: 400px; overflow-y: auto; min-width: 280px;">
+            <!-- INTRODUÇÃO -->
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🔰 INTRODUÇÃO</h6></li>
+            <li><a class="dropdown-item" href="#modulo-intro"><i class="fas fa-chevron-right me-2"></i>14.0.1 Por que fazer?</a></li>
+            <li><a class="dropdown-item" href="#modulo-objetivos"><i class="fas fa-chevron-right me-2"></i>14.0.2 Objetivos do Módulo</a></li>
+            
+            <li><hr class="dropdown-divider"></li>
+            
+            <!-- CONTEÚDO PRINCIPAL - ACLs -->
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">📋 INTRODUÇÃO ÀS ACLs</h6></li>
+            <li><a class="dropdown-item" href="#intro-acl"><i class="fas fa-chevron-right me-2"></i>14.1 Introdução às ACLs</a></li>
+            <li><a class="dropdown-item" href="#o-que-e-acl"><i class="fas fa-chevron-right me-2"></i>14.1.1 O que é uma ACL?</a></li>
+            <li><a class="dropdown-item" href="#filtragem-pacote"><i class="fas fa-chevron-right me-2"></i>14.1.2 Filtragem de pacote</a></li>
+            <li><a class="dropdown-item" href="#acls-nomeadas-numeradas"><i class="fas fa-chevron-right me-2"></i>14.1.3 ACLs nomeadas e numeradas</a></li>
+            <li><a class="dropdown-item" href="#operacao-acl"><i class="fas fa-chevron-right me-2"></i>14.1.4 Operação ACL</a></li>
+            
+            <li><hr class="dropdown-divider"></li>
+            
+            <!-- MÁSCARAS CURINGA -->
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🎭 MÁSCARAS CURINGA</h6></li>
+            <li><a class="dropdown-item" href="#visao-geral-mascara"><i class="fas fa-chevron-right me-2"></i>14.2.1 Visão geral</a></li>
+            <li><a class="dropdown-item" href="#tipos-mascara-curinga"><i class="fas fa-chevron-right me-2"></i>14.2.2 Tipos de Máscara</a></li>
+            <li><a class="dropdown-item" href="#calculo-mascara-curinga"><i class="fas fa-chevron-right me-2"></i>14.2.3 Cálculo da máscara curinga</a></li>
+            <li><a class="dropdown-item" href="#palavras-chave-mascara"><i class="fas fa-chevron-right me-2"></i>14.2.4 Palavras-chave</a></li>
+            <li><a class="dropdown-item" href="#verificacao-mascaras"><i class="fas fa-chevron-right me-2"></i>14.2.5 Verifique seu entendimento</a></li>
+            
+            <li><hr class="dropdown-divider"></li>
+            
+            <!-- CONFIGURAÇÃO E IMPLEMENTAÇÃO -->
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">⚙️ CONFIGURAÇÃO E IMPLEMENTAÇÃO</h6></li>
+            <li><a class="dropdown-item" href="#configurar-acls"><i class="fas fa-chevron-right me-2"></i>14.3 Configurar ACLs</a></li>
+            <li><a class="dropdown-item" href="#modificar-acls"><i class="fas fa-chevron-right me-2"></i>14.4 Modificar ACLs</a></li>
+            <li><a class="dropdown-item" href="#implementar-acls"><i class="fas fa-chevron-right me-2"></i>14.5 Implementar ACLs</a></li>
+            
+            <li><hr class="dropdown-divider"></li>
+            
+            <!-- MITIGAÇÃO DE ATAQUES -->
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🛡️ MITIGAÇÃO DE ATAQUES</h6></li>
+            <li><a class="dropdown-item" href="#mitigar-spoofing"><i class="fas fa-chevron-right me-2"></i>14.6.1 Mitigar Spoofing</a></li>
+            <li><a class="dropdown-item" href="#permitir-traffico-firewall"><i class="fas fa-chevron-right me-2"></i>14.6.2 Permitir tráfego necessário</a></li>
+            <li><a class="dropdown-item" href="#mitigar-icmp"><i class="fas fa-chevron-right me-2"></i>14.6.3 Mitigar Ataques ICMP</a></li>
+            <li><a class="dropdown-item" href="#mitigar-snmp"><i class="fas fa-chevron-right me-2"></i>14.6.4 Mitigar Ataques SNMP</a></li>
+            
+            <li><hr class="dropdown-divider"></li>
+            
+            <!-- IPv6 ACLs -->
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">🌐 IPv6 ACLs</h6></li>
+            <li><a class="dropdown-item" href="#visao-geral-ipv6"><i class="fas fa-chevron-right me-2"></i>14.7.1 Visão geral IPv6</a></li>
+            <li><a class="dropdown-item" href="#sintaxe-ipv6-acl"><i class="fas fa-chevron-right me-2"></i>14.7.2 Sintaxe IPv6 ACL</a></li>
+            <li><a class="dropdown-item" href="#configurar-ipv6-acl"><i class="fas fa-chevron-right me-2"></i>14.7.3 Configurar IPv6 ACLs</a></li>
+            
+            <li><hr class="dropdown-divider"></li>
+            
+            <!-- RESUMO E CONCLUSÃO -->
+            <li><h6 class="dropdown-header" style="color: var(--cisco-green);">📖 RESUMO E CONCLUSÃO</h6></li>
+            <li><a class="dropdown-item" href="#resumo-modulo"><i class="fas fa-chevron-right me-2"></i>14.8 Resumo do Módulo</a></li>
+            <li><a class="dropdown-item" href="#conclusao-glossario"><i class="fas fa-chevron-right me-2"></i>📚 Glossário e Explicação Didática</a></li>
+            <li><a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>🧪 Laboratórios Packet Tracer</a></li>
+        </ul>
+    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white px-3" href="#laboratorios">
-                            <i class="fas fa-flask me-1" style="color: var(--cisco-green);"></i>
-                            Labs
-                        </a>
-                    </li>
+    <!-- LABS (link direto) -->
+    <li class="nav-item">
+        <a class="nav-link text-white px-3" href="#laboratorios">
+            <i class="fas fa-flask me-1" style="color: var(--cisco-green);"></i>
+            Labs
+        </a>
+    </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link text-white px-3" href="/modulos.html" title="Ver todos os 27 módulos">
-                            <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem;"></i>
-                            <span class="d-none d-lg-inline">Módulos</span>
-                            <span class="badge-modulo ms-1">27</span>
-                        </a>
-                    </li>
+    <!-- ÍCONE PARA TODOS OS MÓDULOS (link para /modulos.html) -->
+    <li class="nav-item">
+        <a class="nav-link text-white px-3" href="/modulos.html" title="Ver todos os 27 módulos">
+            <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem;"></i>
+            <span class="d-none d-lg-inline">Módulos</span>
+            <span class="badge-modulo ms-1">27</span>
+        </a>
+    </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green);">
-                            <i class="fas fa-list-ul me-1"></i> Índice
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); min-width: 280px;">
-                            <li>
-                                <div class="px-3 py-2">
-                                    <input type="text" id="navSearch" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="🔍 Buscar seção...">
-                                </div>
-                            </li>
-                            <li><hr class="dropdown-divider my-1"></li>
-                            <div id="sectionList">
-                                <li><a class="dropdown-item" href="#modulo-intro"><span class="badge-cisco me-2">14.0.1</span>Por que fazer?</a></li>
-                                <li><a class="dropdown-item" href="#modulo-objetivos"><span class="badge-cisco me-2">14.0.2</span>Objetivos</a></li>
-                                <li><a class="dropdown-item" href="#intro-acl"><span class="badge-cisco me-2">14.1</span>Introdução às ACLs</a></li>
-                                <li><a class="dropdown-item" href="#o-que-e-acl"><span class="badge-cisco me-2">14.1.1</span>O que é uma ACL?</a></li>
-                                <li><a class="dropdown-item" href="#filtragem-pacote"><span class="badge-cisco me-2">14.1.2</span>Filtragem de pacote</a></li>
-                            </div>
-                        </ul>
-                    </li>
-                </ul>
+    <!-- DROPDOWN ÍNDICE RÁPIDO -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green);">
+            <i class="fas fa-list-ul me-1"></i> Índice
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="background-color: var(--bg-secondary); border: 1px solid var(--border-primary); min-width: 280px;">
+            <li>
+                <div class="px-3 py-2">
+                    <input type="text" id="navSearch" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="🔍 Buscar seção...">
+                </div>
+            </li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <div id="sectionList">
+                <!-- INTRODUÇÃO -->
+                <li><a class="dropdown-item" href="#modulo-intro"><span class="badge-cisco me-2">14.0.1</span>Por que fazer?</a></li>
+                <li><a class="dropdown-item" href="#modulo-objetivos"><span class="badge-cisco me-2">14.0.2</span>Objetivos</a></li>
+                
+                <!-- INTRODUÇÃO ÀS ACLs -->
+                <li><a class="dropdown-item" href="#intro-acl"><span class="badge-cisco me-2">14.1</span>Introdução às ACLs</a></li>
+                <li><a class="dropdown-item" href="#o-que-e-acl"><span class="badge-cisco me-2">14.1.1</span>O que é uma ACL?</a></li>
+                <li><a class="dropdown-item" href="#filtragem-pacote"><span class="badge-cisco me-2">14.1.2</span>Filtragem de pacote</a></li>
+                <li><a class="dropdown-item" href="#acls-nomeadas-numeradas"><span class="badge-cisco me-2">14.1.3</span>ACLs nomeadas e numeradas</a></li>
+                <li><a class="dropdown-item" href="#operacao-acl"><span class="badge-cisco me-2">14.1.4</span>Operação ACL</a></li>
+                
+                <!-- MÁSCARAS CURINGA -->
+                <li><a class="dropdown-item" href="#visao-geral-mascara"><span class="badge-cisco me-2">14.2.1</span>Visão geral</a></li>
+                <li><a class="dropdown-item" href="#tipos-mascara-curinga"><span class="badge-cisco me-2">14.2.2</span>Tipos de Máscara</a></li>
+                <li><a class="dropdown-item" href="#calculo-mascara-curinga"><span class="badge-cisco me-2">14.2.3</span>Cálculo da máscara curinga</a></li>
+                <li><a class="dropdown-item" href="#palavras-chave-mascara"><span class="badge-cisco me-2">14.2.4</span>Palavras-chave</a></li>
+                <li><a class="dropdown-item" href="#verificacao-mascaras"><span class="badge-cisco me-2">14.2.5</span>Verifique seu entendimento</a></li>
+                
+                <!-- CONFIGURAÇÃO E IMPLEMENTAÇÃO -->
+                <li><a class="dropdown-item" href="#configurar-acls"><span class="badge-cisco me-2">14.3</span>Configurar ACLs</a></li>
+                <li><a class="dropdown-item" href="#modificar-acls"><span class="badge-cisco me-2">14.4</span>Modificar ACLs</a></li>
+                <li><a class="dropdown-item" href="#implementar-acls"><span class="badge-cisco me-2">14.5</span>Implementar ACLs</a></li>
+                
+                <!-- MITIGAÇÃO DE ATAQUES -->
+                <li><a class="dropdown-item" href="#mitigar-spoofing"><span class="badge-cisco me-2">14.6.1</span>Mitigar Spoofing</a></li>
+                <li><a class="dropdown-item" href="#permitir-traffico-firewall"><span class="badge-cisco me-2">14.6.2</span>Permitir tráfego necessário</a></li>
+                <li><a class="dropdown-item" href="#mitigar-icmp"><span class="badge-cisco me-2">14.6.3</span>Mitigar Ataques ICMP</a></li>
+                <li><a class="dropdown-item" href="#mitigar-snmp"><span class="badge-cisco me-2">14.6.4</span>Mitigar Ataques SNMP</a></li>
+                
+                <!-- IPv6 ACLs -->
+                <li><a class="dropdown-item" href="#visao-geral-ipv6"><span class="badge-cisco me-2">14.7.1</span>Visão geral IPv6</a></li>
+                <li><a class="dropdown-item" href="#sintaxe-ipv6-acl"><span class="badge-cisco me-2">14.7.2</span>Sintaxe IPv6 ACL</a></li>
+                <li><a class="dropdown-item" href="#configurar-ipv6-acl"><span class="badge-cisco me-2">14.7.3</span>Configurar IPv6 ACLs</a></li>
+                
+                <!-- RESUMO E CONCLUSÃO -->
+                <li><a class="dropdown-item" href="#resumo-modulo"><span class="badge-cisco me-2">14.8</span>Resumo do Módulo</a></li>
+                <li><a class="dropdown-item" href="#conclusao-glossario"><span class="badge-cisco me-2">📖</span>Glossário e Explicação Didática</a></li>
+                <li><a class="dropdown-item" href="#laboratorios"><span class="badge-cisco me-2">🧪</span>Laboratórios</a></li>
+            </div>
+        </ul>
+    </li>
+</ul>
             </div>
         </div>
     </nav>
@@ -875,6 +960,748 @@ R1(config)#</code></pre>
                         <strong>Correto!</strong> Para a rede /24, os três primeiros octetos devem corresponder exatamente, e o último octeto pode variar. Máscara 0.0.0.255.
                     </div>
                 </div>
+            </div>
+        </section>
+                <!-- 14.6 Mitigar ataques com ACLs -->
+        <section id="mitigar-ataques" class="content-card">
+            <h2 class="cisco-title"><i class="fas fa-shield-virus me-2"></i>14.6 Mitigar ataques com ACLs</h2>
+            
+            <!-- 14.6.1 Mitigar Ataques Spoofing -->
+            <div id="mitigar-spoofing">
+                <h3 class="section-title">14.6.1 Mitigar Ataques Spoofing</h3>
+                <p>As ACLs podem ser usadas para mitigar muitas ameaças de rede, como falsificação de endereço IP e ataques de negação de serviço (DoS). A maioria dos ataques usa algum tipo de falsificação. Spoofing de endereço IP substitui o processo de criação de pacotes normais inserindo um cabeçalho IP personalizado com um endereço IP de origem diferente. Os invasores podem esconder sua identidade, falsificando o endereço IP de origem.</p>
+                <p>Existem muitas classes conhecidas de endereços IP que nunca devem ser vistas como endereços IP de origem para o tráfego que entram na rede de uma organização. Por exemplo, na figura a interface S0/0/0 é anexada à Internet e nunca deve aceitar pacotes de entrada dos seguintes endereços:</p>
+                
+                <ul class="task-list mt-3 mb-4">
+                    <li><i class="fas fa-ban me-2"></i>Todos os endereços de zeros</li>
+                    <li><i class="fas fa-ban me-2"></i>Endereços de transmissão</li>
+                    <li><i class="fas fa-ban me-2"></i>Endereços de host local (127.0.0.0/8)</li>
+                    <li><i class="fas fa-ban me-2"></i>Endereços de Endereçamento IP Privado Automático (APIPA) (169.254.0.0/16)</li>
+                    <li><i class="fas fa-ban me-2"></i>Endereços privados reservados (RFC 1918)</li>
+                    <li><i class="fas fa-ban me-2"></i>Intervalo de endereço IP multicast (224.0.0.0/4)</li>
+                </ul>
+                
+                <p>A rede 192.168.1.0/24 é anexada à interface R1 G0/0. Essa interface deve permitir apenas pacotes de entrada com um endereço de origem dessa rede. A ACL para G0/0 mostrada na figura só permitirá pacotes de entrada da rede 192.168.1.0/24. Todos os outros serão descartados.</p>
+                
+                <!-- Diagrama da topologia -->
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-12">
+                        <div class="diagram-card">
+                            <div class="diagram-box">
+                                <div class="d-flex justify-content-around align-items-center flex-wrap">
+                                    <div class="text-center">
+                                        <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div class="mt-2"><strong>192.168.1.0/24</strong></div>
+                                        <div class="text-muted small">Rede Interna</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-server" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div class="mt-2"><strong>G0/0</strong></div>
+                                        <div class="text-muted small">R1</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-globe" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div class="mt-2"><strong>S0/0/0</strong></div>
+                                        <div class="text-muted small">Internet</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="mt-4" style="color: var(--cisco-green);">Inbound em S0/0/0:</h5>
+                <div class="code-block">
+                    <pre><code>R1(config)# access-list 150 deny ip host 0.0.0.0 any
+R1(config)# access-list 150 deny ip 10.0.0.0 0.255.255.255 any
+R1(config)# access-list 150 deny ip 127.0.0.0 0.255.255.255 any
+R1(config)# access-list 150 deny ip 172.16.0.0 0.15.255.255 any
+R1(config)# access-list 150 deny ip 192.168.0.0 0.0.255.255 any
+R1(config)# access-list 150 deny ip 224.0.0.0 15.255.255.255 any
+R1(config)# access-list 150 deny ip host 255.255.255.255 any</code></pre>
+                </div>
+                
+                <h5 class="mt-4" style="color: var(--cisco-green);">Inbound em G0/0:</h5>
+                <div class="code-block">
+                    <pre><code>R1(config)# access-list 105 permit ip 192.168.1.0 0.0.0.255 any</code></pre>
+                </div>
+            </div>
+            
+            <!-- 14.6.2 Permitir o tráfego necessário através de um firewall -->
+            <div id="permitir-traffico-firewall" class="mt-5">
+                <h3 class="section-title">14.6.2 Permitir o tráfego necessário através de um firewall</h3>
+                <p>Uma estratégia eficaz para atenuar ataques é permitir explicitamente apenas alguns tipos de tráfego através de um firewall. Por exemplo, o sistema de nome de domínio (DNS), o protocolo SMTP (Simple Mail Transfer Protocol) e o Protocolo de Transferência de Arquivos (FTP) são os serviços que geralmente devem ser permitidos por meio de um firewall. Também é comum configurar um firewall para que permita os administradores acesso remoto através do firewall. Secure Shell (SSH), Syslog e Simple Network Management Protocol (SNMP) são exemplos de serviços que um roteador pode precisar incluir. Enquanto muitos desses serviços são úteis, eles devem ser controlados e monitorados. A exploração desses serviços leva a vulnerabilidades de segurança.</p>
+                <p>A figura mostra um exemplo de topologia com configurações de ACL para permitir serviços específicos na interface serial 0/0/0.</p>
+                
+                <!-- Diagrama da topologia -->
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-12">
+                        <div class="diagram-card">
+                            <div class="diagram-box">
+                                <div class="d-flex justify-content-around align-items-center flex-wrap">
+                                    <div class="text-center">
+                                        <i class="fas fa-globe" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div class="mt-2"><strong>Internet</strong></div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-tachometer-alt" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div class="mt-2"><strong>Serial 0/0/0</strong></div>
+                                        <div class="text-muted small">10.0.1.1</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-server" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div class="mt-2"><strong>R1</strong></div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-around mt-4 pt-3 border-top border-secondary">
+                                    <div class="text-center">
+                                        <i class="fas fa-laptop-code" style="font-size: 1.5rem;"></i>
+                                        <div><strong>G0/0</strong></div>
+                                        <div class="text-muted small">PC1</div>
+                                        <div>192.168.20.2/24</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <i class="fas fa-server" style="font-size: 1.5rem;"></i>
+                                        <div><strong>G0/1</strong></div>
+                                        <div class="text-muted small">DNS, SMTP, FTP</div>
+                                        <div>192.168.30.2/24</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="mt-4" style="color: var(--cisco-green);">Inbound em S0/0/0:</h5>
+                <div class="code-block">
+                    <pre><code>R1(config)# access-list 180 permit udp any host 192.168.20.2 eq domain
+R1(config)# access-list 180 permit tcp any host 192.168.20.2 eq smtp
+R1(config)# access-list 180 permit tcp any host 192.168.30.2 eq ftp
+R1(config)# access-list 180 permit tcp host 200.5.5.5 host 10.0.1.1 eq 22
+R1(config)# access-list 180 permit udp host 200.5.5.5 host 10.0.1.1 eq syslog
+R1(config)# access-list 180 permit udp host 200.5.5.5 host 10.0.1.1 eq snmptraps</code></pre>
+                </div>
+                <div class="alert alert-dark mt-3" style="background: #1a1a1a; border-left: 3px solid var(--cisco-green);">
+                    <i class="fas fa-info-circle me-2" style="color: var(--cisco-green);"></i>
+                    <strong>Explicação das regras:</strong>
+                    <ul class="mt-2 mb-0">
+                        <li>DNS (domain) - Porta 53 UDP</li>
+                        <li>SMTP - Porta 25 TCP (e-mail)</li>
+                        <li>FTP - Porta 21 TCP (transferência de arquivos)</li>
+                        <li>SSH - Porta 22 TCP (acesso remoto seguro)</li>
+                        <li>Syslog - Porta 514 UDP (logs)</li>
+                        <li>SNMP Traps - Porta 162 UDP (gerenciamento)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 14.6.3 Mitigar Ataques ICMP -->
+            <div id="mitigar-icmp" class="mt-5">
+                <h3 class="section-title">14.6.3 Mitigar Ataques ICMP</h3>
+                <p>Os hackers podem usar pacotes de eco de protocolo de mensagem de controle da Internet (ICMP) para descobrir sub-redes e hosts em uma rede protegida e gerar ataques de inundação dos DOS. Hackers podem usar mensagens de redirecionamento ICMP para alterar as tabelas de roteamento do host. Tanto as mensagens do ICMP Echo e Redirect devem ser bloqueadas de entrada pelo roteador.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="diagram-card text-start">
+                            <h5 style="color: var(--cisco-green);"><i class="fas fa-arrow-right-to-bracket me-2"></i>Mensagens ICMP permitidas (entrada)</h5>
+                            <ul class="mt-2">
+                                <li><strong>Echo reply</strong> – Permite que os usuários façam ping em hosts externos.</li>
+                                <li><strong>Source quench</strong> – Solicita que o remetente diminua a taxa de tráfego das mensagens.</li>
+                                <li><strong>Unreachable</strong> – Gerado para pacotes que são negados administrativamente por uma ACL.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="diagram-card text-start">
+                            <h5 style="color: var(--cisco-green);"><i class="fas fa-arrow-right-from-bracket me-2"></i>Mensagens ICMP permitidas (saída)</h5>
+                            <ul class="mt-2">
+                                <li><strong>Echo</strong> – Permite que os usuários façam ping em hosts externos.</li>
+                                <li><strong>Parâmetro problem</strong> – Informa o host sobre problemas de cabeçalho de pacote.</li>
+                                <li><strong>Packet too big</strong> – Habilita a descoberta da unidade máxima de transmissão do pacote (MTU).</li>
+                                <li><strong>Source quench</strong> – Reduz o tráfego quando necessário.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="mt-3">Como regra, bloqueie todos os outros tipos de mensagens ICMP de saída.</p>
+                <p>Os ACLs são usados para bloquear o Spoofing de Endereços IP, permitem marcar seletivamente serviços específicos por meio de um firewall e permitir que somente as mensagens ICMP necessárias. A figura mostra uma topologia de amostra e possíveis configurações ACL para permitir serviços específicos do ICMP nas interfaces G0/0 e S0/0/0.</p>
+                
+                <!-- Diagrama ICMP -->
+                <div class="row mt-4 mb-4">
+                    <div class="col-md-12">
+                        <div class="diagram-card">
+                            <div class="diagram-box">
+                                <div class="d-flex justify-content-around align-items-center flex-wrap">
+                                    <div class="text-center">
+                                        <i class="fas fa-globe" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div><strong>Internet</strong></div>
+                                        <div class="text-muted small">209.165.201.3/24</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-tachometer-alt" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div><strong>S0/0/0</strong></div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-server" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div><strong>R1</strong></div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-network-wired" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div><strong>G0/0</strong></div>
+                                        <div class="text-muted small">192.168.1.0/24</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5 class="mt-4" style="color: var(--cisco-green);">Inbound em S0/0/0 (ICMP de entrada):</h5>
+                <div class="code-block">
+                    <pre><code>R1(config)# access-list 112 permit icmp any any echo-reply
+R1(config)# access-list 112 permit icmp any any source-quench
+R1(config)# access-list 112 permit icmp any any unreachable
+R1(config)# access-list 112 deny icmp any any
+R1(config)# access-list 112 permit ip any any</code></pre>
+                </div>
+                
+                <h5 class="mt-4" style="color: var(--cisco-green);">Inbound em G0/0 (ICMP de saída da rede interna):</h5>
+                <div class="code-block">
+                    <pre><code>R1(config)# access-list 114 permit icmp 192.168.1.0 0.0.0.255 any echo
+R1(config)# access-list 114 permit icmp 192.168.1.0 0.0.0.255 any parameter-problem
+R1(config)# access-list 114 permit icmp 192.168.1.0 0.0.0.255 any packet-too-big
+R1(config)# access-list 114 permit icmp 192.168.1.0 0.0.0.255 any source-quench
+R1(config)# access-list 114 deny icmp any any
+R1(config)# permit ip any any</code></pre>
+                </div>
+            </div>
+            
+            <!-- 14.6.4 Mitigar Ataques SNMP -->
+            <div id="mitigar-snmp" class="mt-5">
+                <h3 class="section-title">14.6.4 Mitigar Ataques SNMP</h3>
+                <p>Protocolos de gerenciamento, como SNMP, são úteis para monitoramento remoto e gerenciamento de dispositivos em rede. No entanto, eles ainda podem ser explorados. Se o SNMP for necessário, a exploração de vulnerabilidades SNMP pode ser mitigada aplicando ACLs de interface para filtrar pacotes SNMP de sistemas não autorizados. Uma exploração ainda pode ser possível se o pacote SNMP for provido de um endereço que foi falsificado e é permitido pela ACL.</p>
+                <p>Essas medidas de segurança são úteis, mas os meios mais eficazes de prevenção de exploração é desativar o servidor SNMP em dispositivos iOS para os quais não é necessário. Como mostrado na figura, use o comando <code>no snmp-server</code> para desativar os serviços SNMP nos dispositivos Cisco IOS.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-8 mx-auto">
+                        <div class="diagram-card">
+                            <div class="d-flex justify-content-around align-items-center flex-wrap">
+                                <div class="text-center">
+                                    <i class="fas fa-globe" style="font-size: 2rem; color: var(--accent-red);"></i>
+                                    <div class="mt-2"><strong>Internet</strong></div>
+                                    <div class="text-muted small">Tentativa de exploração SNMP</div>
+                                </div>
+                                <i class="fas fa-arrow-right fa-2x" style="color: var(--accent-red);"></i>
+                                <div class="text-center">
+                                    <i class="fas fa-server" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                    <div class="mt-2"><strong>R1</strong></div>
+                                    <div class="text-muted small">SNMP disabled</div>
+                                </div>
+                            </div>
+                            <div class="alert alert-danger mt-4 mb-0" style="background: rgba(220, 53, 69, 0.1); border-color: var(--accent-red);">
+                                <i class="fas fa-shield-halved me-2"></i>
+                                <strong>SNMP disabled, SNMP request denied.</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="code-block mt-4">
+                    <pre><code>R1(config)# no snmp-server</code></pre>
+                </div>
+                
+                <div class="alert alert-dark mt-3" style="background: #1a1a1a; border-left: 3px solid var(--accent-yellow);">
+                    <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-yellow);"></i>
+                    <strong>Melhores Práticas:</strong>
+                    <ul class="mt-2 mb-0">
+                        <li>Desative o SNMP em dispositivos que não necessitam de gerenciamento remoto</li>
+                        <li>Use ACLs para restringir acesso SNMP apenas a estações de gerenciamento autorizadas</li>
+                        <li>Utilize SNMPv3 com autenticação e criptografia quando possível</li>
+                        <li>Monitore logs para tentativas de acesso SNMP não autorizadas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+                <!-- 14.7 ACLs IPv6 -->
+        <section id="ipv6-acls" class="content-card">
+            <h2 class="cisco-title"><i class="fab fa-ipv6 me-2"></i>14.7 ACLs IPv6</h2>
+            <div class="text-muted mb-4">
+                <i class="fas fa-arrow-down me-1"></i> Role para começar
+            </div>
+            
+            <!-- 14.7.1 Visão geral do IPv6 ACL -->
+            <div id="visao-geral-ipv6">
+                <h3 class="section-title">14.7.1 Visão geral do IPv6 ACL</h3>
+                <p>Nos últimos anos, muitas redes começaram a transição para um ambiente IPv6. Parte da necessidade da transição para IPv6 é por causa das fraquezas inerentes no IPv4.</p>
+                <p>Infelizmente, como a migração para o IPv6 continua, os ataques IPv6 estão se tornando mais difundidos. IPv4 não desaparecerá durante a noite. O IPv4 coexistirá com o IPv6 e, em seguida, será gradualmente substituído pelo IPv6. Isso cria potenciais furos de segurança. Um exemplo de uma preocupação de segurança é que os atores de ameaça que alavancam o IPv4 para explorar o IPv6 em ambientes de pilha dupla. Dual Stack é um método de integração no qual um dispositivo tem conectividade para as redes IPv4 e IPv6. Em dispositivos de ambiente de pilha dupla operam com duas pilhas de protocolo IP.</p>
+                
+                <div class="alert alert-dark mt-3 mb-4" style="background: #1a1a1a; border-left: 3px solid var(--accent-red);">
+                    <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-red);"></i>
+                    <strong>Exemplo de exploração IPv6:</strong>
+                    <p class="mt-2">O ator de ameaças pode realizar ataques furtivos que resultam na exploração da confiança usando anfitriões empilhados duplos, as mensagens do NDP (Neighbor Discovery Protocol) do vizinho desonesto e técnicas de tunelamento. O Teredo Tunneling, por exemplo, é uma tecnologia de transição IPv6 que fornece atribuição automática de endereços IPv6 quando os hosts IPv4/IPv6 estão localizados por trás dos dispositivos de Tradução de Endereços de Rede IPv4 (NAT). Isso realiza isso incorporando os pacotes IPv6 dentro dos pacotes IPv4 UDP.</p>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="diagram-card">
+                            <div class="diagram-box">
+                                <div class="d-flex justify-content-around align-items-center flex-wrap">
+                                    <div class="text-center">
+                                        <i class="fas fa-user-secret" style="font-size: 2rem; color: var(--accent-red);"></i>
+                                        <div><strong>Actor de Ameaça</strong></div>
+                                        <div class="text-muted small">IPv4</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--accent-red);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-firewall" style="font-size: 2rem; color: var(--accent-yellow);"></i>
+                                        <div><strong>Firewall IPv4</strong></div>
+                                        <div class="text-muted small">Permite tráfego UDP</div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x" style="color: var(--accent-red);"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-server" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div><strong>Host Dual Stack</strong></div>
+                                        <div class="text-muted small">IPv4 + IPv6</div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <i class="fas fa-arrow-down fa-2x" style="color: var(--cisco-green);"></i>
+                                    <div class="mt-2">Rogue RA (Router Advertisement) envia anúncios IPv6</div>
+                                    <i class="fas fa-arrow-down fa-2x mt-2" style="color: var(--cisco-green);"></i>
+                                    <div class="mt-2">Hosts IPv6 se autoconfiguram silenciosamente</div>
+                                    <i class="fas fa-arrow-down fa-2x mt-2" style="color: var(--accent-red);"></i>
+                                    <div class="mt-2 text-danger"><strong>Ameaça se movimenta (pivô) pela rede IPv6</strong></div>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-muted">Os ganhos de tráfego do ator de ameaças por IPv4, envia Rogue IPv6 RAs, e pivôs usando hosts IPv6. O firewall IPv4 vê e permite o tráfego IPv4 UDP. O IPv6 desconhecido hospeda o autoconfigure suas pilhas silenciosamente, iniciando túneis automáticos de Teredo usando UDP.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="mt-3">É necessário desenvolver e implementar uma estratégia para mitigar ataques contra infraestruturas e protocolos IPv6. Esta estratégia de mitigação deve incluir filtrar na borda usando várias técnicas, como ACLs IPv6.</p>
+            </div>
+            
+            <!-- 14.7.2 Sintaxe da ACL IPv6 -->
+            <div id="sintaxe-ipv6-acl" class="mt-5">
+                <h3 class="section-title">14.7.2 Sintaxe da ACL IPv6</h3>
+                <p>A funcionalidade do ACL no IPv6 é semelhante às ACLs no IPv4. No entanto, não há equivalente a ACLs padrão IPv4. Além disso, todos os ACLs IPv6 devem ser configurados com um nome. A ACLs IPv6 permitem filtrar com base nos endereços de origem e de destino que estão viajando de entrada e saída para uma interface específica. Eles também suportam a filtragem de tráfego com base em cabeçalhos de opção IPv6 e informações opcionais do tipo de protocolo de camada superior para a granularidade mais fina de controle, semelhante a ACLs estendidas no IPv4.</p>
+                <p>Para configurar uma ACL IPv6, use o comando <code>ipv6 access-list</code> para entrar no modo de configuração da ACL IPv6. Em seguida, use a sintaxe mostrada na figura para configurar cada entrada da lista de acesso para permitir ou negar especificamente o tráfego.</p>
+                
+                <div class="code-block mt-3">
+                    <pre><code>Router(config)# ipv6 access-list access-list-name
+Router(config-ipv6-acl)# deny | permit protocol {source-ipv6-prefix / prefix-length | any | host source-ipv6-address}</code></pre>
+                </div>
+                
+                <div class="table-responsive mt-4">
+                    <table class="table table-cisco">
+                        <thead>
+                            <tr><th>Parâmetro</th><th>Descrição</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>deny | permit</strong></td><td>Especifica se o pacote será permitido ou recusado.</td></tr>
+                            <tr><td><strong>protocol</strong></td><td>Inserir o nome ou número de um protocolo de internet ou um número inteiro representando um número de protocolo IPv6.</td></tr>
+                            <tr><td><strong>source-ipv6-prefix / prefix-length destination-ipv6-address / prefix-length</strong></td><td>A rede IPv6 de origem ou destino, ou classe de redes para a qual definir condições de permit ou deny.</td></tr>
+                            <tr><td><strong>any</strong></td><td>Digite any como a abreviação ao prefixo ::/0 do IPv6. Isso combina com todos os endereços.</td></tr>
+                            <tr><td><strong>host</strong></td><td>Para o host source-ipv6-address ou destination-ipv6-address, insira o endereço de host IPv6 de origem ou destino para qual se deseja definir as condições de deny ou permit.</td></tr>
+                            <tr><td><strong>operator</strong></td><td>(Opcional) Um operador que compara as portas de origem ou destino do protocolo especificado. Os operadores são lt (menor que), gt (maior que), eq (igual), neq (diferente), e range.</td></tr>
+                            <tr><td><strong>port-number</strong></td><td>(Opcional) Um número decimal ou o nome de uma porta TCP ou UDP para filtrar TCP ou UDP, respectivamente.</td></tr>
+                            <tr><td><strong>dscp</strong></td><td>(Opcional) Dá combinação de um valor DSCP com o valor da classe de tráfego no campo Traffic Class de cada cabeçalho do pacote IPv6. O intervalo aceitável é de 0 a 63.</td></tr>
+                            <tr><td><strong>fragments</strong></td><td>(Opcional) Dá combinação entre pacotes fragmentados não iniciais.</td></tr>
+                            <tr><td><strong>log | log-input</strong></td><td>(Opcional) Causa uma mensagem de registro sobre o pacote que corresponde à entrada.</td></tr>
+                            <tr><td><strong>sequence value</strong></td><td>(Opcional) Especifica o valor do número de sequência para a instrução da lista de controle de acesso.</td></tr>
+                            <tr><td><strong>time-range name</strong></td><td>(Opcional) Especifica o intervalo de tempo que se aplica à declaração de permissão.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 14.7.3 Configurar ACLs de IPv6 -->
+            <div id="configurar-ipv6-acl" class="mt-5">
+                <h3 class="section-title">14.7.3 Configurar ACLs de IPv6</h3>
+                <p>Uma ACL do IPv6 contém uma negação implícita no <strong>deny ipv6 any any</strong>. Cada IPv6 ACL também contém regras de licença implícitas para permitir a descoberta vizinha do IPv6. O IPv6 Neighbor Discovery Protocol (NDP) requer o uso da camada de rede IPv6 para enviar anúncios vizinhos (NAs) e solicitações vizinhas (NSs). Se um administrador configurar o comando <strong>deny ipv6 any</strong> sem permitir explicitamente permitir o neighbor discovery, o NDP será desativado.</p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="diagram-card">
+                            <div class="diagram-box">
+                                <div class="d-flex justify-content-around align-items-center flex-wrap">
+                                    <div class="text-center">
+                                        <i class="fas fa-globe" style="font-size: 2rem;"></i>
+                                        <div><strong>Internet</strong></div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-server" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                        <div><strong>R1</strong></div>
+                                    </div>
+                                    <i class="fas fa-arrow-right fa-2x"></i>
+                                    <div class="text-center">
+                                        <i class="fas fa-network-wired" style="font-size: 2rem;"></i>
+                                        <div><strong>G0/0</strong></div>
+                                        <div class="text-muted small">2001:DB8:1:1::/64</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p class="mt-3">Na figura, R1 está permitindo o tráfego de entrada em G0/0 a partir de 2001:DB8:1:1::/64 rede. Os pacotes NA e NS são explicitamente permitidos. O tráfego proveniente de qualquer outro endereço IPv6 é explicitamente negado. Se o administrador configura-se apenas a primeira instrução de permissão, a ACL teria o mesmo efeito. No entanto, é uma boa prática documentar as declarações implícitas explicitamente configurando-as.</p>
+                
+                <div class="code-block mt-3">
+                    <pre><code>R1(config)# ipv6 access-list LAN_ONLY
+R1(config-ipv6-acl)# permit 2001:db8:1:1::/64 any
+R1(config-ipv6-acl)# permit icmp any any nd-na
+R1(config-ipv6-acl)# permit icmp any any nd-ns
+R1(config-ipv6-acl)# deny ipv6 any any
+R1(config-ipv6-acl)# end
+
+R1# show ipv6 access-list
+IPv6 access list LAN_ONLY
+    permit ipv6 2001:DB8:1:1::/64 any sequence 10
+    permit icmp any any nd-na sequence 20
+    permit icmp any any nd-ns sequence 30
+    deny ipv6 any any sequence 40</code></pre>
+                </div>
+                
+                <div class="alert alert-dark mt-3" style="background: #1a1a1a; border-left: 3px solid var(--cisco-green);">
+                    <i class="fas fa-lightbulb me-2" style="color: var(--cisco-green);"></i>
+                    <strong>Importante:</strong> Aplique uma ACL IPv6 a uma interface com o comando <code>ipv6 traffic-filter</code>.
+                    <div class="code-block mt-2" style="background: #0a0a0a;">
+                        <pre><code>R1(config)# interface g0/0
+R1(config-if)# ipv6 traffic-filter LAN_ONLY in</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 14.8 Resumo do Módulo -->
+        <section id="resumo-modulo" class="content-card">
+            <h2 class="cisco-title"><i class="fas fa-clipboard-list me-2"></i>14.8 Lista de Controle de Acesso - Resumo</h2>
+            <div class="text-muted mb-4">
+                <i class="fas fa-arrow-down me-1"></i> Role para começar
+            </div>
+            
+            <div id="o-que-aprendi">
+                <h3 class="section-title">14.8.1 O que aprendi neste módulo?</h3>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                            <strong>Introdução às listas de controle de acesso</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                            <strong>Máscara curinga</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                            <strong>Configurar ACLs</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                            <strong>Sintaxe nomeada da ACL IPv4 padrão</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                            <strong>Implementar ACLs</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                            <strong>Mitigar ataques com ACLs</strong>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="diagram-card text-start">
+                            <i class="fas fa-check-circle me-2" style="color: var(--cisco-green);"></i>
+                            <strong>ACLs IPv6</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-5">
+                <h3 class="section-title">Resumo dos Conceitos Fundamentais</h3>
+                
+                <div class="accordion mt-3" id="accordionResumo">
+                    <div class="accordion-item" style="background-color: var(--bg-card); border: 1px solid var(--border-primary);">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resumoIntro" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-door-open me-2" style="color: var(--cisco-green);"></i> Introdução às listas de controle de acesso
+                            </button>
+                        </h2>
+                        <div id="resumoIntro" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Uma ACL é uma série de comandos do IOS usados para filtrar pacotes com base nas informações encontradas no cabeçalho do pacote. Por padrão, um roteador não tem nenhuma ACLs configurada. Uma ACL usa uma lista sequencial de instruções de permissão ou negação, conhecidas como ACEs. O processo de filtragem de pacotes ocorre quando o tráfego de rede passa por uma interface configurada com uma ACL, e o roteador compara as informações dentro do pacote contra cada ACE, em ordem sequencial, para determinar se o pacote corresponde a um dos ACEs. A filtragem de pacote pode ocorrer na camada 3 ou 4. Cisco roteadores suportam ACLs padrão e ACLs estendidos. As ACLs número 1 a 99, ou 1300 a 1999 são ACLs padrão enquanto os ACLs número 100 a 199, ou 2000 a 2699 são ACLs estendidos. ACLs nomeadas são o método preferido a ser usado ao configurar ACLs. O nome fornece informações sobre o objetivo da ACL. As listas de acesso expressam o conjunto de regras que permitem maior controle dos pacotes que chegam às interfaces de entrada, pacotes que são retransmitidos através do roteador e pacotes que saem das interfaces do roteador.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mt-2" style="background-color: var(--bg-card); border: 1px solid var(--border-primary);">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resumoWildcard" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-code-branch me-2" style="color: var(--cisco-green);"></i> Máscara curinga
+                            </button>
+                        </h2>
+                        <div id="resumoWildcard" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Uma ACE IPv4 usa uma máscara curinga de 32 bits para determinar quais bits do endereço examinar para uma correspondência. As máscaras curingas também são usadas pelo protocolo de roteamento OSPF. Uma máscara curinga é semelhante a uma máscara de sub-rede na vez que usa o processo de ANDing para identificar quais bits em um endereço IPv4 devem corresponder. No entanto, eles diferem na forma como combinam 1s e 0s binários. Diferente de uma máscara de sub-rede, na qual o binário 1 é igual a uma correspondência e o binário 0 não é uma correspondência, em uma máscara curinga, o inverso é verdadeiro. Um método de atalho para calcular máscaras curingas é subtrair a máscara de sub-rede de 255.255.255.255. O Cisco IOS fornece duas palavras-chaves <strong>host</strong> e <strong>any</strong>, para simplificar os usos mais comuns de mascaramento curinga. As palavras-chave reduzem as teclas ACL e facilitam a leitura da ACE.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mt-2" style="background-color: var(--bg-card); border: 1px solid var(--border-primary);">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resumoConfig" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-cogs me-2" style="color: var(--cisco-green);"></i> Configurar ACLs
+                            </button>
+                        </h2>
+                        <div id="resumoConfig" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Ao configurar uma ACL complexa, é sugerido que você use um editor de texto e escreva os detalhes da política a ser implementada, adicione os comandos de configuração do IOS para realizar essas tarefas, incluir observações para documentar a ACL e copiar e colar os comandos no dispositivo. Sempre teste minuciosamente uma ACL para garantir que ela aplica corretamente a política desejada. Para criar uma ACL padrão numerada, use o comando <strong>access-list</strong> {deny | permit | remark text} source [source-wildcard] [log]. Para criar uma ACL padrão nomeada, use o comando <strong>ip access-list standard</strong> {deny | permit | remark text} access-list-name. Os nomes das ACLs são alfanuméricos, diferenciam maiúsculas de minúsculas e devem ser exclusivos. As etapas de procedimentos para configurar ACLs estendidas são as mesmas usadas para ACL padrão. Para aplicar uma ACL IPv4 extendida em uma interface é usado o mesmo comando da standard ACL <strong>ip access-group {access-list-number / access-list-name} {in | out}</strong>. As ACLs estendidas podem filtrar em vários tipos diferentes de protocolos e portas da Internet. O TCP também pode executar serviços básicos de firewall stateful usando a palavra-chave TCP <strong>established</strong>. A palavra-chave permite que o tráfego interno saia da rede privada interna e permite que o tráfego de resposta retornado entre na rede privada interna.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mt-2" style="background-color: var(--bg-card); border: 1px solid var(--border-primary);">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resumoImplementar" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-play-circle me-2" style="color: var(--cisco-green);"></i> Implementar ACLs
+                            </button>
+                        </h2>
+                        <div id="resumoImplementar" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Ao configurar e aplicar uma ACL, esteja ciente das diretrizes:</p>
+                                <ul>
+                                    <li>Crie um ACL globalmente e aplique-a.</li>
+                                    <li>Garanta que a última declaração seja uma implícita <strong>deny any</strong> ou <strong>deny ip any any</strong>.</li>
+                                    <li>A ordem da declaração é importante porque os ACLs são processados de cima para baixo.</li>
+                                    <li>Assim que uma declaração é correspondida ao ACL, é saído.</li>
+                                    <li>Sempre filtre o mais específico para o mais genérico.</li>
+                                    <li>Apenas uma ACL é permitida por interface, por protocolo, por direção.</li>
+                                    <li>Novas declarações para uma ACL existente são adicionadas à parte inferior da ACL por padrão.</li>
+                                    <li>Os pacotes gerados por roteador não são filtrados por ACLs de saída.</li>
+                                    <li>Coloque os ACLs estendidos o mais próximo possível do destino.</li>
+                                    <li>Coloque ACLs estendidos o mais próximo possível da origem.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mt-2" style="background-color: var(--bg-card); border: 1px solid var(--border-primary);">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resumoMitigar" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fas fa-shield-virus me-2" style="color: var(--cisco-green);"></i> Mitigar ataques com ACLs
+                            </button>
+                        </h2>
+                        <div id="resumoMitigar" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>Os ACLs podem ser usados para mitigar muitas ameaças de rede, como spoofing de endereço IP e ataques do DOS. Uma estratégia eficaz para atenuar ataques é permitir explicitamente apenas alguns tipos de tráfego através de um firewall. Tanto as mensagens do ICMP Echo e Redirect devem ser bloqueadas de entrada pelo roteador. Se o SNMP for necessário, a exploração de vulnerabilidades SNMP pode ser mitigada aplicando ACLs de interface para filtrar pacotes SNMP de sistemas não autorizados. Várias mensagens ICMP são recomendadas para operação adequada de rede e devem ser permitidas na rede interna, incluindo resposta de eco, source quench e inacessível. Várias mensagens ICMP devem ser permitidas para sair da rede, incluindo Echo, Parâmetro problem, packet too big e source quench. Como regra geral, bloqueie todos os outros tipos de mensagens ICMP de saída.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mt-2" style="background-color: var(--bg-card); border: 1px solid var(--border-primary);">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resumoIPv6" style="background-color: var(--bg-card); color: var(--text-primary);">
+                                <i class="fab fa-ipv6 me-2" style="color: var(--cisco-green);"></i> ACLs IPv6
+                            </button>
+                        </h2>
+                        <div id="resumoIPv6" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+                            <div class="accordion-body" style="background-color: var(--bg-secondary);">
+                                <p>O IPv6 possui vários recursos que atendem aos requisitos de rede moderna: IPsec, IP móvel, RSVP e escalabilidade de endereço. Dual Stack é um método de integração no qual um dispositivo tem conectividade para as redes IPv4 e IPv6. Em dispositivos de ambiente de pilha dupla operam com duas pilhas de protocolo IP. Os invasores podem realizar ataques furtivos que resultem na exploração da confiança usando hosts dual-empilhados, mensagens NDP desonestas e técnicas de tunelamento. Para mitigar ataques contra infraestruturas e protocolos IPv6, a estratégia deve incluir filtrar na borda usando várias técnicas, como ACLs IPv6. A funcionalidade do ACL no IPv6 é semelhante às ACLs no IPv4. No entanto, não há equivalente a ACLs padrão IPv4. Além disso, todos os ACLs IPv6 devem ser configurados com um nome. As ACLs IPv6 permitem filtrar com base nos endereços de origem e de destino que estão viajando de entrada e saída para uma interface específica.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção Conclusiva: Glossário e Explicação Didática -->
+        <section id="conclusao-glossario" class="content-card">
+            <h2 class="cisco-title"><i class="fas fa-graduation-cap me-2"></i>Entendendo as ACLs: Uma Visão Didática</h2>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="diagram-card text-start">
+                        <h4 style="color: var(--cisco-green);"><i class="fas fa-lightbulb me-2"></i>O que são ACLs e por que elas são importantes?</h4>
+                        <p>Imagine que você é o porteiro de um prédio muito movimentado. Todos os dias, centenas de pessoas querem entrar. Algumas são moradores, outras são entregadores, algumas são visitas autorizadas e outras são estranhas que não deveriam entrar. Como você decide quem entra e quem fica do lado de fora?</p>
+                        <p>Você cria uma <strong>lista de regras</strong> (sua "lista de controle de acesso"):</p>
+                        <ul>
+                            <li>Moradores podem entrar a qualquer momento ✓</li>
+                            <li>Entregadores só podem entrar entre 9h e 18h ✓</li>
+                            <li>Visitas só com autorização prévia ✓</li>
+                            <li>Todos os outros ficam bloqueados ✗</li>
+                        </ul>
+                        <p>Uma ACL funciona exatamente assim, mas para o tráfego de rede! O roteador é o "porteiro" que examina cada pacote de dados que chega e decide, com base nas suas regras (ACL), se ele pode passar ou deve ser descartado.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="diagram-card text-center">
+                        <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--cisco-green);"></i>
+                        <h4 class="mt-3">Porteiro Digital</h4>
+                        <p class="text-muted">O roteador como guardião da rede</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="diagram-card text-start">
+                        <h4 style="color: var(--cisco-green);"><i class="fas fa-question-circle me-2"></i>Perguntas Frequentes (Visão Simplificada)</h4>
+                        <div class="mt-3">
+                            <p><strong class="text-success">🔹 O que significa "filtragem de pacotes"?</strong><br>
+                            É como um segurança que examina cada pessoa que quer entrar em uma festa. Ele olha o convite (cabeçalho do pacote) e decide: "Pode entrar" (permit) ou "Fica fora" (deny).</p>
+                            
+                            <p><strong class="text-success">🔹 Qual a diferença entre ACL padrão e estendida?</strong><br>
+                            <strong>ACL Padrão:</strong> Olha apenas "quem" está pedindo para entrar (endereço IP de origem).<br>
+                            <strong>ACL Estendida:</strong> Olha "quem" está pedindo, "para onde" quer ir, "qual serviço" quer usar e até "qual porta". É muito mais detalhada!</p>
+                            
+                            <p><strong class="text-success">🔹 O que é uma máscara curinga?</strong><br>
+                            É uma ferramenta que diz ao roteador: "Olhe apenas para estas partes do endereço". Bit 0 = "preste atenção aqui", Bit 1 = "pode ignorar".</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="diagram-card text-start">
+                        <h4 style="color: var(--cisco-green);"><i class="fas fa-tasks me-2"></i>Quando usar cada tipo de ACL?</h4>
+                        <div class="mt-3">
+                            <div class="rule-item rule-allow mb-2">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <strong>ACL Padrão (numeradas 1-99, 1300-1999):</strong><br>
+                                Use quando quiser bloquear um host ou rede específica de acessar QUALQUER lugar.
+                            </div>
+                            <div class="rule-item rule-allow mb-2">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <strong>ACL Estendida (numeradas 100-199, 2000-2699):</strong><br>
+                                Use quando precisar de controle fino: "Permitir que o departamento de TI acesse o servidor web (porta 80), mas não o servidor de e-mail (porta 25)". 
+                            </div>
+                            <div class="rule-item rule-allow mb-2">
+                                <i class="fas fa-check-circle me-2"></i>
+                                <strong>ACL Nomeada:</strong><br>
+                                Sempre que possível! É mais organizada e você pode editar sem recriar tudo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="diagram-card text-start">
+                        <h4 style="color: var(--cisco-green);"><i class="fas fa-database me-2"></i>Glossário de Termos</h4>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <strong class="text-success">ACL (Access Control List)</strong>
+                                    <p class="text-muted small">Lista de regras que define quais pacotes podem ou não passar por uma interface de rede.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <strong class="text-success">ACE (Access Control Entry)</strong>
+                                    <p class="text-muted small">Cada regra individual dentro de uma ACL. Ex: "permitir tráfego da rede 10.0.0.0/8".</p>
+                                </div>
+                                <div class="mb-3">
+                                    <strong class="text-success">Máscara Curinga (Wildcard Mask)</strong>
+                                    <p class="text-muted small">Máscara de 32 bits que determina quais bits do endereço IP devem ser verificados. Bit 0 = verifica, Bit 1 = ignora.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <strong class="text-success">Filtragem de Pacotes</strong>
+                                    <p class="text-muted small">Processo de analisar pacotes e decidir se devem ser encaminhados ou descartados baseado nas regras da ACL.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <strong class="text-success">Spoofing</strong>
+                                    <p class="text-muted small">Técnica de falsificar o endereço IP de origem para esconder a identidade do invasor ou enganar sistemas de segurança.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <strong class="text-success">Negação Implícita (Implicit Deny)</strong>
+                                    <p class="text-muted small">Regra automática no final de toda ACL que bloqueia qualquer tráfego não explicitamente permitido. "Se não está na lista, não entra".</p>
+                                </div>
+                                <div class="mb-3">
+                                    <strong class="text-success">Dual Stack</strong>
+                                    <p class="text-muted small">Ambiente onde dispositivos rodam IPv4 e IPv6 simultaneamente, permitindo transição gradual entre os protocolos.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <strong class="text-success">NDP (Neighbor Discovery Protocol)</strong>
+                                    <p class="text-muted small">Protocolo IPv6 que substitui o ARP do IPv4. Responsável por descobrir vizinhos e resolver endereços.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="diagram-card text-start" style="background: linear-gradient(135deg, #1a2a1a 0%, #1e1e1e 100%);">
+                        <h4 style="color: var(--cisco-green);"><i class="fas fa-star-of-life me-2"></i>Dicas para Iniciantes em Segurança</h4>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-1-circle" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                    <p class="mt-2"><strong>Sempre comece negando tudo</strong><br>Pense como um segurança: "ninguém entra a menos que eu autorize". Depois vá adicionando permissões específicas.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-2-circle" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                    <p class="mt-2"><strong>Ordem importa</strong><br>As regras são lidas de cima para baixo. A primeira que corresponder é executada. Coloque as regras mais específicas primeiro!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-3-circle" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                    <p class="mt-2"><strong>Teste antes de aplicar</strong><br>Use o Packet Tracer ou laboratórios simulados. Uma ACL mal configurada pode bloquear o acesso ao próprio roteador!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-4">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-4-circle" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                    <p class="mt-2"><strong>Documente suas ACLs</strong><br>Use o comando <code>remark</code> para comentar o propósito de cada regra. Seu eu do futuro vai agradecer!</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-5-circle" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                    <p class="mt-2"><strong>Princípio do Menor Privilégio</strong><br>Dê apenas o acesso mínimo necessário para cada usuário ou serviço. "Precisa de FTP? Só libere a porta 21".</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-6-circle" style="font-size: 2rem; color: var(--cisco-green);"></i>
+                                    <p class="mt-2"><strong>Cuidado com IPv6</strong><br>Muitas redes têm IPv6 ativo sem que você saiba. Lembre-se de configurar ACLs também para IPv6!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 text-center p-3" style="background: rgba(102, 191, 83, 0.1); border-radius: 8px;">
+                <i class="fas fa-quote-left me-2" style="color: var(--cisco-green);"></i>
+                <em>Em segurança de redes, uma ACL bem configurada é como um bom porteiro: sabe exatamente quem deixar entrar, quem manter fora, e não abre exceções sem motivo. Aprender ACLs é dar o primeiro passo para se tornar um arquiteto de segurança de redes.</em>
+                <i class="fas fa-quote-right ms-2" style="color: var(--cisco-green);"></i>
             </div>
         </section>
 
