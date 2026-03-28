@@ -1,0 +1,1923 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 16: Firewalls de Política com Base em Zona | CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+      /* Estilos adicionais específicos para o módulo 16 */
+      .zpf-diagram {
+        background: var(--bg-terminal);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        border: 1px solid var(--border-primary);
+        transition: all 0.3s ease;
+      }
+
+      .zpf-diagram:hover {
+        border-color: var(--cisco-green);
+        box-shadow: 0 0 15px rgba(102, 191, 83, 0.2);
+      }
+
+      .zone-badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: rgba(102, 191, 83, 0.1);
+        border-left: 3px solid var(--cisco-green);
+        border-radius: 4px;
+        font-family: var(--font-terminal);
+        font-size: 0.85rem;
+        margin: 0.25rem;
+      }
+
+      .step-timeline {
+        position: relative;
+        padding-left: 2rem;
+      }
+
+      .step-timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--cisco-green), transparent);
+      }
+
+      .step-item {
+        position: relative;
+        margin-bottom: 2rem;
+        padding-left: 1.5rem;
+      }
+
+      .step-item::before {
+        content: '';
+        position: absolute;
+        left: -2rem;
+        top: 0.25rem;
+        width: 12px;
+        height: 12px;
+        background: var(--cisco-green);
+        border-radius: 50%;
+        box-shadow: 0 0 8px var(--cisco-green);
+      }
+
+      .step-number {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--cisco-green);
+        font-family: var(--font-terminal);
+      }
+
+      .topology-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .topology-card {
+        background: var(--bg-card);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-primary);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .topology-card:hover {
+        border-color: var(--cisco-green);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .topology-card.active {
+        border-color: var(--cisco-green);
+        box-shadow: 0 0 20px rgba(102, 191, 83, 0.3);
+      }
+
+      .topology-preview {
+        padding: 1.5rem;
+        background: var(--bg-terminal);
+        text-align: center;
+      }
+
+      .topology-preview img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .topology-info {
+        padding: 1rem;
+        border-top: 1px solid var(--border-primary);
+      }
+
+      .topology-title {
+        font-weight: 700;
+        color: var(--cisco-green);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+      }
+
+      .btn-zpf {
+        background: transparent;
+        border: 1px solid var(--cisco-green);
+        color: var(--cisco-green);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        font-size: 0.85rem;
+      }
+
+      .btn-zpf:hover {
+        background: var(--cisco-green);
+        color: var(--bg-primary);
+      }
+
+      .comparison-table td,
+      .comparison-table th {
+        vertical-align: middle;
+      }
+
+      .zone-diagram {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin: 2rem 0;
+      }
+
+      .zone-box {
+        background: var(--bg-card);
+        border-radius: 12px;
+        padding: 1.5rem;
+        min-width: 180px;
+        text-align: center;
+        border-top: 3px solid var(--cisco-green);
+      }
+
+      .zone-box i {
+        font-size: 2rem;
+        color: var(--cisco-green);
+        margin-bottom: 0.5rem;
+      }
+
+      .zone-arrow {
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        color: var(--cisco-green);
+      }
+
+      @media (max-width: 768px) {
+        .zone-arrow {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar Padrão -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 16 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li><h6 class="dropdown-header text-success">📖 Tópicos do Módulo</h6></li>
+                <li>
+                  <a class="dropdown-item" href="#visao-geral"><i class="fas fa-eye me-2 text-success"></i>16.1 Visão Geral do ZPF</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#beneficios"
+                    ><i class="fas fa-chart-line me-2 text-success"></i>16.1.1 Benefícios do ZPF</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#projeto"><i class="fas fa-drafting-compass me-2 text-success"></i>16.1.2 Projeto ZPF</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#topologias"
+                    ><i class="fas fa-network-wired me-2 text-success"></i>Topologias de Referência</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#operacao"><i class="fas fa-cogs me-2 text-success"></i>Operação ZPF</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#configuracao"><i class="fas fa-terminal me-2 text-success"></i>Configuração ZPF</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2 text-success"></i>Laboratórios</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList"></div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <main class="container py-5">
+      <!-- Título Principal -->
+      <div class="mb-5">
+        <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+          <span class="badge-cisco-alt"><i class="fas fa-firewall me-1"></i> Módulo 16</span>
+          <span class="badge-modulo"><i class="fas fa-video me-1"></i> 1 vídeo</span>
+          <span class="badge-modulo"><i class="fas fa-network-wired me-1"></i> 1 Packet Tracer</span>
+          <span class="badge-modulo"><i class="fas fa-check-double me-1"></i> 1 Verificação</span>
+        </div>
+        <h1 class="cisco-title-gradient">Firewalls de Política com Base em Zona</h1>
+        <p class="text-muted mt-3 fs-5">
+          Implemente o firewall de política baseado em zona usando o CLI. Aprenda a evolução dos firewalls clássicos para o modelo ZPF e
+          domine a segurança baseada em zonas.
+        </p>
+      </div>
+
+      <!-- 16.0 Introdução -->
+      <section id="introducao" class="mb-5">
+        <div class="content-card">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="fas fa-question-circle fa-2x" style="color: var(--cisco-green)"></i>
+            <h2 class="section-title mb-0">16.0 Introdução</h2>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <p>
+                Firewalls de política baseados em zona (ZPFs) são um passo evolucionário além dos firewalls clássicos. Enquanto a
+                configuração de segurança baseada em Firewalls clássicas em interfaces de roteador, um ZPF permite que as interfaces sejam
+                atribuídas às zonas. As políticas de segurança são definidas com base na zona e nas relações de segurança entre as zonas.
+                Múltiplas interfaces podem ser feitas membros de uma zona e políticas de zona serão aplicadas a essas interfaces.
+              </p>
+              <div class="alert-cisco mt-3">
+                <i class="fas fa-lightbulb me-2"></i>
+                <strong>Objetivo do Módulo:</strong> Implementar firewall de política baseado em zona usando CLI.
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <img
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 150'%3E%3Crect width='200' height='150' fill='%231e1e1e'/%3E%3Ctext x='100' y='75' text-anchor='middle' fill='%2366bf53' font-size='12'%3EZPF Architecture%3C/text%3E%3C/svg%3E"
+                alt="ZPF Preview"
+                class="img-fluid rounded"
+                style="max-width: 180px"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Objetivos do Módulo (Tabela) -->
+      <section class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title"><i class="fas fa-bullseye me-2"></i> O que vou aprender neste módulo?</h2>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Visão geral da ZPF</strong></td>
+                  <td>Explicar como os firewalls de política baseados em zona são usados para ajudar a proteger uma rede.</td>
+                </tr>
+                <tr>
+                  <td><strong>Operação ZPF</strong></td>
+                  <td>Explicar a operação de um Firewall de Política Baseado em Zona.</td>
+                </tr>
+                <tr>
+                  <td><strong>Configurar um ZPF</strong></td>
+                  <td>Configurar um firewall de política baseado em zona com a CLI.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mt-3">
+            <span class="badge-cisco"><i class="fas fa-tasks me-1"></i> 1 atividade Packet Tracer</span>
+            <span class="badge-cisco ms-2"><i class="fas fa-keyboard me-1"></i> 1 verificação de sintaxe</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 16.1 Visão Geral do ZPF -->
+      <section id="visao-geral" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">16.1 Visão Geral do ZPF</h2>
+
+        <!-- Benefícios do ZPF -->
+        <div id="beneficios" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.1.1 Benefícios de um ZPF</h3>
+          <p>
+            As principais motivações para profissionais de segurança de rede migram para o modelo ZPF são estrutura e facilidade de uso. A
+            abordagem estruturada é útil para documentação e comunicação. A facilidade de uso torna as implementações de segurança de rede
+            mais acessíveis.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="terminal-card mb-3">
+                <pre><code>✓ Não é dependente de ACL
+✓ Postura de segurança: bloquear a menos que explicitamente permitido
+✓ Políticas fáceis de ler com Cisco C3PL
+✓ Interfaces virtuais/físicas agrupadas em zonas
+✓ Políticas aplicadas ao tráfego unidirecional entre zonas</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="content-card-accent h-100">
+                <h4><i class="fas fa-balance-scale me-2"></i> Firewall Clássico vs ZPF</h4>
+                <p class="small">
+                  Ambos os modelos podem ser ativados simultaneamente, mas não combinados em uma única interface. Uma interface não pode ser
+                  configurada como membro de zona e para inspeção IP ao mesmo tempo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topologia básica de zona de segurança - Imagem integrada -->
+          <div class="mt-4">
+            <div class="zpf-diagram">
+              <h4 class="text-success mb-3">Topologia Básica de Zona de Segurança</h4>
+              <div class="zone-diagram">
+                <div class="zone-box">
+                  <i class="fas fa-building"></i>
+                  <h5>Zona Privada</h5>
+                  <small class="text-muted">Rede Interna</small>
+                </div>
+                <div class="zone-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="zone-box">
+                  <i class="fas fa-server"></i>
+                  <h5>Zona DMZ</h5>
+                  <small class="text-muted">Servidores Públicos</small>
+                </div>
+                <div class="zone-arrow"><i class="fas fa-arrow-right"></i></div>
+                <div class="zone-box">
+                  <i class="fas fa-globe"></i>
+                  <h5>Zona Pública</h5>
+                  <small class="text-muted">Internet</small>
+                </div>
+              </div>
+              <p class="text-muted mt-3 small">
+                Se uma interface adicional for adicionada à zona privada, os hosts conectados podem passar tráfego para todos os hosts na
+                mesma zona sem restrições.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projeto ZPF -->
+        <div id="projeto" class="content-card">
+          <h3 class="cisco-subtitle">16.1.2 Projeto ZPF</h3>
+          <p>Projetar ZPFs envolve várias etapas fundamentais para garantir uma implementação segura e eficiente.</p>
+
+          <div class="step-timeline mt-4">
+            <div class="step-item">
+              <span class="step-number">Etapa 1</span>
+              <h5>Determine as zonas</h5>
+              <p>
+                O administrador se concentra na separação da rede em zonas. Zonas estabelecem as fronteiras de segurança de uma rede. Por
+                exemplo, a rede pública seria uma zona e a rede interna seria outra zona.
+              </p>
+            </div>
+            <div class="step-item">
+              <span class="step-number">Etapa 2</span>
+              <h5>Estabelecer políticas entre zonas</h5>
+              <p>
+                Para cada par de zonas "fonte-destino", defina as sessões que os clientes nas zonas de origem podem solicitar. As políticas
+                são unidirecionais e definidas com base em pares de zona.
+              </p>
+            </div>
+            <div class="step-item">
+              <span class="step-number">Etapa 3</span>
+              <h5>Projete a infraestrutura física</h5>
+              <p>
+                Leve em conta os requisitos de segurança e disponibilidade. Inclui ditar o número de dispositivos entre zonas mais seguras e
+                menos seguras e determinar dispositivos redundantes.
+              </p>
+            </div>
+            <div class="step-item">
+              <span class="step-number">Etapa 4</span>
+              <h5>Identificar subconjuntos dentro de zonas e mesclar requisitos de tráfego</h5>
+              <p>
+                Para cada dispositivo de firewall, identificar subconjuntos de zonas conectadas às interfaces e mesclar os requisitos de
+                tráfego para essas zonas.
+              </p>
+            </div>
+          </div>
+
+          <!-- Imagem das etapas (captura integrada) -->
+          <div class="mt-4 text-center">
+            <img
+              src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 200'%3E%3Crect width='600' height='200' fill='%231a1a1a'/%3E%3Ctext x='300' y='100' text-anchor='middle' fill='%2366bf53' font-size='14'%3EZPF Design Process - 4 Core Steps%3C/text%3E%3C/svg%3E"
+              alt="ZPF Steps Diagram"
+              class="img-fluid rounded w-100"
+              style="max-height: 180px; object-fit: cover"
+            />
+            <p class="text-muted small mt-2"><i class="fas fa-image me-1"></i> Etapas 1-4 do processo de projeto ZPF</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Topologias de Referência (com imagens das capturas) -->
+      <section id="topologias" class="mb-5">
+        <h2 class="section-title mb-4"><i class="fas fa-project-diagram me-2"></i> Exemplos de Projetos ZPF</h2>
+        <p>
+          Clique em cada topologia para ver exemplos de projetos do ZPF. As configurações variam conforme os requisitos de segurança da
+          organização.
+        </p>
+
+        <div class="topology-gallery">
+          <div class="topology-card" data-topology="lan">
+            <div class="topology-preview">
+              <i class="fas fa-network-wired fa-3x text-success mb-2"></i>
+              <div class="zone-badge">Interno</div>
+              <i class="fas fa-arrow-right mx-2 text-muted"></i>
+              <div class="zone-badge">Externo</div>
+              <div class="zone-badge mt-2">Internet</div>
+            </div>
+            <div class="topology-info">
+              <div class="topology-title">Lan-to-internet</div>
+              <p class="small text-muted mb-2">
+                Configuração básica: zona interna para acesso à internet com políticas de saída controladas.
+              </p>
+              <button class="btn-zpf w-100" onclick="showTopology('lan')"><i class="fas fa-eye me-1"></i> Ver detalhes</button>
+            </div>
+          </div>
+
+          <div class="topology-card" data-topology="public1">
+            <div class="topology-preview">
+              <i class="fas fa-server fa-3x text-success mb-2"></i>
+              <div class="zone-badge">Interno</div>
+              <i class="fas fa-arrow-right mx-2 text-muted"></i>
+              <div class="zone-badge">Perímetro</div>
+              <div class="zone-badge">Web/Email</div>
+            </div>
+            <div class="topology-info">
+              <div class="topology-title">Firewall-with-public-servers-1</div>
+              <p class="small text-muted mb-2">Servidores públicos em DMZ com acesso controlado da internet.</p>
+              <button class="btn-zpf w-100" onclick="showTopology('public1')"><i class="fas fa-eye me-1"></i> Ver detalhes</button>
+            </div>
+          </div>
+
+          <div class="topology-card" data-topology="public2">
+            <div class="topology-preview">
+              <i class="fas fa-cloud-upload-alt fa-3x text-success mb-2"></i>
+              <div class="zone-badge">Internet</div>
+              <i class="fas fa-arrow-right mx-2 text-muted"></i>
+              <div class="zone-badge">Perímetro</div>
+              <div class="zone-badge">Web/Email</div>
+            </div>
+            <div class="topology-info">
+              <div class="topology-title">Firewall-with-public-servers-2</div>
+              <p class="small text-muted mb-2">Acesso externo a servidores web/email com inspeção avançada.</p>
+              <button class="btn-zpf w-100" onclick="showTopology('public2')"><i class="fas fa-eye me-1"></i> Ver detalhes</button>
+            </div>
+          </div>
+
+          <div class="topology-card" data-topology="redundant">
+            <div class="topology-preview">
+              <i class="fas fa-shield-alt fa-3x text-success mb-2"></i>
+              <div class="zone-badge">Firewall 1</div>
+              <div class="zone-badge">Firewall 2</div>
+              <div class="zone-badge mt-2">Alta Disponibilidade</div>
+            </div>
+            <div class="topology-info">
+              <div class="topology-title">Firewalls redundantes</div>
+              <p class="small text-muted mb-2">Alta disponibilidade com firewalls em cluster e failover automático.</p>
+              <button class="btn-zpf w-100" onclick="showTopology('redundant')"><i class="fas fa-eye me-1"></i> Ver detalhes</button>
+            </div>
+          </div>
+
+          <div class="topology-card" data-topology="complex">
+            <div class="topology-preview">
+              <i class="fas fa-cubes fa-3x text-success mb-2"></i>
+              <div class="zone-badge">E-Commerce</div>
+              <div class="zone-badge">Admin</div>
+              <div class="zone-badge">Web/Email</div>
+              <div class="zone-badge">Perímetro</div>
+            </div>
+            <div class="topology-info">
+              <div class="topology-title">Firewall complexo</div>
+              <p class="small text-muted mb-2">Ambiente corporativo completo com múltiplas zonas e políticas granulares.</p>
+              <button class="btn-zpf w-100" onclick="showTopology('complex')"><i class="fas fa-eye me-1"></i> Ver detalhes</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal de detalhes da topologia -->
+        <div id="topologyModal" class="modal fade" tabindex="-1">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+              <div class="modal-header border-secondary">
+                <h5 class="modal-title text-success" id="modalTitle">Topologia</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body" id="modalBody">
+                <!-- Conteúdo dinâmico -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Operação ZPF -->
+      <section id="operacao" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title"><i class="fas fa-cogs me-2"></i> Operação ZPF e C3PL</h2>
+          <p>
+            O Cisco Common Classification Policy Language (C3PL) é um método estruturado para criar políticas de tráfego com base em
+            eventos, condições e ações. Isto fornece escalabilidade porque uma política afeta todo o tráfego dado, em vez de precisar de
+            ACLs múltiplos e ações de inspeção para tipos diferentes de tráfego.
+          </p>
+
+          <div class="terminal-card mt-3">
+            <pre><code>class-map type inspect match-any INTERNAL_TRAFFIC
+ match protocol http
+ match protocol https
+ match protocol dns
+!
+policy-map type inspect ZONE_POLICY
+ class type inspect INTERNAL_TRAFFIC
+  inspect
+ class class-default
+  drop
+!
+zone-pair security ZP-INTERNET source INSIDE destination OUTSIDE
+ service-policy type inspect ZONE_POLICY</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Laboratórios -->
+      <section id="laboratorios" class="mb-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title"><i class="fas fa-flask me-2"></i> Laboratórios Práticos</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-play-circle text-success me-2"></i>
+                <strong>Packet Tracer Activity</strong>
+                <p class="small text-muted mt-1">
+                  Implemente um ZPF básico com três zonas: INSIDE, DMZ e OUTSIDE. Configure políticas de inspeção e verifique conectividade.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-keyboard text-success me-2"></i>
+                <strong>Verificação de Sintaxe CLI</strong>
+                <p class="small text-muted mt-1">
+                  Pratique comandos essenciais: zone security, zone-pair, class-map, policy-map e service-policy.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <span class="badge-cisco"><i class="fas fa-check-circle me-1"></i> Verifique sua compreensão</span>
+            <span class="badge-cisco ms-2"><i class="fas fa-question-circle me-1"></i> Questionário do Módulo</span>
+          </div>
+        </div>
+      </section>
+      <!-- 16.2 Operação ZPF -->
+      <section id="operacao" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">16.2 Operação ZPF</h2>
+
+        <!-- Ações ZPF -->
+        <div id="acoes-zpf" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.2.1 Ações ZPF</h3>
+          <p>
+            As políticas identificam ações que o ZPF executará no tráfego de rede. Três ações possíveis podem ser configuradas para
+            processar o tráfego por protocolo, zonas de origem e destino (pares de zonas) e outros critérios.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+              <div class="text-center p-3 border rounded border-success bg-dark">
+                <i class="fas fa-search fa-3x text-success mb-2"></i>
+                <h5 class="text-success">Inspect</h5>
+                <p class="small text-muted">Realiza inspeção de pacotes de estado de Cisco IOS. Rastreia conexões e sessões.</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="text-center p-3 border rounded border-danger bg-dark">
+                <i class="fas fa-trash-alt fa-3x text-danger mb-2"></i>
+                <h5 class="text-danger">Drop</h5>
+                <p class="small text-muted">
+                  Análogo a <strong>deny</strong> em ACL. Opção <strong>log</strong> registra pacotes rejeitados.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="text-center p-3 border rounded border-warning bg-dark">
+                <i class="fas fa-check-circle fa-3x text-warning mb-2"></i>
+                <h5 class="text-warning">Pass</h5>
+                <p class="small text-muted">Análogo a <strong>permit</strong> em ACL. Não rastreia estado das conexões.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-card mt-3">
+            <pre><code>policy-map type inspect ZONE-POLICY
+ class type inspect TRAFFIC-CLASS
+  inspect   ! Realiza inspeção stateful
+ class type inspect DROP-CLASS
+  drop log  ! Descarta e registra log
+ class class-default
+  pass      ! Permite sem inspeção</code></pre>
+          </div>
+        </div>
+
+        <!-- Regras para tráfego de trânsito -->
+        <div id="transito" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.2.2 Regras para Tráfego de Trânsito</h3>
+          <p>
+            O tráfego que transita através das interfaces de roteador está sujeito a diversas regras que regem o comportamento da interface.
+            As regras dependem se as interfaces de entrada e saída são membros da mesma zona.
+          </p>
+
+          <div class="zone-diagram mt-3 mb-4" style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin: 2rem 0">
+            <div
+              class="zone-box"
+              style="
+                background: var(--bg-card);
+                border-radius: 12px;
+                padding: 1.5rem;
+                min-width: 150px;
+                text-align: center;
+                border-top: 3px solid var(--cisco-green);
+              "
+            >
+              <i class="fas fa-building fa-2x text-success mb-2"></i>
+              <h5>Zona Privada</h5>
+              <small>Rede Interna</small>
+            </div>
+            <div style="display: flex; align-items: center; font-size: 2rem; color: var(--cisco-green)">→</div>
+            <div
+              class="zone-box"
+              style="
+                background: var(--bg-card);
+                border-radius: 12px;
+                padding: 1.5rem;
+                min-width: 150px;
+                text-align: center;
+                border-top: 3px solid var(--cisco-green);
+              "
+            >
+              <i class="fas fa-server fa-2x text-success mb-2"></i>
+              <h5>Zona DMZ</h5>
+              <small>Servidores</small>
+            </div>
+            <div style="display: flex; align-items: center; font-size: 2rem; color: var(--cisco-green)">→</div>
+            <div
+              class="zone-box"
+              style="
+                background: var(--bg-card);
+                border-radius: 12px;
+                padding: 1.5rem;
+                min-width: 150px;
+                text-align: center;
+                border-top: 3px solid var(--cisco-green);
+              "
+            >
+              <i class="fas fa-globe fa-2x text-success mb-2"></i>
+              <h5>Zona Pública</h5>
+              <small>Internet</small>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-terminal); border-radius: 12px; overflow-x: auto">
+            <table style="width: 100%; border-collapse: collapse">
+              <thead>
+                <tr style="background: var(--cisco-green); color: var(--bg-primary)">
+                  <th style="padding: 12px; text-align: center">Interface Origem<br />Membro Zona?</th>
+                  <th style="padding: 12px; text-align: center">Interface Destino<br />Membro Zona?</th>
+                  <th style="padding: 12px; text-align: center">Zona-par existe?</th>
+                  <th style="padding: 12px; text-align: center">Política existe?</th>
+                  <th style="padding: 12px; text-align: center">Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: #4caf50;
+                      font-weight: 600;
+                    "
+                  >
+                    ✓ APROVADO
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: var(--accent-red);
+                      font-weight: 600;
+                    "
+                  >
+                    ✗ DESCARTAR
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: var(--accent-red);
+                      font-weight: 600;
+                    "
+                  >
+                    ✗ DESCARTAR
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (privado)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (privado)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: #4caf50;
+                      font-weight: 600;
+                    "
+                  >
+                    ✓ APROVADO
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (privado)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (público)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: var(--accent-red);
+                      font-weight: 600;
+                    "
+                  >
+                    ✗ DESCARTAR
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (privado)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (público)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: var(--accent-red);
+                      font-weight: 600;
+                    "
+                  >
+                    ✗ DESCARTAR
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (privado)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (público)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: var(--cisco-green);
+                      font-weight: 600;
+                    "
+                  >
+                    🔍 INSPECIONAR
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Regras de trânsito:</strong> Se uma interface é membro de zona e a outra não → tráfego descartado. Ambas na mesma zona →
+            aprovado. Ambas em zonas diferentes com política → inspecionado.
+          </div>
+        </div>
+
+        <!-- Regras para tráfego para a zona self -->
+        <div id="self-zone" class="content-card">
+          <h3 class="cisco-subtitle">16.2.3 Regras para Tráfego para a Zona Self (Autozona)</h3>
+          <p>
+            A autozona é o próprio roteador e inclui todos os endereços IP atribuídos às interfaces do roteador. Este é o tráfego que se
+            origina no roteador ou é endereçado a uma interface de roteador (gerenciamento SSH, protocolos de roteamento).
+          </p>
+
+          <div style="background: var(--bg-terminal); border-radius: 12px; overflow-x: auto; margin-top: 1.5rem">
+            <table style="width: 100%; border-collapse: collapse">
+              <thead>
+                <tr style="background: var(--cisco-green); color: var(--bg-primary)">
+                  <th style="padding: 12px; text-align: center">Interface Origem<br />Membro Zona?</th>
+                  <th style="padding: 12px; text-align: center">Interface Destino<br />Membro Zona?</th>
+                  <th style="padding: 12px; text-align: center">Zona-par existe?</th>
+                  <th style="padding: 12px; text-align: center">Política existe?</th>
+                  <th style="padding: 12px; text-align: center">Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (zona própria)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: #4caf50;
+                      font-weight: 600;
+                    "
+                  >
+                    ✓ APROVADO
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (zona própria)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: #4caf50;
+                      font-weight: 600;
+                    "
+                  >
+                    ✓ APROVADO
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (zona própria)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: var(--cisco-green);
+                      font-weight: 600;
+                    "
+                  >
+                    🔍 INSPECIONAR
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (zona própria)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">N/D</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: #4caf50;
+                      font-weight: 600;
+                    "
+                  >
+                    ✓ APROVADO
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (zona própria)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">NÃO</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: #4caf50;
+                      font-weight: 600;
+                    "
+                  >
+                    ✓ APROVADO
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM (zona própria)</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td style="padding: 10px; text-align: center; border-bottom: 1px solid var(--border-primary)">SIM</td>
+                  <td
+                    style="
+                      padding: 10px;
+                      text-align: center;
+                      border-bottom: 1px solid var(--border-primary);
+                      color: var(--cisco-green);
+                      font-weight: 600;
+                    "
+                  >
+                    🔍 INSPECIONAR
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-microchip me-2"></i>
+            <strong>Regra da autozona:</strong> Se o roteador é a fonte ou destino, todo tráfego é permitido. A única exceção é se existe um
+            par de zona com política específica, onde a política é aplicada.
+          </div>
+        </div>
+      </section>
+      <!-- 16.3 Configure um ZPF -->
+      <section id="configuracao" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">16.3 Configure um ZPF</h2>
+
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.1 Visão Geral da Configuração</h3>
+          <p>
+            Existem cinco etapas no processo de configuração de um ZPF. Primeiro as zonas são criadas. Em seguida, um ou mais mapas de
+            classe são criados para especificar o tráfego que deve ser associado a uma política. Depois, as políticas são criadas que
+            associam o tráfego de mapa de classe com as ações de pass, drop ou inspect. É então necessário criar pares de zona que serão
+            associados a mapas de política. Finalmente, as interfaces são associadas a zonas. Neste ponto, a política do ZPF está ativa.
+          </p>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Importante:</strong> A sequência de etapas não é obrigatória, mas algumas configurações devem ser concluídas em ordem.
+            Por exemplo, configure um class-map antes de atribuí-lo a um policy-map.
+          </div>
+        </div>
+
+        <!-- Topologia de referência -->
+        <div class="content-card mb-4">
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <h4>Topologia de Exemplo</h4>
+              <div class="zone-diagram" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin: 1rem 0">
+                <div
+                  class="zone-box"
+                  style="
+                    background: var(--bg-card);
+                    border-radius: 12px;
+                    padding: 1rem;
+                    min-width: 120px;
+                    text-align: center;
+                    border-top: 3px solid var(--cisco-green);
+                  "
+                >
+                  <i class="fas fa-building fa-2x text-success"></i>
+                  <h6>Zona Privada</h6>
+                  <small>G0/0</small>
+                </div>
+                <div style="display: flex; align-items: center; font-size: 1.5rem; color: var(--cisco-green)">→</div>
+                <div
+                  class="zone-box"
+                  style="
+                    background: var(--bg-card);
+                    border-radius: 12px;
+                    padding: 1rem;
+                    min-width: 120px;
+                    text-align: center;
+                    border-top: 3px solid var(--cisco-green);
+                  "
+                >
+                  <i class="fas fa-router fa-2x text-success"></i>
+                  <h6>R1</h6>
+                  <small>Firewall</small>
+                </div>
+                <div style="display: flex; align-items: center; font-size: 1.5rem; color: var(--cisco-green)">→</div>
+                <div
+                  class="zone-box"
+                  style="
+                    background: var(--bg-card);
+                    border-radius: 12px;
+                    padding: 1rem;
+                    min-width: 120px;
+                    text-align: center;
+                    border-top: 3px solid var(--cisco-green);
+                  "
+                >
+                  <i class="fas fa-globe fa-2x text-success"></i>
+                  <h6>Zona Pública</h6>
+                  <small>S0/0/0</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code>Etapas de configuração ZPF:
+
+1. Criar as zonas
+2. Identificar o tráfego (class-map)
+3. Definir ação (policy-map)
+4. Criar zone-pair
+5. Atribuir zonas às interfaces</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Etapa 1: Criar zonas -->
+        <div id="etapa1" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.2 Etapa 1: Crie as zonas</h3>
+          <p>Antes de criar as zonas, responda a algumas perguntas:</p>
+          <ul>
+            <li>Quais interfaces devem ser incluídas nas zonas?</li>
+            <li>Qual será o nome para cada zona?</li>
+            <li>Que tráfego é necessário entre as zonas e em que direção?</li>
+          </ul>
+          <p>Crie as zonas com o comando <code class="text-success">zone security</code>:</p>
+          <div class="terminal-card">
+            <pre><code>Router(config)# zone security zone-name
+
+R1(config)# zone security PRIVATE
+R1(config-sec-zone)# exit
+R1(config)# zone security PUBLIC
+R1(config-sec-zone)# exit</code></pre>
+          </div>
+        </div>
+
+        <!-- Etapa 2: Identificar tráfego -->
+        <div id="etapa2" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.3 Etapa 2: Identifique o tráfego (Class-Map)</h3>
+          <p>
+            Use um mapa de classe para identificar o tráfego a que uma política será aplicada. Uma classe define um conjunto de pacotes com
+            base em condições de "match".
+          </p>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Parâmetro</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>match-any</code></td>
+                  <td>Pacotes devem atender a UM dos critérios</td>
+                </tr>
+                <tr>
+                  <td><code>match-all</code></td>
+                  <td>Pacotes devem atender a TODOS os critérios</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="terminal-card mt-3">
+            <pre><code>Router(config)# class-map type inspect [match-any | match-all] class-map-name
+Router(config-cmap)# match access-group {acl-# | acl-name}
+Router(config-cmap)# match protocol protocol-name
+Router(config-cmap)# match class-map class-map-name
+
+R1(config)# class-map type inspect match-any HTTP-TRAFFIC
+R1(config-cmap)# match protocol http
+R1(config-cmap)# match protocol https
+R1(config-cmap)# match protocol dns</code></pre>
+          </div>
+          <p class="text-muted mt-2">
+            <i class="fas fa-info-circle me-1"></i> O tráfego pode corresponder a qualquer uma das declarações para se tornar membro da
+            classe HTTP-TRAFFIC.
+          </p>
+        </div>
+
+        <!-- Etapa 3: Definir ação -->
+        <div id="etapa3" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.4 Etapa 3: Defina uma ação (Policy-Map)</h3>
+          <p>Use um mapa de política para definir que ação deve ser tomada para o tráfego membro de uma classe.</p>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Ação</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="text-success">inspect</code></td>
+                  <td>Controle de tráfego baseado em estado. Mantém informações de sessão e permite tráfego de retorno.</td>
+                </tr>
+                <tr>
+                  <td><code class="text-danger">drop</code></td>
+                  <td>Descarta tráfego não desejado (ação padrão para class-default).</td>
+                </tr>
+                <tr>
+                  <td><code class="text-warning">pass</code></td>
+                  <td>Ação sem estado. Permite encaminhamento unidirecional, sem rastrear conexões.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="terminal-card mt-3">
+            <pre><code>Router(config)# policy-map type inspect policy-map-name
+Router(config-pmap)# class type inspect class-map-name
+Router(config-pmap-c)# {inspect | drop | pass}
+
+R1(config)# policy-map type inspect PRIV-TO-PUB-POLICY
+R1(config-pmap)# class type inspect HTTP-TRAFFIC
+R1(config-pmap-c)# inspect</code></pre>
+          </div>
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-gavel me-2"></i>
+            <strong>Drop padrão:</strong> Há um <strong>drop</strong> explícito aplicado pelo IOS ao fim de cada policy-map, listado como
+            <strong>class class-default</strong>.
+          </div>
+        </div>
+
+        <!-- Etapa 4: Criar Zone-Pair -->
+        <div id="etapa4" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.5 Etapa 4: Identifique um Zone-Pair e combine a uma política</h3>
+          <p>Crie um par de zona e associe esse par a um mapa de política.</p>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Parâmetro</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>source source-zone-name</code></td>
+                  <td>Zona de origem do tráfego</td>
+                </tr>
+                <tr>
+                  <td><code>destination destination-zone-name</code></td>
+                  <td>Zona de destino do tráfego</td>
+                </tr>
+                <tr>
+                  <td><code>self</code></td>
+                  <td>Zona definida pelo sistema (próprio roteador)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="terminal-card mt-3">
+            <pre><code>Router(config)# zone-pair security zone-pair-name source {source-zone-name | self} destination {destination-name}
+Router(config-sec-zone-pair)# service-policy type inspect policy-map-name
+
+R1(config)# zone-pair security PRIV-PUB source PRIVATE destination PUBLIC
+R1(config-sec-zone-pair)# service-policy type inspect PRIV-TO-PUB-POLICY</code></pre>
+          </div>
+        </div>
+
+        <!-- Etapa 5: Atribuir zonas às interfaces -->
+        <div id="etapa5" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.6 Etapa 5: Atribua zonas às interfaces</h3>
+          <p>
+            Associe uma zona a uma interface usando o comando <code class="text-success">zone-member security</code>. Isso aplicará
+            imediatamente a política de serviço associada à zona.
+          </p>
+          <div class="terminal-card">
+            <pre><code>Router(config-if)# zone-member security zone-name
+
+R1(config)# interface GigabitEthernet0/0
+R1(config-if)# zone-member security PRIVATE
+R1(config)# interface Serial0/0/0
+R1(config-if)# zone-member security PUBLIC</code></pre>
+          </div>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Importante:</strong> Se nenhum service-policy está configurada para a zona, todo o tráfego de trânsito será descartado.
+          </div>
+          <p class="mt-2">
+            A política de serviço agora está ativa. O tráfego HTTP, HTTPS e DNS da zona privada para a zona pública será inspecionado. O
+            tráfego da zona pública para a privada só será permitido se for parte de sessões iniciadas por hosts da zona privada.
+          </p>
+        </div>
+
+        <!-- Verificação da Configuração -->
+        <div id="verificacao" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.7 Verifique uma configuração ZPF</h3>
+          <p>
+            Verifique a configuração visualizando a configuração em execução com
+            <code class="text-success">show run | begin class-map</code>:
+          </p>
+          <div class="terminal-card">
+            <pre><code>R1# show run | begin class-map
+!
+class-map type inspect match-any HTTP-TRAFFIC
+ match protocol http
+ match protocol https
+ match protocol dns
+!
+policy-map type inspect PRIV-TO-PUB-POLICY
+ class type inspect HTTP-TRAFFIC
+  inspect
+ class class-default
+  drop
+!
+zone security PRIVATE
+zone security PUBLIC
+zone-pair security PRIV-PUB source PRIVATE destination PUBLIC
+ service-policy type inspect PRIV-TO-PUB-POLICY
+!
+interface GigabitEthernet0/0
+ zone-member security PRIVATE
+!
+interface Serial0/0/0
+ zone-member security PUBLIC</code></pre>
+          </div>
+          <p class="text-muted mt-2">
+            <i class="fas fa-info-circle me-1"></i> Observe o <strong>class class-default</strong> destacado que descarta todo o tráfego que
+            não é membro da classe HTTP-TRAFFIC.
+          </p>
+        </div>
+
+        <!-- Comandos de verificação adicionais -->
+        <div id="comandos-verificacao" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.8 Comandos de Verificação do ZPF</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code>R1# show class-map type inspect
+Class Map type inspect match-any HTTP-TRAFFIC (id 1)
+    Match protocol http
+    Match protocol https
+    Match protocol dns</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code>R1# show zone security
+zone self
+Description: System Defined Zone
+
+zone PRIVATE
+    Member Interfaces:
+    GigabitEthernet0/0
+
+zone PUBLIC
+    Member Interfaces:
+    Serial0/0/0</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6 mt-3">
+              <div class="terminal-card">
+                <pre><code>R1# show zone-pair security
+Zone-pair name PRIV-PUB
+    Source-Zone PRIVATE Destination-Zone PUBLIC
+    service-policy PRIV-TO-PUB-POLICY</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6 mt-3">
+              <div class="terminal-card">
+                <pre><code>R1# show policy-map type inspect
+Policy Map type inspect PRIV-TO-PUB-POLICY
+    Class HTTP-TRAFFIC
+    Inspect
+    Class class-default
+    Drop</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Verificação de sessões -->
+        <div id="verificacao-sessoes" class="content-card mb-4">
+          <h3 class="cisco-subtitle">16.3.9 Verificação de Sessões ZPF</h3>
+          <p>Use <code class="text-success">show policy-map type inspect zone-pair sessions</code> para visualizar sessões ativas:</p>
+          <div class="terminal-card">
+            <pre><code>R1# show policy-map type inspect zone-pair sessions
+
+policy exists on zp PRIV-PUB
+Zone-pair: PRIV-PUB
+
+Service-policy inspect : PRIV-TO-PUB-POLICY
+
+Class-map: HTTP-TRAFFIC (match-any)
+    Match: protocol http
+    12 packets, 384 bytes
+    Match: protocol https
+    5 packets, 160 bytes
+
+Inspect
+Number of Established Sessions = 1
+Established Sessions
+    Session 2204E220 (192.168.1.3:1049) =>(10.1.1.2:443) https:tcp
+    Created 00:00:14, Last heard 00:00:11
+
+Class-map: class-default (match-any)
+    Match: any
+    Drop
+    4 packets, 160 bytes</code></pre>
+          </div>
+          <p class="text-muted mt-2">
+            <i class="fas fa-info-circle me-1"></i> A saída mostra uma sessão HTTPS estabelecida e 4 pacotes descartados pelo class-default.
+          </p>
+        </div>
+
+        <!-- Considerações de configuração -->
+        <div id="consideracoes" class="content-card">
+          <h3 class="cisco-subtitle">16.3.10 Considerações de Configuração do ZPF</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> O roteador nunca filtra o tráfego entre interfaces na
+              <strong>mesma zona</strong>.
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> Uma interface <strong>não pode pertencer a várias zonas</strong>.
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> ZPF pode coexistir com Firewall clássico, mas
+              <strong>não na mesma interface</strong>.
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> O tráfego <strong>nunca flui</strong> entre interface com zona e
+              interface sem zona.
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> A política entre zonas padrão é
+              <strong>descartar todo o tráfego</strong> a menos que explicitamente permitido.
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> O comando <code>zone-member</code> não protege o próprio roteador, a
+              menos que pares de zona usem a <strong>zona self</strong>.
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!-- 16.5 Entendendo ZPF de Forma Simples -->
+      <section id="entendendo-zpf" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">16.5 Entendendo ZPF de Forma Simples</h2>
+
+        <!-- Analogia inicial -->
+        <div class="content-card mb-4">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h3 class="text-success mb-3"><i class="fas fa-lightbulb me-2"></i> A Analogia do Prédio Corporativo</h3>
+              <p>Imagine um <strong>prédio corporativo</strong> com diferentes áreas:</p>
+              <ul>
+                <li>
+                  <strong class="text-success">Área administrativa</strong> (funcionários internos) →
+                  <strong class="text-success">Zona Privada</strong>
+                </li>
+                <li>
+                  <strong class="text-success">Área de recepção e servidores</strong> (visitantes autorizados) →
+                  <strong class="text-success">Zona DMZ</strong>
+                </li>
+                <li>
+                  <strong class="text-success">Rua e estacionamento público</strong> (qualquer pessoa) →
+                  <strong class="text-success">Zona Pública</strong>
+                </li>
+              </ul>
+              <p>
+                O <strong class="text-success">ZPF (Firewall de Política Baseado em Zona)</strong> funciona como um
+                <strong>sistema de segurança do prédio</strong> que decide:
+              </p>
+              <ul>
+                <li>Quem pode entrar em cada área</li>
+                <li>O que pode ser feito dentro de cada área</li>
+                <li>Como as pessoas se movem entre as áreas</li>
+              </ul>
+              <p>
+                Assim como um segurança no prédio, o ZPF <strong>não confia em ninguém</strong> até que uma regra específica permita a
+                passagem.
+              </p>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="bg-dark p-3 rounded" style="border-left: 4px solid var(--cisco-green)">
+                <i class="fas fa-building fa-3x text-success mb-2"></i>
+                <p class="small text-muted">ZPF = Segurança por áreas<br />cada área tem suas regras</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Glossário de termos técnicos -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle"><i class="fas fa-book-open me-2"></i> Glossário: Termos Técnicos Explicados</h3>
+          <p class="text-muted mb-4">Uma tradução simples para os conceitos que você vai encontrar no mundo dos firewalls ZPF:</p>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-success"><i class="fas fa-shield-alt me-2"></i> Zona</h5>
+                <p><strong>O que parece ser:</strong> Um grupo de computadores que compartilham o mesmo nível de confiança.</p>
+                <p>
+                  <strong>Analogia:</strong> Como os <strong>andares de um prédio</strong>. O térreo (público) é diferente do andar dos
+                  diretores (privado).
+                </p>
+                <p class="small text-muted">
+                  <strong>Exemplo:</strong> Zona Privada (funcionários), Zona Pública (internet), Zona DMZ (servidores web).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-success"><i class="fas fa-exchange-alt me-2"></i> Tráfego de Trânsito</h5>
+                <p><strong>O que parece ser:</strong> Dados que passam pelo roteador, vindos de uma zona e indo para outra.</p>
+                <p>
+                  <strong>Analogia:</strong> Uma <strong>pessoa que entra no prédio</strong> (vem da rua), passa pela recepção e vai para
+                  uma sala específica.
+                </p>
+                <p class="small text-muted">
+                  <strong>Exemplo:</strong> Um funcionário da zona privada acessando um site na internet (zona pública).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-success"><i class="fas fa-microchip me-2"></i> Zona Self (Autozona)</h5>
+                <p><strong>O que parece ser:</strong> O próprio roteador/firewall.</p>
+                <p>
+                  <strong>Analogia:</strong> A <strong>portaria do prédio</strong> onde os seguranças ficam. É o próprio local de controle.
+                </p>
+                <p class="small text-muted">
+                  <strong>Exemplo:</strong> Um administrador fazendo SSH para configurar o roteador (tráfego destinado à zona self).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-success"><i class="fas fa-search me-2"></i> Inspect (Inspecionar)</h5>
+                <p><strong>O que parece ser:</strong> O firewall rastreia a conversa inteira, não apenas pacotes isolados.</p>
+                <p>
+                  <strong>Analogia:</strong> Um <strong>segurança que anota quem entrou</strong> e só deixa sair quem ele viu entrar. Ele
+                  "lembra" das pessoas.
+                </p>
+                <p class="small text-muted">
+                  <strong>Exemplo:</strong> Você acessa um site HTTPS. O firewall lembra que VOCÊ iniciou a conexão e permite a resposta do
+                  site.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-danger"><i class="fas fa-trash-alt me-2"></i> Drop (Descartar)</h5>
+                <p><strong>O que parece ser:</strong> O firewall joga fora os pacotes, como se nunca tivessem chegado.</p>
+                <p>
+                  <strong>Analogia:</strong> Um <strong>segurança que não deixa ninguém passar</strong> sem crachá. Se não tem permissão, é
+                  barrado na porta.
+                </p>
+                <p class="small text-muted">
+                  <strong>Exemplo:</strong> Alguém da internet tentando acessar seu computador pessoal. O firewall descarta.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-warning"><i class="fas fa-check-circle me-2"></i> Pass (Permitir)</h5>
+                <p><strong>O que parece ser:</strong> O firewall deixa o pacote passar, mas não guarda registro da conversa.</p>
+                <p>
+                  <strong>Analogia:</strong> Uma <strong>porta giratória sem catraca</strong>. As pessoas passam, mas ninguém anota quem
+                  entrou ou saiu.
+                </p>
+                <p class="small text-muted">
+                  <strong>Exemplo:</strong> Tráfego VPN (IPsec) onde a segurança já é tratada pela própria conexão criptografada.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-success"><i class="fas fa-link me-2"></i> Zone-Pair (Par de Zona)</h5>
+                <p><strong>O que parece ser:</strong> A definição de uma via de mão única entre duas zonas.</p>
+                <p>
+                  <strong>Analogia:</strong> Uma <strong>ponte que conecta dois bairros</strong> com uma placa indicando o sentido
+                  permitido.
+                </p>
+                <p class="small text-muted"><strong>Exemplo:</strong> Zone-pair PRIVADA → PÚBLICA (permite saída, mas não entrada).</p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="bg-dark p-3 rounded h-100">
+                <h5 class="text-success"><i class="fas fa-chalkboard-user me-2"></i> C3PL (Cisco Common Classification Policy Language)</h5>
+                <p><strong>O que parece ser:</strong> Uma linguagem organizada para escrever regras de firewall.</p>
+                <p>
+                  <strong>Analogia:</strong> Um <strong>formulário padronizado</strong> que todo segurança preenche para liberar acesso,
+                  garantindo que ninguém esqueça informações importantes.
+                </p>
+                <p class="small text-muted">
+                  <strong>Exemplo:</strong> Class-map → Policy-map → Zone-pair. Uma estrutura organizada como um checklist.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumo visual das regras -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle"><i class="fas fa-chart-simple me-2"></i> Regras do ZPF em Português Claro</h3>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded mb-3">
+                <h5 class="text-success"><i class="fas fa-car-side me-2"></i> Tráfego de Trânsito (atravessa o roteador)</h5>
+                <div class="small">
+                  <p>
+                    <span class="text-success">✓</span> <strong>NENHUMA interface em zona</strong> → Tráfego passa livre (como rua sem
+                    porteiro).
+                  </p>
+                  <p>
+                    <span class="text-danger">✗</span> <strong>APENAS UMA interface em zona</strong> → Tráfego descartado (como alguém com
+                    crachá tentando entrar num prédio sem porteiro).
+                  </p>
+                  <p>
+                    <span class="text-success">✓</span> <strong>AMBAS na MESMA zona</strong> → Tráfego passa (pessoas no mesmo andar podem
+                    circular).
+                  </p>
+                  <p>
+                    <span class="text-danger">✗</span> <strong>Zonas DIFERENTES sem política</strong> → Tráfego descartado (como tentar
+                    entrar em outro andar sem permissão).
+                  </p>
+                  <p>
+                    <span class="text-success">🔍</span> <strong>Zonas DIFERENTES com política</strong> → Inspecionado (o segurança verifica
+                    e registra).
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded mb-3">
+                <h5 class="text-success"><i class="fas fa-user-shield me-2"></i> Zona Self (tráfego para o roteador)</h5>
+                <div class="small">
+                  <p><span class="text-success">✓</span> <strong>SEMPRE permitido</strong> quando o roteador é fonte ou destino.</p>
+                  <p><span class="text-success">🔍</span> <strong>Exceção:</strong> Se existe política específica, ela é aplicada.</p>
+                  <p class="mt-2 text-muted">
+                    <i class="fas fa-info-circle me-1"></i> Isso permite que você gerencie o roteador (SSH, SNMP) mesmo com firewall ativo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-brain me-2"></i>
+            <strong>Regra de Ouro do ZPF:</strong> "Confie em ninguém, verifique tudo, permita apenas o necessário." O ZPF começa bloqueando
+            TUDO e só libera o que você explicitamente autorizar.
+          </div>
+        </div>
+
+        <!-- Perguntas frequentes (FAQ) humanizadas -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle"><i class="fas fa-question-circle me-2"></i> Perguntas Frequentes (Em Português Claro)</h3>
+
+          <div class="accordion" id="faqZPF">
+            <div class="accordion-item bg-dark border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq1"
+                >
+                  <i class="fas fa-question me-2 text-success"></i> Por que usar ZPF em vez do firewall clássico?
+                </button>
+              </h2>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqZPF">
+                <div class="accordion-body text-muted">
+                  <strong>Resposta simples:</strong> É como comparar um <strong>guarda com uma lista de nomes</strong> (firewall clássico)
+                  com um <strong>sistema de crachás por áreas</strong> (ZPF).<br /><br />
+                  No ZPF, você agrupa interfaces em zonas (ex: "funcionários", "visitantes", "rua") e cria regras entre zonas. Se amanhã
+                  você adicionar uma nova interface na zona "funcionários", as regras já se aplicam automaticamente. É mais organizado,
+                  escalável e fácil de entender.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq2"
+                >
+                  <i class="fas fa-question me-2 text-success"></i> O que significa "stateful" (com estado)?
+                </button>
+              </h2>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqZPF">
+                <div class="accordion-body text-muted">
+                  <strong>Analogia:</strong> Imagine um <strong>porteiro que anota quem entra no prédio</strong>. Quando a pessoa sai, ele
+                  confere se ela realmente entrou antes. Um firewall "stateful" faz isso com dados: ele lembra que VOCÊ pediu para ver um
+                  site e permite que o site te responda. Sem isso, ele teria que bloquear a resposta porque "alguém de fora" está tentando
+                  falar com você.<br /><br />
+                  O ZPF com a ação <strong>inspect</strong> é stateful. A ação <strong>pass</strong> não guarda esse registro (stateless).
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq3"
+                >
+                  <i class="fas fa-question me-2 text-success"></i> Por que o tráfego entre interfaces sem zona é permitido?
+                </button>
+              </h2>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqZPF">
+                <div class="accordion-body text-muted">
+                  <strong>Resposta simples:</strong> Se você não configurou zonas, é como se o prédio
+                  <strong>não tivesse segurança nenhuma</strong>. O ZPF só entra em ação quando você define zonas. Por isso, a primeira
+                  etapa de configuração é criar as zonas e atribuí-las às interfaces.<br /><br />
+                  <strong>Dica:</strong> Se você quer segurança, nunca deixe interfaces importantes sem zona atribuída!
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq4"
+                >
+                  <i class="fas fa-question me-2 text-success"></i> O que acontece se eu esquecer de criar uma política para um par de
+                  zonas?
+                </button>
+              </h2>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqZPF">
+                <div class="accordion-body text-muted">
+                  <strong>Resposta direta:</strong> Nada passa! A regra padrão do ZPF é
+                  <strong>"bloquear tudo que não for explicitamente permitido"</strong>. É como ter um prédio onde
+                  <strong>todas as portas estão trancadas</strong> até você destrancar especificamente as que precisam ficar abertas.<br /><br />
+                  Essa é uma abordagem de segurança muito mais segura do que "permitir tudo e bloquear o que é perigoso".
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-dark border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#faq5"
+                >
+                  <i class="fas fa-question me-2 text-success"></i> Posso ter uma interface em duas zonas ao mesmo tempo?
+                </button>
+              </h2>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqZPF">
+                <div class="accordion-body text-muted">
+                  <strong>Não!</strong> Uma interface não pode pertencer a duas zonas. Isso seria como uma pessoa tentando estar em dois
+                  lugares ao mesmo tempo. Se você precisa que uma interface se conecte a múltiplas zonas, crie
+                  <strong>interfaces virtuais (subinterfaces)</strong> e atribua cada uma a uma zona diferente.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist para fixação -->
+        <div class="content-card-gradient">
+          <h3 class="cisco-subtitle"><i class="fas fa-clipboard-list me-2"></i> Checklist: Você entendeu ZPF?</h3>
+          <p class="text-muted">Marque mentalmente o que você consegue explicar com suas próprias palavras:</p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="checklist-item p-2"><i class="far fa-square text-success me-2"></i> O que é uma zona e como ela funciona?</div>
+              <div class="checklist-item p-2">
+                <i class="far fa-square text-success me-2"></i> Diferença entre as ações Inspect, Drop e Pass?
+              </div>
+              <div class="checklist-item p-2">
+                <i class="far fa-square text-success me-2"></i> Quando o tráfego de trânsito é descartado?
+              </div>
+              <div class="checklist-item p-2">
+                <i class="far fa-square text-success me-2"></i> O que é a zona self e qual seu comportamento?
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-2">
+                <i class="far fa-square text-success me-2"></i> Quais são as 5 etapas de configuração do ZPF?
+              </div>
+              <div class="checklist-item p-2">
+                <i class="far fa-square text-success me-2"></i> Por que o ZPF é mais escalável que firewall clássico?
+              </div>
+              <div class="checklist-item p-2">
+                <i class="far fa-square text-success me-2"></i> Como verificar se uma sessão está sendo inspecionada?
+              </div>
+              <div class="checklist-item p-2">
+                <i class="far fa-square text-success me-2"></i> O que acontece se não criar política para um zone-pair?
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <div class="badge-cisco p-3">
+              <i class="fas fa-graduation-cap me-2"></i>
+              <strong>Dica de estudo:</strong> Tente explicar o ZPF para alguém usando a analogia do prédio corporativo. Se a pessoa
+              entender, você dominou o conceito!
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer Padrão -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script>
+      // Função para exibir detalhes das topologias
+      function showTopology(type) {
+        const modal = new bootstrap.Modal(document.getElementById('topologyModal'))
+        const modalTitle = document.getElementById('modalTitle')
+        const modalBody = document.getElementById('modalBody')
+
+        const topologies = {
+          lan: {
+            title: 'Lan-to-internet',
+            content:
+              '<p><strong>Configuração:</strong> Zona Interna → Zona Externa (Internet)</p><p><strong>Políticas:</strong> Tráfego HTTP/HTTPS permitido saindo, tráfego externo bloqueado para interno (exceto respostas estabelecidas).</p><div class="zone-badge">Interno</div> <i class="fas fa-arrow-right"></i> <div class="zone-badge">Externo</div><div class="zone-badge mt-2">Internet</div><p class="mt-3"><strong>Cenário:</strong> Escritório pequeno com acesso básico à internet.</p>'
+          },
+          public1: {
+            title: 'Firewall-with-public-servers-1',
+            content:
+              '<p><strong>Configuração:</strong> Zona Interna → Zona Perímetro (DMZ) com servidores Web/Email</p><p><strong>Políticas:</strong> Acesso controlado dos servidores internos para DMZ. Tráfego web/email inspecionado.</p><div class="zone-badge">Interno</div> <i class="fas fa-arrow-right"></i> <div class="zone-badge">Perímetro</div><div class="zone-badge">Web/Email</div>'
+          },
+          public2: {
+            title: 'Firewall-with-public-servers-2',
+            content:
+              '<p><strong>Configuração:</strong> Internet → Zona Perímetro → Servidores Públicos</p><p><strong>Políticas:</strong> Acesso público a servidores web/email com inspeção de tráfego e prevenção de intrusão.</p><div class="zone-badge">Internet</div> <i class="fas fa-arrow-right"></i> <div class="zone-badge">Perímetro</div><div class="zone-badge">Web/Email</div>'
+          },
+          redundant: {
+            title: 'Firewalls redundantes',
+            content:
+              '<p><strong>Configuração:</strong> Cluster de firewalls em alta disponibilidade</p><p><strong>Benefícios:</strong> Failover automático, balanceamento de carga, tolerância a falhas.</p><p><strong>Zonas:</strong> Interno ↔ Firewall Active/Passive ↔ Externo</p>'
+          },
+          complex: {
+            title: 'Firewall complexo',
+            content:
+              '<p><strong>Configuração:</strong> Ambiente corporativo completo</p><p><strong>Zonas:</strong> E-Commerce | Administrador | Web/Email | Perímetro | Externo | Internet</p><p><strong>Políticas granulares:</strong> Diferentes níveis de acesso baseados em função e zona.</p>'
+          }
+        }
+
+        const top = topologies[type]
+        modalTitle.textContent = top.title
+        modalBody.innerHTML = top.content
+        modal.show()
+      }
+
+      // Geração do índice dinâmico
+      const sections = document.querySelectorAll('section[id], div[id]')
+      const sectionList = document.getElementById('sectionList')
+      if (sectionList) {
+        let html = ''
+        sections.forEach((section) => {
+          if (section.id && section.id !== '') {
+            const title = section.querySelector('h2, h3')?.innerText || section.id
+            html += `<li><a class="dropdown-item" href="#${section.id}"><i class="fas fa-hashtag me-2 text-success"></i>${title.substring(0, 50)}</a></li>`
+          }
+        })
+        sectionList.innerHTML = html
+      }
+
+      // Busca no índice
+      const navSearch = document.getElementById('navSearch')
+      if (navSearch) {
+        navSearch.addEventListener('input', function (e) {
+          const searchTerm = e.target.value.toLowerCase()
+          const items = sectionList.querySelectorAll('a')
+          items.forEach((item) => {
+            const text = item.innerText.toLowerCase()
+            if (text.includes(searchTerm)) {
+              item.style.display = 'block'
+            } else {
+              item.style.display = 'none'
+            }
+          })
+        })
+      }
+    </script>
+  </body>
+</html>
