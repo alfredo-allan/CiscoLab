@@ -1,0 +1,3721 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 17 | Segurança em Nuvem - CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      /* Estilos para renderizar fielmente o componente interativo da Cisco */
+      .cisco-pills .nav-link {
+        color: var(--text-secondary);
+        background-color: var(--bg-card);
+        border: 1px solid var(--border-primary);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        padding: 1rem;
+      }
+
+      .cisco-pills .nav-link:hover {
+        border-color: rgba(102, 191, 83, 0.5);
+      }
+
+      .cisco-pills .nav-link.active {
+        background-color: rgba(102, 191, 83, 0.1) !important; /* Cor exata do print da Cisco */
+        color: #888888 !important;
+        border-color: #66bf53;
+        box-shadow: none;
+      }
+
+      .cisco-pills .nav-link.active fw-bold {
+        color: #888888;
+      }
+
+      /* Estilo para o Accordion Técnica */
+      .cisco-accordion .accordion-button {
+        background-color: var(--bg-card);
+        color: var(--text-primary);
+        border-bottom: 1px solid var(--border-primary);
+      }
+
+      .cisco-accordion .accordion-button:not(.collapsed) {
+        background-color: #00bef1; /* Cor exata do print */
+        color: #000;
+      }
+
+      .cisco-accordion .accordion-button::after {
+        filter: invert(1);
+      }
+
+      .cisco-accordion .accordion-button:not(.collapsed)::after {
+        filter: invert(0);
+      }
+
+      .mono-space {
+        font-family: var(--font-terminal);
+      }
+
+      .checklist-cisco {
+        list-style: none;
+        padding-left: 0;
+      }
+      .checklist-cisco li {
+        margin-bottom: 0.5rem;
+      }
+      .bg-white {
+        --bs-bg-opacity: 1;
+        background-color: rgba(255, 255, 255, 0.18) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================ -->
+    <!-- NAVBAR PADRÃO - Módulo 17                    -->
+    <!-- ============================================ -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 17 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li>
+                  <h6 class="dropdown-header"><i class="fas fa-cloud me-1"></i> Módulo 17: Segurança em Nuvem</h6>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#introducao">17.0 Introdução</a></li>
+                <li><a class="dropdown-item" href="#topicos">17.0.2 O que vou aprender</a></li>
+                <li><a class="dropdown-item" href="#virtualizacao">17.1 Virtualização e Computação em Nuvem</a></li>
+                <li><a class="dropdown-item ps-4" href="#ambiente-virtual">17.1.2 O Ambiente Virtual</a></li>
+                <li><a class="dropdown-item ps-4" href="#riscos-virtualizacao">17.1.3 Riscos da Virtualização</a></li>
+                <li><a class="dropdown-item ps-4" href="#tecnologia-nuvem">17.1.4 Tecnologia na Nuvem</a></li>
+                <li><a class="dropdown-item ps-4" href="#classificacoes">17.1.5 Classificações da Nuvem</a></li>
+                <li><a class="dropdown-item ps-4" href="#fog-edge">17.1.6 Fog & Edge Computing</a></li>
+                <li><a class="dropdown-item ps-4" href="#ameacas">17.1.7 Principais Ameaças</a></li>
+                <li><a class="dropdown-item ps-4" href="#verificacao">17.1.8 Verifique seu entendimento</a></li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="../pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li><a class="dropdown-item" href="#introducao">17.0 Introdução</a></li>
+                  <li><a class="dropdown-item" href="#topicos">17.0.2 O que vou aprender</a></li>
+                  <li><a class="dropdown-item" href="#virtualizacao">17.1 Virtualização</a></li>
+                  <li><a class="dropdown-item" href="#ambiente-virtual">17.1.2 Ambiente Virtual</a></li>
+                  <li><a class="dropdown-item" href="#riscos-virtualizacao">17.1.3 Riscos</a></li>
+                  <li><a class="dropdown-item" href="#tecnologia-nuvem">17.1.4 XaaS</a></li>
+                  <li><a class="dropdown-item" href="#classificacoes">17.1.5 Classificações</a></li>
+                  <li><a class="dropdown-item" href="#fog-edge">17.1.6 Fog & Edge</a></li>
+                  <li><a class="dropdown-item" href="#ameacas">17.1.7 Ameaças</a></li>
+                  <li><a class="dropdown-item" href="#verificacao">17.1.8 Verificação</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CONTEÚDO PRINCIPAL DO MÓDULO                -->
+    <!-- ============================================ -->
+    <main class="container py-5">
+      <!-- TÍTULO PRINCIPAL DO MÓDULO -->
+      <div class="mb-5">
+        <span class="badge-cisco mb-3"><i class="fas fa-cloud me-1"></i> Módulo 17</span>
+        <h1 class="cisco-title display-4 mb-3">Segurança em Nuvem</h1>
+        <p class="text-muted lead">Recomendar requisitos de segurança em nuvem com base em um determinado cenário de nuvem.</p>
+        <hr class="border-secondary" />
+      </div>
+
+      <!-- 17.0 INTRODUÇÃO -->
+      <section id="introducao" class="mb-5">
+        <h2 class="section-title mb-4">17.0 Introdução</h2>
+        <div class="content-card">
+          <div class="d-flex align-items-start gap-3">
+            <div class="icon-box">
+              <i class="fas fa-question-circle fa-2x" style="color: var(--cisco-green)"></i>
+            </div>
+            <div>
+              <h3 class="cisco-subtitle mb-3">Por que devo fazer este módulo?</h3>
+              <p>
+                Você armazena fotos de família na "nuvem"? Sua empresa coloca grande parte de seus dados lá? Você acha que os dados na nuvem
+                são seguros? Este módulo aborda como a nuvem é viabilizada pelo uso da virtualização. Ele discute as maneiras exclusivas
+                como os dados na nuvem devem ser protegidos contra ameaças.
+              </p>
+              <p class="mb-0">
+                Com cada vez mais governos, organizações, empresas e pessoas armazenando seus dados na nuvem, a importância da segurança da
+                nuvem aumenta a cada ano. Este é um momento interessante para aprender sobre computação em nuvem e, especialmente, segurança
+                em nuvem!
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.0.2 O QUE VOU APRENDER -->
+      <section id="topicos" class="mb-5">
+        <h2 class="section-title mb-4">17.0.2 O que vou aprender neste módulo?</h2>
+        <div class="content-card">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="d-flex align-items-center gap-2 mb-3">
+                <i class="fas fa-flask fa-lg" style="color: var(--cisco-green)"></i>
+                <span class="badge-cisco">1 Laboratório</span>
+                <span class="badge-cisco-alt">4 Atividades</span>
+                <span class="badge-cisco-alt">1 Questionário</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Virtualização e Computação em Nuvem</strong></td>
+                  <td>Descrever maneiras de gerenciar ameaças à nuvem privada e pública.</td>
+                </tr>
+                <tr>
+                  <td><strong>Os Domínios da Segurança em Nuvem</strong></td>
+                  <td>Explicar os domínios de segurança da nuvem.</td>
+                </tr>
+                <tr>
+                  <td><strong>Segurança de infraestrutura em nuvem</strong></td>
+                  <td>Explicar a mitigação de ameaças à infraestrutura da plataforma de nuvem.</td>
+                </tr>
+                <tr>
+                  <td><strong>Segurança de Aplicações em Nuvem</strong></td>
+                  <td>Recomendar aplicativos de segurança em nuvem.</td>
+                </tr>
+                <tr>
+                  <td><strong>Segurança de Dados em Nuvem</strong></td>
+                  <td>Explicar como proteger os dados em nuvem.</td>
+                </tr>
+                <tr>
+                  <td><strong>Proteção de VMs</strong></td>
+                  <td>Explicar como proteger instâncias de VM.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1 VIRTUALIZAÇÃO E COMPUTAÇÃO EM NUVEM -->
+      <section id="virtualizacao" class="mb-5">
+        <h2 class="section-title mb-4">17.1 Virtualização e Computação em Nuvem</h2>
+
+        <!-- 17.1.1 Avatar / Visão Geral -->
+        <div class="content-card mb-4">
+          <p>
+            O uso de máquinas virtuais e armazenamento em nuvem são apenas algumas das maneiras pelas quais uma empresa pode economizar
+            tempo e dinheiro. Isso envolve mover aplicativos e armazenamento dos dispositivos físicos para o domínio digital.
+          </p>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-shield-halved me-2"></i> Mas quais são os riscos à segurança que surgem da virtualização e como podemos
+            gerenciá-los? Vamos descobrir.
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1.2 O AMBIENTE VIRTUAL -->
+      <section id="ambiente-virtual" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.2 O Ambiente Virtual</h3>
+        <div class="content-card">
+          <p>
+            A virtualização beneficia uma empresa ao diminuir o número de máquinas físicas (por exemplo, servidores e estações de trabalho)
+            necessárias no ambiente de TI.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-lg-6 mb-4">
+              <div class="terminal-card h-100">
+                <h4 class="text-success mb-3"><i class="fas fa-microchip me-2"></i> Hypervisor Tipo 1</h4>
+                <p class="small text-muted mb-2">Virtualização de Hardware (Bare-metal)</p>
+                <p>
+                  O sistema operacional convidado é executado diretamente em uma plataforma de hardware, sob o controle do sistema host. Não
+                  há sistema operacional subjacente.
+                </p>
+                <div class="mt-3">
+                  <span class="badge-cisco">VMware ESXi</span>
+                  <span class="badge-cisco">Microsoft Hyper-V</span>
+                  <span class="badge-cisco">KVM</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+              <div class="terminal-card h-100">
+                <h4 class="text-success mb-3"><i class="fas fa-laptop-code me-2"></i> Hypervisor Tipo 2</h4>
+                <p class="small text-muted mb-2">Virtualização Hospedada</p>
+                <p>
+                  Um aplicativo em execução na máquina host é usado para criar máquinas virtuais que consistem totalmente em software e não
+                  contêm componentes de hardware.
+                </p>
+                <div class="mt-3">
+                  <span class="badge-cisco">VirtualBox</span>
+                  <span class="badge-cisco">VMware Workstation</span>
+                  <span class="badge-cisco">Parallels</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Atenção:</strong> Os ambientes de máquinas virtuais usam um sistema operacional, portanto, eles precisam ser corrigidos.
+            As máquinas virtuais compartilham hardware e são executadas com privilégios muito altos. Um invasor que comprometa uma máquina
+            virtual pode comprometer a máquina host.
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1.3 RISCOS DA VIRTUALIZAÇÃO -->
+      <section id="riscos-virtualizacao" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.3 Riscos da Virtualização</h3>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <i class="fas fa-expand-alt fa-2x" style="color: var(--accent-yellow)"></i>
+                <h4 class="mb-0" style="color: var(--cisco-green)">Expansão de VM</h4>
+              </div>
+              <p>
+                Ocorre quando muitos servidores virtualizados e subutilizados consomem mais recursos e espaço do que o necessário para o
+                trabalho que está fazendo.
+              </p>
+              <div class="mt-3">
+                <span class="badge-cisco-alt"><i class="fas fa-chart-line me-1"></i> Monitoramento constante</span>
+                <span class="badge-cisco-alt"><i class="fas fa-trash-alt me-1"></i> Eliminar VMs ociosas</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-3 mb-3">
+                <i class="fas fa-bug fa-2x" style="color: var(--accent-red)"></i>
+                <h4 class="mb-0" style="color: var(--cisco-green)">Fuga de VM (VM Escape)</h4>
+              </div>
+              <p>
+                Isso acontece quando a máquina virtual interrompe e interage com o sistema operacional do host. Um invasor pode escapar do
+                ambiente isolado da VM e comprometer o hypervisor.
+              </p>
+              <div class="mt-3">
+                <span class="badge-cisco-alt"><i class="fas fa-shield-halved me-1"></i> Isolamento rigoroso</span>
+                <span class="badge-cisco-alt"><i class="fas fa-sync-alt me-1"></i> Atualizações regulares</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1.4 TECNOLOGIA NA NUVEM (XaaS) -->
+      <section id="tecnologia-nuvem" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.4 Tecnologia na Nuvem</h3>
+        <div class="content-card">
+          <p>
+            As tecnologias baseadas em nuvem permitem que empresas acessem computação, armazenamento, software e servidores pela Internet.
+            Os três principais modelos de serviços de computação, conhecidos coletivamente como XaaS ("qualquer coisa como serviço"):
+          </p>
+
+          <div class="row mt-4 g-4">
+            <div class="col-md-4">
+              <div class="hacker-card text-center p-4">
+                <i class="fas fa-cloud-upload-alt fa-3x mb-3" style="color: var(--cisco-green)"></i>
+                <h4 class="text-success">SaaS</h4>
+                <p class="small">Software como Serviço</p>
+                <p class="text-muted small">Aplicativos entregues via internet. Ex: Office 365, Google Workspace</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="hacker-card text-center p-4">
+                <i class="fas fa-cubes fa-3x mb-3" style="color: var(--cisco-green)"></i>
+                <h4 class="text-success">PaaS</h4>
+                <p class="small">Plataforma como Serviço</p>
+                <p class="text-muted small">Ambiente para desenvolvimento e deploy. Ex: Heroku, Google App Engine</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="hacker-card text-center p-4">
+                <i class="fas fa-server fa-3x mb-3" style="color: var(--cisco-green)"></i>
+                <h4 class="text-success">IaaS</h4>
+                <p class="small">Infraestrutura como Serviço</p>
+                <p class="text-muted small">Recursos de computação sob demanda. Ex: AWS EC2, Google Compute Engine</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1.5 CLASSIFICAÇÕES DA NUVEM -->
+      <section id="classificacoes" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.5 Classificações da Computação em Nuvem</h3>
+        <p class="text-muted mb-4">As classificações da computação em nuvem baseiam-se na implantação dos modelos de serviço.</p>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="content-card">
+              <h4><i class="fas fa-building me-2" style="color: var(--cisco-green)"></i> Nuvem Privada</h4>
+              <p>
+                Também chamada de nuvem interna, corporativa ou empresarial, é hospedada em uma plataforma privada. Oferece à empresa mais
+                controle sobre seus dados, mas pode ser mais caro devido aos custos de infraestrutura, manutenção e administração.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <h4><i class="fas fa-globe me-2" style="color: var(--cisco-green)"></i> Nuvem Pública</h4>
+              <p>
+                Hospedada por um provedor de serviços em uma instalação externa. Os usuários pagam uma taxa de uso mensal ou anual para
+                acessar. Custa menos para infraestrutura, mas a empresa tem menos controle sobre seus dados.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <h4><i class="fas fa-code-branch me-2" style="color: var(--cisco-green)"></i> Nuvem Híbrida</h4>
+              <p>
+                Combina a nuvem privada e pública, oferecendo o controle de dados organizacionais hospedados em uma nuvem pública. Ideal
+                para empresas que precisam de escalabilidade mantendo dados sensíveis internamente.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <h4><i class="fas fa-users me-2" style="color: var(--cisco-green)"></i> Nuvem Comunitária</h4>
+              <p>
+                Um esforço colaborativo no qual mais de uma empresa compartilha e usa a mesma plataforma. Voltado para as necessidades de um
+                setor, como saúde ou energia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1.6 FOG COMPUTING E EDGE COMPUTING -->
+      <section id="fog-edge" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.6 Fog Computing e Edge Computing</h3>
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="terminal-card h-100">
+              <h4 class="text-success"><i class="fas fa-cloud me-2"></i> Fog Computing (Neblina)</h4>
+              <p>
+                Distribui a computação entre o dispositivo e o data center em nuvem. Desempenha um papel fundamental em aplicações onde
+                milissegundos são importantes, como veículos autônomos, linhas aéreas e aplicações de manufatura.
+              </p>
+              <p class="mt-2 text-muted small">
+                Os dados são processados dentro de um gateway de IoT, ou fog node, que fica na rede de área local.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="terminal-card h-100">
+              <h4 class="text-success"><i class="fas fa-microchip me-2"></i> Edge Computing (Borda)</h4>
+              <p>
+                Os dados são processados no dispositivo ou no sensor sem serem transferidos para um data center. Ideal para aplicações que
+                exigem baixíssima latência e processamento em tempo real.
+              </p>
+              <p class="mt-2 text-muted small">A explosão dos dispositivos de IoT levou à computação em neblina e à computação de borda.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1.7 PRINCIPAIS AMEAÇAS -->
+      <section id="ameacas" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.7 Principais Ameaças à Computação em Nuvem</h3>
+        <div class="content-card mb-4">
+          <p>
+            A computação em nuvem é suscetível às muitas ameaças que afetam as redes físicas da empresa. No entanto, o ambiente de nuvem
+            também apresenta ameaças exclusivas.
+          </p>
+          <div class="terminal-card mt-3">
+            <h5 class="text-success">
+              <i class="fas fa-skull me-2"></i> Se um agente de ameaça comprometer um recurso de nuvem, ele poderá:
+            </h5>
+            <ul class="mt-2">
+              <li>Usar os recursos de computação em nuvem para atingir outras entidades online.</li>
+              <li>Hospedar malware em provedores de nuvem respeitados que parecerão inofensivos ou até mesmo legítimos.</li>
+              <li>
+                Abusar dos serviços em nuvem para lançar ataques de DDoS, hospedar conteúdo pirata, enviar spam de e-mail e realizar
+                campanhas de phishing.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-database fa-lg" style="color: var(--accent-red)"></i>
+                <h5 class="mb-0">Violação de Dados</h5>
+              </div>
+              <p class="small">Dados confidenciais protegidos são acessados por uma entidade não autorizada.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-tools fa-lg" style="color: var(--accent-yellow)"></i>
+                <h5 class="mb-0">Configuração Incorreta</h5>
+              </div>
+              <p class="small">Recurso de computação em nuvem configurado incorretamente, tornando-o vulnerável a ataques.</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-drafting-compass fa-lg" style="color: var(--cisco-green)"></i>
+                <h5 class="mb-0">Arquitetura de Segurança Ruim</h5>
+              </div>
+              <p class="small">
+                Segurança de nuvem privada é responsabilidade da empresa. Em nuvens públicas, torna-se responsabilidade compartilhada.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-user-lock fa-lg" style="color: var(--accent-red)"></i>
+                <h5 class="mb-0">Credenciais Comprometidas</h5>
+              </div>
+              <p class="small">
+                Contas de usuário ou privilégios de acesso não são devidamente protegidos e são invadidos por agentes de ameaças.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-user-secret fa-lg" style="color: var(--accent-yellow)"></i>
+                <h5 class="mb-0">Ameaça Interna</h5>
+              </div>
+              <p class="small">
+                Funcionário, empreiteiro ou parceiro de negócios compromete o serviço em nuvem de forma mal-intencionada ou não.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-code fa-lg" style="color: var(--cisco-green)"></i>
+                <h5 class="mb-0">UI/API Insegura</h5>
+              </div>
+              <p class="small">
+                A computação em nuvem usa UIs e APIs de software para interação. Essas interfaces são os pontos mais expostos à Internet.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mx-auto">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-eye-slash fa-lg" style="color: var(--accent-red)"></i>
+                <h5 class="mb-0">Visibilidade Limitada</h5>
+              </div>
+              <p class="small">
+                O cliente de nuvem não tem visibilidade completa do serviço em nuvem, dificultando a identificação de arquivos seguros ou
+                mal-intencionados.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 17.1.8 VERIFIQUE SEU ENTENDIMENTO -->
+      <section id="verificacao" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.8 Verifique seu entendimento</h3>
+        <div class="content-card">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <i class="fas fa-check-circle fa-3x" style="color: var(--cisco-green)"></i>
+            <div>
+              <h4 class="mb-0">Virtualização e Computação em Nuvem</h4>
+              <p class="text-muted mb-0">Teste seus conhecimentos sobre os conceitos abordados</p>
+            </div>
+          </div>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Questões para reflexão:</strong>
+            <ul class="mt-2 mb-0">
+              <li>Qual a diferença entre hypervisor Tipo 1 e Tipo 2?</li>
+              <li>O que é VM Escape e como se proteger?</li>
+              <li>Quais são os 3 modelos de serviço em nuvem (XaaS)?</li>
+              <li>Diferencie Nuvem Privada, Pública, Híbrida e Comunitária.</li>
+              <li>Quais são as 7 principais ameaças à computação em nuvem?</li>
+            </ul>
+          </div>
+
+          <div class="terminal-card">
+            <pre><code># Laboratório do Módulo 17: Segurança em Nuvem
+# Configure e analise políticas de segurança para ambientes cloud
+
+[ ] Laboratório 17: Configuração de Segurança em Nuvem
+[ ] Atividade 17.2.3: Identificando ameaças em nuvem
+[ ] Atividade 17.3.4: Protegendo infraestrutura cloud
+[ ] Atividade 17.5.6: Criptografia de dados em nuvem
+[ ] Atividade 17.6.5: Hardening de VMs</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- LABORATÓRIOS SECTION -->
+      <section id="laboratorios" class="mt-5 pt-3">
+        <h2 class="section-title mb-4"><i class="fas fa-flask me-2" style="color: var(--cisco-green)"></i> Laboratórios</h2>
+        <div class="content-card">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h4 class="cisco-subtitle">Laboratório: Segurança em Nuvem</h4>
+              <p>
+                Este módulo contém 1 laboratório prático para consolidar os conceitos de segurança em nuvem, virtualização e proteção de
+                dados.
+              </p>
+              <div class="mt-3">
+                <span class="badge-cisco"><i class="fas fa-clock me-1"></i> Duração: 45 min</span>
+                <span class="badge-cisco-alt"><i class="fas fa-chart-line me-1"></i> Nível: Intermediário</span>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <i class="fas fa-cloud-upload-alt fa-4x" style="color: var(--cisco-green); opacity: 0.7"></i>
+              <p class="text-muted small mt-2">Prática em ambiente controlado</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 17.1.8 VERIFIQUE SEU ENTENDIMENTO - QUIZ INTERATIVO -->
+      <section id="verificacao" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.1.8 Verifique seu entendimento - Virtualização e Computação em Nuvem</h3>
+        <div class="content-card">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <i class="fas fa-check-circle fa-3x" style="color: var(--cisco-green)"></i>
+            <div>
+              <h4 class="mb-0">Virtualização e Computação em Nuvem</h4>
+              <p class="text-muted mb-0">Verifique sua compreensão escolhendo a resposta correta para as seguintes perguntas.</p>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 1 -->
+          <div class="quiz-question mb-4" data-question="1">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 1</h5>
+              <p class="fw-bold mb-3">Qual método de virtualização exige que um aplicativo na máquina host crie várias VMs?</p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q1_a"> Virtualização de servidores </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q1_b"> Virtualização de Software </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q1_c"> Virtualização de Hardware </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_d" value="d" />
+                  <label class="form-check-label text-secondary" for="q1_d"> Virtualização hospedada </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback1" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> A virtualização hospedada (Hypervisor Tipo 2) exige um aplicativo na máquina host para criar as
+                  VMs, como VirtualBox ou VMware Workstation.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 2 -->
+          <div class="quiz-question mb-4" data-question="2">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 2</h5>
+              <p class="fw-bold mb-3">Qual opção é necessária para oferecer suporte a uma infraestrutura de desktop virtual?</p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q2_a">
+                    Grandes monitores de alta resolução para exibir todos os aplicativos
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q2_b">
+                    Unidades de estado sólido (SSDs) para armazenar aplicativos e dados localmente
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q2_c"> Conexão de rede de alta disponibilidade </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_d" value="d" />
+                  <label class="form-check-label text-secondary" for="q2_d">
+                    Computadores potentes com várias CPUs e 16 GB de RAM ou mais
+                  </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback2" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> A infraestrutura de desktop virtual (VDI) depende de uma conexão de rede de alta disponibilidade
+                  e baixa latência para entregar a experiência de desktop aos usuários finais.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 3 -->
+          <div class="quiz-question mb-4" data-question="3">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 3</h5>
+              <p class="fw-bold mb-3">Que situação descreve a expansão de VM?</p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q3_a">
+                    Isso ocorre quando a máquina virtual entra em ação e interage com o sistema operacional do host.
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q3_b">
+                    Isso ocorre quando muitos servidores VM subutilizados consomem mais recursos e espaço do que o necessário.
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q3_c">
+                    Isso ocorre quando servidores VM comprometidos são usados para criar instâncias de VM infeccionadas adicionais.
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_d" value="d" />
+                  <label class="form-check-label text-secondary" for="q3_d">
+                    Isso ocorre quando os servidores VM usam menos recursos e espaço do que o alocado.
+                  </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback3" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> A expansão de VM ocorre quando muitos servidores virtualizados e subutilizados consomem mais
+                  recursos e espaço do que o necessário para o trabalho que está fazendo.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 4 -->
+          <div class="quiz-question mb-4" data-question="4">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 4</h5>
+              <p class="fw-bold mb-3">
+                Qual modelo de serviço de computação em nuvem reduz os custos de infraestrutura, mas oferece às empresas menos controle
+                sobre seus dados?
+              </p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q4_a"> Nuvem híbrida </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q4_b"> Nuvem pública </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q4_c"> Nuvem comunitária </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_d" value="d" />
+                  <label class="form-check-label text-secondary" for="q4_d"> Nuvem privada </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback4" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> A nuvem pública é hospedada por um provedor de serviços em uma instalação externa. Os usuários
+                  pagam uma taxa de uso, o que custa menos para infraestrutura, mas a empresa tem menos controle sobre seus dados.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BOTÃO DE ENVIO E RESULTADO -->
+          <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+            <button id="submitQuiz" class="btn-cisco"><i class="fas fa-paper-plane me-2"></i> Enviar Respostas</button>
+            <button id="resetQuiz" class="btn-cisco" style="background: transparent; border-color: var(--border-primary)">
+              <i class="fas fa-undo-alt me-2"></i> Limpar Respostas
+            </button>
+            <div id="quizResult" class="ms-auto">
+              <span class="badge-modulo" id="scoreDisplay" style="font-size: 1.1rem">0/4 respostas</span>
+            </div>
+          </div>
+
+          <!-- LINK MOSTRAR FEEDBACK -->
+          <div class="mt-3 text-center">
+            <a href="#" id="showFeedbackLink" class="text-muted" style="font-size: 0.85rem">
+              <i class="fas fa-comment-dots me-1"></i> Mostrar feedback
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- 17.2 OS DOMÍNIOS DA SEGURANÇA EM NUVEM       -->
+      <!-- ============================================ -->
+      <section id="dominios" class="mb-5">
+        <h2 class="section-title mb-4">17.2 Os domínios da segurança em nuvem</h2>
+
+        <div class="content-card">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <i class="fas fa-layer-group fa-3x" style="color: var(--cisco-green)"></i>
+            <div>
+              <p class="mb-0">
+                Há muitos recursos disponíveis que promovem a segurança da computação em nuvem. Um recurso amplamente respeitado e
+                mencionado é o documento
+                <strong class="text-success">Guia de segurança para áreas de foco essenciais na computação em nuvem v4</strong>.
+              </p>
+              <p class="text-muted small mt-2">
+                Desenvolvido pela Cloud Security Alliance (CSA), ele promove as melhores práticas para oferecer garantia de segurança nos
+                domínios da computação em nuvem. Especificamente, o documento abrange <strong>14 domínios de segurança de nuvem</strong>.
+              </p>
+            </div>
+          </div>
+
+          <p class="text-center text-muted mb-4">
+            <i class="fas fa-mouse-pointer me-2"></i> Clique em cada título para obter uma visão geral desses 14 domínios.
+          </p>
+
+          <!-- ACORDEÃO DOS 14 DOMÍNIOS -->
+          <div class="accordion" id="accordionDominios">
+            <!-- DOMÍNIO 1: Conceitos e arquiteturas de Computação em Nuvem -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio1"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-cloud me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Conceitos e arquiteturas de Computação em Nuvem</strong>
+                </button>
+              </h2>
+              <div id="dominio1" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio define a terminologia da computação em nuvem e detalha as estruturas lógicas e arquitetônicas gerais usadas no
+                    documento de orientações de segurança.
+                  </p>
+                  <div class="row mt-3 g-2">
+                    <div class="col-auto"><span class="badge-cisco">Terminologia Cloud</span></div>
+                    <div class="col-auto"><span class="badge-cisco">Arquitetura Lógica</span></div>
+                    <div class="col-auto"><span class="badge-cisco">Modelos de Serviço</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 2: Governança e Gerenciamento de Riscos Corporativos -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio2"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-building me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Governança e Gerenciamento de Riscos Corporativos</strong>
+                </button>
+              </h2>
+              <div id="dominio2" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>O domínio descreve quatro áreas afetadas pela computação em nuvem:</p>
+                  <ul class="text-secondary">
+                    <li><strong class="text-success">Governança</strong> - Estrutura de tomada de decisão e responsabilidades</li>
+                    <li>
+                      <strong class="text-success">Gerenciamento de riscos empresariais</strong> - Identificação e mitigação de riscos
+                    </li>
+                    <li><strong class="text-success">Gerenciamento de riscos de informações</strong> - Proteção de dados sensíveis</li>
+                    <li><strong class="text-success">Segurança da Informação</strong> - Controles de segurança implementados</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 3: Questões jurídicas, contratos e descoberta eletrônica -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio3"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-gavel me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Questões jurídicas, contratos e descoberta eletrônica</strong>
+                </button>
+              </h2>
+              <div id="dominio3" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>O domínio descreve questões legais associadas à computação em nuvem, incluindo:</p>
+                  <ul class="text-secondary">
+                    <li>Transferência de dados para a nuvem</li>
+                    <li>Contratação de provedores de serviços em nuvem</li>
+                    <li>Gerenciamento de solicitações de descoberta eletrônica em litígios</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 4: Gerenciamento de conformidade e auditoria -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio4"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-clipboard-list me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Gerenciamento de conformidade e auditoria</strong>
+                </button>
+              </h2>
+              <div id="dominio4" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio descreve os desafios de disponibilizar, medir e comunicar a conformidade quando as empresas migram dos data
+                    centers tradicionais para a nuvem.
+                  </p>
+                  <div class="mt-3">
+                    <span class="badge-cisco-alt">LGPD</span>
+                    <span class="badge-cisco-alt">GDPR</span>
+                    <span class="badge-cisco-alt">HIPAA</span>
+                    <span class="badge-cisco-alt">PCI DSS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 5: Governança da informação -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio5"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-database me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Governança da informação</strong>
+                </button>
+              </h2>
+              <div id="dominio5" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio descreve a necessidade de garantir que o uso de dados e informações esteja em conformidade com as políticas,
+                    os padrões e a estratégia da empresa, incluindo os objetivos regulatórios, contratuais e comerciais.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 6: Plano de gerenciamento e continuidade dos negócios -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio6"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-chart-line me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Plano de gerenciamento e continuidade dos negócios</strong>
+                </button>
+              </h2>
+              <div id="dominio6" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio descreve a necessidade de proteger o plano de gerenciamento da computação em nuvem (ou seja, os protocolos e
+                    os recursos usados para gerenciar a nuvem). Ele também descreve a continuidade dos negócios e os procedimentos de
+                    recuperação de desastres que devem ser usados pelo provedor e pelo cliente em nuvem.
+                  </p>
+                  <div class="mt-3">
+                    <span class="badge-cisco">BCP</span>
+                    <span class="badge-cisco">DRP</span>
+                    <span class="badge-cisco">RPO/RTO</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 7: Segurança como Serviço -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio7"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-shield-alt me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Segurança como Serviço (SecaaS)</strong>
+                </button>
+              </h2>
+              <div id="dominio7" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>O domínio abrange os serviços de segurança em constante evolução fornecidos pela nuvem.</p>
+                  <div class="row mt-3 g-2">
+                    <div class="col-md-4"><span class="badge-cisco-alt">Identity & Access</span></div>
+                    <div class="col-md-4"><span class="badge-cisco-alt">SIEM</span></div>
+                    <div class="col-md-4"><span class="badge-cisco-alt">Encryption</span></div>
+                    <div class="col-md-4"><span class="badge-cisco-alt">Web Security</span></div>
+                    <div class="col-md-4"><span class="badge-cisco-alt">Email Security</span></div>
+                    <div class="col-md-4"><span class="badge-cisco-alt">DLP</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 8: Segurança de infraestrutura -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio8"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-server me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Segurança de infraestrutura</strong>
+                </button>
+              </h2>
+              <div id="dominio8" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio descreve aspectos específicos da nuvem da segurança de infraestrutura e a base para operar com segurança na
+                    nuvem.
+                  </p>
+                  <p class="mt-2 text-muted small">
+                    Inclui segurança de rede, segurança de hypervisor, segmentação e isolamento de recursos.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 9: Virtualização e Contêineres -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio9"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-cube me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Virtualização e Contêineres</strong>
+                </button>
+              </h2>
+              <div id="dominio9" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio descreve a necessidade de proteger a tecnologia de virtualização e os ativos virtuais que são a base para a
+                    computação em nuvem.
+                  </p>
+                  <div class="row mt-3">
+                    <div class="col-md-6">
+                      <div class="terminal-card p-2 mb-2">
+                        <i class="fas fa-microchip me-1 text-success"></i> <strong>Virtualização:</strong> VMs, Hypervisors
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="terminal-card p-2 mb-2">
+                        <i class="fab fa-docker me-1 text-success"></i> <strong>Contêineres:</strong> Docker, Kubernetes
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 10: Resposta a incidentes -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio10"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-bolt me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Resposta a incidentes (IR)</strong>
+                </button>
+              </h2>
+              <div id="dominio10" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio descreve os aspectos críticos da resposta a incidentes (IR), incluindo o ciclo de vida de resposta a
+                    incidentes e considerações para respondentes enquanto trabalham em um ambiente de nuvem.
+                  </p>
+                  <div class="timeline-item mt-3">
+                    <div class="d-flex gap-3">
+                      <i class="fas fa-circle text-success mt-1"></i>
+                      <div>
+                        <strong>Preparação</strong> → <strong>Detecção</strong> → <strong>Análise</strong> → <strong>Contenção</strong> →
+                        <strong>Erradicação</strong> → <strong>Recuperação</strong> → <strong>Lições Aprendidas</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 11: Segurança de aplicações -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio11"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-code me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Segurança de aplicações</strong>
+                </button>
+              </h2>
+              <div id="dominio11" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio oferece orientação sobre como criar e implantar aplicações com segurança em ambientes de computação em nuvem,
+                    especificamente para PaaS e IaaS.
+                  </p>
+                  <div class="mt-3">
+                    <span class="badge-cisco">DevSecOps</span>
+                    <span class="badge-cisco">SAST/DAST</span>
+                    <span class="badge-cisco">API Security</span>
+                    <span class="badge-cisco">WAF</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 12: Segurança e criptografia de dados -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio12"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-lock me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Segurança e criptografia de dados</strong>
+                </button>
+              </h2>
+              <div id="dominio12" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    A segurança de dados deve ser baseada em risco, pois não é apropriado proteger tudo de forma igual. O domínio descreve
+                    os controles relacionados à proteção dos próprios dados, dos quais a criptografia é uma das mais importantes.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <pre><code># Dados em repouso (At Rest)
+- Criptografia de disco (AES-256)
+- TDE (Transparent Data Encryption)
+
+# Dados em trânsito (In Transit)
+- TLS 1.3
+- VPN/IPsec
+
+# Dados em uso (In Use)
+- Confidential Computing
+- Enclaves seguros</code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 13: Gerenciamento de identidade, direito e acesso (IAM) -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio13"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-id-card me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Gerenciamento de identidade, direito e acesso (IAM)</strong>
+                </button>
+              </h2>
+              <div id="dominio13" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>O domínio descreve como a identidade de nuvem é diferente do gerenciamento de identidade tradicional.</p>
+                  <div class="row mt-3">
+                    <div class="col-md-6">
+                      <div class="content-card-accent p-3 mb-2">
+                        <i class="fas fa-fingerprint text-success me-2"></i>
+                        <strong>Princípios IAM:</strong>
+                        <ul class="small mt-2 mb-0">
+                          <li>Autenticação multifator (MFA)</li>
+                          <li>Princípio do menor privilégio</li>
+                          <li>SSO (Single Sign-On)</li>
+                          <li>Federação de identidades</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="content-card-accent p-3 mb-2">
+                        <i class="fas fa-chart-simple text-success me-2"></i>
+                        <strong>Modelos de Acesso:</strong>
+                        <ul class="small mt-2 mb-0">
+                          <li>RBAC (Role-Based)</li>
+                          <li>ABAC (Attribute-Based)</li>
+                          <li>PBAC (Policy-Based)</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DOMÍNIO 14: Tecnologias relacionadas -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#dominio14"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-microchip me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Tecnologias relacionadas</strong>
+                </button>
+              </h2>
+              <div id="dominio14" class="accordion-collapse collapse" data-bs-parent="#accordionDominios">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O domínio fornece informações e recomendações para tecnologias que dependem quase exclusivamente da computação em nuvem
+                    para operar e para tecnologias que não dependem necessariamente da nuvem, mas são comumente vistas em implantações em
+                    nuvem.
+                  </p>
+                  <div class="row mt-3 g-2">
+                    <div class="col-6 col-md-3"><span class="badge-cisco">Big Data</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco">IoT</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco">AI/ML</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco">Blockchain</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco">Serverless</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco">DevOps</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RODAPÉ DA SEÇÃO -->
+          <div class="text-center mt-4 pt-3 border-top border-secondary">
+            <p class="text-muted mb-0">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              No próximo tópico, discutiremos três desses domínios com mais detalhes.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- 17.3 SEGURANÇA DE INFRAESTRUTURA EM NUVEM    -->
+      <!-- ============================================ -->
+      <section id="seguranca-infraestrutura" class="mb-5">
+        <h2 class="section-title mb-4">17.3 Segurança de infraestrutura em nuvem</h2>
+
+        <!-- 17.3.1 Segurança de infraestrutura -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle mb-3">17.3.1 Segurança de infraestrutura</h3>
+          <p>
+            O domínio <strong class="text-success">Segurança da infraestrutura</strong> descreve aspectos específicos da nuvem da segurança
+            da infraestrutura e a base para operar com segurança na nuvem.
+          </p>
+
+          <p class="mt-3">
+            A infraestrutura em nuvem é a base sobre a qual os recursos de nuvem virtualizada, como computação, rede e armazenamento de
+            dados, são construídos e implantados.
+          </p>
+
+          <div class="row mt-4 g-4">
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-success mb-3"><i class="fas fa-microchip me-2"></i> Camada Física e Lógica</h5>
+                <p class="small">
+                  A computação física e lógica (CPU, memória, etc), as redes e o armazenamento são combinados para criar uma nuvem.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-success mb-3"><i class="fas fa-cloud me-2"></i> Infraestrutura Virtual</h5>
+                <p class="small">
+                  Infraestrutura virtual gerenciada por um usuário da nuvem, ou seja, a computação, a rede e os recursos de armazenamento
+                  que eles acessam nos pools de recursos.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Atenção:</strong> Devido à natureza da computação em nuvem, as medidas tradicionais de segurança de infraestrutura com
+            base no controle de caminhos de comunicação física e na inserção de dispositivos de segurança
+            <strong class="text-success">não funcionam</strong>.
+          </div>
+
+          <p class="mt-3">
+            Ferramentas de segurança de nuvem personalizadas incluem dispositivos virtuais e agentes de software que são usados para
+            proteger ambientes virtuais. No entanto, essas ferramentas podem apresentar gargalos ao acessar recursos ou levar à sobrecarga
+            do processador. Portanto, o uso de dispositivos virtuais deve ser cuidadosamente avaliado e implantado.
+          </p>
+
+          <div class="content-card-accent mt-4">
+            <h5 class="text-success mb-3"><i class="fas fa-network-wired me-2"></i> Redes Definidas por Software (SDN)</h5>
+            <p>
+              As redes definidas por software (SDN) permitem novos tipos de controles de segurança e proporcionam um ganho geral para a
+              segurança de rede, incluindo:
+            </p>
+            <ul class="text-secondary mt-2">
+              <li>
+                <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Fácil isolamento de rede sem restrições de
+                hardware físico
+              </li>
+              <li>
+                <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Firewalls SDN (grupos de segurança em computação
+                em nuvem) aplicados a ativos com base em critérios mais flexíveis do que os firewalls de hardware
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 17.3.2 Responsabilidades da segurança em nuvem -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle mb-3">17.3.2 Responsabilidades da segurança em nuvem</h3>
+          <p>
+            A computação em nuvem envolve clientes e provedores de serviços de nuvem (CSPs). Portanto, a segurança da nuvem funciona em um
+            <strong class="text-success">modelo de responsabilidade compartilhada</strong>.
+          </p>
+
+          <p class="mt-2">
+            Um CSP é responsável pelos serviços em nuvem para o cliente, mas o cliente é responsável pelo restante dos serviços. O
+            compartilhamento de responsabilidades varia de acordo com o tipo de implantação da nuvem.
+          </p>
+
+          <p class="text-muted small mt-2">
+            A tabela a seguir exibe a responsabilidade de implementação de segurança entre um cliente e um CSP em diferentes modelos de
+            serviço em nuvem.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr style="background-color: var(--cisco-green); color: var(--bg-primary)">
+                  <th>Responsabilidade de segurança</th>
+                  <th>No local</th>
+                  <th>IaaS</th>
+                  <th>PaaS</th>
+                  <th>SaaS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Dados</strong></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Endpoints</strong></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco-alt">Compartilhado</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Gerenciamento de identidades</strong></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco-alt">Compartilhado</span></td>
+                  <td><span class="badge-cisco-alt">Compartilhado</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Aplicação</strong></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco-alt">Compartilhado</span></td>
+                  <td><span class="badge-cisco" style="background-color: var(--cisco-green); color: black">CSP</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Controle de rede</strong></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco-alt">Compartilhado</span></td>
+                  <td><span class="badge-cisco" style="background-color: var(--cisco-green); color: black">CSP</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Controle de redes (OS/Hypervisor)</strong></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco-alt">Compartilhado</span></td>
+                  <td><span class="badge-cisco" style="background-color: var(--cisco-green); color: black">CSP</span></td>
+                  <td><span class="badge-cisco" style="background-color: var(--cisco-green); color: black">CSP</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Infraestrutura física</strong></td>
+                  <td><span class="badge-cisco">Cliente</span></td>
+                  <td><span class="badge-cisco" style="background-color: var(--cisco-green); color: black">CSP</span></td>
+                  <td><span class="badge-cisco" style="background-color: var(--cisco-green); color: black">CSP</span></td>
+                  <td><span class="badge-cisco" style="background-color: var(--cisco-green); color: black">CSP</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Modelo de Responsabilidade Compartilhada:</strong> Quanto mais alta a camada de serviço (SaaS > PaaS > IaaS), mais
+            responsabilidades são transferidas para o CSP. O cliente mantém sempre a responsabilidade sobre os <strong>dados</strong>.
+          </div>
+        </div>
+
+        <!-- 17.3.3 Outras considerações de segurança da infraestrutura de nuvem -->
+        <div class="content-card">
+          <h3 class="cisco-subtitle mb-3">17.3.3 Outras considerações de segurança da infraestrutura de nuvem</h3>
+          <p class="text-muted mb-4">Clique em cada título para explorar outras considerações de segurança.</p>
+
+          <div class="accordion" id="accordionSeguranca">
+            <!-- POLÍTICAS DE SEGURANÇA DA EMPRESA -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politicasSeguranca"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-file-alt me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Políticas de segurança da empresa</strong>
+                </button>
+              </h2>
+              <div id="politicasSeguranca" class="accordion-collapse collapse" data-bs-parent="#accordionSeguranca">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    Uma empresa pode permitir que os usuários baixem ferramentas de software desconhecidas. Esses aplicativos não
+                    autorizados podem aumentar a produtividade dos funcionários ao permitir que eles baixem e usem suas ferramentas de
+                    software favoritas. No entanto,
+                    <strong class="text-warning">aplicativos não monitorados podem criar lacunas de segurança e pontos cegos</strong>.
+                  </p>
+                  <div class="alert-cisco mt-3">
+                    <i class="fas fa-shield-halved me-2"></i>
+                    <strong>Solução:</strong> Políticas de segurança da empresa estabelecidas e bem definidas e conscientização dos usuários
+                    são formas eficazes de gerenciar aplicativos desconhecidos.
+                  </div>
+                  <div class="row mt-3 g-2">
+                    <div class="col-auto"><span class="badge-cisco">BYOD Policy</span></div>
+                    <div class="col-auto"><span class="badge-cisco">Shadow IT</span></div>
+                    <div class="col-auto"><span class="badge-cisco">Software Whitelisting</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- SEGURANÇA EM CAMADAS -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#segurancaCamadas"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-layer-group me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Segurança em camadas</strong>
+                </button>
+              </h2>
+              <div id="segurancaCamadas" class="accordion-collapse collapse" data-bs-parent="#accordionSeguranca">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    Os recursos de nuvem podem ser visualizados em quatro camadas:
+                    <strong class="text-success">hardware, infraestrutura, plataforma e aplicações</strong>. Estratégias de defesa em
+                    profundidade podem ser aplicadas a cada uma dessas camadas.
+                  </p>
+
+                  <h6 class="text-success mt-4 mb-2"><i class="fas fa-shield-halved me-2"></i> Opções de segurança em camadas:</h6>
+                  <ul class="text-secondary">
+                    <li>
+                      As plataformas de nuvem normalmente têm segurança integrada na plataforma para proteger os recursos de nuvem do
+                      cliente. Por exemplo, alguns CSPs fornecem serviço de DDoS integrado que os clientes não precisam configurar.
+                    </li>
+                    <li>Uma <strong>nuvem privada virtual</strong> aloca sub-redes privadas que são logicamente isoladas da Internet.</li>
+                    <li>
+                      Embora os clientes não tenham acesso para configurar dispositivos físicos de firewall, os CSPs normalmente oferecem
+                      funções equivalentes de firewall, ou <strong>firewalls virtuais</strong>, como negar e permitir regras e grupos de
+                      segurança de host.
+                    </li>
+                    <li>
+                      Os <strong>logs de fluxo</strong> são usados para monitorar o tráfego que atravessa as interfaces de rede individuais.
+                    </li>
+                    <li>
+                      As <strong>VPNs</strong> são usadas para fornecer acesso de usuário remoto aos recursos de nuvem, bem como conexões de
+                      site para site usadas em cenários de várias nuvens ou conexões entre uma nuvem e data centers locais.
+                    </li>
+                    <li>
+                      Os serviços de <strong>gerenciamento de identidade e acesso (IAM)</strong> oferecem gerenciamento de credenciais de
+                      usuário e gerenciamento de autenticação e autorização de usuário. O uso adequado do IAM é fundamental para proteger os
+                      recursos de nuvem contra abusos.
+                    </li>
+                  </ul>
+
+                  <div class="row mt-3 g-2">
+                    <div class="col-md-6">
+                      <div class="terminal-card p-2 text-center"><i class="fas fa-microchip text-success me-1"></i> Hardware</div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="terminal-card p-2 text-center"><i class="fas fa-network-wired text-success me-1"></i> Infraestrutura</div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="terminal-card p-2 text-center"><i class="fas fa-cubes text-success me-1"></i> Plataforma</div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="terminal-card p-2 text-center"><i class="fas fa-code text-success me-1"></i> Aplicações</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- MICROSSEGMENTAÇÃO -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-transparent text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#microsegmentacao"
+                  style="background-color: var(--bg-card); border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-code-branch me-3" style="color: var(--cisco-green)"></i>
+                  <strong>Microssegmentação</strong>
+                </button>
+              </h2>
+              <div id="microsegmentacao" class="accordion-collapse collapse" data-bs-parent="#accordionSeguranca">
+                <div class="accordion-body" style="background-color: var(--bg-terminal)">
+                  <p>
+                    A <strong class="text-success">microssegmentação</strong> (também conhecida como hipersegmentação) aproveita topologias
+                    de rede virtual para executar várias redes menores, mais isoladas e sem incorrer em custos adicionais de hardware.
+                  </p>
+
+                  <p class="mt-3">
+                    Como as redes são totalmente definidas em software sem muitos dos problemas de endereçamento tradicionais, é muito mais
+                    viável executar esses vários ambientes definidos por software.
+                  </p>
+
+                  <div class="alert-cisco mt-3">
+                    <i class="fas fa-chart-line me-2"></i>
+                    <strong>Benefício:</strong> As técnicas de microssegmentação permitem um controle mais granular da segurança do tráfego
+                    e dos fluxos de trabalho na nuvem.
+                  </div>
+
+                  <div class="row mt-4">
+                    <div class="col-md-6">
+                      <div class="terminal-card p-3">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>Vantagens:</strong>
+                        <ul class="small mt-2 mb-0">
+                          <li>Isolamento granular de workloads</li>
+                          <li>Políticas de segurança por workload</li>
+                          <li>Redução da superfície de ataque</li>
+                          <li>Conformidade simplificada</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="terminal-card p-3">
+                        <i class="fas fa-shield-halved text-success me-2"></i>
+                        <strong>Aplicações:</strong>
+                        <ul class="small mt-2 mb-0">
+                          <li>Zero Trust Architecture</li>
+                          <li>Ambientes multi-tenant</li>
+                          <li>Contêineres e microsserviços</li>
+                          <li>Segurança entre VMs</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4 pt-3 border-top border-secondary">
+            <p class="text-muted mb-0">
+              <i class="fas fa-arrow-right me-2" style="color: var(--cisco-green)"></i>
+              Continue para aprender sobre segurança de aplicações e dados em nuvem.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- 17.3.4 VERIFIQUE SEU ENTENDIMENTO - MEDIDAS DE SEGURANÇA -->
+      <section id="verificacao-infraestrutura" class="mb-5">
+        <h3 class="cisco-subtitle mb-3">17.3.4 Verifique seu entendimento - Medidas de Segurança na Computação em Nuvem</h3>
+        <div class="content-card">
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <i class="fas fa-check-circle fa-3x" style="color: var(--cisco-green)"></i>
+            <div>
+              <h4 class="mb-0">Medidas de Segurança na Computação em Nuvem</h4>
+              <p class="text-muted mb-0">Verifique sua compreensão sobre segurança de infraestrutura em nuvem.</p>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 1 -->
+          <div class="quiz-question mb-4" data-question="1">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 1</h5>
+              <p class="fw-bold mb-3">
+                Que tipo de aplicação pode melhorar a produtividade, mas também criar falhas de segurança e pontos cegos?
+              </p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1_173" id="q1_173_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q1_173_a"> aplicativos autorizados </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1_173" id="q1_173_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q1_173_b"> aplicativos não-autorizados </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1_173" id="q1_173_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q1_173_c"> aplicativos de produtividade </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q1_173" id="q1_173_d" value="d" />
+                  <label class="form-check-label text-secondary" for="q1_173_d"> aplicativos de gerenciamento </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback1_173" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> Aplicativos não autorizados (Shadow IT) podem aumentar a produtividade dos funcionários, mas
+                  criam lacunas de segurança e pontos cegos quando não monitorados.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 2 -->
+          <div class="quiz-question mb-4" data-question="2">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 2</h5>
+              <p class="fw-bold mb-3">
+                As medidas tradicionais de segurança da infraestrutura dependem do controle dos caminhos de comunicação física e da inserção
+                de dispositivos de segurança. Por que isso não funciona na computação em nuvem?
+              </p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2_173" id="q2_173_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q2_173_a"> falta de dispositivos de segurança virtual </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2_173" id="q2_173_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q2_173_b"> falta de infraestrutura de rede em camadas </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2_173" id="q2_173_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q2_173_c">
+                    falta de acesso direto à infraestrutura de rede física
+                  </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q2_173" id="q2_173_d" value="d" />
+                  <label class="form-check-label text-secondary" for="q2_173_d">
+                    falta de opção de sub-rede ao atribuir recursos de rede a uma instância de VM
+                  </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback2_173" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> Na computação em nuvem, os clientes não têm acesso direto à infraestrutura de rede física, o que
+                  inviabiliza as medidas tradicionais de segurança baseadas em hardware físico.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 3 -->
+          <div class="quiz-question mb-4" data-question="3">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 3</h5>
+              <p class="fw-bold mb-3">
+                Qual modelo de nuvem oferece ao cliente de nuvem o controle exclusivo do gerenciamento de identidades?
+              </p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3_173" id="q3_173_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q3_173_a"> SaaS </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3_173" id="q3_173_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q3_173_b"> PaaS </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q3_173" id="q3_173_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q3_173_c"> IaaS </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback3_173" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> No modelo IaaS (Infraestrutura como Serviço), o cliente tem controle exclusivo sobre o
+                  gerenciamento de identidades, pois é responsável pela camada de aplicação e identidade.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PERGUNTA 4 -->
+          <div class="quiz-question mb-4" data-question="4">
+            <div class="terminal-card p-4 mb-3">
+              <h5 class="text-success mb-3"><i class="fas fa-question-circle me-2"></i> Pergunta 4</h5>
+              <p class="fw-bold mb-3">
+                Qual medida de segurança deve ser implementada ao estabelecer links entre uma nuvem pública e data centers locais?
+              </p>
+
+              <div class="quiz-options">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4_173" id="q4_173_a" value="a" />
+                  <label class="form-check-label text-secondary" for="q4_173_a"> VPN site-to-site </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4_173" id="q4_173_b" value="b" />
+                  <label class="form-check-label text-secondary" for="q4_173_b"> acesso com protocolo SSH </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4_173" id="q4_173_c" value="c" />
+                  <label class="form-check-label text-secondary" for="q4_173_c"> acesso com HTTP habilitado </label>
+                </div>
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="radio" name="q4_173" id="q4_173_d" value="d" />
+                  <label class="form-check-label text-secondary" for="q4_173_d"> VPN de acesso remoto </label>
+                </div>
+              </div>
+
+              <div class="quiz-feedback mt-3" id="feedback4_173" style="display: none">
+                <div
+                  class="alert-cisco feedback-correct"
+                  style="background-color: rgba(102, 191, 83, 0.1); border-left-color: var(--cisco-green)"
+                >
+                  <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+                  <strong>Correto!</strong> VPN site-to-site (conexão site a site) é a medida adequada para estabelecer links seguros entre
+                  uma nuvem pública e data centers locais, criando um túnel criptografado entre as duas localizações.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BOTÃO DE ENVIO E RESULTADO -->
+          <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+            <button id="submitQuiz173" class="btn-cisco"><i class="fas fa-paper-plane me-2"></i> Enviar Respostas</button>
+            <button id="resetQuiz173" class="btn-cisco" style="background: transparent; border-color: var(--border-primary)">
+              <i class="fas fa-undo-alt me-2"></i> Limpar Respostas
+            </button>
+            <div id="quizResult173" class="ms-auto">
+              <span class="badge-modulo" id="scoreDisplay173" style="font-size: 1.1rem">0/4 respostas</span>
+            </div>
+          </div>
+
+          <!-- LINK MOSTRAR FEEDBACK -->
+          <div class="mt-3 text-center">
+            <a href="#" id="showFeedbackLink173" class="text-muted" style="font-size: 0.85rem">
+              <i class="fas fa-comment-dots me-1"></i> Mostrar feedback
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="tecnicas-codificacao" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.4.2 Técnicas técnicas de codificação</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            Ao codificar aplicativos, os desenvolvedores usam várias técnicas para validar se todos os requisitos de segurança foram
+            atendidos.
+          </p>
+
+          <div class="alert-cisco mb-3"><i class="fas fa-mouse-pointer me-2"></i> Selecione os títulos para saber mais.</div>
+
+          <div class="accordion cisco-accordion" id="accordionTecnicas">
+            <div class="accordion-item bg-card border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseNormalizacao"
+                  aria-expanded="true"
+                  aria-controls="collapseNormalizacao"
+                >
+                  Normalização
+                </button>
+              </h2>
+              <div id="collapseNormalizacao" class="accordion-collapse collapse show" data-bs-parent="#accordionTecnicas">
+                <div class="accordion-body text-secondary mono-space p-4" style="background-color: var(--bg-terminal)">
+                  A Normalização é usada para organizar dados em um banco de dados e ajudar a manter a integridade dos dados. A normalização
+                  converte uma string de entrada em sua forma conhecida mais simples para garantir que todas as strings tenham
+                  representações binárias exclusivas e que qualquer entrada maliciosa seja identificada.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-card border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseProcedimento"
+                  aria-expanded="false"
+                  aria-controls="collapseProcedimento"
+                >
+                  Procedimento armazenado
+                </button>
+              </h2>
+              <div id="collapseProcedimento" class="accordion-collapse collapse" data-bs-parent="#accordionTecnicas">
+                <div class="accordion-body text-secondary mono-space p-4" style="background-color: var(--bg-terminal)">
+                  Um procedimento armazenado é um grupo de instruções SQL pré-compiladas armazenadas em um banco de dados que executam uma
+                  tarefa. Se você usar um procedimento armazenado para aceitar parâmetros de entrada de clientes que usam dados de entrada
+                  diferentes, reduzirá o tráfego de rede e obterá resultados mais rápidos.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-card border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOfuscacao"
+                  aria-expanded="false"
+                  aria-controls="collapseOfuscacao"
+                >
+                  Ofuscação e Camuflagem
+                </button>
+              </h2>
+              <div id="collapseOfuscacao" class="accordion-collapse collapse" data-bs-parent="#accordionTecnicas">
+                <div class="accordion-body text-secondary mono-space p-4" style="background-color: var(--bg-terminal)">
+                  Um desenvolvedor pode usar ofuscação e camuflagem para evitar que o software seja submetido a engenharia reversa. A
+                  ofuscação oculta dados originais com caracteres ou dados aleatórios. A camuflagem substitui dados confidenciais por dados
+                  fictícios realistas.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-card border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseReutilizacao"
+                  aria-expanded="false"
+                  aria-controls="collapseReutilizacao"
+                >
+                  Reutilização de Código
+                </button>
+              </h2>
+              <div id="collapseReutilizacao" class="accordion-collapse collapse" data-bs-parent="#accordionTecnicas">
+                <div class="accordion-body text-secondary mono-space p-4" style="background-color: var(--bg-terminal)">
+                  A reutilização de código significa usar o software existente para criar um novo software, economizando tempo e custos de
+                  desenvolvimento. No entanto, deve-se tomar cuidado para evitar a introdução de vulnerabilidades.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-card border-secondary">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSDKs"
+                  aria-expanded="false"
+                  aria-controls="collapseSDKs"
+                >
+                  SDKs
+                </button>
+              </h2>
+              <div id="collapseSDKs" class="accordion-collapse collapse" data-bs-parent="#accordionTecnicas">
+                <div class="accordion-body text-secondary mono-space p-4" style="background-color: var(--bg-terminal)">
+                  Bibliotecas de Terceiros e Kits de Desenvolvimento de Software (SDKs) fornecem um repositório de códigos úteis para tornar
+                  o desenvolvimento de aplicações mais rápido e mais barato. A desvantagem é que quaisquer vulnerabilidades em SDKs ou
+                  bibliotecas de terceiros podem afetar potencialmente muitos aplicativos.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="validacao-entrada" class="mb-5">
+        <h2 class="section-title reveal">17.4.3 Validação de entrada</h2>
+
+        <div class="content-card reveal">
+          <div class="row align-items-center">
+            <div class="col-lg-7 text-secondary">
+              <p>
+                Controlar o processo de entrada de dados é fundamental para manter a integridade do banco de dados. Muitos ataques são
+                executados em um banco de dados e inserem dados malformados. Esses ataques podem confundir, travar ou fazer com que o
+                aplicativo divulgue muitas informações ao invasor. Role para baixo para ver um exemplo – neste caso, um ataque de entrada
+                automatizado.
+              </p>
+              <p>
+                Por exemplo, os usuários preenchem um formulário usando um aplicativo da Web para assinar uma newsletter. Um aplicativo de
+                banco de dados gera e envia automaticamente confirmações por e-mail para os clientes. Quando os usuários recebem as
+                confirmações de e-mail com um link URL, para confirmar a assinatura, os invasores modificam o link URL.
+              </p>
+              <p>
+                Essas modificações podem alterar o nome de usuário, endereço de e-mail ou status de assinatura dos clientes quando eles
+                clicam para confirmar sua assinatura. Dessa forma, quando o e-mail é retornado ao servidor host, ele recebe informações
+                falsas, das quais pode não estar ciente se não verificar cada endereço de e-mail em relação às informações de assinatura.
+              </p>
+              <p>
+                Os hackers podem automatizar o ataque para inundar o aplicativo da Web com milhares de assinantes inválidos no banco de
+                dados da newsletter.
+              </p>
+            </div>
+            <div class="col-lg-5 text-center mt-4 mt-lg-0">
+              <div class="p-3 bg-white rounded-3 shadow">
+                <img
+                  src="../img/diagrama_validacao.png"
+                  alt="Diagrama de ataque de validação de entrada"
+                  class="img-fluid"
+                  style="max-height: 250px"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="regras-validacao" class="mb-5">
+        <h2 class="section-title reveal">17.4.4 Regras de Validação</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            Uma regra de validação verifica se os dados estão nos parâmetros definidos pelo projetista de banco de dados. Uma regra de
+            validação ajuda a garantir a integridade, a precisão e a consistência dos dados. Os critérios usados na regra de validação
+            incluem o seguinte:
+          </p>
+
+          <ul class="text-secondary checklist-cisco mb-5">
+            <li>
+              <i class="fas fa-check text-success me-2"></i> <strong>Tamanho</strong> – verifica o número de caracteres em um item de dados
+            </li>
+            <li>
+              <i class="fas fa-check text-success me-2"></i> <strong>Formato</strong> – verifica se os dados estão de acordo com um formato
+              especificado
+            </li>
+            <li>
+              <i class="fas fa-check text-success me-2"></i> <strong>Consistência</strong> – verifica a consistência dos códigos nos itens
+              de dados relacionados
+            </li>
+            <li>
+              <i class="fas fa-check text-success me-2"></i> <strong>Intervalo</strong> – verifica se os dados estão dentro de valores
+              mínimo e máximo
+            </li>
+            <li>
+              <i class="fas fa-check text-success me-2"></i> <strong>Dígito de verificação</strong> – efetua um cálculo extra para gerar um
+              dígito de verificação para detecção de erros
+            </li>
+          </ul>
+
+          <div class="diagram-card p-4 mb-4 text-center reveal" style="background-color: #e9ecef; border-radius: 8px">
+            <div class="d-flex justify-content-center align-items-center flex-wrap">
+              <span class="cisco-title-alt display-6 text-dark me-3" style="letter-spacing: 2px; color: #888888 !important"
+                >ISBN 158714373<span style="color: var(--cisco-green)">9</span></span
+              >
+              <div class="border-start border-3 border-warning ps-3 text-start">
+                <span class="h5 text-dark d-block" style="color: #888888 !important">Dígito de verificação</span>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle mb-3 reveal">Cálculo do Dígito de Verificação ISBN</h3>
+
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-mouse-pointer me-2"></i> Clique em cada passo na figura para ver o resultado do cálculo do dígito de
+            verificação.
+          </div>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-isbn" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="v-pills-passo1-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#v-pills-passo1"
+                  type="button"
+                  role="tab"
+                  aria-controls="v-pills-passo1"
+                  aria-selected="true"
+                >
+                  <span class="fw-bold">1.</span> Multiplique o primeiro dígito do ISBN por 10, o segundo dígito por 9,...o nono dígito por
+                  2.
+                </button>
+
+                <button
+                  class="nav-link text-start mb-2"
+                  id="v-pills-passo2-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#v-pills-passo2"
+                  type="button"
+                  role="tab"
+                  aria-controls="v-pills-passo2"
+                  aria-selected="false"
+                >
+                  <span class="fw-bold">2.</span> Somar todos os números.
+                </button>
+
+                <button
+                  class="nav-link text-start"
+                  id="v-pills-passo3-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#v-pills-passo3"
+                  type="button"
+                  role="tab"
+                  aria-controls="v-pills-passo3"
+                  aria-selected="false"
+                >
+                  <span class="fw-bold">3.</span> O dígito de verificação é o número necessário para obter o total a ser adicionado a um
+                  múltiplo de 11.
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content terminal-card p-4 h-100"
+                id="v-pills-tabContent-isbn"
+                style="border: 1px solid var(--cisco-green); min-height: 300px"
+              >
+                <div class="tab-pane fade show active" id="v-pills-passo1" role="tabpanel" aria-labelledby="v-pills-passo1-tab">
+                  <h5 class="text-white fw-bold mb-3">
+                    1. Multiplique o primeiro dígito do ISBN por 10, o segundo dígito por 9,...o nono dígito por 2.
+                  </h5>
+                  <pre class="text-success mono-space">
+1x10 = 10
+5 x9 = 45
+8 x 8 = 64
+7 x 7 = 49
+1 x 6 = 6
+4 x 5 = 20
+3 x 4 = 12
+7 x 3 = 21
+3 x 2 = 6
+                        </pre
+                  >
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-passo2" role="tabpanel" aria-labelledby="v-pills-passo2-tab">
+                  <h5 class="text-white fw-bold mb-3">2. Somar todos os números.</h5>
+                  <pre class="text-success mono-space fs-6">
+10 + 45 + 64 + 49 + 6 + 20 + 12 + 21 + 6 = 233
+                        </pre
+                  >
+                </div>
+
+                <div class="tab-pane fade" id="v-pills-passo3" role="tabpanel" aria-labelledby="v-pills-passo3-tab">
+                  <h5 class="text-white fw-bold mb-3">
+                    3. O dígito de verificação é o número necessário para obter o total a ser adicionado a um múltiplo de 11.
+                  </h5>
+                  <div class="text-secondary mono-space mt-3">
+                    <p>Adicionar <span class="fw-bold text-success">9</span> a 233 é igual a 242, um múltiplo de 11.</p>
+                    <p class="mt-4"><span class="badge-cisco">(233 + 9) / 11 = 22</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="verificacoes-integridade" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.4.5 Verificações de integridade</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            Dados comprometidos podem ameaçar a segurança de seus dispositivos e sistemas. Uma
+            <strong>verificação de integridade</strong> pode medir a consistência dos dados em um arquivo, imagem ou registro para garantir
+            que eles não tenham sido corrompidos. A verificação de integridade executa uma <strong>função hash</strong> para obter um
+            instantâneo de dados e, em seguida, usa esse instantâneo para garantir que os dados permaneçam inalterados. Um
+            <strong>checksum</strong> é um exemplo de uma função hash.
+          </p>
+
+          <div
+            class="diagram-card p-4 mb-5 reveal"
+            style="background: linear-gradient(145deg, var(--bg-secondary), var(--bg-primary)); border: 1px solid var(--border-primary)"
+          >
+            <h5 class="text-center mb-4" style="color: var(--cisco-green)">Fluxo de Verificação de Checksum</h5>
+            <div class="row text-center g-3">
+              <div class="col-md-2">
+                <div class="p-2 border border-secondary rounded">
+                  <i class="fas fa-file-code d-block mb-2"></i>
+                  <small>Dados Originais</small>
+                </div>
+              </div>
+              <div class="col-md-1 d-flex align-items-center justify-content-center">
+                <i class="fas fa-arrow-right text-muted"></i>
+              </div>
+              <div class="col-md-2">
+                <div class="p-2 border border-secondary rounded">
+                  <i class="fas fa-calculator d-block mb-2"></i>
+                  <small>Soma Binária</small>
+                </div>
+              </div>
+              <div class="col-md-1 d-flex align-items-center justify-content-center">
+                <i class="fas fa-arrow-right text-muted"></i>
+              </div>
+              <div class="col-md-2">
+                <div class="p-2 border border-success rounded" style="background: var(--cisco-green-soft)">
+                  <i class="fas fa-fingerprint d-block mb-2 text-success"></i>
+                  <small>Checksum (1E)</small>
+                </div>
+              </div>
+              <div class="col-md-1 d-flex align-items-center justify-content-center">
+                <i class="fas fa-equals text-muted"></i>
+              </div>
+              <div class="col-md-3">
+                <div class="p-2 border border-info rounded">
+                  <i class="fas fa-check-double d-block mb-2 text-info"></i>
+                  <small>Comparação Final</small>
+                </div>
+              </div>
+            </div>
+            <p class="text-center mt-3 small text-muted italic">Se Checksum Original - Checksum Novo = 0, os dados são válidos.</p>
+          </div>
+
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-mouse-pointer me-2"></i> Clique em cada item para explorar os conceitos de integridade.
+          </div>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-integridade" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-checksum-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-checksum"
+                  type="button"
+                  role="tab"
+                >
+                  Como funciona um checksum
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-hash-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-hash"
+                  type="button"
+                  role="tab"
+                >
+                  Funções hash
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-versao-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-versao"
+                  type="button"
+                  role="tab"
+                >
+                  Controle de versão
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-backups-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-backups"
+                  type="button"
+                  role="tab"
+                >
+                  Backups
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-autorizacao-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-autorizacao"
+                  type="button"
+                  role="tab"
+                >
+                  Autorização
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-integridade"
+                style="border-color: var(--cisco-green); min-height: 250px"
+              >
+                <div class="tab-pane fade show active" id="pill-checksum" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Como funciona um checksum</h5>
+                  <p class="text-secondary">
+                    Uma checksum verifica a integridade de arquivos, ou de strings de caracteres, antes e depois de serem transferidos de um
+                    dispositivo para outro por uma rede local ou pela Internet. As checksum simplesmente convertem cada conjunto de
+                    informações para um valor e soma o total. Para testar a integridade de dados, um sistema de recebimento apenas repete o
+                    processo. Se as duas somas forem iguais, os dados são válidos. Caso contrário, uma alteração ocorreu em algum lugar ao
+                    longo do caminho.
+                  </p>
+                </div>
+
+                <div class="tab-pane fade" id="pill-hash" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Funções hash</h5>
+                  <p class="text-secondary">
+                    Funções hash comuns incluem MD5, SHA-1, SHA-256 e SHA-512. Eles usam algoritmos matemáticos complexos para comparar
+                    dados com um valor de hash. Por exemplo, depois de baixar um arquivo, o usuário pode verificar a integridade do arquivo,
+                    comparando os valores de hash da fonte com o valor gerado por qualquer calculadora de hash.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <code class="text-success">shasum -a 256 arquivo.zip</code>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-versao" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Controle de versão</h5>
+                  <p class="text-secondary">
+                    As empresas usam controle de versão para evitar alterações acidentais por usuários autorizados. O controle de versão
+                    significa que dois usuários não podem atualizar o mesmo objeto, como um arquivo, registro de banco de dados ou
+                    transação, ao mesmo tempo. Por exemplo, o primeiro usuário a abrir um documento tem a permissão para alterar esse
+                    documento. A segunda pessoa tem uma versão somente leitura.
+                  </p>
+                </div>
+
+                <div class="tab-pane fade" id="pill-backups" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Backups</h5>
+                  <p class="text-secondary">
+                    Backups precisos ajudam a manter a integridade de dados, se os dados forem corrompidos. Uma empresa precisa verificar o
+                    seu processo de backup para garantir a integridade do backup, antes que ocorra perda de dados.
+                  </p>
+                </div>
+
+                <div class="tab-pane fade" id="pill-autorizacao" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Autorização</h5>
+                  <p class="text-secondary">
+                    A autorização determina quem tem acesso aos recursos da empresa, de acordo com a necessidade de cada um. Por exemplo,
+                    controles de acesso de usuário e permissões de arquivo garantem que apenas determinados usuários possam modificar os
+                    dados. Um administrador pode definir as permissões de um arquivo como somente leitura. Como resultado, um usuário que
+                    acessa esse arquivo não pode fazer nenhuma alteração.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="criptografia-hashes" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.4.6 Criptografia e hashes</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            Embora a criptografia e o hashing sejam usados para proteger os dados, eles são técnicas diferentes. A criptografia é um
+            processo bidirecional, enquanto o hashing é um processo unidirecional.
+          </p>
+
+          <div class="alert-cisco mb-3"><i class="fas fa-mouse-pointer me-2"></i> Selecione os títulos para saber mais.</div>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-cripto" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-criptografia-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-criptografia"
+                  type="button"
+                  role="tab"
+                >
+                  Criptografia
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-hashes-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-hashes"
+                  type="button"
+                  role="tab"
+                >
+                  Hashes
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-uso-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-uso"
+                  type="button"
+                  role="tab"
+                >
+                  Quando usar qual?
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-cripto"
+                style="border-color: var(--cisco-green); min-height: 250px"
+              >
+                <div class="tab-pane fade show active" id="pill-criptografia" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Criptografia</h5>
+                  <p class="text-secondary">
+                    A criptografia codifica os dados de forma que apenas pessoas autorizadas possam ler as informações. O receptor
+                    pretendido de uma mensagem criptografada usa uma chave de criptografia para decodificar a mensagem de volta em seu
+                    formato legível original. Os desenvolvedores usam criptografia para proteger dados confidenciais enquanto os dados estão
+                    em repouso (armazenados) ou em trânsito (transferidos por uma rede).
+                  </p>
+                  <div class="d-flex justify-content-center mt-3 p-3 bg-dark rounded border border-secondary">
+                    <span class="text-muted"><i class="fas fa-lock me-2"></i> Texto Limpo</span>
+                    <i class="fas fa-arrow-right mx-3 text-success"></i>
+                    <span class="text-success fw-bold">Texto Criptografado</span>
+                    <i class="fas fa-arrow-right mx-3 text-success"></i>
+                    <span class="text-muted">Texto Limpo <i class="fas fa-key ms-2"></i></span>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-hashes" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Hashes</h5>
+                  <p class="text-secondary">
+                    O hashing transforma os dados em um valor de comprimento fixo de caracteres, chamado de hash. Ao contrário da
+                    criptografia, o hash não pode ser decodificado ou revertido. O hashing é um processo unidirecional. O hashing fornece
+                    uma maneira de verificar se os dados foram alterados, pois qualquer alteração nos dados originais resulta em um valor de
+                    hash diferente.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <span class="text-muted">Input: "Cisco123"</span><br />
+                    <span class="text-success">Hash MD5: 4e17e3a9c78201b10624e5251664d471</span>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-uso" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Quando usar qual?</h5>
+                  <p class="text-secondary">
+                    A regra geral é usar a criptografia quando for necessário recuperar as informações originais posteriormente. Use o
+                    hashing para verificar a integridade dos dados, como o armazenamento de senhas de usuários. Quando um usuário faz login
+                    em um sistema, a senha inserida é hash e comparada com o hash armazenado no banco de dados. Se os hashes coincidirem, o
+                    login é bem-sucedido.
+                  </p>
+                  <div class="alert-cisco mt-2">
+                    <i class="fas fa-shield-alt me-2 text-warning"></i> <strong>Melhor Prática:</strong> Senhas nunca devem ser
+                    criptografadas, apenas hasheadas (e com salt!).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="disponibilidade-dados" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.4.7 Disponibilidade de dados</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            A disponibilidade de dados garante que os usuários autorizados tenham acesso oportuno e confiável aos dados. Vários métodos
+            podem ser usados para garantir a disponibilidade de dados.
+          </p>
+
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-mouse-pointer me-2"></i> Selecione os títulos para saber mais sobre os métodos de disponibilidade.
+          </div>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-avail" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-redundancia-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-redundancia"
+                  type="button"
+                  role="tab"
+                >
+                  Redundância
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-backups-avail-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-backups-avail"
+                  type="button"
+                  role="tab"
+                >
+                  Backups
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-disponibilidade-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-disponibilidade"
+                  type="button"
+                  role="tab"
+                >
+                  Disponibilidade
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-incidentes-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-incidentes"
+                  type="button"
+                  role="tab"
+                >
+                  Incidentes
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-avail"
+                style="border-color: var(--cisco-green); min-height: 250px"
+              >
+                <div class="tab-pane fade show active" id="pill-redundancia" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Redundância</h5>
+                  <p class="text-secondary">
+                    A redundância garante que os dados e serviços permaneçam disponíveis se um dispositivo ou sistema falhar. A redundância
+                    utiliza sistemas ou componentes duplicados para fornecer um backup se um sistema ou componente falhar. Por exemplo, uma
+                    empresa pode ter dois servidores web idênticos, de modo que se um servidor falhar, o outro servidor possa assumir a
+                    carga de trabalho.
+                  </p>
+                  <div class="text-center mt-3">
+                    <i class="fas fa-server text-success fa-2x"></i>
+                    <i class="fas fa-arrows-alt-h mx-3 text-muted"></i>
+                    <i class="fas fa-server text-success fa-2x"></i>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-backups-avail" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Backups</h5>
+                  <p class="text-secondary">
+                    Os backups protegem os dados se eles forem excluídos, corrompidos ou se um dispositivo falhar. Os backups são cópias de
+                    dados armazenadas em um local seguro, fora do local de trabalho. Uma empresa precisa verificar o seu processo de backup
+                    para garantir a integridade do backup antes que ocorra a perda de dados.
+                  </p>
+                  <div class="terminal-card mt-2">
+                    <small class="text-muted italic">// Política recomendada: 3-2-1 (3 cópias, 2 mídias, 1 offline)</small>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-disponibilidade" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Disponibilidade</h5>
+                  <p class="text-secondary">
+                    A disponibilidade garante que os dados permaneçam acessíveis se houver um desastre natural ou causado pelo homem. Um
+                    plano de recuperação de desastres (DRP) descreve como uma empresa deve responder se ocorrer um desastre. O DRP inclui
+                    procedimentos para restaurar dados e serviços e como os funcionários devem se comunicar durante o desastre.
+                  </p>
+                </div>
+
+                <div class="tab-pane fade" id="pill-incidentes" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Incidentes</h5>
+                  <p class="text-secondary">
+                    A resposta a incidentes envolve a identificação, a contenção e a resolução de um incidente de segurança. Um incidente de
+                    segurança é qualquer evento que ameace a confidencialidade, a integridade ou a disponibilidade dos dados ou sistemas de
+                    uma empresa. O plano de resposta a incidentes descreve como os funcionários devem responder a um incidente de segurança.
+                  </p>
+                  <div class="alert-cisco mt-3">
+                    <i class="fas fa-exclamation-circle me-2 text-warning"></i> <strong>Foco:</strong> Rapidez na detecção e contenção para
+                    minimizar o impacto.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="verificacao-pratica" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.4.8 Verificação de integridade de dados</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            Como um usuário ou administrador de rede sabe se os dados foram alterados ou corrompidos? O método mais comum é comparar os
+            valores de hash.
+          </p>
+
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-mouse-pointer me-2"></i> Selecione os tópicos para ver os métodos de verificação.
+          </div>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-verify" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-comparar-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-comparar"
+                  type="button"
+                  role="tab"
+                >
+                  Comparar valores de hash
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-assiduidade-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-assiduidade"
+                  type="button"
+                  role="tab"
+                >
+                  Verificar a integridade dos dados
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-verify"
+                style="border-color: var(--cisco-green); min-height: 250px"
+              >
+                <div class="tab-pane fade show active" id="pill-comparar" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Comparar valores de hash</h5>
+                  <p class="text-secondary">
+                    Muitos sites fornecem um valor de hash para os arquivos que disponibilizam para download. Após o download do arquivo, o
+                    usuário pode usar uma calculadora de hash para gerar um valor de hash para o arquivo baixado. Se o valor de hash gerado
+                    for igual ao valor de hash fornecido pelo site, o arquivo não foi alterado durante o download.
+                  </p>
+
+                  <div class="terminal-card mt-3">
+                    <div class="d-flex justify-content-between mb-2">
+                      <span class="text-muted small">Exemplo de site oficial:</span>
+                      <span class="badge bg-success" style="font-size: 0.6rem">MD5 / SHA-256</span>
+                    </div>
+                    <code class="text-info">Arquivo: setup.exe</code><br />
+                    <code class="text-success">Hash: 7e716d1d29325ec8863f69992f87c6e2</code>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-assiduidade" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Verificar a integridade dos dados</h5>
+                  <p class="text-secondary">
+                    Os administradores de rede podem usar ferramentas de verificação de integridade de arquivos para monitorar arquivos
+                    críticos do sistema e detectar alterações não autorizadas. Essas ferramentas criam um banco de dados de valores de hash
+                    para arquivos protegidos. Se um arquivo for alterado, a ferramenta detectará a alteração comparando o valor de hash
+                    atual com o valor de hash armazenado no banco de dados.
+                  </p>
+
+                  <div class="alert-cisco mt-3" style="background-color: var(--bg-terminal)">
+                    <i class="fas fa-search text-info me-2"></i>
+                    <span class="small text-secondary"
+                      >Ferramentas comuns: <strong>Tripwire</strong>, <strong>AIDE</strong> ou <strong>SFC</strong> (System File Checker no
+                      Windows).</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="quiz-integridade" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.4.9 Verifique sua compreensão</h2>
+
+        <div class="content-card reveal p-4">
+          <p class="text-secondary mb-4 italic">Escolha a melhor resposta para cada pergunta e verifique seu conhecimento.</p>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">1. Qual termo descreve a ocultação de dados originais com caracteres ou dados aleatórios?</p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q1" value="errado" /> Normalização </label>
+              <label class="quiz-option"> <input type="radio" name="q1" value="certo" /> Ofuscação </label>
+              <label class="quiz-option"> <input type="radio" name="q1" value="errado" /> Camuflagem </label>
+              <label class="quiz-option"> <input type="radio" name="q1" value="errado" /> Validação </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">
+              2. Qual regra de validação verifica a consistência dos códigos nos itens de dados relacionados?
+            </p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q2" value="errado" /> Dígito de verificação </label>
+              <label class="quiz-option"> <input type="radio" name="q2" value="errado" /> Formato </label>
+              <label class="quiz-option"> <input type="radio" name="q2" value="errado" /> Intervalo </label>
+              <label class="quiz-option"> <input type="radio" name="q2" value="certo" /> Consistência </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">3. Qual método executa uma função hash para garantir que os dados permaneçam inalterados?</p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q3" value="certo" /> Verificação de integridade </label>
+              <label class="quiz-option"> <input type="radio" name="q3" value="errado" /> Redundância </label>
+              <label class="quiz-option"> <input type="radio" name="q3" value="errado" /> Backup </label>
+              <label class="quiz-option"> <input type="radio" name="q3" value="errado" /> Autorização </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">4. Qual é o processo de transformar dados em um valor de comprimento fixo de caracteres?</p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q4" value="errado" /> Criptografia </label>
+              <label class="quiz-option"> <input type="radio" name="q4" value="certo" /> Hashing </label>
+              <label class="quiz-option"> <input type="radio" name="q4" value="errado" /> Ofuscação </label>
+              <label class="quiz-option"> <input type="radio" name="q4" value="errado" /> Salting </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+        </div>
+      </section>
+      <section id="detalhes-autenticacao" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">Fatores de Autenticação</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            A autenticação pode ser estabelecida usando diferentes fatores. Quanto mais fatores forem combinados, mais seguro será o
+            processo de acesso.
+          </p>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-auth-factors" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-sabe-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-sabe"
+                  type="button"
+                  role="tab"
+                >
+                  17.5.2 Algo que você sabe
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-tem-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-tem"
+                  type="button"
+                  role="tab"
+                >
+                  17.5.3 Algo que você tem
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-e-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-e"
+                  type="button"
+                  role="tab"
+                >
+                  17.5.4 Algo que você é
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-mfa-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-mfa"
+                  type="button"
+                  role="tab"
+                >
+                  17.5.5 Autenticação Multifatorial
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-auth-factors"
+                style="border-color: var(--cisco-green); min-height: 250px"
+              >
+                <div class="tab-pane fade show active" id="pill-sabe" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Algo que você sabe</h5>
+                  <p class="text-secondary">
+                    As senhas são o método mais comum de autenticação. Outros exemplos incluem um número de identificação pessoal (PIN) ou a
+                    resposta a uma pergunta de segurança.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <i class="fas fa-user-secret me-2"></i> <span class="text-muted">Password: ************</span>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-tem" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Algo que você tem</h5>
+                  <p class="text-secondary">
+                    Isso inclui objetos físicos, como cartões de identificação, tokens de segurança de hardware ou chaves físicas. Por
+                    exemplo, um funcionário pode precisar passar um cartão de identificação para entrar em um prédio ou usar um token USB
+                    para fazer login em um computador.
+                  </p>
+                  <div class="d-flex gap-3 mt-3 text-success">
+                    <i class="fas fa-id-badge fa-2x"></i>
+                    <i class="fas fa-key fa-2x"></i>
+                    <i class="fas fa-usb fa-2x"></i>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-e" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Algo que você é</h5>
+                  <p class="text-secondary">
+                    Isso se refere a características físicas exclusivas, conhecidas como biometria. Exemplos de biometria incluem impressões
+                    digitais, reconhecimento facial, varreduras de retina ou reconhecimento de voz.
+                  </p>
+                  <div class="d-flex gap-3 mt-3 text-info">
+                    <i class="fas fa-fingerprint fa-2x"></i>
+                    <i class="fas fa-eye fa-2x"></i>
+                    <i class="fas fa-microphone-alt fa-2x"></i>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-mfa" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Autenticação Multifatorial (MFA)</h5>
+                  <p class="text-secondary">
+                    A autenticação multifatorial exige mais de um método de autenticação de categorias diferentes para confirmar a
+                    identidade do usuário. Por exemplo, para acessar uma conta bancária em um caixa eletrônico, o usuário deve ter o cartão
+                    bancário (algo que você tem) e saber o PIN (algo que você sabe).
+                  </p>
+                  <div class="alert-cisco mt-3 border-warning">
+                    <i class="fas fa-shield-check me-2 text-warning"></i> <strong>Dica de Segurança:</strong> O uso de MFA dificulta
+                    drasticamente o acesso de invasores, mesmo que eles consigam a sua senha.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="controle-acesso-metodos" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.5.1 Métodos de controle de acesso</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            O controle de acesso é o processo de permitir que os usuários acessem os recursos da empresa, de acordo com a necessidade de
+            cada um. O controle de acesso consiste em quatro etapas:
+          </p>
+
+          <div class="alert-cisco mb-3">
+            <i class="fas fa-mouse-pointer me-2"></i> Selecione os títulos para saber mais sobre as etapas de controle de acesso.
+          </div>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-access" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-identificacao-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-identificacao"
+                  type="button"
+                  role="tab"
+                >
+                  Identificação
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-autenticacao-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-autenticacao"
+                  type="button"
+                  role="tab"
+                >
+                  Autenticação
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-autorizacao-access-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-autorizacao-access"
+                  type="button"
+                  role="tab"
+                >
+                  Autorização
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-monitoramento-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-monitoramento"
+                  type="button"
+                  role="tab"
+                >
+                  Monitoramento
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-access"
+                style="border-color: var(--cisco-green); min-height: 250px"
+              >
+                <div class="tab-pane fade show active" id="pill-identificacao" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Identificação</h5>
+                  <p class="text-secondary">
+                    A identificação determina se o usuário tem permissão para acessar o sistema ou a rede. Exemplos de identificação incluem
+                    um nome de usuário ou ID de usuário exclusivo.
+                  </p>
+                  <div class="mt-4 p-3 bg-dark border border-secondary rounded d-flex align-items-center">
+                    <i class="fas fa-id-card text-success fa-2x me-3"></i>
+                    <div>
+                      <span class="d-block text-white small fw-bold">User ID</span>
+                      <span class="text-muted font-monospace">alfredo_dev_2026</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-autenticacao" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Autenticação</h5>
+                  <p class="text-secondary">
+                    A autenticação confirma a identidade do usuário. Os métodos de autenticação incluem senhas, tokens, certificados
+                    digitais e biometria. Uma empresa pode exigir a autenticação multifatorial para aumentar a segurança.
+                  </p>
+                  <div class="alert-cisco mt-3">
+                    <i class="fas fa-key me-2 text-warning"></i> <strong>Nota:</strong> Algo que você sabe, algo que você tem ou algo que
+                    você é.
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-autorizacao-access" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Autorização</h5>
+                  <p class="text-secondary">
+                    A autorização determina quais recursos o usuário pode acessar e quais operações o usuário pode realizar. Por exemplo, um
+                    administrador pode conceder ao usuário permissão para ler um arquivo, mas não para alterá-lo.
+                  </p>
+                </div>
+
+                <div class="tab-pane fade" id="pill-monitoramento" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Monitoramento</h5>
+                  <p class="text-secondary">
+                    O monitoramento, ou accounting, rastreia o que o usuário faz enquanto está conectado ao sistema ou à rede. O
+                    monitoramento inclui o registro do tempo em que o usuário se conectou e desconectou e os recursos que o usuário acessou.
+                  </p>
+                  <div class="terminal-card mt-3">
+                    <code class="text-success small">[LOG] 16:00:44 - User 'Alfredo' accessed resource 'Server_A'</code><br />
+                    <code class="text-success small">[LOG] 16:15:00 - File 'config.json' modified by 'Alfredo'</code>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="quiz-controle-acesso" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.5.6 Verifique sua compreensão</h2>
+
+        <div class="content-card reveal p-4">
+          <p class="text-secondary mb-4 italic">Escolha a melhor resposta para cada pergunta e verifique seu conhecimento.</p>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">1. Qual etapa do controle de acesso confirma a identidade do usuário?</p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q5" value="errado" /> Identificação </label>
+              <label class="quiz-option"> <input type="radio" name="q5" value="certo" /> Autenticação </label>
+              <label class="quiz-option"> <input type="radio" name="q5" value="errado" /> Autorização </label>
+              <label class="quiz-option"> <input type="radio" name="q5" value="errado" /> Monitoramento </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">2. Qual fator de autenticação utiliza características físicas exclusivas?</p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q6" value="errado" /> Algo que você sabe </label>
+              <label class="quiz-option"> <input type="radio" name="q6" value="errado" /> Algo que você tem </label>
+              <label class="quiz-option"> <input type="radio" name="q6" value="certo" /> Algo que você é </label>
+              <label class="quiz-option"> <input type="radio" name="q6" value="errado" /> Algo que você faz </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">3. Qual etapa do controle de acesso determina quais recursos um usuário pode acessar?</p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q7" value="errado" /> Identificação </label>
+              <label class="quiz-option"> <input type="radio" name="q7" value="errado" /> Autenticação </label>
+              <label class="quiz-option"> <input type="radio" name="q7" value="certo" /> Autorização </label>
+              <label class="quiz-option"> <input type="radio" name="q7" value="errado" /> Monitoramento </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+
+          <div class="quiz-item mb-4 p-3 border-start border-3 border-secondary bg-dark">
+            <p class="text-white fw-bold">4. Qual é o termo para o uso de dois ou mais métodos de autenticação?</p>
+            <div class="options-group d-flex flex-column gap-2 mt-3">
+              <label class="quiz-option"> <input type="radio" name="q8" value="errado" /> Autenticação de dois fatores </label>
+              <label class="quiz-option"> <input type="radio" name="q8" value="certo" /> Autenticação multifatorial </label>
+              <label class="quiz-option"> <input type="radio" name="q8" value="errado" /> Autenticação biométrica </label>
+              <label class="quiz-option"> <input type="radio" name="q8" value="errado" /> Autenticação de segurança </label>
+            </div>
+            <div class="quiz-feedback mt-2 d-none"></div>
+          </div>
+        </div>
+      </section>
+      <section id="tipos-controles-seguranca" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">17.5.7 Tipos de controles de segurança</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            Os controles de segurança são as medidas e salvaguardas que as empresas utilizam para proteger seus ativos contra ameaças. Os
+            controles de segurança são classificados em três categorias:
+          </p>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div class="nav flex-column nav-pills cisco-pills" id="v-pills-tab-security-types" role="tablist" aria-orientation="vertical">
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-fisico-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-fisico"
+                  type="button"
+                  role="tab"
+                >
+                  Controles Físicos
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-adm-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-adm"
+                  type="button"
+                  role="tab"
+                >
+                  Controles Administrativos
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-logico-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-logico"
+                  type="button"
+                  role="tab"
+                >
+                  Controles Lógicos
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-security-types"
+                style="border-color: var(--cisco-green); min-height: 250px"
+              >
+                <div class="tab-pane fade show active" id="pill-fisico" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Controles Físicos</h5>
+                  <p class="text-secondary">
+                    Os controles físicos limitam o acesso físico a áreas de trabalho, computadores e equipamentos de rede. Eles são a
+                    primeira linha de defesa contra invasores. Exemplos incluem:
+                  </p>
+                  <ul class="text-secondary">
+                    <li>Cercas, portões e barreiras físicas.</li>
+                    <li>Guardas de segurança e cães de guarda.</li>
+                    <li>Câmeras de segurança (CFTV) e alarmes.</li>
+                    <li>Fechaduras, trincos e crachás de acesso.</li>
+                  </ul>
+                </div>
+
+                <div class="tab-pane fade" id="pill-adm" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Controles Administrativos</h5>
+                  <p class="text-secondary">
+                    Os controles administrativos utilizam políticas, procedimentos e diretrizes para limitar o acesso e garantir que os
+                    funcionários operem com segurança. Exemplos incluem:
+                  </p>
+                  <ul class="text-secondary">
+                    <li>Políticas de segurança e conformidade.</li>
+                    <li>Treinamento de conscientização de segurança para funcionários.</li>
+                    <li>Verificação de antecedentes e contratação segura.</li>
+                    <li>Procedimentos de resposta a incidentes.</li>
+                  </ul>
+                </div>
+
+                <div class="tab-pane fade" id="pill-logico" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">Controles Lógicos (Técnicos)</h5>
+                  <p class="text-secondary">
+                    Os controles lógicos, também conhecidos como técnicos, utilizam tecnologia para limitar o acesso aos dados e sistemas.
+                    Eles são implementados no software e no hardware. Exemplos incluem:
+                  </p>
+                  <ul class="text-secondary">
+                    <li>Criptografia de dados e firewalls.</li>
+                    <li>Listas de Controle de Acesso (ACLs) e permissões de arquivos.</li>
+                    <li>Sistemas de detecção e prevenção de intrusão (IDS/IPS).</li>
+                    <li>Autenticação multifatorial (MFA).</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="detalhes-controles-seguranca" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4 reveal">Categorias de Controles de Segurança</h2>
+
+        <div class="content-card reveal">
+          <p class="text-secondary mb-4">
+            Para garantir uma defesa em profundidade, as organizações aplicam diferentes categorias de controles. Clique em cada uma para
+            explorar os exemplos detalhados.
+          </p>
+
+          <div class="row reveal">
+            <div class="col-md-4 mb-3 mb-md-0">
+              <div
+                class="nav flex-column nav-pills cisco-pills"
+                id="v-pills-tab-control-details"
+                role="tablist"
+                aria-orientation="vertical"
+              >
+                <button
+                  class="nav-link active text-start mb-2"
+                  id="pill-ctrl-fisico-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-ctrl-fisico"
+                  type="button"
+                  role="tab"
+                >
+                  17.5.8 Controles Físicos
+                </button>
+                <button
+                  class="nav-link text-start mb-2"
+                  id="pill-ctrl-adm-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-ctrl-adm"
+                  type="button"
+                  role="tab"
+                >
+                  17.5.9 Controles Administrativos
+                </button>
+                <button
+                  class="nav-link text-start"
+                  id="pill-ctrl-logico-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pill-ctrl-logico"
+                  type="button"
+                  role="tab"
+                >
+                  17.5.10 Controles Lógicos
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-8">
+              <div
+                class="tab-content content-card p-4 h-100"
+                id="v-pills-tabContent-control-details"
+                style="border-color: var(--cisco-green); min-height: 300px"
+              >
+                <div class="tab-pane fade show active" id="pill-ctrl-fisico" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">17.5.8 Controles Físicos</h5>
+                  <p class="text-secondary">
+                    Os controles físicos são a primeira linha de defesa e visam impedir o acesso físico não autorizado a infraestrutura.
+                  </p>
+                  <div class="row mt-3">
+                    <div class="col-6">
+                      <ul class="text-secondary small">
+                        <li><i class="fas fa-check text-success me-2"></i>Cercas e portões</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Guardas de segurança</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Cães de guarda</li>
+                      </ul>
+                    </div>
+                    <div class="col-6">
+                      <ul class="text-secondary small">
+                        <li><i class="fas fa-check text-success me-2"></i>Câmeras (CFTV)</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Alarmes</li>
+                        <li><i class="fas fa-check text-success me-2"></i>Trincos e fechaduras</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-ctrl-adm" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">17.5.9 Controles Administrativos</h5>
+                  <p class="text-secondary">
+                    São as políticas e procedimentos que definem como a segurança deve ser gerida e como os funcionários devem se comportar.
+                  </p>
+                  <div class="terminal-card mt-2">
+                    <ul class="text-secondary mb-0 list-unstyled">
+                      <li><i class="fas fa-file-alt text-info me-2"></i> Políticas de segurança</li>
+                      <li><i class="fas fa-chalkboard-teacher text-info me-2"></i> Treinamento de conscientização</li>
+                      <li><i class="fas fa-user-check text-info me-2"></i> Verificação de antecedentes</li>
+                      <li><i class="fas fa-exclamation-triangle text-info me-2"></i> Procedimentos de incidentes</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="tab-pane fade" id="pill-ctrl-logico" role="tabpanel">
+                  <h5 style="color: var(--cisco-green)">17.5.10 Controles Lógicos</h5>
+                  <p class="text-secondary">
+                    Também chamados de controles técnicos, utilizam hardware e software para proteger os sistemas internos e dados.
+                  </p>
+                  <div class="row mt-3">
+                    <div class="col-6">
+                      <div class="p-2 border border-secondary rounded mb-2">
+                        <small class="text-white d-block fw-bold">Proteção de Rede</small>
+                        <span class="text-muted smaller">Firewalls, ACLs, IDS/IPS</span>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="p-2 border border-secondary rounded mb-2">
+                        <small class="text-white d-block fw-bold">Proteção de Dados</small>
+                        <span class="text-muted smaller">Criptografia, MFA, Permissões</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="sintese-modulo-17" class="mb-5">
+        <div class="content-card reveal" style="border-left: 5px solid var(--cisco-blue)">
+          <h2 class="cisco-title display-6 mb-4">Módulo 17: O Escudo da Informação</h2>
+
+          <div class="row">
+            <div class="col-lg-7">
+              <p class="text-secondary">
+                Imagine que a informação da sua empresa é um objeto valioso dentro de um cofre. Este módulo nos ensinou que não basta apenas
+                trancar a porta. Precisamos garantir que o objeto não seja trocado por uma réplica (**Integridade**) e que apenas as pessoas
+                certas cheguem até ele (**Controle de Acesso**).
+              </p>
+
+              <h4 class="text-white h5 mt-4"><i class="fas fa-fingerprint text-info me-2"></i>A Matemática da Confiança: Hashing</h4>
+              <p class="text-secondary small">
+                O Hashing é como o "DNA" do arquivo. Se você mudar um único bit, o DNA muda completamente. É assim que garantimos que um
+                código malicioso não foi injetado em um software oficial.
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <div class="terminal-card bg-dark p-3 border-secondary">
+                <h6 class="text-success smaller fw-bold font-monospace">// RESUMO PARA PROVAS</h6>
+                <ul class="list-unstyled smaller text-muted font-monospace">
+                  <li>> INTEGRIDADE = Não alterado</li>
+                  <li>> HASH = Mão única (não reverte)</li>
+                  <li>> SALTING = Proteção contra dicionário</li>
+                  <li>> MFA = Algo que SEI + TENHO + SOU</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4 border-secondary" />
+
+          <h4 class="text-white h5 mb-3">As 3 Camadas de Defesa (Defesa em Profundidade)</h4>
+
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="p-3 h-100 rounded" style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333">
+                <i class="fas fa-vault fa-2x text-warning mb-3"></i>
+                <h6 class="text-white">Física</h6>
+                <p class="smaller text-secondary">
+                  O "Muro". Impede o toque. Se o invasor não encosta no servidor, ele já perdeu 50% das chances.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 h-100 rounded" style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333">
+                <i class="fas fa-user-shield fa-2x text-primary mb-3"></i>
+                <h6 class="text-white">Administrativa</h6>
+                <p class="smaller text-secondary">
+                  O "Manual". São as regras. Sem treinamento e política, a tecnologia mais cara falha pelo erro humano.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="p-3 h-100 rounded" style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333">
+                <i class="fas fa-code fa-2x text-success mb-3"></i>
+                <h6 class="text-white">Lógica (Técnica)</h6>
+                <p class="smaller text-secondary">
+                  O "Algoritmo". Firewalls e Criptografia. É a barreira invisível que protege o bit dentro do cabo.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4 mb-0">
+            <i class="fas fa-lightbulb me-2 text-warning"></i>
+            <strong>Insight de Carreira:</strong> Em CyberSec, nunca confiamos em apenas um controle. Usamos a
+            <strong>sobreposição</strong>. Se o controle físico falha, o lógico segura. Se o lógico falha, o administrativo (política) pune
+            ou mitiga.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER PADRÃO                                -->
+    <!-- ============================================ -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- JavaScript Personalizado -->
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+
+    <script>
+      // Função de busca no índice (simples)
+      document.getElementById('navSearch')?.addEventListener('keyup', function (e) {
+        const term = e.target.value.toLowerCase()
+        const items = document.querySelectorAll('#sectionList .dropdown-item')
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase()
+          item.style.display = text.includes(term) ? 'block' : 'none'
+        })
+      })
+    </script>
+    <script>
+      // QUIZ INTERATIVO - Módulo 17.1.8
+      // Respostas corretas
+      const correctAnswers = {
+        q1: 'd', // Virtualização hospedada
+        q2: 'c', // Conexão de rede de alta disponibilidade
+        q3: 'b', // Muitos servidores VM subutilizados consomem mais recursos
+        q4: 'b' // Nuvem pública
+      }
+
+      // Variáveis de controle
+      let quizSubmitted = false
+
+      // Função para verificar respostas
+      function checkQuiz() {
+        let score = 0
+
+        // Verificar cada pergunta
+        for (let i = 1; i <= 4; i++) {
+          const selected = document.querySelector(`input[name="q${i}"]:checked`)
+          const feedbackDiv = document.getElementById(`feedback${i}`)
+
+          if (selected && selected.value === correctAnswers[`q${i}`]) {
+            score++
+            if (feedbackDiv) {
+              feedbackDiv.style.display = 'block'
+              // Destacar resposta correta
+              selected.parentElement.classList.add('text-success')
+            }
+          } else if (feedbackDiv) {
+            feedbackDiv.style.display = 'none'
+          }
+        }
+
+        // Atualizar pontuação
+        const scoreDisplay = document.getElementById('scoreDisplay')
+        if (scoreDisplay) {
+          scoreDisplay.innerHTML = `${score}/4 respostas`
+          if (score === 4) {
+            scoreDisplay.style.backgroundColor = 'rgba(102, 191, 83, 0.2)'
+            scoreDisplay.style.borderColor = 'var(--cisco-green)'
+            scoreDisplay.style.color = 'var(--cisco-green)'
+          } else {
+            scoreDisplay.style.backgroundColor = ''
+            scoreDisplay.style.borderColor = ''
+            scoreDisplay.style.color = ''
+          }
+        }
+
+        return score
+      }
+
+      // Função para mostrar todos os feedbacks
+      function showAllFeedbacks() {
+        for (let i = 1; i <= 4; i++) {
+          const feedbackDiv = document.getElementById(`feedback${i}`)
+          if (feedbackDiv) {
+            feedbackDiv.style.display = 'block'
+          }
+        }
+      }
+
+      // Função para resetar o quiz
+      function resetQuiz() {
+        // Limpar todos os radios
+        for (let i = 1; i <= 4; i++) {
+          const radios = document.querySelectorAll(`input[name="q${i}"]`)
+          radios.forEach((radio) => {
+            radio.checked = false
+            radio.parentElement.classList.remove('text-success')
+          })
+          const feedbackDiv = document.getElementById(`feedback${i}`)
+          if (feedbackDiv) {
+            feedbackDiv.style.display = 'none'
+          }
+        }
+
+        // Resetar pontuação
+        const scoreDisplay = document.getElementById('scoreDisplay')
+        if (scoreDisplay) {
+          scoreDisplay.innerHTML = '0/4 respostas'
+          scoreDisplay.style.backgroundColor = ''
+          scoreDisplay.style.borderColor = ''
+          scoreDisplay.style.color = ''
+        }
+
+        quizSubmitted = false
+      }
+
+      // Evento do botão Enviar
+      const submitBtn = document.getElementById('submitQuiz')
+      if (submitBtn) {
+        submitBtn.addEventListener('click', function () {
+          checkQuiz()
+          quizSubmitted = true
+
+          // Adicionar efeito de confirmação
+          this.innerHTML = '<i class="fas fa-check me-2"></i> Respostas Enviadas'
+          setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Enviar Respostas'
+          }, 2000)
+        })
+      }
+
+      // Evento do botão Limpar
+      const resetBtn = document.getElementById('resetQuiz')
+      if (resetBtn) {
+        resetBtn.addEventListener('click', resetQuiz)
+      }
+
+      // Evento do link Mostrar Feedback
+      const feedbackLink = document.getElementById('showFeedbackLink')
+      if (feedbackLink) {
+        feedbackLink.addEventListener('click', function (e) {
+          e.preventDefault()
+          if (quizSubmitted) {
+            showAllFeedbacks()
+            this.innerHTML = '<i class="fas fa-check-circle me-1"></i> Feedback exibido'
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-comment-dots me-1"></i> Mostrar feedback'
+            }, 2000)
+          } else {
+            // Se não enviou, mostra um aviso
+            const resultDiv = document.getElementById('quizResult')
+            const tempMsg = document.createElement('span')
+            tempMsg.className = 'text-warning ms-2 small'
+            tempMsg.innerHTML = '<i class="fas fa-info-circle"></i> Envie suas respostas primeiro!'
+            resultDiv.appendChild(tempMsg)
+            setTimeout(() => {
+              tempMsg.remove()
+            }, 2000)
+          }
+        })
+      }
+
+      // Adicionar estilo para quando o usuário seleciona uma resposta
+      document.querySelectorAll('.form-check-input').forEach((radio) => {
+        radio.addEventListener('change', function () {
+          if (quizSubmitted) {
+            // Se já enviou, resetar para permitir nova tentativa
+            quizSubmitted = false
+            const submitButton = document.getElementById('submitQuiz')
+            if (submitButton) {
+              submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Enviar Respostas'
+            }
+            // Limpar feedbacks
+            for (let i = 1; i <= 4; i++) {
+              const feedbackDiv = document.getElementById(`feedback${i}`)
+              if (feedbackDiv) {
+                feedbackDiv.style.display = 'none'
+              }
+            }
+            // Resetar pontuação visual
+            const scoreDisplay = document.getElementById('scoreDisplay')
+            if (scoreDisplay) {
+              scoreDisplay.innerHTML = '0/4 respostas'
+              scoreDisplay.style.backgroundColor = ''
+              scoreDisplay.style.borderColor = ''
+              scoreDisplay.style.color = ''
+            }
+          }
+        })
+      })
+    </script>
+    <script>
+      // QUIZ INTERATIVO - Módulo 17.3.4 (Medidas de Segurança)
+      // Respostas corretas
+      const correctAnswers173 = {
+        q1: 'b', // aplicativos não-autorizados
+        q2: 'c', // falta de acesso direto à infraestrutura de rede física
+        q3: 'c', // IaaS
+        q4: 'a' // VPN site-to-site
+      }
+
+      // Variáveis de controle
+      let quizSubmitted173 = false
+
+      // Função para verificar respostas
+      function checkQuiz173() {
+        let score = 0
+
+        // Verificar cada pergunta
+        for (let i = 1; i <= 4; i++) {
+          const selected = document.querySelector(`input[name="q${i}_173"]:checked`)
+          const feedbackDiv = document.getElementById(`feedback${i}_173`)
+
+          if (selected && selected.value === correctAnswers173[`q${i}`]) {
+            score++
+            if (feedbackDiv) {
+              feedbackDiv.style.display = 'block'
+              // Destacar resposta correta
+              selected.parentElement.classList.add('text-success')
+            }
+          } else if (feedbackDiv) {
+            feedbackDiv.style.display = 'none'
+          }
+        }
+
+        // Atualizar pontuação
+        const scoreDisplay = document.getElementById('scoreDisplay173')
+        if (scoreDisplay) {
+          scoreDisplay.innerHTML = `${score}/4 respostas`
+          if (score === 4) {
+            scoreDisplay.style.backgroundColor = 'rgba(102, 191, 83, 0.2)'
+            scoreDisplay.style.borderColor = 'var(--cisco-green)'
+            scoreDisplay.style.color = 'var(--cisco-green)'
+          } else {
+            scoreDisplay.style.backgroundColor = ''
+            scoreDisplay.style.borderColor = ''
+            scoreDisplay.style.color = ''
+          }
+        }
+
+        return score
+      }
+
+      // Função para mostrar todos os feedbacks
+      function showAllFeedbacks173() {
+        for (let i = 1; i <= 4; i++) {
+          const feedbackDiv = document.getElementById(`feedback${i}_173`)
+          if (feedbackDiv) {
+            feedbackDiv.style.display = 'block'
+          }
+        }
+      }
+
+      // Função para resetar o quiz
+      function resetQuiz173() {
+        // Limpar todos os radios
+        for (let i = 1; i <= 4; i++) {
+          const radios = document.querySelectorAll(`input[name="q${i}_173"]`)
+          radios.forEach((radio) => {
+            radio.checked = false
+            radio.parentElement.classList.remove('text-success')
+          })
+          const feedbackDiv = document.getElementById(`feedback${i}_173`)
+          if (feedbackDiv) {
+            feedbackDiv.style.display = 'none'
+          }
+        }
+
+        // Resetar pontuação
+        const scoreDisplay = document.getElementById('scoreDisplay173')
+        if (scoreDisplay) {
+          scoreDisplay.innerHTML = '0/4 respostas'
+          scoreDisplay.style.backgroundColor = ''
+          scoreDisplay.style.borderColor = ''
+          scoreDisplay.style.color = ''
+        }
+
+        quizSubmitted173 = false
+      }
+
+      // Evento do botão Enviar
+      const submitBtn173 = document.getElementById('submitQuiz173')
+      if (submitBtn173) {
+        submitBtn173.addEventListener('click', function () {
+          checkQuiz173()
+          quizSubmitted173 = true
+
+          // Adicionar efeito de confirmação
+          this.innerHTML = '<i class="fas fa-check me-2"></i> Respostas Enviadas'
+          setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Enviar Respostas'
+          }, 2000)
+        })
+      }
+
+      // Evento do botão Limpar
+      const resetBtn173 = document.getElementById('resetQuiz173')
+      if (resetBtn173) {
+        resetBtn173.addEventListener('click', resetQuiz173)
+      }
+
+      // Evento do link Mostrar Feedback
+      const feedbackLink173 = document.getElementById('showFeedbackLink173')
+      if (feedbackLink173) {
+        feedbackLink173.addEventListener('click', function (e) {
+          e.preventDefault()
+          if (quizSubmitted173) {
+            showAllFeedbacks173()
+            this.innerHTML = '<i class="fas fa-check-circle me-1"></i> Feedback exibido'
+            setTimeout(() => {
+              this.innerHTML = '<i class="fas fa-comment-dots me-1"></i> Mostrar feedback'
+            }, 2000)
+          } else {
+            // Se não enviou, mostra um aviso
+            const resultDiv = document.getElementById('quizResult173')
+            const tempMsg = document.createElement('span')
+            tempMsg.className = 'text-warning ms-2 small'
+            tempMsg.innerHTML = '<i class="fas fa-info-circle"></i> Envie suas respostas primeiro!'
+            resultDiv.appendChild(tempMsg)
+            setTimeout(() => {
+              tempMsg.remove()
+            }, 2000)
+          }
+        })
+      }
+
+      // Adicionar estilo para quando o usuário seleciona uma resposta
+      document.querySelectorAll('.form-check-input').forEach((radio) => {
+        radio.addEventListener('change', function () {
+          // Verificar se este radio pertence ao quiz 173
+          if (this.name && this.name.includes('_173')) {
+            if (quizSubmitted173) {
+              // Se já enviou, resetar para permitir nova tentativa
+              quizSubmitted173 = false
+              const submitButton = document.getElementById('submitQuiz173')
+              if (submitButton) {
+                submitButton.innerHTML = '<i class="fas fa-paper-plane me-2"></i> Enviar Respostas'
+              }
+              // Limpar feedbacks deste quiz
+              for (let i = 1; i <= 4; i++) {
+                const feedbackDiv = document.getElementById(`feedback${i}_173`)
+                if (feedbackDiv) {
+                  feedbackDiv.style.display = 'none'
+                }
+              }
+              // Resetar pontuação visual
+              const scoreDisplay = document.getElementById('scoreDisplay173')
+              if (scoreDisplay) {
+                scoreDisplay.innerHTML = '0/4 respostas'
+                scoreDisplay.style.backgroundColor = ''
+                scoreDisplay.style.borderColor = ''
+                scoreDisplay.style.color = ''
+              }
+            }
+          }
+        })
+      })
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const quizOptions = document.querySelectorAll('.quiz-option input')
+
+        quizOptions.forEach((option) => {
+          option.addEventListener('change', (e) => {
+            const parentItem = e.target.closest('.quiz-item')
+            const feedback = parentItem.querySelector('.quiz-feedback')
+            const isCorrect = e.target.value === 'certo'
+
+            // Reset de classes
+            parentItem.classList.remove('border-success', 'border-danger')
+            feedback.classList.remove('text-success', 'text-danger', 'd-none')
+
+            if (isCorrect) {
+              parentItem.classList.add('border-success')
+              feedback.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto!'
+              feedback.classList.add('text-success')
+            } else {
+              parentItem.classList.add('border-danger')
+              feedback.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. Tente novamente.'
+              feedback.classList.add('text-danger')
+            }
+          })
+        })
+      })
+    </script>
+    <script>
+      // Este script lida com todos os quizzes da página
+      document.addEventListener('DOMContentLoaded', () => {
+        const quizInputs = document.querySelectorAll('.quiz-option input')
+
+        quizInputs.forEach((input) => {
+          input.addEventListener('change', (e) => {
+            const item = e.target.closest('.quiz-item')
+            const feedback = item.querySelector('.quiz-feedback')
+            const isCorrect = e.target.value === 'certo'
+
+            // Reset visual
+            item.classList.remove('border-success', 'border-danger')
+            feedback.classList.remove('text-success', 'text-danger', 'd-none')
+
+            if (isCorrect) {
+              item.classList.add('border-success')
+              feedback.innerHTML = '<i class="fas fa-check-circle me-2"></i> Correto!'
+              feedback.classList.add('text-success')
+            } else {
+              item.classList.add('border-danger')
+              feedback.innerHTML = '<i class="fas fa-times-circle me-2"></i> Incorreto. Tente novamente.'
+              feedback.classList.add('text-danger')
+            }
+          })
+        })
+      })
+    </script>
+  </body>
+</html>
