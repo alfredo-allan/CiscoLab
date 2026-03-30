@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 18 - Criptografia | NETSEC ☠ CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ============================================ -->
+    <!-- NAVBAR PADRÃO - Módulo 18 Ativo               -->
+    <!-- ============================================ -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a
+          class="navbar-brand"
+          href="../index.html"
+          style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px"
+        >
+          <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+          NET<span style="color: white">SEC</span>
+          <small style="font-size: 0.7rem; color: var(--text-muted); display: block; line-height: 1">☠ CyberSec | Estudos Cisco</small>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL (Módulo 18) -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 18 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li><h6 class="dropdown-header text-cisco">📚 Conteúdo do Módulo 18</h6></li>
+                <li><a class="dropdown-item" href="#intro">18.0 Introdução</a></li>
+                <li><a class="dropdown-item" href="#confidencialidade">18.1.1 Confidencialidade de Dados</a></li>
+                <li><a class="dropdown-item" href="#simetrica">18.1.2 Criptografia Simétrica</a></li>
+                <li><a class="dropdown-item" href="#algoritmos-simetricos">18.1.3 Algoritmos Simétricos</a></li>
+                <li><a class="dropdown-item" href="#assimetrica">18.1.4 Criptografia Assimétrica - Confidencialidade</a></li>
+                <li><a class="dropdown-item" href="#autenticacao">18.1.5 Criptografia Assimétrica - Autenticação</a></li>
+                <li><a class="dropdown-item" href="#tabela-algoritmos">📊 Tabela de Algoritmos Assimétricos</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2"></i>Laboratórios</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li><a class="dropdown-item" href="#intro">18.0 Introdução</a></li>
+                  <li><a class="dropdown-item" href="#confidencialidade">18.1.1 Confidencialidade de Dados</a></li>
+                  <li><a class="dropdown-item" href="#simetrica">18.1.2 Criptografia Simétrica</a></li>
+                  <li><a class="dropdown-item" href="#algoritmos-simetricos">18.1.3 Algoritmos Simétricos</a></li>
+                  <li><a class="dropdown-item" href="#assimetrica">18.1.4 Criptografia Assimétrica - Confidencialidade</a></li>
+                  <li><a class="dropdown-item" href="#autenticacao">18.1.5 Criptografia Assimétrica - Autenticação</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CONTEÚDO PRINCIPAL DO MÓDULO 18              -->
+    <!-- ============================================ -->
+    <main class="container py-5">
+      <!-- Título Principal do Módulo -->
+      <div class="mb-5" id="intro">
+        <h1 class="cisco-title">Módulo 18: Criptografia e Confidencialidade de Dados</h1>
+        <p class="text-muted mt-3">Fundamentos de criptografia simétrica e assimétrica para segurança de dados em redes Cisco.</p>
+      </div>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO 18.1.1 - Confidencialidade de Dados -->
+      <!-- ======================================== -->
+      <section id="confidencialidade" class="mb-5">
+        <h2 class="section-title">18.1.1 Confidencialidade de Dados</h2>
+        <div class="content-card">
+          <p>
+            Existem duas classes de criptografia usadas para fornecer confidencialidade de dados: <strong>assimétrica</strong> e
+            <strong>simétrica</strong>. Essas duas classes diferem na maneira como usam as chaves.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3">
+                <h4 class="text-cisco"><i class="fas fa-lock me-2"></i>Criptografia Simétrica</h4>
+                <ul class="list-unstyled mt-3">
+                  <li>
+                    <i class="fas fa-check-circle text-cisco me-2"></i>Usa a <strong>mesma chave</strong> para criptografar e
+                    descriptografar
+                  </li>
+                  <li><i class="fas fa-check-circle text-cisco me-2"></i>Comprimentos de chave: 40 - 256 bits</li>
+                  <li><i class="fas fa-check-circle text-cisco me-2"></i>Mais rápida que a assimétrica</li>
+                  <li><i class="fas fa-check-circle text-cisco me-2"></i>Usada para dados em massa (VPN)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3">
+                <h4 class="text-cisco"><i class="fas fa-key me-2"></i>Criptografia Assimétrica</h4>
+                <ul class="list-unstyled mt-3">
+                  <li><i class="fas fa-check-circle text-cisco me-2"></i>Usa <strong>chaves diferentes</strong> para cifrar/decifrar</li>
+                  <li><i class="fas fa-check-circle text-cisco me-2"></i>Comprimentos de chave: 512 - 4096 bits</li>
+                  <li><i class="fas fa-check-circle text-cisco me-2"></i>Mais lenta (alto custo computacional)</li>
+                  <li><i class="fas fa-check-circle text-cisco me-2"></i>Usada para transações rápidas (HTTPS)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Nota:</strong> DES é um algoritmo legado e não deve ser usado. 3DES deve ser evitado quando possível.
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO 18.1.2 - Criptografia Simétrica     -->
+      <!-- ======================================== -->
+      <section id="simetrica" class="mb-5">
+        <h2 class="section-title">18.1.2 Criptografia Simétrica</h2>
+        <div class="content-card">
+          <p>
+            Algoritmos simétricos usam a <strong>mesma chave pré-compartilhada</strong> para criptografar e descriptografar dados. Uma chave
+            pré-compartilhada (chave secreta) é conhecida pelo remetente e receptor antes de qualquer comunicação criptografada.
+          </p>
+
+          <div class="diagram-card text-center my-4">
+            <i class="fas fa-exchange-alt fa-3x text-cisco mb-3"></i>
+            <h5>Exemplo: Alice e Bob</h5>
+            <p><strong>Chave Pré-Compartilhada</strong> → Mesmo cadeado 🔒</p>
+            <div class="row mt-3">
+              <div class="col-4"><span class="badge-cisco">Alice</span><br /><small>Mensagem → Tranca</small></div>
+              <div class="col-4"><i class="fas fa-arrow-right fa-2x text-cisco"></i></div>
+              <div class="col-4"><span class="badge-cisco">Bob</span><br /><small>Destranca → Mensagem</small></div>
+            </div>
+          </div>
+
+          <div class="terminal-card mt-3">
+            <pre><code># Conceito de Criptografia Simétrica
+Chave_Secreta = "precompartilhada"
+Mensagem_Original = "Confidencial"
+Mensagem_Cifrada = encrypt(Mensagem_Original, Chave_Secreta)
+Mensagem_Decifrada = decrypt(Mensagem_Cifrada, Chave_Secreta)
+# Mensagem_Decifrada == Mensagem_Original ✅</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO 18.1.3 - Algoritmos Simétricos      -->
+      <!-- ======================================== -->
+      <section id="algoritmos-simetricos" class="mb-5">
+        <h2 class="section-title">18.1.3 Algoritmos de Criptografia Simétrica</h2>
+        <div class="content-card">
+          <p>
+            Hoje, algoritmos de criptografia simétrica são comumente usados com tráfego VPN por usarem menos recursos de CPU. Para garantir
+            segurança, use comprimento mínimo de chave de <strong>128 bits</strong>.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Algoritmo</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>DES</strong></td>
+                  <td>Algoritmo legado. Chave curta, inseguro para uso atual.</td>
+                </tr>
+                <tr>
+                  <td><strong>3DES</strong></td>
+                  <td>Substituto do DES, repetido 3 vezes. A ser aposentado em 2023.</td>
+                </tr>
+                <tr>
+                  <td><strong>AES</strong></td>
+                  <td>Padrão recomendado. Chaves de 128, 192 ou 256 bits.</td>
+                </tr>
+                <tr>
+                  <td><strong>SEAL</strong></td>
+                  <td>Cifra de fluxo, 160 bits, baixo impacto na CPU.</td>
+                </tr>
+                <tr>
+                  <td><strong>RC4</strong></td>
+                  <td>Vulnerabilidades conhecidas. <span class="text-danger">Não utilizar</span>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5><i class="fas fa-cube me-2"></i>Cifra de Bloco</h5>
+                <p>Criptografa dados em blocos fixos (ex: 128 bits). AES opera em blocos.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <h5><i class="fas fa-stream me-2"></i>Cifra de Fluxo</h5>
+                <p>Criptografa um byte/bit por vez. Exemplos: RC4, A5 (GSM).</p>
+                <code class="small">01010010 → bit a bit</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO 18.1.4 - Assimétrica - Confidencialidade -->
+      <!-- ======================================== -->
+      <section id="assimetrica" class="mb-5">
+        <h2 class="section-title">18.1.4 Criptografia Assimétrica - Confidencialidade</h2>
+        <div class="content-card">
+          <p>
+            Algoritmos assimétricos fornecem confidencialidade sem pré-compartilhar senha. O processo é iniciado com a
+            <strong>chave pública</strong>.
+          </p>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-calculator me-2"></i>
+            <strong>Fórmula:</strong> Chave pública (criptografar) + Chave privada (descriptografar) = <strong>Confidencialidade</strong>
+          </div>
+
+          <h5 class="mt-4">Processo de Troca Segura (Bob e Alice)</h5>
+          <div class="timeline-item">
+            <div class="mb-3">
+              <span class="badge-cisco">1. Alice adquire chave pública de Bob</span>
+              <p class="mt-2">Alice solicita e obtém a chave pública de Bob.</p>
+              <div class="terminal-card">
+                <code>Alice → Bob: "Você poderia me informar sua chave pública?"<br />Bob → Alice: "Aqui está minha chave pública."</code>
+              </div>
+            </div>
+            <div class="mb-3">
+              <span class="badge-cisco">2. Alice usa a chave pública</span>
+              <p>Alice criptografa a mensagem usando a chave pública de Bob.</p>
+              <code class="d-block p-2 bg-dark rounded">Mensagem + Chave_Pública_Bob → Texto Criptografado</code>
+            </div>
+            <div class="mb-3">
+              <span class="badge-cisco">3. Bob descriptografa com chave privada</span>
+              <p>Bob usa sua chave privada (única) para descriptografar a mensagem.</p>
+              <div class="terminal-card">
+                <pre><code># Apenas Bob pode descriptografar
+if chave_privada_bob == correta:
+    mensagem_original = decrypt(texto_criptografado)</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="diagram-card mt-4">
+            <p><strong>🔐 Segurança Garantida:</strong> Como apenas Bob tem a chave privada, a confidencialidade é alcançada.</p>
+            <p class="text-muted small">⚠️ Se a chave privada for comprometida, um novo par de chaves deve ser gerado.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO 18.1.5 - Assimétrica - Autenticação -->
+      <!-- ======================================== -->
+      <section id="autenticacao" class="mb-5">
+        <h2 class="section-title">18.1.5 Criptografia Assimétrica - Autenticação</h2>
+        <div class="content-card">
+          <p>A autenticação é iniciada quando o processo de criptografia usa a <strong>chave privada</strong>.</p>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-fingerprint me-2"></i>
+            <strong>Fórmula:</strong> Chave privada (criptografar) + Chave pública (descriptografar) = <strong>Autenticação</strong>
+          </div>
+
+          <h5 class="mt-4">Processo de Autenticação (Bob e Alice)</h5>
+          <div class="timeline-item">
+            <div class="mb-3">
+              <span class="badge-cisco">1. Alice usa sua chave privada</span>
+              <p>Alice criptografa uma mensagem usando sua chave privada e envia para Bob.</p>
+              <div class="terminal-card">
+                <pre><code>Alice (Chave_Privada_Alice) → Criptografa → Mensagem_Autenticada → Bob</code></pre>
+              </div>
+            </div>
+            <div class="mb-3">
+              <span class="badge-cisco">2. Bob solicita a chave pública de Alice</span>
+              <p>Bob precisa verificar se a mensagem realmente veio de Alice.</p>
+              <div class="terminal-card">
+                <code>Bob → Alice: "Posso pegar sua chave pública, por favor?"<br />Alice → Bob: "Aqui está minha chave pública."</code>
+              </div>
+            </div>
+            <div class="mb-3">
+              <span class="badge-cisco">3. Bob descriptografa usando a chave pública</span>
+              <p>Se a descriptografia funcionar, a mensagem foi criptografada pela chave privada de Alice.</p>
+              <div class="terminal-card">
+                <pre><code># Verificação de autenticidade
+if decrypt(mensagem_recebida, chave_publica_alice) == sucesso:
+    print("✅ Mensagem autenticada: vem de Alice")</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="diagram-card mt-4">
+            <p>
+              <strong>🆔 Autenticidade:</strong> Como apenas Alice tem sua chave privada, somente ela poderia ter criptografado a mensagem,
+              provando sua identidade.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO: Tabela de Algoritmos Assimétricos  -->
+      <!-- ======================================== -->
+      <section id="tabela-algoritmos" class="mb-5">
+        <h2 class="section-title">📊 Algoritmos de Criptografia Assimétrica</h2>
+        <div class="content-card">
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Algoritmo</th>
+                  <th>Comprimento da Chave</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Diffie-Hellman (DH)</strong></td>
+                  <td>512 - 4096 bits</td>
+                  <td>Permite que duas partes concordem com uma chave secreta compartilhada sem trocá-la diretamente.</td>
+                </tr>
+                <tr>
+                  <td><strong>DSS / DSA</strong></td>
+                  <td>512 - 1024 bits</td>
+                  <td>Algoritmo para assinaturas digitais. Mais lento para verificação (10-40x).</td>
+                </tr>
+                <tr>
+                  <td><strong>RSA</strong></td>
+                  <td>512 - 2048 bits</td>
+                  <td>Baseado na dificuldade de fatorar números muito grandes. Amplamente usado em e-commerce.</td>
+                </tr>
+                <tr>
+                  <td><strong>ElGamal</strong></td>
+                  <td>512 - 1024 bits</td>
+                  <td>Baseado no Diffie-Hellman. Mensagem cifrada fica 2x maior, usado para chaves secretas.</td>
+                </tr>
+                <tr>
+                  <td><strong>Curva Elíptica (ECC)</strong></td>
+                  <td>≥ 224 bits</td>
+                  <td>Chaves muito menores para o mesmo nível de segurança. Alta eficiência.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO: Protocolos com Algoritmos Assimétricos -->
+      <!-- ======================================== -->
+      <section id="protocolos" class="mb-5">
+        <h2 class="section-title">🔌 Protocolos que Usam Criptografia Assimétrica</h2>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="content-card">
+              <h5><i class="fas fa-exchange-alt me-2 text-cisco"></i> IKE</h5>
+              <p>Internet Key Exchange - Componente fundamental das VPNs IPsec.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="content-card">
+              <h5><i class="fas fa-lock me-2 text-cisco"></i> SSL/TLS</h5>
+              <p>Transport Layer Security - Padrão IETF para comunicações seguras.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="content-card">
+              <h5><i class="fas fa-terminal me-2 text-cisco"></i> SSH</h5>
+              <p>Secure Shell - Conexão segura para acesso remoto a dispositivos de rede.</p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="content-card">
+              <h5><i class="fas fa-envelope me-2 text-cisco"></i> PGP</h5>
+              <p>Pretty Good Privacy - Privacidade criptográfica para e-mails.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO: Laboratórios (Labs)               -->
+      <!-- ======================================== -->
+      <section id="laboratorios" class="mb-5">
+        <h2 class="section-title"><i class="fas fa-flask me-2"></i> Laboratórios Práticos</h2>
+        <div class="content-card">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3">
+                <h5><i class="fas fa-key me-2 text-cisco"></i> Lab 18.1 - Configuração de VPN com IPsec</h5>
+                <p>Implemente um túnel VPN utilizando IKE e algoritmos assimétricos.</p>
+                <span class="badge-cisco">Prática Recomendada</span>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3">
+                <h5><i class="fas fa-shield-alt me-2 text-cisco"></i> Lab 18.2 - Análise de Tráfego HTTPS</h5>
+                <p>Capture pacotes TLS e identifique a troca de chaves RSA/ECC.</p>
+                <span class="badge-cisco">Wireshark</span>
+              </div>
+            </div>
+          </div>
+          <div class="terminal-card mt-3">
+            <pre><code># Comando para verificar algoritmos de criptografia no Cisco IOS
+Router# show crypto ipsec transform-set 
+Router# show crypto isakmp policy</code></pre>
+          </div>
+        </div>
+      </section>
+      <!-- ======================================== -->
+      <!-- SEÇÃO 18.1.6 - Assimétrica - Integridade   -->
+      <!-- ======================================== -->
+      <section id="integridade" class="mb-5">
+        <h2 class="section-title">18.1.6 Criptografia Assimétrica - Integridade</h2>
+        <div class="content-card">
+          <p>
+            Combinar os dois processos de criptografia assimétrica (confidencialidade e autenticação) fornece
+            <strong>confidencialidade, autenticação e integridade</strong> da mensagem.
+          </p>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-shield-halved me-2"></i>
+            <strong>Objetivo:</strong> Garantir que apenas Bob leia a mensagem, que Alice seja a remetente e que a mensagem não foi
+            modificada.
+          </div>
+
+          <!-- Passo a passo da integridade -->
+          <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-cisco"><i class="fas fa-lock me-2"></i> Passo 1: Confidencialidade</h5>
+                <p>Alice usa a <strong>chave pública de Bob</strong> para criptografar a mensagem original.</p>
+                <div class="terminal-card mt-2 p-2">
+                  <code>Mensagem + Chave_Pública_Bob → Texto Criptografado</code>
+                </div>
+                <p class="mt-2 small text-muted">✅ Apenas Bob poderá descriptografar com sua chave privada.</p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-cisco"><i class="fas fa-fingerprint me-2"></i> Passo 2: Autenticação e Integridade</h5>
+                <p>Alice cria um <strong>hash</strong> da mensagem e criptografa o hash usando sua <strong>chave privada</strong>.</p>
+                <div class="terminal-card mt-2 p-2">
+                  <code>Hash(Mensagem) + Chave_Privada_Alice → Hash Criptografado</code>
+                </div>
+                <p class="mt-2 small text-muted">✅ Isso prova a identidade de Alice e garante integridade.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-cisco"><i class="fas fa-envelope-open-text me-2"></i> Passo 3: Bob descriptografa o hash</h5>
+                <p>Bob usa a <strong>chave pública de Alice</strong> para descriptografar o hash recebido.</p>
+                <div class="terminal-card mt-2 p-2">
+                  <code>Hash_Criptografado + Chave_Pública_Alice → Hash_Recebido</code>
+                </div>
+                <p class="mt-2 small text-muted">✅ Se funcionar, a mensagem veio de Alice (autenticação).</p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-cisco"><i class="fas fa-unlock-alt me-2"></i> Passo 4: Bob descriptografa a mensagem</h5>
+                <p>Bob usa sua <strong>chave privada</strong> para descriptografar a mensagem original.</p>
+                <div class="terminal-card mt-2 p-2">
+                  <code>Texto_Criptografado + Chave_Privada_Bob → Mensagem_Original</code>
+                </div>
+                <p class="mt-2 small text-muted">✅ Confidencialidade garantida.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Verificação de Integridade -->
+          <div class="diagram-card mt-4">
+            <h5><i class="fas fa-check-double me-2 text-cisco"></i> Verificação Final de Integridade</h5>
+            <p>Bob calcula o hash da mensagem descriptografada e compara com o hash recebido:</p>
+            <div class="terminal-card mt-2">
+              <pre><code># Processo de verificação no lado de Bob
+hash_calculado = hash(Mensagem_Original)
+hash_recebido = decrypt(Hash_Criptografado, Chave_Pública_Alice)
+
+if hash_calculado == hash_recebido:
+    print("✅ Integridade confirmada - Mensagem não foi modificada")
+    print("✅ Autenticidade confirmada - Mensagem veio de Alice")
+else:
+    print("❌ Mensagem comprometida ou remetente não autenticado")</code></pre>
+            </div>
+            <div class="alert-cisco mt-3">
+              <i class="fas fa-info-circle me-2"></i>
+              <strong>Resumo:</strong> Este processo combinado garante os três pilares da segurança:
+              <ul class="mt-2 mb-0">
+                <li><strong>Confidencialidade</strong> - Chave pública de Bob</li>
+                <li><strong>Autenticação</strong> - Chave privada de Alice</li>
+                <li><strong>Integridade</strong> - Hash criptografado verificado</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================== -->
+      <!-- SEÇÃO 18.1.7 - Diffie-Hellman (DH)       -->
+      <!-- ======================================== -->
+      <section id="diffie-hellman" class="mb-5">
+        <h2 class="section-title">18.1.7 Diffie-Hellman (DH)</h2>
+        <div class="content-card">
+          <p>
+            <strong>Diffie-Hellman (DH)</strong> é um algoritmo matemático assimétrico que permite que dois computadores gerem um
+            <strong>segredo compartilhado idêntico</strong> sem terem se comunicado antes. A nova chave compartilhada nunca é realmente
+            trocada entre o remetente e o destinatário, mas ambas as partes a conhecem.
+          </p>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-exchange-alt me-2"></i>
+            <strong>Aplicações comuns:</strong>
+            <ul class="mt-2 mb-0">
+              <li>VPN IPsec (trocas de chaves IKE)</li>
+              <li>SSH (Secure Shell)</li>
+              <li>TLS/SSL (handshake)</li>
+            </ul>
+          </div>
+
+          <h5 class="mt-4"><i class="fas fa-palette me-2 text-cisco"></i> Analogia das Cores (Simplificação do DH)</h5>
+          <p>Para entender o DH, vamos usar uma analogia com cores (no mundo real, são números extremamente grandes):</p>
+
+          <div class="timeline-item">
+            <div class="mb-4">
+              <span class="badge-cisco">Passo 1: Acordo Público</span>
+              <p>Alice e Bob concordam com uma <strong>cor comum arbitrária</strong> que não precisa ser mantida em segredo.</p>
+              <div class="diagram-card text-center py-3">
+                <i class="fas fa-circle" style="color: #ffd966; font-size: 2rem"></i>
+                <span class="mx-3">→</span>
+                <span class="badge-cisco">Cor Combinada: <strong style="color: #ffd966">AMARELO</strong></span>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <span class="badge-cisco">Passo 2: Cores Secretas (Chaves Privadas)</span>
+              <p>Cada um seleciona uma <strong>cor secreta</strong> que nunca será compartilhada.</p>
+              <div class="row text-center">
+                <div class="col-6">
+                  <div class="terminal-card">
+                    <i class="fas fa-circle" style="color: #e63946; font-size: 1.5rem"></i>
+                    <p class="mt-2"><strong>Alice</strong><br />🔴 Vermelho</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="terminal-card">
+                    <i class="fas fa-circle" style="color: #1e88e5; font-size: 1.5rem"></i>
+                    <p class="mt-2"><strong>Bob</strong><br />🔵 Azul</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <span class="badge-cisco">Passo 3: Mistura e Troca Pública</span>
+              <p>Cada um mistura a cor comum com sua cor secreta para produzir uma <strong>cor pública</strong>.</p>
+              <div class="row text-center">
+                <div class="col-6">
+                  <div class="hacker-card p-2">
+                    <span style="color: #ffd966">🟡 Amarelo</span> + <span style="color: #e63946">🔴 Vermelho</span> =
+                    <span style="color: #ff8c42; font-weight: bold">🟠 Laranja</span>
+                    <p class="small text-muted mt-1">Alice envia LARANJA para Bob</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="hacker-card p-2">
+                    <span style="color: #ffd966">🟡 Amarelo</span> + <span style="color: #1e88e5">🔵 Azul</span> =
+                    <span style="color: #2e7d32; font-weight: bold">🟢 Verde</span>
+                    <p class="small text-muted mt-1">Bob envia VERDE para Alice</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <span class="badge-cisco">Passo 4: Mistura Final (Segredo Compartilhado)</span>
+              <p>Cada um mistura a cor recebida com sua cor secreta original.</p>
+              <div class="row text-center">
+                <div class="col-6">
+                  <div class="diagram-card p-2">
+                    <span style="color: #2e7d32">🟢 Verde (recebido)</span> + <span style="color: #e63946">🔴 Vermelho (secreto)</span> =
+                    <span style="color: #8d6e63; font-weight: bold">🟤 MARROM</span>
+                    <p class="small text-muted">Alice calcula</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="diagram-card p-2">
+                    <span style="color: #ff8c42">🟠 Laranja (recebido)</span> + <span style="color: #1e88e5">🔵 Azul (secreto)</span> =
+                    <span style="color: #8d6e63; font-weight: bold">🟤 MARROM</span>
+                    <p class="small text-muted">Bob calcula</p>
+                  </div>
+                </div>
+              </div>
+              <div class="alert-cisco mt-3 text-center">
+                <i class="fas fa-handshake me-2"></i>
+                <strong>Resultado:</strong> Ambos obtêm a mesma cor (MARROM) - este é o <strong>segredo compartilhado</strong>!
+              </div>
+            </div>
+          </div>
+
+          <h5 class="mt-4"><i class="fas fa-chart-line me-2 text-cisco"></i> Grupos Diffie-Hellman no Cisco IOS</h5>
+          <p>
+            No mundo real, DH usa números extremamente grandes. O Cisco IOS suporta diferentes grupos DH, onde números maiores significam
+            mais segurança, porém maior tempo de processamento.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Grupo DH</th>
+                  <th>Tamanho da Chave (bits)</th>
+                  <th>Nível de Segurança</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>768 bits</td>
+                  <td>🔓 Baixo (obsoleto)</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>1024 bits</td>
+                  <td>⚠️ Médio-Baixo (evitar)</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>1536 bits</td>
+                  <td>📈 Médio</td>
+                </tr>
+                <tr>
+                  <td>14</td>
+                  <td>2048 bits</td>
+                  <td>✅ Bom (recomendado)</td>
+                </tr>
+                <tr>
+                  <td>15</td>
+                  <td>3072 bits</td>
+                  <td>🔒 Muito Bom</td>
+                </tr>
+                <tr>
+                  <td>16</td>
+                  <td>4096 bits</td>
+                  <td>🛡️ Excelente (alta segurança)</td>
+                </tr>
+                <tr class="table-active">
+                  <td>19, 20, 24</td>
+                  <td>Curva Elíptica (ECC)</td>
+                  <td>🔐 Eficiente e seguro</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="terminal-card mt-3">
+            <h5><i class="fas fa-terminal me-2"></i> Comandos Cisco para Configurar DH</h5>
+            <pre><code>! Configurar política IKE com grupo DH
+Router(config)# crypto isakmp policy 10
+Router(config-isakmp)# encryption aes 256
+Router(config-isakmp)# group 14   ! Recomendado: 2048 bits
+Router(config-isakmp)# exit
+
+! Verificar grupos DH suportados
+Router# show crypto isakmp policy
+
+! Verificar transform sets com DH
+Router# show crypto ipsec transform-set</code></pre>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Por que usar DH + Algoritmos Simétricos?</strong>
+            <p class="mt-2 mb-0">
+              Sistemas de chave assimétrica são lentos para criptografia em massa. Por isso, usamos o DH para criar uma chave compartilhada
+              segura, e então utilizamos algoritmos simétricos (como AES) para criptografar o tráfego real - combinando segurança e
+              desempenho!
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER PADRÃO                                -->
+    <!-- ============================================ -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Scripts Personalizados -->
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+    <script>
+      // Funcionalidade de busca no índice
+      document.getElementById('navSearch')?.addEventListener('keyup', function (e) {
+        const term = e.target.value.toLowerCase()
+        const items = document.querySelectorAll('#sectionList .dropdown-item')
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase()
+          item.style.display = text.includes(term) ? 'block' : 'none'
+        })
+      })
+    </script>
+  </body>
+</html>

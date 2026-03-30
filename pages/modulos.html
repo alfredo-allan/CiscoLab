@@ -6,24 +6,26 @@
     <title>NETSEC · Todos os Módulos CCNA</title>
 
     <!-- FONTES -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
 
     <!-- FONT AWESOME -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- BOOTSTRAP CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/modulos.css" />
     <link rel="stylesheet" href="../css/dropdow.css" />
+    <style>
+      @media (min-width: 1200px) {
+        .container,
+        .container-lg,
+        .container-md,
+        .container-sm,
+        .container-xl {
+          max-width: 100%;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- NAVBAR SIMPLES -->
@@ -37,22 +39,11 @@
       "
     >
       <div class="container">
-        <a
-          class="navbar-brand"
-          href="#"
-          style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem"
-        >
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
           &#9760; CyberSec |
           <span style="color: white; font-weight: 400">Estudos Cisco</span>
         </a>
-        <a
-          href="../index.html"
-          class="btn btn-sm"
-          style="
-            color: var(--cisco-green);
-            border: 1px solid var(--cisco-green);
-          "
-        >
+        <a href="../index.html" class="btn btn-sm" style="color: var(--cisco-green); border: 1px solid var(--cisco-green)">
           <i class="fas fa-arrow-left me-1"></i> Voltar
         </a>
       </div>
@@ -64,7 +55,7 @@
         <!-- TÍTULO -->
         <h1 class="page-title">
           <i class="fas fa-cubes me-3" style="color: var(--cisco-green)"></i>
-          Todos os Módulos CCNA
+          Todos os Módulos
         </h1>
 
         <!-- STATS BAR -->
@@ -90,11 +81,7 @@
         <!-- GRID DE MÓDULOS (5 colunas no desktop) -->
         <div class="modulos-grid">
           <!-- MÓDULO 1 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="1"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="1" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 1</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -102,25 +89,18 @@
             <span class="badge-modulo mb-2">Introdução às Redes</span>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag"></i> INTRODUÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../index.html#modulo-intro"
-                    onclick="event.stopPropagation()"
+                  <a href="../index.html#modulo-intro" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>1.0.1 Introdução</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../index.html#modulo-aprendizado"
-                    onclick="event.stopPropagation()"
+                  <a href="../index.html#modulo-aprendizado" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>1.0.2 O que aprender</a
                   >
                 </li>
@@ -128,72 +108,46 @@
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-shield-halved"></i> AMEAÇAS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../index.html#dominios-ameaca"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>1.1.1 Domínios de
-                    Ameaça</a
+                  <a href="../index.html#dominios-ameaca" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.1 Domínios de Ameaça</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../index.html#tipos-ameacas"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>1.1.2 Tipos de
-                    Ameaças</a
+                  <a href="../index.html#tipos-ameacas" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.2 Tipos de Ameaças</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../index.html#origem-ameacas"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>1.1.5 Origem das
-                    Ameaças</a
+                  <a href="../index.html#origem-ameacas" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.5 Origem das Ameaças</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../index.html#vulnerabilidades-usuario"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>1.1.8
-                    Vulnerabilidades</a
+                  <a href="../index.html#vulnerabilidades-usuario" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.1.8 Vulnerabilidades</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../index.html#termos-avancados"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>1.2.1 Glossário
-                    Técnico</a
+                  <a href="../index.html#termos-avancados" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>1.2.1 Glossário Técnico</a
                   >
                 </li>
               </ul>
             </div>
 
-            <a
-              href="../index.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="../index.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
 
           <!-- MÓDULO 2 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="2"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="2" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 2</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -201,98 +155,65 @@
             <span class="badge-modulo mb-2">Atores e Ameaças</span>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag"></i> INTRODUÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_2.html#modulo-intro"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_2.html#modulo-intro" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>2.0.1 Por que fazer?</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_2.html#modulo-aprendizado"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>2.0.2 O que vou
-                    aprender</a
+                  <a href="../pages/modulo_2.html#modulo-aprendizado" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.0.2 O que vou aprender</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_2.html#redes-alvo"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>2.1.2 Redes são
-                    alvos</a
+                  <a href="../pages/modulo_2.html#redes-alvo" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.1.2 Redes são alvos</a
                   >
                 </li>
               </ul>
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-user-secret"></i> ATORES
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_2.html#hacker-vs-ator"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_2.html#hacker-vs-ator" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>2.2.2 Hacker vs Ator</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_2.html#tipos-hackers"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>White, Gray e Black
-                    Hat</a
+                  <a href="../pages/modulo_2.html#tipos-hackers" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>White, Gray e Black Hat</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_2.html#evolucao-atores"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>2.2.3 Evolução dos
-                    Atores</a
+                  <a href="../pages/modulo_2.html#evolucao-atores" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.2.3 Evolução dos Atores</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_2.html#cibercriminosos"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>2.2.4
-                    Cibercriminosos</a
+                  <a href="../pages/modulo_2.html#cibercriminosos" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>2.2.4 Cibercriminosos</a
                   >
                 </li>
               </ul>
             </div>
 
-            <a
-              href="../pages/modulo_2.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="../pages/modulo_2.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
 
           <!-- MÓDULO 3 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="3"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="3" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 3</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -300,80 +221,49 @@
             <span class="badge-modulo mb-2">Protocolos e Vulnerabilidades</span>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag"></i> INTRODUÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_3.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>3.0 Introdução</a
-                  >
+                  <a href="../pages/modulo_3.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>3.0 Introdução</a>
                 </li>
               </ul>
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-network-wired"></i> PROTOCOLOS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_3.html"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_3.html" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>3.1 Cabeçalho IP</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_3.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>3.2 Vulnerabilidades
-                    IP</a
+                  <a href="../pages/modulo_3.html" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>3.2 Vulnerabilidades IP</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_3.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>3.3 TCP/UDP</a
-                  >
+                  <a href="../pages/modulo_3.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>3.3 TCP/UDP</a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_3.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>3.4 Resumo</a
-                  >
+                  <a href="../pages/modulo_3.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>3.4 Resumo</a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="../pages/modulo_3.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="../pages/modulo_3.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
 
           <!-- MÓDULO 4 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="4"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="4" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 4</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -381,99 +271,61 @@
             <span class="badge-modulo mb-2">Serviços e Mitigação</span>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag"></i> INTRODUÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_4.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>4.0 Introdução</a
-                  >
+                  <a href="../pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.0 Introdução</a>
                 </li>
               </ul>
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-cogs"></i> SERVIÇOS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_4.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>4.1 Serviços IP</a
-                  >
+                  <a href="../pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.1 Serviços IP</a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_4.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>4.2 Serviços
-                    Corporativos</a
+                  <a href="../pages/modulo_4.html" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>4.2 Serviços Corporativos</a
                   >
                 </li>
               </ul>
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-shield-alt"></i> MITIGAÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_4.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>4.3 Mitigação</a
-                  >
+                  <a href="../pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.3 Mitigação</a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_4.html"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>4.4 Resumo</a
-                  >
+                  <a href="../pages/modulo_4.html" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>4.4 Resumo</a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_4.html#casos-reais"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_4.html#casos-reais" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>Casos Reais</a
                   >
                 </li>
               </ul>
             </div>
 
-            <a
-              href="../pages/modulo_4.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="../pages/modulo_4.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Ver módulo completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
 
           <!-- MÓDULO 5 (completo com subcategorias) -->
-          <div
-            class="modulo-coluna"
-            data-modulo="5"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="5" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 5</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -481,25 +333,18 @@
             <span class="badge-modulo mb-2">Comunicação de Rede Sem Fio</span>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag"></i> INTRODUÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-intro"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-intro" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.0.1 Por que usar?</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-objetivos"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-objetivos" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.0.2 Objetivos</a
                   >
                 </li>
@@ -507,79 +352,53 @@
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-wifi"></i> COMUNICAÇÕES SEM FIO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-video1"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.1.1 Vídeo Operação
-                    WLAN</a
+                  <a href="../pages/modulo_5.html#mod5-video1" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.1 Vídeo Operação WLAN</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-wlan-vs-wired"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.1.2 Wireless vs
-                    Wired</a
+                  <a href="../pages/modulo_5.html#mod5-wlan-vs-wired" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.2 Wireless vs Wired</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-frame"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-frame" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.1.3 Quadro 802.11</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-csmaca"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-csmaca" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.1.4 CSMA/CA</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_5.html#mod5-association"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.1.5 Cliente e
-                    Associação AP</a
+                  <a href="/pages/modulo_5.html#mod5-association" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.5 Cliente e Associação AP</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_5.html#mod5-parameters"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.1.6 Parâmetros de
-                    Associação</a
+                  <a href="/pages/modulo_5.html#mod5-parameters" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.6 Parâmetros de Associação</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-discovery-modes"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.1.7 Modos
-                    Passivo/Ativo</a
+                  <a href="../pages/modulo_5.html#mod5-discovery-modes" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.1.7 Modos Passivo/Ativo</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-quiz"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-quiz" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.1.8 Verificação</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-devices"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-devices" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.1.9 AP, LWAP e WLC</a
                   >
                 </li>
@@ -587,46 +406,33 @@
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-exclamation-triangle"></i> AMEAÇAS DE WLAN
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-security-overview"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-security-overview" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.2.1 Visão Geral</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-dos"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-dos" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.2.2 Ataques DoS</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-rogue-ap"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-rogue-ap" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.2.3 Rogue APs</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-mitm"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-mitm" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.2.4 Ataque MITM</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-threats-quiz"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-threats-quiz" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.2.5 Verificação</a
                   >
                 </li>
@@ -634,81 +440,55 @@
             </div>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-lock"></i> WLANS SEGURAS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-ssid-cloaking"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-ssid-cloaking" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.3.1 SSID Cloaking</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-auth-methods"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-auth-methods" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.3.2 Métodos 802.11</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-shared-key"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.3.3 Chave
-                    Compartilhada</a
+                  <a href="../pages/modulo_5.html#mod5-shared-key" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.3 Chave Compartilhada</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-home-auth"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.3.4 Autenticação
-                    Doméstica</a
+                  <a href="../pages/modulo_5.html#mod5-home-auth" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.4 Autenticação Doméstica</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-encryption"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-encryption" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.3.5 Criptografia</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-enterprise"
-                    onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>5.3.6 Autenticação
-                    Empresa</a
+                  <a href="../pages/modulo_5.html#mod5-enterprise" onclick="event.stopPropagation()"
+                    ><i class="fas fa-chevron-right"></i>5.3.6 Autenticação Empresa</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-wpa3"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-wpa3" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.3.7 WPA3</a
                   >
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_5.html#mod5-secure-quiz"
-                    onclick="event.stopPropagation()"
+                  <a href="../pages/modulo_5.html#mod5-secure-quiz" onclick="event.stopPropagation()"
                     ><i class="fas fa-chevron-right"></i>5.3.8 Verificação</a
                   >
                 </li>
               </ul>
             </div>
 
-            <a
-              href="../pages/modulo_5.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="../pages/modulo_5.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Acessar Módulo 5 <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
@@ -717,11 +497,7 @@
         <!-- SEGUNDA LINHA: Módulos 6-10 (simplificados) -->
         <div class="modulos-grid mt-4">
           <!-- Módulo 6 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="6"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="6" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 6</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -730,57 +506,34 @@
 
             <!-- CONCEITOS DE FIREWALL -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-fire"></i> CONCEITOS DE FIREWALL
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#firewall-operacao"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.1.1 Finalidade dos
-                    firewalls
+                  <a href="../pages/modulo_6.html#firewall-operacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.1.1 Finalidade dos firewalls
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#firewall-operacao"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.1.2 Firewalls -
-                    Operação
+                  <a href="../pages/modulo_6.html#firewall-operacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.1.2 Firewalls - Operação
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#firewall-propriedades"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-angle-right ms-3 me-1"></i>Propriedades
-                    comuns
+                  <a href="../pages/modulo_6.html#firewall-propriedades" onclick="event.stopPropagation()">
+                    <i class="fas fa-angle-right ms-3 me-1"></i>Propriedades comuns
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#firewall-beneficios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-angle-right ms-3 me-1"></i>Benefícios do
-                    firewall
+                  <a href="../pages/modulo_6.html#firewall-beneficios" onclick="event.stopPropagation()">
+                    <i class="fas fa-angle-right ms-3 me-1"></i>Benefícios do firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#firewall-limitacoes"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-angle-right ms-3 me-1"></i>Limitações do
-                    firewall
+                  <a href="../pages/modulo_6.html#firewall-limitacoes" onclick="event.stopPropagation()">
+                    <i class="fas fa-angle-right ms-3 me-1"></i>Limitações do firewall
                   </a>
                 </li>
               </ul>
@@ -788,48 +541,29 @@
 
             <!-- ARQUITETURAS DE SEGURANÇA -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-city"></i> ARQUITETURAS DE SEGURANÇA
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#arquiteturas"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.1.3 Arquiteturas
-                    comuns
+                  <a href="../pages/modulo_6.html#arquiteturas" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.1.3 Arquiteturas comuns
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#privado-publico"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-angle-right ms-3 me-1"></i>Privado e
-                    Público
+                  <a href="../pages/modulo_6.html#privado-publico" onclick="event.stopPropagation()">
+                    <i class="fas fa-angle-right ms-3 me-1"></i>Privado e Público
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#dmz"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-angle-right ms-3 me-1"></i>Zona
-                    Desmilitarizada (DMZ)
+                  <a href="../pages/modulo_6.html#dmz" onclick="event.stopPropagation()">
+                    <i class="fas fa-angle-right ms-3 me-1"></i>Zona Desmilitarizada (DMZ)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#zpf"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-angle-right ms-3 me-1"></i>Firewalls
-                    baseados em zona (ZPF)
+                  <a href="../pages/modulo_6.html#zpf" onclick="event.stopPropagation()">
+                    <i class="fas fa-angle-right ms-3 me-1"></i>Firewalls baseados em zona (ZPF)
                   </a>
                 </li>
               </ul>
@@ -837,63 +571,38 @@
 
             <!-- TIPOS DE FIREWALL -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-microchip"></i> TIPOS DE FIREWALL
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#tipos-firewall"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.1.4 Firewalls por
-                    filtragem de pacotes
+                  <a href="../pages/modulo_6.html#tipos-firewall" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.1.4 Firewalls por filtragem de pacotes
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#tipos-firewall"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_6.html#tipos-firewall" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>6.1.5 Firewalls stateful
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#tipos-firewall"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.1.6 Firewalls de
-                    gateway de aplicação (proxy)
+                  <a href="../pages/modulo_6.html#tipos-firewall" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.1.6 Firewalls de gateway de aplicação (proxy)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#tipos-firewall"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.1.7 Firewalls de
-                    última geração (NGFW)
+                  <a href="../pages/modulo_6.html#tipos-firewall" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.1.7 Firewalls de última geração (NGFW)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#tipos-firewall"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.1.8 Firewalls software
-                    e hardware
+                  <a href="../pages/modulo_6.html#tipos-firewall" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.1.8 Firewalls software e hardware
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#tipos-firewall"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_6.html#tipos-firewall" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>6.1.9 Firewalls IPS
                   </a>
                 </li>
@@ -902,56 +611,34 @@
 
             <!-- SOLUÇÕES DE SEGURANÇA -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-shield-halved"></i> SOLUÇÕES DE SEGURANÇA
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#acl"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.2.1 Controle de
-                    tráfego com ACLs
+                  <a href="../pages/modulo_6.html#acl" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.2.1 Controle de tráfego com ACLs
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#monitoramento"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.2.2 Serviços de
-                    monitoramento
+                  <a href="../pages/modulo_6.html#monitoramento" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.2.2 Serviços de monitoramento
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#aaa-vpn"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_6.html#aaa-vpn" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>6.2.3 Serviços AAA e VPN
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#caso-real"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.2.4 Caso real:
-                    EmpresaXYZ
+                  <a href="../pages/modulo_6.html#caso-real" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.2.4 Caso real: EmpresaXYZ
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#verificacao"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>6.2.5 Verifique sua
-                    compreensão
+                  <a href="../pages/modulo_6.html#verificacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>6.2.5 Verifique sua compreensão
                   </a>
                 </li>
               </ul>
@@ -959,110 +646,67 @@
 
             <!-- LABORATÓRIOS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flask"></i> LABORATÓRIOS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-flask me-2"></i>6.3.1 Lab - Pesquisar
-                    firewalls
+                  <a href="../pages/modulo_6.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-flask me-2"></i>6.3.1 Lab - Pesquisar firewalls
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_6.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_6.html#laboratorios" onclick="event.stopPropagation()">
                     <i class="fas fa-flask me-2"></i>6.3.2 Lab - Explorar VPNs
                   </a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="../pages/modulo_6.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="../pages/modulo_6.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Acessar módulo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
 
           <!-- Módulo 7 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="7"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="7" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 7</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
             </div>
-            <span class="badge-modulo mb-2"
-              >Windows - Arquitetura e Segurança</span
-            >
+            <span class="badge-modulo mb-2">Windows - Arquitetura e Segurança</span>
 
             <!-- HISTÓRICO DO WINDOWS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-history"></i> HISTÓRICO DO WINDOWS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#historia-dos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.1.1 Sistema
-                    Operacional de Disco (DOS)
+                  <a href="../pages/modulo_7.html#historia-dos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.1 Sistema Operacional de Disco (DOS)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#versoes-windows"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.1.2 Versões do Windows
-                    (7, 8, 10, 11, Server)
+                  <a href="../pages/modulo_7.html#versoes-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.2 Versões do Windows (7, 8, 10, 11, Server)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#windows-gui"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.1.3 Windows GUI (Área
-                    de Trabalho, Barra de Tarefas)
+                  <a href="../pages/modulo_7.html#windows-gui" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.3 Windows GUI (Área de Trabalho, Barra de Tarefas)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#vulnerabilidades"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.1.4 Vulnerabilidades
-                    do SO
+                  <a href="../pages/modulo_7.html#vulnerabilidades" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.4 Vulnerabilidades do SO
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#personalizacao"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.1.5 Personalização e
-                    Menu de Contexto
+                  <a href="../pages/modulo_7.html#personalizacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.1.5 Personalização e Menu de Contexto
                   </a>
                 </li>
               </ul>
@@ -1070,102 +714,59 @@
 
             <!-- ARQUITETURA E OPERAÇÕES -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-microchip"></i> ARQUITETURA E OPERAÇÕES
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#hal"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.1 Camada de
-                    Abstração de Hardware (HAL)
+                  <a href="../pages/modulo_7.html#hal" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.1 Camada de Abstração de Hardware (HAL)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#user-kernel-mode"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.2 Modo de Usuário e
-                    Modo Kernel
+                  <a href="../pages/modulo_7.html#user-kernel-mode" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.2 Modo de Usuário e Modo Kernel
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#sistemas-arquivos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.3 Sistemas de
-                    Arquivos do Windows
+                  <a href="../pages/modulo_7.html#sistemas-arquivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.3 Sistemas de Arquivos do Windows
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#fluxos-dados"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.4 Fluxos de Dados
-                    Alternativos (ADS)
+                  <a href="../pages/modulo_7.html#fluxos-dados" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.4 Fluxos de Dados Alternativos (ADS)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#processo-inicializacao"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.5 Processo de
-                    Inicialização do Windows
+                  <a href="../pages/modulo_7.html#processo-inicializacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.5 Processo de Inicialização do Windows
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#inicializacao-windows"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.6 Inicialização do
-                    Windows (MSConfig)
+                  <a href="../pages/modulo_7.html#inicializacao-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.6 Inicialização do Windows (MSConfig)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#desligamento-windows"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.7 Desligamento do
-                    Windows
+                  <a href="../pages/modulo_7.html#desligamento-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.7 Desligamento do Windows
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#processos-threads"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.8 Processos, Threads
-                    e Serviços
+                  <a href="../pages/modulo_7.html#processos-threads" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.8 Processos, Threads e Serviços
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#alocacao-memoria"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.9 Alocação e Alças
-                    de Memória
+                  <a href="../pages/modulo_7.html#alocacao-memoria" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.9 Alocação e Alças de Memória
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#registro-windows"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.2.10 O Registro do
-                    Windows
+                  <a href="../pages/modulo_7.html#registro-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.2.10 O Registro do Windows
                   </a>
                 </li>
               </ul>
@@ -1173,73 +774,44 @@
 
             <!-- CONFIGURAÇÃO E MONITORAMENTO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-sliders-h"></i> CONFIGURAÇÃO E MONITORAMENTO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#executar-como-administrador"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.3.1 Executar como
-                    Administrador
+                  <a href="../pages/modulo_7.html#executar-como-administrador" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.1 Executar como Administrador
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#usuarios-dominios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.3.2 Usuários e
-                    Domínios Locais
+                  <a href="../pages/modulo_7.html#usuarios-dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.2 Usuários e Domínios Locais
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#cli-powershell"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_7.html#cli-powershell" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>7.3.3 CLI e PowerShell
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#wmi"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.3.4 Instrumentação de
-                    Gerenciamento do Windows (WMI)
+                  <a href="../pages/modulo_7.html#wmi" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.4 Instrumentação de Gerenciamento do Windows (WMI)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#comando-net"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_7.html#comando-net" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>7.3.5 O Comando net
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#gerenciador-recursos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.3.6 Gerenciador de
-                    Tarefas e Monitor de Recursos
+                  <a href="../pages/modulo_7.html#gerenciador-recursos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.6 Gerenciador de Tarefas e Monitor de Recursos
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_7.html#rede"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.3.7 Rede (Centro de
-                    Rede, nslookup, netstat)
+                  <a href="../pages/modulo_7.html#rede" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.3.7 Rede (Centro de Rede, nslookup, netstat)
                   </a>
                 </li>
               </ul>
@@ -1247,75 +819,44 @@
 
             <!-- SEGURANÇA DO WINDOWS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-shield-alt"></i> SEGURANÇA DO WINDOWS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#netstat-seguranca"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.4.1 O Comando netstat
-                    (Detecção de Malware)
+                  <a href="/pages/modulo_7.html#netstat-seguranca" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.1 O Comando netstat (Detecção de Malware)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#visualizador-eventos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.4.2 Visualizador de
-                    Eventos
+                  <a href="/pages/modulo_7.html#visualizador-eventos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.2 Visualizador de Eventos
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#windows-update"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.4.3 Gerenciamento de
-                    atualizações do Windows
+                  <a href="/pages/modulo_7.html#windows-update" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.3 Gerenciamento de atualizações do Windows
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#politica-seguranca-local"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.4.4 Política de
-                    Segurança Local
+                  <a href="/pages/modulo_7.html#politica-seguranca-local" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.4 Política de Segurança Local
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#windows-defender"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.4.5 Windows Defender
-                    (Antimalware)
+                  <a href="/pages/modulo_7.html#windows-defender" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.5 Windows Defender (Antimalware)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#windows-firewall"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.4.6 Windows Defender
-                    Firewall
+                  <a href="/pages/modulo_7.html#windows-firewall" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.6 Windows Defender Firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#verifique-compreensao"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.4.7 Verifique sua
-                    compreensão (Quiz)
+                  <a href="/pages/modulo_7.html#verifique-compreensao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.4.7 Verifique sua compreensão (Quiz)
                   </a>
                 </li>
               </ul>
@@ -1323,21 +864,14 @@
 
             <!-- RESUMO DO MÓDULO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#resumo-windows"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.5 Resumo do Sistema
-                    Operacional Windows
+                  <a href="/pages/modulo_7.html#resumo-windows" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.5 Resumo do Sistema Operacional Windows
                   </a>
                 </li>
               </ul>
@@ -1345,111 +879,70 @@
 
             <!-- LABORATÓRIOS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flask"></i> LABORATÓRIOS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_7.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>7.6.1 Lab - Linha de
-                    Comando (CMD)
+                  <a href="/pages/modulo_7.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>7.6.1 Lab - Linha de Comando (CMD)
                   </a>
                 </li>
                 <li>
-                  <a href="#" onclick="event.stopPropagation()">
-                    <i class="fas fa-chevron-right"></i>7.6.2 Lab - PowerShell
-                    (Em breve)
-                  </a>
+                  <a href="#" onclick="event.stopPropagation()"> <i class="fas fa-chevron-right"></i>7.6.2 Lab - PowerShell (Em breve) </a>
                 </li>
                 <li>
                   <a href="#" onclick="event.stopPropagation()">
-                    <i class="fas fa-chevron-right"></i>7.6.3 Lab - Gerenciador
-                    de Tarefas (Em breve)
+                    <i class="fas fa-chevron-right"></i>7.6.3 Lab - Gerenciador de Tarefas (Em breve)
                   </a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="/pages/modulo_7.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="/pages/modulo_7.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
 
           <!-- Módulo 8 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="8"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="8" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 8</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
             </div>
-            <span class="badge-modulo mb-2"
-              >Linux - Visão Geral e Segurança</span
-            >
+            <span class="badge-modulo mb-2">Linux - Visão Geral e Segurança</span>
 
             <!-- LINUX BÁSICO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fab fa-linux"></i> LINUX BÁSICO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#o-que-e-linux"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_8.html#o-que-e-linux" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>8.1.1 O que é Linux?
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#valor-do-linux"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_8.html#valor-do-linux" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>8.1.2 O valor do Linux
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#linux-no-soc"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.1.3 Linux no SOC
-                    (Security Onion)
+                  <a href="../pages/modulo_8.html#linux-no-soc" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.1.3 Linux no SOC (Security Onion)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#ferramentas-soc"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_8.html#ferramentas-soc" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>8.1.4 Ferramentas do SOC
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#ferramentas-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.1.5 Kali Linux e
-                    Pentesting
+                  <a href="../pages/modulo_8.html#ferramentas-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.1.5 Kali Linux e Pentesting
                   </a>
                 </li>
               </ul>
@@ -1457,66 +950,39 @@
 
             <!-- TRABALHANDO NO LINUX SHELL -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-terminal"></i> TRABALHANDO NO LINUX SHELL
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#shell-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.2.1 O Shell Linux
-                    (Terminal)
+                  <a href="../pages/modulo_8.html#shell-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.2.1 O Shell Linux (Terminal)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#comandos-basicos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.2.2 Comandos Básicos
-                    (ls, cd, pwd, sudo)
+                  <a href="../pages/modulo_8.html#comandos-basicos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.2.2 Comandos Básicos (ls, cd, pwd, sudo)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#comandos-arquivos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.2.3 Comandos de
-                    arquivo e diretório
+                  <a href="../pages/modulo_8.html#comandos-arquivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.2.3 Comandos de arquivo e diretório
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#editores-texto"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.2.4 Trabalhando com
-                    arquivos de texto (nano)
+                  <a href="../pages/modulo_8.html#editores-texto" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.2.4 Trabalhando com arquivos de texto (nano)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#arquivos-texto"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.2.5 A importância dos
-                    arquivos de texto
+                  <a href="../pages/modulo_8.html#arquivos-texto" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.2.5 A importância dos arquivos de texto
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#comandos-adicionais"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.2.6 Comandos
-                    Adicionais (iwconfig, shutdown, passwd)
+                  <a href="../pages/modulo_8.html#comandos-adicionais" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.2.6 Comandos Adicionais (iwconfig, shutdown, passwd)
                   </a>
                 </li>
               </ul>
@@ -1524,39 +990,24 @@
 
             <!-- SERVIDORES E CLIENTES LINUX -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-server"></i> SERVIDORES E CLIENTES LINUX
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#cliente-servidor"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.3.1 Introdução às
-                    comunicações cliente-servidor
+                  <a href="../pages/modulo_8.html#cliente-servidor" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.3.1 Introdução às comunicações cliente-servidor
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#portas-servicos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.3.2 Servidores,
-                    serviços e suas portas (FTP, SSH, HTTP)
+                  <a href="../pages/modulo_8.html#portas-servicos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.3.2 Servidores, serviços e suas portas (FTP, SSH, HTTP)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#clientes"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.3.3 Clientes
-                    (Navegadores, FTP, SSH)
+                  <a href="../pages/modulo_8.html#clientes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.3.3 Clientes (Navegadores, FTP, SSH)
                   </a>
                 </li>
               </ul>
@@ -1564,40 +1015,24 @@
 
             <!-- ADMINISTRAÇÃO BÁSICA DO SERVIDOR -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
-                <i class="fas fa-shield-alt"></i> ADMINISTRAÇÃO BÁSICA DO
-                SERVIDOR
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-shield-alt"></i> ADMINISTRAÇÃO BÁSICA DO SERVIDOR
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#arquivos-configuracao"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.4.1 Arquivos de
-                    configuração de serviço (nginx, ntp, snort)
+                  <a href="../pages/modulo_8.html#arquivos-configuracao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.4.1 Arquivos de configuração de serviço (nginx, ntp, snort)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#hardening"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.4.2 Dispositivos de
-                    endurecimento (Hardening)
+                  <a href="../pages/modulo_8.html#hardening" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.4.2 Dispositivos de endurecimento (Hardening)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#monitoramento-logs"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.4.3 Monitoramento de
-                    logs de serviço (/var/log)
+                  <a href="../pages/modulo_8.html#monitoramento-logs" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.4.3 Monitoramento de logs de serviço (/var/log)
                   </a>
                 </li>
               </ul>
@@ -1605,48 +1040,29 @@
 
             <!-- O SISTEMA DE ARQUIVOS LINUX -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-folder-tree"></i> O SISTEMA DE ARQUIVOS LINUX
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#tipos-sistemas-arquivos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.5.1 Tipos de sistema
-                    de arquivos (ext2, ext3, ext4, NFS)
+                  <a href="../pages/modulo_8.html#tipos-sistemas-arquivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.5.1 Tipos de sistema de arquivos (ext2, ext3, ext4, NFS)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_8.html#permissoes-arquivos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.5.2 Permissões de
-                    arquivo (rwx, chmod, octal)
+                  <a href="/pages/modulo_8.html#permissoes-arquivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.5.2 Permissões de arquivo (rwx, chmod, octal)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#links-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.5.3 Links rígidos e
-                    links simbólicos (ln)
+                  <a href="../pages/modulo_8.html#links-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.5.3 Links rígidos e links simbólicos (ln)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#montagem-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.5.4 Montagem de
-                    sistemas de arquivos (mount, umount)
+                  <a href="../pages/modulo_8.html#montagem-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.5.4 Montagem de sistemas de arquivos (mount, umount)
                   </a>
                 </li>
               </ul>
@@ -1654,30 +1070,19 @@
 
             <!-- TRABALHANDO COM A GUI LINUX -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-desktop"></i> TRABALHANDO COM A GUI LINUX
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#x-window"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.6.1 X Window System
-                    (X11)
+                  <a href="../pages/modulo_8.html#x-window" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.6.1 X Window System (X11)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#gui-ubuntu"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.6.2 A GUI do Linux
-                    (Ubuntu/Gnome 3)
+                  <a href="../pages/modulo_8.html#gui-ubuntu" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.6.2 A GUI do Linux (Ubuntu/Gnome 3)
                   </a>
                 </li>
               </ul>
@@ -1685,66 +1090,39 @@
 
             <!-- TRABALHANDO EM UM HOST LINUX -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-laptop-code"></i> TRABALHANDO EM UM HOST LINUX
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#gerenciadores-pacotes"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.7.1 Instalando e
-                    executando aplicativos (apt, pacman)
+                  <a href="../pages/modulo_8.html#gerenciadores-pacotes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.7.1 Instalando e executando aplicativos (apt, pacman)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#atualizacoes"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.7.2 Manter o sistema
-                    atualizado (update, upgrade)
+                  <a href="../pages/modulo_8.html#atualizacoes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.7.2 Manter o sistema atualizado (update, upgrade)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#processos-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.7.3 Gerenciamento de
-                    processos (ps, top, kill)
+                  <a href="../pages/modulo_8.html#processos-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.7.3 Gerenciamento de processos (ps, top, kill)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#malware-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.7.4 Malware em um host
-                    Linux
+                  <a href="../pages/modulo_8.html#malware-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.7.4 Malware em um host Linux
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#rootkit-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.7.5 Verificação de
-                    Rootkit (chkrootkit)
+                  <a href="../pages/modulo_8.html#rootkit-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.7.5 Verificação de Rootkit (chkrootkit)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#pipe-linux"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.7.6 Comandos de
-                    tubulação (Pipe |)
+                  <a href="../pages/modulo_8.html#pipe-linux" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.7.6 Comandos de tubulação (Pipe |)
                   </a>
                 </li>
               </ul>
@@ -1752,19 +1130,13 @@
 
             <!-- RESUMO DO MÓDULO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#resumo-linux"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="../pages/modulo_8.html#resumo-linux" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>8.8 Resumo do Linux
                   </a>
                 </li>
@@ -1773,68 +1145,41 @@
 
             <!-- LABORATÓRIOS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flask"></i> LABORATÓRIOS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.9.1 Lab - Comandos
-                    Básicos Linux
+                  <a href="../pages/modulo_8.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.9.1 Lab - Comandos Básicos Linux
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.9.2 Lab - Análise de
-                    Logs (syslog)
+                  <a href="../pages/modulo_8.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.9.2 Lab - Análise de Logs (syslog)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.9.3 Lab - Wireshark no
-                    Linux
+                  <a href="../pages/modulo_8.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.9.3 Lab - Wireshark no Linux
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="../pages/modulo_8.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>8.9.4 Lab - Permissões
-                    de Arquivo (chmod)
+                  <a href="../pages/modulo_8.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>8.9.4 Lab - Permissões de Arquivo (chmod)
                   </a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="../pages/modulo_8.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="../pages/modulo_8.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
 
           <!-- Módulo 9 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="9"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="9" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 9</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -1842,43 +1187,25 @@
             <span class="badge-modulo mb-2">Firewalls</span>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-fire"></i> FIREWALL
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a href="#" onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>9.1 Tipos de
-                    Firewall</a
-                  >
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>9.1 Tipos de Firewall</a>
                 </li>
                 <li>
-                  <a href="#" onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>9.2 ACLs</a
-                  >
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>9.2 ACLs</a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="#"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
-              Em breve <i class="fas fa-clock ms-1"></i>
-            </a>
+            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
           </div>
 
           <!-- Módulo 10 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="10"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="10" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 10</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -1886,75 +1213,45 @@
             <span class="badge-modulo mb-2">IDS/IPS</span>
 
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-shield-virus"></i> IDS/IPS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a href="#" onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>10.1 Detecção</a
-                  >
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>10.1 Detecção</a>
                 </li>
                 <li>
-                  <a href="#" onclick="event.stopPropagation()"
-                    ><i class="fas fa-chevron-right"></i>10.2 Prevenção</a
-                  >
+                  <a href="#" onclick="event.stopPropagation()"><i class="fas fa-chevron-right"></i>10.2 Prevenção</a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="#"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
-              Em breve <i class="fas fa-clock ms-1"></i>
-            </a>
+            <a href="#" class="link-ver-todos" onclick="event.stopPropagation()"> Em breve <i class="fas fa-clock ms-1"></i> </a>
           </div>
           <!-- Módulo 14 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="14"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="14" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 14</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
             </div>
-            <span class="badge-modulo mb-2"
-              >Listas de Controle de Acesso (ACL)</span
-            >
+            <span class="badge-modulo mb-2">Listas de Controle de Acesso (ACL)</span>
 
             <!-- INTRODUÇÃO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-door-open"></i> INTRODUÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#modulo-intro"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.0.1 Por que fazer
-                    este módulo?
+                  <a href="/pages/modulo_14.html#modulo-intro" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.0.1 Por que fazer este módulo?
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#modulo-objetivos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.0.2 O que irei
-                    aprender neste módulo?
+                  <a href="/pages/modulo_14.html#modulo-objetivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.0.2 O que irei aprender neste módulo?
                   </a>
                 </li>
               </ul>
@@ -1962,54 +1259,33 @@
 
             <!-- INTRODUÇÃO ÀS ACLs -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-list-ul"></i> INTRODUÇÃO ÀS ACLs
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#intro-acl"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.1 Introdução às
-                    listas de controle de acesso
+                  <a href="/pages/modulo_14.html#intro-acl" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.1 Introdução às listas de controle de acesso
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#o-que-e-acl"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_14.html#o-que-e-acl" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>14.1.1 O que é uma ACL?
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#filtragem-pacote"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.1.2 Filtragem de
-                    pacote
+                  <a href="/pages/modulo_14.html#filtragem-pacote" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.1.2 Filtragem de pacote
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#acls-nomeadas-numeradas"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.1.3 ACLs nomeadas e
-                    numeradas
+                  <a href="/pages/modulo_14.html#acls-nomeadas-numeradas" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.1.3 ACLs nomeadas e numeradas
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#operacao-acl"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_14.html#operacao-acl" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>14.1.4 Operação ACL
                   </a>
                 </li>
@@ -2018,57 +1294,34 @@
 
             <!-- MÁSCARAS CURINGA -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-code-branch"></i> MÁSCARAS CURINGA
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#visao-geral-mascara"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.2.1 Visão geral da
-                    máscara curinga
+                  <a href="/pages/modulo_14.html#visao-geral-mascara" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.2.1 Visão geral da máscara curinga
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#tipos-mascara-curinga"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.2.2 Tipos de Máscara
-                    de Curinga
+                  <a href="/pages/modulo_14.html#tipos-mascara-curinga" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.2.2 Tipos de Máscara de Curinga
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#calculo-mascara-curinga"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.2.3 Cálculo da
-                    máscara curinga
+                  <a href="/pages/modulo_14.html#calculo-mascara-curinga" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.2.3 Cálculo da máscara curinga
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#palavras-chave-mascara"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.2.4 Palavras-chave de
-                    máscara curinga
+                  <a href="/pages/modulo_14.html#palavras-chave-mascara" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.2.4 Palavras-chave de máscara curinga
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#verificacao-mascaras"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.2.5 Verifique seu
-                    entendimento
+                  <a href="/pages/modulo_14.html#verificacao-mascaras" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.2.5 Verifique seu entendimento
                   </a>
                 </li>
               </ul>
@@ -2076,35 +1329,23 @@
 
             <!-- CONFIGURAÇÃO DE ACLs -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-cogs"></i> CONFIGURAÇÃO DE ACLs
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#configurar-acls"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_14.html#configurar-acls" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>14.3 Configurar ACLs
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#modificar-acls"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_14.html#modificar-acls" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>14.4 Modificar ACLs
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#implementar-acls"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_14.html#implementar-acls" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>14.5 Implementar ACLs
                   </a>
                 </li>
@@ -2113,48 +1354,29 @@
 
             <!-- MITIGAÇÃO DE ATAQUES -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-shield-virus"></i> MITIGAÇÃO DE ATAQUES
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#mitigar-spoofing"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.6.1 Mitigar Ataques
-                    Spoofing
+                  <a href="/pages/modulo_14.html#mitigar-spoofing" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.6.1 Mitigar Ataques Spoofing
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#permitir-traffico-firewall"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.6.2 Permitir o
-                    tráfego necessário através de um firewall
+                  <a href="/pages/modulo_14.html#permitir-traffico-firewall" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.6.2 Permitir o tráfego necessário através de um firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#mitigar-icmp"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.6.3 Mitigar Ataques
-                    ICMP
+                  <a href="/pages/modulo_14.html#mitigar-icmp" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.6.3 Mitigar Ataques ICMP
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#mitigar-snmp"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.6.4 Mitigar Ataques
-                    SNMP
+                  <a href="/pages/modulo_14.html#mitigar-snmp" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.6.4 Mitigar Ataques SNMP
                   </a>
                 </li>
               </ul>
@@ -2162,39 +1384,24 @@
 
             <!-- IPv6 ACLs -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fab fa-ipv6"></i> IPv6 ACLs
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#visao-geral-ipv6"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.7.1 Visão geral do
-                    IPv6 ACL
+                  <a href="/pages/modulo_14.html#visao-geral-ipv6" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.7.1 Visão geral do IPv6 ACL
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#sintaxe-ipv6-acl"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.7.2 Sintaxe da ACL
-                    IPv6
+                  <a href="/pages/modulo_14.html#sintaxe-ipv6-acl" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.7.2 Sintaxe da ACL IPv6
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#configurar-ipv6-acl"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.7.3 Configurar ACLs
-                    de IPv6
+                  <a href="/pages/modulo_14.html#configurar-ipv6-acl" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.7.3 Configurar ACLs de IPv6
                   </a>
                 </li>
               </ul>
@@ -2202,29 +1409,19 @@
 
             <!-- RESUMO DO MÓDULO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#resumo-modulo"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_14.html#resumo-modulo" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>14.8 Resumo do Módulo
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#conclusao-glossario"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>📚 Glossário e
-                    Explicação Didática
+                  <a href="/pages/modulo_14.html#conclusao-glossario" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📚 Glossário e Explicação Didática
                   </a>
                 </li>
               </ul>
@@ -2232,84 +1429,50 @@
 
             <!-- LABORATÓRIOS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flask"></i> LABORATÓRIOS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.9.1 Lab -
-                    Configurando ACLs Padrão
+                  <a href="/pages/modulo_14.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.9.1 Lab - Configurando ACLs Padrão
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.9.2 Lab -
-                    Configurando ACLs Estendidas
+                  <a href="/pages/modulo_14.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.9.2 Lab - Configurando ACLs Estendidas
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.9.3 Lab - Máscaras
-                    Curinga na Prática
+                  <a href="/pages/modulo_14.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.9.3 Lab - Máscaras Curinga na Prática
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.9.4 Lab - Mitigando
-                    Ataques com ACLs
+                  <a href="/pages/modulo_14.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.9.4 Lab - Mitigando Ataques com ACLs
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_14.html#laboratorios" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>14.9.5 Lab - ACLs IPv6
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_14.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>14.9.6 Lab - Verificação
-                    de Sintaxe
+                  <a href="/pages/modulo_14.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>14.9.6 Lab - Verificação de Sintaxe
                   </a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="/pages/modulo_14.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="/pages/modulo_14.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
           <!-- Módulo 15 -->
-          <div
-            class="modulo-coluna"
-            data-modulo="15"
-            onclick="toggleModulo(this)"
-          >
+          <div class="modulo-coluna" data-modulo="15" onclick="toggleModulo(this)">
             <div class="modulo-titulo">
               <span><i class="fas fa-cube me-2"></i>Módulo 15</span>
               <i class="fas fa-chevron-right seta-mobile"></i>
@@ -2318,30 +1481,19 @@
 
             <!-- INTRODUÇÃO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-door-open"></i> INTRODUÇÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#modulo-intro"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.0.1 Por que fazer
-                    este módulo?
+                  <a href="/pages/modulo_15.html#modulo-intro" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.0.1 Por que fazer este módulo?
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#modulo-objetivos"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.0.2 O que irei
-                    aprender neste módulo?
+                  <a href="/pages/modulo_15.html#modulo-objetivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.0.2 O que irei aprender neste módulo?
                   </a>
                 </li>
               </ul>
@@ -2349,55 +1501,34 @@
 
             <!-- PROTEÇÃO COM FIREWALLS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-shield-halved"></i> PROTEÇÃO COM FIREWALLS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#firewalls"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.1.1 Firewalls -
-                    Operação
+                  <a href="/pages/modulo_15.html#firewalls" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.1.1 Firewalls - Operação
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#propriedades"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>Propriedades comuns do
-                    Firewall
+                  <a href="/pages/modulo_15.html#propriedades" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Propriedades comuns do Firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#beneficios"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_15.html#beneficios" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>Benefícios do firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#limitacoes"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_15.html#limitacoes" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>Limitações do firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#tipos-firewalls"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.1.2 Tipos de
-                    firewalls
+                  <a href="/pages/modulo_15.html#tipos-firewalls" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.1.2 Tipos de firewalls
                   </a>
                 </li>
               </ul>
@@ -2405,40 +1536,24 @@
 
             <!-- FIREWALLS EM PROJETOS DE REDE -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
-                <i class="fas fa-network-wired"></i> FIREWALLS EM PROJETOS DE
-                REDE
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-network-wired"></i> FIREWALLS EM PROJETOS DE REDE
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#arquiteturas-seguranca"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.2.1 Arquiteturas
-                    comuns de segurança
+                  <a href="/pages/modulo_15.html#arquiteturas-seguranca" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.2.1 Arquiteturas comuns de segurança
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#defesa-camadas"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.2.2 Defesa em camadas
-                    (Defense in Depth)
+                  <a href="/pages/modulo_15.html#defesa-camadas" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.2.2 Defesa em camadas (Defense in Depth)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#verifique-design"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.2.3 Verifique sua
-                    compreensão - Design
+                  <a href="/pages/modulo_15.html#verifique-design" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.2.3 Verifique sua compreensão - Design
                   </a>
                 </li>
               </ul>
@@ -2446,57 +1561,34 @@
 
             <!-- TIPOS DE FIREWALL (DETALHADO) -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-fire"></i> TIPOS DE FIREWALL
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#firewall-filtragem"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>Firewall de filtragem de
-                    pacotes (Stateless)
+                  <a href="/pages/modulo_15.html#firewall-filtragem" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Firewall de filtragem de pacotes (Stateless)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#firewall-stateful"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>Firewall com monitoração
-                    de estado (Stateful)
+                  <a href="/pages/modulo_15.html#firewall-stateful" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Firewall com monitoração de estado (Stateful)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#firewall-gateway"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>Firewall de gateway de
-                    aplicativo (Proxy)
+                  <a href="/pages/modulo_15.html#firewall-gateway" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Firewall de gateway de aplicativo (Proxy)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#firewall-ngfw"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>Firewall de última
-                    geração (NGFW)
+                  <a href="/pages/modulo_15.html#firewall-ngfw" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Firewall de última geração (NGFW)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#implementacoes"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>Outras implementações
-                    (Host, Transparente, Híbrido)
+                  <a href="/pages/modulo_15.html#implementacoes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Outras implementações (Host, Transparente, Híbrido)
                   </a>
                 </li>
               </ul>
@@ -2504,29 +1596,19 @@
 
             <!-- VERIFIQUE SUA COMPREENSÃO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-question-circle"></i> VERIFIQUE SUA COMPREENSÃO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#verifique-compreensao"
-                    onclick="event.stopPropagation()"
-                  >
+                  <a href="/pages/modulo_15.html#verifique-compreensao" onclick="event.stopPropagation()">
                     <i class="fas fa-chevron-right"></i>Quiz - Tipos de Firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#verifique-design"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>Quiz - Conceitos de
-                    Design de Segurança
+                  <a href="/pages/modulo_15.html#verifique-design" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Quiz - Conceitos de Design de Segurança
                   </a>
                 </li>
               </ul>
@@ -2534,66 +1616,39 @@
 
             <!-- APRENDIZADO DIDÁTICO - ENTENDENDO FIREWALLS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-graduation-cap"></i> APRENDIZADO DIDÁTICO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#entendendo-firewalls"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>📖 Entendendo Firewalls
-                    de Forma Simples
+                  <a href="/pages/modulo_15.html#entendendo-firewalls" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📖 Entendendo Firewalls de Forma Simples
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#historia-firewalls"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>📜 A História dos
-                    Firewalls (1980 - Hoje)
+                  <a href="/pages/modulo_15.html#historia-firewalls" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📜 A História dos Firewalls (1980 - Hoje)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#modelo-osi-simples"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>📬 O Modelo OSI
-                    Explicado (Metáfora da Carta)
+                  <a href="/pages/modulo_15.html#modelo-osi-simples" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📬 O Modelo OSI Explicado (Metáfora da Carta)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#tipos-firewalls-simples"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>🎭 Tipos de Firewall em
-                    Metáforas
+                  <a href="/pages/modulo_15.html#tipos-firewalls-simples" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>🎭 Tipos de Firewall em Metáforas
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#glossario"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>📚 Glossário de Termos
-                    Técnicos
+                  <a href="/pages/modulo_15.html#glossario" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📚 Glossário de Termos Técnicos
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#faq-firewalls"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>❓ Perguntas Frequentes
-                    (FAQ)
+                  <a href="/pages/modulo_15.html#faq-firewalls" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>❓ Perguntas Frequentes (FAQ)
                   </a>
                 </li>
               </ul>
@@ -2601,30 +1656,19 @@
 
             <!-- RESUMO DO MÓDULO -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#resumo-firewalls"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.5 Resumo -
-                    Tecnologias de Firewall
+                  <a href="/pages/modulo_15.html#resumo-firewalls" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.5 Resumo - Tecnologias de Firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#aprendizado"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.3.1 O que eu aprendi
-                    neste módulo?
+                  <a href="/pages/modulo_15.html#aprendizado" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.3.1 O que eu aprendi neste módulo?
                   </a>
                 </li>
               </ul>
@@ -2632,58 +1676,673 @@
 
             <!-- LABORATÓRIOS -->
             <div class="modulo-categoria">
-              <div
-                class="categoria-header"
-                onclick="toggleCategoria(event, this)"
-              >
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
                 <i class="fas fa-flask"></i> LABORATÓRIOS
                 <i class="fas fa-chevron-down toggle-icon"></i>
               </div>
               <ul class="categoria-lista">
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.9.1 Lab -
-                    Configuração de Firewall em Roteador
+                  <a href="/pages/modulo_15.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.9.1 Lab - Configuração de Firewall em Roteador
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.9.2 Lab - Análise de
-                    Regras de Firewall
+                  <a href="/pages/modulo_15.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.9.2 Lab - Análise de Regras de Firewall
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.9.3 Lab -
-                    Configurando ZPF (Zone-Based Policy Firewall)
+                  <a href="/pages/modulo_15.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.9.3 Lab - Configurando ZPF (Zone-Based Policy Firewall)
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/pages/modulo_15.html#laboratorios"
-                    onclick="event.stopPropagation()"
-                  >
-                    <i class="fas fa-chevron-right"></i>15.9.4 Lab - Verificação
-                    de Políticas de Segurança
+                  <a href="/pages/modulo_15.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>15.9.4 Lab - Verificação de Políticas de Segurança
                   </a>
                 </li>
               </ul>
             </div>
 
-            <a
-              href="/pages/modulo_15.html"
-              class="link-ver-todos"
-              onclick="event.stopPropagation()"
-            >
+            <a href="/pages/modulo_15.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+          <div class="modulo-coluna" data-modulo="16" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-firewall me-2"></i>Módulo 16</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Firewalls de Política com Base em Zona</span>
+
+            <!-- INTRODUÇÃO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-door-open"></i> INTRODUÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#introducao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.0.1 Por que fazer este módulo?
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#objetivos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.0.2 O que irei aprender neste módulo?
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- VISÃO GERAL DO ZPF -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-eye"></i> VISÃO GERAL DO ZPF
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#visao-geral" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.1 Visão Geral do Firewall de Política Baseado em Zona
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#beneficios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.1.1 Benefícios de um ZPF
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#projeto" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.1.2 Projeto ZPF (Etapas de Planejamento)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#topologias" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Exemplos de Projetos ZPF (Topologias de Referência)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- OPERAÇÃO ZPF -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-cogs"></i> OPERAÇÃO ZPF
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#operacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.2 Operação ZPF e C3PL
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#acoes-zpf" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.2.1 Ações ZPF (Inspect, Drop, Pass)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#transito" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.2.2 Regras para Tráfego de Trânsito
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#self-zone" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.2.3 Regras para Tráfego para a Zona Self (Autozona)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CONFIGURAÇÃO ZPF -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-terminal"></i> CONFIGURAÇÃO ZPF
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#configuracao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3 Configure um ZPF
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#etapa1" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.2 Etapa 1: Crie as zonas
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#etapa2" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.3 Etapa 2: Identifique o tráfego (Class-Map)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#etapa3" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.4 Etapa 3: Defina uma ação (Policy-Map)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#etapa4" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.5 Etapa 4: Crie um Zone-Pair
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#etapa5" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.6 Etapa 5: Atribua zonas às interfaces
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#verificacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.7 Verifique uma configuração ZPF
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#comandos-verificacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.8 Comandos de Verificação do ZPF
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#verificacao-sessoes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.9 Verificação de Sessões ZPF
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#consideracoes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.3.10 Considerações de Configuração do ZPF
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- VERIFIQUE SUA COMPREENSÃO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-question-circle"></i> VERIFIQUE SUA COMPREENSÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#quiz-acoes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Quiz - Ações ZPF (Inspect, Drop, Pass)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#quiz-regras" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Quiz - Regras de Tráfego e Zona Self
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#quiz-configuracao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Quiz - Comandos de Configuração ZPF
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- APRENDIZADO DIDÁTICO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-graduation-cap"></i> APRENDIZADO DIDÁTICO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#entendendo-zpf" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📖 Entendendo ZPF de Forma Simples (Analogia do Prédio)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#glossario" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📚 Glossário de Termos Técnicos (Zona, Inspect, Drop, Pass)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#regras-simples" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📋 Regras do ZPF em Português Claro
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#faq-zpf" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>❓ Perguntas Frequentes (FAQ)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#checklist" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>✅ Checklist de Fixação
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RESUMO DO MÓDULO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#resumo" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>16.5 Resumo - Firewalls de Política com Base em Zona
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#aprendizado" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>O que aprendi neste módulo?
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- LABORATÓRIOS -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flask"></i> LABORATÓRIOS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_16.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Packet Tracer: Implementando um ZPF Básico
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Verificação de Sintaxe: Comandos CLI ZPF
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_16.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Lab: Configurando ZPF com Múltiplas Zonas
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="../pages/modulo_16.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+          <!-- Módulo 17 -->
+          <div class="modulo-coluna" data-modulo="17" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cloud me-2"></i>Módulo 17</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Segurança em Nuvem</span>
+
+            <!-- INTRODUÇÃO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-door-open"></i> INTRODUÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#introducao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.0.1 Por que fazer este módulo?
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#topicos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.0.2 O que irei aprender neste módulo?
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- VIRTUALIZAÇÃO E COMPUTAÇÃO EM NUVEM Módulo 17 -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-cube"></i> VIRTUALIZAÇÃO E COMPUTAÇÃO EM NUVEM
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#virtualizacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1 Virtualização e Computação em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#ambiente-virtual" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1.2 O Ambiente Virtual (Hypervisors)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#riscos-virtualizacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1.3 Riscos da Virtualização (VM Escape, VM Sprawl)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#tecnologia-nuvem" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1.4 Tecnologia na Nuvem (XaaS)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#classificacoes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1.5 Classificações da Nuvem (Privada, Pública, Híbrida, Comunitária)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#fog-edge" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1.6 Fog Computing e Edge Computing
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#ameacas" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1.7 Principais Ameaças à Computação em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#verificacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.1.8 Verifique seu entendimento - Virtualização
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- OS DOMÍNIOS DA SEGURANÇA EM NUVEM -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-layer-group"></i> OS DOMÍNIOS DA SEGURANÇA EM NUVEM
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.2 Os 14 Domínios da Segurança em Nuvem (CSA)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Conceitos e Arquiteturas de Computação em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Governança e Gerenciamento de Riscos
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Questões Jurídicas e Descoberta Eletrônica
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Gerenciamento de Conformidade e Auditoria
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Governança da Informação
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Plano de Gerenciamento e Continuidade dos Negócios
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Segurança como Serviço (SecaaS)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Segurança de Infraestrutura
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Virtualização e Contêineres
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Resposta a Incidentes (IR)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Segurança de Aplicações
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Segurança e Criptografia de Dados
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Gerenciamento de Identidade e Acesso (IAM)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#dominios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Tecnologias Relacionadas (IoT, Big Data, AI)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- SEGURANÇA DE INFRAESTRUTURA EM NUVEM -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-server"></i> SEGURANÇA DE INFRAESTRUTURA EM NUVEM
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#seguranca-infraestrutura" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.3.1 Segurança de Infraestrutura em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#responsabilidades" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.3.2 Modelo de Responsabilidade Compartilhada
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#consideracoes-seguranca" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.3.3 Considerações de Segurança (Microssegmentação, SDN)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#verificacao-infraestrutura" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.3.4 Verifique seu entendimento - Segurança de Infraestrutura
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- SEGURANÇA DE DADOS EM NUVEM -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-database"></i> SEGURANÇA DE DADOS EM NUVEM
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#tecnicas-codificacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.2 Técnicas de Codificação (Normalização, Procedimentos)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#validacao-entrada" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.3 Validação de Entrada
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#regras-validacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.4 Regras de Validação (Tamanho, Formato, Consistência)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#verificacoes-integridade" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.5 Verificações de Integridade (Checksum, Hashing)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#criptografia-hashes" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.6 Criptografia vs Hashing
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#disponibilidade-dados" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.7 Disponibilidade de Dados (Redundância, Backups, DRP)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#verificacao-pratica" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.8 Verificação Prática de Integridade
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#quiz-integridade" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.4.9 Quiz - Integridade de Dados
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CONTROLE DE ACESSO E AUTENTICAÇÃO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-user-lock"></i> CONTROLE DE ACESSO E AUTENTICAÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#controle-acesso-metodos" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.5.1 Métodos de Controle de Acesso (Identificação, Autenticação, Autorização)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#detalhes-autenticacao" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.5.2 Fatores de Autenticação (Algo que sei, tenho, sou)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#quiz-controle-acesso" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.5.6 Quiz - Controle de Acesso
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#tipos-controles-seguranca" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.5.7 Tipos de Controles de Segurança (Físico, Administrativo, Lógico)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#detalhes-controles-seguranca" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.5.8 Detalhamento dos Controles
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#quiz-controles-seguranca" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.5.11 Quiz Final - Controles de Segurança
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- APRENDIZADO DIDÁTICO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-graduation-cap"></i> APRENDIZADO DIDÁTICO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#entendendo-nuvem" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📖 Entendendo Computação em Nuvem de Forma Simples
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#historia-nuvem" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📜 A História da Computação em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#analogia-condominio" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>🏢 Metáfora: Nuvem como Condomínio (IaaS, PaaS, SaaS)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#analogia-hashing" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>🔐 Metáfora: Hashing como Impressão Digital
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#glossario-nuvem" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>📚 Glossário de Termos Técnicos
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#faq-nuvem" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>❓ Perguntas Frequentes (FAQ)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RESUMO DO MÓDULO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#sintese-modulo-17" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>17.5.12 Síntese Estratégica - O Escudo da Informação
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#aprendizado" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>O que aprendi neste módulo?
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- LABORATÓRIOS -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flask"></i> LABORATÓRIOS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_17.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Lab 17.1: Configuração de Segurança em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Atividade 17.2.3: Identificando Ameaças em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Atividade 17.3.4: Protegendo Infraestrutura Cloud
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Atividade 17.5.6: Criptografia de Dados em Nuvem
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_17.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Atividade 17.6.5: Hardening de VMs
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="../pages/modulo_17.html" class="link-ver-todos" onclick="event.stopPropagation()">
               Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
@@ -2693,17 +2352,14 @@
         <div class="terminal-card mt-5 text-center p-4">
           <i class="fas fa-rocket me-2" style="color: var(--cisco-green)"></i>
           <span style="color: var(--terminal-text)"
-            >+17 módulos em desenvolvimento • Roteamento avançado, Segurança de
-            endpoint, Automação, IoT e muito mais</span
+            >+17 módulos em desenvolvimento • Roteamento avançado, Segurança de endpoint, Automação, IoT e muito mais</span
           >
         </div>
         <div class="cybersec-search-container">
           <div class="cybersec-search-header">
             <i class="fas fa-terminal"></i>
             <span class="cybersec-search-title">BUSCA GLOBAL_</span>
-            <span class="cybersec-search-badge" id="searchModulesCount"
-              >6 módulos</span
-            >
+            <span class="cybersec-search-badge" id="searchModulesCount">6 módulos</span>
           </div>
 
           <div class="cybersec-search-input-wrapper">
@@ -2718,14 +2374,8 @@
           </div>
 
           <div class="cybersec-search-stats">
-            <span
-              ><i class="fas fa-database"></i>
-              <span id="searchStatsResults">0</span> resultados
-              encontrados</span
-            >
-            <span id="searchStatus"
-              ><i class="fas fa-check-circle"></i> pronto</span
-            >
+            <span><i class="fas fa-database"></i> <span id="searchStatsResults">0</span> resultados encontrados</span>
+            <span id="searchStatus"><i class="fas fa-check-circle"></i> pronto</span>
           </div>
 
           <div class="cybersec-search-results" id="cybersecSearchResults">
@@ -2734,10 +2384,7 @@
 
           <div class="cybersec-search-footer">
             <span><i class="fas fa-keyboard"></i> Enter para buscar</span>
-            <span
-              ><i class="fas fa-mouse-pointer"></i> Clique para navegar até a
-              seção</span
-            >
+            <span><i class="fas fa-mouse-pointer"></i> Clique para navegar até a seção</span>
             <span><i class="fas fa-code"></i> busca em 6 módulos</span>
           </div>
         </div>
@@ -2750,20 +2397,13 @@
         <div class="row">
           <div class="col-md-6">
             <h5 style="color: white; font-weight: 700">
-              <i
-                class="fas fa-shield-halved me-2"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
               NET<span style="color: var(--cisco-green)">SEC</span>
             </h5>
-            <p style="color: var(--text-muted)">
-              Documentação interativa CCNAv7
-            </p>
+            <p style="color: var(--text-muted)">Documentação interativa CCNAv7</p>
           </div>
           <div class="col-md-6 text-md-end">
-            <p style="color: var(--text-muted)">
-              🧙 Alfredo Allan • Conteúdo Cisco Academy
-            </p>
+            <p style="color: var(--text-muted)">🧙 Alfredo Allan • Conteúdo Cisco Academy</p>
           </div>
         </div>
       </div>
@@ -2777,61 +2417,57 @@
       // Função para toggle no mobile (expande/recolhe o card inteiro)
       function toggleModulo(elemento) {
         if (window.innerWidth <= 991) {
-          elemento.classList.toggle("expandido");
+          elemento.classList.toggle('expandido')
         }
       }
 
       // Função para toggle das categorias (abre/fecha lista de tópicos)
       function toggleCategoria(event, header) {
-        event.stopPropagation();
-        const lista = header.nextElementSibling;
-        const icon = header.querySelector(".toggle-icon");
+        event.stopPropagation()
+        const lista = header.nextElementSibling
+        const icon = header.querySelector('.toggle-icon')
 
-        if (lista.classList.contains("collapsed")) {
-          lista.classList.remove("collapsed");
-          icon.classList.remove("fa-chevron-down");
-          icon.classList.add("fa-chevron-up");
+        if (lista.classList.contains('collapsed')) {
+          lista.classList.remove('collapsed')
+          icon.classList.remove('fa-chevron-down')
+          icon.classList.add('fa-chevron-up')
         } else {
-          lista.classList.add("collapsed");
-          icon.classList.remove("fa-chevron-up");
-          icon.classList.add("fa-chevron-down");
+          lista.classList.add('collapsed')
+          icon.classList.remove('fa-chevron-up')
+          icon.classList.add('fa-chevron-down')
         }
       }
 
       // Previne que o clique nos links feche o card no mobile
-      document
-        .querySelectorAll(
-          ".modulo-lista a, .categoria-lista a, .link-ver-todos",
-        )
-        .forEach((link) => {
-          link.addEventListener("click", function (e) {
-            e.stopPropagation();
-          });
-        });
+      document.querySelectorAll('.modulo-lista a, .categoria-lista a, .link-ver-todos').forEach((link) => {
+        link.addEventListener('click', function (e) {
+          e.stopPropagation()
+        })
+      })
 
       // Por padrão, deixa todas as categorias abertas no desktop
       // e fechadas no mobile (opcional)
       function ajustarCategoriasPorTela() {
-        const isMobile = window.innerWidth <= 991;
-        const categorias = document.querySelectorAll(".categoria-lista");
-        const icons = document.querySelectorAll(".toggle-icon");
+        const isMobile = window.innerWidth <= 991
+        const categorias = document.querySelectorAll('.categoria-lista')
+        const icons = document.querySelectorAll('.toggle-icon')
 
         categorias.forEach((lista, index) => {
           if (isMobile) {
-            lista.classList.add("collapsed");
-            icons[index]?.classList.remove("fa-chevron-up");
-            icons[index]?.classList.add("fa-chevron-down");
+            lista.classList.add('collapsed')
+            icons[index]?.classList.remove('fa-chevron-up')
+            icons[index]?.classList.add('fa-chevron-down')
           } else {
-            lista.classList.remove("collapsed");
-            icons[index]?.classList.remove("fa-chevron-down");
-            icons[index]?.classList.add("fa-chevron-up");
+            lista.classList.remove('collapsed')
+            icons[index]?.classList.remove('fa-chevron-down')
+            icons[index]?.classList.add('fa-chevron-up')
           }
-        });
+        })
       }
 
       // Executa no carregamento e ao redimensionar
-      window.addEventListener("load", ajustarCategoriasPorTela);
-      window.addEventListener("resize", ajustarCategoriasPorTela);
+      window.addEventListener('load', ajustarCategoriasPorTela)
+      window.addEventListener('resize', ajustarCategoriasPorTela)
     </script>
   </body>
 </html>
