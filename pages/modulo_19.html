@@ -1,0 +1,1988 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 19 - Tecnologias e Protocolos | CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <style>
+      /* ==================== GLOSSÁRIO INTERATIVO ==================== */
+      .glossary-section {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        padding: 1.5rem;
+      }
+
+      .glossary-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .glossary-term {
+        background: rgba(102, 191, 83, 0.1);
+        border: 1px solid rgba(102, 191, 83, 0.3);
+        border-radius: 40px;
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: help;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .glossary-term:hover {
+        background: rgba(102, 191, 83, 0.25);
+        transform: translateY(-2px);
+        border-color: var(--cisco-green);
+      }
+
+      .glossary-term::after {
+        content: attr(data-definition);
+        position: absolute;
+        bottom: 130%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--bg-primary);
+        border: 1px solid var(--cisco-green);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-size: 0.8rem;
+        font-weight: normal;
+        color: var(--text-secondary);
+        white-space: nowrap;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s ease;
+        pointer-events: none;
+        width: max-content;
+        max-width: 300px;
+        white-space: normal;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .glossary-term:hover::after {
+        opacity: 1;
+        visibility: visible;
+        bottom: 140%;
+      }
+
+      /* ==================== CASOS REAIS ==================== */
+      .real-case-card {
+        background: var(--bg-secondary);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+        border: 1px solid var(--border-primary);
+      }
+
+      .real-case-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--cisco-green);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .case-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem;
+        border-bottom: 1px solid var(--border-primary);
+      }
+
+      .case-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+      }
+
+      .bg-danger-soft {
+        background: rgba(220, 53, 69, 0.15);
+        color: #dc3545;
+      }
+      .bg-warning-soft {
+        background: rgba(255, 193, 7, 0.15);
+        color: #ffc107;
+      }
+      .bg-primary-soft {
+        background: rgba(13, 110, 253, 0.15);
+        color: #0d6efd;
+      }
+      .bg-cyan-soft {
+        background: rgba(13, 202, 240, 0.15);
+        color: #0dcaf0;
+      }
+      .bg-dark-soft {
+        background: rgba(33, 37, 41, 0.5);
+        color: #adb5bd;
+      }
+      .bg-purple-soft {
+        background: rgba(111, 66, 193, 0.15);
+        color: #6f42c1;
+      }
+
+      .case-title {
+        font-size: 1rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .case-year {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+      }
+
+      .case-content {
+        padding: 1.25rem;
+      }
+
+      .case-analogy,
+      .case-lesson {
+        font-size: 0.85rem;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 0.75rem;
+        border-radius: 12px;
+      }
+
+      .case-analogy {
+        border-left: 3px solid var(--accent-yellow);
+      }
+
+      .case-lesson {
+        border-left: 3px solid var(--cisco-green);
+      }
+
+      /* ==================== MAPA MENTAL ==================== */
+      .mindmap-section {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 20px;
+        padding: 1.5rem;
+      }
+
+      .mindmap-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .mindmap-center {
+        margin-bottom: 2rem;
+      }
+
+      .mindmap-node.central {
+        background: var(--cisco-green);
+        color: var(--bg-primary);
+        padding: 1rem 1.5rem;
+        border-radius: 60px;
+        text-align: center;
+        font-weight: 800;
+        box-shadow: 0 0 20px rgba(102, 191, 83, 0.5);
+      }
+
+      .mindmap-level.level-1 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3rem;
+      }
+
+      .mindmap-node.protocolos,
+      .mindmap-node.tecnologias {
+        background: var(--bg-card);
+        border: 1px solid var(--border-primary);
+        border-radius: 20px;
+        padding: 1rem;
+        min-width: 280px;
+        text-align: center;
+      }
+
+      .mindmap-node.protocolos i,
+      .mindmap-node.tecnologias i {
+        font-size: 1.5rem;
+        color: var(--cisco-green);
+        margin-bottom: 0.5rem;
+      }
+
+      .mindmap-children {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        justify-content: center;
+      }
+
+      .mindmap-child {
+        background: rgba(102, 191, 83, 0.1);
+        border-radius: 12px;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        text-align: center;
+      }
+
+      .mindmap-child.threat {
+        border-left: 3px solid var(--accent-red);
+      }
+
+      .mindmap-child.defense {
+        border-left: 3px solid var(--cisco-green);
+      }
+
+      .mindmap-child span {
+        color: var(--text-muted);
+        font-size: 0.65rem;
+      }
+
+      /* ==================== CHECKLIST DIDÁTICO ==================== */
+      .checklist-item-didatico {
+        background: rgba(102, 191, 83, 0.05);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.75rem;
+        border-left: 3px solid var(--cisco-green);
+      }
+
+      /* ==================== RESPONSIVIDADE ==================== */
+      @media (max-width: 768px) {
+        .glossary-term::after {
+          max-width: 250px;
+          font-size: 0.7rem;
+          white-space: normal;
+          left: 0;
+          transform: translateX(0);
+          bottom: auto;
+          top: 100%;
+        }
+
+        .glossary-term:hover::after {
+          bottom: auto;
+          top: 120%;
+        }
+
+        .mindmap-level.level-1 {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .case-header {
+          flex-direction: column;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 19 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li>
+                  <h6 class="dropdown-header text-success"><i class="fas fa-book-open me-2"></i>Navegação Rápida</h6>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#introducao"><i class="fas fa-flag-checkered me-2 text-success"></i>19.0 Introdução</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#monitorando-protocolos"
+                    ><i class="fas fa-chart-line me-2 text-success"></i>19.1 Monitorando Protocolos Comuns</a
+                  >
+                </li>
+                <li><a class="dropdown-item ps-4" href="#syslog-ntp">19.1.1 Syslog e NTP</a></li>
+                <li><a class="dropdown-item ps-4" href="#ntp-detalhes">19.1.2 NTP</a></li>
+                <li><a class="dropdown-item ps-4" href="#dns">19.1.3 DNS - Exfiltração</a></li>
+                <li><a class="dropdown-item ps-4" href="#http-https">19.1.4 HTTP e HTTPS</a></li>
+                <li><a class="dropdown-item ps-4" href="#email">19.1.5 Protocolos de Email</a></li>
+                <li><a class="dropdown-item ps-4" href="#icmp">19.1.6 ICMP</a></li>
+                <li>
+                  <a class="dropdown-item" href="#tecnologias-seguranca"
+                    ><i class="fas fa-shield-alt me-2 text-success"></i>19.2 Tecnologias de Segurança</a
+                  >
+                </li>
+                <li><a class="dropdown-item ps-4" href="#acls">19.2.1 ACLs</a></li>
+                <li><a class="dropdown-item ps-4" href="#nat-pat">19.2.2 NAT e PAT</a></li>
+                <li><a class="dropdown-item ps-4" href="#tunelamento">19.2.3 Criptografia e Tunelamento</a></li>
+                <li><a class="dropdown-item ps-4" href="#p2p-tor">19.2.4 P2P e Tor</a></li>
+                <li><a class="dropdown-item ps-4" href="#balanceamento">19.2.5 Balanceamento de Carga</a></li>
+                <li>
+                  <a class="dropdown-item" href="#verificacao"
+                    ><i class="fas fa-brain me-2 text-success"></i>19.2.6 Verifique sua compreensão</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#resumo"
+                    ><i class="fas fa-graduation-cap me-2 text-success"></i>19.3 Resumo de Tecnologias e Protocolos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#descomplicando"
+                    ><i class="fas fa-lightbulb me-2 text-warning"></i>🎓 Descomplicando: Entenda na prática</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"
+                    ><i class="fas fa-flask me-2 text-success"></i>🧪 Laboratórios e Atividades</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="../pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container py-5">
+      <!-- Título Principal -->
+      <div class="mb-5">
+        <h1 class="cisco-title display-5">Módulo 19: Tecnologias e Protocolos</h1>
+        <p class="text-muted mt-3 fs-5">Explicar como as tecnologias de segurança afetam o monitoramento de segurança.</p>
+        <div class="mt-3 d-flex gap-2 flex-wrap">
+          <span class="badge-cisco"><i class="fas fa-chart-line me-1"></i> Monitoramento de Protocolos</span>
+          <span class="badge-cisco"><i class="fas fa-shield-alt me-1"></i> Tecnologias de Segurança</span>
+          <span class="badge-cisco"><i class="fas fa-database me-1"></i> Syslog & NTP</span>
+          <span class="badge-cisco"><i class="fas fa-mask me-1"></i> DNS Exfiltração</span>
+        </div>
+      </div>
+
+      <!-- 19.0 INTRODUÇÃO -->
+      <section id="introducao" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">19.0 Introdução</h2>
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h3 class="cisco-subtitle mb-3">Por que devo usar este módulo?</h3>
+              <p>
+                Os bons protocolos podem ter maus usos. Às vezes, os protocolos que usamos diariamente podem ser virados contra nós. Existem
+                muitos protocolos diferentes que são usados nas operações diárias de uma rede. Este módulo explicará como esses protocolos
+                interagem e impactam o monitoramento da segurança da rede.
+              </p>
+              <div class="alert-cisco mt-3">
+                <i class="fas fa-graduation-cap me-2"></i>
+                <strong>Objetivos do Módulo:</strong>
+                <ul class="mt-2 mb-0">
+                  <li>✓ Explicar o comportamento dos protocolos de rede comuns no contexto do monitoramento de segurança</li>
+                  <li>✓ Explicar como as tecnologias de segurança afetam a capacidade de monitorar protocolos de rede comuns</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div class="icon-box">
+                <i class="fas fa-network-wired fa-4x" style="color: var(--cisco-green)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 19.1 MONITORANDO PROTOCOLOS COMUNS -->
+      <section id="monitorando-protocolos" class="mb-5">
+        <h2 class="cisco-title-alt display-6 mb-4">19.1 Monitorando Protocolos Comuns</h2>
+
+        <!-- 19.1.1 Syslog e NTP -->
+        <div class="content-card" id="syslog-ntp">
+          <h3 class="cisco-subtitle">19.1.1 Syslog e NTP</h3>
+          <div class="row">
+            <div class="col-md-7">
+              <p>
+                Vários protocolos que geralmente aparecem em redes têm recursos que os tornam de especial interesse no monitoramento de
+                segurança. Por exemplo, syslog e Network Time Protocol (NTP) são essenciais para o trabalho do analista de segurança
+                cibernética.
+              </p>
+              <p>
+                O padrão syslog é usado para registrar mensagens de eventos de dispositivos de rede e endpoints. O padrão permite um meio
+                neutro de sistema de transmissão, armazenamento e análise de mensagens. Muitos tipos de dispositivos de vários fornecedores
+                diferentes podem usar syslog para enviar entradas de log para servidores centrais que executam um daemon syslog.
+              </p>
+              <div class="terminal-card mt-3">
+                <pre><code># Syslog - Porta UDP 514
+# Centralização de logs para monitoramento de segurança</code></pre>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card text-center">
+                <i class="fas fa-server fa-3x mb-3" style="color: var(--cisco-green)"></i>
+                <div class="diagram-flow">
+                  <div>Dispositivos de Rede</div>
+                  <i class="fas fa-arrow-down mx-2"></i>
+                  <div>Servidor Syslog</div>
+                  <i class="fas fa-arrow-down mx-2"></i>
+                  <div>Estação de Monitoramento</div>
+                </div>
+                <p class="small text-muted mt-2">Fluxo de logs centralizados</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="alert-cisco">
+              <i class="fas fa-exclamation-triangle me-2" style="color: var(--accent-yellow)"></i>
+              <strong>Ameaças ao Syslog:</strong> Atores maliciosos podem atacar servidores syslog para ocultar evidências de explorações,
+              bloquear transferência de dados ou destruir logs. Syslog-ng oferece aprimoramentos de segurança.
+            </div>
+            <div class="mt-2">
+              <span class="badge-cisco-alt"><i class="fas fa-search me-1"></i> Pesquise: syslog-ng</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.1.2 NTP -->
+        <div class="content-card mt-4" id="ntp-detalhes">
+          <h3 class="cisco-subtitle">19.1.2 NTP (Network Time Protocol)</h3>
+          <div class="row">
+            <div class="col-md-8">
+              <p>
+                As mensagens do Syslog geralmente são carimbadas de data e hora. Isso permite que mensagens de diferentes fontes sejam
+                organizadas pelo tempo para fornecer uma visão dos processos de comunicação de rede. Como as mensagens podem vir de muitos
+                dispositivos, é importante que os dispositivos compartilhem um timeclock consistente.
+              </p>
+              <p>
+                O Network Time Protocol (NTP) usa uma hierarquia de fontes de tempo autoritativas para compartilhar informações de tempo
+                entre dispositivos na rede. O NTP opera na porta UDP 123.
+              </p>
+              <div class="terminal-card mt-2">
+                <pre><code># NTP - Porta UDP 123
+# Sincronização de tempo para correlação de eventos</code></pre>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="diagram-card">
+                <i class="fas fa-clock fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>Fonte Autoritativa</strong> → <strong>Servidor NTP Local</strong> → <strong>Dispositivos</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="alert-cisco">
+              <i class="fas fa-skull-crossbones me-2"></i>
+              <strong>Ameaças NTP:</strong> Atores podem atacar infraestrutura NTP para corromper informações de tempo (ofuscando rastros)
+              ou usar servidores NTP em ataques DDoS por amplificação.
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.1.3 DNS - Exfiltração -->
+        <div class="content-card mt-4" id="dns">
+          <h3 class="cisco-subtitle">19.1.3 DNS - Exfiltração de Dados</h3>
+          <p>
+            O Serviço de Nome de Domínio (DNS) é usado por milhões de pessoas diariamente. Por isso, muitas organizações têm políticas menos
+            rigorosas para proteger contra ameaças baseadas em DNS. Os invasores reconheceram isso e geralmente encapsulam diferentes
+            protocolos de rede no DNS para evitar dispositivos de segurança.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-7">
+              <p>
+                Algumas variedades de malware usam DNS para se comunicar com servidores de comando e controle (CNC) e para exfiltrar dados
+                no tráfego disfarçados como consultas DNS normais. Vários tipos de codificação, como Base64, binário de 8 bits e Hex podem
+                ser usados para camuflar os dados.
+              </p>
+              <div class="terminal-card">
+                <pre><code># Exemplo de exfiltração via DNS
+aW4gcGxhY2UgDg8gcHJvdGVjdC.example.com
+BhZ2FpbnN0IEROUyBiYXNIZCBOa.example.com
+HJJYXRzIHRoYW4gdGhleSBoyXZI.example.com
+# Dados codificados em Base64 como subdomínios</code></pre>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card text-center">
+                <i class="fas fa-database fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>Dados Exfiltrados</strong> → <strong>Subdomínio DNS</strong> → <strong>Servidor DNS Comprometido</strong></p>
+                <div class="mt-2">
+                  <span class="badge-cisco">Base64</span>
+                  <span class="badge-cisco">Hex</span>
+                  <span class="badge-cisco">8-bit Binary</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="alert-cisco">
+              <i class="fas fa-chart-line me-2"></i>
+              <strong>Detecção:</strong> Subdomínios extremamente longos ou com aparência aleatória são indicadores de exfiltração DNS.
+              Analise logs de proxy DNS ou use serviços como Cisco Umbrella para bloquear domínios suspeitos.
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.1.4 HTTP e HTTPS -->
+        <div class="content-card mt-4" id="http-https">
+          <h3 class="cisco-subtitle">19.1.4 HTTP e HTTPS</h3>
+          <p>
+            O Hypertext Transfer Protocol (HTTP) é o protocolo de backbone da World Wide Web. No entanto, todas as informações transportadas
+            em HTTP são transmitidas em texto simples do computador de origem para o destino na internet. O HTTP não protege os dados contra
+            alteração ou interceptação.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <h4 class="text-success mb-3"><i class="fas fa-code-branch me-2"></i>Injeção iFrame</h4>
+              <p>
+                Uma exploração comum de HTTP é chamada de injeção iFrame (quadro inline). Um ator de ameaça compromete um servidor da Web e
+                planta código malicioso que cria um iFrame invisível em uma página da Web comumente visitada. Quando o iFrame é carregado, o
+                malware é baixado.
+              </p>
+              <div class="diagram-card">
+                <p><strong>Site Confiável</strong> → <strong>iFrame Malicioso</strong> → <strong>Download de Malware</strong></p>
+                <p class="small text-muted mt-2">A filtragem Cisco Web Reputation detecta conteúdo de sites não confiáveis</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-success mb-3"><i class="fas fa-lock me-2"></i>HTTPS e Criptografia</h4>
+              <p>
+                HTTPS adiciona uma camada de criptografia ao protocolo HTTP usando SSL/TLS. Isso torna os dados HTTP ilegíveis em trânsito.
+                No entanto, o tráfego HTTPS criptografado complica o monitoramento de segurança de rede.
+              </p>
+              <div class="terminal-card">
+                <pre><code>Cliente → [SSL/TLS] → Servidor
+       Chave Simétrica
+       Certificado Digital</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="alert-cisco">
+              <i class="fas fa-chart-simple me-2"></i>
+              <strong>Transação HTTPS:</strong> Cliente solicita página segura → Servidor envia certificado → Cliente valida → Cria chave
+              simétrica → Comunicação criptografada.
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.1.5 Protocolos de Email -->
+        <div class="content-card mt-4" id="email">
+          <h3 class="cisco-subtitle">19.1.5 Protocolos de Email (SMTP, POP3, IMAP)</h3>
+          <div class="row">
+            <div class="col-md-7">
+              <p>
+                Protocolos de e-mail como SMTP, POP3 e IMAP podem ser usados por atores de ameaças para espalhar malware, exfiltrar dados ou
+                fornecer canais para servidores CNC de malware.
+              </p>
+              <ul class="mt-2">
+                <li>
+                  <strong>SMTP (porta 25):</strong> Envia dados de um host para servidor de email. Usado para exfiltração de dados (ex: Hack
+                  da Sony Pictures 2014).
+                </li>
+                <li><strong>POP3/IMAP:</strong> Usados para baixar mensagens. Responsáveis por trazer malware para o host.</li>
+              </ul>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card text-center">
+                <i class="fas fa-envelope fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <div class="diagram-flow">
+                  <div>Host Infectado</div>
+                  <i class="fas fa-arrow-down"></i>
+                  <div>SMTP → Extração de Dados</div>
+                  <i class="fas fa-arrow-down"></i>
+                  <div>Servidores CNC</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.1.6 ICMP -->
+        <div class="content-card mt-4" id="icmp">
+          <h3 class="cisco-subtitle">19.1.6 ICMP - Túnel e Exfiltração</h3>
+          <p>
+            ICMP tem muitos usos legítimos, no entanto, a funcionalidade ICMP também tem sido usada para criar vários tipos de explorações.
+            O ICMP pode ser usado para identificar hosts em uma rede, a estrutura de uma rede e determinar os sistemas operacionais em uso.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Ameaças ICMP
+- Identificação de hosts
+- Mapeamento de rede
+- Fingerprint de SO
+- Ataques DoS
+- Túnel ICMP (exfiltração de dados)</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco">
+                <i class="fas fa-skull me-2"></i>
+                <strong>Exploração LOKI:</strong> Conhecida exploração que usa túnel ICMP para transferir arquivos de hosts infectados.
+                <hr class="my-2" />
+                <i class="fas fa-search me-2"></i> Pesquise: Ping Tunnel, LOKI exploit
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 19.2 TECNOLOGIAS DE SEGURANÇA -->
+      <section id="tecnologias-seguranca" class="mb-5">
+        <h2 class="cisco-title-alt display-6 mb-4">19.2 Tecnologias de Segurança</h2>
+
+        <!-- 19.2.1 ACLs -->
+        <div class="content-card" id="acls">
+          <h3 class="cisco-subtitle">19.2.1 ACLs - Mitigando Abuso ICMP</h3>
+          <p>
+            Listas de Controle de Acesso (ACLs) podem dar uma falsa sensação de segurança se forem excessivamente confiadas. As ACLs e a
+            filtragem de pacotes em geral são tecnologias que contribuem para um conjunto em evolução de proteções de segurança de rede.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># ACL para tráfego ICMP da Internet
+access-list 112 permit icmp any any echo-reply
+access-list 112 permit icmp any any source-quench
+access-list 112 permit icmp any any unreachable
+access-list 112 deny icmp any any
+access-list 112 permit ip any any</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># ACL para tráfego ICMP interno
+access-list 114 permit icmp 192.168.1.0 0.0.0.255 any echo
+access-list 114 permit icmp 192.168.1.0 0.0.0.255 any parameter-problem
+access-list 114 permit icmp 192.168.1.0 0.0.0.255 any packet-too-big
+access-list 114 permit icmp 192.168.1.0 0.0.0.255 any source-quench
+access-list 114 deny icmp any any
+access-list 114 permit ip any any</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="alert-cisco">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              <strong>Limitações das ACLs:</strong> Invasores podem determinar quais IPs, protocolos e portas são permitidos via varredura.
+              Podem criar pacotes com endereços falsificados. Firewalls de próxima geração (NGFW), AMP e appliances de segurança são
+              necessários para defesa avançada.
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.2.2 NAT e PAT -->
+        <div class="content-card mt-4" id="nat-pat">
+          <h3 class="cisco-subtitle">19.2.2 NAT e PAT</h3>
+          <p>
+            Tradução do Endereço da Rede (NAT) e Tradução de Endereço de Porta (PAT) podem complicar o monitoramento de segurança. Vários
+            endereços IP são mapeados para um ou mais endereços públicos visíveis na Internet, ocultando os endereços IP individuais que
+            estão dentro da rede.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="diagram-card">
+                <h5 class="text-success">Rede Interna</h5>
+                <p><strong>PC1:</strong> 192.168.10.10 (Endereço Interno)</p>
+                <p><i class="fas fa-arrow-right"></i> NAT <i class="fas fa-arrow-right"></i></p>
+                <h5 class="text-success">Rede Externa</h5>
+                <p><strong>SA:</strong> 209.165.200.226 (Endereço Global)</p>
+                <p><strong>DA:</strong> 209.165.201.1 (Servidor Web)</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco">
+                <i class="fas fa-chart-line me-2"></i>
+                <strong>Impacto no Monitoramento:</strong>
+                <ul class="mt-2 mb-0">
+                  <li>Dificulta identificar dispositivo interno específico</li>
+                  <li>Fluxos NetFlow são "quebrados" pelo NAT</li>
+                  <li>Cisco oferece produtos que "costuram" fluxos mesmo após NAT</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.2.3 Criptografia, Encapsulamento e Tunelamento -->
+        <div class="content-card mt-4" id="tunelamento">
+          <h3 class="cisco-subtitle">19.2.3 Criptografia, Encapsulamento e Tunelamento</h3>
+          <p>
+            A criptografia pode apresentar desafios para o monitoramento de segurança tornando os detalhes do pacote ilegíveis. A
+            criptografia faz parte das tecnologias VPN. Nas VPNs, um protocolo comum, como IP, é usado para transportar tráfego
+            criptografado.
+          </p>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="diagram-card">
+                <i class="fas fa-lock fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>Túnel Criptografado</strong></p>
+                <p>Host Interno ↔ Túnel ↔ Dispositivos de Ameaças</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco">
+                <i class="fas fa-bug me-2"></i>
+                <strong>Ameaça:</strong> Malware pode estabelecer túnel criptografado usando protocolos comuns e confiáveis para exfiltrar
+                dados da rede.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.2.4 P2P e Tor -->
+        <div class="content-card mt-4" id="p2p-tor">
+          <h3 class="cisco-subtitle">19.2.4 Rede Ponto a Ponto (P2P) e Tor</h3>
+
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="text-success"><i class="fas fa-share-alt me-2"></i>P2P</h4>
+              <p>Na rede ponto a ponto (P2P), os hosts podem operar em funções de cliente e servidor. Três tipos principais:</p>
+              <ul>
+                <li>Compartilhamento de arquivos (Napster, Gnutella, BitTorrent)</li>
+                <li>Compartilhamento de processadores (pesquisa científica)</li>
+                <li>Mensagens instantâneas (Webex Teams)</li>
+              </ul>
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-skull me-2"></i>
+                <strong>Riscos P2P:</strong> Contorna firewalls, vetor comum de malware, arquivos frequentemente infectados, portas
+                dinâmicas.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-success"><i class="fas fa-mask me-2"></i>Tor (The Onion Router)</h4>
+              <p>
+                Tor permite navegação anônima através de uma rede de relés. O tráfego é criptografado em camadas (como uma cebola),
+                removidas a cada salto.
+              </p>
+              <div class="diagram-card">
+                <div>Usuário → Relé Tor → Relé Tor → Relé Tor → Destino</div>
+                <div class="small text-muted">(Criptografia em camadas)</div>
+              </div>
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Desafios:</strong> Usado por criminosos na Dark Net, canal de comunicação CNC, ofusca endereços IP de destino.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 19.2.5 Balanceamento de Carga -->
+        <div class="content-card mt-4" id="balanceamento">
+          <h3 class="cisco-subtitle">19.2.5 Balanceamento de Carga com Delegação DNS</h3>
+          <p>
+            O balanceamento de carga envolve a distribuição do tráfego entre dispositivos ou caminhos de rede para evitar recursos
+            sobrecarregados. Uma maneira de fazer isso na internet é através de técnicas que usam DNS para enviar tráfego para recursos que
+            têm o mesmo nome de domínio, mas vários endereços IP.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-7">
+              <div class="timeline-item mb-3">
+                <div class="d-flex">
+                  <div class="me-3"><span class="badge-cisco">1</span></div>
+                  <div>Usuário deseja visitar www.example.com. Consulta DNS enviada.</div>
+                </div>
+                <div class="d-flex mt-2">
+                  <div class="me-3"><span class="badge-cisco">2</span></div>
+                  <div>Servidor DNS local não possui registro, consulta outros servidores.</div>
+                </div>
+                <div class="d-flex mt-2">
+                  <div class="me-3"><span class="badge-cisco">3</span></div>
+                  <div>Solicitação chega ao servidor DNS autoritativo. Delegados do NS solicitam balanceador de carga.</div>
+                </div>
+                <div class="d-flex mt-2">
+                  <div class="me-3"><span class="badge-cisco">4</span></div>
+                  <div>Balanceador de carga retorna IP do servidor no pool dependendo da carga.</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card">
+                <i class="fas fa-balance-scale fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>Load Balancer (LBM)</strong></p>
+                <p>Testes de integridade e desempenho de caminhos podem parecer tráfego suspeito para analistas não familiarizados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO DE LABORATÓRIOS -->
+      <section id="laboratorios" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title">
+            <i class="fas fa-flask me-2" style="color: var(--cisco-green)"></i>Laboratórios e Atividades Práticas
+          </h2>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-terminal me-2 text-success"></i>
+                <strong>Laboratório 1:</strong> Análise de Exfiltração DNS
+                <p class="text-muted small mt-1">Capture tráfego DNS e identifique subdomínios suspeitos usando Wireshark.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-shield-halved me-2 text-success"></i>
+                <strong>Laboratório 2:</strong> Configuração de ACLs ICMP
+                <p class="text-muted small mt-1">Implemente ACLs para mitigar abuso ICMP em roteadores Cisco.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-chart-line me-2 text-success"></i>
+                <strong>Laboratório 3:</strong> Análise de Logs Syslog
+                <p class="text-muted small mt-1">Configure um servidor syslog e correlacione eventos de múltiplos dispositivos.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-mask me-2 text-success"></i>
+                <strong>Laboratório 4:</strong> Simulação de Túnel ICMP
+                <p class="text-muted small mt-1">Explore ferramentas como Ping Tunnel para entender exfiltração via ICMP.</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 text-center">
+            <span class="badge-cisco"><i class="fas fa-search me-1"></i> Pesquise: LOKI exploit, Ping Tunnel, syslog-ng</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUESTIONÁRIO DO MÓDULO -->
+      <section class="mt-5">
+        <div class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Verifique sua Compreensão
+          </h2>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="rule-item p-3 mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong>1.</strong> Qual protocolo é usado para centralizar logs de dispositivos de rede?
+                <p class="text-muted small mt-1">Resposta: Syslog (UDP 514)</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="rule-item p-3 mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong>2.</strong> Como malware pode exfiltrar dados via DNS?
+                <p class="text-muted small mt-1">Resposta: Codificando dados em subdomínios de consultas DNS.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="rule-item p-3 mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong>3.</strong> Por que HTTPS complica o monitoramento de segurança?
+                <p class="text-muted small mt-1">Resposta: A criptografia SSL/TLS torna o conteúdo do pacote ilegível.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="rule-item p-3 mb-2">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong>4.</strong> Qual é o principal desafio do Tor para analistas de segurança?
+                <p class="text-muted small mt-1">Resposta: Ofusca o endereço IP de destino e evita listas negras.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== VERIFIQUE SUA COMPREENSÃO - 19.2.6 ==================== -->
+      <section id="verificacao" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title">
+            <i class="fas fa-brain me-2" style="color: var(--cisco-green)"></i>19.2.6 Verifique sua compreensão – Identifique o impacto da
+            tecnologia na segurança e no monitoramento
+          </h2>
+          <p class="text-muted mb-4">
+            Responda às perguntas para identificar o impacto da tecnologia na segurança da rede e no monitoramento da segurança.
+          </p>
+
+          <!-- Pergunta 1 -->
+          <div class="quiz-card mb-4" id="quiz1">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">1</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Qual das seguintes opções espalha arquivos infectados por malware e cria vulnerabilidades em uma rede?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="1" data-answer="p2p"><span class="quiz-option-letter">A</span> ACL</div>
+                    <div class="quiz-option" data-quiz="1" data-answer="criptografia">
+                      <span class="quiz-option-letter">B</span> criptografia
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="1" data-answer="tunelamento">
+                      <span class="quiz-option-letter">C</span> Tunelamento
+                    </div>
+                    <div class="quiz-option" data-quiz="1" data-answer="nat-pat"><span class="quiz-option-letter">D</span> NAT/PAT</div>
+                    <div class="quiz-option correct-highlight" data-quiz="1" data-answer="p2p">
+                      <span class="quiz-option-letter">E</span> <span class="text-success fw-bold">P2P</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback1" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: P2P</strong><br />
+                    Redes ponto a ponto (P2P) são vetores comuns para propagação de malware. Arquivos compartilhados frequentemente contêm
+                    malware, e atores de ameaças podem posicionar seu malware em clientes P2P para distribuição a outros usuários. Além
+                    disso, o P2P pode contornar firewalls e usar numeração dinâmica de portas, criando vulnerabilidades adicionais.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback1">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div class="quiz-card mb-4" id="quiz2">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">2</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">Qual das seguintes opções pode ser derrotado por pacotes contendo endereços IP falsificados?</h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="2" data-answer="acl">
+                      <span class="quiz-option-letter">A</span> <span class="text-success fw-bold">ACL</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="2" data-answer="criptografia">
+                      <span class="quiz-option-letter">B</span> criptografia
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="2" data-answer="tor"><span class="quiz-option-letter">C</span> TOR</div>
+                    <div class="quiz-option" data-quiz="2" data-answer="nat-pat"><span class="quiz-option-letter">D</span> NAT/PAT</div>
+                    <div class="quiz-option" data-quiz="2" data-answer="p2p"><span class="quiz-option-letter">E</span> P2P</div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback2" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: ACL</strong><br />
+                    Listas de Controle de Acesso (ACLs) podem ser derrotadas por pacotes contendo endereços IP falsificados (spoofing).
+                    Invasores podem criar pacotes que usam endereços IP de origem falsificados para contornar as regras configuradas.
+                    Firewalls de próxima geração (NGFW) e medidas baseadas em contexto são necessárias para mitigar essa vulnerabilidade.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback2">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div class="quiz-card mb-4" id="quiz3">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">3</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">Qual das seguintes opções torna o conteúdo da mensagem e anexos de arquivos ilegíveis?</h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="3" data-answer="acl"><span class="quiz-option-letter">A</span> ACL</div>
+                    <div class="quiz-option correct-highlight" data-quiz="3" data-answer="criptografia">
+                      <span class="quiz-option-letter">B</span> <span class="text-success fw-bold">criptografia</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="3" data-answer="tor"><span class="quiz-option-letter">C</span> TOR</div>
+                    <div class="quiz-option" data-quiz="3" data-answer="nat-pat"><span class="quiz-option-letter">D</span> NAT/PAT</div>
+                    <div class="quiz-option" data-quiz="3" data-answer="balanceamento">
+                      <span class="quiz-option-letter">E</span> Balanceamento de carga
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback3" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Criptografia</strong><br />
+                    A criptografia torna o conteúdo das mensagens e anexos de arquivos ilegíveis para qualquer pessoa que não possua a chave
+                    de descriptografia adequada. Isso inclui tecnologias como SSL/TLS (HTTPS), VPNs e criptografia de email. Embora
+                    essencial para privacidade, a criptografia também complica o monitoramento de segurança, pois oculta o conteúdo do
+                    tráfego.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback3">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div class="quiz-card mb-4" id="quiz4">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">4</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Qual das seguintes opções oculta os detalhes de identidade dos usuários que estão navegando na Web?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="4" data-answer="acl"><span class="quiz-option-letter">A</span> ACL</div>
+                    <div class="quiz-option" data-quiz="4" data-answer="p2p"><span class="quiz-option-letter">B</span> P2P</div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="4" data-answer="tor">
+                      <span class="quiz-option-letter">C</span> <span class="text-success fw-bold">TOR</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="4" data-answer="nat-pat"><span class="quiz-option-letter">D</span> NAT/PAT</div>
+                    <div class="quiz-option" data-quiz="4" data-answer="balanceamento">
+                      <span class="quiz-option-letter">E</span> Balanceamento de carga
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback4" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: TOR (The Onion Router)</strong><br />
+                    O TOR é uma plataforma que permite navegação anônima na internet. Ele constrói um caminho criptografado em camadas
+                    através de uma rede de relés, onde cada camada é "removida" a cada salto. Nenhum dispositivo único conhece todo o
+                    caminho para o destino, e o endereço IP de origem é ocultado, proporcionando anonimato ao usuário.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback4">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumo das Respostas -->
+          <div class="mt-4 pt-3 border-top border-secondary">
+            <div class="row text-center">
+              <div class="col-md-3">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 1</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> P2P</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 2</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> ACL</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 3</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Criptografia</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 4</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> TOR</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== RESUMO DO MÓDULO ==================== -->
+      <section id="resumo" class="mt-5">
+        <div class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-graduation-cap me-2" style="color: var(--cisco-green)"></i>19.3 Resumo de Tecnologias e Protocolos
+          </h2>
+          <p class="text-muted mb-4">
+            Consolidação dos principais conceitos abordados neste módulo sobre monitoramento de protocolos e tecnologias de segurança.
+          </p>
+
+          <!-- Cards de Resumo - Monitorando Protocolos -->
+          <h3 class="cisco-subtitle mt-4"><i class="fas fa-chart-line me-2 text-success"></i>Monitorando Protocolos Comuns</h3>
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-database"></i>
+                </div>
+                <h4>Syslog</h4>
+                <ul>
+                  <li>Porta UDP 514</li>
+                  <li>Centraliza logs de dispositivos de rede</li>
+                  <li>Alvo de ataques para ocultar evidências</li>
+                  <li>Syslog-ng oferece aprimoramentos de segurança</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-clock"></i>
+                </div>
+                <h4>NTP (Network Time Protocol)</h4>
+                <ul>
+                  <li>Porta UDP 123</li>
+                  <li>Sincroniza tempo entre dispositivos</li>
+                  <li>Essencial para correlacionar eventos de segurança</li>
+                  <li>Pode ser alvo de ataques DDoS por amplificação</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-globe"></i>
+                </div>
+                <h4>DNS (Domain Name System)</h4>
+                <ul>
+                  <li>Usado para exfiltração de dados via subdomínios</li>
+                  <li>Codificação Base64, Hex e binária para camuflar dados</li>
+                  <li>Comunicação com servidores CNC</li>
+                  <li>Subdomínios longos indicam atividade suspeita</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <h4>HTTP e HTTPS</h4>
+                <ul>
+                  <li><strong>HTTP:</strong> Texto plano, vulnerável a interceptação</li>
+                  <li><strong>Injeção iFrame:</strong> Malware escondido em páginas confiáveis</li>
+                  <li><strong>HTTPS:</strong> Criptografia SSL/TLS, mas complica monitoramento</li>
+                  <li>Inspeção SSL apresenta desafios de processamento e privacidade</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <h4>Protocolos de Email</h4>
+                <ul>
+                  <li><strong>SMTP:</strong> Exfiltração de dados (ex: Hack Sony 2014)</li>
+                  <li><strong>POP3/IMAP:</strong> Vetores de entrada de malware</li>
+                  <li>Tráfego SMTP frequentemente não monitorado</li>
+                  <li>Análise retrospectiva rastreia comportamento de malware</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-network-wired"></i>
+                </div>
+                <h4>ICMP</h4>
+                <ul>
+                  <li>Identifica hosts, mapeia rede, fingerprint de SO</li>
+                  <li>Usado em ataques DoS</li>
+                  <li><strong>Túnel ICMP:</strong> Exfiltração de dados (exploração LOKI)</li>
+                  <li>Tráfego ICMP frequentemente ignorado, criando brecha de segurança</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cards de Resumo - Tecnologias de Segurança -->
+          <h3 class="cisco-subtitle mt-5"><i class="fas fa-shield-alt me-2 text-success"></i>Tecnologias de Segurança</h3>
+          <div class="row g-4 mt-2">
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-list-ul"></i>
+                </div>
+                <h4>ACLs (Access Control Lists)</h4>
+                <ul>
+                  <li>Podem dar falsa sensação de segurança</li>
+                  <li>Vulneráveis a IP spoofing e varredura de portas</li>
+                  <li>Não antecipam técnicas emergentes de manipulação</li>
+                  <li>Firewalls NGFW oferecem proteção avançada</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h4>NAT e PAT</h4>
+                <ul>
+                  <li>Ocultam endereços IP internos</li>
+                  <li>Dificultam identificação de dispositivos específicos</li>
+                  <li>Quebram fluxos NetFlow (unidirecionais)</li>
+                  <li>Cisco oferece soluções para "costurar" fluxos após NAT</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-lock"></i>
+                </div>
+                <h4>Criptografia e Tunelamento</h4>
+                <ul>
+                  <li>Torna conteúdo de pacotes ilegível</li>
+                  <li>VPNs criam conexões virtuais ponto a ponto</li>
+                  <li>Malware pode criar túneis criptografados para exfiltração</li>
+                  <li>Desafia monitoramento de segurança tradicional</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-share-alt"></i>
+                </div>
+                <h4>P2P (Peer-to-Peer)</h4>
+                <ul>
+                  <li>Compartilhamento de arquivos, processadores e IM</li>
+                  <li>Contorna firewalls, usa portas dinâmicas</li>
+                  <li>Vetor comum de propagação de malware</li>
+                  <li>Não recomendado em redes corporativas</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-mask"></i>
+                </div>
+                <h4>TOR (The Onion Router)</h4>
+                <ul>
+                  <li>Roteamento em camadas (onion routing)</li>
+                  <li>Navegação anônima na internet</li>
+                  <li>Usado por organizações criminosas na Dark Net</li>
+                  <li>Canal de comunicação para malware CNC</li>
+                  <li>Ofusca endereços IP, evita listas negras</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="summary-card">
+                <div class="summary-icon">
+                  <i class="fas fa-balance-scale"></i>
+                </div>
+                <h4>Balanceamento de Carga</h4>
+                <ul>
+                  <li>Distribui tráfego entre múltiplos recursos</li>
+                  <li>Delegação DNS com múltiplos endereços IP</li>
+                  <li>Testes de integridade podem parecer tráfego suspeito</li>
+                  <li>Múltiplos IPs podem aparecer como anomalias em capturas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- O QUE EU APRENDI NESTE MÓDULO -->
+          <div
+            class="mt-5 p-4"
+            style="background: rgba(102, 191, 83, 0.05); border-radius: 16px; border-left: 4px solid var(--cisco-green)"
+          >
+            <h3 class="cisco-subtitle mb-3">
+              <i class="fas fa-lightbulb me-2" style="color: var(--cisco-green)"></i>19.3.1 O que eu aprendi neste módulo?
+            </h3>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="learning-item">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Monitorando protocolos comuns:</strong>
+                  <p class="text-muted small mt-1">
+                    Compreendi como protocolos como Syslog, NTP, DNS, HTTP/HTTPS, email e ICMP podem ser tanto ferramentas essenciais quanto
+                    vetores de ataque. Aprendi a identificar sinais de exfiltração DNS, túneis ICMP, injeção iFrame e os desafios que a
+                    criptografia HTTPS impõe ao monitoramento.
+                  </p>
+                </div>
+                <div class="learning-item mt-3">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Limitações das ACLs:</strong>
+                  <p class="text-muted small mt-1">
+                    Entendi que ACLs podem ser contornadas por IP spoofing, varredura de portas e técnicas de manipulação de pacotes,
+                    exigindo soluções mais avançadas como firewalls de próxima geração.
+                  </p>
+                </div>
+                <div class="learning-item mt-3">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Impacto de NAT/PAT no monitoramento:</strong>
+                  <p class="text-muted small mt-1">
+                    Aprendi como a tradução de endereços oculta IPs internos e quebra fluxos NetFlow, complicando a correlação de eventos de
+                    segurança.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="learning-item">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Criptografia e tunelamento:</strong>
+                  <p class="text-muted small mt-1">
+                    Compreendi que, embora essencial para privacidade, a criptografia cria desafios significativos para monitoramento,
+                    podendo ser explorada por malware para criar túneis de exfiltração.
+                  </p>
+                </div>
+                <div class="learning-item mt-3">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Riscos de P2P e TOR:</strong>
+                  <p class="text-muted small mt-1">
+                    Identifiquei como redes P2P propagam malware e como o TOR oferece anonimato que pode ser explorado por atividades
+                    criminosas e comunicação CNC.
+                  </p>
+                </div>
+                <div class="learning-item mt-3">
+                  <i class="fas fa-check-circle text-success me-2"></i>
+                  <strong>Balanceamento de carga DNS:</strong>
+                  <p class="text-muted small mt-1">
+                    Aprendi que técnicas de balanceamento podem gerar tráfego que parece suspeito, exigindo que analistas reconheçam esses
+                    padrões legítimos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela de Resumo Rápido -->
+          <div class="mt-4">
+            <h4 class="text-success mb-3"><i class="fas fa-table me-2"></i>Resumo Rápido: Protocolos e Portas</h4>
+            <div class="table-responsive">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Protocolo</th>
+                    <th>Porta(s)</th>
+                    <th>Uso Legítimo</th>
+                    <th>Ameaça/Segurança</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Syslog</td>
+                    <td>UDP 514</td>
+                    <td>Centralização de logs</td>
+                    <td>Alvo de ataque para ocultar evidências</td>
+                  </tr>
+                  <tr>
+                    <td>NTP</td>
+                    <td>UDP 123</td>
+                    <td>Sincronização de tempo</td>
+                    <td>DDoS por amplificação, corrupção de timestamps</td>
+                  </tr>
+                  <tr>
+                    <td>DNS</td>
+                    <td>UDP/TCP 53</td>
+                    <td>Resolução de nomes</td>
+                    <td>Exfiltração via subdomínios, comunicação CNC</td>
+                  </tr>
+                  <tr>
+                    <td>HTTP</td>
+                    <td>TCP 80</td>
+                    <td>Navegação web</td>
+                    <td>Injeção iFrame, texto plano vulnerável</td>
+                  </tr>
+                  <tr>
+                    <td>HTTPS</td>
+                    <td>TCP 443</td>
+                    <td>Navegação segura</td>
+                    <td>Criptografia complica monitoramento</td>
+                  </tr>
+                  <tr>
+                    <td>SMTP</td>
+                    <td>TCP 25</td>
+                    <td>Envio de email</td>
+                    <td>Exfiltração de dados</td>
+                  </tr>
+                  <tr>
+                    <td>POP3/IMAP</td>
+                    <td>TCP 110/143</td>
+                    <td>Recepção de email</td>
+                    <td>Vetor de entrada de malware</td>
+                  </tr>
+                  <tr>
+                    <td>ICMP</td>
+                    <td>-</td>
+                    <td>Diagnóstico de rede</td>
+                    <td>Túnel ICMP, fingerprinting, DoS</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Palavras-chave do módulo -->
+          <div class="mt-4">
+            <h4 class="text-success mb-3"><i class="fas fa-tags me-2"></i>Conceitos-Chave</h4>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge-cisco">Syslog-ng</span>
+              <span class="badge-cisco">Exfiltração DNS</span>
+              <span class="badge-cisco">Túnel ICMP</span>
+              <span class="badge-cisco">LOKI Exploit</span>
+              <span class="badge-cisco">Injeção iFrame</span>
+              <span class="badge-cisco">SSL/TLS</span>
+              <span class="badge-cisco">IP Spoofing</span>
+              <span class="badge-cisco">NetFlow</span>
+              <span class="badge-cisco">Onion Routing</span>
+              <span class="badge-cisco">Dark Net</span>
+              <span class="badge-cisco">CNC (C2)</span>
+              <span class="badge-cisco">Load Balancer (LBM)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== SEÇÃO DIDÁTICA: DESCOMPLICANDO A TECNOLOGIA ==================== -->
+      <section id="descomplicando" class="mt-5">
+        <div class="content-card-gradient" style="background: linear-gradient(135deg, var(--bg-card) 0%, #0f0f0f 100%)">
+          <h2 class="section-title">
+            <i class="fas fa-graduation-cap me-2" style="color: var(--cisco-green)"></i>🎓 Descomplicando: Entenda como isso funciona na
+            prática
+          </h2>
+          <p class="text-muted mb-4 fs-5">
+            Conceitos técnicos explicados com analogias do dia a dia e casos reais que aconteceram no mundo da segurança cibernética.
+          </p>
+
+          <!-- ==================== GLOSSÁRIO INTERATIVO ==================== -->
+          <div class="glossary-section mb-5">
+            <h3 class="cisco-subtitle mb-3"><i class="fas fa-book-open me-2 text-success"></i>📖 Glossário Ilustrado: Termos Técnicos</h3>
+            <p class="text-muted small mb-3">Passe o mouse sobre os termos para ver explicações simples:</p>
+            <div class="glossary-grid">
+              <div
+                class="glossary-term"
+                data-definition="Sistema que coleta e armazena logs de dispositivos de rede. Como um 'gravador de voo' que registra tudo que acontece na rede."
+              >
+                <i class="fas fa-database me-1 text-success"></i> Syslog
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Protocolo que sincroniza os relógios de todos os dispositivos. Essencial para saber a ordem exata dos eventos - como acertar todos os relógios da casa para não perder o horário do jogo."
+              >
+                <i class="fas fa-clock me-1 text-success"></i> NTP
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Técnica onde dados roubados são escondidos dentro de consultas DNS. É como escrever uma mensagem secreta no campo 'assunto' de um email que parece normal."
+              >
+                <i class="fas fa-globe me-1 text-success"></i> Exfiltração DNS
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Código malicioso escondido em sites confiáveis. Como um ladrão que aluga um espaço dentro de uma loja de confiança para roubar clientes desavisados."
+              >
+                <i class="fas fa-code-branch me-1 text-success"></i> Injeção iFrame
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Criptografia que protege dados na web. É como enviar uma carta dentro de um cofre que só quem recebe tem a chave para abrir."
+              >
+                <i class="fas fa-lock me-1 text-success"></i> SSL/TLS (HTTPS)
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Lista de regras que permite ou bloqueia tráfego de rede. Como uma lista de convidados de uma festa - só entra quem está na lista."
+              >
+                <i class="fas fa-list-ul me-1 text-success"></i> ACL
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Técnica que esconde IPs internos atrás de um único IP público. É como usar um único número de telefone para toda uma empresa - você liga, mas não sabe quem atendeu."
+              >
+                <i class="fas fa-exchange-alt me-1 text-success"></i> NAT/PAT
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Rede anônima que esconde sua identidade. Como usar um labirinto com várias saídas falsas - ninguém sabe por onde você realmente saiu."
+              >
+                <i class="fas fa-mask me-1 text-success"></i> TOR
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Compartilhamento de arquivos direto entre usuários. É como uma feira de trocas onde qualquer pessoa pode pegar e deixar arquivos."
+              >
+                <i class="fas fa-share-alt me-1 text-success"></i> P2P
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Distribuição de tráfego entre vários servidores. Como um restaurante que tem vários garçons - o gerente direciona cada cliente para o garçom menos ocupado."
+              >
+                <i class="fas fa-balance-scale me-1 text-success"></i> Balanceamento de Carga
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Esconder dados dentro de pacotes ICMP (ping). Como enviar uma mensagem escondida dentro de um 'oi, tudo bem?' que parece inofensivo."
+              >
+                <i class="fas fa-network-wired me-1 text-success"></i> Túnel ICMP
+              </div>
+              <div
+                class="glossary-term"
+                data-definition="Servidor que controla máquinas infectadas. É como o 'mestre' que dá ordens para os 'fantoches' (computadores infectados)."
+              >
+                <i class="fas fa-server me-1 text-success"></i> CNC / C2
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== CASOS DE USO REAIS ==================== -->
+          <h3 class="cisco-subtitle mb-4">
+            <i class="fas fa-history me-2 text-success"></i>🌍 Casos Reais: Quando isso aconteceu no mundo real
+          </h3>
+
+          <div class="row g-4">
+            <!-- Caso 1: Exfiltração DNS -->
+            <div class="col-md-6">
+              <div class="real-case-card">
+                <div class="case-header">
+                  <div class="case-icon bg-danger-soft">
+                    <i class="fas fa-skull"></i>
+                  </div>
+                  <div>
+                    <h4 class="case-title">🔴 Exfiltração DNS</h4>
+                    <span class="case-year">2020 · Vasta Plataforma</span>
+                  </div>
+                </div>
+                <div class="case-content">
+                  <p>
+                    <strong>O que aconteceu:</strong> Hackers invadiram a Vasta, empresa que gerencia escolas, e roubaram dados de 500 mil
+                    alunos e professores. Eles usaram <strong class="text-success">exfiltração DNS</strong> para enviar os dados roubados
+                    para fora da rede sem serem detectados.
+                  </p>
+                  <div class="case-analogy mt-2">
+                    <i class="fas fa-lightbulb text-warning me-1"></i>
+                    <strong>Analogia:</strong> Imagine um ladrão que esconde itens roubados dentro de caixas que parecem entregas normais.
+                    Ninguém desconfia porque as caixas são enviadas o tempo todo.
+                  </div>
+                  <div class="case-lesson mt-2">
+                    <i class="fas fa-graduation-cap text-success me-1"></i>
+                    <strong>Lição:</strong> Monitorar comprimento de subdomínios DNS pode revelar exfiltração. Subdomínios muito longos são
+                    suspeitos!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 2: Sony Pictures Hack (SMTP) -->
+            <div class="col-md-6">
+              <div class="real-case-card">
+                <div class="case-header">
+                  <div class="case-icon bg-warning-soft">
+                    <i class="fas fa-film"></i>
+                  </div>
+                  <div>
+                    <h4 class="case-title">🎬 Sony Pictures Hack</h4>
+                    <span class="case-year">2014 · Sony Pictures</span>
+                  </div>
+                </div>
+                <div class="case-content">
+                  <p>
+                    <strong>O que aconteceu:</strong> Hackers invadiram a Sony Pictures, roubaram dados confidenciais e usaram
+                    <strong class="text-success">SMTP (email)</strong> para exfiltrar informações. Eles enviaram dados roubados disfarçados
+                    de emails normais.
+                  </p>
+                  <div class="case-analogy mt-2">
+                    <i class="fas fa-lightbulb text-warning me-1"></i>
+                    <strong>Analogia:</strong> É como um funcionário que coloca documentos secretos dentro de envelopes de correspondência
+                    comum e os envia pelo correio da empresa.
+                  </div>
+                  <div class="case-lesson mt-2">
+                    <i class="fas fa-graduation-cap text-success me-1"></i>
+                    <strong>Lição:</strong> Tráfego SMTP precisa ser monitorado mesmo sendo comum. O volume não deve ser desculpa para
+                    ignorar!
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 3: Ataque DDoS via NTP -->
+            <div class="col-md-6">
+              <div class="real-case-card">
+                <div class="case-header">
+                  <div class="case-icon bg-primary-soft">
+                    <i class="fas fa-clock"></i>
+                  </div>
+                  <div>
+                    <h4 class="case-title">⏰ Ataque NTP Amplification</h4>
+                    <span class="case-year">2014 · Cloudflare (1.7 Tbps)</span>
+                  </div>
+                </div>
+                <div class="case-content">
+                  <p>
+                    <strong>O que aconteceu:</strong> Hackers usaram servidores NTP mal configurados para lançar um dos maiores ataques DDoS
+                    da história, atingindo 1.7 Tbps contra a Cloudflare.
+                  </p>
+                  <div class="case-analogy mt-2">
+                    <i class="fas fa-lightbulb text-warning me-1"></i>
+                    <strong>Analogia:</strong> Imagine ligar para um serviço de informação e pedir para eles ligarem de volta para um número
+                    com uma mensagem enorme. Se muitos fizerem isso, o alvo recebe milhares de ligações ao mesmo tempo.
+                  </div>
+                  <div class="case-lesson mt-2">
+                    <i class="fas fa-graduation-cap text-success me-1"></i>
+                    <strong>Lição:</strong> Servidores NTP devem ser configurados corretamente e não expostos publicamente sem restrições.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 4: Injeção iFrame em sites brasileiros -->
+            <div class="col-md-6">
+              <div class="real-case-card">
+                <div class="case-header">
+                  <div class="case-icon bg-cyan-soft">
+                    <i class="fas fa-newspaper"></i>
+                  </div>
+                  <div>
+                    <h4 class="case-title">📰 Injeção iFrame em portais brasileiros</h4>
+                    <span class="case-year">2018 · Diversos sites .gov.br</span>
+                  </div>
+                </div>
+                <div class="case-content">
+                  <p>
+                    <strong>O que aconteceu:</strong> Sites governamentais brasileiros foram comprometidos com código iFrame malicioso que
+                    redirecionava visitantes para páginas de phishing e malware.
+                  </p>
+                  <div class="case-analogy mt-2">
+                    <i class="fas fa-lightbulb text-warning me-1"></i>
+                    <strong>Analogia:</strong> Como colocar um cartaz falso em um quadro de avisos oficial. Quem vê no mural da prefeitura
+                    acredita que é informação legítima.
+                  </div>
+                  <div class="case-lesson mt-2">
+                    <i class="fas fa-graduation-cap text-success me-1"></i>
+                    <strong>Lição:</strong> Sites confiáveis também podem ser comprometidos. Filtros de reputação web ajudam a bloquear
+                    conteúdo malicioso.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 5: Túnel ICMP LOKI -->
+            <div class="col-md-6">
+              <div class="real-case-card">
+                <div class="case-header">
+                  <div class="case-icon bg-dark-soft">
+                    <i class="fas fa-fish"></i>
+                  </div>
+                  <div>
+                    <h4 class="case-title">🐟 Exploração LOKI (Túnel ICMP)</h4>
+                    <span class="case-year">1996 · Criada por daemon9</span>
+                  </div>
+                </div>
+                <div class="case-content">
+                  <p>
+                    <strong>O que aconteceu:</strong> A ferramenta LOKI demonstrou como é possível enviar comandos e dados através de
+                    pacotes ICMP (ping), contornando firewalls que normalmente permitem esse tráfego.
+                  </p>
+                  <div class="case-analogy mt-2">
+                    <i class="fas fa-lightbulb text-warning me-1"></i>
+                    <strong>Analogia:</strong> É como usar um interfone de prédio (que todo mundo usa para falar com portaria) para enviar
+                    mensagens secretas, e ninguém desconfia porque parece uma conversa normal.
+                  </div>
+                  <div class="case-lesson mt-2">
+                    <i class="fas fa-graduation-cap text-success me-1"></i>
+                    <strong>Lição:</strong> Nunca confie cegamente em protocolos "inofensivos". O ICMP precisa ser monitorado como qualquer
+                    outro tráfego.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 6: P2P e Malware -->
+            <div class="col-md-6">
+              <div class="real-case-card">
+                <div class="case-header">
+                  <div class="case-icon bg-purple-soft">
+                    <i class="fas fa-download"></i>
+                  </div>
+                  <div>
+                    <h4 class="case-title">🎵 P2P e propagação de malware</h4>
+                    <span class="case-year">2000-2010 · Kazaa, LimeWire, eMule</span>
+                  </div>
+                </div>
+                <div class="case-content">
+                  <p>
+                    <strong>O que aconteceu:</strong> Redes P2P como Kazaa e LimeWire se tornaram os maiores vetores de propagação de
+                    malware da época. Arquivos de música e filmes populares continham código malicioso disfarçado.
+                  </p>
+                  <div class="case-analogy mt-2">
+                    <i class="fas fa-lightbulb text-warning me-1"></i>
+                    <strong>Analogia:</strong> Imagine uma feira livre onde qualquer pessoa pode montar uma barraca. Criminosos colocam
+                    produtos com preços baixos, mas dentro deles há algo perigoso escondido.
+                  </div>
+                  <div class="case-lesson mt-2">
+                    <i class="fas fa-graduation-cap text-success me-1"></i>
+                    <strong>Lição:</strong> Em redes corporativas, aplicativos P2P devem ser bloqueados. Em casa, baixe apenas de fontes
+                    oficiais.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== RESUMO VISUAL: MAPA MENTAL ==================== -->
+          <div class="mindmap-section mt-5">
+            <h3 class="cisco-subtitle mb-3">
+              <i class="fas fa-brain me-2 text-success"></i>🧠 Mapa Mental: Como cada tecnologia impacta a segurança
+            </h3>
+            <div class="mindmap-container">
+              <div class="mindmap-center">
+                <div class="mindmap-node central">
+                  <i class="fas fa-shield-halved fa-2x mb-2"></i>
+                  <strong>Monitoramento<br />de Segurança</strong>
+                </div>
+              </div>
+              <div class="mindmap-level level-1">
+                <div class="mindmap-node protocolos">
+                  <i class="fas fa-chart-line"></i>
+                  <strong>Protocolos</strong>
+                  <div class="mindmap-children">
+                    <div class="mindmap-child threat">Syslog/NTP<br /><span class="small">Alvos de ataque</span></div>
+                    <div class="mindmap-child threat">DNS<br /><span class="small">Exfiltração</span></div>
+                    <div class="mindmap-child threat">HTTP/HTTPS<br /><span class="small">iFrame + Criptografia</span></div>
+                    <div class="mindmap-child threat">Email<br /><span class="small">Malware/Exfiltração</span></div>
+                    <div class="mindmap-child threat">ICMP<br /><span class="small">Túnel/Loki</span></div>
+                  </div>
+                </div>
+                <div class="mindmap-node tecnologias">
+                  <i class="fas fa-shield-alt"></i>
+                  <strong>Tecnologias</strong>
+                  <div class="mindmap-children">
+                    <div class="mindmap-child defense">ACL<br /><span class="small">+ Spoofing</span></div>
+                    <div class="mindmap-child defense">NAT/PAT<br /><span class="small">Oculta IPs</span></div>
+                    <div class="mindmap-child defense">Criptografia<br /><span class="small">Dados ilegíveis</span></div>
+                    <div class="mindmap-child defense">P2P<br /><span class="small">Propagação</span></div>
+                    <div class="mindmap-child defense">TOR<br /><span class="small">Anonimato</span></div>
+                    <div class="mindmap-child defense">Load Balance<br /><span class="small">Tráfego suspeito</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== CHECKLIST DO ANALISTA ==================== -->
+          <div class="analyst-checklist mt-5">
+            <h3 class="cisco-subtitle mb-3">
+              <i class="fas fa-clipboard-list me-2 text-success"></i>✅ Checklist do Analista de Segurança
+            </h3>
+            <p class="text-muted mb-3">O que você deve observar ao analisar tráfego de rede:</p>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="checklist-item-didatico">
+                  <i class="fas fa-search text-success me-2"></i>
+                  <strong>Subdomínios DNS longos</strong>
+                  <span class="small text-muted d-block">Mais de 50 caracteres = suspeito</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checklist-item-didatico">
+                  <i class="fas fa-search text-success me-2"></i>
+                  <strong>Tráfego ICMP fora do padrão</strong>
+                  <span class="small text-muted d-block">Pacotes grandes ou frequentes</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checklist-item-didatico">
+                  <i class="fas fa-search text-success me-2"></i>
+                  <strong>Fluxos quebrados por NAT</strong>
+                  <span class="small text-muted d-block">Verificar costura de fluxos NetFlow</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checklist-item-didatico">
+                  <i class="fas fa-search text-success me-2"></i>
+                  <strong>Emails com anexos suspeitos</strong>
+                  <span class="small text-muted d-block">Mesmo de remetentes conhecidos</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checklist-item-didatico">
+                  <i class="fas fa-search text-success me-2"></i>
+                  <strong>Conexões HTTPS para IPs incomuns</strong>
+                  <span class="small text-muted d-block">Criptografia pode esconder malware</span>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checklist-item-didatico">
+                  <i class="fas fa-search text-success me-2"></i>
+                  <strong>Servidores NTP expostos</strong>
+                  <span class="small text-muted d-block">Podem ser usados em DDoS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== MENSAGEM FINAL ==================== -->
+          <div
+            class="final-message mt-5 p-4 text-center"
+            style="background: rgba(102, 191, 83, 0.1); border-radius: 20px; border: 1px solid rgba(102, 191, 83, 0.3)"
+          >
+            <i class="fas fa-quote-left fa-2x text-success opacity-50 mb-2"></i>
+            <p class="fs-5 fw-light mb-2">
+              "Na segurança cibernética, o que parece inocente pode ser a maior ameaça. <br />
+              Protocolos que usamos todos os dias podem ser armas nas mãos erradas."
+            </p>
+            <p class="text-success small mt-2">— Módulo 19: Tecnologias e Protocolos</p>
+            <div class="mt-3">
+              <a href="#introducao" class="btn-cisco me-2"> <i class="fas fa-arrow-up me-1"></i> Voltar ao topo </a>
+              <a href="#laboratorios" class="btn-cisco"> <i class="fas fa-flask me-1"></i> Ir para Laboratórios </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER PADRÃO ==================== -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+            <p class="text-muted small mt-2"><i class="fas fa-book me-1"></i> Módulo 19: Tecnologias e Protocolos</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Scripts Personalizados -->
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+    <script>
+      // Adicionar ao final do arquivo drpdow.js ou main.js
+      document.addEventListener('DOMContentLoaded', function () {
+        // Funcionalidade dos botões "Mostrar Resposta"
+        const showAnswerButtons = document.querySelectorAll('.show-answer-btn')
+
+        showAnswerButtons.forEach((button) => {
+          button.addEventListener('click', function () {
+            const targetId = this.getAttribute('data-target')
+            const feedbackDiv = document.getElementById(targetId)
+
+            if (feedbackDiv) {
+              if (feedbackDiv.style.display === 'none' || feedbackDiv.style.display === '') {
+                feedbackDiv.style.display = 'block'
+                this.innerHTML = '<i class="fas fa-eye-slash me-1"></i> Ocultar Resposta'
+              } else {
+                feedbackDiv.style.display = 'none'
+                this.innerHTML = '<i class="fas fa-eye me-1"></i> Mostrar Resposta Correta'
+              }
+            }
+          })
+        })
+
+        // Efeito de hover nos cards do quiz
+        const quizOptions = document.querySelectorAll('.quiz-option')
+        quizOptions.forEach((option) => {
+          option.addEventListener('click', function () {
+            // Remove highlight de outros na mesma pergunta
+            const parentQuiz = this.closest('.quiz-card')
+            const allOptions = parentQuiz.querySelectorAll('.quiz-option')
+            allOptions.forEach((opt) => {
+              opt.classList.remove('correct-highlight')
+            })
+
+            // Adiciona highlight na opção clicada
+            this.classList.add('correct-highlight')
+
+            // Opcional: mostra o feedback automaticamente
+            const feedbackId = parentQuiz.querySelector('.quiz-feedback')?.id
+            if (feedbackId) {
+              const feedbackDiv = document.getElementById(feedbackId)
+              if (feedbackDiv && feedbackDiv.style.display !== 'block') {
+                feedbackDiv.style.display = 'block'
+                const showBtn = parentQuiz.querySelector('.show-answer-btn')
+                if (showBtn) {
+                  showBtn.innerHTML = '<i class="fas fa-eye-slash me-1"></i> Ocultar Resposta'
+                }
+              }
+            }
+          })
+        })
+      })
+    </script>
+
+    <script>
+      // Busca no índice
+      document.getElementById('navSearch')?.addEventListener('keyup', function (e) {
+        const term = e.target.value.toLowerCase()
+        const items = document.querySelectorAll('#sectionList .dropdown-item')
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase()
+          item.style.display = text.includes(term) ? 'block' : 'none'
+        })
+      })
+    </script>
+  </body>
+</html>

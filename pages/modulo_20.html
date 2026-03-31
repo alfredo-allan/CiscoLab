@@ -1,0 +1,2055 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 20 - Dados de Segurança de Rede | CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ==================== NAVBAR PADRÃO ==================== -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a
+          class="navbar-brand"
+          href="../index.html"
+          style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px"
+        >
+          <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+          NET<span style="color: white">SEC</span>
+          <small style="font-size: 0.7rem; color: var(--text-muted); display: block; line-height: 1">☠ CyberSec | Estudos Cisco</small>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 20 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li>
+                  <h6 class="dropdown-header text-success"><i class="fas fa-book-open me-2"></i>Navegação Rápida</h6>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#introducao"><i class="fas fa-flag-checkered me-2 text-success"></i>20.0 Introdução</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#tipos-dados"
+                    ><i class="fas fa-database me-2 text-success"></i>20.1 Tipos de Dados de Segurança</a
+                  >
+                </li>
+                <li><a class="dropdown-item ps-4" href="#dados-alerta">20.1.1 Dados de Alerta</a></li>
+                <li><a class="dropdown-item ps-4" href="#dados-sessao">20.1.2 Dados de Sessão</a></li>
+                <li><a class="dropdown-item ps-4" href="#dados-transacao">20.1.3 Dados de Transação</a></li>
+                <li><a class="dropdown-item ps-4" href="#captura-pacotes">20.1.4 Capturas Completas de Pacotes</a></li>
+                <li><a class="dropdown-item ps-4" href="#dados-estatisticos">20.1.5 Dados Estatísticos</a></li>
+                <li>
+                  <a class="dropdown-item" href="#logs-dispositivos"
+                    ><i class="fas fa-laptop me-2 text-success"></i>20.2 Logs de Dispositivos Finais</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#logs-rede"><i class="fas fa-network-wired me-2 text-success"></i>20.3 Logs de Rede</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2 text-success"></i>🧪 Laboratórios</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px; max-height: 500px; overflow-y: auto">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li><a class="dropdown-item" href="#introducao">📌 20.0 Introdução</a></li>
+                  <li><a class="dropdown-item" href="#tipos-dados">📊 20.1 Tipos de Dados de Segurança</a></li>
+                  <li><a class="dropdown-item ps-3" href="#dados-alerta">└ 20.1.1 Dados de Alerta</a></li>
+                  <li><a class="dropdown-item ps-3" href="#dados-sessao">└ 20.1.2 Dados de Sessão</a></li>
+                  <li><a class="dropdown-item ps-3" href="#dados-transacao">└ 20.1.3 Dados de Transação</a></li>
+                  <li><a class="dropdown-item ps-3" href="#captura-pacotes">└ 20.1.4 Capturas Completas de Pacotes</a></li>
+                  <li><a class="dropdown-item ps-3" href="#dados-estatisticos">└ 20.1.5 Dados Estatísticos</a></li>
+                  <li><a class="dropdown-item" href="#logs-dispositivos">💻 20.2 Logs de Dispositivos Finais</a></li>
+                  <li><a class="dropdown-item" href="#logs-rede">🌐 20.3 Logs de Rede</a></li>
+                  <li><a class="dropdown-item" href="#laboratorios">🧪 Laboratórios</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container py-5">
+      <!-- Título Principal -->
+      <div class="mb-5">
+        <h1 class="cisco-title display-5">Módulo 20: Dados de Segurança de Rede</h1>
+        <p class="text-muted mt-3 fs-5">Utilizar diferentes tipos de logs e registros para armazenar informações sobre hosts e a rede.</p>
+        <div class="mt-3 d-flex gap-2 flex-wrap">
+          <span class="badge-cisco"><i class="fas fa-database me-1"></i> Dados de Alerta</span>
+          <span class="badge-cisco"><i class="fas fa-chart-line me-1"></i> Dados de Sessão</span>
+          <span class="badge-cisco"><i class="fas fa-file-alt me-1"></i> Dados de Transação</span>
+          <span class="badge-cisco"><i class="fas fa-pcap me-1"></i> Captura de Pacotes</span>
+          <span class="badge-cisco"><i class="fas fa-chart-bar me-1"></i> Dados Estatísticos</span>
+        </div>
+      </div>
+
+      <!-- 20.0 INTRODUÇÃO -->
+      <section id="introducao" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">20.0 Introdução</h2>
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <h3 class="cisco-subtitle mb-3">Por que devo fazer este módulo?</h3>
+              <p>
+                Que tipos de dados são necessários para realizar o monitoramento de segurança? Que tipo de registro será necessário para
+                capturar os dados necessários para o monitoramento de segurança? Que tipo de informação está incluída nos vários arquivos de
+                log que são utilizados para capturar dados para monitoramento de segurança?
+              </p>
+              <p class="mt-2">
+                Continue lendo neste módulo para ver como os dados de segurança de rede são coletados, processados e usados para tomar
+                decisões de segurança de rede.
+              </p>
+              <div class="alert-cisco mt-3">
+                <i class="fas fa-graduation-cap me-2"></i>
+                <strong>Objetivos do Módulo:</strong>
+                <ul class="mt-2 mb-0">
+                  <li>✓ Descrever os tipos de dados usados no monitoramento de segurança</li>
+                  <li>✓ Descrever os elementos de um arquivo de log do dispositivo final</li>
+                  <li>✓ Utilizar diferentes tipos de serviços para coletar dados de rede</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div class="icon-box">
+                <i class="fas fa-chart-line fa-4x" style="color: var(--cisco-green)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 20.1 TIPOS DE DADOS DE SEGURANÇA -->
+      <section id="tipos-dados" class="mb-5">
+        <h2 class="cisco-title-alt display-6 mb-4">20.1 Tipos de Dados de Segurança</h2>
+
+        <!-- 20.1.1 Dados de Alerta -->
+        <div class="content-card" id="dados-alerta">
+          <h3 class="cisco-subtitle">20.1.1 Dados de Alerta</h3>
+          <div class="row">
+            <div class="col-md-7">
+              <p>
+                Os dados de alerta consistem em mensagens geradas por sistemas de prevenção de intrusões (IPSs) ou sistemas de detecção de
+                intrusões (IDSs) em resposta ao tráfego que viola uma regra ou corresponde à assinatura de uma exploração conhecida.
+              </p>
+              <p>
+                Um IDS de rede (NIDS), como o <strong class="text-success">Snort</strong>, vem configurado com regras para explorações
+                conhecidas. Os alertas são gerados pelo Snort e são legíveis e pesquisáveis pelos aplicativos
+                <strong class="text-success">Sguil</strong> e <strong class="text-success">Squert</strong>, que fazem parte do conjunto
+                Security Onion de ferramentas NSM.
+              </p>
+              <div class="terminal-card mt-2">
+                <pre><code># Regra Snort para detecção
+alert ip any any -> any any (msg:"GPL ATTACK_RESPONSE id check returned root"; 
+content:"uid=0|28|root|25"; sid:2100498; rev:8;)</code></pre>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card text-center">
+                <i class="fas fa-bell fa-3x mb-2" style="color: var(--accent-yellow)"></i>
+                <p><strong>Site de teste: testmyds.com</strong></p>
+                <p class="small">Retorna o texto: <code>uid=0(root) gid=0(root) groups=0(root)</code></p>
+                <div class="mt-2">
+                  <span class="badge-cisco">Snort</span>
+                  <span class="badge-cisco">Sguil</span>
+                  <span class="badge-cisco">Security Onion</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3">
+            <div class="alert-cisco">
+              <i class="fas fa-info-circle me-2"></i>
+              <strong>Importante:</strong> O site testmyds é uma ferramenta inofensiva usada para verificar se o NIDS está funcionando
+              corretamente. Quando um host visita este site, uma assinatura é correspondida e um alerta é acionado.
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.1.2 Dados de Sessão -->
+        <div class="content-card mt-4" id="dados-sessao">
+          <h3 class="cisco-subtitle">20.1.2 Dados de Sessão</h3>
+          <p>
+            Os dados de sessão são um registro de uma conversa entre dois pontos de extremidade de rede, que geralmente são um cliente e um
+            servidor. Dados de sessão são <strong>dados sobre a sessão</strong>, não os dados recuperados e usados pelo cliente.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <h4 class="text-success mb-3">Campos do Dado de Sessão (Zeek)</h4>
+              <div class="terminal-card">
+                <pre><code>1. ts: carimbo de data e hora
+2. uid: ID de sessão única
+3. id_orig_h: IP de origem
+4. id_orig_p: porta de origem
+5. id_resp_h: IP de destino
+6. id_resp_p: porta de destino
+7. proto: protocolo de transporte
+8. service: protocolo de aplicação
+9. duration: duração da sessão
+10. orig_bytes: bytes do host de origem
+11. resp_bytes: bytes do host respondente
+12. orig_packets: pacotes do host de origem
+13. resp_packets: pacotes do host respondente</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-success mb-3">As Cinco Tuplas</h4>
+              <div class="diagram-card">
+                <ul class="list-unstyled">
+                  <li><i class="fas fa-arrow-right text-success me-2"></i> <strong>IP Origem</strong></li>
+                  <li><i class="fas fa-arrow-right text-success me-2"></i> <strong>Porta Origem</strong></li>
+                  <li><i class="fas fa-arrow-right text-success me-2"></i> <strong>IP Destino</strong></li>
+                  <li><i class="fas fa-arrow-right text-success me-2"></i> <strong>Porta Destino</strong></li>
+                  <li><i class="fas fa-arrow-right text-success me-2"></i> <strong>Protocolo</strong></li>
+                </ul>
+                <p class="small text-muted mt-2">Zeek (anteriormente Bro) é uma ferramenta de monitoramento de segurança de rede.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive mt-3">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>UID</th>
+                  <th>Origem</th>
+                  <th>Porta</th>
+                  <th>Destino</th>
+                  <th>Porta</th>
+                  <th>Proto</th>
+                  <th>Duração</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CEvIZ54N5gT3PwJLog</td>
+                  <td>192.168.2.76</td>
+                  <td>52034</td>
+                  <td>174</td>
+                  <td>12924933</td>
+                  <td>tcp</td>
+                  <td>0.082899</td>
+                </tr>
+                <tr>
+                  <td>C0JeB3SKsJHwASNN4</td>
+                  <td>192.168.2.76</td>
+                  <td>52035</td>
+                  <td>184</td>
+                  <td>1722343</td>
+                  <td>tcp</td>
+                  <td>2.56194</td>
+                </tr>
+                <tr>
+                  <td>CaTMSv15b8hHfUnqi</td>
+                  <td>192.168.2.76</td>
+                  <td>52033</td>
+                  <td>184</td>
+                  <td>1722343</td>
+                  <td>tcp</td>
+                  <td>3.345539</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 20.1.3 Dados de Transação -->
+        <div class="content-card mt-4" id="dados-transacao">
+          <h3 class="cisco-subtitle">20.1.3 Dados de Transação</h3>
+          <p>
+            Os dados de transação consistem nas <strong>mensagens que são trocadas durante sessões de rede</strong>. Essas transações podem
+            ser exibidas em transcrições de captura de pacotes. Os logs de dispositivos mantidos por servidores também contêm informações
+            sobre as transações que ocorrem entre clientes e servidores.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Requisição HTTP
+GET /home/index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:53.0)
+
+# Resposta HTTP
+HTTP/1.1 200 OK
+Date: Fri, 10 Oct 2015 23:59:59 GMT
+Content-Type: text/plain
+
+&lt;text returned&gt;</code></pre>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Log de Acesso
+192.168.1.10 - anyUser [10/Oct/2015:13:55:36 -0500] 
+"GET /index.html HTTP/1.1" 200 326</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="mt-2">
+            <div class="alert-cisco">
+              <i class="fas fa-lightbulb me-2"></i>
+              <strong>Diferença:</strong> A sessão é todo o tráfego envolvido na elaboração da solicitação; a transação é a própria
+              solicitação.
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.1.4 Capturas Completas de Pacotes -->
+        <div class="content-card mt-4" id="captura-pacotes">
+          <h3 class="cisco-subtitle">20.1.4 Capturas Completas de Pacotes</h3>
+          <p>
+            Capturas completas de pacotes são os <strong>dados de rede mais detalhados</strong> que geralmente são coletados. Devido à
+            quantidade de detalhes, eles também são os tipos de dados mais intensos de armazenamento e recuperação.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-7">
+              <p>
+                As capturas completas de pacotes contêm não apenas dados sobre conversas de rede, como dados de sessão, mas também o
+                <strong>conteúdo real das conversas</strong>:
+              </p>
+              <ul>
+                <li>Texto das mensagens de email</li>
+                <li>HTML nas páginas da Web</li>
+                <li>Arquivos que entram ou saem da rede</li>
+              </ul>
+              <p>
+                A ferramenta familiar <strong class="text-success">Wireshark</strong> é muito popular para visualizar capturas de pacotes
+                completos.
+              </p>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card">
+                <i class="fas fa-pcap fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>Wireshark / Cisco Prime Infrastructure</strong></p>
+                <div class="terminal-card p-2">
+                  <pre style="font-size: 0.6rem">
+0000 02 1A C5 02 00 00 02 1A C5 01 00 00 08 00 45 00
+0010 05 DC 87 D5 40 00 20 06 C9 58 01 02 02 02 01 03
+0020 01 E5 00 50 DA BE CF FD 2D 19 4F DA E7 D9 80 18</pre
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.1.5 Dados Estatísticos -->
+        <div class="content-card mt-4" id="dados-estatisticos">
+          <h3 class="cisco-subtitle">20.1.5 Dados Estatísticos</h3>
+          <p>
+            Os dados estatísticos são criados através da análise de outras formas de dados de rede. Podem ser feitas conclusões que
+            descrevem ou predizem o comportamento da rede a partir dessas análises.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="diagram-card">
+                <h4 class="text-success">NBA / NBAD</h4>
+                <p>
+                  <strong>Network Behavior Analysis</strong> e <strong>Network Behavior Anomaly Detection</strong> usam técnicas analíticas
+                  avançadas para analisar dados NetFlow ou IPFIX.
+                </p>
+                <div class="mt-2">
+                  <span class="badge-cisco">Análise Preditiva</span>
+                  <span class="badge-cisco">IA / Machine Learning</span>
+                  <span class="badge-cisco">Detecção de Anomalias</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco">
+                <i class="fas fa-chart-line me-2"></i>
+                <strong>Cisco Cognitive Threat Analytics</strong>
+                <p class="small mt-2">Produto baseado em nuvem que usa aprendizado de máquina e modelagem estatística para:</p>
+                <ul class="small mb-0">
+                  <li>Criar linha de base do tráfego</li>
+                  <li>Identificar anomalias</li>
+                  <li>Analisar comportamento de usuários e dispositivos</li>
+                  <li>Detectar comunicação CNC e exfiltração</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="terminal-card">
+              <pre><code># Fluxo de Análise Estatística
+Tráfego de Rede → Coleta de Dados → Análise Estatística → 
+Linha de Base → Detecção de Anomalias → Alerta</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 20.2 LOGS DE DISPOSITIVOS FINAIS -->
+      <section id="logs-dispositivos" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">20.2 Logs de Dispositivos Finais</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <p>Os dispositivos finais (endpoints) geram logs que são essenciais para o monitoramento de segurança. Estes incluem:</p>
+              <ul>
+                <li><strong>Logs de Sistema:</strong> Eventos do sistema operacional</li>
+                <li><strong>Logs de Aplicações:</strong> Atividades de software instalado</li>
+                <li><strong>Logs de Segurança:</strong> Tentativas de login, alterações de privilégios</li>
+                <li><strong>Logs de Autenticação:</strong> Sucessos e falhas de autenticação</li>
+              </ul>
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-chart-line me-2"></i>
+                <strong>Importante:</strong> A correlação entre logs de endpoints e logs de rede permite identificar a origem e o impacto de
+                incidentes de segurança.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Exemplo de Log de Autenticação (Linux)
+Mar 31 15:30:22 servidor sshd[12345]: Failed password for user admin from 192.168.1.100 port 54321 ssh2
+Mar 31 15:30:25 servidor sshd[12345]: Accepted password for user admin from 192.168.1.100 port 54322 ssh2
+
+# Exemplo de Log de Sistema (Windows)
+Event ID 4624: Account Successfully Logged On
+Event ID 4625: Account Failed to Log On</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 20.3 LOGS DE REDE -->
+      <section id="logs-rede" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">20.3 Logs de Rede</h2>
+          <div class="row">
+            <div class="col-md-7">
+              <p>Os logs de rede são coletados de diversos dispositivos de infraestrutura:</p>
+              <ul>
+                <li><strong>Roteadores e Switches:</strong> Logs de interface, erros de roteamento</li>
+                <li><strong>Firewalls:</strong> Conexões permitidas/negadas, NAT</li>
+                <li><strong>Servidores DNS:</strong> Consultas de resolução de nomes</li>
+                <li><strong>Servidores DHCP:</strong> Atribuição de endereços IP</li>
+                <li><strong>NetFlow/IPFIX:</strong> Dados de fluxo de rede</li>
+              </ul>
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-lightbulb me-2"></i>
+                <strong>Ferramentas comuns:</strong> Syslog-ng, ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Security Onion
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card text-center">
+                <i class="fas fa-network-wired fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>Coleta Centralizada de Logs</strong></p>
+                <div class="small">
+                  <div>Dispositivos de Rede →</div>
+                  <div>Servidor Syslog →</div>
+                  <div>Ferramenta de Análise →</div>
+                  <div>Alertas e Relatórios</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO DE LABORATÓRIOS -->
+      <section id="laboratorios" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title"><i class="fas fa-flask me-2" style="color: var(--cisco-green)"></i>🧪 Laboratórios e Atividades</h2>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-terminal me-2 text-success"></i>
+                <strong>Packet Tracer - Atividade 1:</strong> Coleta de Logs de Rede
+                <p class="text-muted small mt-1">Configure syslog em roteadores Cisco e centralize logs em um servidor.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-chart-line me-2 text-success"></i>
+                <strong>Packet Tracer - Atividade 2:</strong> Análise de NetFlow
+                <p class="text-muted small mt-1">Configure NetFlow e analise fluxos de tráfego em um roteador.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-search me-2 text-success"></i>
+                <strong>Atividade de Pesquisa:</strong> Ferramentas NSM
+                <p class="text-muted small mt-1">Pesquise sobre Security Onion, Zeek (Bro), Snort e Wireshark.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-3 mb-3" style="border-left: 3px solid var(--cisco-green)">
+                <i class="fas fa-question-circle me-2 text-success"></i>
+                <strong>Verifique sua compreensão:</strong> 4 atividades interativas
+                <p class="text-muted small mt-1">Teste seus conhecimentos sobre tipos de dados de segurança.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== VERIFIQUE SUA COMPREENSÃO - MÓDULO 20 ==================== -->
+      <section id="verificacao" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title">
+            <i class="fas fa-brain me-2" style="color: var(--cisco-green)"></i>Verifique sua compreensão – Tipos de Dados de Monitoramento
+            de Rede
+          </h2>
+          <p class="text-muted mb-4">
+            Responda às perguntas para identificar os diferentes tipos de dados usados no monitoramento de segurança de rede.
+          </p>
+
+          <!-- Pergunta 1 -->
+          <div class="quiz-card mb-4" id="quiz20-1">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">1</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Que tipo de dados de monitoramento de rede inclui informações detalhadas sobre protocolo e carga útil para todo o tráfego
+                  em um segmento de rede?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="20-1" data-answer="captura-pacote">
+                      <span class="quiz-option-letter">A</span> <span class="text-success fw-bold">captura de pacote completo</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="20-1" data-answer="transacao">
+                      <span class="quiz-option-letter">B</span> dados de transação
+                    </div>
+                    <div class="quiz-option" data-quiz="20-1" data-answer="sessao">
+                      <span class="quiz-option-letter">C</span> dados de sessão
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-1" data-answer="alerta">
+                      <span class="quiz-option-letter">D</span> dados de alerta
+                    </div>
+                    <div class="quiz-option" data-quiz="20-1" data-answer="conteudo">
+                      <span class="quiz-option-letter">E</span> conteúdo extraído
+                    </div>
+                    <div class="quiz-option" data-quiz="20-1" data-answer="estatistico">
+                      <span class="quiz-option-letter">F</span> dados estatísticos
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback20-1" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Captura de pacote completo</strong><br />
+                    As capturas completas de pacotes (full packet captures) contêm as informações mais detalhadas sobre o tráfego de rede,
+                    incluindo cabeçalhos de protocolo e a carga útil (payload) completa. Ferramentas como Wireshark são usadas para
+                    visualizar esses dados, que permitem análise profunda de cada pacote trafegado na rede.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback20-1">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div class="quiz-card mb-4" id="quiz20-2">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">2</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Que tipo de dados de monitoramento de rede resume ou analisa dados de fluxo ou desempenho da rede?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-2" data-answer="captura-pacote">
+                      <span class="quiz-option-letter">A</span> captura de pacote completo
+                    </div>
+                    <div class="quiz-option" data-quiz="20-2" data-answer="transacao">
+                      <span class="quiz-option-letter">B</span> dados de transação
+                    </div>
+                    <div class="quiz-option" data-quiz="20-2" data-answer="sessao">
+                      <span class="quiz-option-letter">C</span> dados de sessão
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-2" data-answer="alerta">
+                      <span class="quiz-option-letter">D</span> dados de alerta
+                    </div>
+                    <div class="quiz-option" data-quiz="20-2" data-answer="conteudo">
+                      <span class="quiz-option-letter">E</span> conteúdo extraído
+                    </div>
+                    <div class="quiz-option correct-highlight" data-quiz="20-2" data-answer="estatistico">
+                      <span class="quiz-option-letter">F</span> <span class="text-success fw-bold">dados estatísticos</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback20-2" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Dados estatísticos</strong><br />
+                    Os dados estatísticos são criados através da análise de outras formas de dados de rede. Eles resumem e analisam fluxos
+                    de rede para identificar padrões, criar linhas de base e detectar anomalias. Ferramentas como Cisco Cognitive Threat
+                    Analytics usam aprendizado de máquina e modelagem estatística para detectar comportamentos suspeitos.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback20-2">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div class="quiz-card mb-4" id="quiz20-3">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">3</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Que tipo de dados de monitoramento de rede inclui logs de servidor e host específicos do dispositivo?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-3" data-answer="captura-pacote">
+                      <span class="quiz-option-letter">A</span> captura de pacote completo
+                    </div>
+                    <div class="quiz-option correct-highlight" data-quiz="20-3" data-answer="transacao">
+                      <span class="quiz-option-letter">B</span> <span class="text-success fw-bold">dados de transação</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="20-3" data-answer="sessao">
+                      <span class="quiz-option-letter">C</span> dados de sessão
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-3" data-answer="alerta">
+                      <span class="quiz-option-letter">D</span> dados de alerta
+                    </div>
+                    <div class="quiz-option" data-quiz="20-3" data-answer="conteudo">
+                      <span class="quiz-option-letter">E</span> conteúdo extraído
+                    </div>
+                    <div class="quiz-option" data-quiz="20-3" data-answer="estatistico">
+                      <span class="quiz-option-letter">F</span> dados estatísticos
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback20-3" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Dados de transação</strong><br />
+                    Os dados de transação consistem nas mensagens trocadas durante sessões de rede, incluindo logs de servidor e registros
+                    específicos de dispositivos. Por exemplo, logs de acesso HTTP em servidores web ou logs de autenticação em servidores de
+                    domínio contêm informações detalhadas sobre as transações realizadas.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback20-3">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div class="quiz-card mb-4" id="quiz20-4">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">4</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Que tipo de dados de monitoramento de rede inclui arquivos que estão anexados a e-mails ou que foram baixados da Internet?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-4" data-answer="captura-pacote">
+                      <span class="quiz-option-letter">A</span> captura de pacote completo
+                    </div>
+                    <div class="quiz-option" data-quiz="20-4" data-answer="transacao">
+                      <span class="quiz-option-letter">B</span> dados de transação
+                    </div>
+                    <div class="quiz-option" data-quiz="20-4" data-answer="sessao">
+                      <span class="quiz-option-letter">C</span> dados de sessão
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-4" data-answer="alerta">
+                      <span class="quiz-option-letter">D</span> dados de alerta
+                    </div>
+                    <div class="quiz-option correct-highlight" data-quiz="20-4" data-answer="conteudo">
+                      <span class="quiz-option-letter">E</span> <span class="text-success fw-bold">conteúdo extraído</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="20-4" data-answer="estatistico">
+                      <span class="quiz-option-letter">F</span> dados estatísticos
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback20-4" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Conteúdo extraído</strong><br />
+                    O conteúdo extraído é obtido a partir de capturas completas de pacotes, permitindo recuperar arquivos anexados a
+                    e-mails, documentos baixados da Internet e outros objetos transferidos. Esses arquivos podem ser enviados para análise
+                    em sandboxes para verificar presença de malware.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback20-4">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 5 -->
+          <div class="quiz-card mb-4" id="quiz20-5">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">5</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Que tipo de dados de monitoramento de rede contém detalhes dos fluxos de rede, incluindo as cinco tuplas, a quantidade de
+                  dados transmitidos e a duração da transmissão de dados?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-5" data-answer="captura-pacote">
+                      <span class="quiz-option-letter">A</span> captura de pacote completo
+                    </div>
+                    <div class="quiz-option" data-quiz="20-5" data-answer="transacao">
+                      <span class="quiz-option-letter">B</span> dados de transação
+                    </div>
+                    <div class="quiz-option correct-highlight" data-quiz="20-5" data-answer="sessao">
+                      <span class="quiz-option-letter">C</span> <span class="text-success fw-bold">dados de sessão</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-5" data-answer="alerta">
+                      <span class="quiz-option-letter">D</span> dados de alerta
+                    </div>
+                    <div class="quiz-option" data-quiz="20-5" data-answer="conteudo">
+                      <span class="quiz-option-letter">E</span> conteúdo extraído
+                    </div>
+                    <div class="quiz-option" data-quiz="20-5" data-answer="estatistico">
+                      <span class="quiz-option-letter">F</span> dados estatísticos
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback20-5" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Dados de sessão</strong><br />
+                    Os dados de sessão registram conversas entre dois pontos de extremidade de rede, incluindo as cinco tuplas (IP origem,
+                    porta origem, IP destino, porta destino, protocolo), quantidade de bytes transferidos, número de pacotes e duração da
+                    sessão. Ferramentas como Zeek (Bro) são especializadas na coleta e análise desses dados.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback20-5">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 6 -->
+          <div class="quiz-card mb-4" id="quiz20-6">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">6</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Que tipo de dados de monitoramento de rede são gerados por dispositivos IPS ou IDS quando um tráfego suspeito é detectado?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="20-6" data-answer="captura-pacote">
+                      <span class="quiz-option-letter">A</span> captura de pacote completo
+                    </div>
+                    <div class="quiz-option" data-quiz="20-6" data-answer="transacao">
+                      <span class="quiz-option-letter">B</span> dados de transação
+                    </div>
+                    <div class="quiz-option" data-quiz="20-6" data-answer="sessao">
+                      <span class="quiz-option-letter">C</span> dados de sessão
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="20-6" data-answer="alerta">
+                      <span class="quiz-option-letter">D</span> <span class="text-success fw-bold">dados de alerta</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="20-6" data-answer="conteudo">
+                      <span class="quiz-option-letter">E</span> conteúdo extraído
+                    </div>
+                    <div class="quiz-option" data-quiz="20-6" data-answer="estatistico">
+                      <span class="quiz-option-letter">F</span> dados estatísticos
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback20-6" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Dados de alerta</strong><br />
+                    Os dados de alerta são gerados por sistemas de prevenção/deteção de intrusões (IPS/IDS) como Snort, Suricata ou Zeek
+                    quando o tráfego viola uma regra ou corresponde à assinatura de uma exploração conhecida. Esses alertas são visualizados
+                    em ferramentas como Sguil e Squert (Security Onion) para análise e resposta a incidentes.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback20-6">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumo das Respostas -->
+          <div class="mt-4 pt-3 border-top border-secondary">
+            <div class="row text-center">
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 1</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Captura de pacote</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 2</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Dados estatísticos</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 3</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Dados de transação</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 4</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Conteúdo extraído</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 5</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Dados de sessão</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 6</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Dados de alerta</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela Resumo dos Tipos de Dados -->
+          <div class="mt-4">
+            <h4 class="text-success mb-3"><i class="fas fa-table me-2"></i>Resumo: Tipos de Dados de Monitoramento</h4>
+            <div class="table-responsive">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Tipo de Dado</th>
+                    <th>Descrição</th>
+                    <th>Ferramentas/Fontes</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-success fw-bold">Captura de Pacote Completo</td>
+                    <td>Detalhes completos de protocolo e payload</td>
+                    <td>Wireshark, tcpdump, Cisco Prime</td>
+                  </tr>
+                  <tr>
+                    <td class="text-success fw-bold">Dados de Sessão</td>
+                    <td>5-tuplas, bytes, pacotes, duração</td>
+                    <td>Zeek (Bro), NetFlow, IPFIX</td>
+                  </tr>
+                  <tr>
+                    <td class="text-success fw-bold">Dados de Transação</td>
+                    <td>Mensagens trocadas, logs de servidor</td>
+                    <td>Logs HTTP, logs de aplicação, Zeek</td>
+                  </tr>
+                  <tr>
+                    <td class="text-success fw-bold">Dados de Alerta</td>
+                    <td>Alertas de IPS/IDS</td>
+                    <td>Snort, Suricata, Sguil, Squert</td>
+                  </tr>
+                  <tr>
+                    <td class="text-success fw-bold">Conteúdo Extraído</td>
+                    <td>Arquivos, anexos, objetos transferidos</td>
+                    <td>Extração de PCAP, sandboxes</td>
+                  </tr>
+                  <tr>
+                    <td class="text-success fw-bold">Dados Estatísticos</td>
+                    <td>Análise de fluxos, baseline, anomalias</td>
+                    <td>Cisco Cognitive Threat Analytics, NBA/NBAD</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== VERIFIQUE SUA COMPREENSÃO - LOGS DO WINDOWS ==================== -->
+      <section id="verificacao-windows" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title">
+            <i class="fas fa-desktop me-2" style="color: var(--cisco-green)"></i>20.2.5 Verifique sua compreensão - Identifique os eventos
+            de segurança do Windows
+          </h2>
+          <p class="text-muted mb-4">
+            Verifique sua compreensão do registro em log do Windows identificando o nível de gravidade para eventos específicos.
+          </p>
+
+          <!-- Pergunta 1 - Falha de Logon Remoto -->
+          <div class="quiz-card mb-4" id="quiz-win-1">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">1</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Qual nível de segurança do Windows é registrado quando um logon remoto foi tentado sem êxito por um usuário não
+                  autorizado?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-1" data-answer="erro"><span class="quiz-option-letter">A</span> Erro</div>
+                    <div class="quiz-option" data-quiz="win-1" data-answer="fatal"><span class="quiz-option-letter">B</span> Fatal</div>
+                    <div class="quiz-option" data-quiz="win-1" data-answer="aviso"><span class="quiz-option-letter">C</span> Aviso</div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-1" data-answer="informacoes">
+                      <span class="quiz-option-letter">D</span> Informações
+                    </div>
+                    <div class="quiz-option" data-quiz="win-1" data-answer="sucesso">
+                      <span class="quiz-option-letter">E</span> Sucesso na Auditoria
+                    </div>
+                    <div class="quiz-option correct-highlight" data-quiz="win-1" data-answer="falha">
+                      <span class="quiz-option-letter">F</span> <span class="text-success fw-bold">Falha na Auditoria</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback-win-1" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Falha na Auditoria</strong><br />
+                    Eventos de "Falha na Auditoria" são registrados quando uma tentativa de logon ou acesso falha, especialmente quando um
+                    usuário não autorizado tenta acessar o sistema. Isso é crucial para detectar tentativas de invasão e ataques de força
+                    bruta. O Event ID 4625 no Windows registra falhas de logon.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback-win-1">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 2 - Processo Carregado com Sucesso -->
+          <div class="quiz-card mb-4" id="quiz-win-2">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">2</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Qual nível de segurança do Windows é registrado quando um processo necessário foi carregado com êxito em uma estação de
+                  trabalho?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-2" data-answer="erro"><span class="quiz-option-letter">A</span> Erro</div>
+                    <div class="quiz-option" data-quiz="win-2" data-answer="fatal"><span class="quiz-option-letter">B</span> Fatal</div>
+                    <div class="quiz-option" data-quiz="win-2" data-answer="aviso"><span class="quiz-option-letter">C</span> Aviso</div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="win-2" data-answer="informacoes">
+                      <span class="quiz-option-letter">D</span> <span class="text-success fw-bold">Informações</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="win-2" data-answer="sucesso">
+                      <span class="quiz-option-letter">E</span> Sucesso na Auditoria
+                    </div>
+                    <div class="quiz-option" data-quiz="win-2" data-answer="falha">
+                      <span class="quiz-option-letter">F</span> Falha na Auditoria
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback-win-2" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Informações</strong><br />
+                    O nível "Informações" é usado para registrar eventos normais e bem-sucedidos do sistema, como a inicialização de
+                    serviços, carregamento de processos e outras operações que ocorrem conforme o esperado. Esses eventos ajudam a
+                    estabelecer uma linha de base do comportamento normal do sistema.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback-win-2">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 3 - Erro de Disco durante Backup -->
+          <div class="quiz-card mb-4" id="quiz-win-3">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">3</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Qual nível de segurança do Windows é registrado quando ocorreu um erro de disco durante uma operação de backup?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="win-3" data-answer="erro">
+                      <span class="quiz-option-letter">A</span> <span class="text-success fw-bold">Erro</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="win-3" data-answer="fatal"><span class="quiz-option-letter">B</span> Fatal</div>
+                    <div class="quiz-option" data-quiz="win-3" data-answer="aviso"><span class="quiz-option-letter">C</span> Aviso</div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-3" data-answer="informacoes">
+                      <span class="quiz-option-letter">D</span> Informações
+                    </div>
+                    <div class="quiz-option" data-quiz="win-3" data-answer="sucesso">
+                      <span class="quiz-option-letter">E</span> Sucesso na Auditoria
+                    </div>
+                    <div class="quiz-option" data-quiz="win-3" data-answer="falha">
+                      <span class="quiz-option-letter">F</span> Falha na Auditoria
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback-win-3" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Erro</strong><br />
+                    O nível "Erro" é usado para registrar problemas significativos que afetam a funcionalidade do sistema, como falhas de
+                    hardware, erros de disco ou serviços que não conseguem iniciar. Esses eventos requerem atenção do administrador, pois
+                    podem indicar problemas que precisam ser resolvidos.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback-win-3">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 4 - Espaço em Disco Baixo -->
+          <div class="quiz-card mb-4" id="quiz-win-4">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">4</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">Qual nível de segurança do Windows é registrado quando o espaço em disco está ficando baixo?</h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-4" data-answer="erro"><span class="quiz-option-letter">A</span> Erro</div>
+                    <div class="quiz-option" data-quiz="win-4" data-answer="fatal"><span class="quiz-option-letter">B</span> Fatal</div>
+                    <div class="quiz-option correct-highlight" data-quiz="win-4" data-answer="aviso">
+                      <span class="quiz-option-letter">C</span> <span class="text-success fw-bold">Aviso</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-4" data-answer="informacoes">
+                      <span class="quiz-option-letter">D</span> Informações
+                    </div>
+                    <div class="quiz-option" data-quiz="win-4" data-answer="sucesso">
+                      <span class="quiz-option-letter">E</span> Sucesso na Auditoria
+                    </div>
+                    <div class="quiz-option" data-quiz="win-4" data-answer="falha">
+                      <span class="quiz-option-letter">F</span> Falha na Auditoria
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback-win-4" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Aviso</strong><br />
+                    O nível "Aviso" é usado para registrar condições que não são imediatamente críticas, mas podem se tornar problemas se
+                    não forem tratadas. Espaço em disco baixo, falhas de driver recuperáveis ou configurações de segurança não ideais são
+                    exemplos típicos de eventos de aviso.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback-win-4">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 5 - Logon Remoto Autorizado -->
+          <div class="quiz-card mb-4" id="quiz-win-5">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">5</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">
+                  Qual nível de segurança do Windows é registrado quando um usuário autorizado faz logon remotamente em um sistema?
+                </h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-5" data-answer="erro"><span class="quiz-option-letter">A</span> Erro</div>
+                    <div class="quiz-option" data-quiz="win-5" data-answer="fatal"><span class="quiz-option-letter">B</span> Fatal</div>
+                    <div class="quiz-option" data-quiz="win-5" data-answer="aviso"><span class="quiz-option-letter">C</span> Aviso</div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="win-5" data-answer="informacoes">
+                      <span class="quiz-option-letter">D</span> Informações
+                    </div>
+                    <div class="quiz-option correct-highlight" data-quiz="win-5" data-answer="sucesso">
+                      <span class="quiz-option-letter">E</span> <span class="text-success fw-bold">Sucesso na Auditoria</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="win-5" data-answer="falha">
+                      <span class="quiz-option-letter">F</span> Falha na Auditoria
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback-win-5" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Sucesso na Auditoria</strong><br />
+                    O nível "Sucesso na Auditoria" registra eventos de segurança bem-sucedidos, como logons autorizados, alterações de
+                    privilégios e acessos a recursos. Isso é essencial para rastrear atividades legítimas e estabelecer uma trilha de
+                    auditoria. O Event ID 4624 no Windows registra logons bem-sucedidos.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback-win-5">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumo dos Níveis de Log do Windows -->
+          <div class="mt-4 pt-3 border-top border-secondary">
+            <h4 class="text-success mb-3"><i class="fas fa-chart-simple me-2"></i>Resumo: Níveis de Log de Segurança do Windows</h4>
+            <div class="table-responsive">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Nível</th>
+                    <th>Descrição</th>
+                    <th>Exemplos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="text-success fw-bold">Informações</td>
+                    <td>Eventos normais e bem-sucedidos</td>
+                    <td>Processo carregado, serviço iniciado</td>
+                  </tr>
+                  <tr>
+                    <td class="text-warning fw-bold">Aviso</td>
+                    <td>Condições que podem se tornar problemas</td>
+                    <td>Espaço em disco baixo, driver recuperável</td>
+                  </tr>
+                  <tr>
+                    <td class="text-danger fw-bold">Erro</td>
+                    <td>Problemas significativos que afetam funcionalidade</td>
+                    <td>Erro de disco, falha de serviço crítico</td>
+                  </tr>
+                  <tr>
+                    <td class="text-danger fw-bold">Fatal</td>
+                    <td>Erros críticos que causam falha do sistema</td>
+                    <td>Kernel panic, falha catastrófica</td>
+                  </tr>
+                  <tr>
+                    <td class="text-success fw-bold">Sucesso na Auditoria</td>
+                    <td>Eventos de segurança bem-sucedidos</td>
+                    <td>Logon autorizado, acesso a recurso</td>
+                  </tr>
+                  <tr>
+                    <td class="text-danger fw-bold">Falha na Auditoria</td>
+                    <td>Eventos de segurança com falha</td>
+                    <td>Tentativa de logon não autorizada, acesso negado</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Dica Importante -->
+            <div class="alert-cisco mt-3">
+              <i class="fas fa-lightbulb me-2"></i>
+              <strong>Dica de Segurança:</strong> Os eventos de "Falha na Auditoria" (especialmente Event ID 4625) são indicadores cruciais
+              para detectar ataques de força bruta. Um grande volume desses eventos em curto período pode indicar uma tentativa de invasão
+              em andamento!
+            </div>
+
+            <!-- Event IDs Importantes -->
+            <div class="mt-3">
+              <h5 class="text-success"><i class="fas fa-id-card me-2"></i>Event IDs do Windows para Monitoramento</h5>
+              <div class="d-flex flex-wrap gap-2 mt-2">
+                <span class="badge-cisco">4624 - Logon bem-sucedido</span>
+                <span class="badge-cisco">4625 - Falha de logon</span>
+                <span class="badge-cisco">4648 - Logon com credencial explícita</span>
+                <span class="badge-cisco">4672 - Logon com privilégios especiais</span>
+                <span class="badge-cisco">4688 - Criação de processo</span>
+                <span class="badge-cisco">4720 - Criação de conta de usuário</span>
+                <span class="badge-cisco">4732 - Membro adicionado a grupo local</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resumo das Respostas -->
+          <div class="mt-4 pt-3 border-top border-secondary">
+            <div class="row text-center">
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 1</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Falha na Auditoria</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 2</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Informações</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 3</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Erro</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 4</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Aviso</p>
+                </div>
+              </div>
+              <div class="col-md-2 col-6">
+                <div class="p-2">
+                  <span class="badge-cisco-alt">Pergunta 5</span>
+                  <p class="small text-success mt-1 mb-0"><i class="fas fa-check-circle"></i> Sucesso na Auditoria</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== 20.3 LOGS DE REDE ==================== -->
+      <section id="logs-rede" class="mb-5">
+        <h2 class="cisco-title-alt display-6 mb-4">20.3 Logs de Rede</h2>
+
+        <!-- 20.3.1 Tcpdump -->
+        <div class="content-card" id="tcpdump">
+          <h3 class="cisco-subtitle">20.3.1 Tcpdump</h3>
+          <div class="row">
+            <div class="col-md-7">
+              <p>
+                A ferramenta de linha de comando <strong class="text-success">tcpdump</strong> é um analisador de pacotes muito popular. Ele
+                pode exibir capturas de pacotes em tempo real ou gravar capturas de pacotes em um arquivo. Ele captura dados detalhados de
+                protocolo de pacotes e conteúdo.
+              </p>
+              <p>
+                <strong class="text-success">Wireshark</strong> é uma GUI construída sobre a funcionalidade tcpdump. A estrutura das
+                capturas tcpdump varia dependendo do protocolo capturado e dos campos solicitados.
+              </p>
+              <div class="terminal-card mt-2">
+                <pre><code># Comandos básicos do tcpdump
+tcpdump -i eth0                    # Capturar na interface eth0
+tcpdump -w captura.pcap            # Salvar captura em arquivo
+tcpdump -r captura.pcap            # Ler arquivo de captura
+tcpdump port 80                    # Filtrar por porta
+tcpdump host 192.168.1.1           # Filtrar por endereço IP
+tcpdump -n                         # Não resolver nomes DNS</code></pre>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card text-center">
+                <i class="fas fa-terminal fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>tcpdump → Wireshark</strong></p>
+                <p class="small text-muted">Análise de pacotes em tempo real e offline</p>
+                <div class="mt-2">
+                  <span class="badge-cisco">CLI</span>
+                  <span class="badge-cisco">GUI</span>
+                  <span class="badge-cisco">PCAP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.3.2 NetFlow -->
+        <div class="content-card mt-4" id="netflow">
+          <h3 class="cisco-subtitle">20.3.2 NetFlow</h3>
+          <p>
+            <strong class="text-success">NetFlow</strong> é um protocolo desenvolvido pela Cisco como uma ferramenta para solução de
+            problemas de rede e contabilidade baseada em sessão. O NetFlow fornece com eficiência um importante conjunto de serviços para
+            aplicativos IP, incluindo:
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <ul>
+                <li>Contabilidade de tráfego de rede</li>
+                <li>Faturamento de rede com base no uso</li>
+                <li>Planejamento de rede</li>
+                <li>Segurança e monitoramento de DoS</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul>
+                <li>Monitoramento de rede</li>
+                <li>Informações sobre usuários e aplicativos</li>
+                <li>Tempos de uso de pico</li>
+                <li>Roteamento de tráfego</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Importante:</strong> O NetFlow <strong>não</strong> faz uma captura completa de pacote ou captura o conteúdo real. Ele
+            registra informações sobre o <strong>fluxo de pacotes</strong>, incluindo metadados. A Cisco desenvolveu o NetFlow e depois
+            permitiu que ele fosse usado como base para o padrão IETF chamado <strong>IPFIX</strong> (baseado no Cisco NetFlow Versão 9).
+          </div>
+
+          <div class="mt-3">
+            <h4 class="text-success">Atributos do NetFlow (5-tuplas)</h4>
+            <div class="terminal-card">
+              <pre><code>1. Endereço IP de origem
+2. Endereço IP de destino
+3. Porta de origem
+4. Porta de destino
+5. Tipo de protocolo da camada 3
+6. Classe de Serviço (ToS)
+7. Interface do roteador ou switch</code></pre>
+            </div>
+            <p class="small text-muted mt-2">
+              Todos os pacotes com os mesmos atributos são agrupados em um fluxo. O cache do NetFlow armazena essas informações condensadas.
+            </p>
+          </div>
+
+          <div class="mt-3">
+            <div class="terminal-card">
+              <pre><code># Exemplo de registro NetFlow v5
+Date flow start: 2017-08-30
+Duration: 0.082899
+Proto: TCP
+Src IP: 192.168.1.10:52034
+Dst IP: 172.16.1.100:80
+Flags: ACK
+Packets: 389
+Bytes: 1495</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.3.3 Visibilidade e Controle de Aplicação (AVC) -->
+        <div class="content-card mt-4" id="avc">
+          <h3 class="cisco-subtitle">20.3.3 Visibilidade e Controle de Aplicação (AVC)</h3>
+          <p>
+            O sistema <strong class="text-success">Cisco Application Visibility and Control (AVC)</strong> combina várias tecnologias para
+            reconhecer, analisar e controlar mais de <strong>1000 aplicativos</strong>. Estes incluem voz e vídeo, e-mail, compartilhamento
+            de arquivos, jogos, ponto a ponto (P2P) e aplicativos baseados em nuvem.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <h4 class="text-success">Componentes AVC</h4>
+              <div class="diagram-card">
+                <div class="mb-2">
+                  <i class="fas fa-search me-2 text-success"></i>
+                  <strong>Reconhecimento de Aplicativos</strong>
+                  <p class="small text-muted">NBAR2 - Identifica mais de 1000 aplicativos</p>
+                </div>
+                <div class="mb-2">
+                  <i class="fas fa-chart-line me-2 text-success"></i>
+                  <strong>Coleta de Métricas</strong>
+                  <p class="small text-muted">NetFlow, Flexible NetFlow, IPFIX</p>
+                </div>
+                <div class="mb-2">
+                  <i class="fas fa-chart-pie me-2 text-success"></i>
+                  <strong>Gerenciamento e Relatórios</strong>
+                  <p class="small text-muted">Cisco Prime, software de terceiros</p>
+                </div>
+                <div>
+                  <i class="fas fa-sliders-h me-2 text-success"></i>
+                  <strong>Controle</strong>
+                  <p class="small text-muted">QoS, priorização, policiamento de banda</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-success">Monitoramento de Portas vs Aplicativos</h4>
+              <div class="table-responsive">
+                <table class="table table-cisco">
+                  <thead>
+                    <tr>
+                      <th>Monitoramento de Porta</th>
+                      <th>Monitoramento de Aplicativo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>http (80)</td>
+                      <td>bittorrent</td>
+                    </tr>
+                    <tr>
+                      <td>https (443)</td>
+                      <td>Netflix</td>
+                    </tr>
+                    <tr>
+                      <td>sip (5060)</td>
+                      <td>skype</td>
+                    </tr>
+                    <tr>
+                      <td>dns (53)</td>
+                      <td>webex-meeting</td>
+                    </tr>
+                    <tr>
+                      <td>icmp</td>
+                      <td>facebook</td>
+                    </tr>
+                    <tr>
+                      <td>ldap (389)</td>
+                      <td>youtube</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="small text-muted mt-2">
+                A identificação por porta fornece pouca granularidade; a visibilidade por aplicativo identifica o que os usuários estão
+                fazendo.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.3.4 Logs de Filtro de Conteúdo (ESA/WSA) -->
+        <div class="content-card mt-4" id="filtro-conteudo">
+          <h3 class="cisco-subtitle">20.3.4 Logs de Filtro de Conteúdo</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <h4 class="text-success"><i class="fas fa-envelope me-2"></i>Cisco ESA (Email Security Appliance)</h4>
+              <p>O ESA possui mais de <strong>30 logs</strong> que podem ser usados para monitorar:</p>
+              <ul>
+                <li>Entrega de e-mail</li>
+                <li>Funcionamento do sistema</li>
+                <li>Antivírus e antispam</li>
+                <li>Decisões de lista negra/branca</li>
+              </ul>
+              <p class="small text-muted">Os logs podem ser enviados para servidores syslog, FTP ou SCP.</p>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-success"><i class="fas fa-globe me-2"></i>Cisco WSA (Web Security Appliance)</h4>
+              <p>O WSA atua como um <strong>proxy Web</strong>, registrando:</p>
+              <ul>
+                <li>Informações de transação HTTP</li>
+                <li>Logs de decisão de ACL</li>
+                <li>Logs de varredura de malware</li>
+                <li>Logs de filtragem de reputação Web</li>
+              </ul>
+              <p class="small text-muted">Formato compatível com W3C, envio via syslog, FTP ou SCP.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.3.5 Logs de Dispositivos Cisco -->
+        <div class="content-card mt-4" id="logs-cisco">
+          <h3 class="cisco-subtitle">20.3.5 Logs de Dispositivos Cisco</h3>
+          <p>
+            Os dispositivos de segurança Cisco podem ser configurados para enviar eventos e alertas para plataformas de gerenciamento usando
+            SNMP ou syslog.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Formato Cisco ASA
+*Mar 19 11:22:07.289 EDT: %ASA-3-201008: 
+Proibindo novas conexões</code></pre>
+              </div>
+              <div class="mt-2">
+                <span class="badge-cisco">ASA-3-201008</span>
+                <ul class="small mt-1">
+                  <li><strong>ASA</strong> = Dispositivo</li>
+                  <li><strong>3</strong> = Severidade</li>
+                  <li><strong>201008</strong> = ID da mensagem</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Formato Cisco IOS
+Sep 16 08:50:47.359 EDT: %SYS-5-CONFIG_I: 
+Configured from console by con0</code></pre>
+              </div>
+              <div class="mt-2">
+                <span class="badge-cisco">SYS-5-CONFIG_I</span>
+                <ul class="small mt-1">
+                  <li><strong>SYS</strong> = Facility Cisco</li>
+                  <li><strong>5</strong> = Severidade</li>
+                  <li><strong>CONFIG_I</strong> = Mnemônico</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.3.6 Registros de Proxy -->
+        <div class="content-card mt-4" id="logs-proxy">
+          <h3 class="cisco-subtitle">20.3.6 Registros de Proxy</h3>
+          <p>
+            Servidores proxy (como Squid, CcProxy, Apache Traffic Server) atuam como intermediários para clientes de rede, gerando logs
+            valiosos para monitoramento de segurança.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-7">
+              <div class="terminal-card">
+                <pre><code># Exemplo de log do Squid
+1265939281.764 19478 172.16.167.228 TCP_MISS/200 864 
+GET http://www.example.com/images/home.png 
+- NONE/- image/png</code></pre>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="table-responsive">
+                <table class="table table-cisco">
+                  <thead>
+                    <tr>
+                      <th>Campo</th>
+                      <th>Significado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1265939281.764</td>
+                      <td>Timestamp (Unix epoch)</td>
+                    </tr>
+                    <tr>
+                      <td>19478</td>
+                      <td>Duração (ms)</td>
+                    </tr>
+                    <tr>
+                      <td>172.16.167.228</td>
+                      <td>IP do cliente</td>
+                    </tr>
+                    <tr>
+                      <td>TCP_MISS/200</td>
+                      <td>Código Squid/HTTP</td>
+                    </tr>
+                    <tr>
+                      <td>GET</td>
+                      <td>Método HTTP</td>
+                    </tr>
+                    <tr>
+                      <td>image/png</td>
+                      <td>Content-Type</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="alert-cisco">
+              <i class="fas fa-lightbulb me-2"></i>
+              <strong>Aplicações:</strong> Proxies Web podem ser usados para inspeção de tráfego de saída como meio de
+              <strong>Prevenção de Perda de Dados (DLP)</strong>, varrendo dados confidenciais que estão saindo da rede.
+            </div>
+          </div>
+        </div>
+
+        <!-- 20.3.7 Cisco Umbrella -->
+        <div class="content-card mt-4" id="umbrella">
+          <h3 class="cisco-subtitle">20.3.7 Cisco Umbrella</h3>
+          <p>
+            O <strong class="text-success">Cisco Umbrella</strong> (anteriormente OpenDNS) oferece um serviço DNS hospedado que amplia a
+            capacidade do DNS para incluir aprimoramentos de segurança. Em vez de organizações hospedarem e manterem listas negras, o Cisco
+            Umbrella fornece essas proteções em seu próprio serviço DNS.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <h4 class="text-success">Serviços do Umbrella</h4>
+              <ul>
+                <li>Inteligência contra ameaças em tempo real</li>
+                <li>Gerenciamento de acesso DNS</li>
+                <li>Segurança de registros DNS</li>
+                <li>Proteção contra phishing</li>
+                <li>Filtragem de conteúdo por categoria</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Exemplo de log de proxy DNS Umbrella
+"2015-01-16 17:48:41", "ActiveDirectoryUserName",
+"ActiveDirectoryUserName,ADSite,Network",
+"10.10.1.100", "24.123.132.133", "Allowed", 
+"1 (A)", "domain-visited.com",
+"Chat,Photo Sharing,Social Networking"</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive mt-3">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Campo</th>
+                  <th>Exemplo</th>
+                  <th>Explicação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Timestamp</td>
+                  <td>2015-01-16 17:48:41</td>
+                  <td>Momento da solicitação (UTC)</td>
+                </tr>
+                <tr>
+                  <td>Policy Identity</td>
+                  <td>ActiveDirectoryUserName</td>
+                  <td>Identidade que corresponde à solicitação</td>
+                </tr>
+                <tr>
+                  <td>Internal IP</td>
+                  <td>10.10.1.100</td>
+                  <td>IP interno que fez a solicitação</td>
+                </tr>
+                <tr>
+                  <td>Action</td>
+                  <td>Allowed</td>
+                  <td>Permitido ou bloqueado</td>
+                </tr>
+                <tr>
+                  <td>Domain</td>
+                  <td>domain-visited.com</td>
+                  <td>Domínio solicitado</td>
+                </tr>
+                <tr>
+                  <td>Categories</td>
+                  <td>Chat,Social Networking</td>
+                  <td>Categorias de segurança/conteúdo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 20.3.8 Firewalls de Próxima Geração (NGFW) -->
+        <div class="content-card mt-4" id="ngfw">
+          <h3 class="cisco-subtitle">20.3.8 Firewalls de Próxima Geração (NGFW)</h3>
+          <p>
+            Os dispositivos de firewall da próxima geração (NextGen) estendem a segurança da rede além dos endereços IP e números de porta
+            da Camada 4 para a camada do aplicativo e além. A linha <strong class="text-success">Cisco Firepower</strong> consolida várias
+            camadas de segurança em uma única plataforma.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <h4 class="text-success">Serviços do Firepower</h4>
+              <div class="diagram-card">
+                <ul class="list-unstyled">
+                  <li><i class="fas fa-check-circle text-success me-2"></i> Visibilidade e controle de aplicativos</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i> NGIPS (IPS de próxima geração)</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i> Filtragem de URL por categoria</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i> Proteção avançada contra malware (AMP)</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i> Controle de política de identidade</li>
+                  <li><i class="fas fa-check-circle text-success me-2"></i> Análise e automação</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h4 class="text-success">Tipos de Eventos NGFW</h4>
+              <div class="alert-cisco mb-2">
+                <strong>Evento de Conexão</strong>
+                <p class="small mb-0">Logs com data/hora, IPs origem/destino, regra de controle de acesso</p>
+              </div>
+              <div class="alert-cisco mb-2">
+                <strong>Evento de Intrusão</strong>
+                <p class="small mb-0">Registro de explorações detectadas, origem e destino do ataque</p>
+              </div>
+              <div class="alert-cisco mb-2">
+                <strong>Evento de Host/Endpoint</strong>
+                <p class="small mb-0">Detecção de novos hosts na rede, hardware, IP, última presença</p>
+              </div>
+              <div class="alert-cisco mb-2">
+                <strong>Evento de Descoberta de Rede</strong>
+                <p class="small mb-0">Alterações detectadas na rede monitorada</p>
+              </div>
+              <div class="alert-cisco">
+                <strong>Evento de Fluxo de Rede</strong>
+                <p class="small mb-0">Registros NetFlow exportados para geração de eventos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER PADRÃO ==================== -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+            <p class="text-muted small mt-2"><i class="fas fa-book me-1"></i> Módulo 20: Dados de Segurança de Rede</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Scripts Personalizados -->
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+
+    <script>
+      // Busca no índice
+      document.getElementById('navSearch')?.addEventListener('keyup', function (e) {
+        const term = e.target.value.toLowerCase()
+        const items = document.querySelectorAll('#sectionList .dropdown-item')
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase()
+          item.style.display = text.includes(term) ? 'block' : 'none'
+        })
+      })
+    </script>
+    <script>
+      // ==================== QUIZ INTERATIVO ====================
+      // Funcionalidade para os botões "Mostrar Resposta" e seleção de opções
+
+      document.addEventListener('DOMContentLoaded', function () {
+        // =====================================================
+        // 1. FUNCIONALIDADE DOS BOTÕES "MOSTRAR RESPOSTA"
+        // =====================================================
+        const showAnswerButtons = document.querySelectorAll('.show-answer-btn')
+
+        showAnswerButtons.forEach((button) => {
+          button.addEventListener('click', function (e) {
+            e.stopPropagation()
+            const targetId = this.getAttribute('data-target')
+            const feedbackDiv = document.getElementById(targetId)
+
+            if (feedbackDiv) {
+              if (feedbackDiv.style.display === 'none' || feedbackDiv.style.display === '') {
+                feedbackDiv.style.display = 'block'
+                this.innerHTML = '<i class="fas fa-eye-slash me-1"></i> Ocultar Resposta'
+                // Scroll suave até o feedback
+                feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+              } else {
+                feedbackDiv.style.display = 'none'
+                this.innerHTML = '<i class="fas fa-eye me-1"></i> Mostrar Resposta Correta'
+              }
+            }
+          })
+        })
+
+        // =====================================================
+        // 2. FUNCIONALIDADE DE CLIQUE NAS OPÇÕES DO QUIZ
+        // =====================================================
+        const quizOptions = document.querySelectorAll('.quiz-option')
+
+        quizOptions.forEach((option) => {
+          // Remove qualquer classe de destaque pré-existente que não seja a correta
+          if (!option.classList.contains('correct-highlight')) {
+            option.addEventListener('click', function (e) {
+              e.stopPropagation()
+              const parentQuiz = this.closest('.quiz-card')
+              const quizId = parentQuiz?.id
+
+              // Remove highlight de todas as opções desta pergunta
+              const allOptions = parentQuiz.querySelectorAll('.quiz-option')
+              allOptions.forEach((opt) => {
+                opt.classList.remove('correct-highlight')
+                // Remove qualquer ícone de check adicional
+                const existingIcon = opt.querySelector('.fa-check-circle')
+                if (existingIcon && !opt.classList.contains('correct-highlight-original')) {
+                  existingIcon.remove()
+                }
+              })
+
+              // Adiciona highlight na opção clicada
+              this.classList.add('correct-highlight')
+
+              // Verifica se esta opção é a correta (tem a classe correct-highlight original)
+              const isCorrect =
+                this.classList.contains('correct-highlight') &&
+                (this.querySelector('.fa-check-circle') !== null || this.innerHTML.includes('text-success'))
+
+              // Opcional: mostra feedback automaticamente ao clicar
+              const feedbackDiv = parentQuiz.querySelector('.quiz-feedback')
+              const showBtn = parentQuiz.querySelector('.show-answer-btn')
+
+              if (feedbackDiv && feedbackDiv.style.display !== 'block') {
+                feedbackDiv.style.display = 'block'
+                if (showBtn) {
+                  showBtn.innerHTML = '<i class="fas fa-eye-slash me-1"></i> Ocultar Resposta'
+                }
+              }
+
+              // Efeito visual de feedback adicional
+              if (isCorrect) {
+                // Cria um efeito de "check" temporário
+                const originalText = this.innerHTML
+                if (!this.querySelector('.fa-check-circle')) {
+                  const checkIcon = document.createElement('i')
+                  checkIcon.className = 'fas fa-check-circle text-success ms-2'
+                  this.appendChild(checkIcon)
+                }
+              }
+            })
+          }
+        })
+
+        // =====================================================
+        // 3. PREVENIR QUE CLICKS NOS LINKS DENTRO DO QUIZ PROPAGUEM
+        // =====================================================
+        const quizLinks = document.querySelectorAll('.quiz-card a')
+        quizLinks.forEach((link) => {
+          link.addEventListener('click', function (e) {
+            e.stopPropagation()
+          })
+        })
+
+        // =====================================================
+        // 4. FUNCIONALIDADE ADICIONAL: RESETAR TODOS OS FEEDBACKS (OPCIONAL)
+        // =====================================================
+        // Função para resetar todos os quizzes (útil se quiser um botão "Resetar tudo")
+        window.resetAllQuizzes = function () {
+          const allFeedbacks = document.querySelectorAll('.quiz-feedback')
+          const allButtons = document.querySelectorAll('.show-answer-btn')
+
+          allFeedbacks.forEach((feedback) => {
+            feedback.style.display = 'none'
+          })
+
+          allButtons.forEach((button) => {
+            button.innerHTML = '<i class="fas fa-eye me-1"></i> Mostrar Resposta Correta'
+          })
+
+          // Remove highlights das opções
+          const allOptions = document.querySelectorAll('.quiz-option')
+          allOptions.forEach((option) => {
+            option.classList.remove('correct-highlight')
+            const checkIcon = option.querySelector('.fa-check-circle')
+            if (checkIcon && !option.classList.contains('correct-highlight-original')) {
+              checkIcon.remove()
+            }
+          })
+        }
+
+        // =====================================================
+        // 5. ANIMAÇÃO SUTIL PARA OS CARDS DO QUIZ
+        // =====================================================
+        const quizCards = document.querySelectorAll('.quiz-card')
+        if (typeof anime !== 'undefined') {
+          anime({
+            targets: '.quiz-card',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            easing: 'easeOutQuad',
+            duration: 600,
+            delay: (el, i) => i * 100
+          })
+        }
+
+        // =====================================================
+        // 6. FUNCIONALIDADE PARA O BOTÃO "ENVIAR" (SE EXISTIR)
+        // =====================================================
+        const submitButtons = document.querySelectorAll('.quiz-submit-btn')
+        submitButtons.forEach((btn) => {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault()
+            const parentQuiz = this.closest('.quiz-card')
+            const selectedOption = parentQuiz.querySelector('.quiz-option.correct-highlight')
+            const feedbackDiv = parentQuiz.querySelector('.quiz-feedback')
+
+            if (selectedOption) {
+              if (feedbackDiv) {
+                feedbackDiv.style.display = 'block'
+                const showBtn = parentQuiz.querySelector('.show-answer-btn')
+                if (showBtn) {
+                  showBtn.innerHTML = '<i class="fas fa-eye-slash me-1"></i> Ocultar Resposta'
+                }
+              }
+            } else {
+              // Mostra mensagem de que precisa selecionar uma opção
+              const warningMsg = document.createElement('div')
+              warningMsg.className = 'alert alert-warning mt-2'
+              warningMsg.style.background = 'rgba(255, 193, 7, 0.2)'
+              warningMsg.style.border = '1px solid var(--accent-yellow)'
+              warningMsg.style.borderRadius = '8px'
+              warningMsg.style.padding = '0.5rem 1rem'
+              warningMsg.innerHTML = '<i class="fas fa-exclamation-triangle me-2"></i> Selecione uma opção antes de enviar.'
+
+              parentQuiz.appendChild(warningMsg)
+              setTimeout(() => {
+                warningMsg.remove()
+              }, 3000)
+            }
+          })
+        })
+
+        // =====================================================
+        // 7. MANTER O ESTADO DAS RESPOSTAS CORRETAS ORIGINAIS
+        // =====================================================
+        // Marca as opções que são respostas corretas originais com uma classe especial
+        const correctOptions = document.querySelectorAll('.quiz-option.correct-highlight')
+        correctOptions.forEach((opt) => {
+          opt.classList.add('correct-highlight-original')
+          // Garante que o ícone de check permaneça
+          if (!opt.querySelector('.fa-check-circle')) {
+            const checkIcon = document.createElement('i')
+            checkIcon.className = 'fas fa-check-circle text-success ms-2'
+            opt.appendChild(checkIcon)
+          }
+        })
+
+        // =====================================================
+        // 8. FUNCIONALIDADE DE BUSCA NO ÍNDICE (SE EXISTIR)
+        // =====================================================
+        const navSearch = document.getElementById('navSearch')
+        if (navSearch) {
+          navSearch.addEventListener('keyup', function (e) {
+            const term = e.target.value.toLowerCase()
+            const sectionList = document.getElementById('sectionList')
+            if (sectionList) {
+              const items = sectionList.querySelectorAll('.dropdown-item')
+              items.forEach((item) => {
+                const text = item.textContent.toLowerCase()
+                if (text.includes(term)) {
+                  item.style.display = 'block'
+                } else {
+                  item.style.display = 'none'
+                }
+              })
+            }
+          })
+        }
+
+        // =====================================================
+        // 9. BARRA DE PROGRESSO
+        // =====================================================
+        const progressBar = document.getElementById('readingProgress')
+        if (progressBar) {
+          window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+            const scrolled = (winScroll / height) * 100
+            progressBar.style.width = scrolled + '%'
+          })
+        }
+
+        // =====================================================
+        // 10. SCROLL SUAVE PARA LINKS INTERNOS
+        // =====================================================
+        document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((anchor) => {
+          anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href')
+            if (href === '#' || (href === '#laboratorios' && this.classList.contains('show-answer-btn'))) {
+              return
+            }
+            e.preventDefault()
+            const target = document.querySelector(href)
+            if (target) {
+              const offset = 90
+              window.scrollTo({
+                top: target.offsetTop - offset,
+                behavior: 'smooth'
+              })
+            }
+          })
+        })
+
+        console.log('✅ Quiz interativo inicializado com sucesso!')
+      })
+    </script>
+  </body>
+</html>

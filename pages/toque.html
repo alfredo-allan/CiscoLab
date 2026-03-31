@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <title>Cisco Security Lab | Guia de Estudos Master</title>
+    <!-- Bootstrap 5 CSS (para componentes base, mas estilizado pelo nosso CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/styles.css " />
+  </head>
+  <body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-dark border-bottom border-success">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <i class="fas fa-shield-alt me-2"></i>Cisco Security Lab
+          <small class="d-block text-muted">Guia Master de Estudos</small>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#acl"><i class="fas fa-filter"></i> ACLs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#firewall"><i class="fas fa-fire"></i> Firewalls</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#crypto"><i class="fas fa-lock"></i> Criptografia</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cloud"><i class="fas fa-cloud"></i> Nuvem</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#glossario"><i class="fas fa-book"></i> Glossário</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="progress sticky-top" style="top: 76px">
+      <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+    </div>
+
+    <main class="container py-4">
+      <!-- Header -->
+      <div class="text-center mb-5">
+        <h1 class="cisco-title d-inline-block">📘 CyberOps + CCNA Security</h1>
+        <p class="text-muted mt-3">Baseado em 24 questões práticas | Domine ACLs, Firewalls, PKI e muito mais</p>
+      </div>
+
+      <!-- ==================== ACL SECTION ==================== -->
+      <section id="acl" class="content-section">
+        <h2 class="cisco-title-alt"><i class="fas fa-filter me-2"></i> ACLs - Access Control Lists</h2>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="content-card">
+              <h3><i class="fas fa-brain text-success me-2"></i> Conceitos Fundamentais</h3>
+              <ul class="styled-list">
+                <li>
+                  <i class="fas fa-check-circle"></i> <strong>ACL Estendida</strong>: Filtra IP origem, IP destino, protocolo e portas.
+                </li>
+                <li><i class="fas fa-check-circle"></i> <strong>ACL Padrão</strong>: Filtra apenas IP de origem.</li>
+                <li>
+                  <i class="fas fa-check-circle"></i> <strong>Established</strong>: Permite tráfego TCP com ACK/RST (conexões já abertas).
+                </li>
+                <li><i class="fas fa-check-circle"></i> <strong>Wildcard</strong>: Define intervalo. Ex: 0.0.3.255 = 4 redes (/22).</li>
+                <li><i class="fas fa-check-circle"></i> <strong>Implicit Deny</strong>: Toda ACL termina com "deny any any".</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="terminal-card">
+              <i class="fas fa-terminal me-2"></i> Exemplo ACL Estendida<br />
+              <code
+                >Router(config)# ip access-list extended SECURE<br />
+                Router(config-ext-nacl)# permit tcp any 192.168.254.0 0.0.1.255 established<br />
+                Router(config-ext-nacl)# end</code
+              >
+              <hr class="bg-success" />
+              <small class="text-muted">✅ Permite apenas tráfego TCP de resposta para a rede 192.168.254.0/23</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card mt-3">
+          <h3><i class="fas fa-calculator"></i> Wildcard na Prática</h3>
+          <p><strong>Desafio:</strong> Redes 192.168.16.0, 192.168.17.0, 192.168.18.0, 192.168.19.0</p>
+          <div class="table-responsive">
+            <table class="table-cisco">
+              <thead>
+                <tr>
+                  <th>Máscara Wildcard</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>0.0.0.255</code></td>
+                  <td>Apenas 192.168.16.0/24 ❌</td>
+                </tr>
+                <tr>
+                  <td><code>0.0.3.255</code></td>
+                  <td>16-19 (4 redes) ✅</td>
+                </tr>
+                <tr>
+                  <td><code>0.0.15.255</code></td>
+                  <td>0-15 (muito amplo) ⚠️</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert-cisco mt-2 p-2" style="background: rgba(102, 191, 83, 0.1); border-left: 4px solid #66bf53">
+            <i class="fas fa-lightbulb text-success"></i> <strong>Dica:</strong> Wildcard = 0.0.3.255 → terceiro octeto varia nos 2 últimos
+            bits (00010000 a 00010011)
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== FIREWALL SECTION ==================== -->
+      <section id="firewall" class="content-section">
+        <h2 class="cisco-title-alt"><i class="fas fa-fire me-2"></i> Firewalls: Stateful vs Stateless + ZPF</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="content-card">
+              <h3><i class="fas fa-chart-line"></i> Stateful</h3>
+              <ul class="styled-list">
+                <li><i class="fas fa-database"></i> Mantém tabela de estado</li>
+                <li><i class="fas fa-layer-group"></i> Opera nas camadas 3, 4 e 5</li>
+                <li><i class="fas fa-undo-alt"></i> Permite tráfego de retorno automaticamente</li>
+                <li><i class="fas fa-exclamation-triangle"></i> <span class="text-warning">Limitação:</span> Menos eficaz com UDP/ICMP</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <h3><i class="fas fa-chart-simple"></i> Stateless</h3>
+              <ul class="styled-list">
+                <li><i class="fas fa-box"></i> Analisa pacotes individualmente</li>
+                <li><i class="fas fa-layer-group"></i> Opera nas camadas 3 e 4</li>
+                <li><i class="fas fa-list"></i> Baseado em ACLs tradicionais</li>
+                <li><i class="fas fa-check-circle text-success"></i> Mais simples, mas menos seguro</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h3><i class="fas fa-shield-hog"></i> Zone-Based Policy Firewall (ZPF)</h3>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="badge-cisco-alt mb-2">Zona Self</div>
+              <p class="small">Tráfego destinado ao roteador ou originado dele.</p>
+            </div>
+            <div class="col-md-4">
+              <div class="badge-cisco-alt mb-2">Ações no ZPF</div>
+              <p><span class="text-success">pass</span> | <span class="text-danger">drop</span> | <span class="text-info">inspect</span></p>
+            </div>
+            <div class="col-md-4">
+              <div class="badge-cisco-alt mb-2">Primeiro Passo</div>
+              <p>Criar zonas → depois classes, políticas e zone-pairs.</p>
+            </div>
+          </div>
+          <div class="terminal-card mt-2">
+            <i class="fas fa-code"></i> Exemplo ZPF (conceitual)<br />
+            <code
+              >zone security INTERNA<br />
+              zone security DMZ<br />
+              zone-pair security ZP_INTERNA_DMZ source INTERNA destination DMZ<br />
+              service-policy type inspect POLICY_INSPECAO</code
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CRIPTOGRAFIA & PKI ==================== -->
+      <section id="crypto" class="content-section">
+        <h2 class="cisco-title-alt"><i class="fas fa-lock me-2"></i> Criptografia e PKI</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="content-card">
+              <h3><i class="fas fa-key"></i> Algoritmos</h3>
+              <ul class="styled-list">
+                <li><i class="fas fa-sync-alt"></i> <strong>Simétricos:</strong> AES, 3DES (mesma chave)</li>
+                <li><i class="fas fa-exchange-alt"></i> <strong>Assimétricos:</strong> RSA, ECC (par público/privado)</li>
+                <li><i class="fas fa-hash"></i> <strong>Hash:</strong> MD5, SHA (integridade, não confidencialidade)</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <h3><i class="fas fa-certificate"></i> PKI</h3>
+              <ul class="styled-list">
+                <li><i class="fas fa-building"></i> Autoridade Certificadora (CA) → terceiro confiável</li>
+                <li><i class="fas fa-id-card"></i> Certificados digitais = identidade autorizada</li>
+                <li><i class="fas fa-globe"></i> Aplicações: HTTPS, 802.1X/EAP-TLS, VPN SSL</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== NUVEM & VIRTUALIZAÇÃO ==================== -->
+      <section id="cloud" class="content-section">
+        <h2 class="cisco-title-alt"><i class="fas fa-cloud-upload-alt me-2"></i> Segurança em Nuvem e Virtualização</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="content-card">
+              <h3><i class="fas fa-server"></i> VM Sprawl</h3>
+              <p><strong>Definição:</strong> Proliferação descontrolada de VMs → mais VMs do que conseguimos gerenciar eficientemente.</p>
+              <div class="alert-cisco mt-2 p-2" style="background: rgba(255, 68, 68, 0.1); border-left-color: #ff4444">
+                <i class="fas fa-exclamation-triangle text-danger"></i> Causa: criação sem controle, falta de remoção após uso.
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <h3><i class="fas fa-microchip"></i> Microsegmentação</h3>
+              <p>Criação de segmentos lógicos isolados sem hardware adicional. Usada em datacenters virtuais e segurança de containers.</p>
+              <p>
+                <span class="badge-cisco"><i class="fas fa-check"></i> Benefício: isolamento granular</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="content-card">
+          <h3><i class="fas fa-cloud"></i> Domínios CSA (Cloud Security Alliance)</h3>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge-cisco">Segurança de Infraestrutura</span>
+            <span class="badge-cisco">Segurança de Aplicações</span>
+            <span class="badge-cisco">Plano de Gerenciamento e Controle</span>
+            <span class="badge-cisco">Segurança e Criptografia de Dados</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== GLOSSÁRIO ==================== -->
+      <section id="glossario" class="content-section">
+        <h2 class="cisco-title-alt"><i class="fas fa-book-open me-2"></i> Glossário Rápido</h2>
+        <div class="accordion-cisco accordion" id="glossaryAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcl">
+                <i class="fas fa-filter me-2"></i> ACL
+              </button>
+            </h2>
+            <div id="collapseAcl" class="accordion-collapse collapse show" data-bs-parent="#glossaryAccordion">
+              <div class="accordion-body">
+                Lista de Controle de Acesso. Filtra tráfego baseado em regras. Padrão (só origem) ou Estendida (origem, destino, protocolo,
+                porta).
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWildcard">
+                <i class="fas fa-calculator me-2"></i> Wildcard Mask
+              </button>
+            </h2>
+            <div id="collapseWildcard" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                Máscara usada em ACLs para definir intervalo de endereços. Bit 0 = deve corresponder, bit 1 = pode variar. Ex: 0.0.3.255 = 4
+                redes.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStateful">
+                <i class="fas fa-fire me-2"></i> Stateful Firewall
+              </button>
+            </h2>
+            <div id="collapseStateful" class="accordion-collapse collapse">
+              <div class="accordion-body">Mantém tabela de estado das conexões. Opera nas camadas 3, 4 e 5. Menos eficaz com UDP/ICMP.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZPF">
+                <i class="fas fa-shield-hog me-2"></i> ZPF
+              </button>
+            </h2>
+            <div id="collapseZPF" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                Zone-Based Policy Firewall. Modelo moderno do Cisco IOS com zonas de segurança e políticas entre pares de zonas. Zona Self
+                representa o roteador.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePKI">
+                <i class="fas fa-certificate me-2"></i> PKI
+              </button>
+            </h2>
+            <div id="collapsePKI" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                Infraestrutura de Chave Pública. Emite certificados digitais via CA (Autoridade Certificadora). Usada em HTTPS, 802.1X,
+                assinaturas digitais.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAES">
+                <i class="fas fa-key me-2"></i> AES
+              </button>
+            </h2>
+            <div id="collapseAES" class="accordion-collapse collapse">
+              <div class="accordion-body">
+                Advanced Encryption Standard. Algoritmo de criptografia simétrica, usado para confidencialidade.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dica Final -->
+      <div class="content-card text-center mt-4">
+        <i class="fas fa-graduation-cap fa-2x text-success mb-3"></i>
+        <h3>🎯 Estratégia de Estudo</h3>
+        <p class="text-muted">
+          “Entenda o fluxo: quem pode acessar o quê, onde, quando e como. ACLs são a primeira linha, firewalls stateful trazem inteligência,
+          PKI garante confiança.”
+        </p>
+        <a
+          href="#"
+          class="btn-cisco mt-2"
+          onclick="
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+            return false
+          "
+        >
+          <i class="fas fa-arrow-up"></i> Voltar ao topo
+        </a>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-credits">
+          <i class="fas fa-shield-alt"></i> Cisco Security Lab | Material de Estudos Baseado em 24 Questões Práticas<br />
+          <span class="text-muted">Domine ACLs, Firewalls, PKI, Segurança em Nuvem e muito mais.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Progress Bar
+      window.addEventListener('scroll', function () {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        const scrolled = (winScroll / height) * 100
+        document.getElementById('progressBar').style.width = scrolled + '%'
+      })
+    </script>
+  </body>
+</html>
