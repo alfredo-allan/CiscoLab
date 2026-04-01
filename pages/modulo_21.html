@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 21: Avaliação de Alertas | ☠ CyberSec | Estudos Cisco</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Bootstrap 5.3 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Global Consolidado -->
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+      /* Estilos adicionais específicos para tabelas de regras */
+      .rule-table pre {
+        margin: 0;
+        font-size: 0.75rem;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+      .sguil-table th,
+      .sguil-table td {
+        font-size: 0.75rem;
+        padding: 0.5rem;
+      }
+      .priority-high {
+        background-color: rgba(220, 53, 69, 0.2);
+        border-left: 3px solid #dc3545;
+      }
+      .priority-medium {
+        background-color: rgba(255, 193, 7, 0.2);
+        border-left: 3px solid #ffc107;
+      }
+      .priority-low {
+        background-color: rgba(102, 191, 83, 0.2);
+        border-left: 3px solid #66bf53;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ==================== NAVBAR PADRÃO ==================== -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a
+          class="navbar-brand"
+          href="/index.html"
+          style="
+            color: var(--cisco-green);
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+          "
+        >
+          <i
+            class="fas fa-shield-halved me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          NET<span style="color: white">SEC</span>
+          <small
+            style="
+              font-size: 0.7rem;
+              color: var(--text-muted);
+              display: block;
+              line-height: 1;
+            "
+            >☠ CyberSec | Estudos Cisco</small
+          >
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMain"
+        >
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i
+                  class="fas fa-cube me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Módulo 21 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                style="max-height: 400px; overflow-y: auto; min-width: 320px"
+              >
+                <li>
+                  <h6 class="dropdown-header text-success">
+                    📋 Navegação Rápida
+                  </h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#introducao"
+                    ><i class="fas fa-star me-2 text-success"></i>21.0
+                    Introdução</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#fontes-alertas"
+                    ><i class="fas fa-bell me-2 text-success"></i>21.1 Fontes de
+                    Alertas</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item ps-4" href="#security-onion"
+                    ><i class="fas fa-network-wired me-2"></i>Security Onion</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item ps-4" href="#ferramentas-deteccao"
+                    ><i class="fas fa-tools me-2"></i>Ferramentas de Detecção</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item ps-4" href="#ferramentas-analise"
+                    ><i class="fas fa-chart-line me-2"></i>Ferramentas de
+                    Análise</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item ps-4" href="#geracao-alertas"
+                    ><i class="fas fa-exclamation-triangle me-2"></i>Geração de
+                    Alertas</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item ps-4" href="#regras-snort"
+                    ><i class="fas fa-code me-2"></i>Regras Snort</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"
+                    ><i class="fas fa-flask me-2 text-success"></i
+                    >Laboratórios</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/pages/modulos.html"
+                    ><i class="fas fa-th-large me-2"></i>Ver todos os 27
+                    módulos</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i
+                  class="fas fa-flask me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a
+                class="nav-link text-white px-3"
+                href="/pages/modulos.html"
+                title="Ver todos os 27 módulos"
+              >
+                <i
+                  class="fas fa-th-large me-1"
+                  style="color: var(--cisco-green); font-size: 1.2rem"
+                ></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="color: var(--cisco-green)"
+              >
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                style="min-width: 280px"
+              >
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li>
+                    <a class="dropdown-item" href="#introducao"
+                      >21.0 Introdução</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#fontes-alertas"
+                      >21.1 Fontes de Alertas</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#ferramentas-analise"
+                      >21.1.3 Ferramentas de Análise</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#geracao-alertas"
+                      >21.1.4 Geração de Alertas</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#regras-snort"
+                      >21.1.5-6 Regras Snort</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#laboratorios"
+                      >Laboratórios</a
+                    >
+                  </li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div
+      class="progress"
+      style="
+        height: 3px;
+        position: sticky;
+        top: 76px;
+        z-index: 1020;
+        border-radius: 0;
+      "
+    >
+      <div
+        id="readingProgress"
+        class="progress-bar"
+        style="width: 0%; background-color: var(--cisco-green)"
+      ></div>
+    </div>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container py-5">
+      <!-- Título do Módulo -->
+      <div class="mb-5">
+        <span class="badge-cisco mb-3"
+          ><i class="fas fa-chart-line me-1"></i> Módulo 21</span
+        >
+        <h1 class="cisco-title display-4">Avaliação de Alertas</h1>
+        <p class="text-muted lead mt-3">
+          Explicar o processo de avaliação de alertas e como classificar eventos
+          de segurança
+        </p>
+
+        <div class="row mt-4 g-3">
+          <div class="col-md-3 col-6">
+            <div class="content-card text-center p-3">
+              <i
+                class="fas fa-flask fa-2x"
+                style="color: var(--cisco-green)"
+              ></i>
+              <p class="mb-0 mt-2 fw-bold">2 Laboratórios</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="content-card text-center p-3">
+              <i
+                class="fas fa-check-circle fa-2x"
+                style="color: var(--cisco-green)"
+              ></i>
+              <p class="mb-0 mt-2 fw-bold">2 Atividades</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="content-card text-center p-3">
+              <i
+                class="fas fa-question-circle fa-2x"
+                style="color: var(--cisco-green)"
+              ></i>
+              <p class="mb-0 mt-2 fw-bold">1 Questionário</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="content-card text-center p-3">
+              <i
+                class="fas fa-bell fa-2x"
+                style="color: var(--cisco-green)"
+              ></i>
+              <p class="mb-0 mt-2 fw-bold">Avaliação de Alertas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21.0 Introdução -->
+      <section id="introducao" class="mb-5">
+        <h2 class="section-title">21.0 Introdução</h2>
+        <div class="content-card">
+          <p>
+            Uma habilidade crítica para um analista de segurança cibernética é a
+            capacidade de avaliar alertas e decidir o que fazer com eles. Neste
+            módulo, você aprenderá de onde vêm os alertas, fluxos de trabalho
+            comuns associados a alertas e métodos padrão para avaliar e
+            classificar alertas.
+          </p>
+
+          <div class="alert-cisco mt-4">
+            <i
+              class="fas fa-bullseye me-2"
+              style="color: var(--cisco-green)"
+            ></i>
+            <strong>Objetivo do Módulo:</strong> Explicar o processo de
+            avaliação de alertas
+          </div>
+        </div>
+      </section>
+
+      <!-- 21.1 Fontes de Alertas -->
+      <section id="fontes-alertas" class="mb-5">
+        <h2 class="section-title">21.1 Fontes de Alertas</h2>
+
+        <!-- 21.1.1 Security Onion -->
+        <div id="security-onion" class="content-card mb-4">
+          <h3 class="cisco-subtitle">21.1.1 Security Onion</h3>
+          <p>
+            <strong class="text-success">Security Onion</strong> é um pacote de
+            código aberto de ferramentas de Monitoramento de Segurança de Rede
+            (NSM) que é executado em uma distribuição Ubuntu Linux. As
+            ferramentas Security Onion fornecem três funções principais para o
+            analista de segurança cibernética:
+          </p>
+          <ul>
+            <li>Captura completa de pacotes e tipos de dados</li>
+            <li>Sistemas de detecção de intrusão baseados em rede e em host</li>
+            <li>Ferramentas de analistas de alerta</li>
+          </ul>
+          <div class="terminal-card mt-3">
+            <pre><code><i class="fas fa-info-circle me-2"></i> Observação: Security Onion pode ser abreviado como SO. Neste curso, usaremos Security Onion.</code></pre>
+          </div>
+        </div>
+
+        <!-- 21.1.2 Ferramentas de Detecção -->
+        <div id="ferramentas-deteccao" class="mb-4">
+          <h3 class="cisco-subtitle">
+            21.1.2 Ferramentas de Detecção para Coleta de Dados de Alerta
+          </h3>
+
+          <!-- Arquitetura Security Onion -->
+          <div class="diagram-card mb-4">
+            <h4 class="mb-3 text-center">📊 Arquitetura do Security Onion</h4>
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="hacker-card p-3">
+                  <h5 class="text-success">Análise</h5>
+                  <ul class="list-unstyled">
+                    <li><i class="fas fa-chart-simple me-2"></i>Sguil</li>
+                    <li><i class="fas fa-chart-network me-2"></i>Wireshark</li>
+                    <li><i class="fas fa-chart-line me-2"></i>Kibana</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="hacker-card p-3">
+                  <h5 class="text-warning">Detecção</h5>
+                  <ul class="list-unstyled">
+                    <li><i class="fas fa-bug me-2"></i>CapMe</li>
+                    <li><i class="fas fa-shield me-2"></i>Snort</li>
+                    <li><i class="fas fa-robot me-2"></i>Zeek/Bro</li>
+                    <li><i class="fas fa-server me-2"></i>OSSEC</li>
+                    <li><i class="fas fa-shield-halved me-2"></i>Wazuh</li>
+                    <li><i class="fas fa-dragon me-2"></i>Suricata</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="hacker-card p-3">
+                  <h5 class="text-info">Dados</h5>
+                  <ul class="list-unstyled small">
+                    <li>PCAPS</li>
+                    <li>Dados de conteúdo</li>
+                    <li>Dados de transação</li>
+                    <li>Logs do host</li>
+                    <li>Dados de Alerta</li>
+                    <li>Metadados</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grid de Ferramentas -->
+          <div class="ioc-grid">
+            <div class="content-card">
+              <h4><i class="fas fa-camera me-2 text-success"></i> CapMe</h4>
+              <p>
+                Aplicação web que permite visualização de transcrições pcap
+                renderizadas com tcpflow ou Zeek. Oferece ao analista um meio
+                fácil de visualizar uma sessão inteira da Camada 4.
+              </p>
+            </div>
+            <div class="content-card">
+              <h4>
+                <i class="fas fa-shield-virus me-2 text-success"></i> Snort
+              </h4>
+              <p>
+                NIDS (Network Intrusion Detection System) que usa regras e
+                assinaturas para gerar alertas. Patrocinado pela Cisco, pode
+                baixar novas regras automaticamente via PulledPork.
+              </p>
+            </div>
+            <div class="content-card">
+              <h4>
+                <i class="fas fa-code-branch me-2 text-success"></i> Zeek (Bro)
+              </h4>
+              <p>
+                NIDS baseado em comportamento. Usa políticas em forma de scripts
+                para determinar quais dados registrar e quando emitir
+                notificações de alerta.
+              </p>
+            </div>
+            <div class="content-card">
+              <h4><i class="fas fa-hdd me-2 text-success"></i> OSSEC</h4>
+              <p>
+                HIDS (Host Intrusion Detection System) que monitora integridade
+                de arquivos, logs locais, processos do sistema e detecção de
+                rootkit.
+              </p>
+            </div>
+            <div class="content-card">
+              <h4><i class="fas fa-shield-alt me-2 text-success"></i> Wazuh</h4>
+              <p>
+                HIDS que substituirá OSSEC. Solução completa com análise de
+                logs, monitoramento de integridade, detecção de vulnerabilidades
+                e resposta a incidentes.
+              </p>
+            </div>
+            <div class="content-card">
+              <h4><i class="fas fa-dragon me-2 text-success"></i> Suricata</h4>
+              <p>
+                NIDS com abordagem baseada em assinaturas. Usa multithreading
+                nativo e suporte a GPU para melhor desempenho.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 21.1.3 Ferramentas de Análise -->
+        <div id="ferramentas-analise" class="content-card mb-4">
+          <h3 class="cisco-subtitle">21.1.3 Ferramentas de Análise</h3>
+          <p>
+            O Security Onion integra dados e logs de IDS através das seguintes
+            ferramentas:
+          </p>
+
+          <div class="row mt-3 g-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h4 class="text-success">📊 Sguil</h4>
+                <p>
+                  Console de alto nível para investigar alertas de segurança.
+                  Serve como ponto de partida na investigação, permitindo girar
+                  diretamente para outras ferramentas.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h4 class="text-success">📈 Kibana</h4>
+                <p>
+                  Interface de painel interativo para dados Elasticsearch.
+                  Permite consulta de dados e visualizações flexíveis com
+                  recursos de machine learning.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h4 class="text-success">🔍 Wireshark</h4>
+                <p>
+                  Aplicativo de captura de pacotes integrado que pode ser aberto
+                  diretamente de outras ferramentas para exibir pacotes
+                  completos relevantes.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h4 class="text-success">📡 Zeek</h4>
+                <p>
+                  Analisador de tráfego de rede que inspeciona todo o tráfego em
+                  um segmento, permitindo análise aprofundada dos dados.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 21.1.4 Geração de Alertas -->
+        <div id="geracao-alertas" class="content-card mb-4">
+          <h3 class="cisco-subtitle">21.1.4 Geração de Alertas</h3>
+          <p>
+            Alertas de segurança são mensagens de notificação geradas por
+            ferramentas, sistemas e dispositivos de segurança do NSM. No
+            Security Onion, o
+            <strong class="text-success">Sguil</strong> fornece um console que
+            integra alertas de várias fontes em uma fila com carimbo de
+            data/hora.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Five-Tuple (5-tupla) em Alertas:</strong> SRCIP, SPORT,
+            DSTIP, DPORT, Protocolo
+          </div>
+
+          <h4 class="mt-4 mb-3">Interface Sguil - Eventos em Tempo Real</h4>
+          <div class="table-responsive">
+            <table class="table table-cisco sguil-table">
+              <thead>
+                <tr>
+                  <th>ST</th>
+                  <th>CNT</th>
+                  <th>Sensor</th>
+                  <th>Alert ID</th>
+                  <th>Date/Time</th>
+                  <th>Src IP</th>
+                  <th>SPort</th>
+                  <th>Dst IP</th>
+                  <th>DPort</th>
+                  <th>Pr</th>
+                  <th>Event Message</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="priority-high">
+                  <td>RT</td>
+                  <td>3</td>
+                  <td>seconion...</td>
+                  <td>7.2089</td>
+                  <td>2020-05-10 23:16:38</td>
+                  <td>209.165.200.235</td>
+                  <td>60574</td>
+                  <td>209.165.200.235</td>
+                  <td>111</td>
+                  <td>6</td>
+                  <td>GPL RPC portmap NFS request TCP</td>
+                </tr>
+                <tr class="priority-medium">
+                  <td>RT</td>
+                  <td>6</td>
+                  <td>seconion...</td>
+                  <td>7.2138</td>
+                  <td>2020-06-17 15:58:17</td>
+                  <td>209.165.200.235</td>
+                  <td>58016</td>
+                  <td>209.165.200.235</td>
+                  <td>80</td>
+                  <td>6</td>
+                  <td>ET CURRENT_EVENTS QNAP Shellshock CVE-2014-6271</td>
+                </tr>
+                <tr class="priority-low">
+                  <td>RT</td>
+                  <td>1</td>
+                  <td>seconion...</td>
+                  <td>1.2330</td>
+                  <td>2020-06-17 16:42:09</td>
+                  <td>0.0.0.0</td>
+                  <td>0</td>
+                  <td>0.0.0.0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>[OSSEC] unix_chkpwd: Password check failed.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row mt-3 g-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-2">
+                <small
+                  ><strong>ST:</strong> Status (RT = Tempo Real) - Cores indicam
+                  prioridade</small
+                >
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-2">
+                <small
+                  ><strong>CNT:</strong> Contagem de eventos correlacionados
+                  para mesmo IP</small
+                >
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-2">
+                <small
+                  ><strong>Alert ID:</strong> Sensor ID + Número do
+                  evento</small
+                >
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-2">
+                <small
+                  ><strong>Prioridades:</strong> Muito baixo (amarelo claro) →
+                  Alto (vermelho)</small
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 21.1.5 e 21.1.6 Regras Snort -->
+        <div id="regras-snort" class="content-card mb-4">
+          <h3 class="cisco-subtitle">21.1.5-6 Regras e Alertas Snort</h3>
+
+          <div class="terminal-card mb-4">
+            <pre><code>alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg: "ET EXPLOIT VSFTPD Backdoor User Login Smiley"; flow:established,to_server; content: "USER "; depth:5; content:"|3a 29|"; distance:0; classtype:attempted-admin; sid:2013188; rev:4;)</code></pre>
+            <small class="text-muted"
+              >/nsm/server_data/securityonion/rules/seconion-eth1-1/download.rules:
+              Line 7159</small
+            >
+          </div>
+
+          <h4>Estrutura da Regra Snort</h4>
+          <div class="table-responsive mb-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Exemplo</th>
+                  <th>Explicação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Cabeçalho da Regra</td>
+                  <td>alert ip any any -> any any</td>
+                  <td>
+                    Ação, protocolo, endereços/portas de origem/destino, direção
+                  </td>
+                </tr>
+                <tr>
+                  <td>Opções de Regra</td>
+                  <td>
+                    (msg:"GPL ATTACK_RESPONSE id check returned root";...)
+                  </td>
+                  <td>Mensagem, conteúdo do pacote, tipo de alerta, SID</td>
+                </tr>
+                <tr>
+                  <td>Local da Regra</td>
+                  <td>/nsm/server_data/securityonion/rules/...</td>
+                  <td>Caminho do arquivo e linha da regra</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Cabeçalho da Regra - Componentes</h4>
+          <div class="table-responsive mb-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Explicação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>alert</td>
+                  <td>Ação: emitir um alerta</td>
+                </tr>
+                <tr>
+                  <td>ip</td>
+                  <td>Protocolo</td>
+                </tr>
+                <tr>
+                  <td>any any</td>
+                  <td>Origem: qualquer IP e porta</td>
+                </tr>
+                <tr>
+                  <td>-></td>
+                  <td>Direção do fluxo (origem → destino)</td>
+                </tr>
+                <tr>
+                  <td>any any</td>
+                  <td>Destino: qualquer IP e porta</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Opções de Regra - Componentes</h4>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Opção</th>
+                  <th>Explicação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>msg:</td>
+                  <td>Texto descritivo do alerta</td>
+                </tr>
+                <tr>
+                  <td>content:</td>
+                  <td>Conteúdo do pacote a ser inspecionado</td>
+                </tr>
+                <tr>
+                  <td>reference:</td>
+                  <td>URL com mais informações sobre a regra</td>
+                </tr>
+                <tr>
+                  <td>classtype:</td>
+                  <td>Categoria do ataque (prioridade associada)</td>
+                </tr>
+                <tr>
+                  <td>sid:</td>
+                  <td>Identificador único da regra</td>
+                </tr>
+                <tr>
+                  <td>rev:</td>
+                  <td>Revisão da regra</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-tag me-2"></i>
+            <strong>Fontes de Regras Snort:</strong>
+            <ul class="mt-2 mb-0">
+              <li>
+                <strong>GPL</strong> - Regras antigas Sourcefire (Snort SIDs ≤
+                3464)
+              </li>
+              <li>
+                <strong>ET</strong> - Emerging Threats (código aberto, licença
+                BSD)
+              </li>
+              <li>
+                <strong>VRT</strong> - Cisco Talos (assinantes, liberadas após
+                30 dias)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Laboratórios -->
+      <section id="laboratorios" class="mb-5">
+        <h2 class="section-title">
+          <i class="fas fa-flask me-2"></i> Laboratórios do Módulo
+        </h2>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="fas fa-microchip fa-2x me-3"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <h3 class="mb-0">Lab 21.1</h3>
+              </div>
+              <p>
+                Investigação de Alertas no Security Onion - Utilizando Sguil
+                para análise de eventos em tempo real
+              </p>
+              <span class="badge-cisco"
+                ><i class="fas fa-clock me-1"></i> Prática recomendada</span
+              >
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <div class="d-flex align-items-center mb-3">
+                <i
+                  class="fas fa-shield-halved fa-2x me-3"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <h3 class="mb-0">Lab 21.2</h3>
+              </div>
+              <p>
+                Análise de Regras Snort - Criação e interpretação de regras
+                personalizadas para detecção de intrusões
+              </p>
+              <span class="badge-cisco"
+                ><i class="fas fa-code me-1"></i> Hands-on</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card mt-4">
+          <h4>
+            <i class="fas fa-check-circle me-2 text-success"></i> Atividades de
+            Compreensão
+          </h4>
+          <div class="row g-3 mt-2">
+            <div class="col-md-6">
+              <div class="checklist-item p-3 rounded">
+                <i class="fas fa-question-circle me-2 text-success"></i>
+                <strong>Atividade 21.1</strong> - Verifique sua compreensão
+                sobre fontes de alertas
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-3 rounded">
+                <i class="fas fa-question-circle me-2 text-success"></i>
+                <strong>Atividade 21.2</strong> - Verifique sua compreensão
+                sobre regras e alertas Snort
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 text-center">
+            <span class="badge-cisco-alt"
+              ><i class="fas fa-graduation-cap me-1"></i> Questionário do Módulo
+              21 disponível</span
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER PADRÃO ==================== -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">
+              Estudos Cisco Academy · Documentação interativa
+            </p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan
+              · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">
+              27 módulos · Aprendizado contínuo
+            </p>
+            <p class="text-muted small mb-0">
+              © 2026 · Base de conhecimento CyberSec
+            </p>
+            <p class="mt-2">
+              <a href="#top" class="text-success text-decoration-none"
+                ><i class="fas fa-arrow-up me-1"></i> Voltar ao topo</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+
+    <script>
+      // Barra de progresso personalizada
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById("readingProgress");
+        if (progressBar) progressBar.style.width = scrolled + "%";
+      });
+
+      // Busca no índice
+      const searchInput = document.getElementById("navSearch");
+      if (searchInput) {
+        searchInput.addEventListener("keyup", function () {
+          const filter = this.value.toLowerCase();
+          const items = document.querySelectorAll(
+            "#sectionList .dropdown-item, #sectionList a",
+          );
+          items.forEach((item) => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(filter) ? "" : "none";
+          });
+        });
+      }
+
+      // Anime.js animações
+      anime({
+        targets: ".content-card, .hacker-card, .diagram-card",
+        opacity: [0, 1],
+        translateY: [20, 0],
+        easing: "easeOutQuad",
+        duration: 800,
+        delay: (el, i) => i * 100,
+      });
+
+      anime({
+        targets: ".cisco-title, .section-title",
+        opacity: [0, 1],
+        translateX: [-10, 0],
+        easing: "easeOutQuad",
+        duration: 600,
+      });
+    </script>
+  </body>
+</html>
