@@ -63,6 +63,21 @@ class CyberSecGlobalSearch {
         name: "Módulo 18",
         title: "Criptografia",
       },
+      {
+        path: "/pages/modulo_19.html",
+        name: "Módulo 19",
+        title: "Tecnologias e Protocolos",
+      },
+       {
+        path: "/pages/modulo_20.html",
+        name: "Módulo 20",
+        title: "Dados de Segurança de Rede",
+      },
+        {
+        path: "/pages/modulo_21.html",
+        name: "Módulo 21",
+        title: "Avaliação de alertas",
+      },
     ];
 
     this.searchTimeout = null;
