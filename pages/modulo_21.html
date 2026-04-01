@@ -12,16 +12,10 @@
     />
 
     <!-- Font Awesome 6 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Bootstrap 5.3 -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- CSS Global Consolidado -->
     <link rel="stylesheet" href="../css/styles.css" />
@@ -51,6 +45,88 @@
         background-color: rgba(102, 191, 83, 0.2);
         border-left: 3px solid #66bf53;
       }
+      /* ==================== ANÁLISE DETERMINÍSTICA vs PROBABILÍSTICA ==================== */
+      .analise-item {
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        padding: 1rem;
+        transition: all 0.2s ease;
+        border-left: 3px solid var(--border-primary);
+      }
+
+      .analise-item:hover {
+        background: rgba(102, 191, 83, 0.05);
+        border-left-color: var(--cisco-green);
+      }
+
+      .analise-descricao {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.4;
+      }
+
+      .analise-opcoes {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .analise-btn {
+        padding: 0.5rem 1.25rem;
+        border-radius: 30px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 1px solid var(--border-primary);
+        background: transparent;
+        color: var(--text-secondary);
+      }
+
+      .analise-btn.deterministica:hover {
+        background: rgba(13, 110, 253, 0.2);
+        border-color: #0d6efd;
+        color: #0d6efd;
+      }
+
+      .analise-btn.probabilistica:hover {
+        background: rgba(102, 191, 83, 0.2);
+        border-color: var(--cisco-green);
+        color: var(--cisco-green);
+      }
+
+      .analise-btn.selected {
+        background: var(--cisco-green);
+        border-color: var(--cisco-green);
+        color: var(--bg-primary);
+      }
+
+      .analise-btn.deterministica.selected {
+        background: #0d6efd;
+        border-color: #0d6efd;
+        color: white;
+      }
+
+      .analise-btn.probabilistica.selected {
+        background: var(--cisco-green);
+        border-color: var(--cisco-green);
+        color: var(--bg-primary);
+      }
+
+      .analise-feedback {
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
     </style>
   </head>
   <body>
@@ -58,46 +134,19 @@
     <nav
       class="navbar navbar-expand-lg sticky-top"
       style="
-        background-color: rgba(26, 26, 26, 0.98);
+        background-color: rgba(30, 30, 30, 0.98);
         border-bottom: 2px solid var(--cisco-green);
         backdrop-filter: blur(10px);
         padding: 0.8rem 0;
       "
     >
       <div class="container">
-        <!-- Logo/Brand -->
-        <a
-          class="navbar-brand"
-          href="/index.html"
-          style="
-            color: var(--cisco-green);
-            font-weight: 800;
-            font-size: 1.5rem;
-            letter-spacing: -0.5px;
-          "
-        >
-          <i
-            class="fas fa-shield-halved me-2"
-            style="color: var(--cisco-green)"
-          ></i>
-          NET<span style="color: white">SEC</span>
-          <small
-            style="
-              font-size: 0.7rem;
-              color: var(--text-muted);
-              display: block;
-              line-height: 1;
-            "
-            >☠ CyberSec | Estudos Cisco</small
-          >
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
         </a>
 
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMain"
-        >
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
           <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
         </button>
 
@@ -112,72 +161,61 @@
                 data-bs-toggle="dropdown"
                 style="border-bottom: 2px solid var(--cisco-green)"
               >
-                <i
-                  class="fas fa-cube me-1"
-                  style="color: var(--cisco-green)"
-                ></i>
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
                 Módulo 21 <span class="badge-modulo ms-2">ativo</span>
               </a>
-              <ul
-                class="dropdown-menu dropdown-menu-dark"
-                style="max-height: 400px; overflow-y: auto; min-width: 320px"
-              >
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
                 <li>
-                  <h6 class="dropdown-header text-success">
-                    📋 Navegação Rápida
-                  </h6>
+                  <h6 class="dropdown-header text-success"><i class="fas fa-book-open me-2"></i>Navegação Rápida</h6>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#introducao"><i class="fas fa-flag-checkered me-2 text-success"></i>21.0 Introdução</a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#introducao"
-                    ><i class="fas fa-star me-2 text-success"></i>21.0
-                    Introdução</a
+                  <a class="dropdown-item" href="#necessidade-avaliacao"
+                    ><i class="fas fa-chart-line me-2 text-success"></i>21.2.1 A necessidade de avaliação de alertas</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#fontes-alertas"
-                    ><i class="fas fa-bell me-2 text-success"></i>21.1 Fontes de
-                    Alertas</a
+                  <a class="dropdown-item" href="#avaliando-alertas"
+                    ><i class="fas fa-stethoscope me-2 text-success"></i>21.2.2 Avaliando Alertas</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item ps-4" href="#security-onion"
-                    ><i class="fas fa-network-wired me-2"></i>Security Onion</a
+                  <a class="dropdown-item" href="#classificacoes-alertas"
+                    ><i class="fas fa-chart-pie me-2 text-success"></i>21.2.3 Classificações de Alertas</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item ps-4" href="#ferramentas-deteccao"
-                    ><i class="fas fa-tools me-2"></i>Ferramentas de Detecção</a
+                  <a class="dropdown-item" href="#analise-deterministica-probabilistica"
+                    ><i class="fas fa-chart-line me-2 text-success"></i>21.2.4 Análise Determinística e Probabilística</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item ps-4" href="#ferramentas-analise"
-                    ><i class="fas fa-chart-line me-2"></i>Ferramentas de
-                    Análise</a
+                  <a class="dropdown-item" href="#verificacao-classificacao"
+                    ><i class="fas fa-question-circle me-2 text-success"></i>21.2.5 Verifique sua compreensão - Classificação de Alertas</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item ps-4" href="#geracao-alertas"
-                    ><i class="fas fa-exclamation-triangle me-2"></i>Geração de
-                    Alertas</a
+                  <a class="dropdown-item" href="#verificacao-analise"
+                    ><i class="fas fa-chart-simple me-2 text-success"></i>21.2.4 Verifique sua compreensão - Análise Determinística vs
+                    Probabilística</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item ps-4" href="#regras-snort"
-                    ><i class="fas fa-code me-2"></i>Regras Snort</a
+                  <a class="dropdown-item" href="#resumo-modulo21"
+                    ><i class="fas fa-flag-checkered me-2 text-success"></i>21.3 Resumo de Avaliação de Alertas</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#laboratorios"
-                    ><i class="fas fa-flask me-2 text-success"></i
-                    >Laboratórios</a
+                  <a class="dropdown-item" href="#descomplicando-mod21"
+                    ><i class="fas fa-graduation-cap me-2 text-warning"></i> Descomplicando: Entenda como os analistas investigam alertas</a
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
                 <li>
-                  <a class="dropdown-item" href="/pages/modulos.html"
-                    ><i class="fas fa-th-large me-2"></i>Ver todos os 27
-                    módulos</a
-                  >
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2 text-success"></i>Laboratórios e Atividades</a>
                 </li>
               </ul>
             </li>
@@ -185,89 +223,18 @@
             <!-- LABS -->
             <li class="nav-item">
               <a class="nav-link text-white px-3" href="#laboratorios">
-                <i
-                  class="fas fa-flask me-1"
-                  style="color: var(--cisco-green)"
-                ></i>
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i>
                 Labs
               </a>
             </li>
 
             <!-- ÍCONE PARA TODOS OS MÓDULOS -->
             <li class="nav-item">
-              <a
-                class="nav-link text-white px-3"
-                href="/pages/modulos.html"
-                title="Ver todos os 27 módulos"
-              >
-                <i
-                  class="fas fa-th-large me-1"
-                  style="color: var(--cisco-green); font-size: 1.2rem"
-                ></i>
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
                 <span class="d-none d-lg-inline">Módulos</span>
                 <span class="badge-modulo ms-1">27</span>
               </a>
-            </li>
-
-            <!-- DROPDOWN ÍNDICE RÁPIDO -->
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle px-3"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                style="color: var(--cisco-green)"
-              >
-                <i class="fas fa-list-ul me-1"></i> Índice
-              </a>
-              <ul
-                class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
-                style="min-width: 280px"
-              >
-                <li>
-                  <div class="px-3 py-2">
-                    <input
-                      type="text"
-                      id="navSearch"
-                      class="form-control form-control-sm bg-dark text-white border-secondary"
-                      placeholder="🔍 Buscar seção..."
-                    />
-                  </div>
-                </li>
-                <li><hr class="dropdown-divider my-1" /></li>
-                <div id="sectionList">
-                  <li>
-                    <a class="dropdown-item" href="#introducao"
-                      >21.0 Introdução</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#fontes-alertas"
-                      >21.1 Fontes de Alertas</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#ferramentas-analise"
-                      >21.1.3 Ferramentas de Análise</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#geracao-alertas"
-                      >21.1.4 Geração de Alertas</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#regras-snort"
-                      >21.1.5-6 Regras Snort</a
-                    >
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#laboratorios"
-                      >Laboratórios</a
-                    >
-                  </li>
-                </div>
-              </ul>
             </li>
           </ul>
         </div>
@@ -275,70 +242,40 @@
     </nav>
 
     <!-- Barra de Progresso -->
-    <div
-      class="progress"
-      style="
-        height: 3px;
-        position: sticky;
-        top: 76px;
-        z-index: 1020;
-        border-radius: 0;
-      "
-    >
-      <div
-        id="readingProgress"
-        class="progress-bar"
-        style="width: 0%; background-color: var(--cisco-green)"
-      ></div>
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
     </div>
 
     <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
     <main class="container py-5">
       <!-- Título do Módulo -->
       <div class="mb-5">
-        <span class="badge-cisco mb-3"
-          ><i class="fas fa-chart-line me-1"></i> Módulo 21</span
-        >
+        <span class="badge-cisco mb-3"><i class="fas fa-chart-line me-1"></i> Módulo 21</span>
         <h1 class="cisco-title display-4">Avaliação de Alertas</h1>
-        <p class="text-muted lead mt-3">
-          Explicar o processo de avaliação de alertas e como classificar eventos
-          de segurança
-        </p>
+        <p class="text-muted lead mt-3">Explicar o processo de avaliação de alertas e como classificar eventos de segurança</p>
 
         <div class="row mt-4 g-3">
           <div class="col-md-3 col-6">
             <div class="content-card text-center p-3">
-              <i
-                class="fas fa-flask fa-2x"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-flask fa-2x" style="color: var(--cisco-green)"></i>
               <p class="mb-0 mt-2 fw-bold">2 Laboratórios</p>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="content-card text-center p-3">
-              <i
-                class="fas fa-check-circle fa-2x"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-check-circle fa-2x" style="color: var(--cisco-green)"></i>
               <p class="mb-0 mt-2 fw-bold">2 Atividades</p>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="content-card text-center p-3">
-              <i
-                class="fas fa-question-circle fa-2x"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-question-circle fa-2x" style="color: var(--cisco-green)"></i>
               <p class="mb-0 mt-2 fw-bold">1 Questionário</p>
             </div>
           </div>
           <div class="col-md-3 col-6">
             <div class="content-card text-center p-3">
-              <i
-                class="fas fa-bell fa-2x"
-                style="color: var(--cisco-green)"
-              ></i>
+              <i class="fas fa-bell fa-2x" style="color: var(--cisco-green)"></i>
               <p class="mb-0 mt-2 fw-bold">Avaliação de Alertas</p>
             </div>
           </div>
@@ -350,20 +287,14 @@
         <h2 class="section-title">21.0 Introdução</h2>
         <div class="content-card">
           <p>
-            Uma habilidade crítica para um analista de segurança cibernética é a
-            capacidade de avaliar alertas e decidir o que fazer com eles. Neste
-            módulo, você aprenderá de onde vêm os alertas, fluxos de trabalho
-            comuns associados a alertas e métodos padrão para avaliar e
-            classificar alertas.
+            Uma habilidade crítica para um analista de segurança cibernética é a capacidade de avaliar alertas e decidir o que fazer com
+            eles. Neste módulo, você aprenderá de onde vêm os alertas, fluxos de trabalho comuns associados a alertas e métodos padrão para
+            avaliar e classificar alertas.
           </p>
 
           <div class="alert-cisco mt-4">
-            <i
-              class="fas fa-bullseye me-2"
-              style="color: var(--cisco-green)"
-            ></i>
-            <strong>Objetivo do Módulo:</strong> Explicar o processo de
-            avaliação de alertas
+            <i class="fas fa-bullseye me-2" style="color: var(--cisco-green)"></i>
+            <strong>Objetivo do Módulo:</strong> Explicar o processo de avaliação de alertas
           </div>
         </div>
       </section>
@@ -376,11 +307,9 @@
         <div id="security-onion" class="content-card mb-4">
           <h3 class="cisco-subtitle">21.1.1 Security Onion</h3>
           <p>
-            <strong class="text-success">Security Onion</strong> é um pacote de
-            código aberto de ferramentas de Monitoramento de Segurança de Rede
-            (NSM) que é executado em uma distribuição Ubuntu Linux. As
-            ferramentas Security Onion fornecem três funções principais para o
-            analista de segurança cibernética:
+            <strong class="text-success">Security Onion</strong> é um pacote de código aberto de ferramentas de Monitoramento de Segurança
+            de Rede (NSM) que é executado em uma distribuição Ubuntu Linux. As ferramentas Security Onion fornecem três funções principais
+            para o analista de segurança cibernética:
           </p>
           <ul>
             <li>Captura completa de pacotes e tipos de dados</li>
@@ -394,9 +323,7 @@
 
         <!-- 21.1.2 Ferramentas de Detecção -->
         <div id="ferramentas-deteccao" class="mb-4">
-          <h3 class="cisco-subtitle">
-            21.1.2 Ferramentas de Detecção para Coleta de Dados de Alerta
-          </h3>
+          <h3 class="cisco-subtitle">21.1.2 Ferramentas de Detecção para Coleta de Dados de Alerta</h3>
 
           <!-- Arquitetura Security Onion -->
           <div class="diagram-card mb-4">
@@ -446,53 +373,41 @@
             <div class="content-card">
               <h4><i class="fas fa-camera me-2 text-success"></i> CapMe</h4>
               <p>
-                Aplicação web que permite visualização de transcrições pcap
-                renderizadas com tcpflow ou Zeek. Oferece ao analista um meio
+                Aplicação web que permite visualização de transcrições pcap renderizadas com tcpflow ou Zeek. Oferece ao analista um meio
                 fácil de visualizar uma sessão inteira da Camada 4.
               </p>
             </div>
             <div class="content-card">
-              <h4>
-                <i class="fas fa-shield-virus me-2 text-success"></i> Snort
-              </h4>
+              <h4><i class="fas fa-shield-virus me-2 text-success"></i> Snort</h4>
               <p>
-                NIDS (Network Intrusion Detection System) que usa regras e
-                assinaturas para gerar alertas. Patrocinado pela Cisco, pode
+                NIDS (Network Intrusion Detection System) que usa regras e assinaturas para gerar alertas. Patrocinado pela Cisco, pode
                 baixar novas regras automaticamente via PulledPork.
               </p>
             </div>
             <div class="content-card">
-              <h4>
-                <i class="fas fa-code-branch me-2 text-success"></i> Zeek (Bro)
-              </h4>
+              <h4><i class="fas fa-code-branch me-2 text-success"></i> Zeek (Bro)</h4>
               <p>
-                NIDS baseado em comportamento. Usa políticas em forma de scripts
-                para determinar quais dados registrar e quando emitir
+                NIDS baseado em comportamento. Usa políticas em forma de scripts para determinar quais dados registrar e quando emitir
                 notificações de alerta.
               </p>
             </div>
             <div class="content-card">
               <h4><i class="fas fa-hdd me-2 text-success"></i> OSSEC</h4>
               <p>
-                HIDS (Host Intrusion Detection System) que monitora integridade
-                de arquivos, logs locais, processos do sistema e detecção de
+                HIDS (Host Intrusion Detection System) que monitora integridade de arquivos, logs locais, processos do sistema e detecção de
                 rootkit.
               </p>
             </div>
             <div class="content-card">
               <h4><i class="fas fa-shield-alt me-2 text-success"></i> Wazuh</h4>
               <p>
-                HIDS que substituirá OSSEC. Solução completa com análise de
-                logs, monitoramento de integridade, detecção de vulnerabilidades
+                HIDS que substituirá OSSEC. Solução completa com análise de logs, monitoramento de integridade, detecção de vulnerabilidades
                 e resposta a incidentes.
               </p>
             </div>
             <div class="content-card">
               <h4><i class="fas fa-dragon me-2 text-success"></i> Suricata</h4>
-              <p>
-                NIDS com abordagem baseada em assinaturas. Usa multithreading
-                nativo e suporte a GPU para melhor desempenho.
-              </p>
+              <p>NIDS com abordagem baseada em assinaturas. Usa multithreading nativo e suporte a GPU para melhor desempenho.</p>
             </div>
           </div>
         </div>
@@ -500,18 +415,14 @@
         <!-- 21.1.3 Ferramentas de Análise -->
         <div id="ferramentas-analise" class="content-card mb-4">
           <h3 class="cisco-subtitle">21.1.3 Ferramentas de Análise</h3>
-          <p>
-            O Security Onion integra dados e logs de IDS através das seguintes
-            ferramentas:
-          </p>
+          <p>O Security Onion integra dados e logs de IDS através das seguintes ferramentas:</p>
 
           <div class="row mt-3 g-3">
             <div class="col-md-6">
               <div class="hacker-card p-3 h-100">
                 <h4 class="text-success">📊 Sguil</h4>
                 <p>
-                  Console de alto nível para investigar alertas de segurança.
-                  Serve como ponto de partida na investigação, permitindo girar
+                  Console de alto nível para investigar alertas de segurança. Serve como ponto de partida na investigação, permitindo girar
                   diretamente para outras ferramentas.
                 </p>
               </div>
@@ -520,9 +431,8 @@
               <div class="hacker-card p-3 h-100">
                 <h4 class="text-success">📈 Kibana</h4>
                 <p>
-                  Interface de painel interativo para dados Elasticsearch.
-                  Permite consulta de dados e visualizações flexíveis com
-                  recursos de machine learning.
+                  Interface de painel interativo para dados Elasticsearch. Permite consulta de dados e visualizações flexíveis com recursos
+                  de machine learning.
                 </p>
               </div>
             </div>
@@ -530,8 +440,7 @@
               <div class="hacker-card p-3 h-100">
                 <h4 class="text-success">🔍 Wireshark</h4>
                 <p>
-                  Aplicativo de captura de pacotes integrado que pode ser aberto
-                  diretamente de outras ferramentas para exibir pacotes
+                  Aplicativo de captura de pacotes integrado que pode ser aberto diretamente de outras ferramentas para exibir pacotes
                   completos relevantes.
                 </p>
               </div>
@@ -539,10 +448,7 @@
             <div class="col-md-6">
               <div class="hacker-card p-3 h-100">
                 <h4 class="text-success">📡 Zeek</h4>
-                <p>
-                  Analisador de tráfego de rede que inspeciona todo o tráfego em
-                  um segmento, permitindo análise aprofundada dos dados.
-                </p>
+                <p>Analisador de tráfego de rede que inspeciona todo o tráfego em um segmento, permitindo análise aprofundada dos dados.</p>
               </div>
             </div>
           </div>
@@ -552,18 +458,15 @@
         <div id="geracao-alertas" class="content-card mb-4">
           <h3 class="cisco-subtitle">21.1.4 Geração de Alertas</h3>
           <p>
-            Alertas de segurança são mensagens de notificação geradas por
-            ferramentas, sistemas e dispositivos de segurança do NSM. No
+            Alertas de segurança são mensagens de notificação geradas por ferramentas, sistemas e dispositivos de segurança do NSM. No
             Security Onion, o
-            <strong class="text-success">Sguil</strong> fornece um console que
-            integra alertas de várias fontes em uma fila com carimbo de
+            <strong class="text-success">Sguil</strong> fornece um console que integra alertas de várias fontes em uma fila com carimbo de
             data/hora.
           </p>
 
           <div class="alert-cisco my-3">
             <i class="fas fa-info-circle me-2"></i>
-            <strong>Five-Tuple (5-tupla) em Alertas:</strong> SRCIP, SPORT,
-            DSTIP, DPORT, Protocolo
+            <strong>Five-Tuple (5-tupla) em Alertas:</strong> SRCIP, SPORT, DSTIP, DPORT, Protocolo
           </div>
 
           <h4 class="mt-4 mb-3">Interface Sguil - Eventos em Tempo Real</h4>
@@ -631,34 +534,22 @@
           <div class="row mt-3 g-3">
             <div class="col-md-6">
               <div class="hacker-card p-2">
-                <small
-                  ><strong>ST:</strong> Status (RT = Tempo Real) - Cores indicam
-                  prioridade</small
-                >
+                <small><strong>ST:</strong> Status (RT = Tempo Real) - Cores indicam prioridade</small>
               </div>
             </div>
             <div class="col-md-6">
               <div class="hacker-card p-2">
-                <small
-                  ><strong>CNT:</strong> Contagem de eventos correlacionados
-                  para mesmo IP</small
-                >
+                <small><strong>CNT:</strong> Contagem de eventos correlacionados para mesmo IP</small>
               </div>
             </div>
             <div class="col-md-6">
               <div class="hacker-card p-2">
-                <small
-                  ><strong>Alert ID:</strong> Sensor ID + Número do
-                  evento</small
-                >
+                <small><strong>Alert ID:</strong> Sensor ID + Número do evento</small>
               </div>
             </div>
             <div class="col-md-6">
               <div class="hacker-card p-2">
-                <small
-                  ><strong>Prioridades:</strong> Muito baixo (amarelo claro) →
-                  Alto (vermelho)</small
-                >
+                <small><strong>Prioridades:</strong> Muito baixo (amarelo claro) → Alto (vermelho)</small>
               </div>
             </div>
           </div>
@@ -670,10 +561,7 @@
 
           <div class="terminal-card mb-4">
             <pre><code>alert tcp $EXTERNAL_NET any -> $HOME_NET 21 (msg: "ET EXPLOIT VSFTPD Backdoor User Login Smiley"; flow:established,to_server; content: "USER "; depth:5; content:"|3a 29|"; distance:0; classtype:attempted-admin; sid:2013188; rev:4;)</code></pre>
-            <small class="text-muted"
-              >/nsm/server_data/securityonion/rules/seconion-eth1-1/download.rules:
-              Line 7159</small
-            >
+            <small class="text-muted">/nsm/server_data/securityonion/rules/seconion-eth1-1/download.rules: Line 7159</small>
           </div>
 
           <h4>Estrutura da Regra Snort</h4>
@@ -690,15 +578,11 @@
                 <tr>
                   <td>Cabeçalho da Regra</td>
                   <td>alert ip any any -> any any</td>
-                  <td>
-                    Ação, protocolo, endereços/portas de origem/destino, direção
-                  </td>
+                  <td>Ação, protocolo, endereços/portas de origem/destino, direção</td>
                 </tr>
                 <tr>
                   <td>Opções de Regra</td>
-                  <td>
-                    (msg:"GPL ATTACK_RESPONSE id check returned root";...)
-                  </td>
+                  <td>(msg:"GPL ATTACK_RESPONSE id check returned root";...)</td>
                   <td>Mensagem, conteúdo do pacote, tipo de alerta, SID</td>
                 </tr>
                 <tr>
@@ -786,18 +670,9 @@
             <i class="fas fa-tag me-2"></i>
             <strong>Fontes de Regras Snort:</strong>
             <ul class="mt-2 mb-0">
-              <li>
-                <strong>GPL</strong> - Regras antigas Sourcefire (Snort SIDs ≤
-                3464)
-              </li>
-              <li>
-                <strong>ET</strong> - Emerging Threats (código aberto, licença
-                BSD)
-              </li>
-              <li>
-                <strong>VRT</strong> - Cisco Talos (assinantes, liberadas após
-                30 dias)
-              </li>
+              <li><strong>GPL</strong> - Regras antigas Sourcefire (Snort SIDs ≤ 3464)</li>
+              <li><strong>ET</strong> - Emerging Threats (código aberto, licença BSD)</li>
+              <li><strong>VRT</strong> - Cisco Talos (assinantes, liberadas após 30 dias)</li>
             </ul>
           </div>
         </div>
@@ -805,74 +680,1395 @@
 
       <!-- Laboratórios -->
       <section id="laboratorios" class="mb-5">
-        <h2 class="section-title">
-          <i class="fas fa-flask me-2"></i> Laboratórios do Módulo
-        </h2>
+        <h2 class="section-title"><i class="fas fa-flask me-2"></i> Laboratórios do Módulo</h2>
         <div class="row g-4">
           <div class="col-md-6">
             <div class="content-card h-100">
               <div class="d-flex align-items-center mb-3">
-                <i
-                  class="fas fa-microchip fa-2x me-3"
-                  style="color: var(--cisco-green)"
-                ></i>
+                <i class="fas fa-microchip fa-2x me-3" style="color: var(--cisco-green)"></i>
                 <h3 class="mb-0">Lab 21.1</h3>
               </div>
-              <p>
-                Investigação de Alertas no Security Onion - Utilizando Sguil
-                para análise de eventos em tempo real
-              </p>
-              <span class="badge-cisco"
-                ><i class="fas fa-clock me-1"></i> Prática recomendada</span
-              >
+              <p>Investigação de Alertas no Security Onion - Utilizando Sguil para análise de eventos em tempo real</p>
+              <span class="badge-cisco"><i class="fas fa-clock me-1"></i> Prática recomendada</span>
             </div>
           </div>
           <div class="col-md-6">
             <div class="content-card h-100">
               <div class="d-flex align-items-center mb-3">
-                <i
-                  class="fas fa-shield-halved fa-2x me-3"
-                  style="color: var(--cisco-green)"
-                ></i>
+                <i class="fas fa-shield-halved fa-2x me-3" style="color: var(--cisco-green)"></i>
                 <h3 class="mb-0">Lab 21.2</h3>
               </div>
-              <p>
-                Análise de Regras Snort - Criação e interpretação de regras
-                personalizadas para detecção de intrusões
-              </p>
-              <span class="badge-cisco"
-                ><i class="fas fa-code me-1"></i> Hands-on</span
-              >
+              <p>Análise de Regras Snort - Criação e interpretação de regras personalizadas para detecção de intrusões</p>
+              <span class="badge-cisco"><i class="fas fa-code me-1"></i> Hands-on</span>
             </div>
           </div>
         </div>
 
         <div class="content-card mt-4">
-          <h4>
-            <i class="fas fa-check-circle me-2 text-success"></i> Atividades de
-            Compreensão
-          </h4>
+          <h4><i class="fas fa-check-circle me-2 text-success"></i> Atividades de Compreensão</h4>
           <div class="row g-3 mt-2">
             <div class="col-md-6">
               <div class="checklist-item p-3 rounded">
                 <i class="fas fa-question-circle me-2 text-success"></i>
-                <strong>Atividade 21.1</strong> - Verifique sua compreensão
-                sobre fontes de alertas
+                <strong>Atividade 21.1</strong> - Verifique sua compreensão sobre fontes de alertas
               </div>
             </div>
             <div class="col-md-6">
               <div class="checklist-item p-3 rounded">
                 <i class="fas fa-question-circle me-2 text-success"></i>
-                <strong>Atividade 21.2</strong> - Verifique sua compreensão
-                sobre regras e alertas Snort
+                <strong>Atividade 21.2</strong> - Verifique sua compreensão sobre regras e alertas Snort
               </div>
             </div>
           </div>
           <div class="mt-3 text-center">
-            <span class="badge-cisco-alt"
-              ><i class="fas fa-graduation-cap me-1"></i> Questionário do Módulo
-              21 disponível</span
+            <span class="badge-cisco-alt"><i class="fas fa-graduation-cap me-1"></i> Questionário do Módulo 21 disponível</span>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== 21.2 VISÃO GERAL DA AVALIAÇÃO DE ALERTA ==================== -->
+      <section id="avaliacao-alerta" class="mb-5">
+        <h2 class="cisco-title-alt display-6 mb-4">21.2 Visão Geral da Avaliação de Alerta</h2>
+
+        <!-- 21.2.1 A necessidade de avaliação de alertas -->
+        <div class="content-card" id="necessidade-avaliacao">
+          <h3 class="cisco-subtitle">21.2.1 A necessidade de avaliação de alertas</h3>
+          <div class="row">
+            <div class="col-md-7">
+              <p>
+                O cenário de ameaças está mudando constantemente à medida que novas vulnerabilidades são descobertas e novas ameaças
+                evoluem. À medida que as necessidades do usuário e organizacional mudam, a superfície de ataque também. Os atores de ameaças
+                aprenderam a variar rapidamente os recursos de suas explorações para evitar a detecção.
+              </p>
+              <p>
+                É impossível projetar medidas para evitar todas as explorações. As explorações irão inevitavelmente fugir às medidas de
+                proteção, por mais sofisticadas que sejam. Às vezes, o melhor que pode ser feito é detectar exploits durante ou depois de
+                terem ocorrido.
+              </p>
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-shield-alt me-2"></i>
+                <strong>Princípio da Detecção Conservadora:</strong> As regras de detecção devem ser excessivamente conservadoras. Em outras
+                palavras, é melhor ter alertas que às vezes são gerados por tráfego inocente, do que ter regras que perdem tráfego
+                malicioso.
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="diagram-card text-center">
+                <i class="fas fa-tools fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                <p><strong>Ferramentas Primárias do Analista Nível 1</strong></p>
+                <div class="d-flex flex-wrap justify-content-center gap-2 mt-2">
+                  <span class="badge-cisco">Sguil</span>
+                  <span class="badge-cisco">Zeek (Bro)</span>
+                  <span class="badge-cisco">Wireshark</span>
+                  <span class="badge-cisco">Kibana</span>
+                </div>
+                <p class="small text-muted mt-2">
+                  Analistas de nível 1 trabalham em filas de alertas, girando entre ferramentas para verificar se um alerta representa uma
+                  exploração real.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 21.2.2 Avaliando Alertas -->
+        <div class="content-card mt-4" id="avaliando-alertas">
+          <h3 class="cisco-subtitle">21.2.2 Avaliando Alertas</h3>
+          <p>
+            Os incidentes de segurança são classificados usando um esquema emprestado de diagnósticos médicos. Este esquema de classificação
+            é usado para orientar ações e avaliar procedimentos de diagnóstico.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="diagram-card">
+                <h4 class="text-success text-center mb-3">Classificação de Alertas</h4>
+                <div class="table-responsive">
+                  <table class="table table-cisco">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th class="text-center">Verdadeiro</th>
+                        <th class="text-center">Falso</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="fw-bold">Positivo<br /><span class="small">(Alerta existe)</span></td>
+                        <td class="text-center text-success">Verdadeiro Positivo<br /><span class="small">Ocorreu um incidente</span></td>
+                        <td class="text-center text-warning">Falso Positivo<br /><span class="small">Nenhum incidente ocorreu</span></td>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold">Negativo<br /><span class="small">(Nenhum alerta)</span></td>
+                        <td class="text-center text-success">Verdadeiro Negativo<br /><span class="small">Nenhum incidente</span></td>
+                        <td class="text-center text-danger">Falso Negativo<br /><span class="small">Incidente não detectado</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="alert-cisco mb-3">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong>Verdadeiro Positivo:</strong> O alerta foi verificado como um incidente de segurança real.
+              </div>
+              <div class="alert-cisco mb-3">
+                <i class="fas fa-times-circle text-warning me-2"></i>
+                <strong>Falso Positivo:</strong> O alerta não indica um incidente de segurança real. Atividade benigna que resulta em
+                alerta.
+              </div>
+              <div class="alert-cisco mb-3">
+                <i class="fas fa-check-circle text-success me-2"></i>
+                <strong>Verdadeiro Negativo:</strong> Nenhum incidente de segurança ocorreu. A atividade é benigna.
+              </div>
+              <div class="alert-cisco">
+                <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                <strong>Falso Negativo:</strong> Ocorreu um incidente não detectado. Esta é a situação mais perigosa.
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <div class="terminal-card">
+              <pre><code># Analogia Médica
+Paciente vai ao médico → "Estou doente" (alerta)
+Médico diagnostica → Doente (Verdadeiro Positivo) ou Saudável (Falso Positivo)
+Paciente não vai ao médico → Está doente (Falso Negativo) ou Saudável (Verdadeiro Negativo)</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- 21.2.3 Avaliando Alertas - Classificações Detalhadas -->
+        <div class="content-card mt-4" id="classificacoes-alertas">
+          <h3 class="cisco-subtitle">Classificações Detalhadas de Alertas</h3>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="resumo-item mb-3">
+                <i class="fas fa-check-circle text-success fa-lg me-2"></i>
+                <strong>Verdadeiros Positivos</strong>
+                <p class="small text-muted mt-1">
+                  São o tipo de alerta <strong class="text-success">desejado</strong>. Significam que as regras que geram alertas
+                  funcionaram corretamente.
+                </p>
+              </div>
+              <div class="resumo-item mb-3">
+                <i class="fas fa-exclamation-triangle text-warning fa-lg me-2"></i>
+                <strong>Falsos Positivos</strong>
+                <p class="small text-muted mt-1">
+                  <strong class="text-warning">Não são desejáveis</strong>. Embora não indiquem exploração não detectada, são caros porque
+                  analistas devem investigar alarmes falsos, desviando tempo de verdadeiras explorações.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="resumo-item mb-3">
+                <i class="fas fa-check-circle text-success fa-lg me-2"></i>
+                <strong>Verdadeiros Negativos</strong>
+                <p class="small text-muted mt-1">
+                  São <strong class="text-success">desejáveis</strong>. Indicam que o tráfego normal benigno é corretamente ignorado e
+                  alertas errôneos não estão sendo emitidos.
+                </p>
+              </div>
+              <div class="resumo-item mb-3">
+                <i class="fas fa-skull-crossbones text-danger fa-lg me-2"></i>
+                <strong>Falsos Negativos</strong>
+                <p class="small text-muted mt-1">
+                  São <strong class="text-danger">perigosos</strong>. Indicam que explorações não estão sendo detectadas pelos sistemas de
+                  segurança. Esses incidentes podem passar despercebidos por longo período, resultando em perda contínua de dados.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-chart-line me-2"></i>
+            <strong>Eventos Benignos:</strong> São aqueles que não devem acionar alertas. Eventos benignos em excesso indicam que algumas
+            regras ou detectores precisam ser melhorados ou eliminados.
+          </div>
+        </div>
+
+        <!-- 21.2.4 Análise Determinística e Probabilística -->
+        <div class="content-card mt-4" id="analise-deterministica-probabilistica">
+          <h3 class="cisco-subtitle">21.2.4 Análise Determinística e Análise Probabilística</h3>
+          <p>
+            Técnicas estatísticas podem ser usadas para avaliar o risco de que as explorações serão bem-sucedidas em uma determinada rede.
+            Esse tipo de análise pode ajudar os tomadores de decisão a avaliar melhor o custo de mitigar uma ameaça com os danos que uma
+            exploração poderia causar.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="diagram-card h-100">
+                <h4 class="text-success"><i class="fas fa-chart-simple me-2"></i>Análise Determinística</h4>
+                <p>
+                  Avalia o risco com base no que é conhecido sobre uma vulnerabilidade. Pressupõe que, para que uma exploração seja
+                  bem-sucedida, todas as etapas anteriores do processo de exploração também devem ser bem-sucedidas.
+                </p>
+                <div class="terminal-card mt-2">
+                  <pre><code># Características
+- Descreve o pior caso
+- Toda informação é conhecida
+- Exploração usa portas padronizadas
+- Não considera falhas do atacante</code></pre>
+                </div>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Limitação:</strong> Muitos atores ameaçadores podem não ter conhecimento ou experiência para concluir com sucesso
+                  cada passo.
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="diagram-card h-100">
+                <h4 class="text-success"><i class="fas fa-chart-line me-2"></i>Análise Probabilística</h4>
+                <p>
+                  Estima o sucesso potencial de uma exploração, estimando a probabilidade de que, se uma etapa foi concluída com sucesso, a
+                  próxima etapa também será bem-sucedida.
+                </p>
+                <div class="terminal-card mt-2">
+                  <pre><code># Características
+- Usa técnicas estatísticas
+- Útil para análise em tempo real
+- Considera múltiplas variáveis
+- Explorações com portas dinâmicas</code></pre>
+                </div>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-chart-line me-2"></i>
+                  <strong>Vantagem:</strong> Os caminhos mais prováveis podem ser estimados, focando a atenção em prevenir ou detectar a
+                  exploração mais provável.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-12">
+              <div class="table-responsive">
+                <table class="table table-cisco">
+                  <thead>
+                    <tr>
+                      <th>Característica</th>
+                      <th>Análise Determinística</th>
+                      <th>Análise Probabilística</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="fw-bold">Premissa</td>
+                      <td>Todas as etapas anteriores devem ser bem-sucedidas</td>
+                      <td>Probabilidade condicional entre etapas</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold">Conhecimento</td>
+                      <td>Analista conhece todas as etapas</td>
+                      <td>Números de porta só podem ser previstos com confiança</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold">Aplicação</td>
+                      <td>Explorações com portas padronizadas</td>
+                      <td>Explorações com portas dinâmicas</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-bold">Resultado</td>
+                      <td>Descreve o pior caso</td>
+                      <td>Estima probabilidade de sucesso</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 21.2.5 Ações do Analista -->
+        <div class="content-card mt-4" id="acoes-analista">
+          <h3 class="cisco-subtitle">Ações do Analista de Segurança</h3>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="resumo-item mb-3">
+                <i class="fas fa-arrow-up text-warning me-2"></i>
+                <strong>Escalação de Alertas</strong>
+                <p class="small text-muted mt-1">
+                  Quando verdadeiros positivos são suspeitos, o analista deve escalar o alerta para um nível mais alto para investigação. O
+                  investigador confirma o incidente e identifica danos potenciais.
+                </p>
+              </div>
+              <div class="resumo-item mb-3">
+                <i class="fas fa-tachometer-alt text-info me-2"></i>
+                <strong>Gerenciamento de Falsos Positivos</strong>
+                <p class="small text-muted mt-1">
+                  Analistas devem informar quando falsos positivos estão ocorrendo em excesso, indicando que os sistemas precisam ser
+                  ajustados para se tornarem mais eficientes.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="resumo-item mb-3">
+                <i class="fas fa-history text-primary me-2"></i>
+                <strong>Análise Retrospectiva (RSA)</strong>
+                <p class="small text-muted mt-1">
+                  Falsos negativos podem ser descobertos bem depois, quando novas regras ou informações sobre ameaças são aplicadas a dados
+                  arquivados. É importante monitorar informações sobre ameaças e avaliar vulnerabilidades passadas.
+                </p>
+              </div>
+              <div class="resumo-item mb-3">
+                <i class="fas fa-chart-line text-success me-2"></i>
+                <strong>Mitigação e Relatórios</strong>
+                <p class="small text-muted mt-1">
+                  Informações sobre incidentes são usadas por segurança sênior para isolar danos, solucionar vulnerabilidades, mitigar
+                  ameaças e lidar com requisitos de relatórios.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== VERIFIQUE SUA COMPREENSÃO - CLASSIFICAÇÃO DE ALERTAS ==================== -->
+      <section id="verificacao-classificacao" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title">
+            <i class="fas fa-brain me-2" style="color: var(--cisco-green)"></i>21.2.5 Verifique sua compreensão - Identifique a
+            classificação de alerta
+          </h2>
+          <p class="text-muted mb-4">
+            Verifique sua compreensão dos diferentes tipos de classificação de alertas respondendo às perguntas.
+          </p>
+
+          <!-- Pergunta 1 - Verdadeiro Negativo -->
+          <div class="quiz-card mb-4" id="quiz21-1">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">1</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">Que tipo de alerta não teria nenhum incidente relatado e nenhum incidente ocorreu?</h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="21-1" data-answer="positivo-real">
+                      <span class="quiz-option-letter">A</span> positivo real
+                    </div>
+                    <div class="quiz-option" data-quiz="21-1" data-answer="falso-positivo">
+                      <span class="quiz-option-letter">B</span> falso positivo
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="21-1" data-answer="verdadeiro-negativo">
+                      <span class="quiz-option-letter">C</span> <span class="text-success fw-bold">verdadeiro negativo</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="21-1" data-answer="falso-negativo">
+                      <span class="quiz-option-letter">D</span> falso negativo
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback21-1" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Verdadeiro Negativo</strong><br />
+                    Um verdadeiro negativo ocorre quando nenhum alerta é gerado e nenhum incidente de segurança realmente ocorreu. É a
+                    situação ideal onde o tráfego benigno é corretamente ignorado e não há falsos alarmes.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback21-1">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 2 - Falso Positivo -->
+          <div class="quiz-card mb-4" id="quiz21-2">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">2</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">Que tipo de alerta ocorreu quando um alerta é recebido, mas nenhum incidente ocorreu?</h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="21-2" data-answer="verdadeiro-negativo">
+                      <span class="quiz-option-letter">A</span> verdadeiro negativo
+                    </div>
+                    <div class="quiz-option" data-quiz="21-2" data-answer="falso-negativo">
+                      <span class="quiz-option-letter">B</span> falso negativo
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="21-2" data-answer="falso-positivo">
+                      <span class="quiz-option-letter">C</span> <span class="text-success fw-bold">falso positivo</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="21-2" data-answer="positivo-real">
+                      <span class="quiz-option-letter">D</span> positivo real
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback21-2" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Falso Positivo</strong><br />
+                    Um falso positivo ocorre quando um alerta é gerado, mas não há incidente de segurança real. Embora não indiquem uma
+                    exploração não detectada, são problemáticos porque consomem tempo valioso do analista em investigações desnecessárias.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback21-2">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 3 - Falso Negativo -->
+          <div class="quiz-card mb-4" id="quiz21-3">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">3</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">Que tipo de incidente ocorreu quando nada é relatado, mas ocorreu uma exploração?</h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="21-3" data-answer="falso-positivo">
+                      <span class="quiz-option-letter">A</span> falso positivo
+                    </div>
+                    <div class="quiz-option" data-quiz="21-3" data-answer="verdadeiro-negativo">
+                      <span class="quiz-option-letter">B</span> verdadeiro negativo
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="21-3" data-answer="positivo-real">
+                      <span class="quiz-option-letter">C</span> positivo real
+                    </div>
+                    <div class="quiz-option correct-highlight" data-quiz="21-3" data-answer="falso-negativo">
+                      <span class="quiz-option-letter">D</span> <span class="text-success fw-bold">falso negativo</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback21-3" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Falso Negativo</strong><br />
+                    Um falso negativo é a situação mais perigosa em segurança. Ocorre quando uma exploração ou incidente de segurança
+                    acontece, mas nenhum alerta é gerado. Isso permite que ataques passem despercebidos, potencialmente causando danos
+                    significativos por longos períodos.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback21-3">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pergunta 4 - Positivo Real (Verdadeiro Positivo) -->
+          <div class="quiz-card mb-4" id="quiz21-4">
+            <div class="d-flex align-items-start">
+              <div class="quiz-number me-3">4</div>
+              <div class="flex-grow-1">
+                <h4 class="quiz-question">Que tipo de alerta é quando um alerta é recebido e uma exploração foi verificada?</h4>
+                <div class="row mt-3">
+                  <div class="col-md-6">
+                    <div class="quiz-option correct-highlight" data-quiz="21-4" data-answer="positivo-real">
+                      <span class="quiz-option-letter">A</span> <span class="text-success fw-bold">positivo real</span>
+                      <i class="fas fa-check-circle text-success ms-2"></i>
+                    </div>
+                    <div class="quiz-option" data-quiz="21-4" data-answer="falso-positivo">
+                      <span class="quiz-option-letter">B</span> falso positivo
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="quiz-option" data-quiz="21-4" data-answer="falso-negativo">
+                      <span class="quiz-option-letter">C</span> falso negativo
+                    </div>
+                    <div class="quiz-option" data-quiz="21-4" data-answer="verdadeiro-negativo">
+                      <span class="quiz-option-letter">D</span> verdadeiro negativo
+                    </div>
+                  </div>
+                </div>
+                <div class="quiz-feedback mt-3" id="feedback21-4" style="display: none">
+                  <div class="alert-cisco">
+                    <i class="fas fa-check-circle me-2 text-success"></i>
+                    <strong>Resposta Correta: Positivo Real (Verdadeiro Positivo)</strong><br />
+                    Um positivo real (verdadeiro positivo) é o tipo de alerta desejado. Ele indica que um alerta foi gerado e, após
+                    investigação, confirmou-se que um incidente de segurança realmente ocorreu. Significa que as regras de detecção
+                    funcionaram corretamente.
+                  </div>
+                </div>
+                <button class="btn-cisco mt-2 show-answer-btn" data-target="feedback21-4">
+                  <i class="fas fa-eye me-1"></i> Mostrar Resposta Correta
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela Resumo das Classificações -->
+          <div class="mt-4 pt-3 border-top border-secondary">
+            <h4 class="text-success mb-3"><i class="fas fa-chart-simple me-2"></i>Resumo: Classificação de Alertas</h4>
+            <div class="table-responsive">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Classificação</th>
+                    <th>Alerta Gerado?</th>
+                    <th>Incidente Ocorreu?</th>
+                    <th>Desejável?</th>
+                    <th>Descrição</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-success">
+                    <td class="fw-bold">Verdadeiro Positivo (Positivo Real)</td>
+                    <td class="text-center">✅ Sim</td>
+                    <td class="text-center">✅ Sim</td>
+                    <td class="text-center">✅ Desejável</td>
+                    <td>Alerta correto - incidente detectado</td>
+                  </tr>
+                  <tr class="text-warning">
+                    <td class="fw-bold">Falso Positivo</td>
+                    <td class="text-center">✅ Sim</td>
+                    <td class="text-center">❌ Não</td>
+                    <td class="text-center">❌ Indesejável</td>
+                    <td>Alerta falso - desperdício de tempo</td>
+                  </tr>
+                  <tr class="text-success">
+                    <td class="fw-bold">Verdadeiro Negativo</td>
+                    <td class="text-center">❌ Não</td>
+                    <td class="text-center">❌ Não</td>
+                    <td class="text-center">✅ Desejável</td>
+                    <td>Sem alerta, sem incidente - situação normal</td>
+                  </tr>
+                  <tr class="text-danger">
+                    <td class="fw-bold">Falso Negativo</td>
+                    <td class="text-center">❌ Não</td>
+                    <td class="text-center">✅ Sim</td>
+                    <td class="text-center">⚠️ Perigoso</td>
+                    <td>Incidente não detectado - mais perigoso!</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== VERIFIQUE SUA COMPREENSÃO - ANÁLISE DETERMINÍSTICA vs PROBABILÍSTICA ==================== -->
+      <section id="verificacao-analise" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title">
+            <i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i>21.2.4 Verifique sua compreensão - Identifique cenários
+            determinísticos e probabilísticos
+          </h2>
+          <p class="text-muted mb-4">
+            Clique no campo apropriado abaixo de cada característica para indicar a abordagem de análise que ela descreve.
+          </p>
+
+          <!-- Características para classificar -->
+          <div class="analise-grid">
+            <!-- Característica 1 -->
+            <div class="analise-item mb-3" id="analise-item-1">
+              <div class="analise-descricao">
+                <i class="fas fa-quote-left text-success me-1"></i>
+                Presume que, para que uma exploração seja bem-sucedida, todas as etapas anteriores do processo de exploração também devem
+                ser bem-sucedidas.
+              </div>
+              <div class="analise-opcoes mt-2">
+                <button class="analise-btn deterministica" data-analise="1" data-tipo="deterministica">Determinístico</button>
+                <button class="analise-btn probabilistica" data-analise="1" data-tipo="probabilistica">Probabilístico</button>
+              </div>
+              <div class="analise-feedback mt-2" id="analise-feedback-1" style="display: none">
+                <div class="alert-cisco small">
+                  <i class="fas fa-check-circle text-success me-1"></i>
+                  <strong>Correto! Determinístico</strong> - Esta é uma característica da análise determinística, que assume que todas as
+                  etapas devem ser bem-sucedidas para que a exploração ocorra.
+                </div>
+              </div>
+            </div>
+
+            <!-- Característica 2 -->
+            <div class="analise-item mb-3" id="analise-item-2">
+              <div class="analise-descricao">
+                <i class="fas fa-quote-left text-success me-1"></i>
+                A análise é útil na análise de segurança de rede em tempo real em que inúmeras variáveis estão em jogo.
+              </div>
+              <div class="analise-opcoes mt-2">
+                <button class="analise-btn deterministica" data-analise="2" data-tipo="deterministica">Determinístico</button>
+                <button class="analise-btn probabilistica" data-analise="2" data-tipo="probabilistica">Probabilístico</button>
+              </div>
+              <div class="analise-feedback mt-2" id="analise-feedback-2" style="display: none">
+                <div class="alert-cisco small">
+                  <i class="fas fa-check-circle text-success me-1"></i>
+                  <strong>Correto! Probabilístico</strong> - Análise probabilística é mais adequada para cenários em tempo real com
+                  múltiplas variáveis e incertezas.
+                </div>
+              </div>
+            </div>
+
+            <!-- Característica 3 -->
+            <div class="analise-item mb-3" id="analise-item-3">
+              <div class="analise-descricao">
+                <i class="fas fa-quote-left text-success me-1"></i>
+                A análise só pode descrever o pior caso.
+              </div>
+              <div class="analise-opcoes mt-2">
+                <button class="analise-btn deterministica" data-analise="3" data-tipo="deterministica">Determinístico</button>
+                <button class="analise-btn probabilistica" data-analise="3" data-tipo="probabilistica">Probabilístico</button>
+              </div>
+              <div class="analise-feedback mt-2" id="analise-feedback-3" style="display: none">
+                <div class="alert-cisco small">
+                  <i class="fas fa-check-circle text-success me-1"></i>
+                  <strong>Correto! Determinístico</strong> - A análise determinística descreve o pior cenário possível, assumindo que todas
+                  as etapas são bem-sucedidas.
+                </div>
+              </div>
+            </div>
+
+            <!-- Característica 4 -->
+            <div class="analise-item mb-3" id="analise-item-4">
+              <div class="analise-descricao">
+                <i class="fas fa-quote-left text-success me-1"></i>
+                A análise estima a probabilidade de uma exploração ter sido bem sucedida.
+              </div>
+              <div class="analise-opcoes mt-2">
+                <button class="analise-btn deterministica" data-analise="4" data-tipo="deterministica">Determinístico</button>
+                <button class="analise-btn probabilistica" data-analise="4" data-tipo="probabilistica">Probabilístico</button>
+              </div>
+              <div class="analise-feedback mt-2" id="analise-feedback-4" style="display: none">
+                <div class="alert-cisco small">
+                  <i class="fas fa-check-circle text-success me-1"></i>
+                  <strong>Correto! Probabilístico</strong> - Análise probabilística estima a probabilidade de sucesso baseada em
+                  estatísticas e probabilidades condicionais.
+                </div>
+              </div>
+            </div>
+
+            <!-- Característica 5 -->
+            <div class="analise-item mb-3" id="analise-item-5">
+              <div class="analise-descricao">
+                <i class="fas fa-quote-left text-success me-1"></i>
+                A análise pressupõe que os números de porta que serão usados por uma exploração só podem ser previstos com algum grau de
+                confiança.
+              </div>
+              <div class="analise-opcoes mt-2">
+                <button class="analise-btn deterministica" data-analise="5" data-tipo="deterministica">Determinístico</button>
+                <button class="analise-btn probabilistica" data-analise="5" data-tipo="probabilistica">Probabilístico</button>
+              </div>
+              <div class="analise-feedback mt-2" id="analise-feedback-5" style="display: none">
+                <div class="alert-cisco small">
+                  <i class="fas fa-check-circle text-success me-1"></i>
+                  <strong>Correto! Probabilístico</strong> - Análise probabilística lida com incertezas, como portas dinâmicas que só podem
+                  ser previstas com certo grau de confiança.
+                </div>
+              </div>
+            </div>
+
+            <!-- Característica 6 -->
+            <div class="analise-item mb-3" id="analise-item-6">
+              <div class="analise-descricao">
+                <i class="fas fa-quote-left text-success me-1"></i>
+                A análise pressupõe que todas as informações para realizar uma exploração são conhecidas.
+              </div>
+              <div class="analise-opcoes mt-2">
+                <button class="analise-btn deterministica" data-analise="6" data-tipo="deterministica">Determinístico</button>
+                <button class="analise-btn probabilistica" data-analise="6" data-tipo="probabilistica">Probabilístico</button>
+              </div>
+              <div class="analise-feedback mt-2" id="analise-feedback-6" style="display: none">
+                <div class="alert-cisco small">
+                  <i class="fas fa-check-circle text-success me-1"></i>
+                  <strong>Correto! Determinístico</strong> - Análise determinística assume conhecimento completo sobre a exploração e suas
+                  características.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela Comparativa -->
+          <div class="mt-4 pt-3 border-top border-secondary">
+            <h4 class="text-success mb-3"><i class="fas fa-chart-simple me-2"></i>Resumo: Análise Determinística vs Probabilística</h4>
+            <div class="table-responsive">
+              <table class="table table-cisco">
+                <thead>
+                  <tr>
+                    <th>Característica</th>
+                    <th>Análise Determinística</th>
+                    <th>Análise Probabilística</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="fw-bold">Premissa</td>
+                    <td>Todas as etapas devem ser bem-sucedidas</td>
+                    <td>Probabilidade condicional entre etapas</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Conhecimento</td>
+                    <td>Informações completas são conhecidas</td>
+                    <td>Informações previstas com certo grau de confiança</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Aplicação</td>
+                    <td>Explorações com portas padronizadas</td>
+                    <td>Explorações com portas dinâmicas</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Resultado</td>
+                    <td>Descreve o pior caso</td>
+                    <td>Estima probabilidade de sucesso</td>
+                  </tr>
+                  <tr>
+                    <td class="fw-bold">Uso em tempo real</td>
+                    <td>Limitado</td>
+                    <td>Ideal para análise em tempo real</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Botão Reset -->
+          <div class="text-center mt-3">
+            <button class="btn-cisco" id="resetAnaliseBtn" onclick="resetAnaliseQuiz()">
+              <i class="fas fa-undo-alt me-1"></i> Resetar Todas as Respostas
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== RESUMO DO MÓDULO 21 ==================== -->
+      <section id="resumo-modulo21" class="mt-5">
+        <div class="content-card">
+          <h2 class="section-title">
+            <i class="fas fa-flag-checkered me-2" style="color: var(--cisco-green)"></i>21.3 Resumo de Avaliação de Alertas
+          </h2>
+          <p class="text-muted mb-4">
+            Consolidação dos principais conceitos abordados neste módulo sobre avaliação de alertas, classificação e ferramentas de
+            monitoramento.
+          </p>
+
+          <!-- 21.3.1 O que aprendi neste módulo? -->
+          <div class="mt-3">
+            <h3 class="cisco-subtitle mb-4"><i class="fas fa-graduation-cap me-2 text-success"></i>21.3.1 O que aprendi neste módulo?</h3>
+
+            <!-- Fontes de Alertas -->
+            <div class="resumo-card mb-4">
+              <h4 class="text-success"><i class="fas fa-bell me-2"></i>Fontes de Alertas</h4>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <div class="resumo-item">
+                    <i class="fas fa-shield-alt text-success me-2"></i>
+                    <strong>Security Onion (Cebola Segurança)</strong>
+                    <p class="small text-muted mt-1">
+                      Pacote de código aberto de ferramentas NSM executado em Ubuntu Linux. Fornece três funções principais:
+                    </p>
+                    <ul class="small text-muted">
+                      <li>Captura completa de pacotes e tipos de dados</li>
+                      <li>Sistemas de detecção de intrusão (NIDS e HIDS)</li>
+                      <li>Ferramentas de análise de alertas</li>
+                    </ul>
+                  </div>
+                  <div class="resumo-item mt-3">
+                    <i class="fas fa-chart-line text-info me-2"></i>
+                    <strong>Componentes do Security Onion</strong>
+                    <ul class="small text-muted mt-1">
+                      <li><strong>Sguil</strong> - Ponto de partida na investigação de alertas</li>
+                      <li><strong>Kibana</strong> - Interface de painel interativo para dados Elasticsearch</li>
+                      <li><strong>Wireshark</strong> - Captura e análise de pacotes</li>
+                      <li><strong>Zeek (Bro)</strong> - Analisador de tráfego de rede</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="resumo-item">
+                    <i class="fas fa-database text-primary me-2"></i>
+                    <strong>Alertas de Segurança</strong>
+                    <p class="small text-muted mt-1">
+                      Mensagens de notificação geradas por ferramentas, sistemas e dispositivos de segurança NSM. No Security Onion, o Sguil
+                      fornece um console que integra alertas de várias fontes em uma fila com timestamp.
+                    </p>
+                    <p class="small text-muted mt-2">Alertas geralmente incluem:</p>
+                    <ul class="small text-muted">
+                      <li>Informações de cinco tuplas (IPs e portas)</li>
+                      <li>Carimbos de data/hora</li>
+                      <li>Identificação do dispositivo/sistema gerador</li>
+                    </ul>
+                  </div>
+                  <div class="resumo-item mt-3">
+                    <i class="fas fa-chart-pie text-warning me-2"></i>
+                    <strong>Métodos de Geração de Alertas</strong>
+                    <p class="small text-muted mt-1">Dependendo da tecnologia de segurança, os alertas podem ser gerados com base em:</p>
+                    <ul class="small text-muted">
+                      <li><strong>Regras</strong> - Condições predefinidas</li>
+                      <li><strong>Assinaturas</strong> - Padrões conhecidos de ataques</li>
+                      <li><strong>Anomalias</strong> - Comportamento fora do padrão</li>
+                      <li><strong>Comportamentos</strong> - Análise heurística</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3">
+                <div class="alert-cisco">
+                  <i class="fas fa-info-circle me-2"></i>
+                  <strong>Fontes de Alertas:</strong> NIDS (Snort), gerenciamento e monitoramento de ativos, transações HTTP, DNS e TCP, e
+                  mensagens do Syslog.
+                </div>
+              </div>
+            </div>
+
+            <!-- Visão Geral da Avaliação de Alerta -->
+            <div class="resumo-card mb-4">
+              <h4 class="text-success"><i class="fas fa-chart-line me-2"></i>Visão Geral da Avaliação de Alerta</h4>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <div class="resumo-item">
+                    <i class="fas fa-chart-line text-success me-2"></i>
+                    <strong>Cenário de Ameaças em Evolução</strong>
+                    <p class="small text-muted mt-1">
+                      Novas vulnerabilidades são descobertas, novas ameaças evoluem e a superfície de ataque muda constantemente. Atores de
+                      ameaças variam rapidamente os recursos de suas explorações para evitar detecção.
+                    </p>
+                  </div>
+
+                  <div class="resumo-item mt-3">
+                    <i class="fas fa-shield-halved text-warning me-2"></i>
+                    <strong>Princípio da Detecção Conservadora</strong>
+                    <p class="small text-muted mt-1">
+                      "É melhor ter alertas que às vezes são gerados por tráfego inocente, do que ter regras que perdem tráfego malicioso."
+                      Por isso, analistas qualificados devem investigar alertas para determinar se uma exploração realmente ocorreu.
+                    </p>
+                  </div>
+
+                  <div class="resumo-item mt-3">
+                    <i class="fas fa-chart-simple text-info me-2"></i>
+                    <strong>Classificação de Alertas (Modelo Médico)</strong>
+                    <div class="table-responsive mt-2">
+                      <table class="table table-cisco">
+                        <thead>
+                          <tr>
+                            <th>Classificação</th>
+                            <th>Alerta Gerado?</th>
+                            <th>Incidente Ocorreu?</th>
+                            <th>Desejável?</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr class="text-success">
+                            <td><strong>Verdadeiro Positivo</strong></td>
+                            <td>✅ Sim</td>
+                            <td>✅ Sim</td>
+                            <td>✅ Desejável</td>
+                          </tr>
+                          <tr class="text-warning">
+                            <td><strong>Falso Positivo</strong></td>
+                            <td>✅ Sim</td>
+                            <td>❌ Não</td>
+                            <td>❌ Indesejável (mas inevitável)</td>
+                          </tr>
+                          <tr class="text-success">
+                            <td><strong>Verdadeiro Negativo</strong></td>
+                            <td>❌ Não</td>
+                            <td>❌ Não</td>
+                            <td>✅ Desejável</td>
+                          </tr>
+                          <tr class="text-danger">
+                            <td><strong>Falso Negativo</strong></td>
+                            <td>❌ Não</td>
+                            <td>✅ Sim</td>
+                            <td>⚠️ Perigoso</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div class="resumo-item mt-3">
+                    <i class="fas fa-chart-line text-primary me-2"></i>
+                    <strong>Análise Determinística vs Probabilística</strong>
+                    <div class="row mt-2">
+                      <div class="col-md-6">
+                        <div class="terminal-card">
+                          <pre><code># Análise Determinística
+- Avalia risco baseado no conhecido
+- Presume: todas as etapas devem ser bem-sucedidas
+- Descreve o pior caso
+- Conhecimento completo da exploração</code></pre>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="terminal-card">
+                          <pre><code># Análise Probabilística
+- Estima sucesso potencial
+- Probabilidade condicional entre etapas
+- Útil para análise em tempo real
+- Lida com múltiplas variáveis</code></pre>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Snort - Sistema de Detecção de Intrusão -->
+            <div class="resumo-card mb-4">
+              <h4 class="text-success"><i class="fas fa-bug me-2"></i>Snort - Sistema de Detecção de Intrusões de Rede (NIDS)</h4>
+
+              <div class="row mt-3">
+                <div class="col-md-7">
+                  <p class="small text-muted">
+                    O Snort é uma fonte importante dos dados de alerta indexados na ferramenta de análise Sguil. Ele usa regras para
+                    identificar tráfego potencialmente malicioso.
+                  </p>
+
+                  <div class="terminal-card mt-2">
+                    <pre><code># Estrutura de uma Regra Snort
+┌─────────────────────────────────────────────────────────┐
+│                   CABEÇALHO DA REGRA                    │
+├─────────────────────────────────────────────────────────┤
+│ Ação | Protocolo | IP Origem | Porta | IP Destino | Porta │
+└─────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│                   OPÇÕES DA REGRA                       │
+├─────────────────────────────────────────────────────────┤
+│ msg:"Alerta"; content:"padrão"; sid:1000001;           │
+└─────────────────────────────────────────────────────────┘</code></pre>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="diagram-card">
+                    <i class="fas fa-code fa-3x mb-2" style="color: var(--cisco-green)"></i>
+                    <p><strong>Cabeçalho da Regra</strong></p>
+                    <ul class="small text-muted">
+                      <li>Ação (alert, log, pass)</li>
+                      <li>Protocolo (TCP, UDP, ICMP)</li>
+                      <li>IPs de origem/destino</li>
+                      <li>Portas de origem/destino</li>
+                    </ul>
+                    <hr class="my-2" />
+                    <p><strong>Opções da Regra</strong></p>
+                    <ul class="small text-muted">
+                      <li>Mensagem de alerta</li>
+                      <li>Conteúdo a inspecionar</li>
+                      <li>ID da regra (SID)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tabela Resumo das Ferramentas -->
+            <div class="mt-4">
+              <h4 class="text-success mb-3"><i class="fas fa-tools me-2"></i>Resumo: Ferramentas do Security Onion</h4>
+              <div class="table-responsive">
+                <table class="table table-cisco">
+                  <thead>
+                    <tr>
+                      <th>Ferramenta</th>
+                      <th>Função</th>
+                      <th>Uso Principal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-success fw-bold">Sguil</td>
+                      <td>Console de alertas</td>
+                      <td>Ponto de partida na investigação, fila de alertas integrada</td>
+                    </tr>
+                    <tr>
+                      <td class="text-success fw-bold">Kibana</td>
+                      <td>Visualização de dados</td>
+                      <td>Interface interativa para dados Elasticsearch, consultas e dashboards</td>
+                    </tr>
+                    <tr>
+                      <td class="text-success fw-bold">Wireshark</td>
+                      <td>Análise de pacotes</td>
+                      <td>Captura e análise detalhada de tráfego de rede</td>
+                    </tr>
+                    <tr>
+                      <td class="text-success fw-bold">Zeek (Bro)</td>
+                      <td>Analisador de tráfego</td>
+                      <td>Inspeção de tráfego em segmentos de rede, análise aprofundada</td>
+                    </tr>
+                    <tr>
+                      <td class="text-success fw-bold">Snort</td>
+                      <td>NIDS</td>
+                      <td>Detecção de intrusão baseada em regras, principal fonte de alertas</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Palavras-chave do Módulo -->
+            <div class="mt-4">
+              <h4 class="text-success mb-3"><i class="fas fa-tags me-2"></i>Conceitos-Chave do Módulo 21</h4>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge-cisco">Verdadeiro Positivo</span>
+                <span class="badge-cisco">Falso Positivo</span>
+                <span class="badge-cisco">Verdadeiro Negativo</span>
+                <span class="badge-cisco">Falso Negativo</span>
+                <span class="badge-cisco">Análise Determinística</span>
+                <span class="badge-cisco">Análise Probabilística</span>
+                <span class="badge-cisco">Security Onion</span>
+                <span class="badge-cisco">Sguil</span>
+                <span class="badge-cisco">Kibana</span>
+                <span class="badge-cisco">Zeek</span>
+                <span class="badge-cisco">Snort</span>
+                <span class="badge-cisco">Wireshark</span>
+                <span class="badge-cisco">5-tuplas</span>
+                <span class="badge-cisco">Regras Snort</span>
+                <span class="badge-cisco">NIDS</span>
+                <span class="badge-cisco">NSM</span>
+              </div>
+            </div>
+
+            <!-- Mensagem Final -->
+            <div
+              class="final-message mt-4 p-4 text-center"
+              style="background: rgba(102, 191, 83, 0.1); border-radius: 20px; border: 1px solid rgba(102, 191, 83, 0.3)"
             >
+              <i class="fas fa-quote-left fa-2x text-success opacity-50 mb-2"></i>
+              <p class="fs-5 fw-light mb-2">
+                "Na segurança cibernética, um alerta não é um veredito - é um convite à investigação.<br />
+                Saber classificar e priorizar alertas é o que separa um bom analista de um excelente."
+              </p>
+              <p class="text-success small mt-2">— Módulo 21: Avaliação de Alertas</p>
+              <div class="mt-3">
+                <a href="#introducao" class="btn-cisco me-2"> <i class="fas fa-arrow-up me-1"></i> Voltar ao topo </a>
+                <a href="#laboratorios" class="btn-cisco"> <i class="fas fa-flask me-1"></i> Ir para Laboratórios </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== SEÇÃO DIDÁTICA: DESCOMPLICANDO AVALIAÇÃO DE ALERTAS ==================== -->
+      <section id="descomplicando-mod21" class="mt-5">
+        <div class="content-card-gradient">
+          <h2 class="section-title">
+            <i class="fas fa-graduation-cap me-2" style="color: var(--cisco-green)"></i> Descomplicando: Entenda como os analistas
+            investigam alertas
+          </h2>
+          <p class="text-muted mb-4">
+            Conceitos técnicos explicados com analogias do dia a dia para quem está começando na área de segurança.
+          </p>
+
+          <!-- ==================== GLOSSÁRIO ==================== -->
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-book-open me-2 text-success"></i>
+            <strong class="text-success">Glossário Rápido</strong>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <p class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> <strong>Verdadeiro Positivo:</strong> Alerta que indica um ataque
+                  real. O alarme toca e tem fogo!
+                </p>
+                <p class="mb-2">
+                  <i class="fas fa-times-circle text-warning me-2"></i> <strong>Falso Positivo:</strong> Alerta sem ataque real. O alarme
+                  toca mas é só pipoca queimando.
+                </p>
+                <p class="mb-2">
+                  <i class="fas fa-check-circle text-success me-2"></i> <strong>Verdadeiro Negativo:</strong> Sem alerta e sem ataque. Dia
+                  normal, silêncio desejado.
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-2">
+                  <i class="fas fa-skull-crossbones text-danger me-2"></i> <strong>Falso Negativo:</strong> Ataque acontece mas ninguém vê.
+                  O pior cenário!
+                </p>
+                <p class="mb-2">
+                  <i class="fas fa-chart-simple text-info me-2"></i> <strong>Análise Determinística:</strong> Assume que o atacante acerta
+                  todos os passos.
+                </p>
+                <p class="mb-2">
+                  <i class="fas fa-chart-line text-info me-2"></i> <strong>Análise Probabilística:</strong> Usa estatísticas para prever
+                  comportamentos.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== CASOS DE USO ==================== -->
+          <h3 class="cisco-subtitle mb-3"><i class="fas fa-users me-2 text-success"></i> Entendendo na prática</h3>
+
+          <div class="row g-4">
+            <!-- Caso 1: Alarme da Padaria -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-2">
+                  <i class="fas fa-bell fa-2x text-warning me-3"></i>
+                  <h4 class="mb-0 text-success">O Alarme da Padaria</h4>
+                </div>
+                <p class="small text-muted">Falso Positivo vs Verdadeiro Positivo</p>
+                <p>
+                  O alarme de incêndio disparou. Pode ser um cliente que queimou a pipoca (<strong class="text-warning"
+                    >falso positivo</strong
+                  >) ou um incêndio real no forno (<strong class="text-success">verdadeiro positivo</strong>). O segurança precisa
+                  investigar rápido!
+                </p>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Na segurança:</strong> Analistas recebem dezenas de alertas. O trabalho é saber qual é "pipoca queimando" e qual é
+                  "incêndio real".
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 2: Detetive e o Mapa do Crime -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-2">
+                  <i class="fas fa-chart-line fa-2x text-info me-3"></i>
+                  <h4 class="mb-0 text-success">O Mapa do Crime</h4>
+                </div>
+                <p class="small text-muted">Análise Determinística vs Probabilística</p>
+                <p>
+                  <strong>Determinística:</strong> "O ladrão sempre entra pela porta da frente às 3h" (roteiro perfeito).<br />
+                  <strong>Probabilística:</strong> "70% de chance na Zona Sul, 20% na Norte" (baseado em estatísticas).
+                </p>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Na segurança:</strong> A análise probabilística ajuda a prever ataques em tempo real.
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 3: Plantão do Hospital -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-2">
+                  <i class="fas fa-hospital-user fa-2x text-danger me-3"></i>
+                  <h4 class="mb-0 text-success">O Plantão do Hospital</h4>
+                </div>
+                <p class="small text-muted">Priorização de Alertas</p>
+                <p>
+                  Vários pacientes chegam: dor de cabeça (<strong class="text-warning">falso positivo</strong>) e infarto (<strong
+                    class="text-success"
+                    >verdadeiro positivo urgente</strong
+                  >). Quem atender primeiro?
+                </p>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Na segurança:</strong> Alertas precisam ser priorizados. "Tentativa de login" vs "Exfiltração de dados".
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 4: As Ferramentas do Analista -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-2">
+                  <i class="fas fa-tools fa-2x text-success me-3"></i>
+                  <h4 class="mb-0 text-success">As Ferramentas do Analista</h4>
+                </div>
+                <p class="small text-muted">Security Onion e suas funções</p>
+                <ul class="small">
+                  <li><strong>Sguil</strong> = Central de monitoramento (onde os alertas chegam)</li>
+                  <li><strong>Snort</strong> = Guarda que conhece técnicas de invasão</li>
+                  <li><strong>Zeek</strong> = Detetive que anota tudo que vê</li>
+                  <li><strong>Wireshark</strong> = Câmeras de segurança (mostra os detalhes)</li>
+                  <li><strong>Kibana</strong> = Painel com gráficos e padrões</li>
+                </ul>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Fluxo:</strong> Alerta no Sguil → Investiga com Zeek → Detalhes no Wireshark → Padrões no Kibana
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 5: O Roteiro do Vilão -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-2">
+                  <i class="fas fa-film fa-2x text-primary me-3"></i>
+                  <h4 class="mb-0 text-success">O Roteiro do Vilão</h4>
+                </div>
+                <p class="small text-muted">Como hackers evitam detecção</p>
+                <p>
+                  Alarme espera invasão pela porta da frente (porta 80). Hacker entra pelo telhado (porta dinâmica). Alarme não dispara =
+                  <strong class="text-danger">Falso Negativo</strong>!
+                </p>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Lição:</strong> Por isso usamos análise probabilística - para prever comportamentos fora do padrão.
+                </div>
+              </div>
+            </div>
+
+            <!-- Caso 6: Detector de Mentiras -->
+            <div class="col-md-6">
+              <div class="content-card h-100">
+                <div class="d-flex align-items-center mb-2">
+                  <i class="fas fa-microphone-alt fa-2x text-warning me-3"></i>
+                  <h4 class="mb-0 text-success">O Detector de Mentiras</h4>
+                </div>
+                <p class="small text-muted">Como funcionam as regras do Snort</p>
+                <p><strong>Regra:</strong> "Se a pessoa for homem, 20-40 anos, morar na Zona Sul E a frequência cardíaca subir → ALERTA"</p>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i>
+                  <strong>Snort:</strong> Milhares de regras como "Se pacote vier de IP X para porta Y e contiver 'password' → ALERTA"
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== METÁFORA DO SOC ==================== -->
+          <div class="content-card mt-4">
+            <h3 class="cisco-subtitle">
+              <i class="fas fa-building me-2 text-success"></i>Metáfora: O Centro de Operações de Segurança (SOC)
+            </h3>
+            <p>Imagine sua empresa como um <strong class="text-success">condomínio de luxo</strong> com um Centro de Segurança:</p>
+            <div class="row mt-3">
+              <div class="col-md-4 mb-2">
+                <div class="alert-cisco">
+                  <i class="fas fa-tv me-2 text-success"></i> <strong>Sguil</strong> = Central com todas as câmeras
+                </div>
+              </div>
+              <div class="col-md-4 mb-2">
+                <div class="alert-cisco">
+                  <i class="fas fa-shield-halved me-2 text-success"></i> <strong>Snort</strong> = Guarda que conhece técnicas de invasão
+                </div>
+              </div>
+              <div class="col-md-4 mb-2">
+                <div class="alert-cisco">
+                  <i class="fas fa-eye me-2 text-success"></i> <strong>Zeek</strong> = Observador que anota tudo
+                </div>
+              </div>
+              <div class="col-md-4 mb-2">
+                <div class="alert-cisco">
+                  <i class="fas fa-video me-2 text-success"></i> <strong>Wireshark</strong> = Câmeras que gravam detalhes
+                </div>
+              </div>
+              <div class="col-md-4 mb-2">
+                <div class="alert-cisco">
+                  <i class="fas fa-chart-pie me-2 text-success"></i> <strong>Kibana</strong> = Painel com gráficos
+                </div>
+              </div>
+              <div class="col-md-4 mb-2">
+                <div class="alert-cisco">
+                  <i class="fas fa-user-shield me-2 text-success"></i> <strong>Analista</strong> = Quem decide o que fazer
+                </div>
+              </div>
+            </div>
+            <div class="alert-cisco mt-2 text-center">
+              <i class="fas fa-robot me-2"></i> Snort e Zeek geram alertas → aparecem no Sguil → analista investiga com Wireshark → consulta
+              Kibana → decide se é verdadeiro ou falso.
+            </div>
+          </div>
+
+          <!-- ==================== CHECKLIST DO INICIANTE ==================== -->
+          <div class="content-card mt-4">
+            <h3 class="cisco-subtitle"><i class="fas fa-clipboard-list me-2 text-success"></i>✅ Checklist para quem está começando</h3>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="alert-cisco mb-2">
+                  <i class="fas fa-question-circle text-warning me-2"></i>
+                  <strong>1. Recebeu um alerta?</strong> Não entre em pânico!
+                </div>
+                <div class="alert-cisco mb-2">
+                  <i class="fas fa-search text-info me-2"></i>
+                  <strong>2. Investigue o contexto</strong> Quem? Quando? De onde?
+                </div>
+                <div class="alert-cisco mb-2">
+                  <i class="fas fa-video text-danger me-2"></i>
+                  <strong>3. Veja os detalhes</strong> Use Wireshark para ver o que foi transmitido
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="alert-cisco mb-2">
+                  <i class="fas fa-chart-line text-success me-2"></i>
+                  <strong>4. Verifique padrões</strong> Esse comportamento é normal?
+                </div>
+                <div class="alert-cisco mb-2">
+                  <i class="fas fa-arrow-up text-warning me-2"></i>
+                  <strong>5. É verdadeiro?</strong> Escalone para o time sênior
+                </div>
+                <div class="alert-cisco mb-2">
+                  <i class="fas fa-book text-primary me-2"></i>
+                  <strong>6. Documente tudo</strong> Registre o que aprendeu
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== FAQ ==================== -->
+          <div class="content-card mt-4">
+            <h3 class="cisco-subtitle"><i class="fas fa-question-circle me-2 text-success"></i>❓ Perguntas Frequentes de Iniciantes</h3>
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <div class="alert-cisco mb-3">
+                  <i class="fas fa-question text-success me-2"></i>
+                  <strong>Por que tantos falsos positivos?</strong>
+                  <p class="small mb-0 mt-1">
+                    É melhor errar dando alarme falso do que deixar passar um ataque real. Como detector de fumaça: melhor queimar pipoca e
+                    disparar do que pegar fogo e não disparar!
+                  </p>
+                </div>
+                <div class="alert-cisco mb-3">
+                  <i class="fas fa-question text-success me-2"></i>
+                  <strong>Diferença entre Snort e Zeek?</strong>
+                  <p class="small mb-0 mt-1">Snort = guarda que grita (alerta). Zeek = detetive que anota (logs). Trabalham juntos!</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="alert-cisco mb-3">
+                  <i class="fas fa-question text-success me-2"></i>
+                  <strong>Como saber se é verdadeiro ou falso?</strong>
+                  <p class="small mb-0 mt-1">
+                    Com experiência! Ferramentas como Zeek e Wireshark ajudam a ver o contexto. Com o tempo você desenvolve o "farol".
+                  </p>
+                </div>
+                <div class="alert-cisco mb-3">
+                  <i class="fas fa-question text-success me-2"></i>
+                  <strong>Como estudar para ser analista?</strong>
+                  <p class="small mb-0 mt-1">
+                    Monte um laboratório com Security Onion. Simule ataques em ambiente controlado e veja como os alertas aparecem.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ==================== RESUMO DO CICLO ==================== -->
+          <div class="content-card mt-4">
+            <h3 class="cisco-subtitle text-center"><i class="fas fa-star-of-life me-2 text-success"></i> O Ciclo do Alerta</h3>
+            <div class="row text-center mt-3">
+              <div class="col-3">
+                <i class="fas fa-bell fa-2x text-warning mb-2"></i>
+                <p class="small fw-bold mb-0">1. ALERTA</p>
+                <p class="small text-muted">Sguil mostra</p>
+              </div>
+              <div class="col-3">
+                <i class="fas fa-search fa-2x text-info mb-2"></i>
+                <p class="small fw-bold mb-0">2. INVESTIGAR</p>
+                <p class="small text-muted">Zeek + Wireshark</p>
+              </div>
+              <div class="col-3">
+                <i class="fas fa-chart-line fa-2x text-success mb-2"></i>
+                <p class="small fw-bold mb-0">3. CLASSIFICAR</p>
+                <p class="small text-muted">Verdadeiro ou Falso?</p>
+              </div>
+              <div class="col-3">
+                <i class="fas fa-check-double fa-2x text-primary mb-2"></i>
+                <p class="small fw-bold mb-0">4. AGIR</p>
+                <p class="small text-muted">Escalar ou arquivar</p>
+              </div>
+            </div>
+            <div class="alert-cisco mt-3 text-center">
+              <strong>Lembre-se:</strong> Um bom analista não é quem nunca recebe falsos positivos, mas quem sabe identificar rapidamente o
+              que é real!
+            </div>
+          </div>
+
+          <!-- ==================== MENSAGEM FINAL ==================== -->
+          <div class="alert-cisco mt-4 text-center">
+            <i class="fas fa-quote-left fa-2x text-success opacity-50 mb-2"></i>
+            <p class="mb-2">
+              "Na segurança, nem todo alarme é um incêndio. Mas todo analista sabe: é melhor investigar um alarme falso do que ignorar um
+              incêndio real."
+            </p>
+            <p class="text-success small mb-0">— Módulo 21: Avaliação de Alertas</p>
+            <div class="mt-3">
+              <a href="#introducao" class="btn-cisco me-2"> <i class="fas fa-arrow-up me-1"></i> Voltar ao topo </a>
+              <a href="#laboratorios" class="btn-cisco"> <i class="fas fa-flask me-1"></i> Ir para Laboratórios </a>
+            </div>
           </div>
         </div>
       </section>
@@ -884,26 +2080,17 @@
         <div class="row">
           <div class="col-md-6 mb-4 mb-md-0">
             <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
-            <p class="text-muted">
-              Estudos Cisco Academy · Documentação interativa
-            </p>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
             <p class="small text-muted">
-              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan
-              · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
               <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
             </p>
           </div>
           <div class="col-md-6 text-md-end">
-            <p class="text-muted small mb-0">
-              27 módulos · Aprendizado contínuo
-            </p>
-            <p class="text-muted small mb-0">
-              © 2026 · Base de conhecimento CyberSec
-            </p>
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
             <p class="mt-2">
-              <a href="#top" class="text-success text-decoration-none"
-                ><i class="fas fa-arrow-up me-1"></i> Voltar ao topo</a
-              >
+              <a href="#top" class="text-success text-decoration-none"><i class="fas fa-arrow-up me-1"></i> Voltar ao topo</a>
             </p>
           </div>
         </div>
@@ -918,49 +2105,139 @@
 
     <script>
       // Barra de progresso personalizada
-      window.addEventListener("scroll", () => {
-        const winScroll =
-          document.body.scrollTop || document.documentElement.scrollTop;
-        const height =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        const progressBar = document.getElementById("readingProgress");
-        if (progressBar) progressBar.style.width = scrolled + "%";
-      });
+      window.addEventListener('scroll', () => {
+        const winScroll = document.body.scrollTop || document.documentElement.scrollTop
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        const scrolled = (winScroll / height) * 100
+        const progressBar = document.getElementById('readingProgress')
+        if (progressBar) progressBar.style.width = scrolled + '%'
+      })
 
       // Busca no índice
-      const searchInput = document.getElementById("navSearch");
+      const searchInput = document.getElementById('navSearch')
       if (searchInput) {
-        searchInput.addEventListener("keyup", function () {
-          const filter = this.value.toLowerCase();
-          const items = document.querySelectorAll(
-            "#sectionList .dropdown-item, #sectionList a",
-          );
+        searchInput.addEventListener('keyup', function () {
+          const filter = this.value.toLowerCase()
+          const items = document.querySelectorAll('#sectionList .dropdown-item, #sectionList a')
           items.forEach((item) => {
-            const text = item.textContent.toLowerCase();
-            item.style.display = text.includes(filter) ? "" : "none";
-          });
-        });
+            const text = item.textContent.toLowerCase()
+            item.style.display = text.includes(filter) ? '' : 'none'
+          })
+        })
       }
 
       // Anime.js animações
       anime({
-        targets: ".content-card, .hacker-card, .diagram-card",
+        targets: '.content-card, .hacker-card, .diagram-card',
         opacity: [0, 1],
         translateY: [20, 0],
-        easing: "easeOutQuad",
+        easing: 'easeOutQuad',
         duration: 800,
-        delay: (el, i) => i * 100,
-      });
+        delay: (el, i) => i * 100
+      })
 
       anime({
-        targets: ".cisco-title, .section-title",
+        targets: '.cisco-title, .section-title',
         opacity: [0, 1],
         translateX: [-10, 0],
-        easing: "easeOutQuad",
-        duration: 600,
-      });
+        easing: 'easeOutQuad',
+        duration: 600
+      })
+    </script>
+    <script>
+      // ==================== ANÁLISE DETERMINÍSTICA vs PROBABILÍSTICA ====================
+      // Mapeamento das respostas corretas
+      const analiseCorretas = {
+        1: 'deterministica',
+        2: 'probabilistica',
+        3: 'deterministica',
+        4: 'probabilistica',
+        5: 'probabilistica',
+        6: 'deterministica'
+      }
+
+      // Função para lidar com cliques nos botões de análise
+      function setupAnaliseQuiz() {
+        const botoes = document.querySelectorAll('.analise-btn')
+
+        botoes.forEach((botao) => {
+          botao.addEventListener('click', function (e) {
+            e.stopPropagation()
+            const analiseId = this.getAttribute('data-analise')
+            const tipoSelecionado = this.getAttribute('data-tipo')
+            const parentItem = document.getElementById(`analise-item-${analiseId}`)
+            const botoesDoItem = parentItem.querySelectorAll('.analise-btn')
+            const feedbackDiv = document.getElementById(`analise-feedback-${analiseId}`)
+            const descricao = parentItem.querySelector('.analise-descricao').innerText
+
+            // Remove selected de todos os botões deste item
+            botoesDoItem.forEach((btn) => {
+              btn.classList.remove('selected')
+            })
+
+            // Adiciona selected ao botão clicado
+            this.classList.add('selected')
+
+            // Verifica se está correto
+            if (analiseCorretas[analiseId] === tipoSelecionado) {
+              feedbackDiv.style.display = 'block'
+              // Scroll suave até o feedback
+              feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            } else {
+              // Feedback de erro
+              const erroMsg = document.createElement('div')
+              erroMsg.className = 'alert alert-danger small mt-2'
+              erroMsg.style.background = 'rgba(220, 53, 69, 0.2)'
+              erroMsg.style.border = '1px solid #dc3545'
+              erroMsg.style.borderRadius = '8px'
+              erroMsg.style.padding = '0.5rem 1rem'
+              erroMsg.innerHTML = `<i class="fas fa-times-circle me-2"></i> Resposta incorreta. A característica "${descricao.substring(0, 100)}..." é da análise <strong>${analiseCorretas[analiseId] === 'deterministica' ? 'Determinística' : 'Probabilística'}</strong>.`
+
+              parentItem.appendChild(erroMsg)
+              setTimeout(() => {
+                erroMsg.remove()
+              }, 3000)
+            }
+          })
+        })
+      }
+
+      // Função para resetar todas as respostas
+      function resetAnaliseQuiz() {
+        const botoes = document.querySelectorAll('.analise-btn')
+        const feedbacks = document.querySelectorAll('.analise-feedback')
+
+        botoes.forEach((btn) => {
+          btn.classList.remove('selected')
+        })
+
+        feedbacks.forEach((feedback) => {
+          feedback.style.display = 'none'
+        })
+
+        // Mostrar mensagem de reset
+        const container = document.querySelector('#verificacao-analise .content-card-gradient')
+        const resetMsg = document.createElement('div')
+        resetMsg.className = 'alert alert-success small mt-3'
+        resetMsg.style.background = 'rgba(102, 191, 83, 0.2)'
+        resetMsg.style.border = '1px solid var(--cisco-green)'
+        resetMsg.style.borderRadius = '8px'
+        resetMsg.style.padding = '0.5rem 1rem'
+        resetMsg.innerHTML = '<i class="fas fa-check-circle me-2"></i> Todas as respostas foram resetadas!'
+
+        container.appendChild(resetMsg)
+        setTimeout(() => {
+          resetMsg.remove()
+        }, 2000)
+      }
+
+      // Inicializar quando o DOM estiver pronto
+      document.addEventListener('DOMContentLoaded', function () {
+        setupAnaliseQuiz()
+
+        // Garantir que a função reset esteja disponível globalmente
+        window.resetAnaliseQuiz = resetAnaliseQuiz
+      })
     </script>
   </body>
 </html>
