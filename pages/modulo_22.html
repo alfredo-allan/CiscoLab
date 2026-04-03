@@ -1,0 +1,2630 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NETSEC | Módulo 22 - Governança e Conformidade</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+
+    <style>
+      /* Estilos adicionais específicos para este módulo, se necessário */
+      .role-card {
+        transition: all 0.3s ease;
+      }
+      .role-card:hover {
+        transform: translateX(5px);
+        border-left-color: var(--cisco-green) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================ -->
+    <!-- NAVBAR PADRÃO (Módulo 22)                    -->
+    <!-- ============================================ -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <!-- Logo/Brand -->
+        <a
+          class="navbar-brand"
+          href="/index.html"
+          style="
+            color: var(--cisco-green);
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+          "
+        >
+          <i
+            class="fas fa-shield-halved me-2"
+            style="color: var(--cisco-green)"
+          ></i>
+          NET<span style="color: white">SEC</span>
+          <small
+            style="
+              font-size: 0.7rem;
+              color: var(--text-muted);
+              display: block;
+              line-height: 1;
+            "
+            >☠ CyberSec | Estudos Cisco</small
+          >
+        </a>
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMain"
+        >
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i
+                  class="fas fa-cube me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Módulo 22 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-dark"
+                style="max-height: 400px; overflow-y: auto; min-width: 320px"
+              >
+                <li>
+                  <h6 class="dropdown-header text-cisco-green">
+                    📘 Módulo 22 - Governança
+                  </h6>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#governanca"
+                    >22.1 Governança</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#politicas"
+                    >22.1.3 Políticas de Segurança</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#funcoes"
+                    >Funções de Governança de Dados</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#etica"
+                    >22.2 Ética em Cibersegurança</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#framework"
+                    >22.3 Framework de Gestão de TI</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"
+                    ><i class="fas fa-flask me-2"></i>Laboratórios</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i
+                  class="fas fa-flask me-1"
+                  style="color: var(--cisco-green)"
+                ></i>
+                Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a
+                class="nav-link text-white px-3"
+                href="/pages/modulos.html"
+                title="Ver todos os 27 módulos"
+              >
+                <i
+                  class="fas fa-th-large me-1"
+                  style="color: var(--cisco-green); font-size: 1.2rem"
+                ></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="color: var(--cisco-green)"
+              >
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+                style="min-width: 280px"
+              >
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li>
+                    <a class="dropdown-item" href="#introducao"
+                      >22.0 Introdução</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#governanca"
+                      >22.1 Governança</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#politicas"
+                      >22.1.3 Políticas de Segurança</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#etica"
+                      >22.2 Ética em Cibersegurança</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#framework"
+                      >22.3 Framework de Gestão de TI</a
+                    >
+                  </li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div
+      class="progress"
+      style="
+        height: 3px;
+        position: sticky;
+        top: 76px;
+        z-index: 1020;
+        border-radius: 0;
+      "
+    >
+      <div
+        id="readingProgress"
+        class="progress-bar"
+        style="width: 0%; background-color: var(--cisco-green)"
+      ></div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CONTEÚDO PRINCIPAL                           -->
+    <!-- ============================================ -->
+    <main class="container py-4">
+      <!-- 22.0 INTRODUÇÃO -->
+      <section id="introducao" class="mb-5">
+        <div class="content-card">
+          <span class="badge-cisco mb-3"
+            ><i class="fas fa-flag-checkered me-1"></i> Módulo 22</span
+          >
+          <h1 class="cisco-title display-5 mb-4">Governança e Conformidade</h1>
+          <p class="lead text-secondary">
+            Criar documentos e políticas relacionados à governança e
+            conformidade de segurança digital.
+          </p>
+        </div>
+
+        <div class="content-card mt-4" id="porque-fazer">
+          <h2 class="section-title">22.0.1 Por que devo fazer este módulo?</h2>
+          <p>
+            Bem-vindo a este módulo, que tem como objetivo explorar os
+            principais objetivos da governança de segurança digital, bem como as
+            leis que afetam os requisitos de tecnologia e segurança digital.
+          </p>
+          <p>
+            A governança é um tópico importante na segurança digital, pois
+            descreve as políticas e os processos em vigor na empresa que definem
+            as responsabilidades de aplicação e prestação de contas para mitigar
+            os riscos digitais. Elas também devem estar alinhadas às principais
+            regulamentações.
+          </p>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-gavel me-2"></i> Como profissional de segurança
+            digital, você deve ter uma compreensão das diferentes leis que
+            regulam a segurança da informação, a segurança digital e a
+            privacidade em seu país para garantir a conformidade de uma empresa.
+          </div>
+        </div>
+
+        <div class="content-card mt-4">
+          <h2 class="section-title">22.0.2 O que vou aprender neste módulo?</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <span class="badge-cisco-alt"
+                  ><i class="fas fa-video me-1"></i> 1 Vídeo</span
+                >
+                <span class="badge-cisco-alt ms-2"
+                  ><i class="fas fa-flask me-1"></i> 4 Laboratórios</span
+                >
+                <span class="badge-cisco-alt ms-2"
+                  ><i class="fas fa-question-circle me-1"></i> 1
+                  Questionário</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Governança</strong></td>
+                  <td>Criar documentos de políticas de cibersegurança.</td>
+                </tr>
+                <tr>
+                  <td><strong>A Ética da Cibersegurança</strong></td>
+                  <td>Criar um código pessoal de conduta ética.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong
+                      >Estrutura de Gerenciamento de Segurança de TI</strong
+                    >
+                  </td>
+                  <td>Avalie os controles de segurança.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 22.1 GOVERNANÇA -->
+      <section id="governanca" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">22.1 Governança</h2>
+
+        <div class="content-card">
+          <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+            <i
+              class="fas fa-user-astronaut fa-2x"
+              style="color: var(--cisco-green)"
+            ></i>
+            <span class="badge-cisco"
+              ><i class="fas fa-robot me-1"></i> @Apollo</span
+            >
+          </div>
+          <p>
+            Há um ar de empolgação no @Apollo! Você causou um grande impacto em
+            tão pouco tempo. É hora de subir de nível mais uma vez.
+          </p>
+          <p>
+            Acho que você está pronto para esta tarefa final. Preciso da sua
+            ajuda para desenvolver uma estrutura de governança de TI na @Apollo
+            que esteja alinhada com as metas gerais de negócios e garanta que
+            todos na empresa estejam cientes de suas responsabilidades quando se
+            trata de segurança digital. Estou certo de que vocês conseguirão.
+          </p>
+        </div>
+
+        <div class="content-card mt-4">
+          <h3 class="cisco-subtitle">Governança vs. Gerenciamento</h3>
+          <p>
+            A governança da segurança de TI determina
+            <strong>quem está autorizado a tomar decisões</strong> sobre os
+            riscos à segurança digital em uma empresa. Ela demonstra a
+            responsabilidade e supervisiona para garantir que os riscos sejam
+            adequadamente mitigados e que as estratégias de segurança estejam
+            alinhadas aos objetivos comerciais da empresa e estejam em
+            conformidade com as regulamentações.
+          </p>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i
+                  class="fas fa-crown me-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <strong>Governança de TI</strong>
+                <hr class="my-2" />
+                <p class="small mb-0">
+                  Define QUEM toma decisões. Responsabilidade e supervisão
+                  estratégica.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                class="terminal-card p-3"
+                style="border-left-color: var(--text-muted)"
+              >
+                <i
+                  class="fas fa-tools me-2"
+                  style="color: var(--text-muted)"
+                ></i>
+                <strong>Gerenciamento de TI</strong>
+                <hr class="my-2" />
+                <p class="small mb-0">
+                  Define e implementa controles. Execução tática e operacional.
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3">
+            <strong>Governança de Dados:</strong> Determina quem está autorizado
+            a tomar decisões sobre dados em uma empresa.
+          </p>
+        </div>
+      </section>
+
+      <!-- FUNÇÕES DE GOVERNANÇA DE DADOS -->
+      <section id="funcoes" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">
+            Funções essenciais na administração de dados
+          </h2>
+          <p class="text-muted mb-4">
+            Clique nos cards para expandir as definições de cada função
+          </p>
+
+          <div class="row g-3">
+            <!-- Proprietário dos dados -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="role-card content-card h-100"
+                style="
+                  border-left: 4px solid var(--cisco-green);
+                  cursor: pointer;
+                "
+                data-bs-toggle="collapse"
+                data-bs-target="#descProprietario"
+              >
+                <h4>
+                  <i class="fas fa-user-tie me-2"></i> Proprietário dos dados
+                </h4>
+                <div class="collapse" id="descProprietario">
+                  <p class="small text-muted mt-2 mb-0">
+                    Uma pessoa que garante a conformidade com políticas e
+                    procedimentos, atribui a classificação adequada aos ativos
+                    de informações e determina os critérios para acessar os
+                    ativos de informações.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Controlador dos dados -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="role-card content-card h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <h4>
+                  <i class="fas fa-sliders-h me-2"></i> Controlador dos dados
+                </h4>
+                <p class="small text-muted mt-2 mb-0">
+                  Determina as finalidades para as quais e a maneira em que os
+                  dados pessoais são processados.
+                </p>
+              </div>
+            </div>
+            <!-- Processador de dados -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="role-card content-card h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <h4>
+                  <i class="fas fa-microchip me-2"></i> Processador de dados
+                </h4>
+                <p class="small text-muted mt-2 mb-0">
+                  Uma pessoa ou empresa que processa dados pessoais em nome do
+                  controlador de dados.
+                </p>
+              </div>
+            </div>
+            <!-- Custódia de dados -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="role-card content-card h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <h4><i class="fas fa-database me-2"></i> Custódia de dados</h4>
+                <p class="small text-muted mt-2 mb-0">
+                  Implementa a classificação e os controles de segurança dos
+                  dados de acordo com as regras definidas pelo proprietário dos
+                  dados. Responsável pelo controle técnico dos dados.
+                </p>
+              </div>
+            </div>
+            <!-- Administrador de dados -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="role-card content-card h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <h4>
+                  <i class="fas fa-chart-line me-2"></i> Administrador de dados
+                </h4>
+                <p class="small text-muted mt-2 mb-0">
+                  Garante que os dados atendam às necessidades comerciais de uma
+                  empresa e aos requisitos regulamentares.
+                </p>
+              </div>
+            </div>
+            <!-- Oficial de Proteção dos dados -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="role-card content-card h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <h4>
+                  <i class="fas fa-shield-alt me-2"></i> Oficial de Proteção dos
+                  dados
+                </h4>
+                <p class="small text-muted mt-2 mb-0">
+                  Supervisiona a estratégia de proteção de dados de uma empresa
+                  (DPO).
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 22.1.3 POLÍTICAS DE SEGURANÇA -->
+      <section id="politicas" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">
+            22.1.3 Políticas de segurança cibernética
+          </h2>
+          <p>
+            Uma política de segurança digital é um documento de alto nível que
+            descreve a visão de uma empresa sobre segurança digital, incluindo
+            suas metas, necessidades, escopo e responsabilidades.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                  Demonstra o compromisso da organização com a segurança
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                  Define padrões de comportamento e requisitos de segurança
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                  Garante consistência na aquisição, uso e manutenção
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                  Define consequências legais das violações
+                </li>
+                <li class="mb-2">
+                  <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                  Oferece suporte da gerência sênior à equipe de segurança
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card">
+                <pre><code># Tipos de Políticas de Segurança
+- Política de Cibersegurança
+- Configuração de Firewall
+- Política Aceitável de Uso (AUP)
+- Política de E-mail e Internet</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4 g-3">
+            <div class="col-md-4">
+              <div class="content-card-accent text-center p-3">
+                <i
+                  class="fas fa-globe fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <h5>Política de Cibersegurança</h5>
+                <p class="small text-muted">
+                  Diretrizes gerais de proteção de ativos digitais.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="content-card-accent text-center p-3">
+                <i
+                  class="fas fa-firewall fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <h5>Política de Firewall</h5>
+                <p class="small text-muted">
+                  Regras de tráfego de rede e acesso.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="content-card-accent text-center p-3">
+                <i
+                  class="fas fa-envelope fa-2x mb-2"
+                  style="color: var(--cisco-green)"
+                ></i>
+                <h5>Política Aceitável de Uso</h5>
+                <p class="small text-muted">
+                  Uso apropriado de e-mail e internet.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 22.2 ÉTICA E 22.3 FRAMEWORK (Resumo) -->
+      <section id="etica" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">22.2 A Ética da Cibersegurança</h2>
+          <p>
+            A ética em cibersegurança envolve a obrigação profissional de agir
+            com integridade, transparência e responsabilidade. Um código pessoal
+            de conduta ética deve incluir:
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="checklist-item p-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                Proteger dados e privacidade
+              </div>
+              <div class="checklist-item p-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i> Agir
+                dentro da lei e regulamentações
+              </div>
+              <div class="checklist-item p-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                Reportar vulnerabilidades responsavelmente
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item p-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i> Evitar
+                conflitos de interesse
+              </div>
+              <div class="checklist-item p-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i> Manter
+                confidencialidade profissional
+              </div>
+              <div class="checklist-item p-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i> Buscar
+                atualização contínua
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="framework" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">
+            22.3 Estrutura de Gerenciamento de Segurança de TI
+          </h2>
+          <p>
+            Para avaliar os controles de segurança, utilizamos frameworks
+            reconhecidos como ISO 27001, NIST Cybersecurity Framework e COBIT.
+            Estes fornecem:
+          </p>
+          <ul>
+            <li>Identificação de ativos e riscos</li>
+            <li>
+              Implementação de controles preventivos, detectivos e corretivos
+            </li>
+            <li>Monitoramento contínuo e melhoria</li>
+          </ul>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-clipboard-list me-2"></i>
+            <strong>Avaliação de controles:</strong> Verifique periodicamente a
+            eficácia dos controles técnicos, administrativos e físicos.
+          </div>
+        </div>
+      </section>
+
+      <!-- LABORATÓRIOS (Âncora) -->
+      <section id="laboratorios" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">
+          <i class="fas fa-flask me-2"></i> Laboratórios
+        </h2>
+        <div class="content-card">
+          <p>
+            Este módulo contém <strong>4 laboratórios práticos</strong> para
+            aplicação dos conceitos de governança e conformidade.
+          </p>
+          <div class="row g-3 mt-2">
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-file-alt me-2"></i> Lab 1: Criação de Política
+                de Segurança
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-balance-scale me-2"></i> Lab 2: Análise de
+                Conformidade
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-chart-simple me-2"></i> Lab 3: Matriz de Riscos
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-code-branch me-2"></i> Lab 4: Simulação de
+                Governança
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- 22.1.4 TIPOS DE POLÍTICAS DE SEGURANÇA -->
+      <section id="tipos-politicas" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">22.1.4 Tipos de políticas de segurança</h2>
+
+          <p>
+            Uma empresa precisa estabelecer políticas de segurança claras e
+            detalhadas de que todos os funcionários estejam cientes. É
+            fundamental que essas políticas também tenham o apoio da equipe de
+            gerenciamento sênior.
+          </p>
+
+          <p class="text-muted mb-4">
+            <i class="fas fa-hand-pointer me-2"></i> Clique nos títulos abaixo
+            para descobrir mais sobre cada tipo de política:
+          </p>
+
+          <div class="accordion" id="accordionPoliticas">
+            <!-- 1. Política de identificação e autenticação -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica1"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-fingerprint me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política de identificação e autenticação</strong>
+                </button>
+              </h2>
+              <div
+                id="politica1"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Especifica quem deve ter acesso aos recursos de rede e quais
+                  procedimentos de verificação estão em vigor para facilitar
+                  isso.
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Política de senhas -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica2"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-key me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política de senhas</strong>
+                </button>
+              </h2>
+              <div
+                id="politica2"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Define os requisitos mínimos de senha, como número e tipo de
+                  caracteres usados, e a frequência com que eles precisam ser
+                  alterados.
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Política de Utilização Aceitável (AUP) -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica3"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-check-circle me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política de Utilização Aceitável (AUP)</strong>
+                </button>
+              </h2>
+              <div
+                id="politica3"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Destaca um conjunto de regras que determinam o acesso e o uso
+                  dos recursos de rede. Ela também pode definir as consequências
+                  das violações de política.
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. Política de acesso remoto -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica4"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-wifi me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política de acesso remoto</strong>
+                </button>
+              </h2>
+              <div
+                id="politica4"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Define como se conectar remotamente à rede interna de uma
+                  empresa e explica quais informações são acessíveis
+                  remotamente.
+                </div>
+              </div>
+            </div>
+
+            <!-- 5. Políticas de Manutenção de Rede -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica5"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-network-wired me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Políticas de Manutenção de Rede</strong>
+                </button>
+              </h2>
+              <div
+                id="politica5"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Descreve os procedimentos para atualizar os sistemas
+                  operacionais específicos de uma empresa e os aplicativos de
+                  usuário final.
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. Política de tratamento de incidentes -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica6"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-exclamation-triangle me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política de tratamento de incidentes</strong>
+                </button>
+              </h2>
+              <div
+                id="politica6"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Fornece orientação sobre como relatar e responder a incidentes
+                  relacionados à segurança em uma empresa.
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. Política de dados -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica7"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-database me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política de dados</strong>
+                </button>
+              </h2>
+              <div
+                id="politica7"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Define regras mensuráveis para o processamento de dados dentro
+                  de uma empresa, como especificar onde os dados são
+                  armazenados, como os dados são classificados (alto, médio,
+                  baixo, confidencial, público ou privado) e como os dados são
+                  tratados e descartados.
+                </div>
+              </div>
+            </div>
+
+            <!-- 8. Política de credenciais -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica8"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-id-card me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política de credenciais</strong>
+                </button>
+              </h2>
+              <div
+                id="politica8"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Aplica as regras de composição de credenciais, como o
+                  comprimento mínimo e máximo de uma senha.
+                </div>
+              </div>
+            </div>
+
+            <!-- 9. Política Corporativa -->
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#politica9"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-building me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Política Corporativa</strong>
+                </button>
+              </h2>
+              <div
+                id="politica9"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionPoliticas"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  Fornece orientações sobre como o trabalho deve ser realizado
+                  em uma organização. Os exemplos podem incluir políticas de
+                  gerenciamento de mudanças, controle de mudanças ou
+                  gerenciamento de ativos.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Badge de suporte da gerência -->
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-chart-line me-2"></i>
+            <strong>Importante:</strong> É fundamental que essas políticas
+            também tenham o apoio da equipe de gerenciamento sênior para serem
+            efetivamente implementadas.
+          </div>
+        </div>
+      </section>
+      <!-- 22.1.7 PRINCÍPIOS ORIENTADORES PARA RECURSOS HUMANOS - VERSÃO COM DROPDOWNS -->
+      <section id="rh-principios" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">
+            22.1.7 Princípios orientadores para recursos humanos
+          </h2>
+
+          <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+            <i class="fas fa-users fa-2x" style="color: var(--cisco-green)"></i>
+            <span class="badge-cisco"
+              ><i class="fas fa-building me-1"></i> @Apollo</span
+            >
+          </div>
+
+          <p>
+            A equipe de TI da @Apollo está preocupada. Eles identificaram
+            algumas ameaças de domínio de usuário e pediram conselhos sobre
+            quais contramedidas poderiam criar para gerenciar essas ameaças.
+          </p>
+
+          <p>
+            Com base no que aprendeu durante o curso até agora, você pode
+            recomendar que controle de segurança eles devem implementar para
+            lidar com cada ameaça?
+          </p>
+
+          <p class="text-muted mb-4">
+            <i class="fas fa-hand-pointer me-2"></i> Selecione uma opção em cada
+            um dos menus suspensos e clique em <strong>Enviar</strong>.
+          </p>
+
+          <!-- Formulário de Quiz -->
+          <form id="quizForm">
+            <!-- Ameaça 1 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <i
+                      class="fas fa-envelope-open-text fa-lg"
+                      style="color: var(--accent-red)"
+                    ></i>
+                    <span class="badge bg-danger">Ameaça 1</span>
+                  </div>
+                  <p class="mb-0">
+                    Uma alta porcentagem de funcionários que trabalham
+                    remotamente está clicando em e-mails de phishing.
+                  </p>
+                </div>
+                <div class="col-md-5 mt-3 mt-md-0">
+                  <label class="form-label text-muted small"
+                    >Contramedida recomendada:</label
+                  >
+                  <select
+                    class="form-select bg-dark text-white border-secondary threat-select"
+                    data-threat="phishing"
+                  >
+                    <option value="">-- Selecione uma opção --</option>
+                    <option value="treinamento">
+                      Conduzir o treinamento de conscientização
+                    </option>
+                    <option value="acesso">
+                      Aplicar controles de acesso de usuários
+                    </option>
+                    <option value="ids">
+                      Habilitar o monitoramento de IDS/IPS
+                    </option>
+                    <option value="monitoramento">
+                      Rastrear e monitorar comportamento anormal
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ameaça 2 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <i
+                      class="fas fa-folder-open fa-lg"
+                      style="color: var(--accent-yellow)"
+                    ></i>
+                    <span class="badge bg-warning text-dark">Ameaça 2</span>
+                  </div>
+                  <p class="mb-0">
+                    Os gerentes de projeto podem acessar todos os dados do
+                    cliente do @Apollo em uma unidade compartilhada, mesmo para
+                    projetos em que não estão trabalhando.
+                  </p>
+                </div>
+                <div class="col-md-5 mt-3 mt-md-0">
+                  <label class="form-label text-muted small"
+                    >Contramedida recomendada:</label
+                  >
+                  <select
+                    class="form-select bg-dark text-white border-secondary threat-select"
+                    data-threat="acesso"
+                  >
+                    <option value="">-- Selecione uma opção --</option>
+                    <option value="treinamento">
+                      Conduzir o treinamento de conscientização
+                    </option>
+                    <option value="acesso">
+                      Aplicar controles de acesso de usuários (RBAC)
+                    </option>
+                    <option value="ids">
+                      Habilitar o monitoramento de IDS/IPS
+                    </option>
+                    <option value="monitoramento">
+                      Rastrear e monitorar comportamento anormal
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ameaça 3 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <i
+                      class="fas fa-download fa-lg"
+                      style="color: var(--accent-red)"
+                    ></i>
+                    <span class="badge bg-danger">Ameaça 3</span>
+                  </div>
+                  <p class="mb-0">
+                    Os funcionários do departamento de design gráfico, em
+                    particular, estão baixando versões não autorizadas de
+                    software para seus dispositivos de trabalho.
+                  </p>
+                </div>
+                <div class="col-md-5 mt-3 mt-md-0">
+                  <label class="form-label text-muted small"
+                    >Contramedida recomendada:</label
+                  >
+                  <select
+                    class="form-select bg-dark text-white border-secondary threat-select"
+                    data-threat="software"
+                  >
+                    <option value="">-- Selecione uma opção --</option>
+                    <option value="treinamento">
+                      Conduzir o treinamento de conscientização
+                    </option>
+                    <option value="acesso">
+                      Aplicar controles de acesso de usuários
+                    </option>
+                    <option value="ids">
+                      Habilitar o monitoramento de IDS/IPS
+                    </option>
+                    <option value="monitoramento">
+                      Rastrear e monitorar comportamento anormal
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ameaça 4 -->
+            <div class="content-card-accent p-3 mb-4">
+              <div class="row align-items-center">
+                <div class="col-md-7">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <i
+                      class="fas fa-film fa-lg"
+                      style="color: var(--accent-yellow)"
+                    ></i>
+                    <span class="badge bg-warning text-dark">Ameaça 4</span>
+                  </div>
+                  <p class="mb-0">
+                    Os funcionários remotos estão usando VPNs para assistir
+                    filmes em seus dispositivos de trabalho.
+                  </p>
+                </div>
+                <div class="col-md-5 mt-3 mt-md-0">
+                  <label class="form-label text-muted small"
+                    >Contramedida recomendada:</label
+                  >
+                  <select
+                    class="form-select bg-dark text-white border-secondary threat-select"
+                    data-threat="vpn"
+                  >
+                    <option value="">-- Selecione uma opção --</option>
+                    <option value="treinamento">
+                      Conduzir o treinamento de conscientização
+                    </option>
+                    <option value="acesso">
+                      Aplicar controles de acesso de usuários
+                    </option>
+                    <option value="ids">
+                      Habilitar o monitoramento de IDS/IPS
+                    </option>
+                    <option value="monitoramento">
+                      Rastrear e monitorar comportamento anormal
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botões de ação -->
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+              <button type="button" class="btn-cisco" onclick="resetQuiz()">
+                <i class="fas fa-undo-alt me-2"></i>Redefinir
+              </button>
+              <button type="button" class="btn-cisco" onclick="showFeedback()">
+                <i class="fas fa-comment-dots me-2"></i>Mostrar feedback
+              </button>
+              <button type="button" class="btn-cisco" onclick="checkAnswers()">
+                <i class="fas fa-paper-plane me-2"></i>Enviar
+              </button>
+              <button
+                type="button"
+                class="btn-cisco"
+                onclick="showCorrectAnswers()"
+              >
+                <i class="fas fa-eye me-2"></i>Mostrar respostas corretas
+              </button>
+            </div>
+
+            <!-- Área de resultado -->
+            <div id="quizResult" class="mt-4" style="display: none">
+              <div class="alert-cisco" id="resultMessage"></div>
+            </div>
+          </form>
+
+          <!-- Badge de dica -->
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Dica:</strong> Lembre-se do princípio do menor privilégio e
+            da importância do treinamento contínuo para o fator humano.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- 22.2 A ÉTICA DA SEGURANÇA CIBERNÉTICA        -->
+      <!-- ============================================ -->
+      <section id="etica" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">
+          22.2 A ética da segurança cibernética
+        </h2>
+
+        <!-- 22.2.1 Avatar -->
+        <div class="content-card" id="avatar-etica">
+          <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+            <i
+              class="fas fa-user-astronaut fa-2x"
+              style="color: var(--cisco-green)"
+            ></i>
+            <span class="badge-cisco"
+              ><i class="fas fa-robot me-1"></i> @Apollo</span
+            >
+          </div>
+          <p>
+            Às vezes, você pode se deparar com um dilema ou uma situação
+            desafiadora, na qual o curso de ação certo não é esclarecido
+            imediatamente. Confie em mim, eu sei! Nesses casos, você deve agir
+            com responsabilidade e usar sua opinião ou ética para guiá-lo pelo
+            caminho certo.
+          </p>
+        </div>
+
+        <!-- 22.2.2 Ética de um especialista em segurança cibernética -->
+        <div class="content-card mt-4" id="etica-especialista">
+          <h3 class="section-title">
+            22.2.2 Ética de um especialista em segurança cibernética
+          </h3>
+
+          <p>
+            A ética é a pequena voz na sua cabeça que diz o que é certo e o que
+            é errado, orientando você a tomar as decisões certas. Como
+            especialista em segurança digital, você precisa entender a lei e os
+            interesses de uma empresa para poder tomar essas decisões.
+          </p>
+
+          <p class="text-muted mb-4">
+            A ética pode ser vista de muitas perspectivas diferentes.
+            <i class="fas fa-arrow-right ms-2"></i>
+            <strong>Clique nos cards abaixo para saber mais:</strong>
+          </p>
+
+          <!-- Accordion das abordagens éticas -->
+          <div class="accordion" id="accordionEtica">
+            <!-- Ética Utilitarista -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#eticaUtilitarista"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-balance-scale me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Ética Utilitarista</strong>
+                  <span class="badge-cisco-alt ms-3 small"
+                    >Jeremy Bentham · John Stuart Mill</span
+                  >
+                </button>
+              </h2>
+              <div
+                id="eticaUtilitarista"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionEtica"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  <p>
+                    Durante o século dezenove, os filósofos Jeremy Bentham e
+                    John Stuart Mill articularam a teoria da
+                    <strong>ética utilitarista</strong>. Isso se baseia no
+                    princípio norteador de que a
+                    <strong>consequência de uma ação</strong> é o fator mais
+                    importante para determinar se a ação é moral ou não.
+                  </p>
+                  <div class="alert-cisco mt-2 mb-0">
+                    <i class="fas fa-lightbulb me-2"></i>
+                    <strong>Exemplo prático:</strong> Uma ação que maximiza o
+                    bem maior para a maior quantidade de pessoas é uma escolha
+                    ética.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Abordagem de Direitos -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#eticaDireitos"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-gavel me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Abordagem de Direitos</strong>
+                </button>
+              </h2>
+              <div
+                id="eticaDireitos"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionEtica"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  <p>
+                    A abordagem de direitos é guiada pelo princípio que afirma
+                    que um
+                    <strong
+                      >indivíduo tem o direito de fazer suas próprias
+                      escolhas</strong
+                    >, que não podem ser violadas pela decisão de outro. Essa
+                    decisão deve respeitar e considerar os direitos fundamentais
+                    do indivíduo.
+                  </p>
+                  <p class="mt-2 mb-0">Esses direitos incluem:</p>
+                  <ul class="mt-1">
+                    <li>Direito à verdade</li>
+                    <li>Direito à privacidade</li>
+                    <li>Direito à segurança</li>
+                    <li>Direito à aplicação justa das leis</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Abordagem de Bem Comum -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white border-secondary"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#eticaBemComum"
+                  style="background-color: var(--bg-card) !important"
+                >
+                  <i
+                    class="fas fa-hand-holding-heart me-2"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                  <strong>Abordagem de Bem Comum</strong>
+                </button>
+              </h2>
+              <div
+                id="eticaBemComum"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionEtica"
+              >
+                <div
+                  class="accordion-body text-secondary"
+                  style="
+                    background-color: var(--bg-secondary);
+                    border-top: 1px solid var(--border-primary);
+                  "
+                >
+                  <p>
+                    A abordagem do bem comum enfatiza o
+                    <strong>bem-estar coletivo da comunidade</strong> e da
+                    sociedade como um todo. As decisões éticas devem considerar
+                    como elas afetam todos os membros da sociedade, não apenas
+                    indivíduos ou grupos específicos.
+                  </p>
+                  <div class="terminal-card mt-2 p-2">
+                    <code
+                      ><i class="fas fa-quote-left me-1"></i> O que é bom para
+                      todos deve ser priorizado sobre o que é bom para
+                      poucos.</code
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mensagem final da seção 22.2.2 -->
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-brain me-2"></i>
+            <strong>Reflexão importante:</strong> Como especialista em segurança
+            digital, muitas vezes não haverá uma resposta óbvia para os
+            problemas éticos que você enfrentar. O curso de ação correto
+            dependerá da situação e da perspectiva ética que você usa para
+            orientar sua decisão.
+          </div>
+        </div>
+
+        <!-- 22.2.3 Dez mandamentos da ética em informática -->
+        <div class="content-card mt-4" id="dez-mandamentos">
+          <h3 class="section-title">
+            22.2.3 Dez mandamentos da ética em informática
+          </h3>
+
+          <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+            <i
+              class="fas fa-university fa-lg"
+              style="color: var(--cisco-green)"
+            ></i>
+            <span class="badge-cisco"
+              ><i class="fas fa-building me-1"></i> Computer Ethics Institute
+              (CEI)</span
+            >
+          </div>
+
+          <p>
+            Com sede em Washington, DC, o
+            <strong>Computer Ethics Institute</strong> é um recurso para
+            identificar, avaliar e responder a questões éticas em todo o setor
+            de tecnologia da informação.
+          </p>
+
+          <p>
+            O CEI foi uma das primeiras empresas a reconhecer os problemas de
+            políticas éticas e públicas provenientes do crescimento rápido da
+            área de tecnologia da informação.
+          </p>
+
+          <p class="mb-4">
+            Eles criaram os
+            <strong>dez mandamentos da ética em computadores</strong>
+            apresentados aqui:
+          </p>
+
+          <!-- Grid dos 10 Mandamentos -->
+          <div class="row g-3">
+            <!-- Mandamento 1 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >1</span
+                  >
+                  <i
+                    class="fas fa-user-shield"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                </div>
+                <p class="mb-0 small">
+                  Não usará um computador para prejudicar outras pessoas.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 2 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >2</span
+                  >
+                  <i class="fas fa-ban" style="color: var(--cisco-green)"></i>
+                </div>
+                <p class="mb-0 small">
+                  Não interferirás no trabalho de computação de outras pessoas.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 3 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >3</span
+                  >
+                  <i
+                    class="fas fa-eye-slash"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                </div>
+                <p class="mb-0 small">
+                  Não bisbilhotarás em arquivos de computador de outras pessoas.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 4 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >4</span
+                  >
+                  <i
+                    class="fas fa-hand-lizard"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                </div>
+                <p class="mb-0 small">Não usarás um computador para roubar.</p>
+              </div>
+            </div>
+
+            <!-- Mandamento 5 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >5</span
+                  >
+                  <i
+                    class="fas fa-comment-slash"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                </div>
+                <p class="mb-0 small">
+                  Não usarás um computador para dar falso testemunho.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 6 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >6</span
+                  >
+                  <i
+                    class="fas fa-copyright"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                </div>
+                <p class="mb-0 small">
+                  Não copiarás ou usarás software proprietário pelo qual não
+                  pagaste.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 7 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >7</span
+                  >
+                  <i
+                    class="fas fa-server"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                </div>
+                <p class="mb-0 small">
+                  Não usarás os recursos do computador de outras pessoas sem
+                  autorização ou compensação adequada.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 8 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >8</span
+                  >
+                  <i class="fas fa-brain" style="color: var(--cisco-green)"></i>
+                </div>
+                <p class="mb-0 small">
+                  Não se apropriarás da produção intelectual de outras pessoas.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 9 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >9</span
+                  >
+                  <i class="fas fa-globe" style="color: var(--cisco-green)"></i>
+                </div>
+                <p class="mb-0 small">
+                  Pensarás nas consequências sociais do programa que estás
+                  editando ou do sistema que estás projetando.
+                </p>
+              </div>
+            </div>
+
+            <!-- Mandamento 10 -->
+            <div class="col-md-6 col-lg-4">
+              <div
+                class="hacker-card p-3 h-100"
+                style="border-left: 4px solid var(--cisco-green)"
+              >
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span
+                    class="badge-cisco"
+                    style="background-color: var(--cisco-green); color: #000"
+                    >10</span
+                  >
+                  <i
+                    class="fas fa-handshake"
+                    style="color: var(--cisco-green)"
+                  ></i>
+                </div>
+                <p class="mb-0 small">
+                  Sempre usarás um computador de forma a assegurar consideração
+                  e respeito por seus companheiros.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Código de Conduta Pessoal (box interativo) -->
+          <h4 class="cisco-subtitle mt-5 mb-3">
+            <i
+              class="fas fa-pen-fancy me-2"
+              style="color: var(--cisco-green)"
+            ></i>
+            Crie seu código pessoal de conduta ética
+          </h4>
+
+          <div class="terminal-card p-4">
+            <div class="d-flex align-items-center gap-2 mb-3">
+              <i class="fas fa-terminal" style="color: var(--cisco-green)"></i>
+              <span class="text-cisco-green fw-bold"
+                >$ ./meu_codigo_etico.sh</span
+              >
+            </div>
+            <div class="ps-3 border-start border-cisco-green">
+              <p class="mb-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                Comprometo-me a agir com integridade em todas as atividades
+                digitais.
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                Respeitarei a privacidade e os dados dos usuários.
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                Reportarei vulnerabilidades de forma responsável.
+              </p>
+              <p class="mb-2">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i>
+                Buscarei conhecimento contínuo para proteger而非 explorar.
+              </p>
+              <p class="mb-0">
+                <i class="fas fa-check-circle text-cisco-green me-2"></i> Usarei
+                a tecnologia para construir um mundo mais seguro e justo.
+              </p>
+            </div>
+            <div class="mt-3 text-end">
+              <span class="badge-modulo"
+                >✍️ Assinado: Profissional de CyberSec</span
+              >
+            </div>
+          </div>
+
+          <!-- Dica final -->
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-quote-right me-2"></i>
+            <strong>Lembre-se:</strong> A ética não é apenas sobre seguir regras
+            - é sobre fazer a escolha certa mesmo quando ninguém está olhando.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================ -->
+      <!-- 22.2.4 EXPLORAR A ÉTICA DIGITAL              -->
+      <!-- ============================================ -->
+      <section id="etica-digital" class="mb-5">
+        <div class="content-card">
+          <h2 class="section-title">22.2.4 Explorar a ética digital</h2>
+
+          <div class="d-flex align-items-center gap-3 mb-4 flex-wrap">
+            <i
+              class="fas fa-user-astronaut fa-2x"
+              style="color: var(--cisco-green)"
+            ></i>
+            <span class="badge-cisco"
+              ><i class="fas fa-building me-1"></i> @Apollo</span
+            >
+          </div>
+
+          <p>
+            Sua ética digital será regularmente colocada à prova. Vamos dar uma
+            olhada em alguns cenários de funcionários que você testemunhou no
+            <strong>@Apollo</strong>. Em cada caso, você consegue identificar se
+            o funcionário tomou a decisão certa ou errada?
+          </p>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-scroll me-2"></i>
+            <strong
+              >Use os dez mandamentos da ética do computador para
+              guiá-lo</strong
+            >
+            e selecione <strong>"Certo"</strong> se achar que o funcionário
+            tomou uma decisão ética ou <strong>"Errado"</strong> se achar que o
+            funcionário tomou uma decisão antiética.
+          </div>
+
+          <!-- Formulário do Quiz -->
+          <form id="quizEticaForm">
+            <!-- Cenário 1 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background-color: var(--cisco-green); color: #000"
+                      >1</span
+                    >
+                    <i
+                      class="fas fa-comment-dots"
+                      style="color: var(--cisco-green)"
+                    ></i>
+                  </div>
+                  <p class="mb-0">
+                    <strong>Cenário:</strong> Postar uma mensagem no fórum
+                    interno do @Apollo para agradecer a um colega por sua ajuda.
+                  </p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <div
+                    class="d-flex gap-3 justify-content-start justify-content-md-end"
+                  >
+                    <label class="d-flex align-items-center gap-2 me-3">
+                      <input
+                        type="radio"
+                        name="cenario1"
+                        value="certo"
+                        class="form-check-input"
+                      />
+                      <span class="text-success">✅ Certo</span>
+                    </label>
+                    <label class="d-flex align-items-center gap-2">
+                      <input
+                        type="radio"
+                        name="cenario1"
+                        value="errado"
+                        class="form-check-input"
+                      />
+                      <span class="text-danger">❌ Errado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="feedback1"
+                class="small mt-2"
+                style="display: none"
+              ></div>
+            </div>
+
+            <!-- Cenário 2 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background-color: var(--cisco-green); color: #000"
+                      >2</span
+                    >
+                    <i class="fas fa-key" style="color: var(--cisco-green)"></i>
+                  </div>
+                  <p class="mb-0">
+                    <strong>Cenário:</strong> Fazer logon em um aplicativo de
+                    terceiros usando os detalhes de um colega quando o
+                    administrador não estiver disponível.
+                  </p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <div
+                    class="d-flex gap-3 justify-content-start justify-content-md-end"
+                  >
+                    <label class="d-flex align-items-center gap-2 me-3">
+                      <input
+                        type="radio"
+                        name="cenario2"
+                        value="certo"
+                        class="form-check-input"
+                      />
+                      <span class="text-success">✅ Certo</span>
+                    </label>
+                    <label class="d-flex align-items-center gap-2">
+                      <input
+                        type="radio"
+                        name="cenario2"
+                        value="errado"
+                        class="form-check-input"
+                      />
+                      <span class="text-danger">❌ Errado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="feedback2"
+                class="small mt-2"
+                style="display: none"
+              ></div>
+            </div>
+
+            <!-- Cenário 3 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background-color: var(--cisco-green); color: #000"
+                      >3</span
+                    >
+                    <i
+                      class="fas fa-quote-right"
+                      style="color: var(--cisco-green)"
+                    ></i>
+                  </div>
+                  <p class="mb-0">
+                    <strong>Cenário:</strong> Creditar uma fonte em uma postagem
+                    de blog.
+                  </p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <div
+                    class="d-flex gap-3 justify-content-start justify-content-md-end"
+                  >
+                    <label class="d-flex align-items-center gap-2 me-3">
+                      <input
+                        type="radio"
+                        name="cenario3"
+                        value="certo"
+                        class="form-check-input"
+                      />
+                      <span class="text-success">✅ Certo</span>
+                    </label>
+                    <label class="d-flex align-items-center gap-2">
+                      <input
+                        type="radio"
+                        name="cenario3"
+                        value="errado"
+                        class="form-check-input"
+                      />
+                      <span class="text-danger">❌ Errado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="feedback3"
+                class="small mt-2"
+                style="display: none"
+              ></div>
+            </div>
+
+            <!-- Cenário 4 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background-color: var(--cisco-green); color: #000"
+                      >4</span
+                    >
+                    <i
+                      class="fas fa-comment-slash"
+                      style="color: var(--cisco-green)"
+                    ></i>
+                  </div>
+                  <p class="mb-0">
+                    <strong>Cenário:</strong> Reclamar sobre o trabalho de um
+                    colega em um grupo de bate-papo privado.
+                  </p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <div
+                    class="d-flex gap-3 justify-content-start justify-content-md-end"
+                  >
+                    <label class="d-flex align-items-center gap-2 me-3">
+                      <input
+                        type="radio"
+                        name="cenario4"
+                        value="certo"
+                        class="form-check-input"
+                      />
+                      <span class="text-success">✅ Certo</span>
+                    </label>
+                    <label class="d-flex align-items-center gap-2">
+                      <input
+                        type="radio"
+                        name="cenario4"
+                        value="errado"
+                        class="form-check-input"
+                      />
+                      <span class="text-danger">❌ Errado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="feedback4"
+                class="small mt-2"
+                style="display: none"
+              ></div>
+            </div>
+
+            <!-- Cenário 5 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background-color: var(--cisco-green); color: #000"
+                      >5</span
+                    >
+                    <i
+                      class="fas fa-edit"
+                      style="color: var(--cisco-green)"
+                    ></i>
+                  </div>
+                  <p class="mb-0">
+                    <strong>Cenário:</strong> Atualizar o plano de projeto de um
+                    colega após perceber um erro.
+                  </p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <div
+                    class="d-flex gap-3 justify-content-start justify-content-md-end"
+                  >
+                    <label class="d-flex align-items-center gap-2 me-3">
+                      <input
+                        type="radio"
+                        name="cenario5"
+                        value="certo"
+                        class="form-check-input"
+                      />
+                      <span class="text-success">✅ Certo</span>
+                    </label>
+                    <label class="d-flex align-items-center gap-2">
+                      <input
+                        type="radio"
+                        name="cenario5"
+                        value="errado"
+                        class="form-check-input"
+                      />
+                      <span class="text-danger">❌ Errado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="feedback5"
+                class="small mt-2"
+                style="display: none"
+              ></div>
+            </div>
+
+            <!-- Cenário 6 -->
+            <div class="content-card-accent p-3 mb-3">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background-color: var(--cisco-green); color: #000"
+                      >6</span
+                    >
+                    <i
+                      class="fas fa-music"
+                      style="color: var(--cisco-green)"
+                    ></i>
+                  </div>
+                  <p class="mb-0">
+                    <strong>Cenário:</strong> Fazer o download de arquivos de
+                    música protegidos por direitos autorais para ouvir no
+                    trabalho.
+                  </p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <div
+                    class="d-flex gap-3 justify-content-start justify-content-md-end"
+                  >
+                    <label class="d-flex align-items-center gap-2 me-3">
+                      <input
+                        type="radio"
+                        name="cenario6"
+                        value="certo"
+                        class="form-check-input"
+                      />
+                      <span class="text-success">✅ Certo</span>
+                    </label>
+                    <label class="d-flex align-items-center gap-2">
+                      <input
+                        type="radio"
+                        name="cenario6"
+                        value="errado"
+                        class="form-check-input"
+                      />
+                      <span class="text-danger">❌ Errado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="feedback6"
+                class="small mt-2"
+                style="display: none"
+              ></div>
+            </div>
+
+            <!-- Cenário 7 -->
+            <div class="content-card-accent p-3 mb-4">
+              <div class="row align-items-center">
+                <div class="col-md-8">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span
+                      class="badge-cisco"
+                      style="background-color: var(--cisco-green); color: #000"
+                      >7</span
+                    >
+                    <i
+                      class="fas fa-folder-open"
+                      style="color: var(--cisco-green)"
+                    ></i>
+                  </div>
+                  <p class="mb-0">
+                    <strong>Cenário:</strong> Acessar os arquivos de um cliente
+                    para ver como um colega está lidando com seu caso.
+                  </p>
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                  <div
+                    class="d-flex gap-3 justify-content-start justify-content-md-end"
+                  >
+                    <label class="d-flex align-items-center gap-2 me-3">
+                      <input
+                        type="radio"
+                        name="cenario7"
+                        value="certo"
+                        class="form-check-input"
+                      />
+                      <span class="text-success">✅ Certo</span>
+                    </label>
+                    <label class="d-flex align-items-center gap-2">
+                      <input
+                        type="radio"
+                        name="cenario7"
+                        value="errado"
+                        class="form-check-input"
+                      />
+                      <span class="text-danger">❌ Errado</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="feedback7"
+                class="small mt-2"
+                style="display: none"
+              ></div>
+            </div>
+
+            <!-- Botões -->
+            <div class="d-flex gap-3 justify-content-center flex-wrap mt-4">
+              <button
+                type="button"
+                class="btn-cisco"
+                onclick="resetQuizEtica()"
+              >
+                <i class="fas fa-undo-alt me-2"></i>Redefinir
+              </button>
+              <button
+                type="button"
+                class="btn-cisco"
+                onclick="checkQuizEtica()"
+              >
+                <i class="fas fa-paper-plane me-2"></i>Enviar Respostas
+              </button>
+              <button
+                type="button"
+                class="btn-cisco"
+                onclick="showCorrectAnswersEtica()"
+              >
+                <i class="fas fa-eye me-2"></i>Mostrar Respostas Corretas
+              </button>
+            </div>
+
+            <!-- Área de resultado -->
+            <div id="quizEticaResult" class="mt-4" style="display: none">
+              <div class="alert-cisco" id="quizEticaMessage"></div>
+            </div>
+          </form>
+
+          <!-- Referência aos 10 Mandamentos -->
+          <div class="terminal-card mt-4 p-3">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <i class="fas fa-tablets" style="color: var(--cisco-green)"></i>
+              <strong class="text-cisco-green"
+                >Os Dez Mandamentos da Ética em Computadores (CEI)</strong
+              >
+            </div>
+            <div class="row small text-muted">
+              <div class="col-md-6">
+                <div>1. Não prejudicar outras pessoas</div>
+                <div>2. Não interferir no trabalho alheio</div>
+                <div>3. Não bisbilhotar arquivos alheios</div>
+                <div>4. Não usar computador para roubar</div>
+                <div>5. Não dar falso testemunho</div>
+              </div>
+              <div class="col-md-6">
+                <div>6. Não copiar software sem pagar</div>
+                <div>7. Não usar recursos sem autorização</div>
+                <div>8. Não se apropriar de produção intelectual</div>
+                <div>9. Pensar nas consequências sociais</div>
+                <div>10. Respeitar e considerar os companheiros</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER PADRÃO                                -->
+    <!-- ============================================ -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">
+              Estudos Cisco Academy · Documentação interativa
+            </p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan
+              · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">
+              27 módulos · Aprendizado contínuo
+            </p>
+            <p class="text-muted small mb-0">
+              © 2026 · Base de conhecimento CyberSec
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <!-- Scripts Personalizados -->
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+
+    <script>
+      // Script adicional para busca no índice
+      document
+        .getElementById("navSearch")
+        ?.addEventListener("input", function (e) {
+          const term = e.target.value.toLowerCase();
+          const items = document.querySelectorAll(
+            "#sectionList .dropdown-item",
+          );
+          items.forEach((item) => {
+            const text = item.textContent.toLowerCase();
+            item.style.display = text.includes(term) ? "" : "none";
+          });
+        });
+    </script>
+    <script>
+      // Mapeamento das respostas corretas
+      const correctAnswers = {
+        phishing: "treinamento",
+        acesso: "acesso",
+        software: "monitoramento",
+        vpn: "monitoramento",
+      };
+
+      // Função para redefinir todos os selects
+      function resetQuiz() {
+        const selects = document.querySelectorAll(".threat-select");
+        selects.forEach((select) => {
+          select.value = "";
+        });
+        document.getElementById("quizResult").style.display = "none";
+      }
+
+      // Função para mostrar feedback geral
+      function showFeedback() {
+        const resultDiv = document.getElementById("quizResult");
+        const resultMsg = document.getElementById("resultMessage");
+        resultMsg.innerHTML = `
+      <i class="fas fa-chalkboard-user me-2"></i>
+      <strong>Feedback do instrutor:</strong><br>
+      • Phishing: Treinamento de conscientização reduz significativamente os riscos.<br>
+      • Acesso excessivo: RBAC implementa o princípio do menor privilégio.<br>
+      • Software não autorizado: Monitoramento de comportamento e política de software aprovado.<br>
+      • Uso indevido de VPN: Monitoramento de anomalias detecta uso inadequado.
+    `;
+        resultDiv.style.display = "block";
+      }
+
+      // Função para verificar as respostas
+      function checkAnswers() {
+        let score = 0;
+        let total = 4;
+        let results = [];
+
+        // Verifica phishing
+        const phishingSelect = document.querySelector(
+          '[data-threat="phishing"]',
+        );
+        if (phishingSelect.value === correctAnswers.phishing) {
+          score++;
+          results.push("✅ Phishing: Correto!");
+        } else if (phishingSelect.value !== "") {
+          results.push(
+            "❌ Phishing: Incorreto. A resposta correta é 'Conduzir o treinamento'",
+          );
+        } else {
+          results.push("⚠️ Phishing: Nenhuma opção selecionada");
+        }
+
+        // Verifica acesso
+        const acessoSelect = document.querySelector('[data-threat="acesso"]');
+        if (acessoSelect.value === correctAnswers.acesso) {
+          score++;
+          results.push("✅ Acesso a dados: Correto!");
+        } else if (acessoSelect.value !== "") {
+          results.push(
+            "❌ Acesso a dados: Incorreto. A resposta correta é 'Aplicar controles de acesso'",
+          );
+        } else {
+          results.push("⚠️ Acesso a dados: Nenhuma opção selecionada");
+        }
+
+        // Verifica software
+        const softwareSelect = document.querySelector(
+          '[data-threat="software"]',
+        );
+        if (softwareSelect.value === correctAnswers.software) {
+          score++;
+          results.push("✅ Software não autorizado: Correto!");
+        } else if (softwareSelect.value !== "") {
+          results.push(
+            "❌ Software não autorizado: Incorreto. A resposta correta é 'Rastrear e monitorar comportamento'",
+          );
+        } else {
+          results.push("⚠️ Software não autorizado: Nenhuma opção selecionada");
+        }
+
+        // Verifica VPN
+        const vpnSelect = document.querySelector('[data-threat="vpn"]');
+        if (vpnSelect.value === correctAnswers.vpn) {
+          score++;
+          results.push("✅ Uso indevido de VPN: Correto!");
+        } else if (vpnSelect.value !== "") {
+          results.push(
+            "❌ Uso indevido de VPN: Incorreto. A resposta correta é 'Rastrear e monitorar comportamento'",
+          );
+        } else {
+          results.push("⚠️ Uso indevido de VPN: Nenhuma opção selecionada");
+        }
+
+        // Exibe resultado
+        const resultDiv = document.getElementById("quizResult");
+        const resultMsg = document.getElementById("resultMessage");
+        resultMsg.innerHTML = `
+      <i class="fas fa-chart-simple me-2"></i>
+      <strong>Resultado: ${score}/${total} acertos</strong><br>
+      <hr class="my-2">
+      ${results.join("<br>")}
+    `;
+
+        if (score === total) {
+          resultMsg.classList.add("border-success");
+          resultMsg.innerHTML = `<i class="fas fa-trophy me-2"></i> <strong>Excelente! ${score}/${total} acertos!</strong><br>${results.join("<br>")}`;
+        } else if (score >= 2) {
+          resultMsg.innerHTML = `<i class="fas fa-chart-line me-2"></i> <strong>Bom trabalho! ${score}/${total} acertos.</strong><br>Revise as incorretas.<br>${results.join("<br>")}`;
+        } else {
+          resultMsg.innerHTML = `<i class="fas fa-book me-2"></i> <strong>Você acertou ${score}/${total}.</strong><br>Revise o conteúdo sobre controles de segurança.<br>${results.join("<br>")}`;
+        }
+
+        resultDiv.style.display = "block";
+      }
+
+      // Função para mostrar as respostas corretas
+      function showCorrectAnswers() {
+        const selects = document.querySelectorAll(".threat-select");
+        selects.forEach((select) => {
+          const threat = select.getAttribute("data-threat");
+          select.value = correctAnswers[threat] || "";
+        });
+
+        const resultDiv = document.getElementById("quizResult");
+        const resultMsg = document.getElementById("resultMessage");
+        resultMsg.innerHTML = `
+      <i class="fas fa-eye me-2"></i>
+      <strong>Respostas corretas exibidas:</strong><br>
+      • Phishing → Conduzir o treinamento<br>
+      • Acesso excessivo → Aplicar controles de acesso (RBAC)<br>
+      • Software não autorizado → Rastrear e monitorar comportamento anormal<br>
+      • Uso indevido de VPN → Rastrear e monitorar comportamento anormal
+    `;
+        resultDiv.style.display = "block";
+      }
+    </script>
+    <script>
+      // Mapeamento das respostas corretas
+      const respostasCorretas = {
+        cenario1: "certo",
+        cenario2: "errado",
+        cenario3: "certo",
+        cenario4: "errado",
+        cenario5: "errado",
+        cenario6: "errado",
+        cenario7: "errado",
+      };
+
+      // Feedback para cada cenário
+      const feedbacks = {
+        cenario1: {
+          certo:
+            "✅ Correto! Agradecer publicamente promove um ambiente de trabalho positivo e respeitoso (Mandamento 10).",
+          errado:
+            "❌ Incorreto. Esta é uma ação ética que demonstra respeito e consideração pelos colegas (Mandamento 10).",
+        },
+        cenario2: {
+          certo:
+            "❌ Incorreto. Usar credenciais de outra pessoa sem autorização viola o Mandamento 7.",
+          errado:
+            "✅ Correto! Usar credenciais de outra pessoa sem autorização é antiético e viola o Mandamento 7.",
+        },
+        cenario3: {
+          certo:
+            "✅ Correto! Dar crédito às fontes respeita a propriedade intelectual (Mandamento 8).",
+          errado:
+            "❌ Incorreto. Creditar fontes é uma prática ética que respeita o trabalho alheio (Mandamento 8).",
+        },
+        cenario4: {
+          certo:
+            "❌ Incorreto. Reclamar publicamente (mesmo em chat privado) demonstra falta de respeito (Mandamento 10).",
+          errado:
+            "✅ Correto! Reclamar de colegas em grupos de bate-papo é antiético e desrespeitoso (Mandamento 10).",
+        },
+        cenario5: {
+          certo:
+            "❌ Incorreto. Alterar o trabalho de um colega sem permissão interfere no trabalho alheio (Mandamento 2).",
+          errado:
+            "✅ Correto! O ideal é comunicar o erro ao colega, não alterar sem permissão (Mandamento 2).",
+        },
+        cenario6: {
+          certo:
+            "❌ Incorreto. Baixar material protegido por direitos autorais sem pagar viola o Mandamento 6.",
+          errado:
+            "✅ Correto! Downloads não autorizados de material protegido violam direitos autorais (Mandamento 6).",
+        },
+        cenario7: {
+          certo:
+            "❌ Incorreto. Acessar arquivos sem necessidade é bisbilhotagem (Mandamento 3).",
+          errado:
+            "✅ Correto! Acessar arquivos de clientes sem autorização viola a privacidade (Mandamento 3).",
+        },
+      };
+
+      function checkQuizEtica() {
+        let acertos = 0;
+        let total = 7;
+
+        for (let i = 1; i <= total; i++) {
+          const name = `cenario${i}`;
+          const selected = document.querySelector(
+            `input[name="${name}"]:checked`,
+          );
+          const feedbackDiv = document.getElementById(`feedback${i}`);
+
+          if (selected) {
+            const resposta = selected.value;
+            const isCorrect = resposta === respostasCorretas[name];
+
+            if (isCorrect) {
+              acertos++;
+              feedbackDiv.innerHTML = `<span class="text-success">${feedbacks[name][resposta]}</span>`;
+              feedbackDiv.style.display = "block";
+            } else {
+              feedbackDiv.innerHTML = `<span class="text-danger">${feedbacks[name][resposta]}</span>`;
+              feedbackDiv.style.display = "block";
+            }
+          } else {
+            feedbackDiv.innerHTML = `<span class="text-warning">⚠️ Nenhuma resposta selecionada.</span>`;
+            feedbackDiv.style.display = "block";
+          }
+        }
+
+        const resultDiv = document.getElementById("quizEticaResult");
+        const resultMsg = document.getElementById("quizEticaMessage");
+
+        if (acertos === total) {
+          resultMsg.innerHTML = `<i class="fas fa-trophy me-2"></i> <strong>Excelente! ${acertos}/${total} acertos!</strong> Você domina a ética digital! 🏆`;
+        } else if (acertos >= 5) {
+          resultMsg.innerHTML = `<i class="fas fa-chart-line me-2"></i> <strong>Bom trabalho! ${acertos}/${total} acertos.</strong> Revise os mandamentos para acertar todos!`;
+        } else {
+          resultMsg.innerHTML = `<i class="fas fa-book me-2"></i> <strong>Você acertou ${acertos}/${total}.</strong> Revise os Dez Mandamentos da Ética em Computadores e tente novamente.`;
+        }
+
+        resultDiv.style.display = "block";
+      }
+
+      function resetQuizEtica() {
+        const radios = document.querySelectorAll(
+          '#quizEticaForm input[type="radio"]',
+        );
+        radios.forEach((radio) => (radio.checked = false));
+
+        for (let i = 1; i <= 7; i++) {
+          const feedbackDiv = document.getElementById(`feedback${i}`);
+          feedbackDiv.style.display = "none";
+          feedbackDiv.innerHTML = "";
+        }
+
+        document.getElementById("quizEticaResult").style.display = "none";
+      }
+
+      function showCorrectAnswersEtica() {
+        for (let i = 1; i <= 7; i++) {
+          const name = `cenario${i}`;
+          const respostaCorreta = respostasCorretas[name];
+          const radioCorreto = document.querySelector(
+            `input[name="${name}"][value="${respostaCorreta}"]`,
+          );
+          if (radioCorreto) radioCorreto.checked = true;
+
+          const feedbackDiv = document.getElementById(`feedback${i}`);
+          const respostaTexto =
+            respostaCorreta === "certo" ? "✅ Certo" : "❌ Errado";
+          feedbackDiv.innerHTML = `<span class="text-info">🔍 Resposta correta: ${respostaTexto}. ${feedbacks[name][respostaCorreta].replace(/^✅|❌/, "")}</span>`;
+          feedbackDiv.style.display = "block";
+        }
+
+        const resultDiv = document.getElementById("quizEticaResult");
+        const resultMsg = document.getElementById("quizEticaMessage");
+        resultMsg.innerHTML = `<i class="fas fa-eye me-2"></i> <strong>Respostas corretas exibidas acima.</strong> Estude os mandamentos para fixar o conteúdo!`;
+        resultDiv.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

