@@ -1,0 +1,3418 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 25 - Avaliação de Vulnerabilidade de Endpoint | CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ==================== NAVBAR PADRÃO ==================== -->
+   <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 25 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+    <!-- INTRODUÇÃO -->
+    <li>
+        <a class="dropdown-item" href="#modulo25-intro">
+            <i class="fas fa-info-circle me-2" style="color: var(--cisco-green);"></i>25.0 Introdução
+        </a>
+    </li>
+    <li>
+        <a class="dropdown-item" href="#modulo25-objetivos">
+            <i class="fas fa-bullseye me-2" style="color: var(--cisco-green);"></i>25.0.2 Objetivos do Módulo
+        </a>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    
+    <!-- 25.1 PERFIL DE REDE E SERVIDOR -->
+    <li>
+        <a class="dropdown-item" href="#perfil-rede">
+            <i class="fas fa-network-wired me-2" style="color: var(--cisco-green);"></i>25.1 Perfil de Rede e Servidor
+        </a>
+    </li>
+    <li><a class="dropdown-item ps-4" href="#perfilamento-rede">25.1.1 Perfilamento de Rede</a></li>
+    <li><a class="dropdown-item ps-4" href="#perfil-servidor">25.1.2 Criação de Perfil do Servidor</a></li>
+    <li><a class="dropdown-item ps-4" href="#deteccao-anomalias">25.1.3 Detecção de Anomalias de Rede</a></li>
+    <li><a class="dropdown-item ps-4" href="#teste-vulnerabilidade">25.1.4 Teste de Vulnerabilidade de Rede</a></li>
+    <li><a class="dropdown-item ps-4" href="#verifique-compreensao">25.1.5 Verifique sua Compreensão</a></li>
+    <li><hr class="dropdown-divider"></li>
+    
+    <!-- 25.2 CVSS -->
+    <li>
+        <a class="dropdown-item" href="#cvss">
+            <i class="fas fa-chart-line me-2" style="color: var(--cisco-green);"></i>25.2 CVSS - Sistema de Pontuação
+        </a>
+    </li>
+    <li><a class="dropdown-item ps-4" href="#cvss-visao-geral">25.2.1 Visão geral do CVSS</a></li>
+    <li><a class="dropdown-item ps-4" href="#cvss-grupos-metricos">25.2.2 Grupos métricos CVSS</a></li>
+    <li><a class="dropdown-item ps-4" href="#cvss-grupo-base">25.2.3 Grupo métrico básico</a></li>
+    <li><a class="dropdown-item ps-4" href="#cvss-processo">25.2.4 O Processo CVSS</a></li>
+    <li><a class="dropdown-item ps-4" href="#cvss-relatorios">25.2.5 Relatórios CVSS</a></li>
+    <li><a class="dropdown-item ps-4" href="#cvss-fontes">25.2.6 Outras fontes (CVE/NVD)</a></li>
+    <li><a class="dropdown-item ps-4" href="#verifique-compreensao-cvss">25.2.8 Verifique sua Compreensão CVSS</a></li>
+    <li><hr class="dropdown-divider"></li>
+    
+    <!-- 25.3 GERENCIAMENTO SEGURO DE DISPOSITIVOS -->
+    <li>
+        <a class="dropdown-item" href="#gerenciamento-seguro">
+            <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green);"></i>25.3 Gerenciamento Seguro de Dispositivos
+        </a>
+    </li>
+    <li><a class="dropdown-item ps-4" href="#gerenciamento-risco">25.3.1 Gerenciamento de risco</a></li>
+    <li><a class="dropdown-item ps-4" href="#respostas-risco">25.3.2 Respostas ao Risco (Quiz)</a></li>
+    <li><a class="dropdown-item ps-4" href="#ciclovida-vulnerabilidade">25.3.3 Ciclo de Vida de Vulnerabilidade</a></li>
+    <li><a class="dropdown-item ps-4" href="#gerenciamento-ativos">25.3.4 Gerenciamento de ativos</a></li>
+    <li><a class="dropdown-item ps-4" href="#mdm">25.3.5 Gerenciamento de dispositivos móveis (MDM)</a></li>
+    <li><a class="dropdown-item ps-4" href="#gerenciamento-configuracoes">25.3.6 Gerenciamento de configurações</a></li>
+    <li><a class="dropdown-item ps-4" href="#patch-management">25.3.7 Gerenciamento de patches corporativos</a></li>
+    <li><a class="dropdown-item ps-4" href="#tecnicas-patch">25.3.8 Técnicas de gerenciamento de patch</a></li>
+    <li><a class="dropdown-item ps-4" href="#verifique-compreensao-dispositivos">25.3.9 Quiz - Atividades de Gerenciamento</a></li>
+    <li><hr class="dropdown-divider"></li>
+    
+    <!-- RESUMO E FIXAÇÃO -->
+    <li>
+        <a class="dropdown-item" href="#resumo-modulo">
+            <i class="fas fa-book me-2" style="color: var(--cisco-green);"></i>25.4 Resumo do Módulo
+        </a>
+    </li>
+    <li>
+        <a class="dropdown-item" href="#fixacao-conteudo">
+            <i class="fas fa-graduation-cap me-2" style="color: var(--cisco-green);"></i>Glossário + Casos de Uso
+        </a>
+    </li>
+    <li><a class="dropdown-item ps-4" href="#glossario">📖 Glossário Técnico</a></li>
+    <li><a class="dropdown-item ps-4" href="#casos-uso">🏥 Casos de Uso Humanizados</a></li>
+    <li><a class="dropdown-item ps-4" href="#mapa-mental">🧠 Mapa Mental</a></li>
+    <li><a class="dropdown-item ps-4" href="#quiz-final">⭐ Desafio Final</a></li>
+    <li><hr class="dropdown-divider"></li>
+    
+    <!-- LABORATÓRIOS -->
+    <li>
+        <a class="dropdown-item" href="#laboratorios">
+            <i class="fas fa-flask me-2" style="color: var(--cisco-green);"></i>Laboratórios Práticos
+        </a>
+    </li>
+</ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList"></div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container py-5">
+      <!-- TÍTULO PRINCIPAL DO MÓDULO -->
+      <div class="mb-5 reveal">
+        <h1 class="cisco-title display-4">
+          <i class="fas fa-shield-virus me-3" style="color: var(--cisco-green)"></i>
+          Módulo 25: Avaliação de Vulnerabilidade de Endpoint
+        </h1>
+        <p class="text-muted mt-3 fs-5">Explicar como as vulnerabilidades do endpoint são avaliadas e gerenciadas.</p>
+      </div>
+
+      <!-- ==================== 25.0 INTRODUÇÃO ==================== -->
+      <section id="modulo25-intro" class="mb-5">
+        <h2 class="section-title mb-4">25.0 Introdução</h2>
+
+        <div class="content-card" id="porque-usar">
+          <h3 class="cisco-subtitle mb-3">25.0.1 Por que devo usar este módulo?</h3>
+          <p>
+            Quanto dinheiro uma organização deve gastar em segurança de rede e operações cibernéticas? Como uma organização sabe quanto
+            esforço e recursos deve colocar para manter a rede e os dados seguros? Essas perguntas podem ser respondidas através da
+            <strong class="text-cisco">avaliação de risco e vulnerabilidade</strong>.
+          </p>
+          <p>
+            Analistas de segurança cibernética e especialistas em segurança usam uma variedade de ferramentas para realizar avaliações de
+            vulnerabilidade. A criação de perfis de rede e dispositivo fornece uma linha de base que serve como ponto de referência para
+            identificar desvios em relação às operações normais.
+          </p>
+          <p>
+            Da mesma forma, a criação de perfil do servidor é usada para estabelecer o estado operacional aceito dos servidores. As
+            organizações usam o <strong class="text-cisco">Common Vulnerability Scoring System (CVSS)</strong> para ponderar os riscos de
+            uma vulnerabilidade usando uma variedade de métricas.
+          </p>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Nota:</strong> Este módulo aborda detalhes da criação de perfis de rede e servidor, CVSS, técnicas de gerenciamento de
+            risco e ISMS (Sistema de Gerenciamento de Segurança da Informação).
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 25.0.2 OBJETIVOS ==================== -->
+      <section id="modulo25-objetivos" class="mb-5">
+        <div class="content-card">
+          <h3 class="cisco-subtitle mb-3">25.0.2 O que irei aprender neste módulo?</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <span class="badge-cisco mb-2"><i class="fas fa-check-circle me-1"></i> 4 Verifique suas atividades de compreensão</span>
+                <span class="badge-cisco-alt mb-2 ms-2"><i class="fas fa-flask me-1"></i> 1 laboratório</span>
+                <span class="badge-modulo d-inline-block"><i class="fas fa-question-circle me-1"></i> 1 Questionário de Módulo</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-semibold">Perfil de rede e servidor</td>
+                  <td>Explicar o valor da criação de perfil de rede e servidor</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Common Vulnerability Scoring System (CVSS)</td>
+                  <td>Explicar como os relatórios CVSS são usados para descrever vulnerabilidades de segurança</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Gerenciamento seguro de dispositivos</td>
+                  <td>Explicar como as técnicas seguras de gerenciamento de dispositivos são usadas para proteger dados e ativos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 25.1 PERFIL DE REDE E SERVIDOR ==================== -->
+      <section id="perfil-rede" class="mb-5">
+        <h2 class="section-title mb-4">25.1 Perfil de Rede e Servidor</h2>
+
+        <!-- 25.1.1 Perfilamento de rede -->
+        <div class="content-card" id="perfilamento-rede">
+          <h3 class="cisco-subtitle mb-3">25.1.1 Perfilamento de rede</h3>
+          <p>
+            Para detectar incidentes de segurança graves, é importante compreender, caracterizar e analisar informações sobre o
+            funcionamento normal da rede. Todas as redes, servidores e hosts exibem um comportamento típico para um determinado ponto no
+            tempo. A criação de perfis de rede e dispositivo pode fornecer uma
+            <strong class="text-cisco">linha de base estatística</strong> que serve como ponto de referência. Desvios inexplicáveis em
+            relação à linha de base podem indicar um compromisso.
+          </p>
+
+          <p>
+            Deve-se ter cuidado ao capturar dados de linha de base para que todas as operações normais de rede sejam incluídas na linha de
+            base. Além disso, é importante que a linha de base seja <strong class="text-cisco">atual</strong>. Não deve incluir dados de
+            desempenho da rede que não façam mais parte do funcionamento normal.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Dica:</strong> Ferramentas como NetFlow e Wireshark podem ser usadas para caracterizar características normais de
+            tráfego de rede.
+          </div>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)">Elementos do Perfil de Rede</h4>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Elemento de perfil de rede</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-semibold">Duração de sessão</td>
+                  <td>Este é o tempo entre o estabelecimento de um fluxo de dados e seu término</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Taxa de transferência total</td>
+                  <td>Quantidade de dados que passam de uma fonte para um destino em um determinado período</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Portas usadas</td>
+                  <td>Lista de processos TCP ou UDP que estão disponíveis para aceitar dados</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Espaço de endereço de ativo crítico</td>
+                  <td>Endereços IP ou localização lógica de sistemas ou dados essenciais</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 25.1.2 Criação de perfil do servidor -->
+        <div class="content-card mt-4" id="perfil-servidor">
+          <h3 class="cisco-subtitle mb-3">25.1.2 Criação de perfil do servidor</h3>
+          <p>
+            A definição de perfil do servidor é usada para estabelecer o <strong class="text-cisco">estado operacional aceito</strong> dos
+            servidores. Um perfil de servidor é uma linha de base de segurança para um determinado servidor. Estabelece os parâmetros de
+            rede, usuário e aplicativo que são aceitos para um servidor específico.
+          </p>
+
+          <p>
+            Para estabelecer um perfil de servidor, é importante entender a função que um servidor se destina a executar em uma rede. A
+            partir daí, vários parâmetros operacionais e de uso podem ser definidos e documentados.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Elemento de perfil do servidor</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-semibold">Portas de escuta</td>
+                  <td>Daemons e portas TCP/UDP que normalmente podem ser abertos no servidor</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Usuários e contas logados</td>
+                  <td>Parâmetros que definem o acesso e o comportamento do usuário</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Contas de serviço</td>
+                  <td>Definições do tipo de serviço que um aplicativo pode executar</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Ambiente de Software</td>
+                  <td>Tarefas, processos e aplicativos que têm permissão para serem executados no servidor</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 25.1.3 Detecção de anomalias de rede -->
+        <div class="content-card mt-4" id="deteccao-anomalias">
+          <h3 class="cisco-subtitle mb-3">25.1.3 Detecção de anomalias de rede</h3>
+          <p>
+            O comportamento da rede é descrito por uma grande quantidade de dados diversos, como os recursos do fluxo de pacotes, os
+            recursos dos próprios pacotes e a telemetria de várias fontes. Uma abordagem para a detecção de ataques de rede é a análise
+            desses dados diversos e não estruturados usando técnicas de análise de Big Data. Isso é conhecido como
+            <strong class="text-cisco">análise de comportamento de rede (NBA)</strong>.
+          </p>
+
+          <div class="terminal-card my-4">
+            <pre><code>Algoritmo de Detecção de Anomalias - Roteadores de Fronteira
+
+A cada X min:
+    Contagem de fluxos com Amostragem 1/Y durante Z seg
+    
+    Se # de fluxos > N:
+        Gerar ALARME!
+    Senão:
+        Continuar monitoramento normal</code></pre>
+          </div>
+
+          <p>Por exemplo, o analista de segurança cibernética poderia fornecer os seguintes valores:</p>
+          <div class="d-flex gap-4 flex-wrap mb-3">
+            <span class="badge-cisco"><i class="fas fa-chart-line me-1"></i> X = 5 minutos</span>
+            <span class="badge-cisco"><i class="fas fa-chart-simple me-1"></i> Y = 100</span>
+            <span class="badge-cisco"><i class="fas fa-stopwatch me-1"></i> Z = 30 segundos</span>
+            <span class="badge-cisco"><i class="fas fa-exclamation-triangle me-1"></i> N = 500 fluxos</span>
+          </div>
+
+          <p>
+            O algoritmo pode ser interpretado como:
+            <strong class="text-cisco">a cada 5 minutos, obter uma amostragem de 1/100 dos fluxos durante o segundo 30</strong>. Se o número
+            de fluxos for maior que 500, gere um alarme.
+          </p>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-chart-line me-2"></i>
+            <strong>NBA (Network Behavior Analysis):</strong> Utiliza técnicas sofisticadas de aprendizagem estatística e de máquina para
+            comparar as linhas de base de desempenho normais com o desempenho da rede num determinado momento.
+          </div>
+        </div>
+
+        <!-- 25.1.4 Teste de Vulnerabilidade de Rede -->
+        <div class="content-card mt-4" id="teste-vulnerabilidade">
+          <h3 class="cisco-subtitle mb-3">25.1.4 Teste de Vulnerabilidade de Rede</h3>
+          <p>
+            A maioria das organizações conecta-se às redes públicas devido à necessidade de acessar a internet. Testes periódicos de
+            segurança são essenciais devido ao grande número de potenciais vulnerabilidades.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Termo</th>
+                  <th>Descrição</th>
+                  <th>Ferramentas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-semibold">Análise de Risco</td>
+                  <td>Avaliação da probabilidade de ataques, identificação de agentes de ameaças e impacto de explorações bem-sucedidas</td>
+                  <td>Consultores internos/externos, Frameworks de gestão de risco</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Avaliação de vulnerabilidade</td>
+                  <td>
+                    Verifica servidores e redes internas em busca de vulnerabilidades (infecções, patches ausentes, portas desnecessárias)
+                  </td>
+                  <td>OpenVAS, MBSA, Nessus, Qualys, Nmap</td>
+                </tr>
+                <tr>
+                  <td class="fw-semibold">Teste de Penetração</td>
+                  <td>
+                    Ataques simulados autorizados para testar a força de segurança. Explora vulnerabilidades para determinar impacto
+                    potencial
+                  </td>
+                  <td>Metasploit, CORE Impact, hackers éticos</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-4">
+              <div class="hacker-card p-3">
+                <i class="fas fa-shield-halved fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5 class="mb-2">OpenVAS</h5>
+                <p class="small text-muted mb-0">Plataforma de código aberto para avaliação de vulnerabilidades</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="hacker-card p-3">
+                <i class="fas fa-crosshairs fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5 class="mb-2">Metasploit</h5>
+                <p class="small text-muted mb-0">Framework de teste de penetração mais utilizado do mundo</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="hacker-card p-3">
+                <i class="fas fa-map fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5 class="mb-2">Nmap</h5>
+                <p class="small text-muted mb-0">Varredura de portas e descoberta de rede</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 25.1.5 Verifique sua compreensão -->
+        <div class="content-card mt-4" id="verifique-compreensao">
+          <h3 class="cisco-subtitle mb-3">25.1.5 Verifique sua compreensão - Identifique os elementos da criação de perfis de rede</h3>
+
+          <!-- Quiz Interativo -->
+          <div class="quiz-container">
+            <!-- Pergunta 1 -->
+            <div
+              class="quiz-question mb-4 p-3"
+              style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+            >
+              <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 1:</p>
+              <p>
+                O que se refere à quantidade de dados que passam de uma determinada fonte para um determinado destino em um determinado
+                período de tempo?
+              </p>
+              <div class="quiz-options ms-3">
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_a" value="valor_ativo" />
+                  <label class="form-check-label text-secondary" for="q1_a">Valor do ativo</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_b" value="espaco_endereco" />
+                  <label class="form-check-label text-secondary" for="q1_b">Espaço de endereço de ativo crítico</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_c" value="portas_usadas" />
+                  <label class="form-check-label text-secondary" for="q1_c">Portas usadas</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_d" value="duracao_sessao" />
+                  <label class="form-check-label text-secondary" for="q1_d">Duração da sessão</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q1" id="q1_e" value="rendimento_total" />
+                  <label class="form-check-label text-secondary" for="q1_e">Rendimento total</label>
+                </div>
+              </div>
+              <div class="quiz-feedback mt-2 small"></div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div
+              class="quiz-question mb-4 p-3"
+              style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+            >
+              <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 2:</p>
+              <p>Qual é o termo para o período entre o estabelecimento de um fluxo de dados e o seu término?</p>
+              <div class="quiz-options ms-3">
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_a" value="valor_ativo" />
+                  <label class="form-check-label text-secondary" for="q2_a">Valor do ativo</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_b" value="espaco_endereco" />
+                  <label class="form-check-label text-secondary" for="q2_b">Espaço de endereço de ativo crítico</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_c" value="portas_usadas" />
+                  <label class="form-check-label text-secondary" for="q2_c">Portas usadas</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_d" value="duracao_sessao" />
+                  <label class="form-check-label text-secondary" for="q2_d">Duração da sessão</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q2" id="q2_e" value="rendimento_total" />
+                  <label class="form-check-label text-secondary" for="q2_e">Rendimento total</label>
+                </div>
+              </div>
+              <div class="quiz-feedback mt-2 small"></div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div
+              class="quiz-question mb-4 p-3"
+              style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+            >
+              <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 3:</p>
+              <p>Qual termo é uma lista de processos TCP ou UDP que estão disponíveis para aceitar dados?</p>
+              <div class="quiz-options ms-3">
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_a" value="valor_ativo" />
+                  <label class="form-check-label text-secondary" for="q3_a">Valor do ativo</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_b" value="espaco_endereco" />
+                  <label class="form-check-label text-secondary" for="q3_b">Espaço de endereço de ativo crítico</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_c" value="portas_usadas" />
+                  <label class="form-check-label text-secondary" for="q3_c">Portas usadas</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_d" value="duracao_sessao" />
+                  <label class="form-check-label text-secondary" for="q3_d">Duração da sessão</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q3" id="q3_e" value="rendimento_total" />
+                  <label class="form-check-label text-secondary" for="q3_e">Rendimento total</label>
+                </div>
+              </div>
+              <div class="quiz-feedback mt-2 small"></div>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div
+              class="quiz-question mb-4 p-3"
+              style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+            >
+              <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 4:</p>
+              <p>Qual termo é a localização lógica de sistemas ou dados essenciais?</p>
+              <div class="quiz-options ms-3">
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_a" value="valor_ativo" />
+                  <label class="form-check-label text-secondary" for="q4_a">Valor do ativo</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_b" value="espaco_endereco" />
+                  <label class="form-check-label text-secondary" for="q4_b">Espaço de endereço de ativo crítico</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_c" value="portas_usadas" />
+                  <label class="form-check-label text-secondary" for="q4_c">Portas usadas</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_d" value="duracao_sessao" />
+                  <label class="form-check-label text-secondary" for="q4_d">Duração da sessão</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="radio" name="q4" id="q4_e" value="rendimento_total" />
+                  <label class="form-check-label text-secondary" for="q4_e">Rendimento total</label>
+                </div>
+              </div>
+              <div class="quiz-feedback mt-2 small"></div>
+            </div>
+
+            <button id="checkQuizBtn" class="btn-cisco mt-3"><i class="fas fa-check-circle me-2"></i>Verificar Respostas</button>
+            <div id="quizResult" class="mt-3"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== CVSS ==================== -->
+      <section id="cvss" class="mb-5">
+        <h2 class="section-title mb-4">Common Vulnerability Scoring System (CVSS)</h2>
+        <div class="content-card">
+          <p>
+            O <strong class="text-cisco">Common Vulnerability Scoring System (CVSS)</strong> é um framework padronizado usado para descrever
+            e quantificar a severidade de vulnerabilidades de segurança. As organizações usam o CVSS para ponderar os riscos de uma
+            vulnerabilidade usando uma variedade de métricas.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+              <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+                <i class="fas fa-chart-simple fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Métrica Base</h5>
+                <p class="small text-muted">Características intrínsecas da vulnerabilidade</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+                <i class="fas fa-clock fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Métrica Temporal</h5>
+                <p class="small text-muted">Características que mudam ao longo do tempo</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+                <i class="fas fa-building fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Métrica Ambiental</h5>
+                <p class="small text-muted">Contexto específico da organização</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== GERENCIAMENTO SEGURO ==================== -->
+      <section id="gerenciamento-seguro" class="mb-5">
+        <h2 class="section-title mb-4">Gerenciamento Seguro de Dispositivos</h2>
+        <div class="content-card">
+          <p>
+            As organizações usam um <strong class="text-cisco">Sistema de Gerenciamento de Segurança da Informação (ISMS)</strong> para
+            identificar, analisar e lidar com os riscos de segurança das informações. Técnicas seguras de gerenciamento de dispositivos são
+            usadas para proteger dados e ativos.
+          </p>
+
+          <div class="timeline-item mt-4">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i>
+              <span class="fw-semibold">Identificar</span>
+            </div>
+            <p class="text-muted ms-4">Ativos, ameaças e vulnerabilidades</p>
+          </div>
+          <div class="timeline-item mt-3">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i>
+              <span class="fw-semibold">Analisar</span>
+            </div>
+            <p class="text-muted ms-4">Probabilidade e impacto dos riscos</p>
+          </div>
+          <div class="timeline-item mt-3">
+            <div class="d-flex align-items-center mb-2">
+              <i class="fas fa-tools me-2" style="color: var(--cisco-green)"></i>
+              <span class="fw-semibold">Lidar com os riscos</span>
+            </div>
+            <p class="text-muted ms-4">Mitigar, transferir, aceitar ou evitar</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== LABORATÓRIOS ==================== -->
+      <section id="laboratorios" class="mb-5">
+        <h2 class="section-title mb-4"><i class="fas fa-flask me-2"></i>Laboratórios Práticos</h2>
+        <div class="content-card">
+          <h3 class="cisco-subtitle mb-3">Lab 25: Avaliação de Vulnerabilidade com Nmap e OpenVAS</h3>
+
+          <div class="terminal-card">
+            <pre><code># Varredura de portas com Nmap
+nmap -sV -sC -O 192.168.1.0/24
+
+# Varredura de vulnerabilidades com NSE
+nmap --script vuln 192.168.1.100
+
+# Comandos básicos do OpenVAS
+gvm-cli --gmp-username admin --gmp-password pass \
+  socket --socketpath /var/run/gvmd.sock \
+  --xml '&lt;get_tasks/&gt;'</code></pre>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-terminal me-2"></i>
+            <strong>Desafio:</strong> Utilize o Nmap para identificar portas abertas e serviços em execução em um host alvo. Documente as
+            vulnerabilidades encontradas.
+          </div>
+        </div>
+      </section>
+      <!-- ==================== 25.2 SISTEMA DE PONTUAÇÃO DE VULNERABILIDADE COMUM (CVSS) ==================== -->
+      <section id="cvss" class="mb-5">
+        <h2 class="section-title mb-4">25.2 Sistema de Pontuação de Vulnerabilidade Comum (CVSS)</h2>
+
+        <!-- 25.2.1 Visão geral do CVSS -->
+        <div class="content-card" id="cvss-visao-geral">
+          <h3 class="cisco-subtitle mb-3">25.2.1 Visão geral do CVSS</h3>
+          <p>
+            O <strong class="text-cisco">Common Vulnerability Scoring System (CVSS)</strong> é uma ferramenta de avaliação de risco
+            projetada para transmitir os atributos comuns e a gravidade das vulnerabilidades em sistemas de hardware e software de
+            computador. A terceira revisão, CVSS 3.0, é uma estrutura aberta e neutra do fornecedor, padrão do setor, para ponderar os
+            riscos de uma vulnerabilidade usando uma variedade de métricas.
+          </p>
+
+          <p>
+            Esses pesos combinam-se para fornecer uma pontuação do risco inerente a uma vulnerabilidade. A pontuação numérica pode ser usada
+            para determinar a urgência da vulnerabilidade e a prioridade de abordá-la.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+              <div class="hacker-card p-3 text-center">
+                <i class="fas fa-chart-simple fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Pontuações Padronizadas</h5>
+                <p class="small text-muted mb-0">Significativas em todas as organizações</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="hacker-card p-3 text-center">
+                <i class="fas fa-door-open fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Estrutura Aberta</h5>
+                <p class="small text-muted mb-0">Significado de cada métrica disponível para todos</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="hacker-card p-3 text-center">
+                <i class="fas fa-chart-line fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h5>Priorização de Risco</h5>
+                <p class="small text-muted mb-0">Significativa para organizações individuais</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>FIRST:</strong> O Fórum de Equipes de Resposta a Incidentes e Segurança foi designado como guardião do CVSS. A versão
+            3.1 foi lançada em junho de 2019 com contribuições da Cisco.
+          </div>
+        </div>
+      </section>
+      <!-- 25.2.2 Grupos métricos CVSS -->
+      <div class="content-card mt-4" id="cvss-grupos-metricos">
+        <h3 class="cisco-subtitle mb-3">25.2.2 Grupos métricos CVSS</h3>
+        <p>
+          Antes de realizar uma avaliação do CVSS, é importante conhecer os termos fundamentais utilizados no instrumento de avaliação.
+          Muitas das métricas abordam o papel do que o CVSS chama de <strong class="text-cisco">autoridade</strong> - uma entidade de
+          computador que concede e gerencia acesso e privilégios aos usuários.
+        </p>
+
+        <div class="table-responsive mt-4">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Grupo de Métricas Base</th>
+                <th>Grupo Métrico Temporal</th>
+                <th>Grupo Métrico Ambiental</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Métricas de exploração:</strong><br />
+                  • Vetor de ataque<br />
+                  • Complexidade de ataque<br />
+                  • Privilégios necessários<br />
+                  • Interação do usuário<br />
+                  • Escopo
+                </td>
+                <td>
+                  <strong>Métricas de impacto:</strong><br />
+                  • Impacto de confidencialidade<br />
+                  • Impacto da integridade<br />
+                  • Impacto da disponibilidade
+                </td>
+                <td>
+                  <strong>Modificadores:</strong><br />
+                  • Maturação do código de exploração<br />
+                  • Nível de remediação<br />
+                  • Confiança do relatório<br />
+                  • Requisitos de segurança (CIA)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 25.2.3 Grupo métrico básico do CVSS -->
+      <div class="content-card mt-4" id="cvss-grupo-base">
+        <h3 class="cisco-subtitle mb-3">25.2.3 Grupo métrico básico do CVSS</h3>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h4 style="color: var(--cisco-green)" class="mb-3">Métricas de Explorabilidade</h4>
+            <div class="timeline-item">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-globe me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Vetor de Ataque (AV)</span>
+              </div>
+              <p class="text-muted ms-4 small">Reflete a proximidade do agente da ameaça ao componente vulnerável</p>
+            </div>
+            <div class="timeline-item mt-3">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-puzzle-piece me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Complexidade do Ataque (AC)</span>
+              </div>
+              <p class="text-muted ms-4 small">Expressa componentes além do controle do invasor necessários para exploração</p>
+            </div>
+            <div class="timeline-item mt-3">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-key me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Privilégios Necessários (PR)</span>
+              </div>
+              <p class="text-muted ms-4 small">Nível de acesso necessário para exploração bem-sucedida</p>
+            </div>
+            <div class="timeline-item mt-3">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-user me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Interação do Usuário (UI)</span>
+              </div>
+              <p class="text-muted ms-4 small">Presença ou ausência de requisito de interação do usuário</p>
+            </div>
+            <div class="timeline-item mt-3">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-expand-alt me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Escopo (S)</span>
+              </div>
+              <p class="text-muted ms-4 small">Se múltiplas autoridades devem estar envolvidas na exploração</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <h4 style="color: var(--cisco-green)" class="mb-3">Métricas de Impacto</h4>
+            <div class="timeline-item">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-lock me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Impacto de Confidencialidade (C)</span>
+              </div>
+              <p class="text-muted ms-4 small">Impacto na limitação de acesso a usuários autorizados</p>
+            </div>
+            <div class="timeline-item mt-3">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-check-double me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Impacto de Integridade (I)</span>
+              </div>
+              <p class="text-muted ms-4 small">Impacto na confiabilidade e autenticidade das informações</p>
+            </div>
+            <div class="timeline-item mt-3">
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-server me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Impacto de Disponibilidade (A)</span>
+              </div>
+              <p class="text-muted ms-4 small">Impacto na acessibilidade de informações e recursos de rede</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 25.2.4 O Processo CVSS -->
+      <div class="content-card mt-4" id="cvss-processo">
+        <h3 class="cisco-subtitle mb-3">25.2.4 O Processo CVSS</h3>
+        <p>
+          O CVSS Base Metrics Group foi projetado para avaliar vulnerabilidades de segurança encontradas em sistemas de software e hardware.
+          O processo CVSS usa uma ferramenta chamada <strong class="text-cisco">Calculadora CVSS v3.1</strong>.
+        </p>
+
+        <div class="terminal-card my-4">
+          <pre><code>String Vetorial CVSS: CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:L/A:L</code></pre>
+        </div>
+
+        <div class="table-responsive mt-4">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Nome da Métrica</th>
+                <th>Iniciais</th>
+                <th>Valores Possíveis</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Vetor de Ataque</td>
+                <td>AV</td>
+                <td>N (Rede), A (Adjacente), L (Local), P (Físico)</td>
+              </tr>
+              <tr>
+                <td>Complexidade do ataque</td>
+                <td>AC</td>
+                <td>L (Baixo), H (Alto)</td>
+              </tr>
+              <tr>
+                <td>Privilégios obrigatórios</td>
+                <td>PR</td>
+                <td>N (Nada), L (Baixo), H (Alto)</td>
+              </tr>
+              <tr>
+                <td>Interação de Usuário</td>
+                <td>UI</td>
+                <td>N (Nada), R (Requerido)</td>
+              </tr>
+              <tr>
+                <td>Escopo</td>
+                <td>S</td>
+                <td>U (Não alterado), C (Alterado)</td>
+              </tr>
+              <tr>
+                <td>Impacto de Confidencialidade</td>
+                <td>C</td>
+                <td>H (Alto), L (Baixo), N (Nada)</td>
+              </tr>
+              <tr>
+                <td>Impacto de Integridade</td>
+                <td>I</td>
+                <td>H (Alto), L (Baixo), N (Nada)</td>
+              </tr>
+              <tr>
+                <td>Impacto de Disponibilidade</td>
+                <td>A</td>
+                <td>H (Alto), L (Baixo), N (Nada)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 25.2.5 Relatórios CVSS -->
+      <div class="content-card mt-4" id="cvss-relatorios">
+        <h3 class="cisco-subtitle mb-3">25.2.5 Relatórios CVSS</h3>
+
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Classificação</th>
+                <th>CVSS Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Nenhum</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td>Baixo</td>
+                <td>0.1 - 3.9</td>
+              </tr>
+              <tr>
+                <td>Médio</td>
+                <td>4.0 - 6.9</td>
+              </tr>
+              <tr>
+                <td>Alto</td>
+                <td>7.0 - 8.9</td>
+              </tr>
+              <tr>
+                <td style="background-color: rgba(220, 53, 69, 0.2)">Crítico</td>
+                <td style="background-color: rgba(220, 53, 69, 0.2)">9.0 - 10.0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          <strong>Importante:</strong> Qualquer vulnerabilidade que exceda 3.9 deve ser resolvida. Quanto maior o nível de classificação,
+          maior a urgência para remediação.
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-4">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-chart-simple fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5>Grupo Base</h5>
+              <p class="small text-muted">Conjunto pelo fornecedor - não muda</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-clock fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5>Grupo Temporal</h5>
+              <p class="small text-muted">Modifica a pontuação base</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-building fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5>Grupo Ambiental</h5>
+              <p class="small text-muted">Adapta ao contexto local</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 25.2.6 Outras fontes de informações sobre vulnerabilidades -->
+      <div class="content-card mt-4" id="cvss-fontes">
+        <h3 class="cisco-subtitle mb-3">25.2.6 Outras fontes de informações sobre vulnerabilidades</h3>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <div class="hacker-card p-3 h-100">
+              <h4 style="color: var(--cisco-green)" class="mb-3">
+                <i class="fas fa-database me-2"></i>CVE - Vulnerabilidades e Exposições Comuns
+              </h4>
+              <p>
+                Dicionário de nomes comuns, na forma de <strong class="text-cisco">identificadores CVE</strong>, para vulnerabilidades
+                conhecidas de segurança cibernética.
+              </p>
+              <ul class="text-muted small">
+                <li>Fornece uma maneira padrão de pesquisar vulnerabilidades</li>
+                <li>Identificadores CVE permitem acessar correções</li>
+                <li>Usado por serviços de inteligência contra ameaças</li>
+                <li>Aparece em vários logs do sistema de segurança</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="hacker-card p-3 h-100">
+              <h4 style="color: var(--cisco-green)" class="mb-3">
+                <i class="fas fa-database me-2"></i>NVD - National Vulnerability Database
+              </h4>
+              <p>
+                Banco de dados mantido pelo <strong class="text-cisco">NIST (National Institute of Standards and Technology)</strong> do
+                governo dos EUA.
+              </p>
+              <ul class="text-muted small">
+                <li>Utiliza identificadores CVE</li>
+                <li>Fornece pontuações de ameaças CVSS</li>
+                <li>Detalhes técnicos e entidades afetadas</li>
+                <li>Recursos para investigação adicional</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 25.2.8 Verifique sua compreensão - Métricas CVSS -->
+      <div class="content-card mt-4" id="verifique-compreensao-cvss">
+        <h3 class="cisco-subtitle mb-3">25.2.8 Verifique sua compreensão - Identifique as métricas de CVSS</h3>
+
+        <div class="quiz-container">
+          <!-- Pergunta 1 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 1:</p>
+            <p>Qual métrica CVSS captura o nível de acesso necessário para uma exploração bem-sucedida da vulnerabilidade?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q1" id="cvss_q1_a" value="complexidade" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q1_a"
+                  >Complexidade do ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q1" id="cvss_q1_b" value="vetor" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q1_b"
+                  >Vetor de ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q1" id="cvss_q1_c" value="privilegios" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q1_c"
+                  >Privilégios necessários</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q1" id="cvss_q1_d" value="escopo" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q1_d"
+                  >Escopo</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q1" id="cvss_q1_e" value="interacao" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q1_e"
+                  >Interação do usuário</label
+                >
+              </div>
+            </div>
+            <div class="cvss-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 2:</p>
+            <p>Qual métrica CVSS expressa o número de componentes além do controle do invasor necessários para exploração bem-sucedida?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q2" id="cvss_q2_a" value="complexidade" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q2_a"
+                  >Complexidade do ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q2" id="cvss_q2_b" value="vetor" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q2_b"
+                  >Vetor de ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q2" id="cvss_q2_c" value="privilegios" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q2_c"
+                  >Privilégios necessários</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q2" id="cvss_q2_d" value="escopo" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q2_d"
+                  >Escopo</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q2" id="cvss_q2_e" value="interacao" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q2_e"
+                  >Interação do usuário</label
+                >
+              </div>
+            </div>
+            <div class="cvss-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 3:</p>
+            <p>Qual métrica CVSS expressa se várias autoridades devem estar envolvidas em uma exploração?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q3" id="cvss_q3_a" value="complexidade" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q3_a"
+                  >Complexidade do ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q3" id="cvss_q3_b" value="vetor" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q3_b"
+                  >Vetor de ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q3" id="cvss_q3_c" value="privilegios" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q3_c"
+                  >Privilégios necessários</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q3" id="cvss_q3_d" value="escopo" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q3_d"
+                  >Escopo</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q3" id="cvss_q3_e" value="interacao" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q3_e"
+                  >Interação do usuário</label
+                >
+              </div>
+            </div>
+            <div class="cvss-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 4:</p>
+            <p>Qual métrica CVSS reflete a proximidade do agente da ameaça com o componente vulnerável?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q4" id="cvss_q4_a" value="complexidade" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q4_a"
+                  >Complexidade do ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q4" id="cvss_q4_b" value="vetor" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q4_b"
+                  >Vetor de ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q4" id="cvss_q4_c" value="privilegios" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q4_c"
+                  >Privilégios necessários</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q4" id="cvss_q4_d" value="escopo" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q4_d"
+                  >Escopo</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q4" id="cvss_q4_e" value="interacao" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q4_e"
+                  >Interação do usuário</label
+                >
+              </div>
+            </div>
+            <div class="cvss-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 5 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 5:</p>
+            <p>Qual métrica CVSS expressa se a ação humana é necessária para que a exploração seja bem-sucedida?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q5" id="cvss_q5_a" value="complexidade" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q5_a"
+                  >Complexidade do ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q5" id="cvss_q5_b" value="vetor" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q5_b"
+                  >Vetor de ataque</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q5" id="cvss_q5_c" value="privilegios" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q5_c"
+                  >Privilégios necessários</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q5" id="cvss_q5_d" value="escopo" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q5_d"
+                  >Escopo</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="cvss_q5" id="cvss_q5_e" value="interacao" /><label
+                  class="form-check-label text-secondary"
+                  for="cvss_q5_e"
+                  >Interação do usuário</label
+                >
+              </div>
+            </div>
+            <div class="cvss-feedback mt-2 small"></div>
+          </div>
+
+          <button id="checkCvssQuizBtn" class="btn-cisco mt-3"><i class="fas fa-check-circle me-2"></i>Verificar Respostas</button>
+          <div id="cvssQuizResult" class="mt-3"></div>
+        </div>
+      </div>
+      <!-- ==================== 25.3 GERENCIAMENTO SEGURO DE DISPOSITIVOS ==================== -->
+      <section id="gerenciamento-seguro" class="mb-5">
+        <h2 class="section-title mb-4">25.3 Gerenciamento Seguro de Dispositivos</h2>
+
+        <!-- 25.3.1 Gerenciamento de risco -->
+        <div class="content-card" id="gerenciamento-risco">
+          <h3 class="cisco-subtitle mb-3">25.3.1 Gerenciamento de risco</h3>
+          <p>
+            O gerenciamento de riscos envolve a seleção e especificação de controles de segurança para uma organização. Faz parte de um
+            programa contínuo de segurança da informação em toda a organização que envolve a gestão do risco para a organização ou para
+            indivíduos associados à operação de um sistema.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-sync-alt me-2"></i>
+            <strong>Processo Contínuo:</strong> O gerenciamento de riscos é um processo contínuo, multipasso e cíclico.
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+              <div class="timeline-item">
+                <i class="fas fa-search fa-fw me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Identificação de Risco</span>
+                <p class="text-muted small ms-4 mt-1">Identificar ativos, vulnerabilidades e ameaças</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="timeline-item">
+                <i class="fas fa-chart-line fa-fw me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Avaliação de risco</span>
+                <p class="text-muted small ms-4 mt-1">Pontuar, pesar e priorizar riscos</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="timeline-item">
+                <i class="fas fa-tasks fa-fw me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Planejamento de Resposta</span>
+                <p class="text-muted small ms-4 mt-1">Determinar resposta ao risco, planejar ações</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="timeline-item">
+                <i class="fas fa-play-circle fa-fw me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Implementação de Resposta</span>
+                <p class="text-muted small ms-4 mt-1">Implementar resposta ao risco</p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="timeline-item">
+                <i class="fas fa-chart-simple fa-fw me-2" style="color: var(--cisco-green)"></i>
+                <span class="fw-semibold">Monitorar e avaliar</span>
+                <p class="text-muted small ms-4 mt-1">Monitoramento contínuo de riscos</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-3">
+            O risco é determinado como a relação entre ameaça, vulnerabilidade e a natureza da organização. As perguntas fundamentais da
+            avaliação de risco são:
+          </p>
+          <ul class="text-muted">
+            <li>Quem são os atores que querem nos atacar?</li>
+            <li>Quais vulnerabilidades os atores ameaçadores podem explorar?</li>
+            <li>Como seríamos afetados por ataques?</li>
+            <li>Qual é a probabilidade de que diferentes ataques ocorram?</li>
+          </ul>
+        </div>
+      </section>
+      <!-- 25.3.2 Respostas ao Risco -->
+      <div class="content-card mt-4" id="respostas-risco">
+        <h3 class="cisco-subtitle mb-3">25.3.2 Respostas ao Risco</h3>
+
+        <div class="table-responsive">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Resposta ao Risco</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-semibold text-cisco">Prevenção de riscos</td>
+                <td>Parar de realizar as atividades que criam risco. Se o risco supera o benefício, a atividade deve ser descontinuada.</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold text-cisco">Redução de risco</td>
+                <td>
+                  Diminuir o risco tomando medidas para reduzir a vulnerabilidade (ex: aplicar patches assim que vulnerabilidades são
+                  identificadas).
+                </td>
+              </tr>
+              <tr>
+                <td class="fw-semibold text-cisco">Compartilhamento de risco</td>
+                <td>
+                  Deslocar parte do risco para outras partes (ex: terceirizar operações de segurança, contratar SECaaS, comprar seguro).
+                </td>
+              </tr>
+              <tr>
+                <td class="fw-semibold text-cisco">Retenção de risco</td>
+                <td>
+                  Aceitar o risco e suas consequências. Aceitável para riscos de baixo impacto potencial e custo relativamente alto de
+                  mitigação.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Quiz Respostas ao Risco -->
+        <div class="quiz-container mt-4">
+          <h4 class="mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-question-circle me-2"></i>Verifique sua compreensão - Respostas ao Risco
+          </h4>
+
+          <!-- Pergunta 1 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2">Pergunta 1:</p>
+            <p>Qual resposta ao risco aceita o risco e suas consequências?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q1" id="risk_q1_a" value="prevencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q1_a"
+                  >Prevenção de riscos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q1" id="risk_q1_b" value="reducao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q1_b"
+                  >Redução de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q1" id="risk_q1_c" value="retencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q1_c"
+                  >Retenção de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q1" id="risk_q1_d" value="compartilhamento" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q1_d"
+                  >Compartilhamento de riscos</label
+                >
+              </div>
+            </div>
+            <div class="risk-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2">Pergunta 2:</p>
+            <p>Qual resposta de risco terceirizará parte do risco para outras partes, como Segurança como Serviço?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q2" id="risk_q2_a" value="prevencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q2_a"
+                  >Prevenção de riscos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q2" id="risk_q2_b" value="reducao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q2_b"
+                  >Redução de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q2" id="risk_q2_c" value="retencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q2_c"
+                  >Retenção de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q2" id="risk_q2_d" value="compartilhamento" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q2_d"
+                  >Compartilhamento de riscos</label
+                >
+              </div>
+            </div>
+            <div class="risk-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2">Pergunta 3:</p>
+            <p>Que resposta ao risco envolve a interrupção da realização das atividades de risco?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q3" id="risk_q3_a" value="prevencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q3_a"
+                  >Prevenção de riscos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q3" id="risk_q3_b" value="reducao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q3_b"
+                  >Redução de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q3" id="risk_q3_c" value="retencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q3_c"
+                  >Retenção de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q3" id="risk_q3_d" value="compartilhamento" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q3_d"
+                  >Compartilhamento de riscos</label
+                >
+              </div>
+            </div>
+            <div class="risk-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2">Pergunta 4:</p>
+            <p>Qual resposta ao risco toma medidas para reduzir a vulnerabilidade?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q4" id="risk_q4_a" value="prevencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q4_a"
+                  >Prevenção de riscos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q4" id="risk_q4_b" value="reducao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q4_b"
+                  >Redução de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q4" id="risk_q4_c" value="retencao" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q4_c"
+                  >Retenção de risco</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="risk_q4" id="risk_q4_d" value="compartilhamento" /><label
+                  class="form-check-label text-secondary"
+                  for="risk_q4_d"
+                  >Compartilhamento de riscos</label
+                >
+              </div>
+            </div>
+            <div class="risk-feedback mt-2 small"></div>
+          </div>
+
+          <button id="checkRiskQuizBtn" class="btn-cisco mt-3"><i class="fas fa-check-circle me-2"></i>Verificar Respostas</button>
+          <div id="riskQuizResult" class="mt-3"></div>
+        </div>
+      </div>
+      <!-- 25.3.3 Gestão de Vulnerabilidade -->
+      <div class="content-card mt-4" id="ciclof vida-vulnerabilidade">
+        <h3 class="cisco-subtitle mb-3">25.3.3 Gestão de Vulnerabilidade - Ciclo de Vida</h3>
+        <p>
+          De acordo com o NIST, o gerenciamento de vulnerabilidades é uma prática de segurança projetada para
+          <strong class="text-cisco">prevenir proativamente a exploração</strong> de vulnerabilidades de TI existentes em uma organização. O
+          resultado esperado é reduzir o tempo e o dinheiro gasto para lidar com vulnerabilidades.
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3 hacker-card h-100">
+              <i class="fas fa-search fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="mb-2">Descobrir</h5>
+              <p class="small text-muted">Inventário de ativos, identificar vulnerabilidades, desenvolver linha de base</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3 hacker-card h-100">
+              <i class="fas fa-chart-line fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="mb-2">Priorizar Ativos</h5>
+              <p class="small text-muted">Categorizar ativos, atribuir valor comercial</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3 hacker-card h-100">
+              <i class="fas fa-chart-simple fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="mb-2">Avaliar</h5>
+              <p class="small text-muted">Determinar perfil de risco, medir nível de risco comercial</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3 hacker-card h-100">
+              <i class="fas fa-tools fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="mb-2">Reparar</h5>
+              <p class="small text-muted">Priorizar por risco, resolver vulnerabilidades</p>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-4 offset-md-4 mb-3">
+            <div class="text-center p-3 hacker-card h-100">
+              <i class="fas fa-check-double fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h5 class="mb-2">Verificar</h5>
+              <p class="small text-muted">Auditorias de acompanhamento, verificar eliminação de ameaças</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-3">
+          <i class="fas fa-shield-halved me-2"></i>
+          <strong>Benefício:</strong> O gerenciamento proativo de vulnerabilidades reduz ou elimina o potencial de exploração, envolvendo
+          consideravelmente menos tempo e esforço do que responder após uma exploração.
+        </div>
+      </div>
+      <!-- 25.3.4 Gerenciamento de ativos -->
+      <div class="content-card mt-4" id="gerenciamento-ativos">
+        <h3 class="cisco-subtitle mb-3">25.3.4 Gerenciamento de ativos</h3>
+        <p>
+          O gerenciamento de ativos envolve a implementação de sistemas que controlam a
+          <strong class="text-cisco">localização e a configuração de dispositivos e software</strong> em rede em uma empresa. As
+          organizações devem saber quais equipamentos acessam a rede, onde esse equipamento está e que software/dados esses sistemas
+          armazenam.
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-microchip fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h6>Descobrir</h6>
+              <p class="small text-muted">Inventário automatizado de dispositivos</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-chart-pie fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h6>Priorizar</h6>
+              <p class="small text-muted">Categorizar por valor comercial</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-chart-line fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h6>Avaliar</h6>
+              <p class="small text-muted">Medir risco comercial</p>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-sync-alt fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h6>Reparar/Verificar</h6>
+              <p class="small text-muted">Corrigir discrepâncias, auditar</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="terminal-card mt-3">
+          <pre><code>Processo de Gerenciamento de Ativos (NIST):
+
+1. Coletar o estado atual de todos os dispositivos autorizados
+2. Especificar o estado desejado dos dispositivos
+3. Localizar discrepâncias no estado do dispositivo
+4. Corrigir discrepâncias, aceitar riscos ou atualizar políticas</code></pre>
+        </div>
+      </div>
+      <!-- 25.3.5 Gerenciamento de dispositivos móveis -->
+      <div class="content-card mt-4" id="mdm">
+        <h3 class="cisco-subtitle mb-3">25.3.5 Gerenciamento de dispositivos móveis (MDM)</h3>
+        <p>
+          O gerenciamento de dispositivos móveis, especialmente na era do <strong class="text-cisco">BYOD (Bring Your Own Device)</strong>,
+          apresenta desafios especiais para a gestão de ativos. Dispositivos móveis podem ser perdidos, roubados ou adulterados, colocando
+          em risco o acesso a dados e à rede.
+        </p>
+
+        <div class="row mt-4">
+          <div class="col-md-6 mb-3">
+            <div class="hacker-card p-3 h-100">
+              <h5><i class="fas fa-exclamation-triangle me-2" style="color: var(--cisco-green)"></i>Desafios do MDM</h5>
+              <ul class="text-muted small mt-2">
+                <li>Dispositivos fora do controle físico da organização</li>
+                <li>Diversidade de dispositivos (iOS, Android, etc.)</li>
+                <li>Dispositivos inerentemente menos seguros</li>
+                <li>Risco de perda ou roubo</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <div class="hacker-card p-3 h-100">
+              <h5><i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>Medidas de Segurança</h5>
+              <ul class="text-muted small mt-2">
+                <li>Desativar dispositivo perdido remotamente</li>
+                <li>Criptografar dados no dispositivo</li>
+                <li>Autenticação robusta</li>
+                <li>Assumir que dispositivos não são confiáveis inicialmente</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-2">
+          <i class="fas fa-cloud-upload-alt me-2"></i>
+          <strong>Solução:</strong> Sistemas MDM como Cisco Meraki Systems Manager permitem configurar, monitorar e atualizar clientes
+          móveis a partir da nuvem.
+        </div>
+      </div>
+      <!-- 25.3.6 Gerenciamento de configurações -->
+      <div class="content-card mt-4" id="gerenciamento-configuracoes">
+        <h3 class="cisco-subtitle mb-3">25.3.6 Gerenciamento de configurações</h3>
+        <p>
+          O gerenciamento de configuração aborda o <strong class="text-cisco">inventário e o controle das configurações</strong> de hardware
+          e software dos sistemas. Configurações seguras de dispositivos reduzem o risco de segurança.
+        </p>
+
+        <p>Conforme definido pelo NIST, gerenciamento de configuração:</p>
+        <div class="terminal-card my-3">
+          <p class="mb-0">
+            <i class="fas fa-quote-left me-2" style="color: var(--cisco-green)"></i>
+            Compreende uma coleção de atividades focadas no estabelecimento e manutenção da integridade de produtos e sistemas, através do
+            controle dos processos de inicialização, mudança e monitoramento das configurações.
+          </p>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-4 mb-3">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-code-branch fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h6>Imagens de Software</h6>
+              <p class="small text-muted">Pacote básico + segurança de endpoint + políticas personalizadas</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-microchip fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h6>Configurações de Hardware</h6>
+              <p class="small text-muted">Interfaces de rede permitidas, tipos de armazenamento externo</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="text-center p-3" style="background: var(--bg-terminal); border-radius: 8px">
+              <i class="fas fa-cloud fa-2x mb-2" style="color: var(--cisco-green)"></i>
+              <h6>Ferramentas de Automação</h6>
+              <p class="small text-muted">Puppet, Chef, Ansible, SaltStack</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-2">
+          <i class="fas fa-book me-2"></i>
+          <strong>Referência:</strong> NIST Special Publication 800-128 - Gerenciamento de Configuração para Segurança de Rede.
+        </div>
+      </div>
+      <!-- 25.3.7 Gerenciamento de patches corporativos -->
+      <div class="content-card mt-4" id="patch-management">
+        <h3 class="cisco-subtitle mb-3">25.3.7 Gerenciamento de patches corporativos</h3>
+        <p>
+          O gerenciamento de patches está relacionado ao gerenciamento de vulnerabilidades. Vulnerabilidades aparecem frequentemente em
+          sistemas operacionais, firmware críticos e software de aplicativos, especialmente aplicativos de Internet como
+          <strong class="text-cisco">Acrobat, Flash e Java</strong>.
+        </p>
+
+        <p>O gerenciamento de patches envolve todos os aspectos da aplicação de patches de software:</p>
+
+        <div class="row mt-3">
+          <div class="col-md-2 col-6 mb-2">
+            <span class="badge-cisco d-block text-center py-2"><i class="fas fa-search me-1"></i> Identificar</span>
+          </div>
+          <div class="col-md-2 col-6 mb-2">
+            <span class="badge-cisco d-block text-center py-2"><i class="fas fa-shopping-cart me-1"></i> Aquisição</span>
+          </div>
+          <div class="col-md-2 col-6 mb-2">
+            <span class="badge-cisco d-block text-center py-2"><i class="fas fa-cloud-download-alt me-1"></i> Distribuição</span>
+          </div>
+          <div class="col-md-2 col-6 mb-2">
+            <span class="badge-cisco d-block text-center py-2"><i class="fas fa-wrench me-1"></i> Instalação</span>
+          </div>
+          <div class="col-md-2 col-6 mb-2">
+            <span class="badge-cisco d-block text-center py-2"><i class="fas fa-check-circle me-1"></i> Verificação</span>
+          </div>
+        </div>
+
+        <div class="alert-cisco my-3">
+          <i class="fas fa-gavel me-2"></i>
+          <strong>Conformidade Regulatória:</strong> O gerenciamento de patches é exigido por regulamentações como Sarbanes-Oxley (SOX) e
+          HIPAA.
+        </div>
+
+        <div class="table-responsive mt-3">
+          <table class="table table-cisco">
+            <thead>
+              <tr>
+                <th>Ferramenta</th>
+                <th>Descrição</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="fw-semibold">SolarWinds Patch Manager</td>
+                <td>Gerenciamento de patches com visibilidade de nós por WSUS</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">Microsoft SCCM</td>
+                <td>Distribuição automatizada para Windows</td>
+              </tr>
+              <tr>
+                <td class="fw-semibold">LANDesk</td>
+                <td>Gerenciamento de patches empresarial</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Top Patches Missing - Exemplo SolarWinds -->
+        <div class="mt-4 p-3" style="background: var(--bg-terminal); border-radius: 8px">
+          <h5 class="mb-3" style="color: var(--cisco-green)"><i class="fas fa-chart-pie me-2"></i>Top 10 Patches Missing (Exemplo)</h5>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="d-flex justify-content-between mb-2">
+                <span>Adobe Flash Player 32-bit ActiveX</span>
+                <span class="badge-cisco">4 dispositivos</span>
+              </div>
+              <div class="progress mb-3" style="height: 5px">
+                <div class="progress-bar" style="width: 80%; background-color: var(--cisco-green)"></div>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span>Google Chrome 19.0.1084.46</span>
+                <span class="badge-cisco">4 dispositivos</span>
+              </div>
+              <div class="progress mb-3" style="height: 5px">
+                <div class="progress-bar" style="width: 80%; background-color: var(--cisco-green)"></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex justify-content-between mb-2">
+                <span>Windows Malicious Software Removal Tool</span>
+                <span class="badge-cisco">4 dispositivos</span>
+              </div>
+              <div class="progress mb-3" style="height: 5px">
+                <div class="progress-bar" style="width: 80%; background-color: var(--cisco-green)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 25.3.8 Técnicas de gerenciamento de patch -->
+      <div class="content-card mt-4" id="tecnicas-patch">
+        <h3 class="cisco-subtitle mb-3">25.3.8 Técnicas de gerenciamento de patch</h3>
+
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="hacker-card p-3 h-100">
+              <div class="text-center mb-3">
+                <i class="fas fa-robot fa-3x" style="color: var(--cisco-green)"></i>
+              </div>
+              <h4 class="text-center mb-3" style="color: var(--cisco-green)">Baseado em agente</h4>
+              <p>
+                Requer que um <strong class="text-cisco">agente de software</strong> esteja sendo executado em cada host a ser corrigido.
+              </p>
+              <ul class="text-muted small">
+                <li>Agente informa se software vulnerável está instalado</li>
+                <li>Comunica-se com o servidor de gerenciamento de patches</li>
+                <li>Determina e instala patches necessários</li>
+                <li>Executa com privilégios suficientes</li>
+                <li><span class="badge-cisco mt-2">✓ Meio preferido para dispositivos móveis</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <div class="hacker-card p-3 h-100">
+              <div class="text-center mb-3">
+                <i class="fas fa-search fa-3x" style="color: var(--cisco-green)"></i>
+              </div>
+              <h4 class="text-center mb-3" style="color: var(--cisco-green)">Varredura sem agente</h4>
+              <p>
+                Servidores de gerenciamento de patches <strong class="text-cisco">verificam a rede</strong> em busca de dispositivos que
+                exigem patches.
+              </p>
+              <ul class="text-muted small">
+                <li>Servidor determina quais patches são necessários</li>
+                <li>Instala patches nos clientes remotamente</li>
+                <li>Apenas dispositivos em segmentos de rede digitalizados</li>
+                <li><span class="badge-cisco-alt mt-2">⚠ Pode ser problema para dispositivos móveis</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <div class="hacker-card p-3 h-100">
+              <div class="text-center mb-3">
+                <i class="fas fa-chart-line fa-3x" style="color: var(--cisco-green)"></i>
+              </div>
+              <h4 class="text-center mb-3" style="color: var(--cisco-green)">Monitoramento de rede passivo</h4>
+              <p>
+                Dispositivos que requerem patches são identificados através do
+                <strong class="text-cisco">monitoramento do tráfego na rede</strong>.
+              </p>
+              <ul class="text-muted small">
+                <li>Servidor monitora e rastreia versão do software</li>
+                <li>Patches implantados conforme necessário</li>
+                <li>Eficaz para software que inclui informações de versão no tráfego</li>
+                <li><span class="badge-cisco mt-2">✓ Monitoramento contínuo</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="terminal-card mt-4">
+          <pre><code>Fluxo do Gerenciamento de Patches:
+
+Patches do Fornecedor 1 ──┐
+Patches do Fornecedor 2 ──┼──► Servidor de Gerenciamento de Patch
+                         ──┘              │
+                                         ▼
+                              ┌─────────────────────┐
+                              │  Avaliação e Teste   │
+                              │  (Segurança/Equipe   │
+                              │       de TI)         │
+                              └─────────────────────┘
+                                         │
+                                         ▼
+                              ┌─────────────────────┐
+                              │  Dispositivo de      │
+                              │  Cache               │
+                              └─────────────────────┘
+                                         │
+                                         ▼
+                              ┌─────────────────────┐
+                              │  Implantação nos     │
+                              │  Clientes            │
+                              └─────────────────────┘</code></pre>
+        </div>
+      </div>
+      <!-- 25.3.9 Verifique sua compreensão - Identifique atividades de gerenciamento de dispositivos -->
+      <div class="content-card mt-4" id="verifique-compreensao-dispositivos">
+        <h3 class="cisco-subtitle mb-3">25.3.9 Verifique sua compreensão - Identifique atividades de gerenciamento de dispositivos</h3>
+
+        <div class="quiz-container">
+          <!-- Pergunta 1 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 1:</p>
+            <p>
+              Qual atividade de gerenciamento é a maneira mais eficaz de mitigar vulnerabilidades de software e é exigida por algumas
+              regulamentações de conformidade de segurança?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 2:</p>
+            <p>Que atividade de gerenciamento de dispositivos aborda o inventário e o controle das configurações de hardware e software?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 3:</p>
+            <p>
+              Qual atividade de gerenciamento de dispositivos envolve a implementação de sistemas que controlam a localização e a
+              configuração de dispositivos e software em rede em uma empresa?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 4:</p>
+            <p>
+              Que atividade de gerenciamento de dispositivos foi projetada para impedir proativamente a exploração de vulnerabilidades de TI
+              existentes em uma organização?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 5 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 5:</p>
+            <p>
+              Qual atividade de gerenciamento de dispositivos tem medidas que podem desativar um dispositivo perdido, criptografar os dados
+              e aprimorar o acesso com autenticação mais robusta?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <button id="checkDeviceQuizBtn" class="btn-cisco mt-3"><i class="fas fa-check-circle me-2"></i>Verificar Respostas</button>
+          <div id="deviceQuizResult" class="mt-3"></div>
+        </div>
+      </div>
+      <!-- 25.3.9 Verifique sua compreensão - Identifique atividades de gerenciamento de dispositivos -->
+      <div class="content-card mt-4" id="verifique-compreensao-dispositivos">
+        <h3 class="cisco-subtitle mb-3">25.3.9 Verifique sua compreensão - Identifique atividades de gerenciamento de dispositivos</h3>
+
+        <div class="quiz-container">
+          <!-- Pergunta 1 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 1:</p>
+            <p>
+              Qual atividade de gerenciamento é a maneira mais eficaz de mitigar vulnerabilidades de software e é exigida por algumas
+              regulamentações de conformidade de segurança?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q1" id="device_q1_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q1_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 2 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 2:</p>
+            <p>Que atividade de gerenciamento de dispositivos aborda o inventário e o controle das configurações de hardware e software?</p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q2" id="device_q2_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q2_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 3 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 3:</p>
+            <p>
+              Qual atividade de gerenciamento de dispositivos envolve a implementação de sistemas que controlam a localização e a
+              configuração de dispositivos e software em rede em uma empresa?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q3" id="device_q3_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q3_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 4 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 4:</p>
+            <p>
+              Que atividade de gerenciamento de dispositivos foi projetada para impedir proativamente a exploração de vulnerabilidades de TI
+              existentes em uma organização?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q4" id="device_q4_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q4_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <!-- Pergunta 5 -->
+          <div
+            class="quiz-question mb-4 p-3"
+            style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green)"
+          >
+            <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green)"></i>Pergunta 5:</p>
+            <p>
+              Qual atividade de gerenciamento de dispositivos tem medidas que podem desativar um dispositivo perdido, criptografar os dados
+              e aprimorar o acesso com autenticação mais robusta?
+            </p>
+            <div class="quiz-options ms-3">
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_a" value="ativos" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_a"
+                  >Gerenciamento de ativos</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_b" value="configuracao" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_b"
+                  >Gerenciamento de configuração</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_c" value="patch" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_c"
+                  >Gerenciamento de patch empresarial</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_d" value="mdm" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_d"
+                  >Gerenciamento de dispositivos móveis</label
+                >
+              </div>
+              <div class="form-check mb-1">
+                <input class="form-check-input" type="radio" name="device_q5" id="device_q5_e" value="vulnerabilidade" /><label
+                  class="form-check-label text-secondary"
+                  for="device_q5_e"
+                  >Gerenciamento de vulnerabilidade</label
+                >
+              </div>
+            </div>
+            <div class="device-feedback mt-2 small"></div>
+          </div>
+
+          <button id="checkDeviceQuizBtn" class="btn-cisco mt-3"><i class="fas fa-check-circle me-2"></i>Verificar Respostas</button>
+          <div id="deviceQuizResult" class="mt-3"></div>
+        </div>
+      </div>
+      <!-- ==================== 25.4 RESUMO DA AVALIAÇÃO DE VULNERABILIDADE DE ENDPOINT ==================== -->
+      <section id="resumo-modulo" class="mb-5">
+        <h2 class="section-title mb-4">25.4 Resumo da Avaliação de Vulnerabilidade de Endpoint</h2>
+
+        <!-- 25.4.1 O que aprendi neste módulo? -->
+        <div class="content-card" id="o-que-aprendi">
+          <h3 class="cisco-subtitle mb-3">25.4.1 O que aprendi neste módulo?</h3>
+
+          <!-- Accordion style summary -->
+          <div class="accordion" id="summaryAccordion">
+            <!-- Perfil de Rede e Servidor -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseNetwork"
+                  style="background-color: var(--bg-card) !important; color: var(--cisco-green) !important"
+                >
+                  <i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i>
+                  Perfil de Rede e Servidor
+                </button>
+              </h2>
+              <div id="collapseNetwork" class="accordion-collapse collapse" data-bs-parent="#summaryAccordion">
+                <div class="accordion-body text-muted" style="background-color: var(--bg-terminal)">
+                  <p>
+                    É importante executar o perfil de rede e dispositivo para fornecer
+                    <strong class="text-cisco">informações estatísticas de linha de base</strong> que podem servir como um ponto de
+                    referência para o desempenho normal da rede e do dispositivo.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Elementos importantes do perfil de rede:</strong> duração da sessão, taxa de transferência total, portas
+                      usadas e espaço de endereço de ativos críticos
+                    </li>
+                    <li>
+                      <strong>Perfil do servidor:</strong> estabelece o estado operacional aceito dos servidores (parâmetros de rede,
+                      usuário e aplicativo)
+                    </li>
+                    <li>
+                      <strong>Detecção de anomalias:</strong> análise de Big Data para detecção estatística, comportamental e baseada em
+                      regras
+                    </li>
+                    <li>
+                      <strong>Avaliação de segurança:</strong> Análise de Risco, Avaliação de Vulnerabilidades (OpenVAS, Nessus, Nmap),
+                      Teste de Penetração (Metasploit)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- CVSS -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseCVSS"
+                  style="background-color: var(--bg-card) !important; color: var(--cisco-green) !important"
+                >
+                  <i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i>
+                  Sistema de Pontuação de Vulnerabilidade Comum (CVSS)
+                </button>
+              </h2>
+              <div id="collapseCVSS" class="accordion-collapse collapse" data-bs-parent="#summaryAccordion">
+                <div class="accordion-body text-muted" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O CVSS é uma <strong class="text-cisco">estrutura aberta de padrão do setor</strong> para classificar os riscos de
+                    vulnerabilidades usando métricas para calcular uma pontuação composta.
+                  </p>
+                  <ul>
+                    <li><strong>Três grupos métricos:</strong> Base, Temporal e Ambiental</li>
+                    <li>
+                      <strong>Métricas de explorabilidade:</strong> Vetor de Ataque (AV), Complexidade (AC), Privilégios (PR), Interação do
+                      Usuário (UI), Escopo (S)
+                    </li>
+                    <li>
+                      <strong>Classificações:</strong> Nenhum (0), Baixo (0.1-3.9), Médio (4.0-6.9), Alto (7.0-8.9), Crítico (9.0-10.0)
+                    </li>
+                    <li><strong>Regra geral:</strong> Vulnerabilidades acima de 3.9 devem ser resolvidas</li>
+                    <li>
+                      <strong>Fontes adicionais:</strong> CVE (Common Vulnerabilities and Exposures) e NVD (National Vulnerability Database)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gerenciamento Seguro de Dispositivos -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSecure"
+                  style="background-color: var(--bg-card) !important; color: var(--cisco-green) !important"
+                >
+                  <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>
+                  Gerenciamento Seguro de Dispositivos
+                </button>
+              </h2>
+              <div id="collapseSecure" class="accordion-collapse collapse" data-bs-parent="#summaryAccordion">
+                <div class="accordion-body text-muted" style="background-color: var(--bg-terminal)">
+                  <p>O gerenciamento de riscos envolve a seleção e especificação de controles de segurança para uma organização.</p>
+                  <ul>
+                    <li>
+                      <strong>Quatro respostas ao risco:</strong> Prevenção (interromper atividade), Redução (mitigar), Compartilhamento
+                      (terceirizar/seguro), Retenção (aceitar)
+                    </li>
+                    <li>
+                      <strong>Ciclo de vida de vulnerabilidade:</strong> Descobrir → Priorizar ativos → Avaliar → Relatar → Corrigir →
+                      Verificar
+                    </li>
+                    <li><strong>Gerenciamento de ativos:</strong> Controla localização e configuração de dispositivos e software</li>
+                    <li><strong>MDM:</strong> Configurar, monitorar e atualizar clientes móveis a partir da nuvem (ex: Cisco Meraki)</li>
+                    <li>
+                      <strong>Gerenciamento de configuração:</strong> Inventário e controle de configurações de hardware/software (Puppet,
+                      Chef, Ansible)
+                    </li>
+                    <li><strong>Gerenciamento de patches:</strong> Aquisição, distribuição, instalação e verificação de patches</li>
+                    <li><strong>Técnicas de patch:</strong> Baseado em agente, Varredura sem agente, Monitoramento de rede passivo</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-graduation-cap me-2"></i>
+            <strong>Conclusão do Módulo 25:</strong> Você aprendeu sobre criação de perfis de rede e servidor, sistema CVSS para pontuação
+            de vulnerabilidades e técnicas de gerenciamento seguro de dispositivos.
+          </div>
+        </div>
+      </section>
+      <!-- ==================== 25.4 RESUMO DA AVALIAÇÃO DE VULNERABILIDADE DE ENDPOINT ==================== -->
+      <section id="resumo-modulo" class="mb-5">
+        <h2 class="section-title mb-4">25.4 Resumo da Avaliação de Vulnerabilidade de Endpoint</h2>
+
+        <!-- 25.4.1 O que aprendi neste módulo? -->
+        <div class="content-card" id="o-que-aprendi">
+          <h3 class="cisco-subtitle mb-3">25.4.1 O que aprendi neste módulo?</h3>
+
+          <!-- Accordion style summary -->
+          <div class="accordion" id="summaryAccordion">
+            <!-- Perfil de Rede e Servidor -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseNetwork"
+                  style="background-color: var(--bg-card) !important; color: var(--cisco-green) !important"
+                >
+                  <i class="fas fa-network-wired me-2" style="color: var(--cisco-green)"></i>
+                  Perfil de Rede e Servidor
+                </button>
+              </h2>
+              <div id="collapseNetwork" class="accordion-collapse collapse" data-bs-parent="#summaryAccordion">
+                <div class="accordion-body text-muted" style="background-color: var(--bg-terminal)">
+                  <p>
+                    É importante executar o perfil de rede e dispositivo para fornecer
+                    <strong class="text-cisco">informações estatísticas de linha de base</strong> que podem servir como um ponto de
+                    referência para o desempenho normal da rede e do dispositivo.
+                  </p>
+                  <ul>
+                    <li>
+                      <strong>Elementos importantes do perfil de rede:</strong> duração da sessão, taxa de transferência total, portas
+                      usadas e espaço de endereço de ativos críticos
+                    </li>
+                    <li>
+                      <strong>Perfil do servidor:</strong> estabelece o estado operacional aceito dos servidores (parâmetros de rede,
+                      usuário e aplicativo)
+                    </li>
+                    <li>
+                      <strong>Detecção de anomalias:</strong> análise de Big Data para detecção estatística, comportamental e baseada em
+                      regras
+                    </li>
+                    <li>
+                      <strong>Avaliação de segurança:</strong> Análise de Risco, Avaliação de Vulnerabilidades (OpenVAS, Nessus, Nmap),
+                      Teste de Penetração (Metasploit)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- CVSS -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseCVSS"
+                  style="background-color: var(--bg-card) !important; color: var(--cisco-green) !important"
+                >
+                  <i class="fas fa-chart-line me-2" style="color: var(--cisco-green)"></i>
+                  Sistema de Pontuação de Vulnerabilidade Comum (CVSS)
+                </button>
+              </h2>
+              <div id="collapseCVSS" class="accordion-collapse collapse" data-bs-parent="#summaryAccordion">
+                <div class="accordion-body text-muted" style="background-color: var(--bg-terminal)">
+                  <p>
+                    O CVSS é uma <strong class="text-cisco">estrutura aberta de padrão do setor</strong> para classificar os riscos de
+                    vulnerabilidades usando métricas para calcular uma pontuação composta.
+                  </p>
+                  <ul>
+                    <li><strong>Três grupos métricos:</strong> Base, Temporal e Ambiental</li>
+                    <li>
+                      <strong>Métricas de explorabilidade:</strong> Vetor de Ataque (AV), Complexidade (AC), Privilégios (PR), Interação do
+                      Usuário (UI), Escopo (S)
+                    </li>
+                    <li>
+                      <strong>Classificações:</strong> Nenhum (0), Baixo (0.1-3.9), Médio (4.0-6.9), Alto (7.0-8.9), Crítico (9.0-10.0)
+                    </li>
+                    <li><strong>Regra geral:</strong> Vulnerabilidades acima de 3.9 devem ser resolvidas</li>
+                    <li>
+                      <strong>Fontes adicionais:</strong> CVE (Common Vulnerabilities and Exposures) e NVD (National Vulnerability Database)
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gerenciamento Seguro de Dispositivos -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseSecure"
+                  style="background-color: var(--bg-card) !important; color: var(--cisco-green) !important"
+                >
+                  <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>
+                  Gerenciamento Seguro de Dispositivos
+                </button>
+              </h2>
+              <div id="collapseSecure" class="accordion-collapse collapse" data-bs-parent="#summaryAccordion">
+                <div class="accordion-body text-muted" style="background-color: var(--bg-terminal)">
+                  <p>O gerenciamento de riscos envolve a seleção e especificação de controles de segurança para uma organização.</p>
+                  <ul>
+                    <li>
+                      <strong>Quatro respostas ao risco:</strong> Prevenção (interromper atividade), Redução (mitigar), Compartilhamento
+                      (terceirizar/seguro), Retenção (aceitar)
+                    </li>
+                    <li>
+                      <strong>Ciclo de vida de vulnerabilidade:</strong> Descobrir → Priorizar ativos → Avaliar → Relatar → Corrigir →
+                      Verificar
+                    </li>
+                    <li><strong>Gerenciamento de ativos:</strong> Controla localização e configuração de dispositivos e software</li>
+                    <li><strong>MDM:</strong> Configurar, monitorar e atualizar clientes móveis a partir da nuvem (ex: Cisco Meraki)</li>
+                    <li>
+                      <strong>Gerenciamento de configuração:</strong> Inventário e controle de configurações de hardware/software (Puppet,
+                      Chef, Ansible)
+                    </li>
+                    <li><strong>Gerenciamento de patches:</strong> Aquisição, distribuição, instalação e verificação de patches</li>
+                    <li><strong>Técnicas de patch:</strong> Baseado em agente, Varredura sem agente, Monitoramento de rede passivo</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-graduation-cap me-2"></i>
+            <strong>Conclusão do Módulo 25:</strong> Você aprendeu sobre criação de perfis de rede e servidor, sistema CVSS para pontuação
+            de vulnerabilidades e técnicas de gerenciamento seguro de dispositivos.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER PADRÃO ==================== -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+        <!-- ==================== SEÇÃO FINAL: GLOSSÁRIO + CASOS DE USO ==================== -->
+<section id="fixacao-conteudo" class="mb-5">
+    <h2 class="section-title mb-4">
+        <i class="fas fa-graduation-cap me-2" style="color: var(--cisco-green);"></i>
+        Fixação do Conteúdo: Glossário + Casos de Uso
+    </h2>
+
+    <!-- GLOSSÁRIO TÉCNICO -->
+    <div class="content-card" id="glossario">
+        <h3 class="cisco-subtitle mb-3">
+            <i class="fas fa-book-open me-2" style="color: var(--cisco-green);"></i>
+            Glossário Técnico
+        </h3>
+        <p class="text-muted mb-4">Referência rápida dos principais termos do Módulo 25</p>
+        
+        <div class="row">
+            <!-- Coluna 1 -->
+            <div class="col-md-6">
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Perfil de Rede</span>
+                    <p class="text-muted small mb-0 mt-1">Linha de base estatística do comportamento normal da rede que serve como referência para detectar desvios e possíveis comprometimentos.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Duração da Sessão</span>
+                    <p class="text-muted small mb-0 mt-1">Tempo entre o estabelecimento de um fluxo de dados e seu término.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Rendimento Total (Throughput)</span>
+                    <p class="text-muted small mb-0 mt-1">Quantidade de dados que trafega de uma fonte para um destino em um determinado período.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Portas de Escuta</span>
+                    <p class="text-muted small mb-0 mt-1">Processos TCP/UDP disponíveis para aceitar dados em um servidor.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">NBA (Network Behavior Analysis)</span>
+                    <p class="text-muted small mb-0 mt-1">Análise de comportamento de rede usando técnicas de Big Data e machine learning para detectar anomalias.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Avaliação de Vulnerabilidade</span>
+                    <p class="text-muted small mb-0 mt-1">Teste automatizado que verifica servidores e redes em busca de vulnerabilidades como patches ausentes ou portas desnecessárias.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Teste de Penetração (Pentest)</span>
+                    <p class="text-muted small mb-0 mt-1">Ataque simulado autorizado que não apenas identifica vulnerabilidades mas as explora para determinar impacto potencial.</p>
+                </div>
+            </div>
+            
+            <!-- Coluna 2 -->
+            <div class="col-md-6">
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">CVSS (Common Vulnerability Scoring System)</span>
+                    <p class="text-muted small mb-0 mt-1">Framework padrão do setor para classificar gravidade de vulnerabilidades usando métricas padronizadas.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Vetor de Ataque (AV)</span>
+                    <p class="text-muted small mb-0 mt-1">Métrica CVSS que reflete a proximidade do agente de ameaça ao componente vulnerável (Rede, Adjacente, Local, Físico).</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">CVE (Common Vulnerabilities and Exposures)</span>
+                    <p class="text-muted small mb-0 mt-1">Dicionário público de identificadores padronizados para vulnerabilidades de segurança conhecidas.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">NVD (National Vulnerability Database)</span>
+                    <p class="text-muted small mb-0 mt-1">Banco de dados do NIST que complementa CVE com pontuações CVSS, detalhes técnicos e recursos de investigação.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">Gerenciamento de Patches</span>
+                    <p class="text-muted small mb-0 mt-1">Processo de identificar, adquirir, distribuir, instalar e verificar patches de software para mitigar vulnerabilidades.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">MDM (Mobile Device Management)</span>
+                    <p class="text-muted small mb-0 mt-1">Sistemas que permitem configurar, monitorar e atualizar dispositivos móveis remotamente, incluindo ações como bloqueio remoto.</p>
+                </div>
+                
+                <div class="glossary-item mb-3 p-2" style="border-left: 3px solid var(--cisco-green);">
+                    <span class="fw-bold text-cisco">ISMS (Information Security Management System)</span>
+                    <p class="text-muted small mb-0 mt-1">Sistema para identificar, analisar e lidar com riscos de segurança da informação.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CASOS DE USO HUMANIZADOS -->
+    <div class="content-card mt-4" id="casos-uso">
+        <h3 class="cisco-subtitle mb-3">
+            <i class="fas fa-users me-2" style="color: var(--cisco-green);"></i>
+            Casos de Uso Humanizados
+        </h3>
+        <p class="text-muted mb-4">Situações reais que ilustram a aplicação dos conceitos do módulo</p>
+        
+        <!-- Caso 1 - Perfil de Rede -->
+        <div class="case-study mb-4 p-4" style="background: linear-gradient(135deg, var(--bg-terminal) 0%, var(--bg-card) 100%); border-radius: 12px; border: 1px solid rgba(102, 191, 83, 0.2);">
+            <div class="d-flex align-items-center mb-3">
+                <div class="case-icon me-3">
+                    <i class="fas fa-hospital fa-2x" style="color: var(--cisco-green);"></i>
+                </div>
+                <div>
+                    <h4 class="mb-0" style="color: var(--cisco-green);">🏥 Caso 1: O Hospital que Detectou um Ataque Silencioso</h4>
+                    <span class="badge-cisco mt-1">Perfil de Rede & Detecção de Anomalias</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p><strong>A situação:</strong> O Hospital Santa Clara mantinha um perfil de rede há 6 meses. Tudo funcionava normalmente até que, em um domingo à noite, o sistema de criação de perfis detectou algo estranho.</p>
+                    <p><strong>O que aconteceu:</strong> Um funcionário clicou em um link malicioso. O malware começou a se espalhar lateralmente entre os computadores da administração - algo que <strong class="text-cisco">nunca acontecia no comportamento normal da rede</strong>, já que clientes não se comunicavam diretamente entre si.</p>
+                    <p><strong>A linha de base salvou o dia:</strong> O desvio foi detectado em <strong>menos de 5 minutos</strong>. O time de segurança isolou os hosts infectados antes que o ransomware criptografasse os prontuários dos pacientes.</p>
+                    <div class="alert-cisco mt-2 small">
+                        <i class="fas fa-lightbulb me-1"></i> <strong>Ligação com a teoria:</strong> O aumento de tráfego host-to-host é um indicador clássico de malware se espalhando lateralmente - exatamente como visto na seção 25.1.1.
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1);">
+                        <i class="fas fa-chart-line fa-3x mb-2" style="color: var(--cisco-green);"></i>
+                        <p class="small mb-0"><strong>Desvio detectado:</strong> Tráfego host-to-host ↑ 450%</p>
+                        <p class="small"><strong>Tempo de resposta:</strong> 5 minutos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Caso 2 - CVSS na Prática -->
+        <div class="case-study mb-4 p-4" style="background: linear-gradient(135deg, var(--bg-terminal) 0%, var(--bg-card) 100%); border-radius: 12px; border: 1px solid rgba(102, 191, 83, 0.2);">
+            <div class="d-flex align-items-center mb-3">
+                <div class="case-icon me-3">
+                    <i class="fas fa-university fa-2x" style="color: var(--cisco-green);"></i>
+                </div>
+                <div>
+                    <h4 class="mb-0" style="color: var(--cisco-green);">🏦 Caso 2: O Banco que Priorizou a Vulnerabilidade Certa</h4>
+                    <span class="badge-cisco mt-1">CVSS & Priorização de Riscos</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p><strong>A situação:</strong> O Banco Sul resolveria todas as vulnerabilidades em ordem de descoberta. O time de TI ficava sobrecarregado e vulnerabilidades críticas demoravam semanas para serem corrigidas.</p>
+                    <p><strong>A mudança:</strong> Adotaram o <strong class="text-cisco">CVSS</strong> para classificar vulnerabilidades. Um dia receberam dois alertas: uma vulnerabilidade com score <strong>4.2 (Médio)</strong> e outra com score <strong>9.4 (Crítico)</strong>.</p>
+                    <p><strong>O resultado:</strong> A vulnerabilidade crítica (que permitia execução remota de código no servidor de internet banking) foi corrigida em <strong>4 horas</strong>. A de score médio aguardou a próxima janela de manutenção. Um ataque foi tentado no dia seguinte - mas a porta já estava fechada.</p>
+                    <div class="alert-cisco mt-2 small">
+                        <i class="fas fa-lightbulb me-1"></i> <strong>Ligação com a teoria:</strong> Vulnerabilidades acima de 3.9 devem ser resolvidas - quanto maior o score, maior a urgência (seção 25.2.5).
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1);">
+                        <i class="fas fa-chart-simple fa-3x mb-2" style="color: var(--cisco-green);"></i>
+                        <p class="small mb-0"><strong>Score CVSS 9.4:</strong> Crítico</p>
+                        <p class="small"><strong>Tempo de correção:</strong> 4 horas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Caso 3 - Patch Management & BYOD -->
+        <div class="case-study mb-4 p-4" style="background: linear-gradient(135deg, var(--bg-terminal) 0%, var(--bg-card) 100%); border-radius: 12px; border: 1px solid rgba(102, 191, 83, 0.2);">
+            <div class="d-flex align-items-center mb-3">
+                <div class="case-icon me-3">
+                    <i class="fas fa-briefcase fa-2x" style="color: var(--cisco-green);"></i>
+                </div>
+                <div>
+                    <h4 class="mb-0" style="color: var(--cisco-green);">📱 Caso 3: A Consultoria que Perdeu um iPad (e quase os dados do cliente)</h4>
+                    <span class="badge-cisco mt-1">MDM & Gerenciamento de Patches</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p><strong>A situação:</strong> A Consultoria Nexus adotou BYOD (Bring Your Own Device) sem um sistema MDM adequado. Um consultor perdeu seu iPad no aeroporto com dados confidenciais de clientes.</p>
+                    <p><strong>O problema:</strong> Sem MDM, não havia como desativar o dispositivo remotamente ou criptografar os dados. Além disso, seu notebook pessoal (também usado para trabalho) tinha uma vulnerabilidade crítica no Java com <strong>score CVSS 9.8</strong> - mas o patch não foi aplicado porque o funcionário raramente ligava a VPN.</p>
+                    <p><strong>A solução implementada:</strong> Após o incidente, a empresa adotou:
+                        <ul class="text-muted small mt-2">
+                            <li><strong>Cisco Meraki MDM</strong> - para gerenciar dispositivos móveis remotamente</li>
+                            <li><strong>Patch Management baseado em agente</strong> - garantindo que dispositivos fora da rede também recebessem patches</li>
+                            <li><strong>Política de retenção de risco</strong> - para dispositivos que não podiam ser totalmente controlados</li>
+                        </ul>
+                    </p>
+                    <div class="alert-cisco mt-2 small">
+                        <i class="fas fa-lightbulb me-1"></i> <strong>Ligação com a teoria:</strong> MDM permite desativar dispositivo perdido e criptografar dados (25.3.5); abordagem baseada em agente é preferida para dispositivos móveis (25.3.8).
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1);">
+                        <i class="fas fa-tablet-alt fa-3x mb-2" style="color: var(--cisco-green);"></i>
+                        <p class="small mb-0"><strong>Antes:</strong> Sem MDM</p>
+                        <p class="small"><strong>Depois:</strong> Cisco Meraki + Agente de Patch</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Caso 4 - Análise de Risco e Respostas -->
+        <div class="case-study mb-4 p-4" style="background: linear-gradient(135deg, var(--bg-terminal) 0%, var(--bg-card) 100%); border-radius: 12px; border: 1px solid rgba(102, 191, 83, 0.2);">
+            <div class="d-flex align-items-center mb-3">
+                <div class="case-icon me-3">
+                    <i class="fas fa-chart-pie fa-2x" style="color: var(--cisco-green);"></i>
+                </div>
+                <div>
+                    <h4 class="mb-0" style="color: var(--cisco-green);">🏪 Caso 4: A Loja de Conveniência que Escolheu Não Investir (e estava certa)</h4>
+                    <span class="badge-cisco mt-1">Respostas ao Risco (Retenção)</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p><strong>A situação:</strong> A rede de lojas "Mini-Mercado Express" tinha 15 lojas físicas. O sistema de caixa ficava em um computador isolado (sem acesso à internet) e processava apenas transações presenciais.</p>
+                    <p><strong>A avaliação de risco mostrou:</strong>
+                        <ul class="text-muted small">
+                            <li>Probabilidade de ataque cibernético: <strong>Muito Baixa</strong> (sistema isolado)</li>
+                            <li>Custo de mitigação completa (firewall, IDS, monitoramento 24/7): <strong>R$ 50.000/mês</strong></li>
+                            <li>Impacto potencial de um ataque: <strong>R$ 10.000</strong> (perda de um dia de vendas)</li>
+                        </ul>
+                    </p>
+                    <p><strong>A decisão:</strong> A empresa escolheu <strong class="text-cisco">RETAÇÃO DE RISCO</strong> - aceitar o risco e não tomar ação adicional, pois o custo de mitigação superava em muito o potencial de perda.</p>
+                    <div class="alert-cisco mt-2 small">
+                        <i class="fas fa-lightbulb me-1"></i> <strong>Ligação com a teoria:</strong> Retenção de risco é aceitável quando o impacto potencial é baixo e o custo de mitigação é alto (seção 25.3.2).
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="p-3 rounded" style="background: rgba(102, 191, 83, 0.1);">
+                        <i class="fas fa-coins fa-3x mb-2" style="color: var(--cisco-green);"></i>
+                        <p class="small mb-0"><strong>Decisão:</strong> Retenção de Risco</p>
+                        <p class="small">Custo mitigação >> Impacto potencial</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESUMO VISUAL EM FORMA DE MAPA MENTAL -->
+    <div class="content-card mt-4" id="mapa-mental">
+        <h3 class="cisco-subtitle mb-3">
+            <i class="fas fa-brain me-2" style="color: var(--cisco-green);"></i>
+            Mapa Mental do Módulo 25
+        </h3>
+        
+        <div class="row text-center">
+            <div class="col-md-3 mb-3">
+                <div class="p-3 rounded-circle mx-auto" style="width: 80px; height: 80px; background: rgba(102, 191, 83, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-chart-line fa-3x" style="color: var(--cisco-green);"></i>
+                </div>
+                <h6 class="mt-2">25.1 Perfil</h6>
+                <p class="small text-muted">Linha de base · Detecção de anomalias · Testes (Análise Risco/Vuln/Pentest)</p>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 rounded-circle mx-auto" style="width: 80px; height: 80px; background: rgba(102, 191, 83, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-chart-simple fa-3x" style="color: var(--cisco-green);"></i>
+                </div>
+                <h6 class="mt-2">25.2 CVSS</h6>
+                <p class="small text-muted">3 grupos (Base/Temporal/Ambiental) · Score 0-10 · CVE/NVD</p>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 rounded-circle mx-auto" style="width: 80px; height: 80px; background: rgba(102, 191, 83, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-shield-halved fa-3x" style="color: var(--cisco-green);"></i>
+                </div>
+                <h6 class="mt-2">25.3 Gestão</h6>
+                <p class="small text-muted">Risco (4 respostas) · Ativos · MDM · Configuração · Patches</p>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="p-3 rounded-circle mx-auto" style="width: 80px; height: 80px; background: rgba(102, 191, 83, 0.1); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-check-double fa-3x" style="color: var(--cisco-green);"></i>
+                </div>
+                <h6 class="mt-2">Ferramentas</h6>
+                <p class="small text-muted">Nmap, OpenVAS, Nessus, Metasploit, SCCM, SolarWinds, Cisco Meraki</p>
+            </div>
+        </div>
+        
+        <div class="terminal-card mt-4 text-center">
+            <pre class="mb-0"><code>╔══════════════════════════════════════════════════════════════════╗
+║  🎯 LEMBRETE FINAL                                               ║
+╠══════════════════════════════════════════════════════════════════╣
+║  • Crie perfis de rede para ter uma LINHA DE BASE confiável      ║
+║  • Use CVSS para PRIORIZAR vulnerabilidades (score > 3.9 = ação) ║
+║  • Gerencie RISCOS: previna, reduza, compartilhe ou retenha      ║
+║  • Patches são a forma MAIS EFICAZ de mitigar vulnerabilidades   ║
+║  • MDM é essencial para dispositivos móveis (BYOD)               ║
+╚══════════════════════════════════════════════════════════════════╝</code></pre>
+        </div>
+    </div>
+
+    <!-- QUESTIONÁRIO FINAL DE FIXAÇÃO -->
+    <div class="content-card mt-4" id="quiz-final">
+        <h3 class="cisco-subtitle mb-3">
+            <i class="fas fa-star-of-life me-2" style="color: var(--cisco-green);"></i>
+            Desafio Final: Você está pronto para o exame?
+        </h3>
+        
+        <div class="quiz-container">
+            <!-- Pergunta Final 1 -->
+            <div class="quiz-question mb-4 p-3" style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green);">
+                <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green);"></i>Desafio 1:</p>
+                <p>Uma empresa nota que, às 3h da manhã, há um pico incomum de tráfego de dados saindo da rede para um servidor na Rússia. Que elemento do perfil de rede está alertando os analistas?</p>
+                <div class="quiz-options ms-3">
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q1" id="final_q1_a" value="duracao"><label class="form-check-label text-secondary" for="final_q1_a">Duração da sessão</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q1" id="final_q1_b" value="throughput"><label class="form-check-label text-secondary" for="final_q1_b">Rendimento total (Throughput)</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q1" id="final_q1_c" value="portas"><label class="form-check-label text-secondary" for="final_q1_c">Portas usadas</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q1" id="final_q1_d" value="espaco"><label class="form-check-label text-secondary" for="final_q1_d">Espaço de endereço de ativo crítico</label></div>
+                </div>
+                <div class="final-feedback mt-2 small"></div>
+            </div>
+
+            <!-- Pergunta Final 2 -->
+            <div class="quiz-question mb-4 p-3" style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green);">
+                <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green);"></i>Desafio 2:</p>
+                <p>Uma vulnerabilidade tem score CVSS 8.5. Como ela é classificada e qual deve ser a urgência?</p>
+                <div class="quiz-options ms-3">
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q2" id="final_q2_a" value="medio"><label class="form-check-label text-secondary" for="final_q2_a">Médio - resolver quando possível</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q2" id="final_q2_b" value="alto"><label class="form-check-label text-secondary" for="final_q2_b">Alto - resolver com urgência</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q2" id="final_q2_c" value="critico"><label class="form-check-label text-secondary" for="final_q2_c">Crítico - ação imediata</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q2" id="final_q2_d" value="baixo"><label class="form-check-label text-secondary" for="final_q2_d">Baixo - pode ignorar</label></div>
+                </div>
+                <div class="final-feedback mt-2 small"></div>
+            </div>
+
+            <!-- Pergunta Final 3 -->
+            <div class="quiz-question mb-4 p-3" style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green);">
+                <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green);"></i>Desafio 3:</p>
+                <p>Um funcionário vai viajar por 3 meses e continuará trabalhando com seu notebook pessoal. Qual técnica de gerenciamento de patches é MAIS adequada para garantir que o dispositivo receba atualizações?</p>
+                <div class="quiz-options ms-3">
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q3" id="final_q3_a" value="semagente"><label class="form-check-label text-secondary" for="final_q3_a">Varredura sem agente</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q3" id="final_q3_b" value="agente"><label class="form-check-label text-secondary" for="final_q3_b">Baseado em agente</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q3" id="final_q3_c" value="passivo"><label class="form-check-label text-secondary" for="final_q3_c">Monitoramento passivo de rede</label></div>
+                </div>
+                <div class="final-feedback mt-2 small"></div>
+            </div>
+
+            <!-- Pergunta Final 4 -->
+            <div class="quiz-question mb-4 p-3" style="background: var(--bg-terminal); border-radius: 8px; border-left: 3px solid var(--cisco-green);">
+                <p class="fw-semibold mb-2"><i class="fas fa-question-circle me-2" style="color: var(--cisco-green);"></i>Desafio 4:</p>
+                <p>Uma pequena empresa calcula que implementar um SOC 24/7 custaria R$ 200.000/ano, mas o impacto financeiro máximo de um ataque seria R$ 50.000. Qual resposta ao risco é MAIS apropriada?</p>
+                <div class="quiz-options ms-3">
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q4" id="final_q4_a" value="prevencao"><label class="form-check-label text-secondary" for="final_q4_a">Prevenção</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q4" id="final_q4_b" value="reducao"><label class="form-check-label text-secondary" for="final_q4_b">Redução</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q4" id="final_q4_c" value="compartilhamento"><label class="form-check-label text-secondary" for="final_q4_c">Compartilhamento</label></div>
+                    <div class="form-check mb-1"><input class="form-check-input" type="radio" name="final_q4" id="final_q4_d" value="retencao"><label class="form-check-label text-secondary" for="final_q4_d">Retenção</label></div>
+                </div>
+                <div class="final-feedback mt-2 small"></div>
+            </div>
+
+            <button id="checkFinalQuizBtn" class="btn-cisco mt-3"><i class="fas fa-trophy me-2"></i>Verificar Respostas do Desafio Final</button>
+            <div id="finalQuizResult" class="mt-3"></div>
+        </div>
+    </div>
+</section>
+      </div>
+      
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+
+    <script>
+      // Quiz interativo
+      document.getElementById('checkQuizBtn').addEventListener('click', function () {
+        const answers = {
+          q1: 'rendimento_total',
+          q2: 'duracao_sessao',
+          q3: 'portas_usadas',
+          q4: 'espaco_endereco'
+        }
+
+        let correctCount = 0
+        let feedbackHtml = '<div class="alert-cisco"><i class="fas fa-chart-simple me-2"></i><strong>Resultado:</strong><br>'
+
+        for (let i = 1; i <= 4; i++) {
+          const selected = document.querySelector(`input[name="q${i}"]:checked`)
+          const isCorrect = selected && selected.value === answers[`q${i}`]
+          if (isCorrect) correctCount++
+
+          const feedbackDiv = document.querySelector(`#verifique-compreensao .quiz-question:nth-child(${i}) .quiz-feedback`)
+          if (selected) {
+            if (isCorrect) {
+              feedbackDiv.innerHTML = '<span style="color: var(--cisco-green);"><i class="fas fa-check-circle me-1"></i> ✅ Correto!</span>'
+            } else {
+              feedbackDiv.innerHTML = `<span style="color: var(--accent-red);"><i class="fas fa-times-circle me-1"></i> ❌ Incorreto. A resposta correta é: ${answers[`q${i}`].replace(/_/g, ' ')}</span>`
+            }
+          } else {
+            feedbackDiv.innerHTML =
+              '<span style="color: var(--accent-yellow);"><i class="fas fa-exclamation-triangle me-1"></i> ⚠️ Selecione uma resposta</span>'
+          }
+        }
+
+        feedbackHtml += `Você acertou ${correctCount} de 4 perguntas.`
+        if (correctCount === 4) {
+          feedbackHtml += '<br>🎉 Excelente! Você compreendeu os elementos do perfil de rede.</div>'
+        } else {
+          feedbackHtml += '<br>📚 Revise a tabela de elementos do perfil de rede na seção 25.1.1</div>'
+        }
+
+        document.getElementById('quizResult').innerHTML = feedbackHtml
+
+        // Scroll para o resultado
+        document.getElementById('quizResult').scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      })
+    </script>
+    <script>
+      // Quiz CVSS
+      document.getElementById('checkCvssQuizBtn').addEventListener('click', function () {
+        const answers = {
+          cvss_q1: 'privilegios',
+          cvss_q2: 'complexidade',
+          cvss_q3: 'escopo',
+          cvss_q4: 'vetor',
+          cvss_q5: 'interacao'
+        }
+
+        let correctCount = 0
+        let feedbackHtml = '<div class="alert-cisco"><i class="fas fa-chart-simple me-2"></i><strong>Resultado CVSS:</strong><br>'
+
+        for (let i = 1; i <= 5; i++) {
+          const selected = document.querySelector(`input[name="cvss_q${i}"]:checked`)
+          const isCorrect = selected && selected.value === answers[`cvss_q${i}`]
+          if (isCorrect) correctCount++
+
+          const feedbackDiv = document.querySelector(`#verifique-compreensao-cvss .quiz-question:nth-child(${i}) .cvss-feedback`)
+          if (feedbackDiv) {
+            if (selected && isCorrect) {
+              feedbackDiv.innerHTML = '<span style="color: var(--cisco-green);"><i class="fas fa-check-circle me-1"></i> ✅ Correto!</span>'
+            } else if (selected && !isCorrect) {
+              let correctAnswer = ''
+              switch (answers[`cvss_q${i}`]) {
+                case 'privilegios':
+                  correctAnswer = 'Privilégios necessários'
+                  break
+                case 'complexidade':
+                  correctAnswer = 'Complexidade do ataque'
+                  break
+                case 'escopo':
+                  correctAnswer = 'Escopo'
+                  break
+                case 'vetor':
+                  correctAnswer = 'Vetor de ataque'
+                  break
+                case 'interacao':
+                  correctAnswer = 'Interação do usuário'
+                  break
+              }
+              feedbackDiv.innerHTML = `<span style="color: var(--accent-red);"><i class="fas fa-times-circle me-1"></i> ❌ Incorreto. Resposta correta: ${correctAnswer}</span>`
+            } else {
+              feedbackDiv.innerHTML =
+                '<span style="color: var(--accent-yellow);"><i class="fas fa-exclamation-triangle me-1"></i> ⚠️ Selecione uma resposta</span>'
+            }
+          }
+        }
+
+        feedbackHtml += `Você acertou ${correctCount} de 5 perguntas.`
+        if (correctCount === 5) {
+          feedbackHtml += '<br>🎉 Excelente! Você compreendeu as métricas do CVSS!</div>'
+        } else {
+          feedbackHtml += '<br>📚 Revise as métricas de explorabilidade e impacto do CVSS na seção 25.2.3</div>'
+        }
+
+        document.getElementById('cvssQuizResult').innerHTML = feedbackHtml
+        document.getElementById('cvssQuizResult').scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+      })
+    </script>
+    <script>
+      // Quiz Respostas ao Risco
+      if (document.getElementById('checkRiskQuizBtn')) {
+        document.getElementById('checkRiskQuizBtn').addEventListener('click', function () {
+          const answers = {
+            risk_q1: 'retencao',
+            risk_q2: 'compartilhamento',
+            risk_q3: 'prevencao',
+            risk_q4: 'reducao'
+          }
+
+          let correctCount = 0
+
+          for (let i = 1; i <= 4; i++) {
+            const selected = document.querySelector(`input[name="risk_q${i}"]:checked`)
+            const isCorrect = selected && selected.value === answers[`risk_q${i}`]
+            if (isCorrect) correctCount++
+
+            const feedbackDiv = document.querySelector(`#respostas-risco .quiz-question:nth-child(${i + 1}) .risk-feedback`)
+            if (feedbackDiv) {
+              if (selected && isCorrect) {
+                feedbackDiv.innerHTML =
+                  '<span style="color: var(--cisco-green);"><i class="fas fa-check-circle me-1"></i> ✅ Correto!</span>'
+              } else if (selected && !isCorrect) {
+                let correctAnswer = ''
+                switch (answers[`risk_q${i}`]) {
+                  case 'prevencao':
+                    correctAnswer = 'Prevenção de riscos'
+                    break
+                  case 'reducao':
+                    correctAnswer = 'Redução de risco'
+                    break
+                  case 'retencao':
+                    correctAnswer = 'Retenção de risco'
+                    break
+                  case 'compartilhamento':
+                    correctAnswer = 'Compartilhamento de riscos'
+                    break
+                }
+                feedbackDiv.innerHTML = `<span style="color: var(--accent-red);"><i class="fas fa-times-circle me-1"></i> ❌ Incorreto. Resposta correta: ${correctAnswer}</span>`
+              } else {
+                feedbackDiv.innerHTML =
+                  '<span style="color: var(--accent-yellow);"><i class="fas fa-exclamation-triangle me-1"></i> ⚠️ Selecione uma resposta</span>'
+              }
+            }
+          }
+
+          const resultDiv = document.getElementById('riskQuizResult')
+          if (resultDiv) {
+            resultDiv.innerHTML = `<div class="alert-cisco"><i class="fas fa-chart-simple me-2"></i><strong>Resultado:</strong> Você acertou ${correctCount} de 4 perguntas.</div>`
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+          }
+        })
+      }
+    </script>
+    <script>
+      // Quiz Gerenciamento de Dispositivos
+      if (document.getElementById('checkDeviceQuizBtn')) {
+        document.getElementById('checkDeviceQuizBtn').addEventListener('click', function () {
+          const answers = {
+            device_q1: 'patch',
+            device_q2: 'configuracao',
+            device_q3: 'ativos',
+            device_q4: 'vulnerabilidade',
+            device_q5: 'mdm'
+          }
+
+          let correctCount = 0
+
+          for (let i = 1; i <= 5; i++) {
+            const selected = document.querySelector(`input[name="device_q${i}"]:checked`)
+            const isCorrect = selected && selected.value === answers[`device_q${i}`]
+            if (isCorrect) correctCount++
+
+            const feedbackDiv = document.querySelector(
+              `#verifique-compreensao-dispositivos .quiz-question:nth-child(${i}) .device-feedback`
+            )
+            if (feedbackDiv) {
+              if (selected && isCorrect) {
+                feedbackDiv.innerHTML =
+                  '<span style="color: var(--cisco-green);"><i class="fas fa-check-circle me-1"></i> ✅ Correto!</span>'
+              } else if (selected && !isCorrect) {
+                let correctAnswer = ''
+                switch (answers[`device_q${i}`]) {
+                  case 'patch':
+                    correctAnswer = 'Gerenciamento de patch empresarial'
+                    break
+                  case 'configuracao':
+                    correctAnswer = 'Gerenciamento de configuração'
+                    break
+                  case 'ativos':
+                    correctAnswer = 'Gerenciamento de ativos'
+                    break
+                  case 'vulnerabilidade':
+                    correctAnswer = 'Gerenciamento de vulnerabilidade'
+                    break
+                  case 'mdm':
+                    correctAnswer = 'Gerenciamento de dispositivos móveis'
+                    break
+                }
+                feedbackDiv.innerHTML = `<span style="color: var(--accent-red);"><i class="fas fa-times-circle me-1"></i> ❌ Incorreto. Resposta correta: ${correctAnswer}</span>`
+              } else {
+                feedbackDiv.innerHTML =
+                  '<span style="color: var(--accent-yellow);"><i class="fas fa-exclamation-triangle me-1"></i> ⚠️ Selecione uma resposta</span>'
+              }
+            }
+          }
+
+          const resultDiv = document.getElementById('deviceQuizResult')
+          if (resultDiv) {
+            let message = ''
+            if (correctCount === 5) {
+              message = '🎉 Excelente! Você compreendeu todas as atividades de gerenciamento de dispositivos!'
+            } else {
+              message = `📚 Você acertou ${correctCount} de 5 perguntas. Revise as seções 25.3.1 a 25.3.8.`
+            }
+            resultDiv.innerHTML = `<div class="alert-cisco"><i class="fas fa-chart-simple me-2"></i><strong>Resultado:</strong> ${message}</div>`
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+          }
+        })
+      }
+    </script>
+    <script>
+// Quiz Final de Fixação
+if(document.getElementById('checkFinalQuizBtn')) {
+    document.getElementById('checkFinalQuizBtn').addEventListener('click', function() {
+        const answers = {
+            final_q1: 'throughput',
+            final_q2: 'alto',
+            final_q3: 'agente',
+            final_q4: 'retencao'
+        };
+        
+        let correctCount = 0;
+        const explanations = {
+            final_q1: 'Rendimento total (Throughput) mede a quantidade de dados que trafega de uma fonte para um destino. O pico incomum às 3h indica possível exfiltração de dados.',
+            final_q2: 'Score 8.5 está na faixa 7.0-8.9 = ALTO. Vulnerabilidades acima de 3.9 devem ser resolvidas com urgência crescente conforme o score.',
+            final_q3: 'Baseado em agente é o meio preferido para dispositivos móveis, pois o agente continua funcionando mesmo fora da rede corporativa.',
+            final_q4: 'Retenção de risco é apropriada quando o custo de mitigação supera o impacto potencial do risco.'
+        };
+        
+        for(let i = 1; i <= 4; i++) {
+            const selected = document.querySelector(`input[name="final_q${i}"]:checked`);
+            const isCorrect = selected && selected.value === answers[`final_q${i}`];
+            if(isCorrect) correctCount++;
+            
+            const feedbackDiv = document.querySelector(`#quiz-final .quiz-question:nth-child(${i}) .final-feedback`);
+            if(feedbackDiv) {
+                if(selected && isCorrect) {
+                    feedbackDiv.innerHTML = `<span style="color: var(--cisco-green);"><i class="fas fa-check-circle me-1"></i> ✅ Correto! ${explanations[`final_q${i}`]}</span>`;
+                } else if(selected && !isCorrect) {
+                    let correctAnswer = '';
+                    switch(answers[`final_q${i}`]) {
+                        case 'throughput': correctAnswer = 'Rendimento total (Throughput)'; break;
+                        case 'alto': correctAnswer = 'Alto - resolver com urgência'; break;
+                        case 'agente': correctAnswer = 'Baseado em agente'; break;
+                        case 'retencao': correctAnswer = 'Retenção'; break;
+                    }
+                    feedbackDiv.innerHTML = `<span style="color: var(--accent-red);"><i class="fas fa-times-circle me-1"></i> ❌ Incorreto. Resposta: ${correctAnswer}. ${explanations[`final_q${i}`]}</span>`;
+                } else {
+                    feedbackDiv.innerHTML = '<span style="color: var(--accent-yellow);"><i class="fas fa-exclamation-triangle me-1"></i> ⚠️ Selecione uma resposta</span>';
+                }
+            }
+        }
+        
+        const resultDiv = document.getElementById('finalQuizResult');
+        let message = '';
+        let emoji = '';
+        
+        if(correctCount === 4) {
+            emoji = '🏆🎉';
+            message = `PARABÉNS! Você acertou TODAS as ${correctCount} questões! Domínio completo do Módulo 25 confirmado!`;
+        } else if(correctCount === 3) {
+            emoji = '👍📚';
+            message = `Bom trabalho! Você acertou ${correctCount} de 4. Revise apenas um ou dois conceitos e estará pronto para a certificação!`;
+        } else {
+            emoji = '📖💪';
+            message = `Você acertou ${correctCount} de 4. Revisite o glossário e os casos de uso - você consegue!`;
+        }
+        
+        resultDiv.innerHTML = `<div class="alert-cisco"><i class="fas ${correctCount === 4 ? 'fa-trophy' : 'fa-chart-simple'} me-2"></i><strong>${emoji} Resultado Final:</strong> ${message}</div>`;
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+}
+</script>
+  </body>
+</html>

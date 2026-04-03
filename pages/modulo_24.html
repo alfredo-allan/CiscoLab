@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NETSEC | Módulo 24 - Inteligência de Ameaças</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ============================================ -->
+    <!-- NAVBAR PADRÃO (Módulo 24)                    -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 24 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li><h6 class="dropdown-header text-cisco-green">📡 MÓDULO 24: INTELIGÊNCIA DE AMEAÇAS</h6></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#introducao">📘 24.0 Introdução</a></li>
+                <li><a class="dropdown-item" href="#fontes-info">📚 24.1 Fontes de Informação</a></li>
+                <li><a class="dropdown-item" href="#comunidades">🏛️ 24.1.1 Comunidades de Inteligência</a></li>
+                <li><a class="dropdown-item" href="#relatorios-cisco">📊 24.1.2 Relatórios Cisco</a></li>
+                <li><a class="dropdown-item" href="#blogs-podcasts">🎙️ 24.1.3 Blogs e Podcasts</a></li>
+                <li><a class="dropdown-item" href="#servicos-ameacas">🛡️ 24.2 Serviços de Inteligência</a></li>
+                <li><a class="dropdown-item" href="#cisco-talos">🔷 24.2.1 Cisco Talos</a></li>
+                <li><a class="dropdown-item" href="#fireeye">🔥 24.2.2 FireEye</a></li>
+                <li><a class="dropdown-item" href="#ais">🔄 24.2.3 AIS (DHS)</a></li>
+                <li><a class="dropdown-item" href="#cve">📋 24.2.4 CVE (MITRE)</a></li>
+                <li><a class="dropdown-item" href="#padroes">🔗 24.2.5 Padrões STIX/TAXII/CybOX</a></li>
+                <li><a class="dropdown-item" href="#tip">🧠 24.2.6 Plataformas TIP</a></li>
+                <li><a class="dropdown-item" href="#quiz-ameacas">❓ 24.2.7 Verifique sua Compreensão</a></li>
+                <li><a class="dropdown-item" href="#resumo">📝 24.3 Resumo</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#laboratorios">🧪 Laboratórios</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li><a class="dropdown-item" href="#introducao">24.0 Introdução</a></li>
+                  <li><a class="dropdown-item" href="#fontes-info">24.1 Fontes de Informação</a></li>
+                  <li><a class="dropdown-item" href="#servicos-ameacas">24.2 Serviços de Inteligência</a></li>
+                  <li><a class="dropdown-item" href="#cisco-talos">24.2.1 Cisco Talos</a></li>
+                  <li><a class="dropdown-item" href="#fireeye">24.2.2 FireEye</a></li>
+                  <li><a class="dropdown-item" href="#ais">24.2.3 AIS</a></li>
+                  <li><a class="dropdown-item" href="#cve">24.2.4 CVE</a></li>
+                  <li><a class="dropdown-item" href="#padroes">24.2.5 STIX/TAXII/CybOX</a></li>
+                  <li><a class="dropdown-item" href="#tip">24.2.6 TIP</a></li>
+                  <li><a class="dropdown-item" href="#resumo">24.3 Resumo</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CONTEÚDO PRINCIPAL - MÓDULO 24               -->
+    <!-- ============================================ -->
+    <main class="container py-4">
+      <!-- 24.0 INTRODUÇÃO -->
+      <section id="introducao" class="mb-5">
+        <div class="content-card">
+          <span class="badge-cisco mb-3"><i class="fas fa-flag-checkered me-1"></i> Módulo 24</span>
+          <h1 class="cisco-title display-5 mb-4">Inteligência de Ameaças</h1>
+          <p class="lead text-secondary">Avaliar fontes de inteligência de ameaças para se manter atualizado no mundo da cibersegurança.</p>
+        </div>
+
+        <div class="content-card mt-4">
+          <h2 class="section-title">24.0.1 Por que devo fazer este módulo?</h2>
+          <p>
+            É importante que você fique por dentro das informações mais recentes quando se trata de segurança cibernética. Como isso é
+            feito? Leia este módulo para saber mais sobre fontes de informações e serviços de inteligência contra ameaças.
+          </p>
+        </div>
+
+        <div class="content-card mt-4">
+          <h2 class="section-title">24.0.2 O que vou aprender neste módulo?</h2>
+          <div class="mb-3">
+            <span class="badge-cisco-alt"><i class="fas fa-flask me-1"></i> 2 Laboratórios</span>
+            <span class="badge-cisco-alt ms-2"><i class="fas fa-question-circle me-1"></i> 1 Verifique sua Compreensão</span>
+            <span class="badge-cisco-alt ms-2"><i class="fas fa-file-alt me-1"></i> 1 Questionário</span>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Fontes de Informação</strong></td>
+                  <td>Avalie as fontes de informações usadas para comunicar as ameaças emergentes à segurança da rede.</td>
+                </tr>
+                <tr>
+                  <td><strong>Serviços de Inteligência de Ameaças</strong></td>
+                  <td>Descreve vários serviços de inteligência de ameaças.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 24.1 FONTES DE INFORMAÇÃO                    -->
+      <!-- ============================================ -->
+      <section id="fontes-info" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">24.1 Fontes de informação</h2>
+
+        <div class="content-card">
+          <p>Para permanecer eficaz, um profissional de segurança de rede deve:</p>
+          <ul>
+            <li>
+              <strong>Mantenha-se informado sobre as ameaças mais recentes</strong> - Assinar feeds em tempo real, consultar sites de
+              segurança, acompanhar blogs e podcasts.
+            </li>
+            <li><strong>Continuar a atualizar as habilidades</strong> - Participar de treinamentos, workshops e conferências.</li>
+          </ul>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-chart-line me-2"></i>
+            <strong>Nota:</strong> A segurança de rede tem uma curva de aprendizado muito acentuada e exige um compromisso com o
+            desenvolvimento profissional contínuo.
+          </div>
+        </div>
+
+        <!-- 24.1.1 Comunidades -->
+        <div class="content-card mt-4" id="comunidades">
+          <h3 class="section-title">24.1.1 Comunidades de inteligência de rede</h3>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Organização</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>SANS</strong></td>
+                  <td>
+                    Internet Storm Center, NewsBites, @RISK, Alertas de segurança, Sala de Leitura com +1.200 pesquisas, cursos de
+                    segurança.
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>MITRE</strong></td>
+                  <td>Mantém a lista de Vulnerabilidades e Exposições Comuns (CVE).</td>
+                </tr>
+                <tr>
+                  <td><strong>FIRST</strong></td>
+                  <td>Fórum de equipes de resposta a incidentes para cooperação e compartilhamento de informações.</td>
+                </tr>
+                <tr>
+                  <td><strong>SecurityNewsWire</strong></td>
+                  <td>Portal de notícias que agrega alertas, explorações e vulnerabilidades.</td>
+                </tr>
+                <tr>
+                  <td><strong>(ISC)²</strong></td>
+                  <td>Certificações e educação para profissionais de segurança em +135 países.</td>
+                </tr>
+                <tr>
+                  <td><strong>CIS</strong></td>
+                  <td>Centro de Segurança na Internet, com MS-ISAC para governos estaduais/locais.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 24.1.2 Relatórios Cisco -->
+        <div class="content-card mt-4" id="relatorios-cisco">
+          <h3 class="section-title">24.1.2 Relatórios de Segurança Cibernética da Cisco</h3>
+          <p>
+            O <strong>Cisco Annual Cybersecurity Report</strong> e o <strong>Mid-Year Cybersecurity Report</strong> fornecem atualizações
+            sobre preparação de segurança, análise de vulnerabilidades, adware, spam e muito mais. Analistas de segurança devem assinar e
+            ler esses relatórios.
+          </p>
+        </div>
+
+        <!-- 24.1.3 Blogs e Podcasts -->
+        <div class="content-card mt-4" id="blogs-podcasts">
+          <h3 class="section-title">24.1.3 Blogs e Podcasts de segurança</h3>
+          <p>
+            A Cisco fornece blogs de vários especialistas do Cisco Talos Group. O Cisco Talos também oferece uma série de mais de
+            <strong>80 podcasts</strong> que podem ser reproduzidos ou baixados.
+          </p>
+          <div class="terminal-card mt-2 p-2">
+            <i class="fas fa-podcast me-2" style="color: var(--cisco-green)"></i>
+            <strong>Dica:</strong> Inscreva-se para receber notificações de novos blogs por e-mail.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 24.2 SERVIÇOS DE INTELIGÊNCIA DE AMEAÇAS    -->
+      <!-- ============================================ -->
+      <section id="servicos-ameacas" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">24.2 Serviços de inteligência de ameaças</h2>
+
+        <!-- 24.2.1 Cisco Talos -->
+        <div class="content-card" id="cisco-talos">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="fab fa-cisco fa-2x" style="color: var(--cisco-green)"></i>
+            <span class="badge-cisco">Cisco Talos Threat Intelligence Group</span>
+          </div>
+          <p>
+            Os serviços de inteligência contra ameaças permitem a troca de informações sobre ameaças, como vulnerabilidades, indicadores de
+            comprometimento (IOC) e técnicas de mitigação. Essas informações são compartilhadas com pessoal e sistemas de segurança.
+          </p>
+          <p>
+            <strong>Talos</strong> é uma das maiores equipes de inteligência de ameaças comerciais do mundo, composta por pesquisadores,
+            analistas e engenheiros. O objetivo é ajudar a proteger usuários, dados e infraestrutura de adversários ativos.
+          </p>
+          <div class="terminal-card mt-2 p-2">
+            <i class="fas fa-database me-2" style="color: var(--cisco-green)"></i>
+            <strong>Produtos Talos:</strong> Snort.org, ClamAV, SpamCop
+          </div>
+        </div>
+
+        <!-- 24.2.2 FireEye -->
+        <div class="content-card mt-4" id="fireeye">
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <i class="fas fa-fire fa-2x" style="color: var(--accent-red)"></i>
+            <span class="badge-cisco">FireEye Helix Security Platform</span>
+          </div>
+          <p>
+            A <strong>FireEye</strong> usa uma abordagem de três frentes: inteligência de segurança, experiência em segurança e tecnologia.
+            A <strong>Helix Security Platform</strong> é uma plataforma de operações de segurança hospedada em nuvem que combina SIEM e
+            SOAR, usando análise comportamental e detecção avançada de ameaças.
+          </p>
+        </div>
+
+        <!-- 24.2.3 AIS -->
+        <div class="content-card mt-4" id="ais">
+          <h3 class="section-title">24.2.3 Compartilhamento automatizado de indicadores (AIS)</h3>
+          <p>
+            O <strong>Departamento de Segurança Interna dos EUA (DHS)</strong> oferece um serviço gratuito chamado
+            <strong>Automated Indicator Sharing (AIS)</strong>. Permite a troca em tempo real de indicadores de ameaças cibernéticas (IPs
+            maliciosos, e-mails de phishing) entre o Governo Federal dos EUA e o setor privado.
+          </p>
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-sync-alt me-2"></i>
+            Assim que uma ameaça é reconhecida, é imediatamente compartilhada com a comunidade.
+          </div>
+        </div>
+
+        <!-- 24.2.4 CVE -->
+        <div class="content-card mt-4" id="cve">
+          <h3 class="section-title">24.2.4 Banco de Dados de Vulnerabilidades e Exposições Comuns (CVE)</h3>
+          <p>
+            O governo dos EUA patrocinou a <strong>MITRE Corporation</strong> para criar e manter um catálogo de vulnerabilidades de
+            segurança chamadas <strong>Common Vulnerabilities and Exposures (CVE)</strong>. O CVE serve como um dicionário de nomes comuns
+            (identificadores CVE) para vulnerabilidades publicamente conhecidas.
+          </p>
+          <div class="terminal-card p-2 mt-2 text-center">
+            <code>CVE-2024-XXXX - Exemplo de identificador de vulnerabilidade</code>
+          </div>
+        </div>
+
+        <!-- 24.2.5 Padrões STIX/TAXII/CybOX -->
+        <div class="content-card mt-4" id="padroes">
+          <h3 class="section-title">24.2.5 Padrões de comunicação de inteligência contra ameaças</h3>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="terminal-card p-2 text-center h-100">
+                <i class="fas fa-code-branch fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <strong>STIX</strong>
+                <p class="small mb-0 mt-1">
+                  Structured Threat Information Expression. Especificações para troca de informações sobre ameaças.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card p-2 text-center h-100">
+                <i class="fas fa-exchange-alt fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <strong>TAXII</strong>
+                <p class="small mb-0 mt-1">Trusted Automated Exchange of Indicator Information. Protocolo sobre HTTPS.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card p-2 text-center h-100">
+                <i class="fas fa-chart-bar fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <strong>CybOX</strong>
+                <p class="small mb-0 mt-1">Cyber Observable Expression. Esquemas para caracterizar eventos de rede.</p>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3">
+            <strong>MISP</strong> (Malware Information Sharing Platform) é uma plataforma de código aberto apoiada pela União Europeia,
+            usada por mais de 6.000 organizações.
+          </p>
+        </div>
+
+        <!-- 24.2.6 TIP -->
+        <div class="content-card mt-4" id="tip">
+          <h3 class="section-title">24.2.6 Plataformas de inteligência de ameaças (TIP)</h3>
+          <p>
+            Uma <strong>Threat Intelligence Platform (TIP)</strong> centraliza a coleta de dados de ameaças de várias fontes. Três tipos
+            principais de dados:
+          </p>
+          <ul>
+            <li><strong>IOC</strong> - Indicadores de Comprometimento</li>
+            <li><strong>TTP</strong> - Ferramentas, Técnicas e Procedimentos</li>
+            <li><strong>Reputação</strong> - Sobre destinos ou domínios da Internet</li>
+          </ul>
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-honey-pot me-2"></i>
+            <strong>Honeypots:</strong> Redes simuladas para atrair atacantes e coletar informações sobre ameaças.
+          </div>
+        </div>
+
+        <!-- 24.2.7 Quiz -->
+        <div class="content-card mt-4" id="quiz-ameacas">
+          <h3 class="section-title">24.2.7 Verifique sua Compreensão</h3>
+
+          <div class="content-card-accent p-3 mb-3">
+            <p><strong>Pergunta 1:</strong> Qual é o serviço gratuito oferecido pelo Departamento de Segurança Interna dos EUA?</p>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="d-block"><input type="radio" name="q1" value="fireeye" /> FireEye Helix</label>
+                <label class="d-block"><input type="radio" name="q1" value="talos" /> Talos</label>
+                <label class="d-block"><input type="radio" name="q1" value="cve" /> CVE</label>
+                <label class="d-block"><input type="radio" name="q1" value="ais" /> AIS</label>
+              </div>
+            </div>
+            <div id="feedback1" class="small mt-2" style="display: none"></div>
+          </div>
+
+          <div class="content-card-accent p-3 mb-3">
+            <p>
+              <strong>Pergunta 2:</strong> O que é uma equipe de inteligência de ameaças líder mundial com o objetivo de ajudar a proteger
+              os usuários, dados e infraestrutura corporativos?
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="d-block"><input type="radio" name="q2" value="talos" /> Talos</label>
+                <label class="d-block"><input type="radio" name="q2" value="cve" /> CVE</label>
+                <label class="d-block"><input type="radio" name="q2" value="ais" /> AIS</label>
+                <label class="d-block"><input type="radio" name="q2" value="helix" /> FireEye Helix</label>
+              </div>
+            </div>
+            <div id="feedback2" class="small mt-2" style="display: none"></div>
+          </div>
+
+          <div class="content-card-accent p-3 mb-3">
+            <p>
+              <strong>Pergunta 3:</strong> Qual plataforma de operações de segurança integra e aprimora uma variedade de ferramentas de
+              segurança e inteligência contra ameaças?
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="d-block"><input type="radio" name="q3" value="cve" /> CVE</label>
+                <label class="d-block"><input type="radio" name="q3" value="ais" /> AIS</label>
+                <label class="d-block"><input type="radio" name="q3" value="talos" /> Talos</label>
+                <label class="d-block"><input type="radio" name="q3" value="helix" /> FireEye Helix</label>
+              </div>
+            </div>
+            <div id="feedback3" class="small mt-2" style="display: none"></div>
+          </div>
+
+          <div class="content-card-accent p-3 mb-4">
+            <p>
+              <strong>Pergunta 4:</strong> Quais são as três especificações de compartilhamento de informações de inteligência de ameaças?
+            </p>
+            <div class="row">
+              <div class="col-md-6">
+                <label class="d-block"><input type="checkbox" name="q4_cyberox" /> CyberOx</label>
+                <label class="d-block"><input type="checkbox" name="q4_taxii" /> TAXII</label>
+                <label class="d-block"><input type="checkbox" name="q4_stix" /> STIX</label>
+                <label class="d-block"><input type="checkbox" name="q4_helix" /> FireEye Helix</label>
+              </div>
+            </div>
+            <div id="feedback4" class="small mt-2" style="display: none"></div>
+          </div>
+
+          <div class="d-flex gap-3 justify-content-center flex-wrap">
+            <button class="btn-cisco" onclick="resetQuiz()"><i class="fas fa-undo-alt me-2"></i>Redefinir</button>
+            <button class="btn-cisco" onclick="checkQuiz()"><i class="fas fa-paper-plane me-2"></i>Enviar</button>
+            <button class="btn-cisco" onclick="showAnswers()"><i class="fas fa-eye me-2"></i>Mostrar respostas</button>
+          </div>
+          <div id="quizResult" class="mt-4" style="display: none">
+            <div class="alert-cisco" id="resultMessage"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- 24.3 RESUMO DO MÓDULO                        -->
+      <!-- ============================================ -->
+      <section id="resumo" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4">24.3 Resumo de Inteligência de Ameaças</h2>
+
+        <div class="content-card">
+          <div class="accordion" id="accordionResumo">
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoFontes"
+                >
+                  <i class="fas fa-database me-2" style="color: var(--cisco-green)"></i> Fontes de informação
+                </button>
+              </h2>
+              <div id="resumoFontes" class="accordion-collapse collapse">
+                <div class="accordion-body text-secondary">
+                  Organizações que fornecem inteligência de rede: SANS, MITRE, FIRST, SecurityNewsWire, (ISC)², CIS. O Cisco Annual
+                  Cybersecurity Report é um ótimo recurso. Também é útil ler blogs e ouvir podcasts.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-secondary mb-2">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed bg-dark text-white"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoServicos"
+                >
+                  <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i> Serviços de inteligência de ameaças
+                </button>
+              </h2>
+              <div id="resumoServicos" class="accordion-collapse collapse">
+                <div class="accordion-body text-secondary">
+                  Serviços como Cisco Talos, FireEye Helix e AIS (DHS) permitem troca de informações sobre vulnerabilidades, IOC e TTP.
+                  Padrões como STIX, TAXII e CybOX facilitam o compartilhamento automatizado. O CVE da MITRE cataloga vulnerabilidades
+                  conhecidas.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-card mt-4">
+          <h3 class="section-title">24.3.1 O que aprendi neste módulo?</h3>
+          <p>
+            <strong>Fontes de informação:</strong> Existem muitas organizações que fornecem inteligência de rede. Você deve se manter
+            atualizado sobre as ameaças mais recentes e continuar a atualizar suas habilidades.
+          </p>
+          <p>
+            <strong>Serviços de inteligência de ameaças:</strong> Permitem a troca de informações sobre ameaças, como vulnerabilidades, IOC
+            e técnicas de mitigação. Exemplos: Cisco Talos, FireEye Helix, AIS. Padrões como STIX, TAXII e CybOX permitem troca automatizada
+            em formato padrão.
+          </p>
+          <div class="alert-cisco mt-3 text-center">
+            <i class="fas fa-trophy me-2"></i>
+            <strong>Parabéns!</strong> Você concluiu o Módulo 24 - Inteligência de Ameaças! 🎉
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================ -->
+      <!-- LABORATÓRIOS                                 -->
+      <!-- ============================================ -->
+      <section id="laboratorios" class="mb-5">
+        <h2 class="cisco-title display-6 mb-4"><i class="fas fa-flask me-2"></i> Laboratórios</h2>
+        <div class="content-card">
+          <p>Este módulo contém <strong>2 laboratórios práticos</strong> para aplicação dos conceitos de inteligência de ameaças.</p>
+          <div class="row g-3 mt-2">
+            <div class="col-md-6">
+              <div class="terminal-card p-3"><i class="fas fa-search me-2"></i> Lab 1: Pesquisa de CVE e Análise de Vulnerabilidades</div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-share-alt me-2"></i> Lab 2: Simulação de Compartilhamento de IOC com STIX/TAXII
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTÃO DE NAVEGAÇÃO -->
+      <div class="d-flex justify-content-between mt-5 pt-3">
+        <a href="modulo_23.html" class="btn-cisco"><i class="fas fa-arrow-left me-2"></i> Módulo 23</a>
+        <a href="modulo_25.html" class="btn-cisco"><i class="fas fa-arrow-right me-2"></i> Módulo 25</a>
+      </div>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER PADRÃO                                -->
+    <!-- ============================================ -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+
+    <script>
+      // Quiz interativo
+      const correctAnswers = {
+        q1: 'ais',
+        q2: 'talos',
+        q3: 'helix',
+        q4: ['taxii', 'stix']
+      }
+
+      function resetQuiz() {
+        document.querySelectorAll('input[type="radio"]').forEach((r) => (r.checked = false))
+        document.querySelectorAll('input[type="checkbox"]').forEach((c) => (c.checked = false))
+        for (let i = 1; i <= 4; i++) {
+          const fb = document.getElementById(`feedback${i}`)
+          if (fb) fb.style.display = 'none'
+        }
+        document.getElementById('quizResult').style.display = 'none'
+      }
+
+      function checkQuiz() {
+        let acertos = 0
+        let total = 4
+
+        const q1 = document.querySelector('input[name="q1"]:checked')
+        const q2 = document.querySelector('input[name="q2"]:checked')
+        const q3 = document.querySelector('input[name="q3"]:checked')
+
+        const fb1 = document.getElementById('feedback1')
+        const fb2 = document.getElementById('feedback2')
+        const fb3 = document.getElementById('feedback3')
+        const fb4 = document.getElementById('feedback4')
+
+        if (q1 && q1.value === correctAnswers.q1) {
+          acertos++
+          fb1.innerHTML = '<span class="text-success">✅ Correto! AIS é o serviço gratuito do DHS.</span>'
+          fb1.style.display = 'block'
+        } else if (q1) {
+          fb1.innerHTML = '<span class="text-danger">❌ Incorreto. A resposta correta é AIS.</span>'
+          fb1.style.display = 'block'
+        } else {
+          fb1.innerHTML = '<span class="text-warning">⚠️ Selecione uma opção.</span>'
+          fb1.style.display = 'block'
+        }
+
+        if (q2 && q2.value === correctAnswers.q2) {
+          acertos++
+          fb2.innerHTML = '<span class="text-success">✅ Correto! Talos é a equipe de inteligência da Cisco.</span>'
+          fb2.style.display = 'block'
+        } else if (q2) {
+          fb2.innerHTML = '<span class="text-danger">❌ Incorreto. A resposta correta é Talos.</span>'
+          fb2.style.display = 'block'
+        } else {
+          fb2.innerHTML = '<span class="text-warning">⚠️ Selecione uma opção.</span>'
+          fb2.style.display = 'block'
+        }
+
+        if (q3 && q3.value === correctAnswers.q3) {
+          acertos++
+          fb3.innerHTML = '<span class="text-success">✅ Correto! FireEye Helix integra SIEM e SOAR.</span>'
+          fb3.style.display = 'block'
+        } else if (q3) {
+          fb3.innerHTML = '<span class="text-danger">❌ Incorreto. A resposta correta é FireEye Helix.</span>'
+          fb3.style.display = 'block'
+        } else {
+          fb3.innerHTML = '<span class="text-warning">⚠️ Selecione uma opção.</span>'
+          fb3.style.display = 'block'
+        }
+
+        const q4_taxii = document.querySelector('input[name="q4_taxii"]')?.checked
+        const q4_stix = document.querySelector('input[name="q4_stix"]')?.checked
+        const q4_cyberox = document.querySelector('input[name="q4_cyberox"]')?.checked
+
+        if (q4_taxii && q4_stix && !q4_cyberox) {
+          acertos++
+          fb4.innerHTML =
+            '<span class="text-success">✅ Correto! STIX, TAXII e CybOX (embora CybOX esteja incorporado ao STIX atualmente).</span>'
+          fb4.style.display = 'block'
+        } else {
+          fb4.innerHTML = '<span class="text-danger">❌ Incorreto. As especificações são STIX, TAXII e CybOX.</span>'
+          fb4.style.display = 'block'
+        }
+
+        const resultDiv = document.getElementById('quizResult')
+        const resultMsg = document.getElementById('resultMessage')
+        resultMsg.innerHTML = `<i class="fas fa-chart-simple me-2"></i> <strong>Resultado: ${acertos}/${total} acertos</strong>`
+        resultDiv.style.display = 'block'
+      }
+
+      function showAnswers() {
+        document.querySelector('input[name="q1"][value="ais"]').checked = true
+        document.querySelector('input[name="q2"][value="talos"]').checked = true
+        document.querySelector('input[name="q3"][value="helix"]').checked = true
+        document.querySelector('input[name="q4_taxii"]').checked = true
+        document.querySelector('input[name="q4_stix"]').checked = true
+        checkQuiz()
+      }
+
+      // Busca no índice
+      document.getElementById('navSearch')?.addEventListener('input', function (e) {
+        const term = e.target.value.toLowerCase()
+        const items = document.querySelectorAll('#sectionList .dropdown-item')
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase()
+          item.style.display = text.includes(term) ? '' : 'none'
+        })
+      })
+    </script>
+  </body>
+</html>

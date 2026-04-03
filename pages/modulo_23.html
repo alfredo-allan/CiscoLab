@@ -1,0 +1,1670 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 23 | Teste de Segurança de Rede | NETSEC ☠ CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ============================================================ -->
+    <!-- NAVBAR PADRÃO (Módulo 23 ativo)                             -->
+    <!-- ============================================================ -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL (Módulo 23) -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 23 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li><h6 class="dropdown-header text-success">📡 MÓDULO 23: TESTE DE SEGURANÇA DE REDE</h6></li>
+                <li><hr class="dropdown-divider" /></li>
+
+                <!-- 23.0 INTRODUÇÃO -->
+                <li><a class="dropdown-item" href="#introducao">📘 23.0 Introdução</a></li>
+
+                <!-- 23.1 AVALIAÇÕES DE SEGURANÇA -->
+                <li><a class="dropdown-item" href="#avaliacoes">🔍 23.1 Avaliações de Segurança</a></li>
+                <li><a class="dropdown-item" href="#scanners">🛡️ 23.1.1 Scanners de Vulnerabilidade</a></li>
+                <li><a class="dropdown-item" href="#tipos-varreduras">📊 23.1.2 Tipos de Varreduras</a></li>
+                <li><a class="dropdown-item" href="#utilitarios">💻 23.1.3 Utilitários de Linha de Comando</a></li>
+                <li><a class="dropdown-item" href="#automacao-seguranca">🤖 23.1.4 Automação de Segurança (SIEM/SOAR)</a></li>
+                <li><a class="dropdown-item" href="#atividade-siem-soar">🏷️ 23.1.5 Rotulação de Objetivos (Atividade)</a></li>
+
+                <!-- 23.2 TÉCNICAS DE TESTE -->
+                <li><a class="dropdown-item" href="#tecnicas-intro">⚙️ 23.2 Técnicas de Teste de Segurança</a></li>
+                <li><a class="dropdown-item" href="#seguranca-operacoes">🛡️ 23.2.1 Segurança das Operações</a></li>
+                <li><a class="dropdown-item" href="#testando-avaliando">📋 23.2.2 Testando e Avaliando a Segurança</a></li>
+                <li><a class="dropdown-item" href="#tipos-testes">🔬 23.2.3 Tipos de Testes de Rede</a></li>
+                <li><a class="dropdown-item" href="#aplicando-resultados">📈 23.2.4 Aplicando Resultados de Teste</a></li>
+
+                <!-- 23.3 FERRAMENTAS DE TESTE -->
+                <li><a class="dropdown-item" href="#ferramentas-intro">🛠️ 23.3 Ferramentas de Teste de Segurança</a></li>
+                <li><a class="dropdown-item" href="#lista-ferramentas">📦 23.3.1 Ferramentas de Teste de Rede</a></li>
+                <li><a class="dropdown-item" href="#nmap-zenmap">🗺️ 23.3.2 Nmap e Zenmap</a></li>
+                <li><a class="dropdown-item" href="#superscan">🔍 23.3.3 SuperScan</a></li>
+                <li><a class="dropdown-item" href="#siem">📊 23.3.4 SIEM</a></li>
+                <li><a class="dropdown-item" href="#verifique-ferramentas">❓ 23.3.5 Verifique seu Entendimento</a></li>
+
+                <!-- 23.4 TESTE DE PENETRAÇÃO -->
+                <li><a class="dropdown-item" href="#pentest-intro">🎯 23.4 Teste de Penetração</a></li>
+                <li><a class="dropdown-item" href="#niveis-pentest">📦 23.4.1 Níveis de Teste (Black/Gray/White)</a></li>
+                <li><a class="dropdown-item" href="#fases-pentest">📋 23.4.2 Fases do Teste de Penetração</a></li>
+                <li><a class="dropdown-item" href="#times-pentest">👥 23.4.3 Tipos de Exercícios (Red/Blue/White/Purple)</a></li>
+                <li><a class="dropdown-item" href="#bug-bounty">🐛 23.4.4 Bug Bounty</a></li>
+                <li><a class="dropdown-item" href="#packet-analyzer">📡 23.4.5 Analisador de Pacotes</a></li>
+                <li><a class="dropdown-item" href="#sniffing">👁️ 23.4.6 Sniffing</a></li>
+
+                <!-- 23.5 RESUMO -->
+                <li><a class="dropdown-item" href="#resumo-intro">📝 23.5 Resumo de Teste de Segurança</a></li>
+                <li><a class="dropdown-item" href="#resumo-aprendizado">🎓 23.5.1 O que Aprendi neste Módulo</a></li>
+
+                <!-- LABORATÓRIOS E ATIVIDADES -->
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#laboratorios">🧪 Laboratórios Práticos</a></li>
+                <li><a class="dropdown-item" href="#compreensao">✅ Verifique sua Compreensão</a></li>
+              </ul>
+            </li>
+
+            <!-- LABS (link direto) -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li><a class="dropdown-item" href="#introducao">23.0 Introdução</a></li>
+                  <li><a class="dropdown-item" href="#avaliacoes">23.1 Avaliações de Segurança</a></li>
+                  <li><a class="dropdown-item" href="#scanners">23.1.1 Scanners de Vulnerabilidade</a></li>
+                  <li><a class="dropdown-item" href="#tipos-varreduras">23.1.2 Tipos de Varreduras</a></li>
+                  <li><a class="dropdown-item" href="#utilitarios">23.1.3 Utilitários de Linha de Comando</a></li>
+                  <li><a class="dropdown-item" href="#tecnicas">Técnicas de Teste</a></li>
+                  <li><a class="dropdown-item" href="#ferramentas">Ferramentas de Teste</a></li>
+                  <li><a class="dropdown-item" href="#pentest">Teste de Penetração</a></li>
+                  <li><a class="dropdown-item" href="#laboratorios">Laboratórios</a></li>
+                  <li><a class="dropdown-item" href="#compreensao">Verifique sua Compreensão</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- CONTEÚDO PRINCIPAL DO MÓDULO                               -->
+    <!-- ============================================================ -->
+    <main class="container py-5">
+      <!-- TÍTULO PRINCIPAL DO MÓDULO -->
+      <div class="mb-5 reveal">
+        <span class="badge-cisco mb-3"><i class="fas fa-flask me-1"></i> Módulo 23</span>
+        <h1 class="cisco-title display-4 mb-3">Teste de Segurança de Rede</h1>
+        <p class="lead text-secondary">Usar ferramentas para testes de segurança de rede</p>
+        <div class="d-flex flex-wrap gap-3 mt-3">
+          <span class="badge-modulo"><i class="fas fa-video me-1"></i> 2 vídeos</span>
+          <span class="badge-modulo"><i class="fas fa-flask me-1"></i> 1 laboratório</span>
+          <span class="badge-modulo"><i class="fas fa-network-wired me-1"></i> 1 Packet Tracer</span>
+          <span class="badge-modulo"><i class="fas fa-question-circle me-1"></i> Verifique sua compreensão</span>
+          <span class="badge-modulo"><i class="fas fa-clipboard-list me-1"></i> Questionário</span>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.0: INTRODUÇÃO                                       -->
+      <!-- ============================================================ -->
+      <section id="introducao" class="reveal">
+        <h2 class="section-title mb-4">23.0 Introdução</h2>
+
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle">23.0.1 Por que devo fazer este Módulo?</h3>
+          <p>
+            Como um técnico de segurança digital, você fará parte de uma equipe de profissionais cujo trabalho é defender a rede. Este
+            módulo aborda várias técnicas e ferramentas que você usará em sua posição. Você aprenderá sobre ferramentas e técnicas
+            projetadas para avaliar a vulnerabilidade da sua rede. Algumas delas são ferramentas de linha de comando, o teste e avaliação de
+            segurança (ST&E) e teste de penetração. Saber onde e como sua rede está vulnerável é o primeiro passo para criar uma defesa
+            melhor!
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.1: AVALIAÇÕES DE SEGURANÇA                         -->
+      <!-- ============================================================ -->
+      <section id="avaliacoes" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.1 Avaliações de Segurança</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            As avaliações de segurança são fundamentais para identificar vulnerabilidades, configurações incorretas e a falta de controles
+            de segurança em empresas com redes que incluem segmentos, roteadores, firewalls, servidores e outros dispositivos.
+          </p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Título do Tópico</th>
+                  <th>Objetivo do Tópico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Avaliações de Segurança</td>
+                  <td>Use comandos para coletar informações de rede e diagnosticar problemas de conectividade.</td>
+                </tr>
+                <tr>
+                  <td>Técnicas de Teste de Segurança de Rede</td>
+                  <td>Descreve as técnicas usadas nos testes de segurança de rede.</td>
+                </tr>
+                <tr>
+                  <td>Ferramentas de Teste de Segurança de Rede</td>
+                  <td>Descreve as ferramentas usadas nos testes de segurança de rede.</td>
+                </tr>
+                <tr>
+                  <td>Teste de Penetração</td>
+                  <td>Descreva como uma organização usa testes de penetração para avaliar a segurança do sistema.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.1.1: SCANNERS DE VULNERABILIDADE                    -->
+      <!-- ============================================================ -->
+      <section id="scanners" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.1.1 Scanners de Vulnerabilidade</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Um scanner de vulnerabilidades avalia computadores, sistemas de computador, redes ou aplicações, em busca de pontos fracos. Os
+            scanners de vulnerabilidades ajudam a automatizar a auditoria de segurança ao buscar riscos de segurança na rede e produzir uma
+            lista priorizada para abordar as vulnerabilidades.
+          </p>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)"><i class="fas fa-search me-2"></i> O que um scanner procura?</h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-key me-2" style="color: var(--cisco-green)"></i> Uso de senhas padrão ou comuns
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-puzzle-piece me-2" style="color: var(--cisco-green)"></i> Patches não instalados
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3"><i class="fas fa-door-open me-2" style="color: var(--cisco-green)"></i> Portas abertas</div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-cogs me-2" style="color: var(--cisco-green)"></i> Erros de configuração de software e SO
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-ethernet me-2" style="color: var(--cisco-green)"></i> Endereços IP ativos (dispositivos inesperados)
+              </div>
+            </div>
+          </div>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)"><i class="fas fa-chart-line me-2"></i> Funções dos Scanners</h4>
+          <ul class="text-secondary" style="list-style-type: none; padding-left: 0">
+            <li class="mb-2">
+              <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Executar auditoria de conformidade
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Proporcionar patches e atualizações
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Identificar configurações erradas
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Suportar dispositivos móveis e sem fio
+            </li>
+            <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Rastrear malware</li>
+            <li class="mb-2"><i class="fas fa-check-circle me-2" style="color: var(--cisco-green)"></i> Identificar dados confidenciais</li>
+          </ul>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-chart-simple me-2"></i>
+            <strong>Ferramentas mais usadas:</strong> Nessus, Retina, Core Impact e GFI LanGuard
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.1.2: TIPOS DE VARREDURAS                            -->
+      <!-- ============================================================ -->
+      <section id="tipos-varreduras" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.1.2 Tipos de Varreduras</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Ao avaliar um scanner de vulnerabilidades, analise como ele é classificado com relação a precisão, confiabilidade,
+            escalabilidade e geração de relatórios. Você pode escolher um verificador de vulnerabilidades no software ou na nuvem.
+          </p>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)"><i class="fas fa-layer-group me-2"></i> Categorias de Scanners</h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-4">
+              <div class="hacker-card p-3">
+                <i class="fas fa-network-wired fs-4 mb-2 d-block" style="color: var(--cisco-green)"></i>
+                <strong>Scanners de Rede</strong>
+                <p class="small text-muted mt-2 mb-0">
+                  Sondam hosts em busca de portas abertas, enumeram informações sobre usuários/grupos e buscam vulnerabilidades conhecidas.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="hacker-card p-3">
+                <i class="fas fa-code fs-4 mb-2 d-block" style="color: var(--cisco-green)"></i>
+                <strong>Scanners de Aplicativos</strong>
+                <p class="small text-muted mt-2 mb-0">
+                  Acessam o código-fonte do aplicativo para testar uma aplicação de dentro para fora (não executam a aplicação).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="hacker-card p-3">
+                <i class="fas fa-globe fs-4 mb-2 d-block" style="color: var(--cisco-green)"></i>
+                <strong>Verificadores de Aplicativos Web</strong>
+                <p class="small text-muted mt-2 mb-0">Identificam vulnerabilidades em aplicativos da web.</p>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-shield-alt me-2"></i> Varreduras Invasivas e Credenciadas
+          </h4>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="content-card-accent p-3">
+                <i class="fas fa-bolt me-2" style="color: var(--accent-yellow)"></i>
+                <strong>Varreduras Invasivas</strong>
+                <p class="small text-muted mt-2 mb-0">Tentam explorar vulnerabilidades e podem até travar o alvo.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="content-card-accent p-3">
+                <i class="fas fa-hand-peace me-2" style="color: var(--cisco-green)"></i>
+                <strong>Varreduras Não Invasivas</strong>
+                <p class="small text-muted mt-2 mb-0">Tentam não causar danos ao alvo.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="content-card-accent p-3">
+                <i class="fas fa-id-card me-2" style="color: var(--cisco-green)"></i>
+                <strong>Varredura Credenciada</strong>
+                <p class="small text-muted mt-2 mb-0">
+                  Nomes de usuário e senhas fornecem acesso autorizado, permitindo coletar mais informações. Retorna menos falsos positivos
+                  e falsos negativos.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="content-card-accent p-3">
+                <i class="fas fa-eye me-2" style="color: var(--text-muted)"></i>
+                <strong>Varredura Sem Credenciais</strong>
+                <p class="small text-muted mt-2 mb-0">Menos invasiva, oferece o ponto de vista de quem está de fora.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Importante:</strong> Falso positivo = identificar vulnerabilidade que não existe. Falso negativo = não identificar uma
+            vulnerabilidade atual.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.1.3: UTILITÁRIOS DE LINHA DE COMANDO                 -->
+      <!-- ============================================================ -->
+      <section id="utilitarios" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.1.3 Utilitários de Linha de Comando</h2>
+
+        <div class="content-card mb-4">
+          <p>Há várias ferramentas de linha de comando que podem ser usadas para avaliar a posição de segurança de uma empresa.</p>
+
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Ferramenta</th>
+                  <th>Descrição</th>
+                  <th>Equivalente Mac/Linux</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code class="text-success">ipconfig</code></td>
+                  <td>Exibe configurações de TCP/IP (endereço IP, máscara, gateway, DNS, MAC)</td>
+                  <td><code>ifconfig</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">ping</code></td>
+                  <td>Testa conectividade de rede via ICMP</td>
+                  <td><code>ping</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">arp</code></td>
+                  <td>Tabela mapeando endereços MAC para IPs</td>
+                  <td><code>arp</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">tracert</code></td>
+                  <td>Rastreia rota de pacotes e registra saltos</td>
+                  <td><code>traceroute</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">nslookup</code></td>
+                  <td>Consulta servidor DNS</td>
+                  <td><code>dig</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">netstat</code></td>
+                  <td>Exibe portas em escuta e conexões ativas</td>
+                  <td><code>netstat</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">nbtstat</code></td>
+                  <td>Resolução de nomes NetBIOS (Windows)</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">nmap</code></td>
+                  <td>Auditoria de segurança: localiza hosts, detecta SO e identifica serviços</td>
+                  <td><code>nmap</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">netcat</code></td>
+                  <td>Coleta informações de conexões TCP/UDP (portas, monitoramento, banners)</td>
+                  <td><code>nc</code></td>
+                </tr>
+                <tr>
+                  <td><code class="text-success">hping</code></td>
+                  <td>Monta e analisa pacotes (portas, path discovery, fingerprint, firewall)</td>
+                  <td><code>hping3</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <pre><code><span style="color: #66bf53;">$</span> ipconfig /all
+<span style="color: #66bf53;">$</span> ping 8.8.8.8
+<span style="color: #66bf53;">$</span> tracert google.com
+<span style="color: #66bf53;">$</span> netstat -an
+<span style="color: #66bf53;">$</span> nmap -sV 192.168.1.1</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO: TÉCNICAS DE TESTE DE SEGURANÇA DE REDE                -->
+      <!-- ============================================================ -->
+      <section id="tecnicas" class="reveal mt-5">
+        <h2 class="section-title mb-4">Técnicas de Teste de Segurança de Rede</h2>
+
+        <div class="content-card mb-4">
+          <p>As técnicas de teste de segurança de rede incluem:</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-clipboard-list me-3" style="color: var(--cisco-green)"></i>
+                <strong>Teste e Avaliação de Segurança (ST&E)</strong>
+                <p class="small text-muted mt-1">Avaliação formal de controles de segurança</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-bug me-3" style="color: var(--cisco-green)"></i>
+                <strong>Teste de Vulnerabilidade</strong>
+                <p class="small text-muted mt-1">Identificação automatizada de pontos fracos</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-user-secret me-3" style="color: var(--cisco-green)"></i>
+                <strong>Teste de Penetração</strong>
+                <p class="small text-muted mt-1">Simulação de ataques reais</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-chart-line me-3" style="color: var(--cisco-green)"></i>
+                <strong>Análise de Risco</strong>
+                <p class="small text-muted mt-1">Priorização de vulnerabilidades</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO: FERRAMENTAS DE TESTE DE SEGURANÇA                     -->
+      <!-- ============================================================ -->
+      <section id="ferramentas" class="reveal mt-5">
+        <h2 class="section-title mb-4">Ferramentas de Teste de Segurança de Rede</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-shield-halved fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Scanners Comerciais</h4>
+              <ul class="text-muted">
+                <li>Nessus</li>
+                <li>Retina</li>
+                <li>Core Impact</li>
+                <li>GFI LanGuard</li>
+                <li>Qualys</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-code-branch fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Ferramentas Open Source</h4>
+              <ul class="text-muted">
+                <li>OpenVAS</li>
+                <li>Nmap</li>
+                <li>Wireshark</li>
+                <li>Metasploit</li>
+                <li>Burp Suite</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO: TESTE DE PENETRAÇÃO                                   -->
+      <!-- ============================================================ -->
+      <section id="pentest" class="reveal mt-5">
+        <h2 class="section-title mb-4">Teste de Penetração</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            O teste de penetração (pentest) é uma simulação controlada de um ataque cibernético para avaliar a segurança de um sistema.
+            Diferente do scanner de vulnerabilidades, o pentest tenta ativamente explorar as falhas encontradas.
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-3 col-6">
+              <div class="text-center p-3">
+                <i class="fas fa-info-circle fs-1 mb-2" style="color: var(--cisco-green)"></i>
+                <p class="small text-muted mb-0">Planejamento</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="text-center p-3">
+                <i class="fas fa-search fs-1 mb-2" style="color: var(--cisco-green)"></i>
+                <p class="small text-muted mb-0">Reconhecimento</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="text-center p-3">
+                <i class="fas fa-bolt fs-1 mb-2" style="color: var(--cisco-green)"></i>
+                <p class="small text-muted mb-0">Exploração</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-6">
+              <div class="text-center p-3">
+                <i class="fas fa-chart-bar fs-1 mb-2" style="color: var(--cisco-green)"></i>
+                <p class="small text-muted mb-0">Relatório</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-gavel me-2"></i>
+            <strong>Importante:</strong> Todo pentest deve ser autorizado por escrito e ter escopo bem definido!
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO: LABORATÓRIOS                                          -->
+      <!-- ============================================================ -->
+      <section id="laboratorios" class="reveal mt-5">
+        <h2 class="section-title mb-4"><i class="fas fa-flask me-2"></i> Laboratórios</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="video-card p-4">
+              <i class="fas fa-microchip fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Laboratório Prático</h4>
+              <p class="text-muted">Utilize comandos de diagnóstico de rede para mapear a infraestrutura da @Apollo.</p>
+              <div class="terminal-card mt-3">
+                <pre><code>ipconfig /all
+ping 192.168.1.1
+tracert 8.8.8.8
+nslookup cisco.com
+netstat -an | find "ESTABLISHED"</code></pre>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="video-card p-4">
+              <i class="fas fa-project-diagram fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Packet Tracer Activity</h4>
+              <p class="text-muted">Simule uma varredura de vulnerabilidades em uma rede corporativa com múltiplos segmentos.</p>
+              <span class="badge-cisco mt-2"><i class="fas fa-download me-1"></i> Baixar atividade .pka</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <!-- SEÇÃO: VERIFIQUE SUA COMPREENSÃO                             -->
+      <!-- ============================================================ -->
+      <section id="compreensao" class="reveal mt-5">
+        <h2 class="section-title mb-4"><i class="fas fa-question-circle me-2"></i> Verifique sua Compreensão</h2>
+
+        <div class="content-card">
+          <div class="mb-4">
+            <p class="fw-bold text-white">1. Qual ferramenta exibe as configurações de TCP/IP no Windows?</p>
+            <div class="ms-3">
+              <label class="d-block mb-2"><input type="radio" name="q1" class="me-2" /> <code>ping</code></label>
+              <label class="d-block mb-2"><input type="radio" name="q1" class="me-2" /> <code>tracert</code></label>
+              <label class="d-block mb-2"><input type="radio" name="q1" class="me-2" /> <code>ipconfig</code></label>
+              <label class="d-block mb-2"><input type="radio" name="q1" class="me-2" /> <code>nslookup</code></label>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <p class="fw-bold text-white">2. O que significa "falso positivo" em uma varredura de vulnerabilidades?</p>
+            <div class="ms-3">
+              <label class="d-block mb-2"
+                ><input type="radio" name="q2" class="me-2" /> Identificar uma vulnerabilidade que não existe</label
+              >
+              <label class="d-block mb-2"
+                ><input type="radio" name="q2" class="me-2" /> Deixar de identificar uma vulnerabilidade existente</label
+              >
+              <label class="d-block mb-2"><input type="radio" name="q2" class="me-2" /> Travamento do sistema alvo</label>
+              <label class="d-block mb-2"><input type="radio" name="q2" class="me-2" /> Senha incorreta fornecida</label>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <p class="fw-bold text-white">3. Qual ferramenta é equivalente ao <code>tracert</code> no Linux/Mac?</p>
+            <div class="ms-3">
+              <label class="d-block mb-2"><input type="radio" name="q3" class="me-2" /> <code>ping</code></label>
+              <label class="d-block mb-2"><input type="radio" name="q3" class="me-2" /> <code>traceroute</code></label>
+              <label class="d-block mb-2"><input type="radio" name="q3" class="me-2" /> <code>ifconfig</code></label>
+              <label class="d-block mb-2"><input type="radio" name="q3" class="me-2" /> <code>dig</code></label>
+            </div>
+          </div>
+
+          <button class="btn-cisco mt-3"><i class="fas fa-check me-2"></i> Verificar Respostas</button>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.2: TÉCNICAS DE TESTE DE SEGURANÇA DE REDE (INTRO)   -->
+      <!-- ============================================================ -->
+      <section id="tecnicas-intro" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.2 Técnicas de teste de segurança de rede</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            As técnicas de teste de segurança de rede são fundamentais para avaliar a eficácia das implementações de segurança. Estas
+            técnicas podem ser manuais ou automatizadas, mas exigem conhecimento significativo em sistemas operacionais, programação básica,
+            protocolos de rede (TCP/IP), vulnerabilidades, hardening de dispositivos, firewalls e IPS.
+          </p>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.2.2: TESTANDO E AVALIANDO A SEGURANÇA DA REDE       -->
+      <!-- ============================================================ -->
+      <section id="testando-avaliando" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.2.2 Testando e avaliando a segurança da rede</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            A eficácia de uma solução de segurança de operações pode ser testada sem esperar que uma ameaça real ocorra. Os testes de
+            segurança de rede são executados em uma rede para garantir que todas as implementações de segurança estejam operando conforme o
+            esperado. Normalmente, são conduzidos durante os estágios de implementação e operacional, após o sistema ter sido desenvolvido,
+            instalado e integrado.
+          </p>
+
+          <p>
+            Os testes de segurança fornecem informações sobre análise de risco e planejamento de contingência. É importante documentar os
+            resultados e disponibilizá-los para a equipe envolvida em outras áreas de TI.
+          </p>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-clipboard-check me-2"></i> Objetivos do ST&E (Teste e Avaliação de Segurança)
+          </h4>
+          <ul class="text-secondary">
+            <li class="mb-2">
+              <i class="fas fa-search me-2" style="color: var(--cisco-green)"></i> Descobrir falhas de design, implementação e operação que
+              poderiam violar a política de segurança
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i> Determinar a adequação de mecanismos de segurança,
+              garantias e propriedades do dispositivo
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-file-alt me-2" style="color: var(--cisco-green)"></i> Avaliar o grau de consistência entre a documentação do
+              sistema e sua implementação
+            </li>
+          </ul>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-sync-alt me-2"></i>
+            <strong>Frequência:</strong> Os testes devem ser repetidos periodicamente e sempre que houver alteração no sistema. Para
+            sistemas críticos, os testes devem ser realizados com mais frequência.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.2.3: TIPOS DE TESTES DE REDE                        -->
+      <!-- ============================================================ -->
+      <section id="tipos-testes" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.2.3 Tipos de testes de rede</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Depois que uma rede estiver operacional, muitos testes de segurança podem ser realizados para avaliar seu status operacional:
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-user-secret fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Teste de Penetração</strong>
+                <p class="small text-muted mt-2 mb-0">
+                  Simula ataques de fontes maliciosas para determinar a viabilidade de um ataque e as possíveis consequências. Pode envolver
+                  engenharia social.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-network-wired fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Varredura de Rede</strong>
+                <p class="small text-muted mt-2 mb-0">
+                  Faz ping em computadores, verifica portas TCP e exibe recursos disponíveis na rede. Pode detectar usuários, grupos e
+                  recursos compartilhados.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-bug fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Varredura de Vulnerabilidade</strong>
+                <p class="small text-muted mt-2 mb-0">
+                  Detecta pontos fracos como configurações incorretas, senhas padrão ou alvos para ataques DoS.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-key fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Cracking de Senha</strong>
+                <p class="small text-muted mt-2 mb-0">Testa e detecta senhas fracas que devem ser alteradas.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-history fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Revisão de Log</strong>
+                <p class="small text-muted mt-2 mb-0">Administradores revisam logs de segurança para identificar ameaças potenciais.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-check-double fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Verificadores de Integridade</strong>
+                <p class="small text-muted mt-2 mb-0">
+                  Detectam e relatam mudanças no sistema, focando no sistema de arquivos, login/logout.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-shield-virus fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Detecção de Vírus</strong>
+                <p class="small text-muted mt-2 mb-0">Software antimalware para identificar e remover vírus e outros malwares.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-clock me-2"></i>
+            <strong>Nota:</strong> Outros testes como Wardialing são considerados legados, mas ainda devem ser contabilizados.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.2.4: APLICANDO RESULTADOS DE TESTE DE REDE          -->
+      <!-- ============================================================ -->
+      <section id="aplicando-resultados" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.2.4 Aplicando Resultados de Teste de Rede</h2>
+
+        <div class="content-card mb-4">
+          <p>Os resultados dos testes de segurança de rede podem ser usados de várias maneiras:</p>
+
+          <div class="row g-3 mt-2">
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-tools me-3" style="color: var(--cisco-green)"></i>
+                <strong>Atividades de mitigação</strong>
+                <p class="small text-muted">Para abordar vulnerabilidades identificadas</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-chart-line me-3" style="color: var(--cisco-green)"></i>
+                <strong>Referência de progresso</strong>
+                <p class="small text-muted">Rastrear o progresso nos requisitos de segurança</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-clipboard-list me-3" style="color: var(--cisco-green)"></i>
+                <strong>Avaliação de implementação</strong>
+                <p class="small text-muted">Estado dos requisitos de segurança do sistema</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-chart-pie me-3" style="color: var(--cisco-green)"></i>
+                <strong>Análise custo-benefício</strong>
+                <p class="small text-muted">Para melhorias na segurança da rede</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-chart-bar me-3" style="color: var(--cisco-green)"></i>
+                <strong>Melhoria de outras atividades</strong>
+                <p class="small text-muted">Avaliações de risco, C&A, melhoria de desempenho</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-flag-checkered me-3" style="color: var(--cisco-green)"></i>
+                <strong>Referência para ação corretiva</strong>
+                <p class="small text-muted">Ponto de partida para correções</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.3: FERRAMENTAS DE TESTE DE SEGURANÇA (INTRO)        -->
+      <!-- ============================================================ -->
+      <section id="ferramentas-intro" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.3 Ferramentas de teste de segurança de rede</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Existem muitas ferramentas disponíveis para testar a segurança de sistemas e redes. Algumas são de código aberto, outras são
+            comerciais e exigem licenciamento.
+          </p>
+
+          <div class="alert-cisco">
+            <i class="fas fa-sync-alt me-2"></i>
+            <strong>Nota:</strong> As ferramentas de teste de rede evoluem em ritmo acelerado. A lista a seguir inclui ferramentas legadas e
+            sua intenção é fornecer consciência dos diferentes tipos disponíveis.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.3.1: FERRAMENTAS DE TESTE DE REDE                   -->
+      <!-- ============================================================ -->
+      <section id="lista-ferramentas" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.3.1 Ferramentas de teste de rede</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-map fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Nmap / Zenmap</h4>
+              <p class="text-muted">Descobre computadores e seus serviços na rede, criando um mapa da rede.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-plug fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>SuperScan</h4>
+              <p class="text-muted">
+                Software de varredura de porta para detectar portas TCP/UDP abertas, serviços em execução, Whois, Ping, Traceroute.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-chart-line fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>SIEM</h4>
+              <p class="text-muted">Tecnologia para relatórios em tempo real e análise de longo prazo de eventos de segurança.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-shield-halved fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>GFI LanGuard</h4>
+              <p class="text-muted">Scanner de rede e segurança que detecta vulnerabilidades.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-check-circle fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>TripWire</h4>
+              <p class="text-muted">
+                Avalia e valida configurações de TI contra políticas internas, padrões de conformidade e melhores práticas.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-bug fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Nessus</h4>
+              <p class="text-muted">Software de varredura de vulnerabilidade, focado em acesso remoto, configurações incorretas e DoS.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-key fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Lophtcrack</h4>
+              <p class="text-muted">Aplicativo de auditoria e recuperação de senha.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card">
+              <i class="fas fa-bolt fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Metasploit</h4>
+              <p class="text-muted">
+                Fornece informações sobre vulnerabilidades, ajuda em testes de penetração e desenvolvimento de assinaturas de IDS.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.3.2: NMAP E ZENMAP                                  -->
+      <!-- ============================================================ -->
+      <section id="nmap-zenmap" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.3.2 Nmap e Zenmap</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Nmap é um scanner de baixo nível comumente usado, disponível publicamente. Possui excelentes recursos para mapeamento de rede e
+            reconhecimento.
+          </p>
+
+          <h4 class="mt-3 mb-3" style="color: var(--cisco-green)"><i class="fas fa-chart-simple me-2"></i> Funcionalidade básica</h4>
+          <ul class="text-secondary">
+            <li><strong>Classic TCP e UDP Port Scanning</strong> - Procura diferentes serviços em um host</li>
+            <li><strong>Classic TCP e UDP Port Sweeping</strong> - Procura o mesmo serviço em vários hosts</li>
+            <li><strong>Varreduras furtivas TCP e UDP</strong> - Mais difíceis de detectar pelo host alvo ou IPS</li>
+            <li><strong>Identificação do sistema operacional remoto</strong> - Impressões digitais do SO</li>
+          </ul>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)"><i class="fas fa-cogs me-2"></i> Características avançadas</h4>
+          <p>Varredura de protocolo (camada 3) identifica suporte a protocolos como GRE e OSPF.</p>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>Atenção:</strong> Embora o Nmap possa ser usado para testes de segurança, ele também pode ser usado para fins
+            maliciosos. Possui recurso para usar hosts falsos e mascarar a origem da varredura.
+          </div>
+
+          <div class="terminal-card mt-3">
+            <pre><code><span style="color: #66bf53;">$</span> nmap -sV 192.168.1.1
+<span style="color: #66bf53;">$</span> nmap -O 192.168.1.0/24
+<span style="color: #66bf53;">$</span> nmap -p- -sS 10.0.0.1</code></pre>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.3.3: SUPERSCAN                                      -->
+      <!-- ============================================================ -->
+      <section id="superscan" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.3.3 SuperScan</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            SuperScan é uma ferramenta de digitalização de portas do Microsoft Windows. Requer privilégios de administrador e executa na
+            maioria das versões do Windows.
+          </p>
+
+          <h4 class="mt-3 mb-3" style="color: var(--cisco-green)"><i class="fas fa-list-check me-2"></i> Recursos do SuperScan versão 4</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <ul class="text-secondary">
+                <li>Velocidade de digitalização ajustável</li>
+                <li>Suporte para intervalos de IP ilimitados</li>
+                <li>Detecção de host aprimorada (vários métodos ICMP)</li>
+                <li>Digitalização TCP SYN</li>
+                <li>Varredura UDP (dois métodos)</li>
+                <li>Geração de relatórios HTML simples</li>
+                <li>Verificação da porta de origem</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="text-secondary">
+                <li>Resolução rápida de nome de host</li>
+                <li>Capacidades de banner grabbing</li>
+                <li>Banco de dados de descrição de portas</li>
+                <li>Randomização de ordem de varredura</li>
+                <li>Ferramentas: ping, traceroute, whois</li>
+                <li>Enumeração de host do Windows</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Importante:</strong> Ferramentas como Nmap e SuperScan podem fornecer testes de penetração eficazes, mas não preparam o
+            administrador para todos os problemas de segurança.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.3.4: SIEM                                           -->
+      <!-- ============================================================ -->
+      <section id="siem" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.3.4 SIEM (Security Information Event Management)</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            SIEM é uma tecnologia usada em organizações empresariais para fornecer relatórios em tempo real e análise de longo prazo de
+            eventos de segurança. Evoluiu do SIM (Security Information Management) e SEM (Security Event Management). Pode ser implementado
+            como software, integrado ao Cisco ISE ou como serviço gerenciado.
+          </p>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)"><i class="fas fa-layer-group me-2"></i> Funções essenciais do SIEM</h4>
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-link fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Correlação</strong>
+                <p class="small text-muted mt-1">Examina logs e eventos de sistemas diferentes, acelerando detecção e reação a ameaças.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-compress-alt fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Agregação</strong>
+                <p class="small text-muted mt-1">Reduz volume de dados consolidando registros de eventos duplicados.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-microscope fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Análise Forense</strong>
+                <p class="small text-muted mt-1">Pesquisa logs e registros de eventos em toda organização.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-database fs-4 mb-2" style="color: var(--cisco-green)"></i>
+                <strong>Retenção</strong>
+                <p class="small text-muted mt-1">Apresenta dados em monitoramento em tempo real e resumos de longo prazo.</p>
+              </div>
+            </div>
+          </div>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-info-circle me-2"></i> Informações fornecidas pelo SIEM
+          </h4>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="terminal-card p-2 mb-2"><i class="fas fa-user me-2"></i> Informações do usuário</div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card p-2 mb-2"><i class="fas fa-laptop me-2"></i> Informações do dispositivo</div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card p-2 mb-2"><i class="fas fa-shield-alt me-2"></i> Informações de postura</div>
+            </div>
+          </div>
+
+          <h4 class="mt-4 mb-3" style="color: var(--cisco-green)">
+            <i class="fas fa-question-circle me-2"></i> Perguntas críticas respondidas pelo SIEM
+          </h4>
+          <ul class="text-secondary">
+            <li>Quem está associado a este evento?</li>
+            <li>É um usuário importante com acesso a propriedade intelectual?</li>
+            <li>O usuário está autorizado a acessar esse recurso?</li>
+            <li>O usuário tem acesso a outros recursos confidenciais?</li>
+            <li>Que tipo de dispositivo está sendo usado?</li>
+            <li>Este evento representa um problema de conformidade?</li>
+          </ul>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.1.4: AUTOMAÇÃO DE SEGURANÇA (SIEM + SOAR)          -->
+      <!-- ============================================================ -->
+      <section id="automacao-seguranca" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.1.4 Automação de segurança</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <i class="fas fa-chart-line fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h3>SIEM</h3>
+              <p>
+                Sistemas de Security Information and Event Management usam coletores de log para agregar dados de dispositivos de segurança,
+                rede, servidores e aplicações.
+              </p>
+              <p class="mt-2">
+                Os sistemas SIEM ajudam a reduzir o volume de eventos combinando eventos semelhantes e identificam desvios da norma.
+              </p>
+
+              <h5 class="mt-3" style="color: var(--cisco-green)">Objetivos do SIEM:</h5>
+              <ul class="text-muted small">
+                <li>Ameaças internas e externas</li>
+                <li>Monitorar atividade e uso de recursos</li>
+                <li>Realizar relatórios de conformidade para auditorias</li>
+                <li>Suporte a resposta a incidentes</li>
+              </ul>
+
+              <div class="alert-cisco mt-2">
+                <i class="fas fa-dollar-sign me-1"></i> Sistemas SIEM são caros para compra e manutenção, mas econômicos para empresas com
+                milhões de eventos por dia.
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <i class="fas fa-robot fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h3>SOAR</h3>
+              <p>
+                Security Orchestration Automation and Response permite que uma empresa colete dados sobre ameaças de várias fontes e
+                responda a eventos de nível inferior sem intervenção humana.
+              </p>
+
+              <h5 class="mt-3" style="color: var(--cisco-green)">Três recursos importantes do SOAR:</h5>
+              <ul class="text-muted small">
+                <li>Gerenciamento de ameaças e vulnerabilidades</li>
+                <li>Operações de segurança e resposta a incidentes</li>
+                <li>Operação de segurança</li>
+              </ul>
+
+              <div class="alert-cisco mt-2"><i class="fas fa-link me-1"></i> Uma empresa pode integrar o SOAR em sua solução SIEM.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.1.5: ROTULAÇÃO DOS OBJETIVOS (SIEM vs SOAR)        -->
+      <!-- ============================================================ -->
+      <section id="atividade-siem-soar" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.1.5 Rotulação dos objetivos de segurança da Apollo</h2>
+
+        <div class="content-card">
+          <p>Os objetivos de segurança da @Apollo estão listados abaixo. Classifique-os como parte dos sistemas SIEM ou SOAR.</p>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Objetivo</th>
+                  <th>Classificação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Ameaças internas e externas</td>
+                  <td><span class="badge-cisco">SIEM</span></td>
+                </tr>
+                <tr>
+                  <td>Monitorar a atividade e o uso de recursos</td>
+                  <td><span class="badge-cisco">SIEM</span></td>
+                </tr>
+                <tr>
+                  <td>Realizar relatórios de conformidade para auditorias</td>
+                  <td><span class="badge-cisco">SIEM</span></td>
+                </tr>
+                <tr>
+                  <td>Suporte a resposta a incidentes</td>
+                  <td><span class="badge-cisco">SIEM</span></td>
+                </tr>
+                <tr>
+                  <td>Ameaças e vulnerabilidades</td>
+                  <td><span class="badge-cisco-alt">SOAR</span></td>
+                </tr>
+                <tr>
+                  <td>Responder a incidentes de segurança</td>
+                  <td><span class="badge-cisco-alt">SOAR</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Resumo:</strong> SIEM foca em monitoramento, detecção e relatórios. SOAR foca em automação e resposta a incidentes.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.4: TESTE DE PENETRAÇÃO (INTRO)                      -->
+      <!-- ============================================================ -->
+      <section id="pentest-intro" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.4 Teste de penetração</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            O teste de penetração (pen testing) é um método de testar áreas de fraquezas em sistemas usando várias técnicas maliciosas. Um
+            teste de penetração simula os métodos que um invasor usaria para obter acesso não autorizado a uma rede e comprometer os
+            sistemas, além de permitir que uma empresa entenda como toleraria um ataque real.
+          </p>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-gavel me-2"></i>
+            <strong>Importante:</strong> Pen testing não é o mesmo que teste de vulnerabilidade, que apenas <em>identifica</em> possíveis
+            problemas. O teste de penetração envolve invadir com permissão da empresa.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.4.1: NÍVEIS DE TESTE DE PENETRAÇÃO                  -->
+      <!-- ============================================================ -->
+      <section id="niveis-pentest" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.4.1 Níveis de Teste de Penetração</h2>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="content-card h-100">
+              <i class="fas fa-square fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Teste de Caixa Preta</h4>
+              <p class="text-muted">
+                Menos demorado e mais barato. O especialista não tem conhecimento do funcionamento interno do sistema e tenta atacá-lo do
+                ponto de vista de um usuário regular.
+              </p>
+              <span class="badge-cisco mt-2">Black Box</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="content-card h-100">
+              <i class="fas fa-adjust fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Teste de Caixa Cinza</h4>
+              <p class="text-muted">
+                Combinação de caixa preta e caixa branca. O especialista tem algum conhecimento limitado sobre o sistema, ambiente
+                parcialmente conhecido.
+              </p>
+              <span class="badge-cisco mt-2">Gray Box</span>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="content-card h-100">
+              <i class="fas fa-cube fs-2 mb-3" style="color: var(--cisco-green)"></i>
+              <h4>Teste de Caixa Branca</h4>
+              <p class="text-muted">
+                Mais demorado e mais caro. Especialista tem conhecimento total de como o sistema funciona. Ambiente conhecido, emulando
+                ataque interno.
+              </p>
+              <span class="badge-cisco mt-2">White Box</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.4.2: FASES DO TESTE DE PENETRAÇÃO                   -->
+      <!-- ============================================================ -->
+      <section id="fases-pentest" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.4.2 Fases do Teste de Penetração</h2>
+
+        <div class="content-card mb-4">
+          <p>Há quatro fases que compõem um teste de penetração:</p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-clipboard-list me-3" style="color: var(--cisco-green)"></i>
+                <strong>Fase 1: Planejamento</strong>
+                <p class="small text-muted mt-1">Estabelece as regras de compromisso para a realização do teste.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-search me-3" style="color: var(--cisco-green)"></i>
+                <strong>Fase 2: Descoberta</strong>
+                <p class="small text-muted mt-1">
+                  Reconhecimento do alvo. Inclui técnicas passivas (footprinting) e ativas (varredura de porta).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-bolt me-3" style="color: var(--cisco-green)"></i>
+                <strong>Fase 3: Ataque</strong>
+                <p class="small text-muted mt-1">
+                  Obter acesso/penetrar no sistema. Tentativa de privilégios escalados, movimento lateral, persistência (backdoor).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="timeline-item">
+                <i class="fas fa-file-alt me-3" style="color: var(--cisco-green)"></i>
+                <strong>Fase 4: Geração de relatórios</strong>
+                <p class="small text-muted mt-1">
+                  Entrega de documentação detalhada com vulnerabilidades identificadas, ações tomadas e resultados.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.4.3: TIPOS DE EXERCÍCIOS - EQUIPES                 -->
+      <!-- ============================================================ -->
+      <section id="times-pentest" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.4.3 Tipos de Exercícios - Equipes de Segurança</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <i class="fas fa-dragon fs-2 mb-3" style="color: #dc3545"></i>
+              <h4 style="color: #dc3545">Time Vermelho (Red Team)</h4>
+              <p class="text-muted">O adversário, tentando atacar o sistema sem passar despercebido.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <i class="fas fa-shield-halved fs-2 mb-3" style="color: #0d6efd"></i>
+              <h4 style="color: #0d6efd">Time Azul (Blue Team)</h4>
+              <p class="text-muted">Os defensores, tentam frustrar os esforços da equipe vermelha.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <i class="fas fa-balance-scale fs-2 mb-3" style="color: #ffc107"></i>
+              <h4 style="color: #ffc107">Time Branco (White Team)</h4>
+              <p class="text-muted">
+                Equipe neutra que define objetivos, regras e supervisiona o exercício. Conhecimento em governança e conformidade.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <i class="fas fa-gem fs-2 mb-3" style="color: #66bf53"></i>
+              <h4 style="color: var(--cisco-green)">Time Roxo (Purple Team)</h4>
+              <p class="text-muted">Equipes vermelha e azul trabalham juntas para identificar vulnerabilidades e melhorar controles.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.4.4: BUG BOUNTY - PROGRAMA DE RECOMPENSAS          -->
+      <!-- ============================================================ -->
+      <section id="bug-bounty" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.4.4 Programa de Recompensas por Bugs (Bug Bounty)</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Algumas empresas realizam um programa de recompensas por bugs. Esse é um esforço formal para identificar os bugs que podem levar
+            a uma vulnerabilidade. Os programas de recompensas para bugs geralmente são abertos ao público e envolvem aplicativos/resultados
+            fornecidos on-line e, possivelmente, uma recompensa monetária.
+          </p>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-dollar-sign me-2"></i>
+            <strong>Exemplos de programas:</strong> Google Vulnerability Reward Program, Microsoft Bug Bounty, Bugcrowd, HackerOne.
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.4.5: ANALISADOR DE PACOTES                         -->
+      <!-- ============================================================ -->
+      <section id="packet-analyzer" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.4.5 Analisador de Pacotes (Packet Analyzer)</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Os packet analyzers (ou analisadores de pacotes) interceptam e registram o tráfego de rede. Eles executam funções para fins
+            legítimos (solução de problemas) ou ilegítimos (comprometer dados).
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <h4 style="color: var(--cisco-green)"><i class="fas fa-chart-line me-2"></i> Funções legítimas</h4>
+              <ul class="text-muted">
+                <li>Análise de problemas de rede</li>
+                <li>Detecção de tentativas de invasão da rede</li>
+                <li>Isolamento do sistema explorado</li>
+                <li>Log de tráfego</li>
+                <li>Detecção de uso indevido da rede</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h4 style="color: var(--cisco-green)"><i class="fas fa-tools me-2"></i> Ferramentas populares</h4>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge-cisco">Wireshark</span>
+                <span class="badge-cisco">EtherApe</span>
+                <span class="badge-cisco">TCPdump</span>
+                <span class="badge-cisco">Ettercap</span>
+                <span class="badge-cisco">ngrep</span>
+                <span class="badge-cisco">Kismet</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.4.6: SNIFFING - SAÍDA DO ANALISADOR DE PROTOCOLO    -->
+      <!-- ============================================================ -->
+      <section id="sniffing" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.4.6 Sniffing - Saída do Analisador de Protocolo</h2>
+
+        <div class="content-card mb-4">
+          <p>
+            Sniffing é semelhante a espionar alguém. Ocorre quando invasores examinam todo o tráfego de rede à medida que passa pela placa
+            de rede, independentemente de ser endereçado a eles ou não. Criminosos fazem sniffing com software, hardware ou combinação dos
+            dois.
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-eye me-2" style="color: var(--cisco-green)"></i>
+                <strong>O que pode ser visualizado:</strong>
+                <ul class="mt-2 mb-0">
+                  <li>Todo o tráfego de rede</li>
+                  <li>Protocolo específico</li>
+                  <li>Serviço específico</li>
+                  <li>Sequência de caracteres (login/senha)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3">
+                <i class="fas fa-shield-alt me-2" style="color: var(--cisco-green)"></i>
+                <strong>Uso legítimo por administradores:</strong>
+                <ul class="mt-2 mb-0">
+                  <li>Analisar tráfego de rede</li>
+                  <li>Identificar problemas de largura de banda</li>
+                  <li>Solucionar problemas de rede</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-lock me-2"></i>
+            <strong>Segurança física:</strong> É importante para evitar a entrada de sniffers na rede interna.
+          </div>
+
+          <!-- Exemplo de saída Wireshark simulada -->
+          <div class="terminal-card mt-4">
+            <pre><code><span style="color: #66bf53;">No.     Time        Source                Destination           Protocol Info</span>
+1       0.000000    192.168.1.100         8.8.8.8               DNS      Standard query A google.com
+2       0.023456    8.8.8.8               192.168.1.100          DNS      Standard response A 142.250.1.78
+3       0.045678    192.168.1.100         142.250.1.78           TCP      54322 → 443 [SYN] Seq=0
+4       0.067890    142.250.1.78          192.168.1.100          TCP      443 → 54322 [SYN, ACK] Seq=0
+5       0.089012    192.168.1.100         142.250.1.78           TCP      54322 → 443 [ACK] Seq=1</code></pre>
+          </div>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.5: RESUMO (INTRODUÇÃO)                              -->
+      <!-- ============================================================ -->
+      <section id="resumo-intro" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.5 Resumo de teste de segurança de rede</h2>
+
+        <div class="content-card mb-4">
+          <p>Este resumo consolida os principais tópicos abordados neste módulo sobre testes de segurança de rede.</p>
+        </div>
+      </section>
+      <!-- ============================================================ -->
+      <!-- SEÇÃO 23.5.1: O QUE APRENDI NESTE MÓDULO - RESUMO COMPLETO   -->
+      <!-- ============================================================ -->
+      <section id="resumo-aprendizado" class="reveal mt-5">
+        <h2 class="section-title mb-4">23.5.1 O que aprendi neste módulo?</h2>
+
+        <div class="accordion" id="accordionResumo">
+          <!-- Avaliações de Segurança -->
+          <div class="accordion-item bg-card border-secondary mb-3">
+            <h3 class="accordion-header">
+              <button
+                class="accordion-button bg-card text-white collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse1"
+                style="background-color: var(--bg-card); color: var(--cisco-green)"
+              >
+                <i class="fas fa-shield-halved me-2"></i> Avaliações de segurança
+              </button>
+            </h3>
+            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+              <div class="accordion-body text-secondary">
+                <p>
+                  Um scanner de vulnerabilidades avalia computadores, sistemas, redes ou aplicações em busca de pontos fracos. Os scanners
+                  mais usados incluem Nessus, Retina, Core Impact e GFI LanGuard.
+                </p>
+                <p>
+                  Os scanners podem ser de rede, de aplicação ou de web. Varreduras invasivas tentam explorar vulnerabilidades. Em
+                  verificação credenciada, nomes de usuário e senhas fornecem acesso autorizado.
+                </p>
+                <p>
+                  Ferramentas de linha de comando incluem: ipconfig, ping, arp, tracert, nslookup, netstat, nbtstat, nmap, netcat e hping.
+                </p>
+                <p>
+                  Sistemas SIEM usam coletores de log para agregar dados. Ferramentas SOAR permitem resposta a eventos sem intervenção
+                  humana.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Técnicas de teste de segurança de rede -->
+          <div class="accordion-item bg-card border-secondary mb-3">
+            <h3 class="accordion-header">
+              <button
+                class="accordion-button bg-card text-white collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse2"
+                style="background-color: var(--bg-card); color: var(--cisco-green)"
+              >
+                <i class="fas fa-flask me-2"></i> Técnicas de teste de segurança de rede
+              </button>
+            </h3>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+              <div class="accordion-body text-secondary">
+                <p>
+                  A segurança das operações se preocupa com práticas diárias para implantar e manter um sistema seguro. Começa no
+                  planejamento e implementação da rede.
+                </p>
+                <p>
+                  Os testes de segurança são conduzidos durante os estágios de implementação e operacional. Um ST&E (Teste e Avaliação de
+                  Segurança) examina as medidas de proteção em uma rede operacional.
+                </p>
+                <p>
+                  <strong>Tipos de testes de rede incluem:</strong> penetração, varredura de rede, varredura de vulnerabilidade, quebra de
+                  senha, revisão de log, verificadores de integridade e detecção de vírus.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ferramentas de teste de segurança de rede -->
+          <div class="accordion-item bg-card border-secondary mb-3">
+            <h3 class="accordion-header">
+              <button
+                class="accordion-button bg-card text-white collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse3"
+                style="background-color: var(--bg-card); color: var(--cisco-green)"
+              >
+                <i class="fas fa-tools me-2"></i> Ferramentas de teste de segurança de rede
+              </button>
+            </h3>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+              <div class="accordion-body text-secondary">
+                <p><strong>Nmap/Zenmap:</strong> Varredura TCP/UDP clássica, varreduras furtivas, identificação de SO remoto.</p>
+                <p><strong>SuperScan:</strong> Ferramenta de digitalização de portas para Windows, requer privilégios de administrador.</p>
+                <p><strong>SIEM:</strong> Fornece correlação, agregação, análise forense e retenção de eventos de segurança.</p>
+                <p><strong>Outras ferramentas:</strong> GFI LANguard, Tripwire, Nessus, L0phtCrack, Metasploit.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teste de penetração -->
+          <div class="accordion-item bg-card border-secondary mb-3">
+            <h3 class="accordion-header">
+              <button
+                class="accordion-button bg-card text-white collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapse4"
+                style="background-color: var(--bg-card); color: var(--cisco-green)"
+              >
+                <i class="fas fa-user-secret me-2"></i> Teste de penetração
+              </button>
+            </h3>
+            <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionResumo">
+              <div class="accordion-body text-secondary">
+                <p>
+                  O teste de penetração simula métodos que um invasor usaria para obter acesso não autorizado. Pen testing não é o mesmo que
+                  teste de vulnerabilidade.
+                </p>
+                <p>
+                  <strong>Níveis:</strong> Caixa Preta (sem conhecimento), Caixa Cinza (conhecimento limitado), Caixa Branca (conhecimento
+                  total).
+                </p>
+                <p><strong>Fases:</strong> 1. Planejamento, 2. Descoberta, 3. Ataque, 4. Geração de relatórios.</p>
+                <p><strong>Equipes:</strong> Red Team (ataque), Blue Team (defesa), White Team (arbitragem), Purple Team (colaboração).</p>
+                <p>
+                  Packet analyzers (Wireshark, TCPdump) interceptam e registram tráfego de rede. Sniffing pode ser usado tanto para fins
+                  maliciosos quanto legítimos.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-cisco mt-4">
+          <i class="fas fa-graduation-cap me-2"></i>
+          <strong>Conclusão:</strong> Saber onde e como sua rede está vulnerável é o primeiro passo para criar uma defesa melhor!
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER PADRÃO                                                -->
+    <!-- ============================================================ -->
+    <footer class="cyber-footer mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+
+    <script>
+      // Animação específica para os elementos desta página
+      document.addEventListener('DOMContentLoaded', function () {
+        anime({
+          targets: '.reveal',
+          opacity: [0, 1],
+          translateY: [30, 0],
+          easing: 'easeOutQuad',
+          duration: 700,
+          delay: (el, i) => i * 100
+        })
+      })
+    </script>
+  </body>
+</html>
