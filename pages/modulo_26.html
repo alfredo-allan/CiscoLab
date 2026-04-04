@@ -1,0 +1,1530 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 26 - Gerenciamento de Riscos | NETSEC ☠ CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <!-- CSS Global Consolidado -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ==================== NAVBAR PADRÃO ==================== -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(26, 26, 26, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a
+          class="navbar-brand"
+          href="/index.html"
+          style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.5px"
+        >
+          <i class="fas fa-shield-halved me-2" style="color: var(--cisco-green)"></i>
+          NET<span style="color: white">SEC</span>
+          <small style="font-size: 0.7rem; color: var(--text-muted); display: block; line-height: 1">☠ CyberSec | Estudos Cisco</small>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 26 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <li>
+                  <a class="dropdown-item" href="#introducao"><i class="fas fa-play-circle me-2 text-success"></i> 26.0 Introdução</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#gerenciamento-risco"
+                    ><i class="fas fa-chart-line me-2 text-success"></i> 26.1 Gerenciamento de Risco</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#avaliacao-risco"
+                    ><i class="fas fa-calculator me-2 text-success"></i> 26.2 Avaliação de Risco</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#controles-seguranca"
+                    ><i class="fas fa-lock me-2 text-success"></i> 26.3 Controles de Segurança</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#resumo-modulo"><i class="fas fa-clipboard-list me-2 text-info"></i> 26.4 Resumo</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#glossario"><i class="fas fa-book-open me-2 text-info"></i> 📖 Glossário</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#caso-uso"><i class="fas fa-users me-2 text-info"></i> 🎯 Caso de Uso</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#exercicio-controles"
+                    ><i class="fas fa-question-circle me-2 text-warning"></i> ✏️ Exercício Interativo</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2 text-warning"></i> 🧪 Laboratórios</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#navegacao-modulos"><i class="fas fa-arrow-right me-2 text-muted"></i> ⏩ Navegação</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="/pages/modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li><a class="dropdown-item" href="#introducao">26.0 Introdução</a></li>
+                  <li><a class="dropdown-item" href="#tipos-risco">26.1.1 Tipos de Risco</a></li>
+                  <li><a class="dropdown-item" href="#processo-gerenciamento">26.1.4 Processo de Gerenciamento</a></li>
+                  <li><a class="dropdown-item" href="#metodologia-avaliacao">26.2.3 Metodologia de Avaliação</a></li>
+                  <li><a class="dropdown-item" href="#analise-risco">Análise Qualitativa/Quantitativa</a></li>
+                  <li><a class="dropdown-item" href="#mitigacao-riscos">26.2.7 Mitigação de Riscos</a></li>
+                  <li><a class="dropdown-item" href="#priorizar-ativos">26.2.8 Priorizar Ativos</a></li>
+                  <li><a class="dropdown-item" href="#tipos-controle">26.3.1 Tipos de Controle</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container py-5">
+      <!-- TÍTULO PRINCIPAL DO MÓDULO -->
+      <div class="reveal mb-5">
+        <h1 class="cisco-title display-5">Módulo 26: Gerenciamento de Riscos e Controles de Segurança</h1>
+        <p class="text-muted mt-3 fs-5">
+          <i class="fas fa-bullseye me-2 text-success"></i> Objetivo: selecionar controles de segurança com base nos resultados da avaliação
+          de risco.
+        </p>
+        <div class="mt-3">
+          <span class="badge-cisco me-2"><i class="fas fa-video me-1"></i> 2 vídeos</span>
+          <span class="badge-cisco me-2"><i class="fas fa-flask me-1"></i> 3 laboratórios</span>
+          <span class="badge-cisco"><i class="fas fa-question-circle me-1"></i> 1 questionário</span>
+        </div>
+      </div>
+
+      <!-- ==================== 26.0 INTRODUÇÃO ==================== -->
+      <section id="introducao" class="mb-5">
+        <h2 class="section-title mb-4">26.0 Introdução</h2>
+        <div class="content-card">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <p>
+                Bem-vindo a este módulo que se concentra no <strong>gerenciamento de riscos</strong>. O gerenciamento de riscos identifica
+                os riscos e vulnerabilidades que representam uma ameaça e aplica ações administrativas e soluções abrangentes para garantir
+                que a empresa esteja adequadamente protegida.
+              </p>
+              <div class="alert-cisco mt-3">
+                <i class="fas fa-lightbulb me-2 text-success"></i>
+                <strong>Por que usar este módulo?</strong> Você aprenderá a identificar, avaliar e mitigar riscos de segurança cibernética.
+              </div>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div class="icon-box">
+                <i class="fas fa-shield-virus" style="font-size: 5rem; color: var(--cisco-green)"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 26.1 GERENCIAMENTO DE RISCO ==================== -->
+      <section id="gerenciamento-risco" class="mb-5">
+        <h2 class="section-title mb-4">26.1 Gerenciamento de Risco</h2>
+
+        <!-- 26.1.1 Tipos de risco -->
+        <div class="content-card mb-4" id="tipos-risco">
+          <h3 class="cisco-subtitle">26.1.1 Tipos de Risco</h3>
+          <p>
+            <strong>Risco</strong> é a probabilidade de perda devido a uma ameaça - um ato mal-intencionado ou evento inesperado - que
+            danifica os sistemas de informação ou os ativos da empresa.
+          </p>
+          <p>
+            O <strong>impacto no risco</strong> é o dano causado por um evento que causa perda de ativos ou interrupção do(s) serviço(s). O
+            objetivo do gerenciamento de riscos é reduzir essas ameaças a um nível aceitável e implementar controles para manter esse nível.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-4 mb-3">
+              <div class="hacker-card text-center p-3">
+                <i class="fas fa-skull-crossbones fa-2x mb-2" style="color: #dc3545"></i>
+                <h4 class="fs-5">Alto Risco</h4>
+                <p class="small text-muted">
+                  Negligência significa que nenhuma ação ou controle é feito para reduzir os riscos. A ameaça é muito alta e o custo pode
+                  ser catastrófico.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="hacker-card text-center p-3">
+                <i class="fas fa-balance-scale fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h4 class="fs-5">Baixo Risco</h4>
+                <p class="small text-muted">
+                  Exercer o devido cuidado pode ajudar a reduzir o nível de risco. O risco ainda existe, mas etapas razoáveis reduzem a
+                  possível perda.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="hacker-card text-center p-3">
+                <i class="fas fa-check-circle fa-2x mb-2" style="color: var(--cisco-green)"></i>
+                <h4 class="fs-5">Risco Aceitável</h4>
+                <p class="small text-muted">Área segura onde o risco foi mitigado a níveis toleráveis pela organização.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-users me-2"></i> Promover a conscientização de riscos na empresa ajuda os funcionários a desenvolver uma
+            compreensão de quais riscos existem, seu impacto potencial e como a empresa pode gerenciá-los.
+          </div>
+        </div>
+
+        <!-- 26.1.4 Processo de gerenciamento de riscos -->
+        <div class="content-card" id="processo-gerenciamento">
+          <h3 class="cisco-subtitle">26.1.4 O Processo de Gerenciamento de Riscos</h3>
+          <p>
+            O gerenciamento de riscos é um processo formal que mede o impacto de uma ameaça e o custo para implementar controles ou
+            contramedidas para atenuar essa ameaça.
+          </p>
+          <p class="text-muted">
+            O risco não pode ser eliminado completamente, mas ainda pode ser gerenciado para um nível aceitável. Todas as empresas aceitam
+            algum risco, e o custo de uma contramedida não deve ser maior do que o valor do ativo que está sendo protegido.
+          </p>
+
+          <div class="row g-4 mt-2">
+            <div class="col-md-3">
+              <div class="timeline-item text-center p-3">
+                <div class="icon-box mb-2"><i class="fas fa-search fa-2x"></i></div>
+                <h4 class="fs-6 fw-bold">Enquadre o risco</h4>
+                <p class="small text-muted">Identifique as ameaças em toda a organização que aumentam o risco.</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="timeline-item text-center p-3">
+                <div class="icon-box mb-2"><i class="fas fa-chart-bar fa-2x"></i></div>
+                <h4 class="fs-6 fw-bold">Avaliar o risco</h4>
+                <p class="small text-muted">Analise a gravidade da ameaça (quantitativa/qualitativa).</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="timeline-item text-center p-3">
+                <div class="icon-box mb-2"><i class="fas fa-hand-peace fa-2x"></i></div>
+                <h4 class="fs-6 fw-bold">Responda ao risco</h4>
+                <p class="small text-muted">Mitigar, transferir ou aceitar o risco.</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="timeline-item text-center p-3">
+                <div class="icon-box mb-2"><i class="fas fa-chart-line fa-2x"></i></div>
+                <h4 class="fs-6 fw-bold">Monitore o risco</h4>
+                <p class="small text-muted">Acompanhamento contínuo e reavaliação periódica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 26.2 AVALIAÇÃO DE RISCO ==================== -->
+      <section id="avaliacao-risco" class="mb-5">
+        <h2 class="section-title mb-4">26.2 Avaliação de Risco</h2>
+
+        <!-- 26.2.2 Tipos de fonte de ameaça -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle">26.2.2 Tipos de Fonte de Ameaça</h3>
+          <p>
+            A avaliação de ameaças é a base para a avaliação de riscos. Uma ameaça é o potencial que uma vulnerabilidade será identificada e
+            explorada, enquanto um <strong>vetor de ameaças</strong> é o caminho que um invasor utiliza para afetar o alvo.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-3 mb-2">
+              <span class="badge-cisco w-100 d-block text-center"><i class="fas fa-user-secret me-1"></i> Adversarial</span
+              ><small class="text-muted d-block mt-1">Indivíduos, grupos ou nações</small>
+            </div>
+            <div class="col-md-3 mb-2">
+              <span class="badge-cisco w-100 d-block text-center"><i class="fas fa-exclamation-triangle me-1"></i> Acidental</span
+              ><small class="text-muted d-block mt-1">Sem intenção maliciosa</small>
+            </div>
+            <div class="col-md-3 mb-2">
+              <span class="badge-cisco w-100 d-block text-center"><i class="fas fa-microchip me-1"></i> Estrutural</span
+              ><small class="text-muted d-block mt-1">Falhas de equipamento/software</small>
+            </div>
+            <div class="col-md-3 mb-2">
+              <span class="badge-cisco w-100 d-block text-center"><i class="fas fa-tree me-1"></i> Ambiental</span
+              ><small class="text-muted d-block mt-1">Desastres naturais ou causados pelo homem</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 26.2.3 Metodologia de avaliação de riscos -->
+        <div class="content-card mb-4" id="metodologia-avaliacao">
+          <h3 class="cisco-subtitle">26.2.3 Metodologia de Avaliação de Riscos</h3>
+          <p>
+            As empresas avaliam e examinam seus riscos operacionais ao realizar uma avaliação de risco para garantir que o gerenciamento de
+            riscos atenda a todos os objetivos comerciais.
+          </p>
+
+          <div class="timeline-item p-3 mb-2">
+            <i class="fas fa-database text-success me-2"></i> <strong>1. Identificar ativos e seu valor</strong>
+          </div>
+          <div class="timeline-item p-3 mb-2">
+            <i class="fas fa-bug text-success me-2"></i> <strong>2. Identificar vulnerabilidades e ameaças</strong>
+          </div>
+          <div class="timeline-item p-3 mb-2">
+            <i class="fas fa-chart-simple text-success me-2"></i> <strong>3. Quantificar a probabilidade e o impacto das ameaças</strong>
+          </div>
+          <div class="timeline-item p-3 mb-2">
+            <i class="fas fa-coins text-success me-2"></i>
+            <strong>4. Equilibrar o impacto da ameaça com relação ao custo da contramedida</strong>
+          </div>
+        </div>
+
+        <!-- Análise Qualitativa + Matriz de Risco -->
+        <div class="content-card mb-4" id="analise-risco">
+          <h3 class="cisco-subtitle">Análise de Risco: Qualitativa vs Quantitativa</h3>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-success mb-2"><i class="fas fa-chart-pie me-1"></i> Análise Qualitativa</h4>
+                <p class="small">Usa opiniões e cenários que descrevem a probabilidade de uma ameaça contra seu impacto.</p>
+                <p class="small text-muted mt-2">
+                  Exemplo: "A falha no servidor pode ser provável, mas seu impacto pode ser apenas marginal."
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-success mb-2"><i class="fas fa-dollar-sign me-1"></i> Análise Quantitativa</h4>
+                <p class="small">
+                  Usa valores monetários reais para calcular o Retorno sobre o Investimento (ROI) de controles de segurança.
+                </p>
+                <p class="small text-muted mt-2"><strong>ALE = EF x ARO</strong> (Expectativa de Perda Anual)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Matriz de Risco (Mapa de Calor) -->
+          <div class="mt-4">
+            <h4 class="fs-6 fw-bold text-success">Matriz de Risco / Mapa de Calor</h4>
+            <div class="table-responsive mt-2">
+              <table class="table table-cisco table-sm text-center">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Catastrófico</th>
+                    <th>Crítico</th>
+                    <th>Marginal</th>
+                    <th>Insignificante</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="bg-secondary">Frequente (5)</th>
+                    <td class="bg-danger">20</td>
+                    <td class="bg-danger">15</td>
+                    <td class="bg-warning">10</td>
+                    <td>5</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-secondary">Provável (4)</th>
+                    <td class="bg-danger">16</td>
+                    <td class="bg-warning">12</td>
+                    <td class="bg-warning">8*</td>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-secondary">Ocasional (3)</th>
+                    <td class="bg-warning">12</td>
+                    <td class="bg-info">9</td>
+                    <td>6</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-secondary">Raramente (2)</th>
+                    <td>8</td>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <th class="bg-secondary">Improvável (1)</th>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="small text-muted mt-2">
+                <i class="fas fa-info-circle me-1"></i> * Falha do Servidor - Quando a matriz é codificada por cores, é chamada de
+                <strong>mapa de calor de risco</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 26.2.7 Mitigação de riscos -->
+        <div class="content-card mb-4" id="mitigacao-riscos">
+          <h3 class="cisco-subtitle">26.2.7 Mitigação de Riscos</h3>
+          <p>
+            A mitigação envolve reduzir a gravidade da perda ou a probabilidade de que a perda ocorra. Muitos controles técnicos mitigam
+            riscos, incluindo sistemas de autenticação, permissões de arquivos e firewalls.
+          </p>
+          <p>
+            A empresa e os profissionais de segurança devem entender que a mitigação de riscos pode ter impacto positivo e negativo na
+            empresa. A boa mitigação encontra um equilíbrio entre o impacto negativo das contramedidas e o benefício da redução do risco.
+          </p>
+
+          <div class="row g-3 mt-2">
+            <div class="col-md-3">
+              <div class="rule-allow p-2 text-center"><i class="fas fa-check-circle text-success me-1"></i> Aceitar o risco</div>
+              <small class="text-muted d-block mt-1">Reavaliar periodicamente</small>
+            </div>
+            <div class="col-md-3">
+              <div class="rule-allow p-2 text-center"><i class="fas fa-shield-halved text-success me-1"></i> Reduzir o risco</div>
+              <small class="text-muted d-block mt-1">Implementar controles</small>
+            </div>
+            <div class="col-md-3">
+              <div class="rule-deny p-2 text-center"><i class="fas fa-ban text-danger me-1"></i> Evitar o risco</div>
+              <small class="text-muted d-block mt-1">Alterar totalmente a abordagem</small>
+            </div>
+            <div class="col-md-3">
+              <div class="rule-allow p-2 text-center"><i class="fas fa-exchange-alt text-success me-1"></i> Transferir o risco</div>
+              <small class="text-muted d-block mt-1">Terceirização/seguros</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- 26.2.8 Priorizar os ativos + Tabela ALE -->
+        <div class="content-card" id="priorizar-ativos">
+          <h3 class="cisco-subtitle">26.2.8 Priorizar os Ativos</h3>
+          <p>
+            A @Apollo produziu uma tabela de gerenciamento de ativos. Ordene os ativos da prioridade mais alta para a mais baixa com base no
+            cálculo de <strong>Expectativa de Perda Anual (ALE)</strong>.
+          </p>
+
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Descrição do Ativo & Ameaça</th>
+                  <th>Fator de Exposição (EF) $/%</th>
+                  <th>Taxa Anual de Ocorrência (ARO)</th>
+                  <th>ALE (EF x ARO)</th>
+                  <th>Prioridade</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-danger">
+                  <td>Ataque do servidor web por hacker</td>
+                  <td>$200,000 / 200%</td>
+                  <td>5x/ano</td>
+                  <td><strong>$1,000,000</strong></td>
+                  <td><span class="badge-cisco">1ª (Alta)</span></td>
+                </tr>
+                <tr>
+                  <td>Falha da fonte de alimentação - BD</td>
+                  <td>$2,500 / 10%</td>
+                  <td>0.5 (1x/2 anos)</td>
+                  <td>$1,250</td>
+                  <td><span class="badge-cisco">2ª</span></td>
+                </tr>
+                <tr>
+                  <td>Falha da unidade - servidor BD</td>
+                  <td>$5,000 / 20%</td>
+                  <td>0.2 (1x/5 anos)</td>
+                  <td>$1,000</td>
+                  <td><span class="badge-cisco">3ª</span></td>
+                </tr>
+                <tr>
+                  <td>Roubo de notebook</td>
+                  <td>$2,000 / 25%</td>
+                  <td>0.25 (1x/4 anos)</td>
+                  <td>$500</td>
+                  <td><span class="badge-cisco">4ª (Baixa)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-calculator me-2"></i> <strong>Fórmula ALE:</strong> Expectativa de Perda Anual = Fator de Exposição (EF) × Taxa
+            Anual de Ocorrência (ARO)
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 26.3 CONTROLES DE SEGURANÇA ==================== -->
+      <section id="controles-seguranca" class="mb-5">
+        <h2 class="section-title mb-4">26.3 Controles de Segurança</h2>
+
+        <div class="content-card" id="tipos-controle">
+          <h3 class="cisco-subtitle">26.3.1 Tipos de Controle</h3>
+          <p>
+            O <strong>risco inerente</strong> de um sistema é o risco que o sistema representa inerentemente, sem que haja controles de
+            pessoas, processos ou tecnologia.
+          </p>
+          <p>
+            Os <strong>controles de segurança</strong> são proteções ou contramedidas que uma empresa implementa para evitar, detectar,
+            neutralizar ou minimizar os riscos de segurança dos ativos da empresa.
+          </p>
+
+          <div class="row g-4 mt-3">
+            <div class="col-md-4">
+              <div class="content-card-accent text-center p-3 h-100">
+                <i class="fas fa-building fa-3x mb-3" style="color: var(--cisco-green)"></i>
+                <h4 class="fs-5">Controles Físicos</h4>
+                <p class="small text-muted">
+                  Mecanismos como cercas, bloqueios, portas, câmeras implantados para proteger sistemas, instalações, pessoal e recursos.
+                  Separam fisicamente pessoas ou outras ameaças dos sistemas.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="content-card-accent text-center p-3 h-100">
+                <i class="fas fa-microchip fa-3x mb-3" style="color: var(--cisco-green)"></i>
+                <h4 class="fs-5">Controles Técnicos</h4>
+                <p class="small text-muted">
+                  Envolvem hardware e/ou software implementados para gerenciar riscos e oferecer proteção. Ex: firewalls, antivírus,
+                  criptografia, autenticação multifator.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="content-card-accent text-center p-3 h-100">
+                <i class="fas fa-file-alt fa-3x mb-3" style="color: var(--cisco-green)"></i>
+                <h4 class="fs-5">Controles Administrativos</h4>
+                <p class="small text-muted">
+                  Consistem em procedimentos e políticas que uma empresa implementa ao lidar com informações confidenciais. Determinam como
+                  as pessoas agem. Ex: políticas de segurança, treinamentos, classificação de dados.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== LABORATÓRIOS ==================== -->
+      <section id="laboratorios" class="mb-5">
+        <h2 class="section-title mb-4"><i class="fas fa-flask me-2"></i> Laboratórios do Módulo</h2>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <div class="content-card text-center p-3">
+              <i class="fas fa-vial fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h4 class="fs-6">Lab 1</h4>
+              <p class="small text-muted">Avaliação de Risco Qualitativa</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="content-card text-center p-3">
+              <i class="fas fa-chart-line fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h4 class="fs-6">Lab 2</h4>
+              <p class="small text-muted">Cálculo de ALE e Priorização</p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-3">
+            <div class="content-card text-center p-3">
+              <i class="fas fa-shield-alt fa-3x mb-3" style="color: var(--cisco-green)"></i>
+              <h4 class="fs-6">Lab 3</h4>
+              <p class="small text-muted">Implementação de Controles</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== 26.3.2 CONTROLES DE SEGURANÇA FUNCIONAL ==================== -->
+      <section id="controles-funcionais" class="mb-5">
+        <div class="content-card">
+          <h3 class="cisco-subtitle">26.3.2 Controles de Segurança Funcional</h3>
+          <p>
+            O uso funcional de uma salvaguarda específica ou contramedida ajudará a determinar o motivo de sua escolha e implementação. Os
+            controles de segurança podem ser classificados por sua função principal:
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-6 col-lg-4">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-success mb-2"><i class="fas fa-shield-halved me-2"></i>Controles Preventivos</h4>
+                <p class="small text-muted mb-0">
+                  Impedem que atividades indesejadas ocorram. Ex: firewalls, atribuição de privilégios, MFA.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-warning mb-2"><i class="fas fa-ban me-2"></i>Controles Dissuasivos</h4>
+                <p class="small text-muted mb-0">
+                  Desencorajam criminosos, mas não impedem totalmente. Ex: avisos de segurança, câmeras visíveis.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-info mb-2"><i class="fas fa-search me-2"></i>Controles de Detecção</h4>
+                <p class="small text-muted mb-0">
+                  Identificam atividades não autorizadas após ocorrerem. Ex: IDS, detectores de movimento.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-danger mb-2"><i class="fas fa-tools me-2"></i>Controles Corretivos</h4>
+                <p class="small text-muted mb-0">Restauram o sistema após ameaças. Ex: antivírus, alarmes, planejamento de continuidade.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-success mb-2"><i class="fas fa-database me-2"></i>Controles de Recuperação</h4>
+                <p class="small text-muted mb-0">Restauram recursos e funções após violação. Ex: backups, clusters, tolerância a falhas.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="terminal-card p-3 h-100">
+                <h4 class="fs-6 text-secondary mb-2"><i class="fas fa-balance-scale me-2"></i>Controles de Compensação</h4>
+                <p class="small text-muted mb-0">
+                  Substituem controles que não podem ser usados. Ex: políticas, supervisão, monitoramento.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== 26.3.3 AUDITORIA E CONFORMIDADE ==================== -->
+      <section id="auditoria-conformidade" class="mb-5">
+        <div class="content-card">
+          <h3 class="cisco-subtitle">26.3.3 Auditoria de Controles e Conformidade</h3>
+
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <p>
+                O <strong>Center for Internet Security (CIS)</strong> criou um mapeamento de seus 18 controles de segurança essenciais para
+                algumas das estruturas de conformidade comuns. Isso fornece orientações úteis para profissionais de segurança que estão
+                trabalhando para criar e manter a conformidade com as estruturas necessárias.
+              </p>
+              <p>
+                Os membros do CIS têm acesso à ferramenta de orientação e avaliação de controles do <strong>CIS-CAT Pro</strong>, que
+                oferece assistência na avaliação da conformidade por meio dos mapeamentos dos controles do CIS para as estruturas de
+                conformidade individuais.
+              </p>
+            </div>
+            <div class="col-lg-4 text-center">
+              <div class="ioc-grid p-3">
+                <span class="badge-cisco d-inline-block m-1">PCI DSS</span>
+                <span class="badge-cisco d-inline-block m-1">NIST CSF</span>
+                <span class="badge-cisco d-inline-block m-1">FISMA</span>
+                <span class="badge-cisco d-inline-block m-1">HIPAA</span>
+                <span class="badge-cisco d-inline-block m-1">GDPR</span>
+                <span class="badge-cisco d-inline-block m-1">ISO 27001</span>
+              </div>
+              <p class="small text-muted mt-2">Estruturas de conformidade suportadas pelo CIS</p>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-search me-2"></i>
+            <strong>Pesquisa útil:</strong> site:cisecurity.org "mapeamento e conformidade" - retorna orientações sobre controles relevantes
+            para estruturas do setor.
+          </div>
+        </div>
+      </section>
+      <!-- ==================== DETALHAMENTO DOS CONTROLES FUNCIONAIS ==================== -->
+      <section id="detalhamento-controles" class="mb-5">
+        <h2 class="section-title mb-4">Detalhamento dos Controles Funcionais</h2>
+
+        <!-- Controles Preventivos -->
+        <div class="content-card mb-4">
+          <h4 class="cisco-subtitle text-success"><i class="fas fa-shield-halved me-2"></i>Controles Preventivos</h4>
+          <p>
+            Os controles de segurança preventiva impedem que atividades indesejadas e não autorizadas ocorram e/ou aplicam restrições a
+            usuários autorizados.
+          </p>
+          <p>
+            <strong>Exemplo:</strong> Atribuir privilégios de usuário específico em um sistema é um controle preventivo, pois coloca limites
+            para impedir que determinados usuários acessem e executem ações não autorizadas. Um firewall que bloqueia o acesso a uma porta
+            ou serviço que criminosos virtuais podem explorar também é um controle preventivo.
+          </p>
+        </div>
+
+        <!-- Controles Dissuasivos -->
+        <div class="content-card mb-4">
+          <h4 class="cisco-subtitle text-warning"><i class="fas fa-ban me-2"></i>Controles Dissuasivos</h4>
+          <p>
+            Um impedimento tem como objetivo desencorajar que algo aconteça. Os profissionais e empresas de segurança digital usam as
+            dissuasões para limitar ou mitigar uma ação ou comportamento, mas as dissuasões não os impedem totalmente.
+          </p>
+          <p>
+            <strong>Exemplo:</strong> As dissuasões de controle de acesso desencorajam os criminosos virtuais a obter acesso não autorizado
+            a sistemas de informações e dados confidenciais. Podem ser eficazes contra ataques a sistemas, roubo de dados e disseminação de
+            códigos mal-intencionados.
+          </p>
+        </div>
+
+        <!-- Controles de Detecção -->
+        <div class="content-card mb-4">
+          <h4 class="cisco-subtitle text-info"><i class="fas fa-search me-2"></i>Controles de Detecção</h4>
+          <p>
+            As detecções de controle de acesso identificam diferentes tipos de atividade não autorizada. Os controles de detecção
+            <strong>não são uma medida preventiva</strong> e, em vez disso, concentram-se na descoberta de uma violação de segurança depois
+            que ela ocorre.
+          </p>
+          <p>
+            <strong>Exemplo:</strong> Todos os sistemas de detecção buscam atividades incomuns ou proibidas. Podem ser simples (detector de
+            movimento ou agente de segurança) ou complexos (sistema de detecção de invasão - IDS). Também fornecem métodos para gravar ou
+            alertar operadores sobre possível acesso não autorizado.
+          </p>
+        </div>
+
+        <!-- Controles Corretivos -->
+        <div class="content-card mb-4">
+          <h4 class="cisco-subtitle text-danger"><i class="fas fa-tools me-2"></i>Controles Corretivos</h4>
+          <p>
+            Os controles corretivos restauram o sistema ao estado de confidencialidade, integridade e disponibilidade. Eles também podem
+            restaurar os sistemas ao estado normal após ocorrer atividade não autorizada.
+          </p>
+          <p>
+            <strong>Exemplo:</strong> As empresas implementam controles de acesso corretivos após o sistema passar por uma ameaça. Sistemas
+            de detecção de invasão, portas de segurança (mantraps), planejamento de negócios contínuo, antivírus, alarmes e políticas de
+            segurança são exemplos de controles de acesso por correção.
+          </p>
+        </div>
+
+        <!-- Controles de Recuperação -->
+        <div class="content-card mb-4">
+          <h4 class="cisco-subtitle text-success"><i class="fas fa-database me-2"></i>Controles de Recuperação</h4>
+          <p>
+            Os controles de acesso de recuperação restauram os recursos, funções e capacidades após uma violação de uma política de
+            segurança. Os controles de recuperação podem reparar danos, além de deter qualquer dano adicional. Esses controles têm recursos
+            mais avançados que os controles corretivos.
+          </p>
+          <p>
+            <strong>Exemplo:</strong> Operações de backup e restauração, sistemas de acionamento de tolerância a falhas, clusters de
+            servidores, cópias de sombra de banco de dados e software antivírus são exemplos de controles de acesso por recuperação.
+          </p>
+        </div>
+
+        <!-- Controles de Compensação -->
+        <div class="content-card">
+          <h4 class="cisco-subtitle text-secondary"><i class="fas fa-balance-scale me-2"></i>Controles de Compensação</h4>
+          <p>
+            Os controles de acesso compensatórios fornecem opções a outros controles para aumentar o reforço relacionado à sustentação de
+            uma política de segurança. Um controle compensatório também pode
+            <strong>substituir um controle que não pode ser usado</strong> devido às circunstâncias.
+          </p>
+          <p>
+            <strong>Exemplo:</strong> Se uma empresa não pode ter um cão de guarda, em vez disso, ela implementa um detector de movimento
+            com um holofote e um som de latidos. Outros exemplos incluem políticas de segurança, supervisão de pessoal, monitoramento e
+            procedimentos de tarefas de trabalho.
+          </p>
+        </div>
+      </section>
+      <!-- ==================== 26.3.4 EXERCÍCIO INTERATIVO ==================== -->
+      <section id="exercicio-controles" class="mb-5">
+        <div class="content-card">
+          <h3 class="cisco-subtitle">26.3.4 Você está no controle?</h3>
+          <p>
+            Como resultado da avaliação de risco que você realizou, a <strong>@Apollo</strong> implementará as medidas de controle de
+            segurança listadas abaixo. Adicione os rótulos de controle funcional corretos para cada um deles.
+          </p>
+
+          <div class="alert-cisco mb-4">
+            <i class="fas fa-lightbulb me-2"></i>
+            <strong>Dica:</strong> Revise os tipos de controle funcionais: Preventivo, Dissuasivo, Detecção, Corretivo, Recuperação,
+            Compensação.
+          </div>
+
+          <div id="exercicioControles" class="row g-3">
+            <!-- Item 1 -->
+            <div class="col-md-6">
+              <div class="p-3 bg-dark rounded border border-secondary">
+                <p class="mb-2"><strong>📌 Atribuir privilégios de usuário a todos os usuários autorizados</strong></p>
+                <select class="form-select form-select-sm bg-dark text-white border-success" data-resposta="preventivo">
+                  <option value="">Selecione o tipo de controle...</option>
+                  <option value="preventivo">🔒 Controles Preventivos</option>
+                  <option value="dissuasivo">⚠️ Controles Dissuasivos</option>
+                  <option value="detecção">🔍 Controles de Detecção</option>
+                  <option value="corretivo">🛠️ Controles Corretivos</option>
+                  <option value="recuperação">💾 Controles de Recuperação</option>
+                  <option value="compensação">⚖️ Controles de Compensação</option>
+                </select>
+                <div class="feedback small mt-1 text-muted"></div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="col-md-6">
+              <div class="p-3 bg-dark rounded border border-secondary">
+                <p class="mb-2"><strong>🦠 Novo Software antivírus</strong></p>
+                <select class="form-select form-select-sm bg-dark text-white border-success" data-resposta="corretivo">
+                  <option value="">Selecione o tipo de controle...</option>
+                  <option value="preventivo">🔒 Controles Preventivos</option>
+                  <option value="dissuasivo">⚠️ Controles Dissuasivos</option>
+                  <option value="detecção">🔍 Controles de Detecção</option>
+                  <option value="corretivo">🛠️ Controles Corretivos</option>
+                  <option value="recuperação">💾 Controles de Recuperação</option>
+                  <option value="compensação">⚖️ Controles de Compensação</option>
+                </select>
+                <div class="feedback small mt-1 text-muted"></div>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="col-md-6">
+              <div class="p-3 bg-dark rounded border border-secondary">
+                <p class="mb-2"><strong>📷 Câmeras de vigilância dentro da sala do servidor</strong></p>
+                <select class="form-select form-select-sm bg-dark text-white border-success" data-resposta="detecção">
+                  <option value="">Selecione o tipo de controle...</option>
+                  <option value="preventivo">🔒 Controles Preventivos</option>
+                  <option value="dissuasivo">⚠️ Controles Dissuasivos</option>
+                  <option value="detecção">🔍 Controles de Detecção</option>
+                  <option value="corretivo">🛠️ Controles Corretivos</option>
+                  <option value="recuperação">💾 Controles de Recuperação</option>
+                  <option value="compensação">⚖️ Controles de Compensação</option>
+                </select>
+                <div class="feedback small mt-1 text-muted"></div>
+              </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="col-md-6">
+              <div class="p-3 bg-dark rounded border border-secondary">
+                <p class="mb-2"><strong>📄 Atualizações da política de segurança da empresa</strong></p>
+                <select class="form-select form-select-sm bg-dark text-white border-success" data-resposta="compensação">
+                  <option value="">Selecione o tipo de controle...</option>
+                  <option value="preventivo">🔒 Controles Preventivos</option>
+                  <option value="dissuasivo">⚠️ Controles Dissuasivos</option>
+                  <option value="detecção">🔍 Controles de Detecção</option>
+                  <option value="corretivo">🛠️ Controles Corretivos</option>
+                  <option value="recuperação">💾 Controles de Recuperação</option>
+                  <option value="compensação">⚖️ Controles de Compensação</option>
+                </select>
+                <div class="feedback small mt-1 text-muted"></div>
+              </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="col-md-6">
+              <div class="p-3 bg-dark rounded border border-secondary">
+                <p class="mb-2"><strong>☁️ Um novo regime abrangente de backup em nuvem</strong></p>
+                <select class="form-select form-select-sm bg-dark text-white border-success" data-resposta="recuperação">
+                  <option value="">Selecione o tipo de controle...</option>
+                  <option value="preventivo">🔒 Controles Preventivos</option>
+                  <option value="dissuasivo">⚠️ Controles Dissuasivos</option>
+                  <option value="detecção">🔍 Controles de Detecção</option>
+                  <option value="corretivo">🛠️ Controles Corretivos</option>
+                  <option value="recuperação">💾 Controles de Recuperação</option>
+                  <option value="compensação">⚖️ Controles de Compensação</option>
+                </select>
+                <div class="feedback small mt-1 text-muted"></div>
+              </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="col-md-6">
+              <div class="p-3 bg-dark rounded border border-secondary">
+                <p class="mb-2"><strong>🔐 Tráfego HTTP sem criptografia em um túnel VPN criptografado</strong></p>
+                <select class="form-select form-select-sm bg-dark text-white border-success" data-resposta="compensação">
+                  <option value="">Selecione o tipo de controle...</option>
+                  <option value="preventivo">🔒 Controles Preventivos</option>
+                  <option value="dissuasivo">⚠️ Controles Dissuasivos</option>
+                  <option value="detecção">🔍 Controles de Detecção</option>
+                  <option value="corretivo">🛠️ Controles Corretivos</option>
+                  <option value="recuperação">💾 Controles de Recuperação</option>
+                  <option value="compensação">⚖️ Controles de Compensação</option>
+                </select>
+                <div class="feedback small mt-1 text-muted"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <button id="verificarControles" class="btn-cisco"><i class="fas fa-check-circle me-2"></i>Verificar Respostas</button>
+            <button id="resetarControles" class="btn btn-outline-secondary ms-2"><i class="fas fa-undo-alt me-2"></i>Limpar</button>
+          </div>
+
+          <div id="resultadoExercicio" class="mt-4" style="display: none">
+            <div class="alert-cisco text-center">
+              <i class="fas fa-trophy me-2"></i>
+              <span id="pontuacaoTexto"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== 26.4 RESUMO DO MÓDULO ==================== -->
+      <section id="resumo-modulo" class="mb-5">
+        <h2 class="section-title mb-4">26.4 Resumo: Gerenciamento de Riscos e Controles de Segurança</h2>
+
+        <div class="content-card">
+          <p class="mb-4">
+            Neste módulo, você aprendeu os fundamentos do gerenciamento de riscos, como avaliar ameaças e vulnerabilidades, e como
+            implementar controles de segurança adequados para proteger os ativos da organização.
+          </p>
+
+          <!-- Accordion Bootstrap modificado com estilo Cisco -->
+          <div class="accordion" id="resumoAccordion">
+            <!-- Item 1: Gerenciamento de Risco -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoRisco"
+                  style="background-color: #1e1e1e !important; border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-chart-line me-2 text-success"></i> Gerenciamento de Risco
+                </button>
+              </h3>
+              <div id="resumoRisco" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body bg-dark text-secondary" style="background-color: #1a1a1a !important">
+                  <p>
+                    <strong>Risco</strong> é a probabilidade de perda devido a uma ameaça - um ato mal-intencionado ou evento inesperado que
+                    danifica sistemas de informações ou ativos organizacionais.
+                  </p>
+                  <p>
+                    O <strong>impacto do risco</strong> é o dano causado por um evento que causa perda de ativos ou interrupção de serviços.
+                  </p>
+                  <p>
+                    O objetivo do gerenciamento de riscos é reduzir essas ameaças a um <strong>nível aceitável</strong> e implementar
+                    controles para manter esse nível.
+                  </p>
+                  <div class="row mt-3">
+                    <div class="col-md-4">
+                      <div class="terminal-card p-2 text-center">
+                        <small>🔍 Enquadrar o risco</small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="terminal-card p-2 text-center">
+                        <small>📊 Avaliar o risco</small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="terminal-card p-2 text-center">
+                        <small>⚡ Responder ao risco</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2: Avaliação de Risco -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoAvaliacao"
+                  style="background-color: #1e1e1e !important; border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-calculator me-2 text-success"></i> Avaliação de Risco
+                </button>
+              </h3>
+              <div id="resumoAvaliacao" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body bg-dark text-secondary" style="background-color: #1a1a1a !important">
+                  <p>
+                    A avaliação de ameaças é a base para a avaliação de riscos. Uma <strong>ameaça</strong> é o potencial de uma
+                    vulnerabilidade ser identificada e explorada. Um <strong>vetor de ameaças</strong> é o caminho que um invasor utiliza
+                    para impactar o alvo.
+                  </p>
+
+                  <h5 class="text-success mt-3 fs-6">Tipos de fonte de ameaça:</h5>
+                  <div class="row g-2 mb-3">
+                    <div class="col-6 col-md-3"><span class="badge-cisco d-block text-center">🎭 Adversarial</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco d-block text-center">⚠️ Acidental</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco d-block text-center">🔧 Estrutural</span></div>
+                    <div class="col-6 col-md-3"><span class="badge-cisco d-block text-center">🌊 Ambiental</span></div>
+                  </div>
+
+                  <p>
+                    <strong>Análise Quantitativa:</strong> Atribui números e valores monetários. Fórmula:
+                    <code class="text-success">ALE = EF × ARO</code>
+                  </p>
+                  <p><strong>Análise Qualitativa:</strong> Usa opiniões e cenários (ex: matriz de risco/mapa de calor).</p>
+
+                  <h5 class="text-success mt-3 fs-6">Estratégias de mitigação:</h5>
+                  <ul class="text-muted small">
+                    <li>✅ <strong>Aceitar</strong> o risco e reavaliar periodicamente</li>
+                    <li>🛡️ <strong>Reduzir</strong> o risco com implementação de controles</li>
+                    <li>🚫 <strong>Evitar</strong> o risco alterando totalmente a abordagem</li>
+                    <li>🤝 <strong>Transferir</strong> o risco para terceiros (seguros, terceirização)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 3: Controles de Segurança -->
+            <div class="accordion-item bg-transparent border-secondary mb-3">
+              <h3 class="accordion-header">
+                <button
+                  class="accordion-button bg-dark text-white collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#resumoControles"
+                  style="background-color: #1e1e1e !important; border-left: 3px solid var(--cisco-green)"
+                >
+                  <i class="fas fa-shield-halved me-2 text-success"></i> Controles de Segurança
+                </button>
+              </h3>
+              <div id="resumoControles" class="accordion-collapse collapse" data-bs-parent="#resumoAccordion">
+                <div class="accordion-body bg-dark text-secondary" style="background-color: #1a1a1a !important">
+                  <p>
+                    Os <strong>controles de segurança</strong> são proteções ou contramedidas que uma empresa implementa para evitar,
+                    detectar, neutralizar ou minimizar riscos.
+                  </p>
+
+                  <div class="row g-3 mt-2">
+                    <div class="col-md-4">
+                      <div class="text-center p-2" style="border-left: 2px solid var(--cisco-green)">
+                        <i class="fas fa-building text-success"></i>
+                        <strong class="d-block small">Controles Físicos</strong>
+                        <small class="text-muted">Cercas, bloqueios, câmeras</small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-2" style="border-left: 2px solid var(--cisco-green)">
+                        <i class="fas fa-microchip text-success"></i>
+                        <strong class="d-block small">Controles Técnicos</strong>
+                        <small class="text-muted">Firewall, antivírus, MFA</small>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center p-2" style="border-left: 2px solid var(--cisco-green)">
+                        <i class="fas fa-file-alt text-success"></i>
+                        <strong class="d-block small">Controles Administrativos</strong>
+                        <small class="text-muted">Políticas, treinamentos</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <h5 class="text-success mt-4 fs-6">Controles Funcionais:</h5>
+                  <div class="table-responsive">
+                    <table class="table table-sm table-cisco">
+                      <thead>
+                        <tr>
+                          <th>Tipo</th>
+                          <th>Função</th>
+                          <th>Exemplo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-success">Preventivo</td>
+                          <td>Impedir atividades indesejadas</td>
+                          <td>Firewall, privilégios</td>
+                        </tr>
+                        <tr>
+                          <td class="text-warning">Dissuasivo</td>
+                          <td>Desencorajar ações</td>
+                          <td>Avisos, câmeras visíveis</td>
+                        </tr>
+                        <tr>
+                          <td class="text-info">Detecção</td>
+                          <td>Identificar violações</td>
+                          <td>IDS, detectores</td>
+                        </tr>
+                        <tr>
+                          <td class="text-danger">Corretivo</td>
+                          <td>Restaurar após ameaça</td>
+                          <td>Antivírus, alarmes</td>
+                        </tr>
+                        <tr>
+                          <td class="text-success">Recuperação</td>
+                          <td>Restaurar recursos</td>
+                          <td>Backup, clusters</td>
+                        </tr>
+                        <tr>
+                          <td class="text-secondary">Compensação</td>
+                          <td>Substituir controles</td>
+                          <td>Políticas alternativas</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== GLOSSÁRIO TÉCNICO ==================== -->
+      <section id="glossario" class="mb-5">
+        <h2 class="section-title mb-4"><i class="fas fa-book-open me-2"></i>Glossário Técnico</h2>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <h4 class="fs-6 text-success mb-3"><i class="fas fa-chart-line me-1"></i> Termos de Risco</h4>
+              <dl class="row g-2 small">
+                <dt class="col-4 text-muted">Risco</dt>
+                <dd class="col-8">Probabilidade de perda devido a uma ameaça ou evento inesperado.</dd>
+
+                <dt class="col-4 text-muted">Impacto</dt>
+                <dd class="col-8">Dano causado por um evento que causa perda de ativos ou interrupção de serviços.</dd>
+
+                <dt class="col-4 text-muted">Vulnerabilidade</dt>
+                <dd class="col-8">Fragilidade ou brecha que pode ser explorada por uma ameaça.</dd>
+
+                <dt class="col-4 text-muted">Ameaça</dt>
+                <dd class="col-8">Potencial de uma vulnerabilidade ser identificada e explorada.</dd>
+
+                <dt class="col-4 text-muted">Vetor de ameaça</dt>
+                <dd class="col-8">Caminho que um invasor utiliza para afetar o alvo.</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <h4 class="fs-6 text-success mb-3"><i class="fas fa-chart-simple me-1"></i> Termos de Análise</h4>
+              <dl class="row g-2 small">
+                <dt class="col-5 text-muted">ALE (Annualized Loss Expectancy)</dt>
+                <dd class="col-7">Expectativa de perda anual = EF × ARO</dd>
+
+                <dt class="col-5 text-muted">EF (Exposure Factor)</dt>
+                <dd class="col-7">Fator de exposição - % do ativo perdido em um evento.</dd>
+
+                <dt class="col-5 text-muted">ARO (Annualized Rate of Occurrence)</dt>
+                <dd class="col-7">Taxa anual de ocorrência - frequência do evento.</dd>
+
+                <dt class="col-5 text-muted">SLE (Single Loss Expectancy)</dt>
+                <dd class="col-7">Expectativa de perda única = AV × EF</dd>
+
+                <dt class="col-5 text-muted">Matriz de Risco</dt>
+                <dd class="col-7">Ferramenta para priorizar riscos (mapa de calor).</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <h4 class="fs-6 text-success mb-3"><i class="fas fa-shield-halved me-1"></i> Termos de Controles</h4>
+              <dl class="row g-2 small">
+                <dt class="col-4 text-muted">Controles Físicos</dt>
+                <dd class="col-8">Mecanismos como cercas, bloqueios, câmeras.</dd>
+
+                <dt class="col-4 text-muted">Controles Técnicos</dt>
+                <dd class="col-8">Hardware/software para gerenciar riscos.</dd>
+
+                <dt class="col-4 text-muted">Controles Administrativos</dt>
+                <dd class="col-8">Procedimentos e políticas.</dd>
+
+                <dt class="col-4 text-muted">Controles Funcionais</dt>
+                <dd class="col-8">Preventivo, dissuasivo, detecção, corretivo, recuperação, compensação.</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="content-card h-100">
+              <h4 class="fs-6 text-success mb-3"><i class="fas fa-balance-scale me-1"></i> Termos de Estratégia</h4>
+              <dl class="row g-2 small">
+                <dt class="col-4 text-muted">Risco Aceitável</dt>
+                <dd class="col-8">Nível de risco que a organização tolera após controles.</dd>
+
+                <dt class="col-4 text-muted">Risco Residual</dt>
+                <dd class="col-8">Risco que permanece após a implementação de controles.</dd>
+
+                <dt class="col-4 text-muted">Devido Cuidado</dt>
+                <dd class="col-8">Etapas razoáveis para reduzir possível perda.</dd>
+
+                <dt class="col-4 text-muted">Negligência</dt>
+                <dd class="col-8">Nenhuma ação ou controle para reduzir riscos.</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== CASO DE USO HUMANIZADO ==================== -->
+      <section id="caso-uso" class="mb-5">
+        <h2 class="section-title mb-4"><i class="fas fa-users me-2"></i>Caso de Uso: A História da Ótica &amp; Cia</h2>
+
+        <div class="content-card">
+          <div class="row">
+            <div class="col-lg-3 text-center mb-3 mb-lg-0">
+              <div class="icon-box p-3">
+                <i class="fas fa-store" style="font-size: 4rem; color: var(--cisco-green)"></i>
+              </div>
+              <span class="badge-cisco mt-2 d-inline-block">Cenário Real</span>
+            </div>
+            <div class="col-lg-9">
+              <p>
+                <strong>👩‍💼 Conheça a Carla:</strong> Carla é gerente de uma pequena rede de óticas chamada
+                <strong>"Ótica &amp; Cia"</strong>. Ela tem 3 lojas, 15 funcionários e um sistema de vendas que armazena dados de clientes
+                (incluindo CPF e informações de exames de vista).
+              </p>
+              <p>
+                Carla não entende muito de tecnologia, mas ouviu falar que empresas estão sendo hackeadas. Ela te contratou como consultor
+                de segurança para ajudar.
+              </p>
+            </div>
+          </div>
+
+          <hr class="border-secondary my-4" />
+
+          <!-- Passo 1: Identificação -->
+          <div class="timeline-item mb-4">
+            <div class="d-flex align-items-start">
+              <div class="icon-box me-3 flex-shrink-0">
+                <i class="fas fa-search"></i>
+              </div>
+              <div>
+                <h4 class="fs-5 text-success mb-2">1️⃣ Carla está com medo. O que pode dar errado?</h4>
+                <p>Sentamos com Carla e listamos o que poderia acontecer com a Ótica &amp; Cia:</p>
+                <ul class="text-muted small">
+                  <li>
+                    <i class="fas fa-laptop text-danger me-1"></i> <strong>Roubo de notebook</strong> - um funcionário perde o notebook com
+                    dados de clientes.
+                  </li>
+                  <li>
+                    <i class="fas fa-database text-danger me-1"></i> <strong>Falha no servidor</strong> - o sistema de vendas para de
+                    funcionar.
+                  </li>
+                  <li>
+                    <i class="fas fa-virus text-danger me-1"></i> <strong>Vírus/Ransomware</strong> - alguém clica em um link falso e todos
+                    os arquivos são criptografados.
+                  </li>
+                  <li>
+                    <i class="fas fa-user-secret text-danger me-1"></i> <strong>Funcionário mal-intencionado</strong> - um ex-funcionário
+                    vaza dados.
+                  </li>
+                </ul>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i> <strong>Conceito aplicado:</strong> Identificamos <strong>ameaças</strong> e
+                  <strong>vulnerabilidades</strong> - primeiro passo da avaliação de risco!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passo 2: Análise -->
+          <div class="timeline-item mb-4">
+            <div class="d-flex align-items-start">
+              <div class="icon-box me-3 flex-shrink-0">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div>
+                <h4 class="fs-5 text-success mb-2">2️⃣ Qual o risco de cada problema?</h4>
+                <p>Usamos a <strong>matriz de risco</strong> (mapa de calor) para classificar cada ameaça:</p>
+                <div class="table-responsive mt-2">
+                  <table class="table table-cisco table-sm">
+                    <thead>
+                      <tr>
+                        <th>Ameaça</th>
+                        <th>Probabilidade</th>
+                        <th>Impacto</th>
+                        <th>Nível</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="table-danger">
+                        <td>Ransomware</td>
+                        <td>Provável (4)</td>
+                        <td>Catastrófico (20)</td>
+                        <td><strong>ALTO 🚨</strong></td>
+                      </tr>
+                      <tr class="table-warning">
+                        <td>Falha no servidor</td>
+                        <td>Ocasional (3)</td>
+                        <td>Crítico (15)</td>
+                        <td><strong>MÉDIO ⚠️</strong></td>
+                      </tr>
+                      <tr class="table-warning">
+                        <td>Roubo de notebook</td>
+                        <td>Raramente (2)</td>
+                        <td>Marginal (10)</td>
+                        <td><strong>MÉDIO ⚠️</strong></td>
+                      </tr>
+                      <tr class="table-success">
+                        <td>Funcionário mal-intencionado</td>
+                        <td>Improvável (1)</td>
+                        <td>Marginal (10)</td>
+                        <td><strong>BAIXO ✅</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="alert-cisco mt-2">
+                  <i class="fas fa-lightbulb me-2"></i> <strong>Conceito aplicado:</strong> <strong>Análise qualitativa</strong> - usamos
+                  opiniões e cenários para priorizar!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passo 3: Controles -->
+          <div class="timeline-item mb-4">
+            <div class="d-flex align-items-start">
+              <div class="icon-box me-3 flex-shrink-0">
+                <i class="fas fa-shield-halved"></i>
+              </div>
+              <div>
+                <h4 class="fs-5 text-success mb-2">3️⃣ O que fazer para se proteger?</h4>
+                <p>Implementamos controles de segurança em camadas (abordagem em profundidade):</p>
+                <div class="row g-2 mt-2">
+                  <div class="col-md-6">
+                    <div class="terminal-card p-2">
+                      <i class="fas fa-shield-alt text-success me-1"></i> <strong>Preventivo:</strong>
+                      <small class="d-block text-muted">Firewall + Antivírus + Senhas fortes</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="terminal-card p-2">
+                      <i class="fas fa-ban text-warning me-1"></i> <strong>Dissuasivo:</strong>
+                      <small class="d-block text-muted">Aviso na tela: "Acesso monitorado"</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="terminal-card p-2">
+                      <i class="fas fa-search text-info me-1"></i> <strong>Detecção:</strong>
+                      <small class="d-block text-muted">Monitoramento de logs e alertas</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="terminal-card p-2">
+                      <i class="fas fa-database text-success me-1"></i> <strong>Recuperação:</strong>
+                      <small class="d-block text-muted">Backup automático na nuvem (diário)</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Passo 4: Resultado -->
+          <div class="timeline-item">
+            <div class="d-flex align-items-start">
+              <div class="icon-box me-3 flex-shrink-0">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div>
+                <h4 class="fs-5 text-success mb-2">4️⃣ Resultado: Carla dorme tranquila!</h4>
+                <p>Após 6 meses, a Ótica &amp; Cia:</p>
+                <ul class="text-muted small">
+                  <li><i class="fas fa-check-circle text-success me-1"></i> <strong>Não sofreu</strong> nenhum ataque cibernético.</li>
+                  <li>
+                    <i class="fas fa-check-circle text-success me-1"></i> Um funcionário perdeu o notebook, mas os
+                    <strong>dados estavam criptografados</strong> (controle técnico).
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle text-success me-1"></i> O servidor falhou uma vez, mas o
+                    <strong>backup restaurou</strong> tudo em 2 horas (controle de recuperação).
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle text-success me-1"></i> Carla entendeu que <strong>risco zero não existe</strong>, mas o
+                    risco agora é <strong>aceitável</strong>.
+                  </li>
+                </ul>
+                <div class="alert-cisco mt-2 text-center">
+                  <i class="fas fa-quote-left me-2"></i>
+                  <em>"Agora entendo! Gerenciar risco não é sobre ter medo, é sobre se preparar."</em> - Carla
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lições Aprendidas -->
+          <div class="row mt-5 pt-3 border-top border-secondary">
+            <div class="col-12">
+              <h4 class="fs-6 text-success text-center mb-3">
+                <i class="fas fa-graduation-cap me-2"></i>Lições que Carla (e você) aprendeu:
+              </h4>
+              <div class="row g-2">
+                <div class="col-md-3">
+                  <div class="text-center p-2 bg-dark rounded">
+                    <i class="fas fa-chart-line"></i>
+                    <small class="d-block">Risco não se elimina, <strong>gerencia-se</strong></small>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="text-center p-2 bg-dark rounded">
+                    <i class="fas fa-layer-group"></i>
+                    <small class="d-block">Use <strong>múltiplas camadas</strong> de proteção</small>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="text-center p-2 bg-dark rounded">
+                    <i class="fas fa-calculator"></i>
+                    <small class="d-block"><strong>Priorize</strong> o que é mais crítico</small>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="text-center p-2 bg-dark rounded">
+                    <i class="fas fa-sync-alt"></i>
+                    <small class="d-block"><strong>Reavalie</strong> riscos periodicamente</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER PADRÃO ==================== -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/drpdow.js"></script>
+    <script>
+      // Script para o exercício interativo
+      document.addEventListener('DOMContentLoaded', function () {
+        const verificarBtn = document.getElementById('verificarControles')
+        const resetarBtn = document.getElementById('resetarControles')
+        const selects = document.querySelectorAll('#exercicioControles select')
+
+        const respostasCorretas = {
+          'Atribuir privilégios': 'preventivo',
+          'Software antivírus': 'corretivo',
+          'Câmeras de vigilância': 'detecção',
+          'Atualizações da política': 'compensação',
+          'backup em nuvem': 'recuperação',
+          'túnel VPN': 'compensação'
+        }
+
+        function verificarRespostas() {
+          let acertos = 0
+          let total = selects.length
+
+          selects.forEach((select, index) => {
+            const card = select.closest('.p-3')
+            const feedback = card.querySelector('.feedback')
+            const valorSelecionado = select.value
+
+            let respostaEsperada
+            const textoPergunta = card.querySelector('strong').innerText.toLowerCase()
+            if (textoPergunta.includes('privilégios')) respostaEsperada = 'preventivo'
+            else if (textoPergunta.includes('antivírus')) respostaEsperada = 'corretivo'
+            else if (textoPergunta.includes('Câmeras') || textoPergunta.includes('vigilância')) respostaEsperada = 'detecção'
+            else if (textoPergunta.includes('política')) respostaEsperada = 'compensação'
+            else if (textoPergunta.includes('backup')) respostaEsperada = 'recuperação'
+            else if (textoPergunta.includes('VPN')) respostaEsperada = 'compensação'
+            else respostaEsperada = ''
+
+            if (valorSelecionado === respostaEsperada && valorSelecionado !== '') {
+              acertos++
+              feedback.innerHTML = '<i class="fas fa-check-circle text-success me-1"></i> Correto!'
+              feedback.style.color = '#66bf53'
+            } else if (valorSelecionado !== '') {
+              feedback.innerHTML = '<i class="fas fa-times-circle text-danger me-1"></i> Incorreto. Tente novamente!'
+              feedback.style.color = '#dc3545'
+            } else {
+              feedback.innerHTML = '<i class="fas fa-info-circle text-muted me-1"></i> Selecione uma opção.'
+              feedback.style.color = '#888888'
+            }
+          })
+
+          const resultadoDiv = document.getElementById('resultadoExercicio')
+          const pontuacaoSpan = document.getElementById('pontuacaoTexto')
+          resultadoDiv.style.display = 'block'
+          pontuacaoSpan.innerHTML = `Você acertou ${acertos} de ${total} controles. ${acertos === total ? 'Excelente! 🎉' : 'Revise os conceitos e tente novamente!'}`
+        }
+
+        function resetarRespostas() {
+          selects.forEach((select) => {
+            select.value = ''
+            const card = select.closest('.p-3')
+            const feedback = card.querySelector('.feedback')
+            feedback.innerHTML = ''
+          })
+          document.getElementById('resultadoExercicio').style.display = 'none'
+        }
+
+        verificarBtn.addEventListener('click', verificarRespostas)
+        resetarBtn.addEventListener('click', resetarRespostas)
+      })
+    </script>
+  </body>
+</html>
