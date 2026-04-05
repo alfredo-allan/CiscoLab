@@ -4774,6 +4774,337 @@
               Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
             </a>
           </div>
+          <div class="modulo-coluna" data-modulo="27" onclick="toggleModulo(this)">
+            <div class="modulo-titulo">
+              <span><i class="fas fa-cube me-2"></i>Módulo 27</span>
+              <i class="fas fa-chevron-right seta-mobile"></i>
+            </div>
+            <span class="badge-modulo mb-2">Análise Forense Digital e Resposta a Incidentes</span>
+
+            <!-- MANUSEIO DE EVIDÊNCIAS E ATRIBUIÇÃO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-gavel"></i> MANUSEIO DE EVIDÊNCIAS E ATRIBUIÇÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#digital-forensics" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.1 Computação Forense Digital
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#forensic-process" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.2 Processo Forense (NIST 800-86)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#evidence-types" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.4 Tipos de Evidências (Direta, Indireta, Melhor Evidência)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#collection-order" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.6 Ordem de Coleta (RFC 3227 - Volatilidade)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#chain-custody" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.7 Cadeia de Custódia
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#integrity" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.8 Integridade e Preservação dos Dados
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#attack-attribution" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.9 Atribuição de Ataque (TTPs)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#mitre-attack" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.1.10 Estrutura MITRE ATT&CK
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CYBER KILL CHAIN -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-link"></i> CYBER KILL CHAIN
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#cyber-kill-chain" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.1 As 7 Etapas da Cyber Kill Chain
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#reconnaissance" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.2 Reconhecimento (Coleta de Inteligência)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#weaponization" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.3 Armamento (Desenvolvimento da Arma)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#delivery" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.4 Entrega (Vetores de Ataque)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#exploitation" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.5 Exploração (Execução do Código)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#installation" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.6 Instalação (Backdoor e Persistência)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#command-control" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.7 Comando e Controle (C2)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#actions-objectives" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.2.8 Ações e Objetivos
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- MODELO DIAMOND -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-gem"></i> MODELO DIAMOND DE ANÁLISE DE INTRUSÃO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#diamond-model" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.3.1 As 4 Partes do Modelo Diamond
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#diamond-pivoting" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.3.2 Pivotando (Movimento Lateral)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#diamond-killchain" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.3.3 Diamond + Cyber Kill Chain (Exemplo Gadgets, Inc.)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#diamond-quiz" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Meta-recursos: Timestamp, Fase, Resultado, Direção, Metodologia, Recursos
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RESPOSTA A INCIDENTES (NIST 800-61) -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-shield-alt"></i> RESPOSTA A INCIDENTES (NIST 800-61)
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#incident-response" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.1 Estabelecendo CSIRC
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#incident-policy-plan-procedure" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.2 Política, Plano e Procedimento
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#incident-stakeholders" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.3 Partes Interessadas (8 stakeholders)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#nist-lifecycle" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.4 Ciclo de Vida NIST (4 fases)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#incident-preparation" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.5 Preparação e Jump Kit
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#detection-analysis" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.6 Detecção e Análise (Precursor vs Indicador)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#containment-eradication-recovery" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.7 Contenção, Erradicação e Recuperação
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#post-incident" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.8 Atividades Pós-incidentes (Lições Aprendidas)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#data-retention" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.9 Coleta e Retenção de Dados
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#reporting-info-sharing" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.4.10 Relatórios e Compartilhamento (VERIS)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RECUPERAÇÃO DE DESASTRES (DRP/BCP) -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-chart-line"></i> RECUPERAÇÃO DE DESASTRES (DRP/BCP)
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#disaster-types" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.5.2 Tipos de Desastres (Naturais e Humanos)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#drp" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.5.3 Plano de Recuperação de Desastres (DRP)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#dr-controls" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.5.5 Controles (Preventivos, Detecção, Corretivos)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#business-continuity" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.5.6 BCP e BIA (RTO, RPO, MTTR, MTBF)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#dr-exercises" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.5.8 Exercícios (Tabletop, Funcional, Operacional)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RESUMO DO MÓDULO -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flag-checkered"></i> RESUMO DO MÓDULO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#module-summary" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.6 Resumo: Análise Forense e Resposta a Incidentes
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#module-summary" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>27.6.1 O que aprendi neste módulo?
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- APRENDIZADO DIDÁTICO (FIXAÇÃO) -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-graduation-cap"></i> APRENDIZADO DIDÁTICO
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#pratica-entendendo" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Na Prática: Casos Humanizados
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#caso-evidencias" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Caso 1: O Pacote Entregue na Porta Errada (Evidências)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#caso-coleta" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Caso 2: O Bilhete a Lápis na Chuva (Ordem de Coleta)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#caso-killchain" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Caso 3: O Golpe do Falso Funcionário (Cyber Kill Chain)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#caso-diamond" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Caso 4: O Assalto com Chave Inglesa (Modelo Diamond)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#caso-incidente" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Caso 5: O Vazamento na Cozinha (Resposta a Incidentes)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#glossario" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Glossário Rápido (10 termos essenciais)
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- LABORATÓRIOS -->
+            <div class="modulo-categoria">
+              <div class="categoria-header" onclick="toggleCategoria(event, this)">
+                <i class="fas fa-flask"></i> LABORATÓRIOS
+                <i class="fas fa-chevron-down toggle-icon"></i>
+              </div>
+              <ul class="categoria-lista">
+                <li>
+                  <a href="../pages/modulo_27.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Laboratório 27.1: Coleta de Evidências (RFC 3227)
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Laboratório 27.2: MITRE ATT&CK Mapping
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Packet Tracer: Cadeia de Custódia
+                  </a>
+                </li>
+                <li>
+                  <a href="../pages/modulo_27.html#laboratorios" onclick="event.stopPropagation()">
+                    <i class="fas fa-chevron-right"></i>Laboratório 27.3: Análise de Logs e IOCs
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <a href="../pages/modulo_27.html" class="link-ver-todos" onclick="event.stopPropagation()">
+              Acessar Módulo Completo <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
         </div>
 
         <!-- Mensagem para mais módulos -->

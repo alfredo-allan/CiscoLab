@@ -1,0 +1,2855 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulo 27 | Análise Forense Digital | NETSEC ☠ CyberSec</title>
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6.4.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Bootstrap 5.3.0 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <!-- CSS Personalizado (GLOBAL) -->
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <!-- ==================== NAVBAR PADRÃO ==================== -->
+    <nav
+      class="navbar navbar-expand-lg sticky-top"
+      style="
+        background-color: rgba(30, 30, 30, 0.98);
+        border-bottom: 2px solid var(--cisco-green);
+        backdrop-filter: blur(10px);
+        padding: 0.8rem 0;
+      "
+    >
+      <div class="container">
+        <a class="navbar-brand" href="#" style="color: var(--cisco-green); font-weight: 800; font-size: 1.5rem">
+          &#9760; CyberSec |
+          <span style="color: white; font-weight: 400">Estudos Cisco</span>
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+          <span class="navbar-toggler-icon" style="filter: invert(1)"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <!-- DROPDOWN DO MÓDULO ATUAL -->
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white px-3"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                style="border-bottom: 2px solid var(--cisco-green)"
+              >
+                <i class="fas fa-cube me-1" style="color: var(--cisco-green)"></i>
+                Módulo 27 <span class="badge-modulo ms-2">ativo</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark" style="max-height: 400px; overflow-y: auto; min-width: 320px">
+                <!-- SEÇÃO 27.1 - MANUSEIO DE EVIDÊNCIAS -->
+                <li>
+                  <hr class="dropdown-divider" />
+                  <small class="dropdown-header text-success ms-2"><i class="fas fa-gavel me-1"></i> 27.1 Evidências e Atribuição</small>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#digital-forensics"
+                    ><i class="fas fa-microchip me-2 text-success"></i>Computação Forense Digital</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#forensic-process"
+                    ><i class="fas fa-chart-line me-2 text-success"></i>Processo Forense (NIST 800-86)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#evidence-types"><i class="fas fa-tag me-2 text-success"></i>Tipos de Evidências</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#check-understanding"
+                    ><i class="fas fa-check-circle me-2 text-success"></i>Verifique sua compreensão - Evidências</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#collection-order"
+                    ><i class="fas fa-sort-amount-down me-2 text-success"></i>Ordem de Coleta (RFC 3227)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#chain-custody"><i class="fas fa-link me-2 text-success"></i>Cadeia de Custódia</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#integrity"
+                    ><i class="fas fa-shield-alt me-2 text-success"></i>Integridade e Preservação</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#attack-attribution"
+                    ><i class="fas fa-user-secret me-2 text-success"></i>Atribuição de Ataque</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#mitre-attack"><i class="fas fa-sitemap me-2 text-success"></i>MITRE ATT&CK Framework</a>
+                </li>
+
+                <!-- SEÇÃO 27.2 - CYBER KILL CHAIN -->
+                <li>
+                  <hr class="dropdown-divider" />
+                  <small class="dropdown-header text-info ms-2"><i class="fas fa-link me-1"></i> 27.2 Cyber Kill Chain</small>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#cyber-kill-chain"
+                    ><i class="fas fa-chart-line me-2 text-info"></i>Etapas da Cyber Kill Chain</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#reconnaissance"><i class="fas fa-search me-2 text-info"></i>Reconhecimento</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#weaponization"><i class="fas fa-bomb me-2 text-info"></i>Armamento</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#delivery"><i class="fas fa-paper-plane me-2 text-info"></i>Entrega</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#exploitation"><i class="fas fa-bug me-2 text-info"></i>Exploração</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#installation"><i class="fas fa-plug me-2 text-info"></i>Instalação</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#command-control"
+                    ><i class="fas fa-satellite-dish me-2 text-info"></i>Comando e Controle (C2)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#actions-objectives"
+                    ><i class="fas fa-flag-checkered me-2 text-info"></i>Ações e Objetivos</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#kill-chain-quiz"
+                    ><i class="fas fa-question-circle me-2 text-info"></i>Verifique - Cyber Kill Chain</a
+                  >
+                </li>
+
+                <!-- SEÇÃO 27.3 - MODELO DIAMOND -->
+                <li>
+                  <hr class="dropdown-divider" />
+                  <small class="dropdown-header text-warning ms-2"><i class="fas fa-gem me-1"></i> 27.3 Modelo Diamond</small>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#diamond-model"
+                    ><i class="fas fa-gem me-2 text-warning"></i>Visão geral do Modelo Diamond</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#diamond-pivoting"
+                    ><i class="fas fa-sync-alt me-2 text-warning"></i>Pivotando no Modelo Diamond</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#diamond-killchain"
+                    ><i class="fas fa-project-diagram me-2 text-warning"></i>Diamond e Cyber Kill Chain</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#diamond-quiz"
+                    ><i class="fas fa-question-circle me-2 text-warning"></i>Verifique - Modelo Diamond</a
+                  >
+                </li>
+
+                <!-- SEÇÃO 27.4 - RESPOSTA A INCIDENTES -->
+                <li>
+                  <hr class="dropdown-divider" />
+                  <small class="dropdown-header text-danger ms-2"><i class="fas fa-shield-alt me-1"></i> 27.4 Resposta a Incidentes</small>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#incident-response"><i class="fas fa-building me-2 text-danger"></i>Estabelecendo CSIRC</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#incident-policy-plan-procedure"
+                    ><i class="fas fa-file-alt me-2 text-danger"></i>Política, Plano e Procedimento</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#incident-stakeholders"
+                    ><i class="fas fa-users me-2 text-danger"></i>Partes interessadas</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#nist-lifecycle"><i class="fas fa-chart-pie me-2 text-danger"></i>Ciclo de vida NIST</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#incident-preparation"
+                    ><i class="fas fa-chalkboard-teacher me-2 text-danger"></i>Preparação e Jump Kit</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#detection-analysis"><i class="fas fa-search me-2 text-danger"></i>Detecção e Análise</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#containment-eradication-recovery"
+                    ><i class="fas fa-shield-virus me-2 text-danger"></i>Contenção, Erradicação e Recuperação</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#post-incident"
+                    ><i class="fas fa-clipboard-list me-2 text-danger"></i>Atividades Pós-incidentes</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#data-retention"
+                    ><i class="fas fa-database me-2 text-danger"></i>Coleta e Retenção de Dados</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#reporting-info-sharing"
+                    ><i class="fas fa-share-alt me-2 text-danger"></i>Relatórios e Compartilhamento</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#incident-terms-quiz"
+                    ><i class="fas fa-question-circle me-2 text-danger"></i>Verifique - Termos de Incidente</a
+                  >
+                </li>
+
+                <!-- SEÇÃO 27.5 - RECUPERAÇÃO DE DESASTRES -->
+                <li>
+                  <hr class="dropdown-divider" />
+                  <small class="dropdown-header text-secondary ms-2"
+                    ><i class="fas fa-chart-line me-1"></i> 27.5 Recuperação de Desastres</small
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#disaster-recovery"
+                    ><i class="fas fa-cloud-rain me-2 text-secondary"></i>Tipos de desastres</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#drp"
+                    ><i class="fas fa-clipboard-list me-2 text-secondary"></i>Plano de Recuperação (DRP)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#dr-controls"><i class="fas fa-tools me-2 text-secondary"></i>Controles de Recuperação</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#business-continuity"
+                    ><i class="fas fa-chart-line me-2 text-secondary"></i>Planejamento de Continuidade (BCP)</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#bc-considerations"
+                    ><i class="fas fa-check-circle me-2 text-secondary"></i>Considerações sobre continuidade</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#dr-exercises"
+                    ><i class="fas fa-people-arrows me-2 text-secondary"></i>Exercitando o DRP</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#dr-controls-quiz"
+                    ><i class="fas fa-question-circle me-2 text-secondary"></i>Verifique - Controles</a
+                  >
+                </li>
+
+                <!-- SEÇÃO 27.6 - RESUMO E PARTE DIDÁTICA -->
+                <li>
+                  <hr class="dropdown-divider" />
+                  <small class="dropdown-header text-success ms-2"
+                    ><i class="fas fa-graduation-cap me-1"></i> 27.6 Resumo e Aprendizado</small
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#module-summary"><i class="fas fa-book-open me-2 text-success"></i>Resumo do Módulo</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#pratica-entendendo"
+                    ><i class="fas fa-lightbulb me-2 text-success"></i>Na Prática: Casos Humanizados</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#caso-evidencias"><i class="fas fa-box-open me-2 text-success"></i>Caso: Evidências</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#caso-coleta"
+                    ><i class="fas fa-sort-amount-down me-2 text-success"></i>Caso: Ordem de Coleta</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#caso-killchain"
+                    ><i class="fas fa-chart-line me-2 text-success"></i>Caso: Cyber Kill Chain</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#caso-diamond"><i class="fas fa-gem me-2 text-success"></i>Caso: Modelo Diamond</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#caso-incidente"
+                    ><i class="fas fa-tasks me-2 text-success"></i>Caso: Resposta a Incidentes</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#glossario"><i class="fas fa-book me-2 text-success"></i>Glossário Rápido</a>
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#laboratorios"><i class="fas fa-flask me-2 text-success"></i>Laboratórios</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- LABS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="#laboratorios">
+                <i class="fas fa-flask me-1" style="color: var(--cisco-green)"></i> Labs
+              </a>
+            </li>
+
+            <!-- ÍCONE PARA TODOS OS MÓDULOS -->
+            <li class="nav-item">
+              <a class="nav-link text-white px-3" href="modulos.html" title="Ver todos os 27 módulos">
+                <i class="fas fa-th-large me-1" style="color: var(--cisco-green); font-size: 1.2rem"></i>
+                <span class="d-none d-lg-inline">Módulos</span>
+                <span class="badge-modulo ms-1">27</span>
+              </a>
+            </li>
+
+            <!-- DROPDOWN ÍNDICE RÁPIDO -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-3" href="#" role="button" data-bs-toggle="dropdown" style="color: var(--cisco-green)">
+                <i class="fas fa-list-ul me-1"></i> Índice
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark" style="min-width: 280px">
+                <li>
+                  <div class="px-3 py-2">
+                    <input
+                      type="text"
+                      id="navSearch"
+                      class="form-control form-control-sm bg-dark text-white border-secondary"
+                      placeholder="🔍 Buscar seção..."
+                    />
+                  </div>
+                </li>
+                <li><hr class="dropdown-divider my-1" /></li>
+                <div id="sectionList">
+                  <li><a class="dropdown-item" href="#digital-forensics">27.1.1 Computação Forense Digital</a></li>
+                  <li><a class="dropdown-item" href="#forensic-process">27.1.2 O Processo Forense Digital</a></li>
+                  <li><a class="dropdown-item" href="#evidence-types">27.1.4 Tipos de Evidências</a></li>
+                  <li><a class="dropdown-item" href="#check-understanding">27.1.5 Verifique sua compreensão</a></li>
+                  <li><a class="dropdown-item" href="#collection-order">27.1.6 Ordem de Coleta de Evidências</a></li>
+                  <li><a class="dropdown-item" href="#chain-custody">27.1.7 Cadeia de Custódia</a></li>
+                  <li><a class="dropdown-item" href="#integrity">27.1.8 Integridade e Preservação</a></li>
+                  <li><a class="dropdown-item" href="#attack-attribution">27.1.9 Atribuição de Ataque</a></li>
+                  <li><a class="dropdown-item" href="#mitre-attack">27.1.10 Estrutura MITRE ATT&CK</a></li>
+                </div>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Barra de Progresso -->
+    <div class="progress" style="height: 3px; position: sticky; top: 76px; z-index: 1020; border-radius: 0">
+      <div id="readingProgress" class="progress-bar" style="width: 0%; background-color: var(--cisco-green)"></div>
+    </div>
+
+    <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+    <main class="container my-5">
+      <!-- Cabeçalho do Módulo -->
+      <div class="text-center mb-5 reveal">
+        <span class="badge-cisco mb-3"><i class="fas fa-microchip me-1"></i> Módulo 27</span>
+        <h1 class="cisco-title-gradient display-4 fw-bold mb-3">Análise Forense Digital e<br />Resposta a Incidentes</h1>
+        <p class="lead text-muted">Modelos de resposta a incidentes e técnicas forenses para investigar incidentes de segurança.</p>
+        <div class="row justify-content-center mt-4">
+          <div class="col-md-8">
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+              <span class="badge-modulo"><i class="fas fa-video me-1"></i> 2 Vídeos</span>
+              <span class="badge-modulo"><i class="fas fa-flask me-1"></i> 4 Labs</span>
+              <span class="badge-modulo"><i class="fas fa-network-wired me-1"></i> 1 Packet Tracer</span>
+              <span class="badge-modulo"><i class="fas fa-question-circle me-1"></i> 7 Verificações</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 27.0.1 Por que devo fazer este módulo? -->
+      <section id="introducao" class="mb-5 reveal">
+        <div class="content-card">
+          <h2 class="cisco-title h4 mb-3"><i class="fas fa-question-circle me-2"></i> 27.0.1 Por que devo fazer este módulo?</h2>
+          <p class="mb-0">
+            Você aprendeu tudo sobre os diferentes vetores de ataque que você pode precisar proteger, ferramentas e práticas para proteger
+            seu sistema. Neste módulo final, você aprenderá o que fazer quando um ataque realmente acontecer.
+          </p>
+        </div>
+      </section>
+
+      <!-- 27.1.1 Computação Forense Digital -->
+      <section id="digital-forensics" class="mb-5 reveal">
+        <h2 class="section-title">27.1.1 Computação Forense Digital</h2>
+        <div class="content-card">
+          <p>
+            Agora que investigou e identificou alertas válidos, o que faz com as provas? O analista de segurança cibernética irá
+            inevitavelmente descobrir evidências de atividade criminosa. A fim de proteger a organização e prevenir o cibercrime, é
+            necessário identificar os atores da ameaça, denunciá-los às autoridades competentes e fornecer provas para apoiar a acusação.
+          </p>
+
+          <h3 class="cisco-subtitle mt-4">O que é Perícia Digital?</h3>
+          <p>
+            A perícia digital é a recuperação e investigação de informações encontradas em dispositivos digitais no que diz respeito a
+            atividades criminosas. Indicadores de comprometimento (IOCs) são a evidência de que ocorreu um incidente de segurança
+            cibernética.
+          </p>
+
+          <div class="terminal-card my-4">
+            <pre><code># Fontes comuns de evidências forenses
+- Dispositivos de armazenamento (HDs, SSDs, USBs)
+- Memória volátil (RAM)
+- Dados de rede (pcaps, logs)
+- Metadados de arquivos</code></pre>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-gavel me-2"></i> <strong>Importante:</strong> Se a intenção de destruir provas for estabelecida, poderá
+            resultar em penalidades criminais para a organização e até mesmo para o analista de segurança cibernética.
+          </div>
+
+          <h3 class="cisco-subtitle mt-4">Regulamentações (ex: HIPAA)</h3>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Quantidade de pessoas afetadas</th>
+                  <th>Ação necessária</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Até 500 pessoas</td>
+                  <td>Notificação aos indivíduos afetados</td>
+                </tr>
+                <tr>
+                  <td>Mais de 500 pessoas em um estado</td>
+                  <td>Notificação à mídia e aos indivíduos afetados</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.1.2 O Processo Forense Digital (NIST 800-86) -->
+      <section id="forensic-process" class="mb-5 reveal">
+        <h2 class="section-title">27.1.2 O Processo Forense Digital</h2>
+        <div class="content-card">
+          <p>
+            O <strong>NIST 800-86</strong> (<em>Guide to Integrating Forensic Techniques into Incident Response</em>) recomenda um processo
+            de quatro fases para computação forense.
+          </p>
+
+          <div class="row g-4 mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <div class="d-flex align-items-center mb-2">
+                  <div class="icon-box me-3"><i class="fas fa-database fa-2x"></i></div>
+                  <h4 class="mb-0 text-success">Etapa 1. Coleta</h4>
+                </div>
+                <p class="text-muted mb-0">
+                  Identificação de potenciais fontes de dados forenses e aquisição, manuseio e armazenamento desses dados. Cuidado para não
+                  danificar ou perder evidências.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <div class="d-flex align-items-center mb-2">
+                  <div class="icon-box me-3"><i class="fas fa-chart-line fa-2x"></i></div>
+                  <h4 class="mb-0 text-success">Etapa 2. Análise</h4>
+                </div>
+                <p class="text-muted mb-0">
+                  Avaliação e extração de informações relevantes. Pode envolver descompactação, descriptografia e remoção de dados
+                  irrelevantes.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <div class="d-flex align-items-center mb-2">
+                  <div class="icon-box me-3"><i class="fas fa-chart-pie fa-2x"></i></div>
+                  <h4 class="mb-0 text-success">Etapa 3. Análise (conclusão)</h4>
+                </div>
+                <p class="text-muted mb-0">
+                  Tirar conclusões dos dados. Documentar recursos relevantes (pessoas, lugares, horários, eventos) e correlacionar dados de
+                  várias fontes.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <div class="d-flex align-items-center mb-2">
+                  <div class="icon-box me-3"><i class="fas fa-file-alt fa-2x"></i></div>
+                  <h4 class="mb-0 text-success">Etapa 4. Relatórios</h4>
+                </div>
+                <p class="text-muted mb-0">
+                  Apresentação imparcial das informações. Incluir limitações, problemas encontrados e sugestões para investigação futura.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.1.4 Tipos de Evidências -->
+      <section id="evidence-types" class="mb-5 reveal">
+        <h2 class="section-title">27.1.4 Tipos de Evidências</h2>
+        <div class="content-card">
+          <p>Em processos judiciais, as provas são geralmente classificadas como diretas ou indiretas.</p>
+
+          <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+              <div class="terminal-card h-100">
+                <h4 class="text-success"><i class="fas fa-gavel me-2"></i>Evidência Direta</h4>
+                <p class="small">
+                  Evidência que estava indiscutivelmente na posse do acusado, ou testemunhas oculares que observaram diretamente o
+                  comportamento criminoso.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <div class="terminal-card h-100">
+                <h4 class="text-warning"><i class="fas fa-search me-2"></i>Evidência Indireta (Circunstancial)</h4>
+                <p class="small">
+                  Evidência que, em combinação com outros fatos, estabelece uma hipótese. Ex: indivíduo cometeu crimes semelhantes no
+                  passado.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle mt-3">Classificações adicionais</h3>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> <strong>Melhor evidência</strong> – Evidência em seu estado original
+              (dispositivos de armazenamento, arquivos inalterados).
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-check-circle text-success me-2"></i> <strong>Provas corroborantes</strong> – Suporta uma afirmação
+              desenvolvida a partir da melhor evidência.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 27.1.5 Verifique sua compreensão -->
+      <section id="check-understanding" class="mb-5 reveal">
+        <h2 class="section-title">27.1.5 Verifique sua compreensão</h2>
+        <div class="content-card">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success">Pergunta 1</p>
+                <p>Que tipo de evidência estava indiscutivelmente na posse do acusado?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q1" /> <label>Melhor evidência</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q1" /> <label>Provas indiretas</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q1" /> <label>Provas corroborantes</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q1" /> <label class="text-success">✓ Evidência direta</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success">Pergunta 2</p>
+                <p>Que tipo de evidência suporta uma afirmação desenvolvida a partir da melhor evidência?</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q2" /> <label class="text-success">✓ Provas corroborantes</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q2" /> <label>Provas indiretas</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q2" /> <label>Melhor evidência</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q2" /> <label>Evidência direta</label></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success">Pergunta 3</p>
+                <p>Que tipo de evidência é circunstancial?</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q3" /> <label class="text-success">✓ Provas indiretas</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q3" /> <label>Melhor evidência</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q3" /> <label>Evidência direta</label></div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success">Pergunta 4</p>
+                <p>Que tipo de evidência está em seu estado original?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q4" /> <label>Evidência direta</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="q4" /> <label class="text-success">✓ Melhor evidência</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="q4" /> <label>Provas indiretas</label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.1.6 Ordem de Coleta de Evidências (IETF RFC 3227) -->
+      <section id="collection-order" class="mb-5 reveal">
+        <h2 class="section-title">27.1.6 Ordem de Coleta de Evidências</h2>
+        <div class="content-card">
+          <p>
+            O <strong>IETF RFC 3227</strong> fornece diretrizes para coleta de evidências digitais baseada na
+            <span class="text-success fw-bold">volatilidade dos dados</span>.
+          </p>
+
+          <div class="timeline-item mt-4">
+            <h4><i class="fas fa-bolt text-warning me-2"></i>Mais volátil → Menos volátil</h4>
+            <ol class="list-group list-group-numbered bg-transparent mt-3">
+              <li class="list-group-item bg-transparent text-white border-secondary">Registros de memória, caches</li>
+              <li class="list-group-item bg-transparent text-white border-secondary">
+                Tabela de roteamento, cache ARP, tabela de processos, RAM
+              </li>
+              <li class="list-group-item bg-transparent text-white border-secondary">Sistemas de arquivos temporários</li>
+              <li class="list-group-item bg-transparent text-white border-secondary">Meios não voláteis (fixos e removíveis)</li>
+              <li class="list-group-item bg-transparent text-white border-secondary">Dados de log e monitoramento remotos</li>
+              <li class="list-group-item bg-transparent text-white border-secondary">Interconexões físicas e topologias</li>
+              <li class="list-group-item bg-transparent text-white border-secondary">Mídia de arquivamento (fitas, backups)</li>
+            </ol>
+          </div>
+
+          <div class="alert-cisco mt-4">
+            <i class="fas fa-exclamation-triangle me-2"></i> <strong>Atenção:</strong> Dados armazenados na RAM são os mais voláteis e serão
+            perdidos quando o dispositivo for desligado.
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.1.7 Cadeia de Custódia -->
+      <section id="chain-custody" class="mb-5 reveal">
+        <h2 class="section-title">27.1.7 Cadeia de Custódia</h2>
+        <div class="content-card">
+          <p>
+            A cadeia de custódia envolve a coleta, manuseio e armazenamento seguro de evidências. Devem ser mantidos registros detalhados
+            de:
+          </p>
+          <ul class="mt-3">
+            <li><i class="fas fa-user-check text-success me-2"></i> Quem descobriu e recolheu as provas</li>
+            <li><i class="fas fa-clock text-success me-2"></i> Horários, locais e pessoal envolvido no manuseio</li>
+            <li><i class="fas fa-exchange-alt text-success me-2"></i> Quem tem responsabilidade principal e quando a custódia mudou</li>
+            <li><i class="fas fa-lock text-success me-2"></i> Quem teve acesso físico enquanto armazenada (acesso limitado)</li>
+          </ul>
+          <div class="terminal-card mt-3">
+            <pre><code># Exemplo de registro de cadeia de custódia
+[2026-04-04 14:30] - Evidência coletada por: Analista Silva
+[2026-04-04 15:00] - Transferida para: Cofre Digital #02
+[2026-04-05 09:00] - Acessada por: Perito Rodrigues (autorizado)</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.1.8 Integridade e preservação dos dados -->
+      <section id="integrity" class="mb-5 reveal">
+        <h2 class="section-title">27.1.8 Integridade e preservação dos dados</h2>
+        <div class="content-card">
+          <p>
+            Os dados devem ser preservados em sua condição original. O carimbo de data/hora (timestamp) dos arquivos deve ser preservado.
+          </p>
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <i class="fas fa-copy fa-2x text-success mb-2 d-block"></i>
+                <h5 class="text-success">Boas práticas</h5>
+                <ul class="small">
+                  <li>Trabalhar apenas com cópias da evidência original</li>
+                  <li>Registrar o processo de criação de cópias</li>
+                  <li>Utilizar cópias bit-a-bit dos volumes originais</li>
+                  <li>Arquivar e proteger o disco original</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <i class="fas fa-memory fa-2x text-warning mb-2 d-block"></i>
+                <h5 class="text-warning">Memória volátil</h5>
+                <p class="small">
+                  Ferramentas especiais devem ser usadas para preservar evidências antes do desligamento. Usuários não devem desligar
+                  máquinas infectadas sem instrução.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.1.9 Atribuição de Ataque -->
+      <section id="attack-attribution" class="mb-5 reveal">
+        <h2 class="section-title">27.1.9 Atribuição de Ataque</h2>
+        <div class="content-card">
+          <p>
+            <strong>Atribuição de ameaças</strong> refere-se ao ato de determinar o indivíduo, organização ou nação responsável por um
+            incidente de invasão ou ataque bem-sucedido.
+          </p>
+
+          <h3 class="cisco-subtitle mt-3">Desafios da atribuição</h3>
+          <div class="alert-cisco">
+            <i class="fas fa-exclamation-circle me-2"></i> Evidência de cibercrime raramente é evidência direta. Identificar semelhanças
+            entre TTPs é evidência circunstancial.
+          </div>
+
+          <h3 class="cisco-subtitle mt-4">Aspectos que ajudam na atribuição</h3>
+          <div class="ioc-grid mt-3">
+            <div class="badge-cisco p-2 text-center">Localização de hosts/domínios</div>
+            <div class="badge-cisco p-2 text-center">Recursos do código em malware</div>
+            <div class="badge-cisco p-2 text-center">Ferramentas utilizadas</div>
+            <div class="badge-cisco p-2 text-center">Técnicas empregadas</div>
+          </div>
+
+          <h3 class="cisco-subtitle mt-4">Ameaças internas</h3>
+          <p>
+            Para ameaças internas, o gerenciamento de ativos desempenha papel importante. IPs, MACs, logs DHCP e logs AAA ajudam a rastrear
+            o ataque até um dispositivo específico.
+          </p>
+        </div>
+      </section>
+
+      <!-- 27.1.10 MITRE ATT&CK Framework -->
+      <section id="mitre-attack" class="mb-5 reveal">
+        <h2 class="section-title">27.1.10 A estrutura MITRE ATT&CK</h2>
+        <div class="content-card">
+          <p>
+            O <strong>MITRE ATT&CK Framework</strong> (Adversarial Tactics, Techniques & Common Knowledge) é uma base de conhecimento global
+            do comportamento de atores de ameaça.
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-4">
+              <div class="text-center p-3 bg-dark rounded">
+                <h4 class="text-success">Táticas</h4>
+                <p class="small">Objetivos técnicos que um atacante deve realizar</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3 bg-dark rounded">
+                <h4 class="text-success">Técnicas</h4>
+                <p class="small">Meios pelos quais as táticas são realizadas</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center p-3 bg-dark rounded">
+                <h4 class="text-success">Procedimentos</h4>
+                <p class="small">Ações específicas tomadas por atores ameaçadores</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-card mt-4">
+            <pre><code># Matriz MITRE ATT&CK Enterprise (exemplo)
++----------------+----------------+----------------+
+| Reconnaissance | Resource Dev   | Initial Access |
+| (OSINT, Scan)  | (Domains, C2)  | (Phishing, VPN)|
++----------------+----------------+----------------+
+| Execution      | Persistence    | Privilege Esc  |
+| (PowerShell)   | (Registry Keys)| (Bypass UAC)   |
++----------------+----------------+----------------+</code></pre>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i> <strong>Nota:</strong> Faça uma pesquisa na Internet no MITRE ATT&CK para saber mais
+            sobre a ferramenta.
+          </div>
+        </div>
+      </section>
+
+      <!-- Laboratórios (seção âncora) -->
+      <section id="laboratorios" class="mb-5 reveal">
+        <h2 class="section-title"><i class="fas fa-flask me-2"></i> Laboratórios do Módulo 27</h2>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="content-card text-center">
+              <i class="fas fa-microchip fa-3x text-success mb-3"></i>
+              <h4>Lab 1 - Coleta de Evidências</h4>
+              <p class="text-muted">Prática de ordem de coleta (RFC 3227)</p>
+              <span class="badge-cisco">Em breve</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card text-center">
+              <i class="fas fa-sitemap fa-3x text-success mb-3"></i>
+              <h4>Lab 2 - MITRE ATT&CK Mapping</h4>
+              <p class="text-muted">Mapeamento de ataques usando a matriz</p>
+              <span class="badge-cisco">Em breve</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card text-center">
+              <i class="fas fa-link fa-3x text-success mb-3"></i>
+              <h4>Packet Tracer - Cadeia de Custódia</h4>
+              <p class="text-muted">Simulação de resposta a incidentes</p>
+              <span class="badge-cisco">Em breve</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="content-card text-center">
+              <i class="fas fa-shield-alt fa-3x text-success mb-3"></i>
+              <h4>Lab 3 - Análise Forense</h4>
+              <p class="text-muted">Análise de logs e IOCs</p>
+              <span class="badge-cisco">Em breve</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== SEÇÃO 27.2 - CYBER KILL CHAIN ==================== -->
+
+      <!-- 27.2.1 Etapas da Cyber Kill Chain -->
+      <section id="cyber-kill-chain" class="mb-5 reveal">
+        <h2 class="section-title">27.2.1 Etapas da Cyber Kill Chain</h2>
+        <div class="content-card">
+          <p>
+            A <strong>Cyber Kill Chain</strong> foi desenvolvida pela <span class="text-success fw-bold">Lockheed Martin</span> para
+            identificar e prevenir intrusões cibernéticas. Existem sete etapas que ajudam os analistas a entender as técnicas, ferramentas e
+            procedimentos (TTPs) dos atores de ameaças.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-bullseye me-2"></i> <strong>Objetivo:</strong> Detectar e parar o ataque o mais cedo possível na progressão da
+            cadeia. Quanto mais cedo for interrompido, menos dano é causado.
+          </div>
+
+          <p class="mt-3">
+            Se o atacante for parado em qualquer fase, a <strong class="text-success">cadeia de ataque é quebrada</strong>. Atores da ameaça
+            só serão bem-sucedidos se concluírem todas as 7 etapas.
+          </p>
+
+          <!-- Diagrama visual da Cyber Kill Chain -->
+          <div class="diagram-card mt-4 p-3">
+            <div class="row g-2 text-center">
+              <div class="col-12 mb-3">
+                <div class="bg-success bg-opacity-25 p-2 rounded">
+                  <strong class="text-success">CYBER KILL CHAIN - Lockheed Martin</strong>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="border border-secondary rounded p-2 h-100">
+                  <i class="fas fa-search fa-2x text-success mb-2 d-block"></i>
+                  <strong>1. Reconhecimento</strong>
+                  <small class="d-block text-muted">Pesquisa e coleta de inteligência</small>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="border border-secondary rounded p-2 h-100">
+                  <i class="fas fa-bomb fa-2x text-success mb-2 d-block"></i>
+                  <strong>2. Armamento</strong>
+                  <small class="d-block text-muted">Criação da arma/malware</small>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="border border-secondary rounded p-2 h-100">
+                  <i class="fas fa-paper-plane fa-2x text-success mb-2 d-block"></i>
+                  <strong>3. Entrega</strong>
+                  <small class="d-block text-muted">Transmissão da arma ao alvo</small>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="border border-secondary rounded p-2 h-100">
+                  <i class="fas fa-bug fa-2x text-success mb-2 d-block"></i>
+                  <strong>4. Exploração</strong>
+                  <small class="d-block text-muted">Execução do código no alvo</small>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="border border-secondary rounded p-2 h-100">
+                  <i class="fas fa-plug fa-2x text-success mb-2 d-block"></i>
+                  <strong>5. Instalação</strong>
+                  <small class="d-block text-muted">Backdoor e persistência</small>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="border border-secondary rounded p-2 h-100">
+                  <i class="fas fa-satellite-dish fa-2x text-success mb-2 d-block"></i>
+                  <strong>6. Comando & Controle</strong>
+                  <small class="d-block text-muted">Canal C2 estabelecido</small>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="border border-secondary rounded p-2 h-100">
+                  <i class="fas fa-flag-checkered fa-2x text-success mb-2 d-block"></i>
+                  <strong>7. Ações nos Objetivos</strong>
+                  <small class="d-block text-muted">Objetivo final alcançado</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-card mt-3">
+            <pre><code># Princípio fundamental
+Se o atacante for parado em QUALQUER fase → CADEIA QUEBRADA → Defesa bem-sucedida</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.2 Reconhecimento -->
+      <section id="reconnaissance" class="mb-5 reveal">
+        <h2 class="section-title">27.2.2 Reconhecimento</h2>
+        <div class="content-card">
+          <p>
+            Reconhecimento é quando o ator da ameaça realiza pesquisas, coleta inteligência e seleciona alvos. Qualquer informação pública
+            pode ajudar a determinar o que, onde e como o ataque será executado.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-success"><i class="fas fa-eye me-2"></i>Táticas do Adversário</h4>
+                <ul class="small mb-0">
+                  <li>Coletar endereços de e-mail</li>
+                  <li>Identificar funcionários em redes sociais</li>
+                  <li>Coletar informações públicas (comunicados, prêmios, etc.)</li>
+                  <li>Descobrir servidores voltados para Internet</li>
+                  <li>Realizar varreduras de rede (IPs, portas abertas)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-info"><i class="fas fa-shield-alt me-2"></i>Defesa SOC</h4>
+                <ul class="small mb-0">
+                  <li>Alertas de log da Web e dados históricos</li>
+                  <li>Análise do navegador com mineração de dados</li>
+                  <li>Criar manuais para detectar comportamentos suspeitos</li>
+                  <li>Priorizar defesa em torno de tecnologias e pessoas visadas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.3 Armamento -->
+      <section id="weaponization" class="mb-5 reveal">
+        <h2 class="section-title">27.2.3 Armamento</h2>
+        <div class="content-card">
+          <p>
+            O objetivo desta etapa é usar as informações do reconhecimento para <strong>desenvolver uma arma</strong> contra sistemas
+            específicos ou indivíduos na organização.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-skull-crossbones me-2"></i> <strong>Ataque de dia zero (0-day):</strong> Usa uma arma desconhecida para
+            defensores e sistemas de segurança. Muitas vezes mais eficaz que ataques conhecidos.
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-success"><i class="fas fa-tools me-2"></i>Táticas do Adversário</h4>
+                <ul class="small mb-0">
+                  <li>Obter ferramenta automatizada para entregar malware (weaponizer)</li>
+                  <li>Selecionar ou criar documento para apresentar à vítima</li>
+                  <li>Selecionar ou criar backdoor e infraestrutura C2</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-info"><i class="fas fa-chart-line me-2"></i>Defesa SOC</h4>
+                <ul class="small mb-0">
+                  <li>Manter regras e assinaturas do IDS atualizadas</li>
+                  <li>Realizar análise completa de malware</li>
+                  <li>Construir detecções para comportamentos de weaponizers conhecidos</li>
+                  <li>Coletar arquivos e metadados para análise futura</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.4 Entrega -->
+      <section id="delivery" class="mb-5 reveal">
+        <h2 class="section-title">27.2.4 Entrega</h2>
+        <div class="content-card">
+          <p>
+            Durante esta etapa, a <strong>arma é transmitida ao alvo</strong> usando um vetor de entrega: site, mídia USB removível, anexo
+            de e-mail, etc.
+          </p>
+
+          <div class="terminal-card my-3">
+            <pre><code># Vetores de entrega comuns
+- E-mail malicioso (phishing)
+- Malware em pendrive
+- Interações em redes sociais
+- Sites comprometidos
+- Ataques diretos contra servidores web</code></pre>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-success"><i class="fas fa-envelope me-2"></i>Táticas do Adversário</h4>
+                <ul class="small mb-0">
+                  <li>Criptografar comunicações</li>
+                  <li>Fazer o código parecer legítimo</li>
+                  <li>Ofuscar o código para evitar detecção</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-info"><i class="fas fa-filter me-2"></i>Defesa SOC</h4>
+                <ul class="small mb-0">
+                  <li>Analisar infraestrutura usada para entrega</li>
+                  <li>Entender servidores, pessoas e dados visados</li>
+                  <li>Coletar e-mails e logs da web para reconstrução forense</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.5 Exploração -->
+      <section id="exploitation" class="mb-5 reveal">
+        <h2 class="section-title">27.2.5 Exploração</h2>
+        <div class="content-card">
+          <p>
+            Depois que a arma foi entregue, o ator da ameaça a usa para
+            <strong>quebrar a vulnerabilidade e ganhar controle do alvo</strong>. Os alvos mais comuns são aplicativos, sistema operacional
+            e usuários.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-exclamation-triangle me-2"></i> <strong>Cuidado:</strong> A exploração errada pode causar efeitos colaterais
+            (DoS, reinicializações) que alertam os analistas de segurança.
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-success"><i class="fas fa-code-branch me-2"></i>Táticas do Adversário</h4>
+                <ul class="small mb-0">
+                  <li>Usar vulnerabilidade de software, hardware ou humana</li>
+                  <li>Adquirir ou desenvolver o exploit</li>
+                  <li>Usar exploração acionada por adversário ou por vítima</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-info"><i class="fas fa-graduation-cap me-2"></i>Defesa SOC</h4>
+                <ul class="small mb-0">
+                  <li>Treinamento de conscientização de segurança</li>
+                  <li>Treinamento de desenvolvedores para código seguro</li>
+                  <li>Verificação regular de vulnerabilidades e pentest</li>
+                  <li>Medidas de hardening de endpoints</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.6 Instalação -->
+      <section id="installation" class="mb-5 reveal">
+        <h2 class="section-title">27.2.6 Instalação</h2>
+        <div class="content-card">
+          <p>
+            O ator da ameaça estabelece um <strong>backdoor</strong> para o sistema, permitindo acesso contínuo ao alvo. O método deve
+            sobreviver a verificações antimalware e reinicializações.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-success"><i class="fas fa-door-open me-2"></i>Táticas do Adversário</h4>
+                <ul class="small mb-0">
+                  <li>Instalar webshell em servidor web</li>
+                  <li>Criar ponto de persistência (serviços, AutoRun)</li>
+                  <li>Modificar timestamps do malware para parecer legítimo</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-info"><i class="fas fa-desktop me-2"></i>Defesa SOC</h4>
+                <ul class="small mb-0">
+                  <li>HIPS para alertar ou bloquear caminhos de instalação</li>
+                  <li>Auditoria de endpoint para descobrir criações anormais</li>
+                  <li>Determinar se malware é conhecido ou nova variante</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.7 Comando e Controle -->
+      <section id="command-control" class="mb-5 reveal">
+        <h2 class="section-title">27.2.7 Comando e Controle (C2)</h2>
+        <div class="content-card">
+          <p>
+            O objetivo é <strong>estabelecer comando e controle (C2)</strong> com o sistema de destino. Hosts comprometidos se comunicam com
+            um controlador na Internet para receber comandos.
+          </p>
+
+          <div class="terminal-card my-3">
+            <pre><code># Canais C2 comuns
+- Protocolos da web (HTTP/HTTPS)
+- DNS (tunneling)
+- E-mail
+- IRC (Internet Relay Chat)</code></pre>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-success"><i class="fas fa-exchange-alt me-2"></i>Táticas do Adversário</h4>
+                <ul class="small mb-0">
+                  <li>Abrir canal de comunicação bidirecional</li>
+                  <li>Usar protocolos da web, DNS ou e-mail</li>
+                  <li>Infraestrutura C2 própria ou de outra vítima</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h4 class="text-info"><i class="fas fa-network-wired me-2"></i>Defesa SOC</h4>
+                <ul class="small mb-0">
+                  <li>Pesquisar possíveis novas infraestruturas C2</li>
+                  <li>Isolar tráfego DNS para servidores suspeitos</li>
+                  <li>Bloquear ou desativar canal C2</li>
+                  <li>Personalizar bloqueio de regras em proxies web</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.8 Ações e Objetivos -->
+      <section id="actions-objectives" class="mb-5 reveal">
+        <h2 class="section-title">27.2.8 Ações e Objetivos</h2>
+        <div class="content-card">
+          <p>
+            O passo final da Cyber Kill Chain: o ator da ameaça <strong>alcança seu objetivo original</strong>. Neste ponto, o ator está
+            profundamente enraizado, escondendo movimentos e cobrindo rastros.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-skull me-2"></i> <strong>Extremamente difícil</strong> remover o agente de ameaça da rede nesta fase.
+          </div>
+
+          <div class="table-responsive mt-3">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Táticas do Adversário</th>
+                  <th>Defesa SOC</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    • Coletar credenciais de usuário<br />• Escalonamento de privilégios<br />• Reconhecimento interno<br />• Movimento
+                    lateral<br />• Coletar e exfiltrar dados<br />• Destruir sistemas<br />• Substituir/modificar/corromper dados
+                  </td>
+                  <td>
+                    • Estabelecer manual de resposta a incidentes<br />• Detectar exfiltração e movimento lateral<br />• Resposta imediata a
+                    todos os alertas<br />• Análise forense de endpoints<br />• Capturas de pacotes de rede<br />• Avaliação de danos
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.2.9 Verifique seu entendimento - Cyber Kill Chain -->
+      <section id="kill-chain-quiz" class="mb-5 reveal">
+        <h2 class="section-title">27.2.9 Verifique seu entendimento - Cyber Kill Chain</h2>
+        <div class="content-card">
+          <p class="mb-4">Identifique as etapas na cadeia de eliminação cibernética respondendo às perguntas abaixo:</p>
+
+          <div class="row g-4">
+            <!-- Pergunta 1 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 1</p>
+                <p>Em que etapa o ator da ameaça explora a vulnerabilidade e obtém o controle do alvo?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq1" /> <label>Instalação</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq1" /> <label>Reconhecimento</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq1" /> <label>Ação nos objetivos</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="kcq1" /> <label class="text-success">✓ Exploração</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq1" /> <label>Entrega</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 2</p>
+                <p>Em que etapa a arma é transmitida ao alvo através de site, mídia USB, anexo de e-mail ou outros meios?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq2" /> <label>Comando e controle</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq2" /> <label>Armamento</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="kcq2" /> <label class="text-success">✓ Entrega</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq2" /> <label>Instalação</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq2" /> <label>Reconhecimento</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 3</p>
+                <p>Em que etapa o ator da ameaça reúne inteligência e seleciona alvos?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq3" /> <label>Ação nos objetivos</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq3" /> <label>Exploração</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq3" /> <label>Instalação</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq3" /> <label>Entrega</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="kcq3" /> <label class="text-success">✓ Reconhecimento</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 4</p>
+                <p>Em que etapa o ator usa um método como IRC para emitir comandos ao software instalado no destino?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq4" /> <label>Instalação</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq4" /> <label>Entrega</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq4" /> <label>Armamento</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="kcq4" /> <label class="text-success">✓ Comando e controle</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq4" /> <label>Ação nos objetivos</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 5 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 5</p>
+                <p>Em que etapa o ator usa vulnerabilidades descobertas e as transforma em uma ferramenta?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq5" /> <label>Comando e controle</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq5" /> <label>Exploração</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq5" /> <label>Entrega</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="kcq5" /> <label class="text-success">✓ Armamento</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="kcq5" /> <label>Reconhecimento</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <button
+              class="btn-cisco"
+              onclick="alert('Respostas corretas: 1-Exploração, 2-Entrega, 3-Reconhecimento, 4-Comando e controle, 5-Armamento')"
+            >
+              <i class="fas fa-check-circle me-2"></i>Mostrar Gabarito
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== SEÇÃO 27.3 - MODELO DIAMOND ==================== -->
+
+      <!-- 27.3.1 Visão geral do Modelo Diamond -->
+      <section id="diamond-model" class="mb-5 reveal">
+        <h2 class="section-title">27.3.1 Visão geral do Modelo Diamond</h2>
+        <div class="content-card">
+          <p>
+            O <strong>Modelo Diamond de Análise de Intrusão</strong> é composto por quatro partes fundamentais que representam um incidente
+            ou evento de segurança. No Modelo Diamond, um evento é uma atividade limitada ao tempo, restrita a uma etapa específica em que
+            um adversário usa uma capacidade sobre a infraestrutura para atacar uma vítima e alcançar um resultado específico.
+          </p>
+
+          <!-- Diagrama do Diamond Model -->
+          <div class="diagram-card mt-4 p-4">
+            <div class="row text-center g-3">
+              <div class="col-12">
+                <div class="bg-success bg-opacity-25 p-2 rounded d-inline-block px-4 mb-3">
+                  <strong class="text-success">MODELO DIAMOND DE ANÁLISE DE INTRUSÃO</strong>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="border border-success rounded p-3 h-100" style="background: rgba(102, 191, 83, 0.05)">
+                  <i class="fas fa-user-secret fa-3x text-success mb-2 d-block"></i>
+                  <h4 class="text-success">Adversário</h4>
+                  <small class="text-muted">Responsável pela intrusão</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="border border-secondary rounded p-3 h-100">
+                  <i class="fas fa-microchip fa-3x text-info mb-2 d-block"></i>
+                  <h4 class="text-info">Capacidade</h4>
+                  <small class="text-muted">Ferramenta ou técnica usada no ataque</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="border border-secondary rounded p-3 h-100">
+                  <i class="fas fa-network-wired fa-3x text-warning mb-2 d-block"></i>
+                  <h4 class="text-warning">Infraestrutura</h4>
+                  <small class="text-muted">Caminho de rede para C2</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="border border-secondary rounded p-3 h-100">
+                  <i class="fas fa-user-friends fa-3x text-danger mb-2 d-block"></i>
+                  <h4 class="text-danger">Vítima</h4>
+                  <small class="text-muted">Alvo do ataque</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="terminal-card mt-4">
+              <pre><code># Interpretação do Modelo Diamond
+"O adversário usa a infraestrutura para se conectar à vítima. 
+ O adversário desenvolve capacidade para explorar a vítima."
+ 
+ Exemplo: Malware (capacidade) é usado na infraestrutura de e-mail 
+          por um adversário para explorar uma vítima.</code></pre>
+            </div>
+          </div>
+
+          <!-- Meta-recursos -->
+          <h3 class="cisco-subtitle mt-4">Meta-recursos do Modelo Diamond</h3>
+          <p>Os meta-recursos expandem o modelo para incluir os seguintes elementos importantes:</p>
+
+          <div class="row g-3 mt-2">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h5 class="text-success"><i class="fas fa-clock me-2"></i>Timestamp</h5>
+                <p class="small mb-0">
+                  Indica a hora de início e parada de um evento. Parte integrante do agrupamento de atividades mal-intencionadas.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h5 class="text-success"><i class="fas fa-chart-line me-2"></i>Fase</h5>
+                <p class="small mb-0">
+                  Análogo às etapas da Cyber Kill Chain. Atividade maliciosa inclui duas ou mais etapas executadas sucessivamente.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h5 class="text-success"><i class="fas fa-flag-checkered me-2"></i>Resultado</h5>
+                <p class="small mb-0">
+                  O que o adversário ganhou: confidencialidade comprometida, integridade comprometida ou disponibilidade comprometida (CIA).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h5 class="text-success"><i class="fas fa-arrow-right me-2"></i>Direção</h5>
+                <p class="small mb-0">
+                  Indica a direção do evento: infraestrutura → adversário, infraestrutura → vítima, vítima → infraestrutura, etc.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h5 class="text-success"><i class="fas fa-tag me-2"></i>Metodologia</h5>
+                <p class="small mb-0">
+                  Classifica o tipo geral de evento: varredura de portas, phishing, ataque de entrega de conteúdo, syn flood, etc.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <h5 class="text-success"><i class="fas fa-cubes me-2"></i>Recursos</h5>
+                <p class="small mb-0">
+                  Recursos externos usados pelo adversário: software, conhecimento, credenciais, hardware, fundos, acesso à rede.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.3.2 Pivotando em todo o Modelo Diamond -->
+      <section id="diamond-pivoting" class="mb-5 reveal">
+        <h2 class="section-title">27.3.2 Pivotando em todo o Modelo Diamond</h2>
+        <div class="content-card">
+          <p>
+            Como analista de segurança cibernética, você pode ser chamado a usar o
+            <strong>Modelo Diamond de Análise de Intrusão</strong> para diagramar uma série de eventos de intrusão. O Modelo Diamond é ideal
+            para ilustrar como o adversário <span class="text-success fw-bold">"gira" (pivota)</span> de um evento para o outro.
+          </p>
+
+          <div class="terminal-card my-3">
+            <pre><code># Exemplo de pivoting
+1. Funcionário relata computador anormal
+2. Verificação indica malware
+3. Análise do malware revela lista de domínios C2
+4. Domínios resolvem para endereços IP
+5. IPs identificam adversário
+6. Investigação busca outras vítimas na organização</code></pre>
+          </div>
+
+          <div class="alert-cisco">
+            <i class="fas fa-sync-alt me-2"></i> <strong>Pivoting:</strong> O adversário usa um host comprometido como ponto de partida para
+            atacar outras vítimas (movimento lateral).
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.3.3 O Modelo Diamond e a Cyber Kill Chain -->
+      <section id="diamond-killchain" class="mb-5 reveal">
+        <h2 class="section-title">27.3.3 O Modelo Diamond e a Cyber Kill Chain</h2>
+        <div class="content-card">
+          <p>
+            Os adversários não operam em apenas um evento. Em vez disso, os eventos são encadeados em uma cadeia na qual cada evento deve
+            ser concluído com sucesso antes do próximo. Este segmento de eventos pode ser mapeado para a <strong>Cyber Kill Chain</strong>.
+          </p>
+
+          <h3 class="cisco-subtitle mt-3">Exemplo prático: Ataque a Gadgets, Inc.</h3>
+
+          <div class="timeline-item mt-3">
+            <div class="d-flex mb-3">
+              <div class="icon-box me-3"><i class="fas fa-search text-success"></i></div>
+              <div>
+                <strong class="text-success">1. Reconhecimento:</strong> Adversário pesquisa "gadgets.com" e identifica administradores de
+                rede via fóruns.
+              </div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="icon-box me-3"><i class="fas fa-bomb text-success"></i></div>
+              <div><strong class="text-success">2. Armamento:</strong> Cria e-mail de phishing com trojan anexado.</div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="icon-box me-3"><i class="fas fa-paper-plane text-success"></i></div>
+              <div><strong class="text-success">3. Entrega:</strong> Envia e-mails de phishing aos administradores.</div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="icon-box me-3"><i class="fas fa-bug text-success"></i></div>
+              <div><strong class="text-success">4. Exploração:</strong> Administrador NA1 abre anexo, executando código malicioso.</div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="icon-box me-3"><i class="fas fa-plug text-success"></i></div>
+              <div><strong class="text-success">5. Instalação:</strong> Host comprometido envia HTTP Post para controlador C2.</div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="icon-box me-3"><i class="fas fa-satellite-dish text-success"></i></div>
+              <div><strong class="text-success">6. Comando e Controle:</strong> Malware recebe resposta HTTP e atua como proxy.</div>
+            </div>
+            <div class="d-flex mb-3">
+              <div class="icon-box me-3"><i class="fas fa-share-alt text-success"></i></div>
+              <div>
+                <strong class="text-success">7. Pivoting (Movimento Lateral):</strong> Adversário ataca Victima 2 (Interesting Research
+                Inc.) usando host comprometido.
+              </div>
+            </div>
+          </div>
+
+          <div class="table-responsive mt-4">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Cyber Kill Chain</th>
+                  <th>Modelo Diamond - Adversário</th>
+                  <th>Vítima</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Reconhecimento</td>
+                  <td>Adversário pesquisa</td>
+                  <td>Gadgets, Inc.</td>
+                </tr>
+                <tr>
+                  <td>Armamento</td>
+                  <td>Cria phishing</td>
+                  <td>Administradores</td>
+                </tr>
+                <tr>
+                  <td>Entrega</td>
+                  <td>Envia e-mail</td>
+                  <td>NA1</td>
+                </tr>
+                <tr>
+                  <td>Exploração</td>
+                  <td>Anexo malicioso</td>
+                  <td>NA1</td>
+                </tr>
+                <tr>
+                  <td>Instalação</td>
+                  <td>Malware instalado</td>
+                  <td>Host NA1</td>
+                </tr>
+                <tr>
+                  <td>C2</td>
+                  <td>Controlador C2</td>
+                  <td>Host NA1</td>
+                </tr>
+                <tr>
+                  <td>Ações nos Objetivos</td>
+                  <td>Proxy configurado</td>
+                  <td>Interesting Research Inc.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-info-circle me-2"></i> <strong>Nota:</strong> Este exemplo é uma modificação do exemplo do Departamento de
+            Defesa dos EUA na publicação "O modelo Diamond de análise de intrusão".
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.3.4 Verifique sua compreensão - Modelo Diamond -->
+      <section id="diamond-quiz" class="mb-5 reveal">
+        <h2 class="section-title">27.3.4 Verifique sua compreensão - Modelo Diamond</h2>
+        <div class="content-card">
+          <p class="mb-4">Identifique os recursos do Modelo Diamond respondendo às perguntas abaixo:</p>
+
+          <div class="row g-4">
+            <!-- Pergunta 1 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 1</p>
+                <p>Que parte do modelo Diamond representa o ator ameaçador?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq1" /> <label>Direção</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="dq1" /> <label class="text-success">✓ Adversário</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq1" /> <label>Capacidade</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq1" /> <label>Infraestrutura</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq1" /> <label>Vítima</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 2</p>
+                <p>Que parte do modelo Diamond representa o caminho de rede usado para uma exploração?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq2" /> <label>Adversário</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq2" /> <label>Capacidade</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq2" /> <label>Resultado</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq2" /> <label>Vítima</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="dq2" /> <label class="text-success">✓ Infraestrutura</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 3</p>
+                <p>Que parte do Modelo Diamond representa o alvo de uma exploração?</p>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="dq3" /> <label class="text-success">✓ Vítima</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq3" /> <label>Direção</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq3" /> <label>Adversário</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq3" /> <label>Infraestrutura</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq3" /> <label>Resultado</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 4</p>
+                <p>Qual meta-característica representa o que o ator ganhou? (Confidencialidade, Integridade, Disponibilidade)</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq4" /> <label>Direção</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq4" /> <label>Capacidade</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq4" /> <label>Vítima</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq4" /> <label>Adversário</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="dq4" /> <label class="text-success">✓ Resultado</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 5 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 5</p>
+                <p>Que parte representa as ferramentas ou técnicas que o ator usa para atacar um alvo?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq5" /> <label>Direção</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq5" /> <label>Resultado</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq5" /> <label>Vítima</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="dq5" /> <label class="text-success">✓ Capacidade</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq5" /> <label>Adversário</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 6 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 6</p>
+                <p>Qual meta-característica indica o caminho entre as partes do Modelo Diamond usado por uma exploração?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq6" /> <label>Infraestrutura</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq6" /> <label>Adversário</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq6" /> <label>Resultado</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="dq6" /> <label>Capacidade</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="dq6" /> <label class="text-success">✓ Direção</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <button
+              class="btn-cisco"
+              onclick="alert('Respostas corretas:\n1-Adversário\n2-Infraestrutura\n3-Vítima\n4-Resultado\n5-Capacidade\n6-Direção')"
+            >
+              <i class="fas fa-check-circle me-2"></i>Mostrar Gabarito
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== SEÇÃO 27.4 - RESPOSTA A INCIDENTES ==================== -->
+
+      <!-- 27.4.1 Estabelecendo uma capacidade de resposta a incidentes -->
+      <section id="incident-response" class="mb-5 reveal">
+        <h2 class="section-title">27.4.1 Estabelecendo uma capacidade de resposta a incidentes</h2>
+        <div class="content-card">
+          <p>
+            A resposta a incidentes envolve os <strong>métodos, políticas e procedimentos</strong> usados por uma organização para responder
+            a um ataque cibernético. Os objetivos são:
+          </p>
+          <ul>
+            <li>Limitar o impacto do ataque</li>
+            <li>Avaliar os danos causados</li>
+            <li>Implementar procedimentos de recuperação</li>
+          </ul>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-book me-2"></i> <strong>NIST 800-61r2:</strong> "Computer Security Incident Handling Guide" - Diretrizes para
+            tratamento de incidentes, independentemente de plataformas, sistemas operacionais ou protocolos.
+          </div>
+
+          <div class="terminal-card mt-3">
+            <pre><code># Primeiro passo para a organização
+Estabelecer uma capacidade de resposta a incidentes de segurança de computador (CSIRC)
+│
+├── Política (o que deve ser feito)
+├── Plano (como será feito)
+└── Procedimento (detalhamento técnico - SOPs)</code></pre>
+          </div>
+
+          <p class="mt-3">
+            <strong>Nota:</strong> Este capítulo resume grande parte do padrão NIST 800-61r2, que aborda quatro tópicos principais para o
+            exame Cisco Cybersecurity Operations Fundamentals.
+          </p>
+        </div>
+      </section>
+
+      <!-- 27.4.2 Elementos de Política, Plano e Procedimento -->
+      <section id="incident-policy-plan-procedure" class="mb-5 reveal">
+        <h2 class="section-title">27.4.2 Política, Plano e Procedimento - NIST 800-61r2</h2>
+
+        <!-- Elementos de Política -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle text-success"><i class="fas fa-file-alt me-2"></i>Elementos de Política</h3>
+          <p>
+            Uma política de resposta a incidentes detalha como os incidentes devem ser tratados com base na missão, tamanho e função da
+            organização.
+          </p>
+          <div class="row g-2 mt-3">
+            <div class="col-md-6">
+              <ul class="small">
+                <li>Declaração de compromisso de gestão</li>
+                <li>Objetivos e metas da política</li>
+                <li>Âmbito de aplicação da política</li>
+                <li>Definição de incidentes de segurança e termos relacionados</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="small">
+                <li>Estrutura organizacional e definição de funções</li>
+                <li>Priorização e classificações de gravidade de incidentes</li>
+                <li>Medidas de desempenho</li>
+                <li>Formulários de comunicação e contato</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Elementos de Plano -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle text-info"><i class="fas fa-clipboard-list me-2"></i>Elementos do Plano</h3>
+          <p>Um bom plano de resposta a incidentes ajuda a minimizar danos e melhorar o programa geral de resposta.</p>
+          <ul class="small">
+            <li>Missão, estratégias e objetivos</li>
+            <li>Aprovação da alta administração</li>
+            <li>Abordagem organizacional para resposta</li>
+            <li>Comunicação da equipe com a organização e outras organizações</li>
+            <li>Métricas para medir a capacidade de resposta</li>
+            <li>Como o programa se encaixa na organização geral</li>
+          </ul>
+        </div>
+
+        <!-- Elementos de Procedimento -->
+        <div class="content-card">
+          <h3 class="cisco-subtitle text-warning"><i class="fas fa-tasks me-2"></i>Elementos de Procedimento</h3>
+          <p>Os procedimentos seguem o plano de resposta a incidentes e são Operacionais Padrão (SOPs).</p>
+          <ul class="small">
+            <li>Processos técnicos detalhados</li>
+            <li>Uso de técnicas específicas</li>
+            <li>Preenchimento de formulários</li>
+            <li>Seguimento de listas de verificação</li>
+          </ul>
+          <div class="alert-cisco mt-2">
+            <i class="fas fa-lightbulb me-2"></i> <strong>Importante:</strong> SOPs minimizam erros causados por estresse durante
+            incidentes. Devem ser compartilhados e praticados regularmente.
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.4.3 Partes interessadas na resposta a incidentes -->
+      <section id="incident-stakeholders" class="mb-5 reveal">
+        <h2 class="section-title">27.4.3 Partes interessadas na resposta a incidentes</h2>
+        <div class="content-card">
+          <p>
+            Outros grupos e indivíduos dentro da organização podem estar envolvidos no tratamento de incidentes. É importante assegurar sua
+            cooperação antes de um incidente estar em curso.
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-chart-line fa-2x text-success mb-2 d-block"></i>
+                <h5 class="text-success">Gerenciamento</h5>
+                <p class="small mb-0">Criam políticas, definem orçamento, coordenam resposta e minimizam danos.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-shield-alt fa-2x text-info mb-2 d-block"></i>
+                <h5 class="text-info">Garantia de Informações</h5>
+                <p class="small mb-0">Responsáveis pela segurança da informação e conformidade.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-desktop fa-2x text-warning mb-2 d-block"></i>
+                <h5 class="text-warning">Suporte de TI</h5>
+                <p class="small mb-0">Entendem profundamente a tecnologia e executam ações para minimizar ataques.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-gavel fa-2x text-danger mb-2 d-block"></i>
+                <h5 class="text-danger">Departamento Jurídico</h5>
+                <p class="small mb-0">Revisam políticas, garantem conformidade legal, lidam com ações judiciais.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-newspaper fa-2x text-primary mb-2 d-block"></i>
+                <h5 class="text-primary">Assuntos Públicos e Mídia</h5>
+                <p class="small mb-0">Comunicam incidentes ao público quando dados pessoais são comprometidos.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-users fa-2x text-secondary mb-2 d-block"></i>
+                <h5 class="text-secondary">Recursos Humanos</h5>
+                <p class="small mb-0">Executam medidas disciplinares para incidentes causados por funcionários.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-chart-pie fa-2x text-success mb-2 d-block"></i>
+                <h5 class="text-success">Planejadores de Continuidade de Negócios</h5>
+                <p class="small mb-0">Avaliam impacto de incidentes na continuidade e ajustam planos e avaliações de risco.</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+              <div class="hacker-card p-3 h-100">
+                <i class="fas fa-building fa-2x text-info mb-2 d-block"></i>
+                <h5 class="text-info">Segurança Física e Instalações</h5>
+                <p class="small mb-0">
+                  Envolvidos em ataques físicos (tailgating, shoulder surfing) e garantem instalações seguras para evidências.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.4.4 Ciclo de vida de resposta a incidentes NIST -->
+      <section id="nist-lifecycle" class="mb-5 reveal">
+        <h2 class="section-title">27.4.4 Ciclo de vida de resposta a incidentes NIST</h2>
+        <div class="content-card">
+          <p>
+            O NIST define <strong>quatro etapas</strong> no ciclo de vida do processo de resposta a incidentes. O ciclo é um processo de
+            aprendizagem auto-reforçado, onde cada incidente informa o processo futuro.
+          </p>
+
+          <!-- Diagrama do ciclo de vida -->
+          <div class="diagram-card mt-4 p-4">
+            <div class="row text-center g-3">
+              <div class="col-md-3">
+                <div class="border border-success rounded p-3" style="background: rgba(102, 191, 83, 0.1)">
+                  <i class="fas fa-chalkboard-teacher fa-3x text-success mb-2 d-block"></i>
+                  <h5 class="text-success">1. Preparação</h5>
+                  <small class="text-muted">Criação e treinamento do CSIRT</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="border border-info rounded p-3" style="background: rgba(13, 110, 253, 0.1)">
+                  <i class="fas fa-search fa-3x text-info mb-2 d-block"></i>
+                  <h5 class="text-info">2. Detecção e Análise</h5>
+                  <small class="text-muted">Monitoramento contínuo</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="border border-warning rounded p-3" style="background: rgba(255, 193, 7, 0.1)">
+                  <i class="fas fa-shield-virus fa-3x text-warning mb-2 d-block"></i>
+                  <h5 class="text-warning">3. Contenção, Erradicação e Recuperação</h5>
+                  <small class="text-muted">Conter, erradicar e restaurar</small>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="border border-secondary rounded p-3" style="background: rgba(136, 136, 136, 0.1)">
+                  <i class="fas fa-clipboard-list fa-3x text-secondary mb-2 d-block"></i>
+                  <h5 class="text-secondary">4. Atividades Pós-incidente</h5>
+                  <small class="text-muted">Documentação e melhoria</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-4 g-3">
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-success"><i class="fas fa-check-circle me-2"></i>Detecção e Análise</h5>
+                <p class="small">Através do monitoramento contínuo, o CSIRT identifica, analisa e valida rapidamente um incidente.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-warning"><i class="fas fa-eraser me-2"></i>Contenção, Erradicação e Recuperação</h5>
+                <p class="small">
+                  Implementa procedimentos para conter a ameaça, erradicar o impacto e restaurar dados/software com backups. Pode voltar à
+                  detecção para mais informações.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-sync-alt me-2"></i> <strong>Ciclo auto-reforçado:</strong> O CSIRT documenta como o incidente foi tratado,
+            recomenda alterações e especifica como evitar repetição.
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.4.5 Preparação -->
+      <section id="incident-preparation" class="mb-5 reveal">
+        <h2 class="section-title">27.4.5 Preparação</h2>
+        <div class="content-card">
+          <p>
+            A fase de preparação é quando o <strong>CSIRT é criado e treinado</strong>. Também é quando ferramentas e ativos necessários são
+            adquiridos e implantados.
+          </p>
+
+          <div class="row mt-3 g-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-success"><i class="fas fa-users me-2"></i>Processos Organizacionais</h5>
+                <ul class="small mb-0">
+                  <li>Comunicação entre equipe de resposta</li>
+                  <li>Informações de contato para stakeholders</li>
+                  <li>Sistema de rastreamento de problemas</li>
+                  <li>Smartphones e software de criptografia</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-info"><i class="fas fa-building me-2"></i>Instalações</h5>
+                <ul class="small mb-0">
+                  <li>Espaço para equipe de resposta</li>
+                  <li>Centro de Operações de Segurança (SOC)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-warning"><i class="fas fa-microchip me-2"></i>Hardware e Software</h5>
+                <ul class="small mb-0">
+                  <li>Software forense</li>
+                  <li>Computadores sobressalentes</li>
+                  <li>Servidores e dispositivos de rede</li>
+                  <li>Dispositivos de backup</li>
+                  <li>Sniffers de pacotes e analisadores de protocolo</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3 h-100">
+                <h5 class="text-danger"><i class="fas fa-tasks me-2"></i>Outras Ações</h5>
+                <ul class="small mb-0">
+                  <li>Avaliações de risco para implementar controles</li>
+                  <li>Validação de implantação de segurança</li>
+                  <li>Treinamento de conscientização do usuário</li>
+                  <li>Imagem de SO limpo para recuperação</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle mt-4"><i class="fas fa-suitcase me-2"></i>Jump Kit (Kit de Salto)</h3>
+          <p>Caixa portátil com itens para resposta rápida:</p>
+          <div class="terminal-card">
+            <pre><code># Conteúdo do Jump Kit
+- Laptop com software apropriado
+- Mídia de backup
+- Hardware e software forense
+- Documentação e informações de contato
+
+# Boas práticas
+- Inspecionar regularmente
+- Instalar atualizações
+- Praticar implantação com o CSIRT</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.4.6 CMMC - Certificação do Modelo de Maturidade de Segurança -->
+      <section id="cmmc" class="mb-5 reveal">
+        <h2 class="section-title">27.4.6 Certificação do Modelo de Maturidade de Segurança (CMMC)</h2>
+        <div class="content-card">
+          <p>
+            O <strong>Cybersecurity Maturity Model Certification (CMMC)</strong> foi criado para avaliar a capacidade de organizações que
+            atuam para o Departamento de Defesa dos EUA (DoD) protegerem a cadeia de suprimentos militar.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-certificate me-2"></i> <strong>Importante:</strong> Para receber contratos do DoD, as empresas devem ser
+            certificadas. A certificação consiste em cinco níveis (mas resposta a incidentes tem apenas quatro).
+          </div>
+
+          <h3 class="cisco-subtitle mt-3">Domínio de Resposta a Incidentes - Recursos:</h3>
+          <ul>
+            <li>Plano de resposta a incidentes</li>
+            <li>Detectar e relatar eventos</li>
+            <li>Desenvolver e implementar resposta a incidente declarado</li>
+            <li>Realizar revisões pós-incidentes</li>
+            <li>Teste de resposta a incidentes</li>
+          </ul>
+
+          <h3 class="cisco-subtitle mt-4">Níveis de Maturidade - Resposta a Incidentes</h3>
+          <div class="table-responsive">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th>Nível</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-success fw-bold">Nível 2</td>
+                  <td>
+                    Estabelecer plano de resposta a incidentes seguindo NIST. Detectar, relatar e priorizar eventos. Analisar causa de
+                    incidentes.
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-info fw-bold">Nível 3</td>
+                  <td>Documentar e relatar incidentes às partes interessadas. Testar capacidade de resposta da organização.</td>
+                </tr>
+                <tr>
+                  <td class="text-warning fw-bold">Nível 4</td>
+                  <td>Usar conhecimento de TTPs para refinar resposta. Estabelecer SOC com recurso de resposta 24/7.</td>
+                </tr>
+                <tr>
+                  <td class="text-danger fw-bold">Nível 5</td>
+                  <td>Utilizar técnicas forenses aceitas e sistemáticas. Desenvolver respostas manuais e automatizadas em tempo real.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 27.4.7 Verifique sua compreensão -->
+      <section id="incident-quiz" class="mb-5 reveal">
+        <h2 class="section-title">27.4.7 Verifique sua compreensão - Plano de Resposta a Incidentes</h2>
+        <div class="content-card">
+          <p class="mb-4">Identifique os elementos de um plano de resposta a incidentes respondendo às perguntas:</p>
+
+          <div class="row g-4">
+            <!-- Pergunta 1 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 1</p>
+                <p>A definição de incidentes de segurança e termos relacionados está em qual parte do plano?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq1" /> <label>Plano</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="irq1" /> <label class="text-success">✓ Política</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq1" /> <label>Procedimento</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 2</p>
+                <p>O elemento estratégia e metas está em qual parte do plano?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq2" /> <label>Política</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="irq2" /> <label class="text-success">✓ Plano</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq2" /> <label>Procedimento</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 3 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 3</p>
+                <p>A estrutura organizacional e definição de funções está em qual parte?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq3" /> <label>Procedimento</label></div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq3" /> <label>Plano</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="irq3" /> <label class="text-success">✓ Política</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 4</p>
+                <p>A priorização e classificações de gravidade está em qual parte?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq4" /> <label>Política</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="irq4" /> <label class="text-success">✓ Plano</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq4" /> <label>Procedimento</label></div>
+              </div>
+            </div>
+
+            <!-- Pergunta 5 -->
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded border border-secondary">
+                <p class="fw-bold text-success mb-2">Pergunta 5</p>
+                <p>Lista de verificação pode ser encontrada em que parte do plano?</p>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq5" /> <label>Procedimento</label></div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="irq5" /> <label class="text-success">✓ Plano</label>
+                </div>
+                <div class="form-check"><input class="form-check-input" type="radio" name="irq5" /> <label>Política</label></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 text-center">
+            <button class="btn-cisco" onclick="alert('Respostas corretas:\n1-Política\n2-Plano\n3-Política\n4-Plano\n5-Plano')">
+              <i class="fas fa-check-circle me-2"></i>Mostrar Gabarito
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== SEÇÃO 27.4.6 - DETECÇÃO E ANÁLISE ==================== -->
+
+      <!-- 27.4.6 Detecção e Análise -->
+      <section id="detection-analysis" class="mb-5 reveal">
+        <h2 class="section-title">27.4.6 Detecção e Análise</h2>
+
+        <!-- Visão geral -->
+        <div class="content-card mb-4">
+          <p>
+            Como há muitas maneiras diferentes em que um incidente de segurança pode ocorrer, é impossível criar instruções que cubram
+            completamente cada etapa. Diferentes tipos de incidentes exigirão respostas diferentes.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-chart-line me-2"></i> <strong>Criação de Perfis (Profiling):</strong> Medir as características da atividade
+            esperada em dispositivos e sistemas de rede para que as alterações possam ser mais facilmente identificadas.
+          </div>
+        </div>
+
+        <!-- Vetores de Ataque -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle text-warning"><i class="fas fa-crosshairs me-2"></i>Vetores de Ataque Comuns</h3>
+          <div class="row g-3 mt-2">
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-2 text-center">
+                <i class="fas fa-globe fa-2x text-success mb-2 d-block"></i>
+                <strong>Web</strong>
+                <small class="d-block text-muted">Ataques de sites ou aplicações web</small>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-2 text-center">
+                <i class="fas fa-envelope fa-2x text-info mb-2 d-block"></i>
+                <strong>E-mail</strong>
+                <small class="d-block text-muted">Ataques via e-mail ou anexos</small>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-2 text-center">
+                <i class="fas fa-laptop fa-2x text-warning mb-2 d-block"></i>
+                <strong>Perda ou Roubo</strong>
+                <small class="d-block text-muted">Equipamento físico comprometido</small>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-2 text-center">
+                <i class="fas fa-mask fa-2x text-danger mb-2 d-block"></i>
+                <strong>Personificação</strong>
+                <small class="d-block text-muted">Substituição maliciosa de identidade</small>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-2 text-center">
+                <i class="fas fa-tachometer-alt fa-2x text-secondary mb-2 d-block"></i>
+                <strong>Atração</strong>
+                <small class="d-block text-muted">Força bruta contra dispositivos</small>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="hacker-card p-2 text-center">
+                <i class="fas fa-usb fa-2x text-primary mb-2 d-block"></i>
+                <strong>Mídia</strong>
+                <small class="d-block text-muted">Armazenamento externo ou removível</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Precursor vs Indicador -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle text-success"><i class="fas fa-traffic-light me-2"></i>Sinais de um Incidente</h3>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-info"><i class="fas fa-clock me-2"></i>Precursor</h5>
+                <p class="small mb-0">
+                  Sinal de que um incidente <strong>pode ocorrer no futuro</strong>. Permite prevenir o ataque ajustando medidas de
+                  segurança.
+                </p>
+                <hr class="border-secondary my-2" />
+                <small class="text-muted">Ex: Logs mostrando varredura de porta, vulnerabilidade recém-descoberta no servidor web.</small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Indicador</h5>
+                <p class="small mb-0">Sinal de que um incidente <strong>já ocorreu ou está ocorrendo</strong> no momento.</p>
+                <hr class="border-secondary my-2" />
+                <small class="text-muted">Ex: Host infectado com malware, múltiplos logins com falha, alerta IDS.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Escopo e Notificação -->
+        <div class="content-card">
+          <h3 class="cisco-subtitle text-info"><i class="fas fa-chart-pie me-2"></i>Escopo e Notificação</h3>
+          <p>
+            Quando o CSIRT acredita que um incidente ocorreu, deve executar imediatamente uma
+            <strong>análise inicial para determinar o escopo</strong>: quais redes, sistemas ou aplicativos são afetados, quem originou o
+            incidente e como está ocorrendo.
+          </p>
+
+          <h4 class="mt-3 text-success">Partes que devem ser notificadas:</h4>
+          <div class="row g-2 mt-2">
+            <div class="col-md-4">
+              <ul class="small">
+                <li>Diretor Executivo de Informações (CIO)</li>
+                <li>Chefe de Segurança da Informação (CISO)</li>
+                <li>Oficial de Segurança da Informação local</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="small">
+                <li>Outras equipes de resposta interna</li>
+                <li>Equipes externas de resposta (se apropriado)</li>
+                <li>Proprietário do sistema</li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <ul class="small">
+                <li>Recursos Humanos (casos com funcionários)</li>
+                <li>Assuntos Públicos (incidentes com publicidade)</li>
+                <li>Departamento Jurídico</li>
+                <li>US-CERT (agências federais)</li>
+                <li>Aplicação da lei (se cabível)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SEÇÃO 27.4.7 - CONTENÇÃO, ERRADICAÇÃO E RECUPERAÇÃO ==================== -->
+
+      <section id="containment-eradication-recovery" class="mb-5 reveal">
+        <h2 class="section-title">27.4.7 Contenção, Erradicação e Recuperação</h2>
+
+        <!-- Estratégia de Contenção -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle text-warning"><i class="fas fa-shield-virus me-2"></i>Estratégia de Contenção</h3>
+          <p>
+            Depois que um incidente foi detectado e analisado, ele deve ser <strong>contido</strong> antes que haja danos generalizados.
+            Estratégias e procedimentos precisam estar em vigor antes do incidente ocorrer.
+          </p>
+
+          <h4 class="mt-3">Condições para determinar a estratégia:</h4>
+          <div class="row g-2 mt-2">
+            <div class="col-md-6">
+              <ul class="small">
+                <li>Tempo para implementar e concluir uma solução</li>
+                <li>Recursos necessários para implementar</li>
+                <li>Processo para preservar evidências</li>
+                <li>Possibilidade de redirecionar invasor para área restrita</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="small">
+                <li>Impacto na disponibilidade de serviços</li>
+                <li>Extensão dos danos aos recursos</li>
+                <li>Eficácia da estratégia</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-exclamation-triangle me-2"></i> <strong>Cuidado:</strong> Desconectar o host comprometido da rede pode acionar
+            um apagamento de dados ou criptografia. Experiência é fundamental!
+          </div>
+        </div>
+
+        <!-- Evidência e Cadeia de Custódia -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle text-info"><i class="fas fa-database me-2"></i>Evidência e Cadeia de Custódia</h3>
+          <p>
+            Durante um incidente, as evidências devem ser coletadas para resolvê-lo e para investigação posterior. Para serem admissíveis em
+            tribunal, a coleta deve estar em conformidade com regulamentos específicos.
+          </p>
+
+          <h4 class="mt-3">Itens importantes para registrar na cadeia de custódia:</h4>
+          <ul class="small">
+            <li>Localização da recuperação e armazenamento de todas as evidências</li>
+            <li>Critérios de identificação (número de série, MAC, hostname, IP)</li>
+            <li>Informações de identificação de todos que participaram da coleta/manuseio</li>
+            <li>Hora e data da coleta e de cada instância de manuseio</li>
+          </ul>
+        </div>
+
+        <!-- Identificação do Invasor -->
+        <div class="content-card mb-4">
+          <h3 class="cisco-subtitle text-danger"><i class="fas fa-user-secret me-2"></i>Identificação do Invasor</h3>
+          <p>
+            A identificação de invasores é <strong>secundária</strong> à contenção, erradicação e recuperação. No entanto, minimizará o
+            impacto em ativos críticos.
+          </p>
+
+          <h4 class="mt-3">Ações para identificar host atacante:</h4>
+          <ul class="small">
+            <li>Usar bancos de dados de incidentes (interno ou VERIS Community Database)</li>
+            <li>Validar endereço IP do invasor (pode não responder ou ter sido reatribuído)</li>
+            <li>Usar mecanismo de busca na internet para informações adicionais</li>
+            <li>Monitorar canais de comunicação (IRC) - tratar como pistas, não fatos</li>
+          </ul>
+        </div>
+
+        <!-- Erradicação, Recuperação e Remediação -->
+        <div class="content-card">
+          <h3 class="cisco-subtitle text-success"><i class="fas fa-eraser me-2"></i>Erradicação, Recuperação e Remediação</h3>
+          <p>
+            Após a contenção, o primeiro passo é <strong>identificar todos os hosts que precisam de correção</strong>. Todos os efeitos do
+            incidente devem ser eliminados.
+          </p>
+
+          <div class="row g-3 mt-2">
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-warning">Ações de Erradicação</h5>
+                <ul class="small mb-0">
+                  <li>Eliminar infecções de malware</li>
+                  <li>Remover contas de usuário comprometidas</li>
+                  <li>Corrigir vulnerabilidades exploradas</li>
+                  <li>Aplicar patches necessários</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="terminal-card h-100">
+                <h5 class="text-success">Ações de Recuperação</h5>
+                <ul class="small mb-0">
+                  <li>Usar backups limpos e recentes</li>
+                  <li>Reconstruir com mídia de instalação</li>
+                  <li>Atualizar e corrigir completamente OS e software</li>
+                  <li>Alterar todas as senhas de host e sistemas críticos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-sync-alt me-2"></i> <strong>Valide e atualize:</strong> Segurança de rede, estratégias de backup e políticas de
+            segurança após o incidente.
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SEÇÃO 27.4.8 - ATIVIDADES PÓS-INCIDENTES ==================== -->
+
+      <section id="post-incident" class="mb-5 reveal">
+        <h2 class="section-title">27.4.8 Atividades Pós-incidentes</h2>
+        <div class="content-card">
+          <p>
+            Depois que as atividades de resposta erradicaram as ameaças e a organização começou a se recuperar, é importante
+            <strong>dar um passo atrás e reunir todas as partes envolvidas</strong> para discutir os eventos ocorridos.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-chalkboard-teacher me-2"></i> <strong>Lições Aprendidas (Lessons Learned):</strong> Reunião para analisar a
+            eficácia do processo e identificar o fortalecimento necessário para controles e práticas existentes.
+          </div>
+
+          <h3 class="cisco-subtitle mt-3">Perguntas a serem respondidas na reunião:</h3>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <ul class="small">
+                <li>Exatamente o que aconteceu, e quando?</li>
+                <li>Quão bem a equipe e a gerência se comportaram?</li>
+                <li>Os procedimentos documentados foram seguidos? Eram adequados?</li>
+                <li>Quais informações foram necessárias antes?</li>
+                <li>Que ações podem ter inibido a recuperação?</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="small">
+                <li>O que fariam diferente na próxima vez?</li>
+                <li>Como melhorar o compartilhamento de informações?</li>
+                <li>Que medidas corretivas podem prevenir incidentes futuros?</li>
+                <li>Quais precursores/indicadores observar no futuro?</li>
+                <li>Quais ferramentas ou recursos adicionais são necessários?</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle mt-4"><i class="fas fa-shield-alt me-2"></i>Endurecimento baseado em lições (Hardening)</h3>
+          <p>
+            Após um incidente importante, a organização deve implementar melhorias nos controles e práticas de segurança com base nas lições
+            aprendidas.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================== SEÇÃO 27.4.9 - COLETA E RETENÇÃO DE DADOS ==================== -->
+
+      <section id="data-retention" class="mb-5 reveal">
+        <h2 class="section-title">27.4.9 Coleta e Retenção de Dados de Incidentes</h2>
+        <div class="content-card">
+          <p>
+            Ao realizar reuniões de "lições aprendidas", os dados coletados podem ser usados para determinar o
+            <strong>custo de um incidente</strong> (orçamento), eficácia do CSIRT e possíveis deficiências de segurança.
+          </p>
+
+          <div class="alert-cisco my-3">
+            <i class="fas fa-chart-line me-2"></i> <strong>Importante:</strong> Colete apenas dados <strong>acionáveis</strong> que possam
+            ser usados para definir e refinar o processo de manipulação de incidentes.
+          </div>
+
+          <h3 class="cisco-subtitle mt-3">Métricas importantes:</h3>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-chart-bar text-success me-2"></i>
+                <strong>Contagem de incidentes</strong>
+                <p class="small mb-0 mt-1">
+                  Maior número = problema na metodologia. Menor número = melhoria na segurança OU falta de detecção.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="hacker-card p-3">
+                <i class="fas fa-stopwatch text-info me-2"></i>
+                <strong>Tempo de cada incidente</strong>
+                <p class="small mb-0 mt-1">Mão-de-obra usada, tempo por fase, tempo até primeira resposta.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="cisco-subtitle mt-4">Avaliação objetiva do incidente (NIST 800-61):</h3>
+          <ul class="small">
+            <li>Analisar logs, formulários e documentação para adesão a políticas</li>
+            <li>Identificar precursores e indicadores registrados</li>
+            <li>Determinar danos antes da detecção</li>
+            <li>Identificar causa real, vetor de ataque e vulnerabilidades</li>
+            <li>Verificar se é recorrência de incidente anterior</li>
+            <li>Calcular dano monetário estimado</li>
+            <li>Medir diferença entre avaliação de impacto inicial e final</li>
+            <li>Identificar medidas que poderiam ter evitado o incidente</li>
+          </ul>
+
+          <h3 class="cisco-subtitle mt-4"><i class="fas fa-database me-2"></i>Retenção de Evidências</h3>
+          <p>Deve haver uma política que descreva quanto tempo a evidência de um incidente é mantida. Fatores determinantes:</p>
+
+          <div class="row g-3 mt-2">
+            <div class="col-md-4">
+              <div class="terminal-card text-center h-100">
+                <i class="fas fa-gavel fa-2x text-warning mb-2 d-block"></i>
+                <h5 class="text-warning">Processo</h5>
+                <p class="small mb-0">
+                  Evidências devem ser mantidas até que todas as ações legais sejam concluídas (meses ou anos). Incidentes com ação legal
+                  NUNCA devem ser excluídos.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center h-100">
+                <i class="fas fa-tag fa-2x text-info mb-2 d-block"></i>
+                <h5 class="text-info">Tipo de Dados</h5>
+                <p class="small mb-0">E-mail/texto: 90 dias. Dados de resposta a incidentes (sem ação legal): 3+ anos.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="terminal-card text-center h-100">
+                <i class="fas fa-dollar-sign fa-2x text-success mb-2 d-block"></i>
+                <h5 class="text-success">Custo</h5>
+                <p class="small mb-0">Armazenamento de longo prazo pode ser caro. Tecnologias obsoletas também precisam ser preservadas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ==================== SEÇÃO FINAL - NA PRÁTICA (ALTO POTENCIAL DIDÁTICO) ==================== -->
+
+      <section id="pratica-entendendo" class="mb-5 reveal">
+        <div class="content-card">
+          <div class="text-center mb-4">
+            <i class="fas fa-graduation-cap fa-3x" style="color: var(--cisco-green)"></i>
+            <h2 class="cisco-title-gradient mt-3 mb-2">Na Prática: Entendendo a Segurança</h2>
+            <p class="text-muted">Conceitos explicados com situações do dia a dia para iniciantes</p>
+          </div>
+
+          <p>
+            Se você está começando agora no mundo da segurança cibernética, alguns termos podem parecer complicados. A ideia aqui é
+            simplificar: vamos usar <strong class="text-success">histórias do cotidiano</strong> para explicar cada conceito que vimos neste
+            módulo. No final, um glossário rápido para você consultar sempre que precisar.
+          </p>
+        </div>
+      </section>
+
+      <!-- CASO 1 - Evidências e Cadeia de Custódia -->
+      <section id="caso-evidencias" class="mb-5 reveal">
+        <div class="content-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-box-open fa-2x" style="color: var(--cisco-green)"></i>
+            <h3 class="section-title mb-0 ms-3" style="border-left-color: var(--cisco-green)">Caso 1: O Pacote Entregue na Porta Errada</h3>
+          </div>
+
+          <p>
+            <strong class="text-success">A história:</strong> Imagine que você pediu um produto caro pela internet. O entregador deixou o
+            pacote na casa do vizinho por engano. Você vai até lá, mas o vizinho diz que não recebeu nada. Agora você precisa provar que o
+            pacote foi entregue no local errado.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <i class="fas fa-fingerprint" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">O que isso ensina sobre Evidências?</strong>
+                <p class="small mt-2 mb-0">
+                  A filmagem da câmera do vizinho, o comprovante de entrega com a assinatura, o rastreamento da transportadora — tudo isso
+                  são <strong>evidências</strong>. Em segurança digital, os logs, os arquivos e os rastros deixados por um invasor funcionam
+                  como essas filmagens. Sem elas, não dá para provar nada.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="bg-dark p-3 rounded">
+                <i class="fas fa-link" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">E a Cadeia de Custódia?</strong>
+                <p class="small mt-2 mb-0">
+                  Se a câmera do vizinho for desligada, se alguém apagar o vídeo ou se a filmagem for editada, a prova perde o valor. A
+                  <strong>cadeia de custódia</strong> é o registro de quem viu, quem guardou e quem manuscou a evidência. Na segurança
+                  digital, isso significa anotar quem coletou o arquivo, quando e onde, para garantir que ninguém adulterou a prova.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASO 2 - Ordem de Coleta (Mais volátil primeiro) -->
+      <section id="caso-coleta" class="mb-5 reveal">
+        <div class="content-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-sort-amount-down fa-2x" style="color: var(--cisco-green)"></i>
+            <h3 class="section-title mb-0 ms-3" style="border-left-color: var(--cisco-green)">Caso 2: O Bilhete a Lápis na Chuva</h3>
+          </div>
+
+          <p>
+            <strong class="text-success">A história:</strong> Alguém escreveu um recado importante a lápis em um papel e deixou do lado de
+            fora. Começa a chover. O que você faz primeiro? Corre para anotar o que está escrito antes que a chuva apague.
+          </p>
+
+          <div class="row mt-3">
+            <div class="col-md-12">
+              <div class="terminal-card p-3">
+                <i class="fas fa-database" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">O que isso ensina sobre coleta de evidências?</strong>
+                <p class="small mt-2 mb-0">
+                  Na segurança digital, a <strong>memória RAM</strong> do computador é como o bilhete a lápis. Se você desligar a máquina,
+                  ela apaga tudo. Por isso a regra do <strong class="text-warning">RFC 3227</strong> diz: colete primeiro o que é mais
+                  volátil (a RAM, os processos rodando) e só depois vá para o que dura mais (o disco rígido, os backups). É igual à chuva
+                  chegando — corre para salvar o que some primeiro.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASO 3 - Cyber Kill Chain (como um golpe acontece) -->
+      <section id="caso-killchain" class="mb-5 reveal">
+        <div class="content-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-chart-line fa-2x" style="color: var(--cisco-green)"></i>
+            <h3 class="section-title mb-0 ms-3" style="border-left-color: var(--cisco-green)">Caso 3: O Golpe do Falso Funcionário</h3>
+          </div>
+
+          <p>
+            <strong class="text-success">A história:</strong> Um criminoso quer entrar em um prédio seguro para roubar um computador. Ele
+            não vai simplesmente arrombar a porta. Ele planeja:
+          </p>
+
+          <div class="table-responsive mt-3">
+            <table class="table table-cisco">
+              <thead>
+                <tr>
+                  <th style="width: 20%">Etapa da Cyber Kill Chain</th>
+                  <th style="width: 40%">No mundo digital</th>
+                  <th style="width: 40%">No mundo físico (o prédio)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-success">1. Reconhecimento</td>
+                  <td>Pesquisar a empresa, funcionários, e-mails</td>
+                  <td>Observar horários, uniformes, câmeras, portarias</td>
+                </tr>
+                <tr>
+                  <td class="text-success">2. Armamento</td>
+                  <td>Criar um e-mail falso ou um vírus</td>
+                  <td>Falsificar um crachá e um uniforme</td>
+                </tr>
+                <tr>
+                  <td class="text-success">3. Entrega</td>
+                  <td>Enviar o e-mail com o vírus anexado</td>
+                  <td>Chegar na portaria com o crachá falso</td>
+                </tr>
+                <tr>
+                  <td class="text-success">4. Exploração</td>
+                  <td>Abrir o anexo e o vírus roda</td>
+                  <td>O segurança acredita no crachá e deixa entrar</td>
+                </tr>
+                <tr>
+                  <td class="text-success">5. Instalação</td>
+                  <td>O vírus se instala no sistema</td>
+                  <td>O criminoso coloca um dispositivo espião</td>
+                </tr>
+                <tr>
+                  <td class="text-success">6. Comando e Controle</td>
+                  <td>O vírus recebe ordens de fora</td>
+                  <td>O criminoso recebe informações do cúmplice lá fora</td>
+                </tr>
+                <tr>
+                  <td class="text-success">7. Ação nos Objetivos</td>
+                  <td>Roubar dados ou destruir arquivos</td>
+                  <td>Levar o computador</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-cisco mt-3">
+            <i class="fas fa-lightbulb" style="color: var(--cisco-green)"></i>
+            <strong class="text-success">A sacada:</strong> Se você impedir o criminoso em qualquer uma dessas 7 etapas, o golpe falha. Não
+            precisa esperar ele roubar o computador. Dá para barrar na portaria (entrega), ou desconfiar do crachá (exploração), ou notar o
+            dispositivo espião (instalação).
+          </div>
+        </div>
+      </section>
+
+      <!-- CASO 4 - Modelo Diamond (o quadrado do ataque) -->
+      <section id="caso-diamond" class="mb-5 reveal">
+        <div class="content-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-gem fa-2x" style="color: var(--cisco-green)"></i>
+            <h3 class="section-title mb-0 ms-3" style="border-left-color: var(--cisco-green)">Caso 4: O Assalto com Chave Inglesa</h3>
+          </div>
+
+          <p>
+            <strong class="text-success">A história:</strong> Alguém arrombou um cofre usando uma chave inglesa. Para entender o que
+            aconteceu, você precisa responder quatro perguntas:
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-3">
+              <div class="bg-dark p-3 rounded text-center h-100">
+                <i class="fas fa-user-secret fa-2x" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">Quem?</strong>
+                <small class="text-muted">O criminoso</small>
+                <p class="small mt-2 mb-0">(Adversário)</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="bg-dark p-3 rounded text-center h-100">
+                <i class="fas fa-tools fa-2x" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">Com o quê?</strong>
+                <small class="text-muted">A ferramenta</small>
+                <p class="small mt-2 mb-0">(Capacidade)</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="bg-dark p-3 rounded text-center h-100">
+                <i class="fas fa-road fa-2x" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">Por onde?</strong>
+                <small class="text-muted">O caminho</small>
+                <p class="small mt-2 mb-0">(Infraestrutura)</p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="bg-dark p-3 rounded text-center h-100">
+                <i class="fas fa-building fa-2x" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">Em quem?</strong>
+                <small class="text-muted">A vítima</small>
+                <p class="small mt-2 mb-0">(Vítima)</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-4">
+            <strong class="text-success">No mundo digital:</strong> Um invasor (quem) usa um malware (com o quê) através de um e-mail (por
+            onde) para atacar um funcionário (em quem). Essas quatro pontas formam um "diamante" — o
+            <strong class="text-success">Modelo Diamond</strong> ajuda a organizar a investigação.
+          </p>
+        </div>
+      </section>
+
+      <!-- CASO 5 - Resposta a Incidentes (o que fazer quando acontece) -->
+      <section id="caso-incidente" class="mb-5 reveal">
+        <div class="content-card">
+          <div class="d-flex align-items-center mb-3">
+            <i class="fas fa-tasks fa-2x" style="color: var(--cisco-green)"></i>
+            <h3 class="section-title mb-0 ms-3" style="border-left-color: var(--cisco-green)">Caso 5: O Vazamento na Cozinha</h3>
+          </div>
+
+          <p>
+            <strong class="text-success">A história:</strong> Você chega em casa e vê água saindo debaixo da pia da cozinha. O que você faz?
+          </p>
+
+          <div class="row g-3 mt-3">
+            <div class="col-md-3">
+              <div class="terminal-card text-center p-2 h-100">
+                <i class="fas fa-chalkboard-teacher" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">1. Preparação</strong>
+                <small>Ter um cano reserva, saber onde fica o registro, ter um balde guardado</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="terminal-card text-center p-2 h-100">
+                <i class="fas fa-search" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">2. Detecção</strong>
+                <small>Você viu a poça d'água — percebeu que tem problema</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="terminal-card text-center p-2 h-100">
+                <i class="fas fa-shield-virus" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">3. Contenção</strong>
+                <small>Fechar o registro, colocar o balde, estancar a água</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="terminal-card text-center p-2 h-100">
+                <i class="fas fa-clipboard-list" style="color: var(--cisco-green)"></i>
+                <strong class="d-block mt-2 text-success">4. Pós-incidente</strong>
+                <small>Trocar o cano, aprender a evitar, anotar o que aconteceu</small>
+              </div>
+            </div>
+          </div>
+
+          <p class="mt-4">
+            <strong class="text-success">No mundo digital:</strong> É exatamente igual. O
+            <strong class="text-warning">NIST 800-61</strong> organiza a resposta a incidentes nessas 4 fases. Quem só fica apagando fogo
+            (só contendo) sem aprender com o erro vai ter o mesmo vazamento de novo na semana que vem.
+          </p>
+        </div>
+      </section>
+
+      <!-- GLOSSÁRIO FINAL -->
+      <section id="glossario" class="mb-5 reveal">
+        <div class="content-card">
+          <div class="text-center mb-4">
+            <i class="fas fa-book-open fa-3x" style="color: var(--cisco-green)"></i>
+            <h2 class="cisco-title-gradient mt-3 mb-2">Glossário Rápido</h2>
+            <p class="text-muted">Os termos mais importantes deste módulo em linguagem simples</p>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">Evidência direta</strong>
+                <p class="small text-muted mb-0">
+                  Uma prova clara, sem margem para dúvida. Como uma filmagem mostrando a pessoa cometendo o crime.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">Evidência indireta (circunstancial)</strong>
+                <p class="small text-muted mb-0">
+                  Uma pista que, junto com outras, ajuda a montar o que aconteceu. Como encontrar as digitais da pessoa no local, mesmo sem
+                  ver ela agindo.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">Cadeia de custódia</strong>
+                <p class="small text-muted mb-0">
+                  O registro de quem pegou, quem guardou e quem mexeu em cada prova. Garante que ninguém adulterou a evidência.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">Volatilidade</strong>
+                <p class="small text-muted mb-0">
+                  A velocidade com que uma evidência some. A memória RAM é muito volátil (some ao desligar). O disco rígido é menos volátil
+                  (os dados ficam guardados).
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">Cyber Kill Chain</strong>
+                <p class="small text-muted mb-0">
+                  As 7 etapas que um invasor precisa seguir para completar um ataque. Se você quebrar uma etapa, o ataque falha.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">Modelo Diamond</strong>
+                <p class="small text-muted mb-0">
+                  Uma forma de organizar a investigação em 4 perguntas: quem, com o quê, por onde e em quem.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">CSIRT</strong>
+                <p class="small text-muted mb-0">
+                  O time de pessoas treinadas para responder a incidentes de segurança. É o "corpo de bombeiros digital" da empresa.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">RTO (Recovery Time Objective)</strong>
+                <p class="small text-muted mb-0">
+                  Quanto tempo a empresa pode ficar com o sistema parado antes que o prejuízo fique muito grande.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">RPO (Recovery Point Objective)</strong>
+                <p class="small text-muted mb-0">
+                  Quanta informação a empresa pode perder sem que seja um desastre. Define de quanto em quanto tempo fazer backup.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="border border-secondary rounded p-3 h-100">
+                <strong class="text-success">MTTR (Mean Time To Repair)</strong>
+                <p class="small text-muted mb-0">O tempo médio que a equipe leva para consertar um problema depois que ele acontece.</p>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="border border-secondary rounded p-3">
+                <strong class="text-success">MITRE ATT&CK</strong>
+                <p class="small text-muted mb-0">
+                  Uma biblioteca gigante que organiza todas as técnicas que invasores já usaram no mundo real. É como um "manual do inimigo"
+                  que os defensores usam para se preparar.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="alert-cisco mt-4 text-center">
+            <i class="fas fa-quote-left" style="color: var(--cisco-green)"></i>
+            <p class="mb-0 small">
+              Segurança não é sobre nunca ser atacado. É sobre saber o que fazer quando o ataque vier, ter as provas para mostrar o que
+              aconteceu e aprender para não acontecer de novo.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==================== FOOTER PADRÃO ==================== -->
+    <footer class="cyber-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <h4 style="color: var(--cisco-green)">☠ CyberSec</h4>
+            <p class="text-muted">Estudos Cisco Academy · Documentação interativa</p>
+            <p class="small text-muted">
+              <i class="fas fa-code me-1"></i> Desenvolvido por 🧙 Alfredo Allan · <i class="fab fa-cisco ms-2 me-1"></i> Cisco ·
+              <i class="fas fa-robot ms-2 me-1"></i> Gemini · DeepSeek
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p class="text-muted small mb-0">27 módulos · Aprendizado contínuo</p>
+            <p class="text-muted small mb-0">© 2026 · Base de conhecimento CyberSec</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- main.js (animações, progress bar, scroll suave) -->
+    <script src="../js/main.js"></script>
+    <!-- drpdow.js (funcionalidades do dropdown) -->
+    <script src="../js/drpdow.js"></script>
+  </body>
+</html>
