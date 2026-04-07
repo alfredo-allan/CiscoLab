@@ -68,15 +68,45 @@ class CyberSecGlobalSearch {
         name: "Módulo 19",
         title: "Tecnologias e Protocolos",
       },
-       {
+      {
         path: "/pages/modulo_20.html",
         name: "Módulo 20",
         title: "Dados de Segurança de Rede",
       },
-        {
+      {
         path: "/pages/modulo_21.html",
         name: "Módulo 21",
         title: "Avaliação de alertas",
+      },
+      {
+        path: "/pages/modulo_22.html",
+        name: "Módulo 22",
+        title: "Governança e Conformidade",
+      },
+      {
+        path: "/pages/modulo_23.html",
+        name: "Módulo 23",
+        title: "Teste de Segurança de Rede",
+      },
+      {
+        path: "/pages/modulo_24.html",
+        name: "Módulo 24",
+        title: "Inteligência de Ameaças",
+      },
+      {
+        path: "/pages/modulo_25.html",
+        name: "Módulo 25",
+        title: "Avaliação de Vulnerabilidade de Endpoints",
+      },
+      {
+        path: "/pages/modulo_26.html",
+        name: "Módulo 26",
+        title: "Gerenciamento de Riscos e Controles de Segurança",
+      },
+      {
+        path: "/pages/modulo_27.html",
+        name: "Módulo 27",
+        title: "Análise Forense Digital e Resposta a Incidentes",
       },
     ];
 
@@ -149,7 +179,7 @@ class CyberSecGlobalSearch {
 
         // Buscar em elementos de conteúdo (remover navbar, footer, scripts)
         const contentElements = doc.querySelectorAll(
-          "section, .content-card, p, h1, h2, h3, h4, h5, h6, li, .cisco-title, .section-tag, .badge-cisco",
+          "section, .content-card, p, h1, h2, h3, h4, h5, h6, li, .cisco-title, .section-tag, .badge-cisco"
         );
 
         contentElements.forEach((element) => {
